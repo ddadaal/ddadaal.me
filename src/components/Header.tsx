@@ -1,48 +1,80 @@
-import * as React from 'react'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink as ReactstrapNavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+import Link, { navigateTo } from 'gatsby-link';
+import * as React from 'react';
+import Icon from '../../assets/logo.svg';
 import styled from 'styled-components'
-import { transparentize } from 'polished'
-import Link from 'gatsby-link'
+import { widths } from '../styles/variables';
 
-import { heights, dimensions, colors } from '../styles/variables'
-import { onEvent } from '../styles/mixins'
-import Container from './Container'
-
-const StyledHeader = styled.header`
-  height: ${heights.header}px;
-  padding: 0 ${dimensions.containerPadding}rem;
-  background-color: ${colors.brand};
-  color: ${transparentize(0.5, colors.white)};
-`
-
-const HeaderInner = styled(Container)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-`
-
-const HomepageLink = styled(Link)`
-  color: ${colors.white};
-  font-size: 1.5rem;
-  font-weight: 600;
-
-  ${onEvent`
-    text-decoration: none;
-  `};
-`
-
-interface HeaderProps {
-  title: string
+interface Props {
+  title: string;
 }
 
-const Header: React.SFC<HeaderProps> = ({ title }) => (
-  <StyledHeader>
-    <HeaderInner>
-      <HomepageLink to="/" href="/">
-        {title}
-      </HomepageLink>
-    </HeaderInner>
-  </StyledHeader>
-)
+interface State {
+  isOpen: boolean;
+}
 
-export default Header
+function NavLink(props: {to: string, children: React.ReactNode}){
+  return <Link to={props.to}>
+    <ReactstrapNavLink>
+      {props.children}
+    </ReactstrapNavLink>
+  </Link>
+}
+
+const StyledLogo = styled(Icon)`
+  width: 42px;
+  height: 42px;
+  margin-right: 8px;
+`
+
+function Branding(props: {title: string}) {
+  return <Link to={"/"} className={"navbar-brand"}>
+      <StyledLogo/>
+    {props.title}
+  </Link>
+}
+
+export default class Header extends React.PureComponent<Props, State> {
+
+  state = {
+    isOpen: false
+  }
+
+  toggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  };
+
+  render() {
+    return <div>
+      <Navbar color="light" light expand="md" >
+        <Branding title={this.props.title}/>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/about/project">About Website</NavLink>
+            <NavLink to="/about/me">About Me</NavLink>
+            <ReactstrapNavLink target="__blank" href="https://github.com/viccrubs">
+              GitHub
+            </ReactstrapNavLink>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>;
+  }
+
+
+}

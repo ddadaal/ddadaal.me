@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled from 'styled-components'
-
 import { dimensions } from '../styles/variables'
 
 const StyledPage = styled.div`
@@ -12,9 +11,12 @@ const StyledPage = styled.div`
 `
 
 interface PageProps {
-  className?: string
+  className?: string;
+  children?: React.ReactNode;
 }
 
-const Page: React.SFC<PageProps> = ({ children, className }) => <StyledPage className={className}>{children}</StyledPage>
-
-export default Page
+export default function Page(props: PageProps) {
+  return <StyledPage className={props.className}>
+    {props.children}
+    </StyledPage>
+}

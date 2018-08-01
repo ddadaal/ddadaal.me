@@ -1,11 +1,13 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 
-import '../styles/normalize'
+import "prismjs/themes/prism-okaidia.css";
+import "../styles/bootstrap.css"
 
 import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
+import Footer from '../components/Footer'
 
 interface WrapperProps {
   children: () => any
@@ -30,6 +32,7 @@ const IndexLayout: React.SFC<WrapperProps> = ({ children, data }) => (
     />
     <Header title={data.site.siteMetadata.title} />
     <LayoutMain>{children()}</LayoutMain>
+    <Footer/>
   </LayoutRoot>
 )
 

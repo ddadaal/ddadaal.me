@@ -10,18 +10,14 @@ Based on Gatsby v1 and [gatsby-starter-typescript-plus](https://github.com/resir
 
 A nodejs >= 6.0.0 setup with [yarn](https://yarnpkg.com/) is recommended.
 
+Yarn instead of NPM is required.
+
 ``` bash
 # install dependencies
-yarn
+yarn install
 
 # serve with hot reload at localhost:8000
-npm start
-
-# build for production
-npm run build
-
-# build for production and push to gh-pages branch
-npm run deploy
+yarn start
 ```
 
 ## Credits
