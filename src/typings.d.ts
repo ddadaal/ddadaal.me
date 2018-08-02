@@ -22,3 +22,8 @@ declare module '*.svg' {
   export = module
 }
 
+declare module '*.png' {
+  const module: any;
+  export = module
+}
+

@@ -1,7 +1,4 @@
 'use strict'
-
-const cssnext = require('postcss-cssnext')
-
 module.exports = {
   siteMetadata: {
     title: 'VicBlog',
@@ -68,7 +65,6 @@ module.exports = {
         include: /assets/
       }
     },
-    // In your gatsby-config.js
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
@@ -83,6 +79,18 @@ module.exports = {
     'gatsby-plugin-react-next',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet'
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "VicBlog",
+        short_name: "VicBlog",
+        start_url: "/",
+        background_color: "#222222",
+        theme_color: "#00bc8c",
+        display: "minimal-ui",
+        icon: "assets/icon.png", // This path is relative to the root of the site.
+      },
+    },
   ]
 }

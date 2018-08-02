@@ -8,8 +8,6 @@ Based on Gatsby v1 and [gatsby-starter-typescript-plus](https://github.com/resir
 
 ## Developing
 
-A nodejs >= 6.0.0 setup with [yarn](https://yarnpkg.com/) is recommended.
-
 Yarn instead of NPM is required.
 
 ``` bash
@@ -18,6 +16,9 @@ yarn install
 
 # serve with hot reload at localhost:8000
 yarn start
+
+# run production build
+yarn run build
 ```
 
 ## Credits

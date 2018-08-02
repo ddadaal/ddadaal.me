@@ -1,18 +1,11 @@
 import * as React from 'react';
 import Link, {push} from 'gatsby-link';
-import Page from '../components/Page'
-import PostContainer from '../components/PostContainer'
+import Post from '../components/Post'
 import HomePageLayout from '../layouts/HomePageLayout'
 import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import styled from 'styled-components'
 import { ArticleNode } from '../models/ArticleNode'
 import { range } from '../utils/Array'
-
-interface Node{
-  excerpt: string;
-  id: string;
-
-}
 
 interface Props {
   pathContext: {
@@ -54,7 +47,6 @@ function PageIndicator(props: {pageCount: number, current: number}) {
 
 export default function Index(props: Props) {
   const { group: posts, index, pageCount } = props.pathContext;
-  console.log(props.pathContext)
 
   return (
     <HomePageLayout>
@@ -62,12 +54,12 @@ export default function Index(props: Props) {
       {posts
         .filter(post => post.node.frontmatter.title.length > 0)
         .map(({ node: post }) =>
-            <PostContainer key={post.id}
-                           idName={post.frontmatter.id_name}
-                           title={post.frontmatter.title}
-                           excerpt={post.excerpt}
-                           date={new Date(post.frontmatter.date)}
-                           tags={post.frontmatter.tags}
+            <Post key={post.id}
+                  idName={post.frontmatter.id_name}
+                  title={post.frontmatter.title}
+                  excerpt={post.excerpt}
+                  date={new Date(post.frontmatter.date)}
+                  tags={post.frontmatter.tags}
             />)
       }
       <PageIndicator pageCount={pageCount} current={index}/>

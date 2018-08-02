@@ -17,7 +17,7 @@ const StyledPost = styled.div`
   margin-bottom: 32px;
 `
 
-export default function PostContainer(props: Props) {
+export default function Post(props: Props) {
   const { idName, title, excerpt, date, tags } =props;
 
   return <StyledPost>
@@ -27,5 +27,6 @@ export default function PostContainer(props: Props) {
     <TagGroup tags={tags}/>
     <p>{date.toLocaleString()}</p>
     <p>{excerpt}</p>
+    <hr/>
   </StyledPost>
 }

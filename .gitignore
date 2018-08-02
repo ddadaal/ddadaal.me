@@ -117,3 +117,6 @@ $RECYCLE.BIN/
 # IDEA
 
 .idea
+
+# files containing sensitive information
+localdeploy.sh

@@ -3847,6 +3847,14 @@ gatsby-plugin-catch-links@^1.0.24:
   dependencies:
     babel-runtime "^6.26.0"
 
+gatsby-plugin-manifest@^1.0.27:
+  version "1.0.27"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-manifest/download/gatsby-plugin-manifest-1.0.27.tgz#148327ebfaf9a0a6791012cc5b5363356ee16ddf"
+  dependencies:
+    babel-runtime "^6.26.0"
+    bluebird "^3.5.0"
+    sharp "^0.20.1"
+
 gatsby-plugin-nprogress@^1.0.14:
   version "1.0.14"
   resolved "http://registry.npm.taobao.org/gatsby-plugin-nprogress/download/gatsby-plugin-nprogress-1.0.14.tgz#576f92e0658f1dc66e511b99ff4efe7389bfcc57"
@@ -9194,6 +9202,21 @@ shallowequal@^1.0.1:
 sharp@^0.20.0:
   version "0.20.4"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.20.4.tgz#e334cadd2aa06912bc186f1af1fe22335e1d76f7"
+  dependencies:
+    color "^3.0.0"
+    detect-libc "^1.0.3"
+    fs-copy-file-sync "^1.1.1"
+    nan "^2.10.0"
+    npmlog "^4.1.2"
+    prebuild-install "^4.0.0"
+    semver "^5.5.0"
+    simple-get "^2.8.1"
+    tar "^4.4.4"
+    tunnel-agent "^0.6.0"
+
+sharp@^0.20.1:
+  version "0.20.5"
+  resolved "http://registry.npm.taobao.org/sharp/download/sharp-0.20.5.tgz#fc19d9639b1c792fa68a21624c75069923e79edd"
   dependencies:
     color "^3.0.0"
     detect-libc "^1.0.3"

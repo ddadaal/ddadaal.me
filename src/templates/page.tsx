@@ -6,7 +6,6 @@ import Container from '../components/Container'
 import { CommentContainer } from '../components/CommentContainer'
 import Link from 'gatsby-link';
 import If from '../components/If'
-import { Badge } from 'reactstrap';
 import TagGroup from '../components/TagGroup'
 import { ArticleNode } from '../models/ArticleNode'
 
@@ -38,8 +37,9 @@ export default function PageTemplate(props: Props) {
         <p>{new Date(frontmatter.date).toLocaleString()}</p>
       </If>
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      <hr/>
+      <CommentContainer/>
     </Container>
-    {/*<CommentContainer/>*/}
   </Page>
 }
 
