@@ -1,8 +1,10 @@
 # VicBlog Gatsby
 
+[![Build Status](https://travis-ci.org/viccrubs/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/viccrubs/VicBlog-Gatsby)
+
 VicBlog is migrating into a static website!
 
-**This is a WIP project.**
+[Check it now!](https://viccrubs.tk)
 
 Based on Gatsby v1 and [gatsby-starter-typescript-plus](https://github.com/resir014/gatsby-starter-typescript-plus)
 

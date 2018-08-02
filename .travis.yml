@@ -16,6 +16,6 @@ deploy:
   on:
     branch: master
   local-dir: public
-  repo: viccrubs.github.io
+  repo: viccrubs/viccrubs.github.io
   fqdn: viccrubs.tk
   target-branch: master
