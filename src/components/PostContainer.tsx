@@ -1,12 +1,15 @@
 import * as React from 'react';
 import Link from 'gatsby-link';
 import styled from 'styled-components'
+import TagGroup from './TagGroup'
+import Container from './Container'
 
 interface Props {
-  path: string;
+  idName: string;
   title: string;
   excerpt: string;
-  date: string;
+  date: Date;
+  tags: string[];
 
 }
 
@@ -15,12 +18,14 @@ const StyledPost = styled.div`
 `
 
 export default function PostContainer(props: Props) {
-  const { path, title, excerpt, date } =props;
+  const { idName, title, excerpt, date, tags } =props;
+
   return <StyledPost>
-    <Link to={path}>
+    <Link to={`/articles/${idName}`}>
       <h1>{title}</h1>
       </Link>
-    <h4>{date}</h4>
+    <TagGroup tags={tags}/>
+    <p>{date.toLocaleString()}</p>
     <p>{excerpt}</p>
   </StyledPost>
 }

@@ -1,4 +1,5 @@
 const path = require('path');
+const createPaginatedPages = require("gatsby-paginate");
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
 
@@ -17,9 +18,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           id
           frontmatter {
             date
-            path
+            id_name
+            absolute_path
             title
             ignored
+            tags
           }
         }
       }
@@ -29,12 +32,23 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       if (result.errors) {
         return Promise.reject(result.errors);
       }
+      createPaginatedPages({
+        edges: result.data.allMarkdownRemark.edges.filter(({node}) => !node.frontmatter.ignored),
+        createPage: createPage,
+        pageTemplate: "src/templates/index.tsx",
+        pageLength: 5, // This is optional and defaults to 10 if not used
+        pathPrefix: "", // This is optional and defaults to an empty string if not used
+        context: {} // This is optional and defaults to an empty object if not used
+      });
       result.data.allMarkdownRemark.edges
-        .forEach(({ node }) => {
+        .forEach(({ node }, index) => {
+          const path = node.frontmatter.absolute_path
+            || `/articles/${node.frontmatter.id_name || index}`;
           createPage({
-            path: node.frontmatter.path,
+            path,
             component: blogPostTemplate,
             context: {
+              id_name: node.frontmatter.id_name
             } // additional data can be passed via context
           });
         });

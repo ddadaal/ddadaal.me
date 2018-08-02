@@ -1,8 +1,8 @@
 ---
 
-path: "/about/me"
+id_name: "about-me"
+absolute_path: "/about/me"
 date: "2018-08-01T14:18:00.962Z"
-layout: page
 title: "About Me"
 ignored: true
 
@@ -18,11 +18,10 @@ ignored: true
 
 ## Programming Preferences
 
-- **Almost** Full Stack Web Development
+- **Almost** Full Stack Web
 - Most used languages: C#, TypeScript, Java, Python
 - Most used Framework: React, ASP.NET Core
-- Learning: F#, Rust
-- Fields of interests: System, Architecture, Software Engineering, Teamwork
+- Fields of interests: System, Architecture, Software Engineering
 
 ## I...
 

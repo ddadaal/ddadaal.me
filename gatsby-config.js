@@ -14,17 +14,27 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'contents',
-        path: `${__dirname}/src/contents`
+        path: `${__dirname}/contents`
       }
     },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-toc',
+            options: {
+              header: 'Table of Contents', // the custom header text,
+              include: [
+                'content/**/*.md'
+              ]
+            }
+          },
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {

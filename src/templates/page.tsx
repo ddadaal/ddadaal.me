@@ -6,50 +6,46 @@ import Container from '../components/Container'
 import { CommentContainer } from '../components/CommentContainer'
 import Link from 'gatsby-link';
 import If from '../components/If'
+import { Badge } from 'reactstrap';
+import TagGroup from '../components/TagGroup'
+import { ArticleNode } from '../models/ArticleNode'
 
-interface PageTemplateProps {
+interface Props {
   data: {
     site: {
       siteMetadata: {
-        title: string
-        description: string
+        title: string;
+        description: string;
         author: {
-          name: string
-          url: string
+          name: string;
+          url: string;
         }
       }
     }
-    markdownRemark: {
-      html: string
-      excerpt: string
-      frontmatter: {
-        date: string
-        path: string
-        title: string
-      }
-    }
+    markdownRemark: ArticleNode
   }
 }
 
-const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => (
-  <Page>
-    <Helmet title={`VicBlog - ${data.markdownRemark.frontmatter.title}`} />
+export default function PageTemplate(props: Props) {
+  const {frontmatter, html} = props.data.markdownRemark;
+  return <Page>
+    <Helmet title={`VicBlog - ${frontmatter.title}`} />
     <Container>
       <Link to={"/"}>Back To Home</Link>
-      <h1>{data.markdownRemark.frontmatter.title}</h1>
-      <If condition={data.markdownRemark.frontmatter.date}>
-        <p>on {data.markdownRemark.frontmatter.date}</p>
+      <h1>{frontmatter.title}</h1>
+      <TagGroup tags={frontmatter.tags}/>
+      <If condition={frontmatter.date}>
+        <p>{new Date(frontmatter.date).toLocaleString()}</p>
       </If>
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </Container>
     {/*<CommentContainer/>*/}
   </Page>
-)
+}
 
-export default PageTemplate
 
 export const query = graphql`
-  query PageTemplateQuery($path: String!) {
+  query PageTemplateQuery($id_name: String!) {
     site {
       siteMetadata {
         title
@@ -60,13 +56,14 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(frontmatter: { id_name: { eq: $id_name } }) {
       html
       excerpt
       frontmatter {
-        date(formatString: "YYYY/MM/DD")
-        path
+        date
+        id_name
         title
+        tags
       }
     }
   }

@@ -8,6 +8,7 @@ import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
 import Footer from '../components/Footer'
+import ScrollToTop from 'react-scroll-up';
 
 interface WrapperProps {
   children: () => any
@@ -32,6 +33,9 @@ const IndexLayout: React.SFC<WrapperProps> = ({ children, data }) => (
     />
     <Header title={data.site.siteMetadata.title} />
     <LayoutMain>{children()}</LayoutMain>
+    <ScrollToTop showUnder={160}>
+      <h3>👆</h3>
+    </ScrollToTop>
     <Footer/>
   </LayoutRoot>
 )

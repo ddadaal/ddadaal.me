@@ -15,6 +15,7 @@ import * as React from 'react';
 import Icon from '../../assets/logo.svg';
 import styled from 'styled-components'
 import { widths } from '../styles/variables';
+import Container from './Container'
 
 interface Props {
   title: string;
@@ -25,10 +26,8 @@ interface State {
 }
 
 function NavLink(props: {to: string, children: React.ReactNode}){
-  return <Link to={props.to}>
-    <ReactstrapNavLink>
+  return <Link to={props.to} className='nav-link'>
       {props.children}
-    </ReactstrapNavLink>
   </Link>
 }
 
@@ -45,6 +44,16 @@ function Branding(props: {title: string}) {
   </Link>
 }
 
+const NavbarDiv = styled.div`
+  background-color: #303030;
+  
+  & > *{ 
+    max-width: ${widths.xl}px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
+
 export default class Header extends React.PureComponent<Props, State> {
 
   state = {
@@ -58,7 +67,7 @@ export default class Header extends React.PureComponent<Props, State> {
   };
 
   render() {
-    return <div>
+    return <NavbarDiv>
       <Navbar color="light" light expand="md" >
         <Branding title={this.props.title}/>
         <NavbarToggler onClick={this.toggle} />
@@ -72,8 +81,8 @@ export default class Header extends React.PureComponent<Props, State> {
             </ReactstrapNavLink>
           </Nav>
         </Collapse>
-      </Navbar>
-    </div>;
+        </Navbar>
+    </NavbarDiv>;
   }
 
 

@@ -1,8 +1,8 @@
 ---
 
-path: "/about/project"
+id_name: "about-project"
+absolute_path: "/about/project"
 date: "2018-08-01T14:18:00.962Z"
-layout: page
 title: "About Project VicBlog"
 ignored: true
 

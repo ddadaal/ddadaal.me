@@ -9,7 +9,7 @@ const StyledContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  max-width: ${widths.lg}px;
+  max-width: ${widths.xl}px;
 `
 
 interface ContainerProps {

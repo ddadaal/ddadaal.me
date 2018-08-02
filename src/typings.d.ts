@@ -21,3 +21,4 @@ declare module '*.svg' {
   const module: any;
   export = module
 }
+
