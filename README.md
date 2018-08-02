@@ -21,6 +21,10 @@ yarn start
 yarn run build
 ```
 
+## Deploy
+
+Deploy is done via Travis-CI. It publishes directly into viccrubs.github.io.
+
 ## Credits
 
 Built with [Gatsby](https://www.gatsbyjs.org/) - the blazing-fast static site generator for [React](https://facebook.github.io/react/).
