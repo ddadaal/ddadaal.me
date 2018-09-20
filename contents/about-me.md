@@ -14,7 +14,7 @@ ignored: true
 - Born in March 20, 1998
 - Hometown in Chongqing
 - Studying Software Engineering in Nanjing University since 2016.
-- Single (and want to have a girlfriend XD)
+- **Have a girlfriend and I love her XD**
 
 ## Programming Preferences
 
@@ -25,7 +25,7 @@ ignored: true
 
 ## I...
 
-- Love computer games. FPS mostly (Battlefield franchise, ~~Overwatch~~, FarCry...) and others too (Mass Effect....).
+- Love computer games. FPS mostly (Battlefield franchise main, ~~Overwatch~~, FarCry...) and others too (Mass Effect....).
 - Love computers (both hardware and software) and any tech things
 - Love programming.
 - am a Microsoft fan.

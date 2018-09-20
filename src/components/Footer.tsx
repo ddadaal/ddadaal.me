@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components'
-import Link from 'gatsby-link';
+import * as React from "react";
+import styled from "styled-components";
+import Link from "gatsby-link";
 
 interface Props {
 
@@ -8,7 +8,7 @@ interface Props {
 
 const Container = styled.div`
   text-align: center;
-`
+`;
 
 export default function Footer(props: Props) {
   return <Container>
@@ -34,5 +34,5 @@ export default function Footer(props: Props) {
     <p>
       Made with ❤
     </p>
-  </Container>
+  </Container>;
 }

@@ -1,4 +1,4 @@
-export interface ArticleNode{
+export interface ArticleNode {
   excerpt: string;
   id: string;
   frontmatter: {
@@ -8,6 +8,6 @@ export interface ArticleNode{
     ignored?: boolean;
     tags: string[];
     title: string;
-  }
+  };
   html: string;
 }

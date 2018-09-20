@@ -1,9 +1,9 @@
 const path = require('path');
 const createPaginatedPages = require("gatsby-paginate");
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
+exports.createPages = ({ actions, graphql }) => {
 
-  const { createPage } = boundActionCreators;
+  const { createPage } = actions;
   const blogPostTemplate = path.resolve(`src/templates/page.tsx`);
 
   return graphql(`{

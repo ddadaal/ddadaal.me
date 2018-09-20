@@ -1,8 +1,8 @@
-import * as React from 'react'
-import Link from 'gatsby-link'
+import * as React from "react";
+import { Link } from "gatsby";
 
-import Page from '../components/Page'
-import Container from '../components/Container'
+import Page from "../components/Page";
+import Container from "../components/Container";
 
 const NotFoundPage = () => (
   <Page>
@@ -12,12 +12,12 @@ const NotFoundPage = () => (
         You've entered the void!
       </p>
       <p>
-        <Link to="/" href="/">
+        <Link to="/">
           Go home now.
         </Link>
       </p>
     </Container>
   </Page>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

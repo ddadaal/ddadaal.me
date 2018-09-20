@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components'
-import TagGroup from './TagGroup'
-import Container from './Container'
+import * as React from "react";
+import Link from "gatsby-link";
+import styled from "styled-components";
+import TagGroup from "./TagGroup";
+import Container from "./Container";
 
 interface Props {
   idName: string;
@@ -15,10 +15,10 @@ interface Props {
 
 const StyledPost = styled.div` 
   margin-bottom: 32px;
-`
+`;
 
 export default function Post(props: Props) {
-  const { idName, title, excerpt, date, tags } =props;
+  const { idName, title, excerpt, date, tags } = props;
 
   return <StyledPost>
     <Link to={`/articles/${idName}`}>
@@ -28,5 +28,5 @@ export default function Post(props: Props) {
     <p>{date.toLocaleString()}</p>
     <p>{excerpt}</p>
     <hr/>
-  </StyledPost>
+  </StyledPost>;
 }

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { dimensions } from '../styles/variables'
+import * as React from "react";
+import styled from "styled-components";
+import { dimensions } from "../styles/variables";
 
 const StyledPage = styled.div`
   display: block;
@@ -8,7 +8,7 @@ const StyledPage = styled.div`
   position: relative;
   padding: ${dimensions.containerPadding}rem;
   margin-bottom: 3rem;
-`
+`;
 
 interface PageProps {
   className?: string;
@@ -18,5 +18,5 @@ interface PageProps {
 export default function Page(props: PageProps) {
   return <StyledPage className={props.className}>
     {props.children}
-    </StyledPage>
+    </StyledPage>;
 }

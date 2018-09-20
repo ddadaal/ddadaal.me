@@ -1,6 +1,6 @@
-import * as React from 'react'
-import 'gitment/style/default.css'
-import Gitment from 'gitment'
+import * as React from "react";
+import "gitment/style/default.css";
+import Gitment from "gitment";
 
 interface Props {
 
@@ -26,6 +26,6 @@ export class CommentContainer extends React.Component<Props, {}> {
   }
 
   render() {
-    return <div>Comment system is under construction.</div>
+    return <div>Comment system is under construction.</div>;
   }
 }
