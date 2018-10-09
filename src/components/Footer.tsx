@@ -18,7 +18,8 @@ export default function Footer(props: Props) {
     <p>
       Powered by
       <a href={"https://reactjs.org/"}> React</a>,
-      <a href={"https://www.gatsbyjs.org/"}> Gatsby</a>
+      <a href={"https://www.gatsbyjs.org/"}> Gatsby</a>,
+      <a href={"https://pages.github.com/"}> GitHub Pages</a>
     </p>
     <p>
       Themed with

@@ -11,6 +11,61 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(({ node }) => {
+                const url = node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`;
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  url: url,
+                  guid: url,
+                  custom_elements: [{ "content:encoded": node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: {frontmatter: { ignored: { ne: true } }}
+                ) {
+                  edges {
+                    node {
+                      excerpt(pruneLength: 250)
+                      html
+                      frontmatter {
+                        title
+                        id_name
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "VicBlog RSS Blog",
+          },
+        ],
+      },
+    },
     'gatsby-plugin-catch-links',
     {
       resolve: 'gatsby-source-filesystem',
@@ -23,15 +78,6 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          {
-            resolve: 'gatsby-remark-toc',
-            options: {
-              header: 'Table of Contents', // the custom header text,
-              include: [
-                'content/**/*.md'
-              ]
-            }
-          },
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
@@ -69,7 +115,7 @@ module.exports = {
       resolve: `gatsby-plugin-nprogress`,
       options: {
         // Setting a color is optional.
-        color: `tomato`,
+        color: `#3498DB`,
         // Disable the loading spinner.
         showSpinner: false
       }
@@ -86,10 +132,11 @@ module.exports = {
         short_name: "VicBlog",
         start_url: "/",
         background_color: "#222222",
-        theme_color: "#00bc8c",
+        theme_color: "#3498DB",
         display: "minimal-ui",
         icon: "assets/icon.png", // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-offline`
   ]
 }

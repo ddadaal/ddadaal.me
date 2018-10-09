@@ -1,21 +1,10 @@
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink as ReactstrapNavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from "reactstrap";
+import { Collapse, Nav, Navbar, NavbarToggler, NavLink as ReactstrapNavLink } from "reactstrap";
 import { Link } from "gatsby";
 import * as React from "react";
 import Icon from "../../assets/logo.svg";
 import styled from "styled-components";
 import { widths } from "../styles/variables";
-import Container from "./Container";
+import { FaHome, FaGithub, FaMale, FaGlobe } from "react-icons/fa";
 
 interface Props {
   title: string;
@@ -46,8 +35,8 @@ function Branding(props: {title: string}) {
 
 const NavbarDiv = styled.div`
   background-color: #303030;
-  
-  & > *{ 
+
+  & > *{
     max-width: ${widths.xl}px;
     margin-left: auto;
     margin-right: auto;
@@ -73,11 +62,11 @@ export default class Header extends React.PureComponent<Props, State> {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar={true}>
           <Nav className="ml-auto" navbar={true}>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about/project">About Website</NavLink>
-            <NavLink to="/about/me">About Me</NavLink>
+            <NavLink to="/"><FaHome/>Home</NavLink>
+            <NavLink to="/about/project"><FaGlobe/>About Website</NavLink>
+            <NavLink to="/about/me"><FaMale/>About Me</NavLink>
             <ReactstrapNavLink target="__blank" href="https://github.com/viccrubs">
-              GitHub
+              <FaGithub/> GitHub
             </ReactstrapNavLink>
           </Nav>
         </Collapse>

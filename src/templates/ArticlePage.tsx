@@ -3,12 +3,12 @@ import Helmet from "react-helmet";
 
 import Page from "../components/Page";
 import Container from "../components/Container";
-import { CommentContainer } from "../components/CommentContainer";
-import Link from "gatsby-link";
+import CommentPanel from "../components/CommentPanel";
 import TagGroup from "../components/TagGroup";
 import { ArticleNode } from "../models/ArticleNode";
-import { graphql } from "gatsby";
-import IndexLayout from "../layouts";
+import { graphql, Link } from "gatsby";
+import IndexLayout from "../layouts/IndexLayout";
+import { FaBackward } from "react-icons/fa";
 
 interface Props {
   data: {
@@ -31,15 +31,15 @@ export default function PageTemplate(props: Props) {
   return (
   <IndexLayout>
     <Page>
-      <Helmet title={`VicBlog - ${frontmatter.title}`} />
+      <Helmet title={`${frontmatter.title} - VicBlog`} />
       <Container>
-        <Link to={"/"}>Back To Home</Link>
+        <Link to={"/"}><FaBackward/> Back To Home</Link>
         <h1>{frontmatter.title}</h1>
         <TagGroup tags={frontmatter.tags} />
         {frontmatter.date && <p>{new Date(frontmatter.date).toLocaleString()}</p>}
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <hr />
-        <CommentContainer />
+        <CommentPanel articleId={frontmatter.id_name} />
       </Container>
     </Page>
   </IndexLayout>

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "esnext",
+    "target": "es6",
     "jsx": "react",
     "lib": ["dom", "es2015", "es2017"],
     "outDir": "./dist/",

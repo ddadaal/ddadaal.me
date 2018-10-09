@@ -1,10 +1,8 @@
 import * as React from "react";
-import styled from "styled-components";
 import Page from "../components/Page";
-import { breakpoints, widths } from "../styles/variables";
-import { Row, Col } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import Container from "../components/Container";
-import IndexLayout from ".";
+import IndexLayout from "./IndexLayout";
 
 interface Props {
   children: React.ReactNode[];

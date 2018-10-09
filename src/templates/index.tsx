@@ -7,6 +7,7 @@ import { Card, CardText,
 import styled from "styled-components";
 import { ArticleNode } from "../models/ArticleNode";
 import { range } from "../utils/Array";
+import { FaCode, FaGithub, FaEnvelope, FaEllipsisH } from "react-icons/fa";
 
 interface Props {
   pageContext: {
@@ -73,7 +74,7 @@ export default function Index(props: Props) {
           </CardBody>
           <CardBody>
             <CardText>Articles on technologies and experiences during study and practices</CardText>
-            <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby">Source Code on GitHub</CardLink>
+            <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby"><FaCode/>Source Code on GitHub</CardLink>
           </CardBody>
         </Card>
         <Card>
@@ -84,9 +85,8 @@ export default function Index(props: Props) {
           <CardBody>
             <CardText>Undergraduate student in Nanjing University since 2016</CardText>
             <CardText>Major in Software Engineering</CardText>
-            <CardLink target="__blank" href="https://github.com/viccrubs">GitHub</CardLink>
-            <CardLink href="mailto://smallda@outlook.com">Mail to me</CardLink>
-            <Link className="card-link" to="/about/me">More about me</Link>
+            <CardLink href="mailto://smallda@outlook.com"><FaEnvelope/>Mail to me</CardLink>
+            <Link className="card-link" to="/about/me"><FaEllipsisH/>More about me</Link>
           </CardBody>
       </Card>
 
