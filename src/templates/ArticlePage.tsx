@@ -39,7 +39,7 @@ export default function PageTemplate(props: Props) {
         {frontmatter.date && <p>{new Date(frontmatter.date).toLocaleString()}</p>}
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <hr />
-        <CommentPanel articleId={frontmatter.id_name} />
+        <CommentPanel articleId={frontmatter.id_name} articleTitle={frontmatter.title} />
       </Container>
     </Page>
   </IndexLayout>

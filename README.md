@@ -11,7 +11,7 @@ VicBlog is now a static website!
 - Fully static website with modern web technologies
 - Support for Progressive Web Application
 - Seperated source code and contents
-- Comment system via [Gitment](https://imsun.net/posts/gitment-introduction/)
+- Comment system via [valine](https://valine.js.org/) with admin system via [valine-admin](https://github.com/panjunwen/Valine-Admin)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 
 ## Development
@@ -28,21 +28,19 @@ yarn start
 # run production build
 yarn run build
 
-# **After build**, serve the production build
+# **After build**, serve the production build locally
 yarn run serveProd
 ```
 
 Notice that a dependency **sharp** needs to pull [prebuilt binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. However, GitHub hosts release files on AWS, which is blocked in China. Failure to download these files will cause failure in installation and following steps.
 
-To successfully download these files, follow these steps:
-1. Download the file yourself
-2. Upload the file into a cloud service (I use qiniu storage) and get the URL, which needs to be accessible from Internet
-3. Set the environment variable `SHARP_DIST_BASE_URL` to the URL without the filename itself
-4. Disable your proxy! (**important** if you are using shadowsocks)
+Thankfully, according to [the official docs](http://sharp.pixelplumbing.com/en/stable/install/#pre-compiled-libvips-binaries), we can change the base url for this file. With the help of python 3's `http.server` module, we can start a local http server and serve the file from local by the following steps:
+
+1. Download the file yourself and place the file into a directory
+2. Run `python -m http.server {port} --bind {url}` and keep it running until the installation completes.
+3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
 5. `yarn install` and you are ready to go!
 
-You may use `http://olaviw8n8.bkt.clouddn.com/` as the BASE_URL to test but be sure to change it as long as you upload it yourself.
-See [the official docs](http://sharp.pixelplumbing.com/en/stable/install/#pre-compiled-libvips-binaries) about changing the base url for the binary.
 
 ## Continuous Integration and Delivery
 

@@ -1,11 +1,17 @@
 import * as React from "react";
-import "gitment/style/default.css";
-import Gitment from "gitment";
-import styled from 'styled-components'
-import { FaComments } from "react-icons/fa"
+
+import AV from "leancloud-storage";
+import Valine from "valine";
+
+import styled from "styled-components";
+import { FaComments } from "react-icons/fa";
+
+
+(window as any).AV = AV;
 
 interface Props {
   articleId: string;
+  articleTitle: string;
 }
 
 const CommentDiv = styled.div`
@@ -13,43 +19,30 @@ const CommentDiv = styled.div`
   color: white;
   }
   
-  .gitment-footer-container {
-  color: white;
-  }
-  
-  .gitment-heart-icon {
-    fill: red;
-  }
-  
-  .gitment-editor-tab {
-    color: white;
-  }
-  
-  .gitment-editor-footer-tip {
-    color: #7E94AC;
-  }
 `;
 
 export default class CommentPanel extends React.Component<Props, {}> {
 
   componentDidMount() {
-    const gitment = new Gitment({
-      id: this.props.articleId, // optional
-      owner: "viccrubs",
-      repo: "VicBlog-Gatsby-Comments",
-      oauth: {
-        client_id: "5640259688bc3d72b807",
-        client_secret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
-      },
-      // ...
-      // For more available options, check out the documentation below
+    new Valine({
+      el: "#comments",
+      appId: "oMlt3jv4JM9nVzqp9NmgGY4y-gzGzoHsz",
+      appKey: "2n07rc1RaX7SkzQlyivB5LFR",
+      notify: false,
+      verify: false,
+      avatar: "mm",
+      placeholder: "just go go",
+      visitor: true,
+      highlight: true,
     });
-
-    gitment.render("comments");
   }
 
   render() {
     return <CommentDiv>
+      <span id={window.location.pathname} className="leancloud-visitors" data-flag-title={this.props.articleTitle}>
+        <em className="post-meta-item-text">Read count: </em>
+        <i className="leancloud-visitors-count">0</i>
+      </span>
       <h3><FaComments/> Comments</h3>
       <div id={"comments"}/>
     </CommentDiv>;
