@@ -1,13 +1,9 @@
 import * as React from "react";
 
-import AV from "leancloud-storage";
-import Valine from "valine";
-
 import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
 
-
-(window as any).AV = AV;
+import "gitalk/dist/gitalk.css";
 
 interface Props {
   articleId: string;
@@ -15,34 +11,38 @@ interface Props {
 }
 
 const CommentDiv = styled.div`
-  * {
-  color: white;
-  }
-  
+
 `;
 
 export default class CommentPanel extends React.Component<Props, {}> {
 
-  componentDidMount() {
-    new Valine({
-      el: "#comments",
-      appId: "oMlt3jv4JM9nVzqp9NmgGY4y-gzGzoHsz",
-      appKey: "2n07rc1RaX7SkzQlyivB5LFR",
-      notify: false,
-      verify: false,
-      avatar: "mm",
-      placeholder: "just go go",
-      visitor: true,
-      highlight: true,
-    });
+  async componentDidMount() {
+    try {
+
+      const Gitalk = (await import("gitalk")).default;
+
+      let gitalk = new Gitalk({
+        clientID: "5640259688bc3d72b807",
+        clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
+        repo: "https://github.com/viccrubs/VicBlog-Gatsby-Comments",
+        owner: "viccrubs",
+        admin: ["viccrubs"],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false,  // Facebook-like distraction free mode
+      });
+
+      gitalk.render("comments");
+    } catch (e) {
+console.log(e);
+    }
   }
 
   render() {
     return <CommentDiv>
-      <span id={window.location.pathname} className="leancloud-visitors" data-flag-title={this.props.articleTitle}>
+      {/* <span id={window.location.pathname} className="leancloud-visitors" data-flag-title={this.props.articleTitle}>
         <em className="post-meta-item-text">Read count: </em>
         <i className="leancloud-visitors-count">0</i>
-      </span>
+      </span> */}
       <h3><FaComments/> Comments</h3>
       <div id={"comments"}/>
     </CommentDiv>;

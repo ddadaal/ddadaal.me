@@ -1,13 +1,15 @@
 import * as React from "react";
-import Link, {push} from "gatsby-link";
+import Link, { push } from "gatsby-link";
 import Post from "../components/Post";
 import HomePageLayout from "../layouts/HomePageLayout";
-import { Card, CardText, 
-  CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import {
+  Card, CardText,
+  CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink
+} from "reactstrap";
 import styled from "styled-components";
 import { ArticleNode } from "../models/ArticleNode";
 import { range } from "../utils/Array";
-import { FaCode, FaGithub, FaEnvelope, FaEllipsisH } from "react-icons/fa";
+import { FaCode, FaGithub, FaEnvelope, FaEllipsisH, FaFile } from "react-icons/fa";
 
 interface Props {
   pageContext: {
@@ -24,12 +26,19 @@ const Sidebar = styled.div`
 
 `;
 
+const StackedDiv = styled.div`
+  & > a {
+  display: block;
+  margin: 4px 0 !important;
+  }
+`;
+
 function toPage(pageIndex: number) {
   const path = "/" + (pageIndex === 1 ? "" : pageIndex);
   return () => push(path);
 }
 
-function PageIndicator(props: {pageCount: number, current: number}) {
+function PageIndicator(props: { pageCount: number, current: number }) {
   const { pageCount, current } = props;
   return <Pagination aria-label="Page">
     <PaginationItem>
@@ -53,9 +62,9 @@ export default function Index(props: Props) {
   return (
     <HomePageLayout>
       <div className="blog-posts">
-      {posts
-        .filter((post) => post.node.frontmatter.title.length > 0)
-        .map(({ node: post }) =>
+        {posts
+          .filter((post) => post.node.frontmatter.title.length > 0)
+          .map(({ node: post }) =>
             <Post key={post.id}
                   idName={post.frontmatter.id_name}
                   title={post.frontmatter.title}
@@ -63,9 +72,9 @@ export default function Index(props: Props) {
                   date={new Date(post.frontmatter.date)}
                   tags={post.frontmatter.tags}
             />)
-      }
-      <PageIndicator pageCount={pageCount} current={index}/>
-     </div>
+        }
+        <PageIndicator pageCount={pageCount} current={index}/>
+      </div>
       <Sidebar>
         <Card>
           <CardBody>
@@ -74,7 +83,9 @@ export default function Index(props: Props) {
           </CardBody>
           <CardBody>
             <CardText>Articles on technologies and experiences during study and practices</CardText>
-            <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby"><FaCode/>Source Code on GitHub</CardLink>
+            <StackedDiv>
+              <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby"><FaCode/>Source Code on GitHub</CardLink>
+            </StackedDiv>
           </CardBody>
         </Card>
         <Card>
@@ -85,10 +96,13 @@ export default function Index(props: Props) {
           <CardBody>
             <CardText>Undergraduate student in Nanjing University since 2016</CardText>
             <CardText>Major in Software Engineering</CardText>
-            <CardLink href="mailto://smallda@outlook.com"><FaEnvelope/>Mail to me</CardLink>
-            <Link className="card-link" to="/about/me"><FaEllipsisH/>More about me</Link>
+            <StackedDiv>
+              <Link className="card-link" to="/resume"><FaFile/>Resume</Link>
+              <CardLink href="mailto://smallda@outlook.com"><FaEnvelope/>Mail to me</CardLink>
+              <Link className="card-link" to="/about/me"><FaEllipsisH/>More about me</Link>
+            </StackedDiv>
           </CardBody>
-      </Card>
+        </Card>
 
       </Sidebar>
     </HomePageLayout>

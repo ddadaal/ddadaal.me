@@ -29,20 +29,27 @@ interface Props {
 export default function PageTemplate(props: Props) {
   const { frontmatter, html } = props.data.markdownRemark;
   return (
-  <IndexLayout>
-    <Page>
-      <Helmet title={`${frontmatter.title} - VicBlog`} />
-      <Container>
-        <Link to={"/"}><FaBackward/> Back To Home</Link>
-        <h1>{frontmatter.title}</h1>
-        <TagGroup tags={frontmatter.tags} />
-        {frontmatter.date && <p>{new Date(frontmatter.date).toLocaleString()}</p>}
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <hr />
-        <CommentPanel articleId={frontmatter.id_name} articleTitle={frontmatter.title} />
-      </Container>
-    </Page>
-  </IndexLayout>
+    <IndexLayout>
+      <Page>
+        <Helmet title={`${frontmatter.title} - VicBlog`}/>
+        <Container>
+          <Link to={"/"}><FaBackward/> Back To Home</Link>
+          {frontmatter.hide_heading
+            ? null
+            : (
+              <div>
+                <h1>{frontmatter.title}</h1>
+                <TagGroup tags={frontmatter.tags}/>
+                {frontmatter.date && <p>{new Date(frontmatter.date).toLocaleString()}</p>}
+              </div>
+            )
+          }
+          <div dangerouslySetInnerHTML={{ __html: html }}/>
+          <hr/>
+          <CommentPanel articleId={frontmatter.id_name} articleTitle={frontmatter.title}/>
+        </Container>
+      </Page>
+    </IndexLayout>
   );
 }
 
@@ -66,6 +73,7 @@ export const query = graphql`
         id_name
         title
         tags
+        hide_heading
       }
     }
   }

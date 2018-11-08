@@ -8,6 +8,7 @@ export interface ArticleNode {
     ignored?: boolean;
     tags: string[];
     title: string;
+    hide_heading?: boolean;
   };
   html: string;
 }

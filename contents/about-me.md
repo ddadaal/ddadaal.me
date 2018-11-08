@@ -14,13 +14,13 @@ ignored: true
 - Born in March 20, 1998
 - Hometown in Chongqing
 - Studying Software Engineering in Nanjing University since 2016.
-- **Have a girlfriend and I love her XD**
+- Want to have a girlfriend with whom we have a similar aim and can work together.
 
 ## Programming Preferences
 
 - **Almost** Full Stack Web
 - Most used languages: C#, TypeScript, Java, Python
-- Most used Framework: React, ASP.NET Core
+- Most used frameworks: React, ASP.NET Core, Spring Boot, Flask
 - Fields of interests: System, Architecture, Software Engineering
 
 ## I...

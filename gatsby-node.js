@@ -23,6 +23,7 @@ exports.createPages = async ({ actions, graphql }) => {
             title
             ignored
             tags
+            hide_heading
           }
         }
       }
@@ -38,7 +39,7 @@ exports.createPages = async ({ actions, graphql }) => {
     pageLength: 5, // This is optional and defaults to 10 if not used
     pathPrefix: '', // This is optional and defaults to an empty string if not used
     context: {} // This is optional and defaults to an empty object if not used
-  })
+  });
   result.data.allMarkdownRemark.edges
     .forEach(({ node }) => {
       const path = node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`
@@ -49,5 +50,5 @@ exports.createPages = async ({ actions, graphql }) => {
           id_name: node.frontmatter.id_name
         } // additional data can be passed via context
       })
-    })
+    });
 }

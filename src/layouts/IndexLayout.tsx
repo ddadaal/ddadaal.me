@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import ScrollToTop from "react-scroll-up";
 import icon512 from "../../assets/icon.png";
 import { StaticQuery, graphql } from "gatsby";
+import { FaArrowUp} from "react-icons/fa";
 
 interface SiteMetaData {
     site: {
@@ -54,7 +55,7 @@ const IndexLayout: React.SFC<WrapperProps> = ({ children }) => (
     <Header title={data.site.siteMetadata.title} />
     <LayoutMain>{children}</LayoutMain>
     <ScrollToTop showUnder={160}>
-      <h3>UP</h3>
+      <h3><FaArrowUp/></h3>
     </ScrollToTop>
     <Footer/>
   </LayoutRoot>

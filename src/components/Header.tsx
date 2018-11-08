@@ -4,7 +4,7 @@ import * as React from "react";
 import Icon from "../../assets/logo.svg";
 import styled from "styled-components";
 import { widths } from "../styles/variables";
-import { FaHome, FaGithub, FaMale, FaGlobe } from "react-icons/fa";
+import { FaHome, FaGithub, FaMale, FaGlobe, FaFile } from "react-icons/fa";
 
 interface Props {
   title: string;
@@ -63,6 +63,7 @@ export default class Header extends React.PureComponent<Props, State> {
         <Collapse isOpen={this.state.isOpen} navbar={true}>
           <Nav className="ml-auto" navbar={true}>
             <NavLink to="/"><FaHome/>Home</NavLink>
+            <NavLink to="/resume"><FaFile/>Resume</NavLink>
             <NavLink to="/about/project"><FaGlobe/>About Website</NavLink>
             <NavLink to="/about/me"><FaMale/>About Me</NavLink>
             <ReactstrapNavLink target="__blank" href="https://github.com/viccrubs">

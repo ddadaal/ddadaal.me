@@ -11,7 +11,7 @@ VicBlog is now a static website!
 - Fully static website with modern web technologies
 - Support for Progressive Web Application
 - Seperated source code and contents
-- Comment system via [valine](https://valine.js.org/) with admin system via [valine-admin](https://github.com/panjunwen/Valine-Admin)
+- Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 
 ## Development
