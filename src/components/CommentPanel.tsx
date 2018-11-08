@@ -11,7 +11,9 @@ interface Props {
 }
 
 const CommentDiv = styled.div`
-
+  .gt-action-text {
+    color: #6190e8;;
+  }
 `;
 
 export default class CommentPanel extends React.Component<Props, {}> {
@@ -24,7 +26,7 @@ export default class CommentPanel extends React.Component<Props, {}> {
       let gitalk = new Gitalk({
         clientID: "5640259688bc3d72b807",
         clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
-        repo: "https://github.com/viccrubs/VicBlog-Gatsby-Comments",
+        repo: "VicBlog-Gatsby-Comments",
         owner: "viccrubs",
         admin: ["viccrubs"],
         id: location.pathname,      // Ensure uniqueness and length less than 50
