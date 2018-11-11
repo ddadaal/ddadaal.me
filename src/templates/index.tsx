@@ -4,7 +4,7 @@ import Post from "../components/Post";
 import HomePageLayout from "../layouts/HomePageLayout";
 import {
   Card, CardText,
-  CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink
+  CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink,
 } from "reactstrap";
 import styled from "styled-components";
 import { ArticleNode } from "../models/ArticleNode";
@@ -17,6 +17,7 @@ interface Props {
     index: number;
     pageCount: number;
   };
+  location: Location;
 }
 
 const Sidebar = styled.div`
@@ -40,27 +41,29 @@ function toPage(pageIndex: number) {
 
 function PageIndicator(props: { pageCount: number, current: number }) {
   const { pageCount, current } = props;
-  return <Pagination aria-label="Page">
-    <PaginationItem>
-      <PaginationLink disabled={current === 1} previous={true} onClick={toPage(current - 1)}/>
-    </PaginationItem>
-    {range(1, pageCount + 1).map((x) =>
-      <PaginationItem active={current === x} key={x}>
-        <PaginationLink onClick={toPage(x)}>
-          {x}
-        </PaginationLink>
-      </PaginationItem>)}
-    <PaginationItem>
-      <PaginationLink disabled={current === pageCount} next={true} onClick={toPage(current + 1)}/>
-    </PaginationItem>
-  </Pagination>;
+  return (
+    <Pagination aria-label="Page">
+      <PaginationItem>
+        <PaginationLink disabled={current === 1} previous={true} onClick={toPage(current - 1)}/>
+      </PaginationItem>
+      {range(1, pageCount + 1).map((x) =>
+        <PaginationItem active={current === x} key={x}>
+          <PaginationLink onClick={toPage(x)}>
+            {x}
+          </PaginationLink>
+        </PaginationItem>)}
+      <PaginationItem>
+        <PaginationLink disabled={current === pageCount} next={true} onClick={toPage(current + 1)}/>
+      </PaginationItem>
+    </Pagination>
+  );
 }
 
 export default function Index(props: Props) {
   const { group: posts, index, pageCount } = props.pageContext;
 
   return (
-    <HomePageLayout>
+    <HomePageLayout location={props.location}>
       <div className="blog-posts">
         {posts
           .filter((post) => post.node.frontmatter.title.length > 0)
@@ -108,25 +111,3 @@ export default function Index(props: Props) {
     </HomePageLayout>
   );
 }
-// export const pageQuery = graphql`
-//   query IndexQuery {
-//     allMarkdownRemark(
-//      filter: { frontmatter: { ignored: { ne: true }}}
-//       sort: { order: DESC, fields: [frontmatter___date] }
-//     ) {
-//       edges {
-//         node {
-//           excerpt(pruneLength: 250)
-//           id
-//           frontmatter {
-//             title
-//             date(formatString: "YYYY/MM/DD")
-//             id_name
-//             ignored
-//             tags
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;

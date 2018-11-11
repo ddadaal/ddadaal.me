@@ -15,9 +15,11 @@ const Container = styled.p`
 
 export default function TagGroup(props: Props) {
   if (props.tags) {
-    return <Container className={props.className}>
-      {props.tags.map((x) => <Badge color={"info"} pill={true} key={x}>{x}</Badge>)}
-    </Container>;
+    return (
+      <Container className={props.className}>
+        {props.tags.map((x) => <Badge color={"info"} pill={true} key={x}>{x}</Badge>)}
+      </Container>
+    );
   } else {
     return null;
   }

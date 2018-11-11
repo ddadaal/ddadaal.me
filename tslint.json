@@ -15,7 +15,6 @@
       "no-empty": false,
       "no-console": false,
       "max-classes-per-file": 3,
-      "jsx-wrap-multiline": false,
       "jsx-no-multiline-js": false,
       "jsx-alignment": false,
       "jsx-no-lambda": false,

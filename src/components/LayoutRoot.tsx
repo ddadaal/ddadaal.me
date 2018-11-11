@@ -14,13 +14,14 @@ const StyledLayoutRoot = styled.div`
 `;
 
 interface LayoutRootProps {
+  children: React.ReactNode;
   className?: string;
 }
 
-const LayoutRoot: React.SFC<LayoutRootProps> = ({ children, className }) => (
-  <IconContext.Provider value={{ className: "icons"  }}>
-  <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>
-  </IconContext.Provider>
-);
-
-export default LayoutRoot;
+export default function LayoutRoot({ children, className }: LayoutRootProps) {
+  return (
+    <IconContext.Provider value={{ className: "icons" }}>
+      <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>
+    </IconContext.Provider>
+  );
+}

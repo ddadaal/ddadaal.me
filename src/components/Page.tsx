@@ -16,7 +16,9 @@ interface PageProps {
 }
 
 export default function Page(props: PageProps) {
-  return <StyledPage className={props.className}>
+  return (
+    <StyledPage className={props.className}>
     {props.children}
-    </StyledPage>;
+    </StyledPage>
+  );
 }

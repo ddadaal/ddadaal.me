@@ -24,19 +24,19 @@ interface Props {
     }
     markdownRemark: ArticleNode,
   };
+  location: Location;
 }
 
 export default function PageTemplate(props: Props) {
   const { frontmatter, html } = props.data.markdownRemark;
   return (
-    <IndexLayout>
+    <IndexLayout location={props.location}>
       <Page>
         <Helmet title={`${frontmatter.title} - VicBlog`}/>
         <Container>
           <Link to={"/"}><FaBackward/> Back To Home</Link>
-          {frontmatter.hide_heading
-            ? null
-            : (
+          {!frontmatter.hide_heading &&
+            (
               <div>
                 <h1>{frontmatter.title}</h1>
                 <TagGroup tags={frontmatter.tags}/>
