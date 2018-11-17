@@ -8,9 +8,9 @@ VicBlog is a static personal blog built with Gatsby.
 
 ## Features
 
-- Fully static website with modern web technologies
-- Support for Progressive Web Application
-- Seperated source code and contents
+- Static website with modern web technologies
+- Full Support for Progressive Web Application
+- Source code and contents separated
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 
@@ -32,7 +32,7 @@ yarn run build
 yarn run serve
 ```
 
-Notice that a dependency **sharp** needs to pull [prebuilt binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. However, GitHub hosts release files on AWS, which is blocked in China. Failure to download these files will cause failure in installation and following steps.
+Notice that a dependency **sharp** needs to pull [prebuilt binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. However, GitHub hosts release files on AWS, which is sometimes blocked in China. Failure to download these files will cause failure in installation and following steps.
 
 Thankfully, according to [the official docs](http://sharp.pixelplumbing.com/en/stable/install/#pre-compiled-libvips-binaries), we can change the base url for this file. With the help of python 3's `http.server` module, we can start a local http server and serve the file from local.
 

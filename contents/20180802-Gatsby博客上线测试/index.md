@@ -1,7 +1,7 @@
 ---
-id_name: "gatsby-powered-vicblog-online"
+id_name: "gatsby-powered-vicblog-beta"
 date: "2018-08-02T16:12:33.962Z"
-title: "Gatsby博客上线"
+title: "Gatsby博客上线测试"
 tags: 
   - 博客
 ---
