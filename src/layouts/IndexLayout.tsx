@@ -2,11 +2,12 @@ import * as React from "react";
 import Helmet from "react-helmet";
 
 import "prismjs/themes/prism-okaidia.css";
+// import "bootstrap/";
 import "../styles/bootstrap.css";
 
 import Header from "../components/Header";
-import LayoutRoot from "../components/LayoutRoot";
-import LayoutMain from "../components/LayoutMain";
+import LayoutRoot from "./LayoutRoot";
+import LayoutMain from "./LayoutMain";
 import Footer from "../components/Footer";
 import ScrollToTop from "react-scroll-up";
 import icon512 from "../../assets/icon.png";

@@ -2,7 +2,7 @@
 module.exports = {
   siteMetadata: {
     title: 'VicBlog',
-    description: 'VicBlog with Gatsby',
+    description: 'A personal blog',
     siteUrl: 'https://viccrubs.tk',
     author: {
       name: 'Chen Junda',
@@ -61,7 +61,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "VicBlog RSS Blog",
+            title: "VicBlog RSS",
           },
         ],
       },

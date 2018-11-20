@@ -9,6 +9,40 @@ import { ArticleNode } from "../models/ArticleNode";
 import { graphql, Link } from "gatsby";
 import IndexLayout from "../layouts/IndexLayout";
 import { FaBackward } from "react-icons/fa";
+import styled from "styled-components";
+
+const MarkdownDisplay = styled.div`
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 8px 0;
+    padding-bottom: 0.3em;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 12px 0;
+
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+  }
+
+  table * {
+    padding: 4px;
+  }
+
+
+  table td {
+    border: 1px white solid;
+  }
+`;
 
 interface Props {
   data: {
@@ -44,7 +78,7 @@ export default function PageTemplate(props: Props) {
               </div>
             )
           }
-          <div dangerouslySetInnerHTML={{ __html: html }}/>
+          <MarkdownDisplay dangerouslySetInnerHTML={{ __html: html }}/>
           <hr/>
           <CommentPanel articleId={frontmatter.id_name} articleTitle={frontmatter.title}/>
         </Container>

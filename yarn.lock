@@ -6069,10 +6069,10 @@ gatsby-transformer-sharp@^2.1.8:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.50:
-  version "2.0.50"
-  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.50.tgz#ea68745c455f9f6c9d36b552ab4722e6a5e817f3"
-  integrity sha1-6mh0XEVfn2ydNrVSq0ci5qXoF/M=
+gatsby@^2.0.52:
+  version "2.0.52"
+  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.52.tgz#c433515fc70a291425014719df3d0fc62f16cdbf"
+  integrity sha1-xDNRX8cKKRQlAUcZ3z0Pxi8Wzb8=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6273,10 +6273,10 @@ gh-pages@^2.0.1:
     graceful-fs "^4.1.11"
     rimraf "^2.6.2"
 
-gitalk@^1.4.0:
-  version "1.4.0"
-  resolved "http://registry.npm.taobao.org/gitalk/download/gitalk-1.4.0.tgz#af42836c9c6cdbcc027624c620d5885355092943"
-  integrity sha1-r0KDbJxs28wCdiTGINWIU1UJKUM=
+gitalk@^1.4.1:
+  version "1.4.1"
+  resolved "http://registry.npm.taobao.org/gitalk/download/gitalk-1.4.1.tgz#49c099f9cfe44d9c7ca6e1b24283189f6ace787d"
+  integrity sha1-ScCZ+c/kTZx8puGyQoMYn2rOeH0=
   dependencies:
     autosize "3.0.21"
     axios "0.16.2"

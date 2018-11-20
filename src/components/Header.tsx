@@ -13,7 +13,7 @@ import * as React from "react";
 import Icon from "../../assets/logo.svg";
 import styled from "styled-components";
 import { widths } from "../styles/variables";
-import { FaHome, FaGithub, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
+import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
 
 interface Props {
   title: string;
@@ -97,9 +97,9 @@ export default class Header extends React.PureComponent<Props, State> {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              <ReactstrapNavLink target="__blank" href="https://github.com/viccrubs">
-                <FaGithub/> GitHub
-              </ReactstrapNavLink>
+              <NavLink to="/rss.xml">
+                <FaRss/> RSS
+              </NavLink>
             </Nav>
           </Collapse>
         </Navbar>

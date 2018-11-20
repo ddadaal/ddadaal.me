@@ -336,7 +336,7 @@ LRDFANode重写了equals和hashCode方法。两个LRDFANode相等当且仅当它
 
 子集构造算法中使用的**epsilon闭包的计算**算法为龙书图3-30。
 
-### 6.3 构建LRDFA
+## 6.3 构建LRDFA
 
 ### 6.3.1 语法定义 ---> 产生式列表
 

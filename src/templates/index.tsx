@@ -4,12 +4,12 @@ import Post from "../components/Post";
 import HomePageLayout from "../layouts/HomePageLayout";
 import {
   Card, CardText,
-  CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink,
+  CardBody, CardLink, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink, NavLink,
 } from "reactstrap";
 import styled from "styled-components";
 import { ArticleNode } from "../models/ArticleNode";
 import { range } from "../utils/Array";
-import { FaCode, FaGithub, FaEnvelope, FaEllipsisH, FaFile } from "react-icons/fa";
+import { FaCode, FaRss, FaEnvelope, FaEllipsisH, FaFile } from "react-icons/fa";
 
 interface Props {
   pageContext: {
@@ -87,7 +87,12 @@ export default function Index(props: Props) {
           <CardBody>
             <CardText>Articles on technologies and experiences during study and practices</CardText>
             <StackedDiv>
-              <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby"><FaCode/>Source Code on GitHub</CardLink>
+              <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby">
+              <FaCode/> Source Code on GitHub
+              </CardLink>
+              <CardLink href="/rss.xml">
+                <FaRss/> RSS
+              </CardLink>
             </StackedDiv>
           </CardBody>
         </Card>
@@ -100,9 +105,9 @@ export default function Index(props: Props) {
             <CardText>Undergraduate student in Nanjing University since 2016</CardText>
             <CardText>Major in Software Engineering</CardText>
             <StackedDiv>
-              <Link className="card-link" to="/resume"><FaFile/>Resume</Link>
-              <CardLink href="mailto://smallda@outlook.com"><FaEnvelope/>Mail to me</CardLink>
-              <Link className="card-link" to="/about/me"><FaEllipsisH/>More about me</Link>
+              <Link className="card-link" to="/resume"><FaFile/> Resume</Link>
+              <CardLink href="mailto://smallda@outlook.com"><FaEnvelope/> Mail to me</CardLink>
+              <Link className="card-link" to="/about/me"><FaEllipsisH/> More about me</Link>
             </StackedDiv>
           </CardBody>
         </Card>

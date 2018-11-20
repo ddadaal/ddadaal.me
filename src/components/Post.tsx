@@ -13,8 +13,12 @@ interface Props {
 
 }
 
-const StyledPost = styled.div` 
+const StyledPost = styled.div`
   margin-bottom: 32px;
+
+  h1 {
+    font-size: 3em;
+  }
 `;
 
 export default function Post(props: Props) {

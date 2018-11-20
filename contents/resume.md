@@ -14,24 +14,25 @@ hide_heading: true
 
 
 .resume h1, h2, h3 {
-
-
+    border-bottom-width: 0 !important;
+        margin: 8px 0;
 }
+
 .resume h1 {
     font-size: 24px;
     margin: 12px 0;
-        padding-bottom: 0.3em;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
+    padding-bottom: 0.3em;
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid;
 }
 .resume h2 {
     font-size: 20px;
-    margin: 8px 0;
+
 }
 
 .resume h3{
     font-size: 16px;
-    margin: 8px 0;
+
 }
 .resume ul {
     margin: 0px;
@@ -40,18 +41,18 @@ hide_heading: true
     margin: 0px;
 }
 .resume .right { float: right}
-.resume .contact { 
+.resume .contact {
     margin: 20px 0;
     text-align: center;
 }
-.resume .name { 
-    font-size: 36px; 
+.resume .name {
+    font-size: 36px;
     border-bottom: none;
     padding: 0;
     text-align: center;
 }
-.resume .avatar { 
-    float: right; 
+.resume .avatar {
+    float: right;
     height: 100px;
     margin: 0px;
 }
@@ -110,10 +111,10 @@ Plan of core system architecture, Implementation of web application layer of cor
 
 ## A+Quant <span class="right">June-November, 2018</span>
 Design of Software architecture, Leader of Web Frontend Team
-- An Asset Allocation System Based on Artificial Intelligence. 
+- An Asset Allocation System Based on Artificial Intelligence.
 - The only **First prize** in The 14th Citi Financial Innovation Application Competition held in 2018.
 - Team of 27 people, Leader of Web Frontend Team. Designed backend (`Python Flask`) and web frontend (`React + TypeScript`) architecture. Implemented all common and complicated functions and some business functions in web frontend.
-- Single Page Application with `React + MobX + TypeScript + Ant Design`. Layered architecture with Dependency Injection for dependency management and Mock for parallel development. Full support for Internationalization. Complete responsive design with support for all devices larger than iPhone 6. 
+- Single Page Application with `React + MobX + TypeScript + Ant Design`. Layered architecture with Dependency Injection for dependency management and Mock for parallel development. Full support for Internationalization. Complete responsive design with support for all devices larger than iPhone 6.
 
 
 # Skills/Others
