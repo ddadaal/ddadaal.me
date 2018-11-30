@@ -14,7 +14,7 @@ ignored: true
 - Born in March 20, 1998
 - Hometown in Chongqing
 - Studying Software Engineering in Nanjing University since 2016.
-- Want to have a girlfriend who has a strong care aim and can work together.
+- Seeking for a girlfriend with determination to pursue her dream
 
 ## Programming Preferences
 
@@ -39,7 +39,7 @@ ignored: true
 | -- | -- | -- |
 | Xiaomi Mi 6 | 6 GB + 128 GB + Ceramic backcover | Daily phone |
 | MSI GT72VR-6RD | i7 6700HQ + 16 GB + 512 GB PM951 + 1 TB HDD + GTX 1060 6GB | A stationary desktop setup equipped with Lenovo ThinkVision X24q monitor and Razer accessories |
-| Lenovo ThinkPad X1 Carbon 2018 | i7 8550U + 16 GB + 512 GB PM981 + 1080P Display | Mobile workstation |
+| Lenovo ThinkPad X1 Carbon 2018 | i7 8550U + 16 GB + 512 GB PM981 + 2K HDR Display | Mobile workstation |
 | Huami Sportwatch 1 | - | Notification center at wrist |
 
 ## Contacts
