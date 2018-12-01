@@ -28,7 +28,7 @@ export default function Footer(props: Props) {
         <a href={"https://bootswatch.com/darkly/"}> Bootswatch Darkly</a>
       </p>
       <p>
-        All articles licensed with
+        All articles licensed under
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
           &nbsp;BY CC-SA 4.0
         </a>

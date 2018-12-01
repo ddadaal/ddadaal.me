@@ -2,13 +2,13 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";
-import Container from "./Container";
+import DateDisplay from "./DateDisplay";
 
 interface Props {
   idName: string;
   title: string;
   excerpt: string;
-  date: Date;
+  date: string;
   tags: string[];
 
 }
@@ -21,7 +21,7 @@ const StyledPost = styled.div`
   }
 `;
 
-export default function Post(props: Props) {
+export default function ArticleItem(props: Props) {
   const { idName, title, excerpt, date, tags } = props;
 
   return (
@@ -30,7 +30,7 @@ export default function Post(props: Props) {
         <h1>{title}</h1>
       </Link>
       <TagGroup tags={tags}/>
-      <p>{date.toLocaleString()}</p>
+      <p><DateDisplay date={date}/></p>
       <p>{excerpt}</p>
       <hr/>
     </StyledPost>

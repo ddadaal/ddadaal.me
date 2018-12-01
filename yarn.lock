@@ -1037,10 +1037,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
   integrity sha1-2Bdthk7kh1PQU3g+TkY67Ia42C4=
 
-"@types/node@^10.12.10":
-  version "10.12.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.10.tgz#4fa76e6598b7de3f0cb6ec3abacc4f59e5b3a2ce"
-  integrity sha512-8xZEYckCbUVgK8Eg7lf5Iy4COKJ5uXlnIOnePN0WUwSQggy9tolM+tDJf7wMOnT/JT/W9xDYIaYggt3mRV2O5w==
+"@types/node@^10.12.11":
+  version "10.12.11"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.11.tgz#715c476c99a5f6898a1ae61caf9825e43c03912e"
+  integrity sha1-cVxHbJml9omKGuYcr5gl5DwDkS4=
 
 "@types/node@^7.0.11":
   version "7.0.66"
@@ -1081,10 +1081,10 @@
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.38.tgz#76617433ea10274505f60bb86eddfdd0476ffdc2"
   integrity sha1-dmF0M+oQJ0UF9gu4bt390Edv/cI=
 
-"@types/react@^16.7.9":
-  version "16.7.9"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.9.tgz#d98497eccbd7b97d0a6d76f9cd61895e95d30def"
-  integrity sha512-86Ih5rppq0r6V4Rr642wigwPKmizNvr+Ftc6sAAVZHUnCKBMU/3GkrT1ock/2+/NpOrwUpIIsmnFB2VUCdU5RA==
+"@types/react@^16.7.11":
+  version "16.7.11"
+  resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.11.tgz#1743b82ea6a0c659467f0c7317c233edb1f10be9"
+  integrity sha1-F0O4LqagxllGfwxzF8Iz7bHxC+k=
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -5980,10 +5980,10 @@ gatsby-remark-images@^3.0.1:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.0.1"
 
-gatsby-remark-prismjs@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.1.1.tgz#bf9b4f44903a05031718eac10a9f89699982236d"
-  integrity sha512-oATJZ/AuUfWD58QG6a/24v+fhQOZbEsSGXL+UUs8shkkK1R3ssZIzM7Pu3KH9GbAvGLZMR87Le7+pTfsl5OjOg==
+gatsby-remark-prismjs@^3.1.2:
+  version "3.1.2"
+  resolved "http://registry.npm.taobao.org/gatsby-remark-prismjs/download/gatsby-remark-prismjs-3.1.2.tgz#5f50e7d3712ce42b1a537c755362a73ec832cd85"
+  integrity sha1-X1Dn03Es5CsaU3x1U2KnPsgyzYU=
   dependencies:
     "@babel/runtime" "^7.0.0"
     parse-numeric-range "^0.0.2"
@@ -6046,10 +6046,10 @@ gatsby-transformer-json@^2.1.6:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
 
-gatsby-transformer-remark@^2.1.14:
-  version "2.1.14"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.14.tgz#3add90827ff069a66c7dd8810f90f3e5c93ecfcc"
-  integrity sha512-65c4598E7rgH3axPL3PSVN/N7pFblOEaPwmPFrtOWlTq7uJbUKMNtxLo1wgYSR4hpHhzchydfBElzvy7Sb5cXw==
+gatsby-transformer-remark@^2.1.15:
+  version "2.1.15"
+  resolved "http://registry.npm.taobao.org/gatsby-transformer-remark/download/gatsby-transformer-remark-2.1.15.tgz#c744bebdcb94017409826011a3f78af8c1e0ff1c"
+  integrity sha1-x0S+vcuUAXQJgmARo/eK+MHg/xw=
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -10611,10 +10611,10 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
   integrity sha1-gV7R9uvGWSb4ZbMQwHE7yzMVzks=
 
-prettier@^1.15.2:
-  version "1.15.2"
-  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.15.2.tgz#d31abe22afa4351efa14c7f8b94b58bb7452205e"
-  integrity sha1-0xq+Iq+kNR76FMf4uUtYu3RSIF4=
+prettier@^1.15.3:
+  version "1.15.3"
+  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.15.3.tgz#1feaac5bdd181237b54dbe65d874e02a1472786a"
+  integrity sha1-H+qsW90YEje1Tb5l2HTgKhRyeGo=
 
 pretty-bytes@^4.0.2:
   version "4.0.2"

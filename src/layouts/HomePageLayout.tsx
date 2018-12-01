@@ -1,8 +1,7 @@
 import * as React from "react";
-import Page from "../components/Page";
+import Page from "./components/Page";
 import { Col, Row } from "reactstrap";
-import Container from "../components/Container";
-import IndexLayout from "./IndexLayout";
+import IndexLayout from "./RootLayout";
 
 interface Props {
   children: React.ReactNode[];
@@ -16,7 +15,6 @@ export default function HomePageLayout(props: Props) {
   return (
     <IndexLayout location={props.location}>
       <Page>
-        <Container>
           <Row>
             <Col md={8} xs={12}>
               {left}
@@ -25,7 +23,6 @@ export default function HomePageLayout(props: Props) {
               {right}
             </Col>
           </Row>
-        </Container>
       </Page>
     </IndexLayout>
   );

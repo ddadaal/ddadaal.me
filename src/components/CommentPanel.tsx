@@ -30,8 +30,8 @@ export default class CommentPanel extends React.Component<Props, {}> {
         owner: "viccrubs",
         admin: ["viccrubs"],
         language: "en",
-        id: this.props.articleId,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false,  // Facebook-like distraction free mode
+        id: this.props.articleId,
+        distractionFreeMode: false,
       });
 
       gitalk.render("comments");

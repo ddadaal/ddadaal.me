@@ -57,6 +57,10 @@ const NavbarDiv = styled.div`
   }
 `;
 
+function atHomePage(pathname: string) {
+  return pathname === "/" || pathname.match(/\/\d+/) !== null;
+}
+
 export default class Header extends React.PureComponent<Props, State> {
 
   state = {
@@ -78,28 +82,32 @@ export default class Header extends React.PureComponent<Props, State> {
           <NavbarToggler onClick={this.toggle}/>
           <Collapse isOpen={this.state.isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
-              <NavItem active={pathname === "/"}>
-                <NavLink to="/" ><FaHome/>Home</NavLink>
+              <NavItem active={atHomePage(pathname)}>
+                <NavLink to="/"><FaHome/>Home</NavLink>
               </NavItem>
               <NavItem active={pathname.startsWith("/resume")}>
-              <NavLink to="/resume"><FaFile/>Resume</NavLink>
+                <NavLink to="/resume"><FaFile/>Resume</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav={true} inNavbar={true}>
-                <DropdownToggle nav={true} caret={true}>
-                  <FaInfo/> About
-                </DropdownToggle>
-                <DropdownMenu right={true}>
-                  <DropdownItem active={pathname.startsWith("/about/project")}>
-                    <NavLink to="/about/project"><FaGlobe/>About Website</NavLink>
-                  </DropdownItem>
-                  <DropdownItem active={pathname.startsWith("/about/me")}>
-                    <NavLink to="/about/me"><FaMale/>About Me</NavLink>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <NavLink to="/rss.xml">
-                <FaRss/> RSS
-              </NavLink>
+                <UncontrolledDropdown nav={true} inNavbar={true}>
+                  <DropdownToggle nav={true}
+                                  caret={true}
+                                  className={pathname.startsWith("/about/") ? "active" : undefined} >
+                    <FaInfo/> About
+                  </DropdownToggle>
+                  <DropdownMenu right={true}>
+                    <DropdownItem active={pathname.startsWith("/about/project")}>
+                      <NavLink to="/about/project"><FaGlobe/>About Website</NavLink>
+                    </DropdownItem>
+                    <DropdownItem active={pathname.startsWith("/about/me")}>
+                      <NavLink to="/about/me"><FaMale/>About Me</NavLink>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              <NavItem>
+                <NavLink to="/rss.xml">
+                  <FaRss/> RSS
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
