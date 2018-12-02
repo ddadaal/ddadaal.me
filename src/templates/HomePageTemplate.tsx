@@ -1,5 +1,5 @@
 import * as React from "react";
-import { navigate } from "gatsby-link";
+import { graphql, navigate } from "gatsby";
 import ArticleItem from "../components/ArticleItem";
 import HomePageLayout from "../layouts/HomePageLayout";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
@@ -10,8 +10,14 @@ import BlogIntroCard from "../components/BlogIntroCard";
 import SelfIntroCard from "../components/SelfIntroCard";
 
 interface Props {
+  data: {
+    allMarkdownRemark: {
+      edges: Array<{
+        node: ArticleNode,
+      }>,
+    },
+  };
   pageContext: {
-    group: Array<{ node: ArticleNode }>;
     index: number;
     pageCount: number;
   };
@@ -51,14 +57,14 @@ function PageIndicator(props: { pageCount: number, current: number }) {
 }
 
 export default function Index(props: Props) {
-  const { group: posts, index, pageCount } = props.pageContext;
+  const { pageCount, index } = props.pageContext;
 
   return (
     <HomePageLayout location={props.location}>
       <div className="blog-posts">
-        {posts
+        {props.data.allMarkdownRemark.edges
           .filter((post) => post.node.frontmatter.title.length > 0)
-          .map(({ node: post }) =>
+          .map(({node: post}) =>
             <ArticleItem key={post.id}
                          idName={post.frontmatter.id_name}
                          title={post.frontmatter.title}
@@ -76,3 +82,32 @@ export default function Index(props: Props) {
     </HomePageLayout>
   );
 }
+
+export const query = graphql`
+  query homepageQuery(
+    $skip: Int!
+    $limit: Int!
+  ) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+      filter: { frontmatter: { ignored: { ne: true } } } 
+    ) {
+      edges {
+        node {
+          id
+          excerpt
+          frontmatter {
+            date
+            id_name
+            title
+            tags
+            hide_heading
+            ignored
+          }
+        }
+      }
+    }
+  }
+`

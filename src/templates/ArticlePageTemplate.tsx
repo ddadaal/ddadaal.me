@@ -86,7 +86,7 @@ export default function PageTemplate(props: Props) {
 }
 
 export const query = graphql`
-  query PageTemplateQuery($id_name: String) {
+  query PageTemplateQuery($id_name: String!) {
     site {
       siteMetadata {
         title
