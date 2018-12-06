@@ -44,7 +44,7 @@ module.exports = {
                 allMarkdownRemark(
                   limit: 1000,
                   sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: {frontmatter: { ignored: { ne: true } }}
+                  filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true } }}
                 ) {
                   edges {
                     node {
@@ -54,6 +54,7 @@ module.exports = {
                         title
                         id_name
                         date
+                        tags
                       }
                     }
                   }

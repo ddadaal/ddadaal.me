@@ -92,7 +92,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
-      filter: { frontmatter: { ignored: { ne: true } } } 
+      filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true } } }
     ) {
       edges {
         node {
@@ -110,4 +110,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

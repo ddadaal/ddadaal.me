@@ -104,9 +104,9 @@ export default class Header extends React.PureComponent<Props, State> {
                   </DropdownMenu>
                 </UncontrolledDropdown>
               <NavItem>
-                <NavLink to="/rss.xml">
+                <ReactstrapNavLink href="/rss.xml">
                   <FaRss/> RSS
-                </NavLink>
+                </ReactstrapNavLink>
               </NavItem>
             </Nav>
           </Collapse>

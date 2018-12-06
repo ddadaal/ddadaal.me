@@ -29,7 +29,7 @@ export default function Footer(props: Props) {
       </p>
       <p>
         All articles licensed under
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
           &nbsp;BY CC-SA 4.0
         </a>
       </p>
