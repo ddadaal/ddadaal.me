@@ -10,6 +10,7 @@ VicBlog is a static personal blog built with Gatsby.
 
 - Static website with modern web technologies
 - Full Support for Progressive Web Application
+- Articles written on markdown
 - Source code and contents separated
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)

@@ -15,10 +15,10 @@ export default function BlogIntroCard(props: Props) {
         <CardSubtitle>A Personal Blog</CardSubtitle>
       </CardBody>
       <CardBody>
-        <CardText>Articles on technologies and experiences during study and practices</CardText>
+        <CardText>Articles on technologies, experiences and my daily life</CardText>
         <StackedDiv>
           <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby">
-            <FaCode/> Source Code on GitHub
+            <FaCode/> Blog Source Code on GitHub
           </CardLink>
           <CardLink href="/rss.xml">
             <FaRss/> RSS
