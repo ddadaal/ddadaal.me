@@ -64,11 +64,6 @@ exports.createPages = async ({ actions, graphql }) => {
     throw result.errors;
   }
 
-
-  const buildTime = {
-    build: Date.now()
-  };
-
   // createPaginatedPages({
   //   edges: result.data.allMarkdownRemark.edges.filter((x) => !x.node.frontmatter.ignored),
   //   createPage: createPage,
@@ -94,7 +89,6 @@ exports.createPages = async ({ actions, graphql }) => {
         component: articleTemplate,
         context: {
           id_name: node.frontmatter.id_name,
-          ...buildTime
         } // additional data can be passed via context
       });
     });
