@@ -1,7 +1,7 @@
 import * as React from "react";
 import { getDefinitions, Definitions, Language, getLanguage, allLanguages } from "./definition";
 
-const I18nContext = React.createContext({
+const I18nContext = React.createContext<ProviderState>({
   language: {} as any as Language,
   changeLanguage: (language: string) => { },
   get: (id: string, replacements?: React.ReactNode[]) => id as string | React.ReactNode,
@@ -11,7 +11,7 @@ const I18nContext = React.createContext({
 interface ProviderState {
   language: Language;
   changeLanguage(lang: string): void;
-  get(id: string): string | React.ReactNode;
+  get(id: string, replacements?: React.ReactNode): string | React.ReactNode;
   allLanguages: Language[];
 }
 
@@ -62,7 +62,7 @@ export class I18nProvider extends React.Component<ProviderProps, ProviderState> 
   }
 
   state = {
-    language: getLanguage(localStorage.getItem(SETTING_KEY) || ( navigator ? navigator.language : "cn")),
+    language: getLanguage((typeof localStorage !== "undefined" ? localStorage.getItem(SETTING_KEY) : "cn") || navigator.language),
     changeLanguage: this.changeLanguage,
     get: this.get,
     allLanguages,
