@@ -1,8 +1,9 @@
 ---
 id_name: "think-while-coding"
-date: "2018-07-31T14:12:33.962Z"
+date: "2018/07/31 14:12"
 title: "写代码要动脑子！"
-tags: 
+lang: cn
+tags:
   - 软件开发
   - 大作业
 ---
@@ -207,7 +208,7 @@ return False
 
 好的
 ```python
-return actual_value in [ i["value"] for i in expected_values ] 
+return actual_value in [ i["value"] for i in expected_values ]
 ```
 
 3. 使用框架提供的工具，结构

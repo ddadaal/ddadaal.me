@@ -5,7 +5,7 @@ absolute_path: "/about/me"
 date: "2018/12/19 23:45"
 title: "About Me"
 ignored: true
-lang: en
+lang: cn
 
 ---
 

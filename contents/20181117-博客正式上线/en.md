@@ -1,11 +1,18 @@
 ---
 id_name: "gatsby-powered-vicblog-online"
 date: "2018/11/17 14:51"
-title: "新博客正式上线"
-lang: cn
+title: "New Blog Online"
+lang: en
 tags:
-  - 博客
+  - blog
 ---
+
+After all these debugging, testing and data migrating these months, I am excited to announce that the new VicBlog is now ONLINE!!
+
+The new blog features:
+
+- static blog based on Gatsby v2
+
 
 经过这么久的调试、测试和数据迁移，新博客总算是正式上线了。
 

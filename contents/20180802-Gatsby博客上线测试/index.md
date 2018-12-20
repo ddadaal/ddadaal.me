@@ -1,8 +1,9 @@
 ---
 id_name: "gatsby-powered-vicblog-beta"
-date: "2018-08-02T16:12:33.962Z"
+date: "2018/08/02 16:12"
 title: "Gatsby博客上线测试"
-tags: 
+lang: cn
+tags:
   - 博客
 ---
 
@@ -55,7 +56,7 @@ Gatsby最后生成的是静态网页，不需要折腾部署，并且便于被CD
 - CI/CD
 - 评论系统
 
-  
+
 
 
 

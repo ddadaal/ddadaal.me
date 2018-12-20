@@ -4,6 +4,7 @@ id_name: "resume"
 absolute_path: "/resume"
 date: "2018-11-04T14:18:00.962Z"
 title: "Resume"
+lang: en
 ignored: true
 hide_heading: true
 

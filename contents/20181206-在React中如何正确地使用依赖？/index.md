@@ -1,11 +1,12 @@
 ---
 
 id_name: "how-to-use-dependency-correctly-in-react"
-date: 2018-12-06T21:39:22.058Z
+date: 2018/12/06 21:39
 title: "在React中如何正确地使用依赖"
 draft: true
 tags:
   - React
+lang: cn
 
 ---
 

@@ -1,8 +1,9 @@
 ---
 id_name: "fixed-length-decimal-random-generator-satisfying-benfords-law-in-python"
-date: "2017-12-10T00:04:34.092Z"
+date: "2017/12/10 00:04"
 title: "Python语言实现的符合本福特定律的十进制固定长度随机数发生器"
-tags: 
+lang: cn
+tags:
   - Python
   - 数学
 ---
@@ -15,7 +16,7 @@ tags:
 
 ```python
 import math, random
-from functools import reduce 
+from functools import reduce
 
 def possibility_for_n(n):
     return 0 if n==0 else math.log(1+1/n,10)
@@ -52,13 +53,13 @@ return [generate_one(length) for i in range(0,num)]
 
 调用generate_one函数来生成一个随机数，参数为数字位数。
 调用generate_multiple函数生成指定个数个随机数，第一个参数为数位数，第二个参数为生成个数。
-	
+
 示例：
 
 \> generate_one(4)
 
 \> 4937
-	
+
 \> generate_multiple(4,10)
 
 \> [6179, 4971, 7735, 1392, 5046, 4750, 4412, 2249, 1530, 8443]
@@ -186,7 +187,7 @@ return [generate_one(length) for i in range(0,num)]
 def possibility_for_n(n):
     return 0 if n==0 else math.log(1+1/n,10)
 ```
-	
+
 这段代码很好理解：计算以n开头的数字的频率。由于数字不能以0开头，所以以0开头的数字的频率为0。
 
 ## 本位的分布表

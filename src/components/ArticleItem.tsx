@@ -2,7 +2,10 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";
-import DateDisplay from "./DateDisplay";
+import { I18nConsumer } from "../i18n/I18nContext";
+import I18nString from "../i18n/I18nString";
+import lang from "../i18n/lang";
+import { getLanguage } from "../i18n/definition";
 
 interface Props {
   idName: string;
@@ -10,7 +13,7 @@ interface Props {
   excerpt: string;
   date: string;
   tags: string[];
-
+  langPaths: { [lang: string]: string }
 }
 
 const StyledPost = styled.div`
@@ -21,18 +24,37 @@ const StyledPost = styled.div`
   }
 `;
 
+const root = lang().articleItem;
+
+const LangLink = styled(Link)`
+  margin-right: 4px;
+`;
+
 export default function ArticleItem(props: Props) {
-  const { idName, title, excerpt, date, tags } = props;
+  const { title, excerpt, date, tags, langPaths } = props;
 
   return (
     <StyledPost>
-      <Link to={`/articles/${idName}`}>
-        <h1>{title}</h1>
-      </Link>
-      <TagGroup tags={tags}/>
-      <p><DateDisplay date={date}/></p>
+      <I18nConsumer>
+        {({ language }) => {
+          return (
+            <Link to={langPaths[language.id] || langPaths.cn}>
+              <h1>{title}</h1>
+            </Link>
+          );
+        }}
+      </I18nConsumer>
+
+      <TagGroup tags={tags} />
+      <p>{date}</p>
       <p>{excerpt}</p>
-      <hr/>
+      <p>
+        <I18nString id={root.availableLanguages} />
+        {Object.entries(langPaths).map(([lang, path]) => (
+          <LangLink key={lang} to={path}>{getLanguage(lang).name}</LangLink>
+        ))}
+      </p>
+      <hr />
     </StyledPost>
   );
 }

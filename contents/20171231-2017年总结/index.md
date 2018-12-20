@@ -1,7 +1,8 @@
 ---
 id_name: "summary-for-2017"
-date: "2017-12-31T23:45:33.962Z"
+date: "2017/12/31 23:45"
 title: "2017年总结"
+lang: cn
 tags:
   - 年终总结
 ---

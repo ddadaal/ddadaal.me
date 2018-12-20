@@ -5,11 +5,17 @@ import Page from "../layouts/components/Page";
 import CommentPanel from "../components/CommentPanel";
 import TagGroup from "../components/TagGroup";
 import { ArticleNode } from "../models/ArticleNode";
-import { graphql, Link } from "gatsby";
-import IndexLayout from "../layouts/RootLayout";
+import { graphql, Link, navigate } from "gatsby";
+import RootLayout from "../layouts/RootLayout";
 import { FaBackward } from "react-icons/fa";
 import styled from "styled-components";
-import DateDisplay from "../components/DateDisplay";
+import I18nString from "../i18n/I18nString";
+import lang from "../i18n/lang";
+import { I18nConsumer } from "../i18n/I18nContext";
+import LanguageSelector from "../components/LanguageSelector";
+import { getLanguage } from "../i18n/definition";
+import { ArticleGroups } from "../models/ArticleGroups";
+import { createLangPathMap } from "../utils/articleGroupUtils";
 
 const MarkdownDisplay = styled.div`
 
@@ -41,7 +47,7 @@ const MarkdownDisplay = styled.div`
   table td {
     border: 1px white solid;
   }
- 
+
 `;
 
 interface Props {
@@ -58,35 +64,82 @@ interface Props {
     };
     markdownRemark: ArticleNode;
   };
+  pageContext: {
+    id_name: string;
+    lang: string;
+    articleGroups: ArticleGroups;
+  };
   location: Location;
 }
 
-export default function PageTemplate(props: Props) {
+const root = lang().articlePage;
+
+const Headbar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export default function ArticlePageTemplate(props: Props) {
   const { frontmatter, html } = props.data.markdownRemark;
+
+  const langPathMap = createLangPathMap(props.pageContext.articleGroups[props.pageContext.id_name]);
+
+
   return (
-    <IndexLayout location={props.location}>
+    <RootLayout location={props.location} articleGroups={props.pageContext.articleGroups}>
       <Page>
-        <Helmet title={`${frontmatter.title} - VicBlog`}/>
-          <Link to={"/"}><FaBackward/> Back To Home</Link>
-          {!frontmatter.hide_heading &&
-            (
-              <div>
-                <h1>{frontmatter.title}</h1>
-                <TagGroup tags={frontmatter.tags}/>
-                {frontmatter.date && <p><DateDisplay date={frontmatter.date}/></p>}
-              </div>
-            )
-          }
-          <MarkdownDisplay dangerouslySetInnerHTML={{ __html: html }}/>
-          <hr/>
-          <CommentPanel articleId={frontmatter.id_name} articleTitle={frontmatter.title}/>
+        <Helmet title={`${frontmatter.title} - VicBlog`} />
+        <Headbar>
+          <Link to={"/"}>
+            <FaBackward />
+            <I18nString id={root.backToHome} />
+          </Link>
+          <LanguageSelector
+            allLanguages={
+              Object.keys(langPathMap)
+                .map((lang) => ({
+                  id: lang,
+                  name: getLanguage(lang).name,
+                }))
+            }
+            changeLanguage={(lang) => navigate(langPathMap[lang])}
+            currentLanguage={getLanguage(props.pageContext.lang).name}
+            prompt={<I18nString id={root.selectLang} />}
+          />
+        </Headbar>
+
+        {!frontmatter.hide_heading &&
+          (
+            <div>
+              <h1>{frontmatter.title}</h1>
+              <TagGroup tags={frontmatter.tags} />
+              {frontmatter.date && <p>{frontmatter.date}</p>}
+            </div>
+          )
+        }
+        <MarkdownDisplay dangerouslySetInnerHTML={{ __html: html }} />
+        <hr />
+        <I18nConsumer>
+          {({ language }) => (
+            <CommentPanel
+              language={language.gitalkLangId}
+              articleId={frontmatter.id_name}
+              articleTitle={frontmatter.title}
+            />
+          )}
+        </I18nConsumer>
+
       </Page>
-    </IndexLayout>
+    </RootLayout>
   );
 }
 
 export const query = graphql`
-  query PageTemplateQuery($id_name: String!) {
+  query PageTemplateQuery(
+    $id_name: String!
+    $lang: String!
+  ) {
     site {
       siteMetadata {
         title
@@ -97,7 +150,7 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(frontmatter: { id_name: { eq: $id_name } }) {
+    markdownRemark(frontmatter: { id_name: { eq: $id_name }, lang: { eq: $lang } }) {
       html
       excerpt
       frontmatter {
@@ -106,6 +159,7 @@ export const query = graphql`
         title
         tags
         hide_heading
+        lang
       }
     }
   }

@@ -1,4 +1,5 @@
 export interface ArticleNode {
+  path?: string;
   excerpt: string;
   id: string;
   frontmatter: {
@@ -9,6 +10,7 @@ export interface ArticleNode {
     tags: string[];
     title: string;
     hide_heading?: boolean;
+    lang: string;
   };
   html: string;
 }

@@ -7,9 +7,9 @@ interface Props {
   tags: string[];
 }
 
-const Container = styled.p` 
+const Container = styled.p`
   & > * {
-  margin-right: 4px;
+    margin-right: 4px;
   }
 `;
 

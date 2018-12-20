@@ -8,6 +8,9 @@ import { ArticleNode } from "../models/ArticleNode";
 import { range } from "../utils/Array";
 import BlogIntroCard from "../components/BlogIntroCard";
 import SelfIntroCard from "../components/SelfIntroCard";
+import { I18nConsumer } from "../i18n/I18nContext";
+import { ArticleGroups } from "../models/ArticleGroups";
+import { createLangPathMap, getNodeFromLang } from "../utils/articleGroupUtils";
 
 interface Props {
   data: {
@@ -20,6 +23,7 @@ interface Props {
   pageContext: {
     index: number;
     pageCount: number;
+    articleGroups: ArticleGroups;
   };
   location: Location;
 }
@@ -38,10 +42,11 @@ function toPage(pageIndex: number) {
 
 function PageIndicator(props: { pageCount: number, current: number }) {
   const { pageCount, current } = props;
+
   return (
     <Pagination aria-label="Page">
       <PaginationItem>
-        <PaginationLink disabled={current === 1} previous={true} onClick={toPage(current - 1)}/>
+        <PaginationLink disabled={current === 1} previous={true} onClick={toPage(current - 1)} />
       </PaginationItem>
       {range(1, pageCount + 1).map((x) =>
         <PaginationItem active={current === x} key={x}>
@@ -50,34 +55,47 @@ function PageIndicator(props: { pageCount: number, current: number }) {
           </PaginationLink>
         </PaginationItem>)}
       <PaginationItem>
-        <PaginationLink disabled={current === pageCount} next={true} onClick={toPage(current + 1)}/>
+        <PaginationLink disabled={current === pageCount} next={true} onClick={toPage(current + 1)} />
       </PaginationItem>
     </Pagination>
   );
 }
 
 export default function Index(props: Props) {
-  const { pageCount, index } = props.pageContext;
-
+  const { pageCount, index, articleGroups } = props.pageContext;
   return (
-    <HomePageLayout location={props.location}>
+    <HomePageLayout location={props.location} articleGroups={articleGroups}>
       <div className="blog-posts">
         {props.data.allMarkdownRemark.edges
           .filter((post) => post.node.frontmatter.title.length > 0)
-          .map(({node: post}) =>
-            <ArticleItem key={post.id}
-                         idName={post.frontmatter.id_name}
-                         title={post.frontmatter.title}
-                         excerpt={post.excerpt}
-                         date={post.frontmatter.date}
-                         tags={post.frontmatter.tags}
-            />)
+          .map(({ node }) => {
+            return (
+              <I18nConsumer key={node.id}>
+                {({ language }) => {
+                  const group = articleGroups[node.frontmatter.id_name];
+                  const postInThisLanguage = getNodeFromLang(language, node.frontmatter.id_name, articleGroups);
+                  const langPaths = createLangPathMap(group);
+                  return (
+                    <ArticleItem
+                      key={postInThisLanguage.id}
+                      idName={postInThisLanguage.frontmatter.id_name}
+                      title={postInThisLanguage.frontmatter.title}
+                      excerpt={postInThisLanguage.excerpt}
+                      date={postInThisLanguage.frontmatter.date}
+                      tags={postInThisLanguage.frontmatter.tags}
+                      langPaths={langPaths}
+                    />
+                  );
+                }}
+              </I18nConsumer>
+            );
+          })
         }
-        <PageIndicator pageCount={pageCount} current={index}/>
+        <PageIndicator pageCount={pageCount} current={index} />
       </div>
       <Sidebar>
-        <BlogIntroCard/>
-        <SelfIntroCard/>
+        <BlogIntroCard articleGroups={articleGroups}/>
+        <SelfIntroCard articleGroups={articleGroups} />
       </Sidebar>
     </HomePageLayout>
   );
@@ -92,7 +110,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip
-      filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true } } }
+      filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true }, lang: { eq: "cn" } } }
     ) {
       edges {
         node {
@@ -104,6 +122,7 @@ export const query = graphql`
             title
             tags
             hide_heading
+            lang
             ignored
           }
         }

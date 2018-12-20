@@ -27,7 +27,7 @@ export default function Page(props: PageProps) {
   return (
     <StyledPage className={props.className}>
       <StyledContainer>
-    {props.children}
+        {props.children}
       </StyledContainer>
     </StyledPage>
   );
