@@ -70,9 +70,10 @@ Building my own personal blog was an idea emerged at my age of 15....
 
 which was put aside.
 
-## 2016: Arise
+## 2016-
 
-I had a not-bad grade on my college entrance exam, the most important exam every Chinese student would have to go through. It left me some minor regrets but, yeah, not bad after all.
+TBD
+
 
 
 

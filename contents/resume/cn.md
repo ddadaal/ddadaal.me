@@ -79,6 +79,7 @@ hide_heading: true
 ### 本科在读 预计2020年毕业 GPA 4.63/5.0 排名 3/220
 - **国家奖学金**(2016-2017学年)
 - **董氏东方奖学金**(2017-2018学年)
+- **校级优秀学生**(2017-2018学年)
 
 # 实习和组织经历
 
@@ -99,18 +100,18 @@ hide_heading: true
 
 ## VicBlog <span class="right">2016年10月-至今</span>
 单人项目
-- 个人博客，记录开发和学习过程中的思考，https://viccrubs.tk
+- 个人博客，记录开发和学习过程中的思考，https://viccrubs.me
 - 历经`Flask + VPS`到`ASP.NET Core + React + Azure App Service`到`Gatsby`的技术栈变革，现为部署于`GitHub Pages`的静态网站，使用`travis`实现持续构建和部署
 - 各种新奇技术的试验田，应用过早期`ASP.NET Core`（1.0版本），`React`（0.14版本），`TypeScript`（2.1版本），`Ant Design`（1.x版本），`PWA`等技术
 
 ## ChainStore <span class="right">2018年4月-至今</span>
-核心架构设计和应用层实现，Demo应用后端实现
+核心架构设计和应用层实现，Demo应用后端实现，决赛软件部分演讲者和答辩者
 - 基于区块链的分布式存储系统，原型系统基于HTTP协议通讯，支持多机网络和损坏数据恢复等功能
 - 参与设计了使用`Java Spring Boot`的核心架构，使用`Kotlin + Spring Boot`实现了核心部分应用层部分，使用`C# + ASP.NET Core`实现了Demo应用（供应链管理系统）的Web后端
-- 获得“链谷杯”全国高校区块链应用链应用大赛**三等奖**，第三届全国高校区块链大赛**华东赛区一等奖，全国二等奖**
+- 获得“链谷杯”全国高校区块链应用链应用大赛**三等奖**，第三届全国高校区块链大赛**华东赛区一等奖**，**全国二等奖**
 
 ## A+Quant <span class="right">2018年6月-2018年11月</span>
-软件组核心成员，后端架构设计，Web前端负责人
+软件组核心成员，后端架构设计，Web前端负责人，决赛软件部分演讲者和答辩者
 - 基于人工智能的大类资产配置系统
 - 2018年第14届“花旗杯”金融创新应用大赛**一等奖**
 - 27人团队，软件组（9人）核心成员，前端团队（3人）的负责人，负责后端（`Python Flask`）架构搭建，前端（`React + TypeScript`）架构搭建、基础设施实现和一部分业务功能的实现
@@ -118,7 +119,7 @@ hide_heading: true
 
 # 技能/其他
 
-- 熟悉Web前端（`React`技术栈）、Web后端（`ASP.NET Core，Spring Boot`）架构设计和实现
+- 熟悉Web前端（`React`技术栈）、Web后端（`ASP.NET Core，Spring Boot`）实现和设计
 - 常用`TypeScript`, `C#`, `Java`, `Python`语言
 - 对软件工程和软件应用富有热情。乐于尝试新技术并将其投入使用
 - 善于公众展示和演示，负责大部分比赛、项目的公众演讲、路演等部分工作

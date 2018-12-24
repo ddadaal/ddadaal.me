@@ -3,10 +3,10 @@ module.exports = {
   siteMetadata: {
     title: 'VicBlog',
     description: 'A personal blog',
-    siteUrl: 'https://viccrubs.tk',
+    siteUrl: 'https://viccrubs.me',
     author: {
       name: 'Chen Junda',
-      url: 'https://viccrubs.tk',
+      url: 'https://viccrubs.me',
       email: 'smallda@outlook.com'
     }
   },
@@ -29,15 +29,24 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(({ node }) => {
-                const url = node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`;
-                return Object.assign({}, node.frontmatter, {
+
+              const articleGroups = {};
+              allMarkdownRemark.edges.forEach(({ node }) => {
+                const id = node.frontmatter.id_name;
+                articleGroups[id] = articleGroups[id] || [];
+                node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`}`;
+                articleGroups[id].push(node);
+              });
+
+              return Object.values(articleGroups)
+                .map((nodes) => nodes[0])
+                .map((node) => ({
+                  ...node.frontmatter,
                   description: node.excerpt,
-                  url: url,
-                  guid: url,
-                  custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                  url: node.path,
+                  guid: node.path,
+                  custom_elements: [{ "content:encoded": node.html }]
+                }));
             },
             query: `
               {
@@ -55,6 +64,7 @@ module.exports = {
                         id_name
                         date
                         tags
+                        lang
                       }
                     }
                   }
@@ -109,7 +119,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://viccrubs.tk'
+        siteUrl: 'https://viccrubs.me'
       }
     },
     {

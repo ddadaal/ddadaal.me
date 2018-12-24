@@ -26,14 +26,14 @@ lang: en
 
 ## I...
 
-- Love computers (both hardware and software) and any tech things
+- Love computers (both hardware and software) and any tech things.
 - Love programming.
 - Love computer games. FPS mostly (Battlefield franchise main, ~~Overwatch~~, FarCry...) and others too (Mass Effect....).
 - Am a Microsoft fan.
 - Like playing badminton.
 - Prefer absolute or instrumental music.
 - Started playing electronic piano at the age of 4 and passed level 10 exam for amateurs at 11. Am picking it up again.
-- Like to stay and play with friends
+- Like to stay and play with friends.
 
 ## Devices in Use
 

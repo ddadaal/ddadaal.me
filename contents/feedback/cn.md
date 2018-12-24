@@ -16,7 +16,7 @@ lang: cn
 如果你想说点什么，你可以
 
 - 在下面的评论框里畅所欲言！或者
-- [联系我](/cn/about/me#contacts)！
+- [联系我](/en/about/me#contacts)！
 
 非常感谢你的支持！！！
 

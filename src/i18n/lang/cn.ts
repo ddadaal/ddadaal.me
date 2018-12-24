@@ -27,11 +27,6 @@ export default {
     comments: {
       title: " 评论",
     },
-    feedback: {
-      title: "反馈",
-      description: "若您对本网站有什么意见和建议，请在此页面下的评论框中留言，或者{}谢谢！",
-      contacts: "和我联系",
-    },
     articlePage: {
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
@@ -44,9 +39,9 @@ export default {
       author: "作者",
       brief: "南京大学2016级本科生",
       major: "软件工程专业",
-      resume: "简历",
-      mailToMe: "给我发电子邮件",
-      more: "更多关于我的信息",
+      resume: " 简历",
+      mailToMe: " 给我发电子邮件",
+      more: " 更多关于我的信息",
     },
     blogIntro: {
       subtitle: "一个个人博客",

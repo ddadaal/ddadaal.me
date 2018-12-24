@@ -21,11 +21,6 @@ export default {
       license: "All articles licensed under {}",
       madeWithLove: "Made with ❤",
     },
-    feedback: {
-      title: "Feedback",
-      description: "Please leave feedback and comments on the comment panel of this article or {}! Thanks a lot!",
-      contacts: "contact me",
-    },
     languageSelector: {
       select: "Select a language for website",
     },
