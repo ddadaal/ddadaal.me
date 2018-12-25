@@ -6230,10 +6230,10 @@ gatsby-transformer-sharp@^2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.75:
-  version "2.0.75"
-  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.75.tgz#33fdf97d0cd95740b76ccc4e364a06bc0294a72f"
-  integrity sha1-M/35fQzZV0C3bMxONkoGvAKUpy8=
+gatsby@^2.0.76:
+  version "2.0.76"
+  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.76.tgz#a28b975f4e80d80be6501d6ee15e4fae8d766342"
+  integrity sha1-oouXX06A2AvmUB1u4V5Pro12Y0I=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"

@@ -3,16 +3,36 @@ const path = require("path");
 const indexTemplate = path.resolve("src/templates/HomePageTemplate.tsx");
 const articleTemplate = path.resolve(`src/templates/ArticlePageTemplate.tsx`);
 
-function createPaginatedHomepages(totalCount, createPage, articleGroups) {
+function count(obj, predicate) {
+  let value = 0;
+  for (const key in obj) {
+    if (predicate(key)) {
+      value++;
+    }
+  }
+  return value;
+}
+
+function createPaginatedHomepages(createPage, articleGroups) {
 
   const generatePath = (index) => {
     return index === 0 ? "/" : `/${index + 1}`;
   };
 
+  const notIgnoredGroups = [];
+
+  for (const key in articleGroups) {
+    const node = articleGroups[key][0];
+    if (!node.frontmatter.ignored) {
+      notIgnoredGroups.push(node);
+    }
+  }
+
+  notIgnoredGroups.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 
   const pageSize = 5;
 
-  const pageCount = Math.ceil(totalCount / pageSize);
+  const pageCount = Math.ceil(notIgnoredGroups.length / pageSize);
 
   Array.from({ length: pageCount }).forEach((_, index) => {
     createPage({
@@ -21,8 +41,9 @@ function createPaginatedHomepages(totalCount, createPage, articleGroups) {
       context: {
         limit: pageSize,
         skip: index * pageSize,
-        pageCount: pageCount,
+        pageCount,
         index: index + 1,
+        items: notIgnoredGroups.slice(index * pageSize, index * pageSize + pageSize),
         articleGroups
       },
     })
@@ -75,7 +96,6 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 
   createPaginatedHomepages(
-    result.data.allMarkdownRemark.edges.filter((x) => !x.node.frontmatter.ignored && x.node.frontmatter.lang === "cn").length,
     createPage,
     articleGroups
   );

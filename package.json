@@ -26,7 +26,7 @@
     "@babel/core": "^7.2.2",
     "babel-plugin-styled-components": "^1.10.0",
     "classnames": "^2.2.6",
-    "gatsby": "^2.0.75",
+    "gatsby": "^2.0.76",
     "gatsby-plugin-canonical-urls": "^2.0.8",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-feed": "^2.0.11",

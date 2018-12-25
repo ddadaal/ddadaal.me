@@ -39,7 +39,7 @@ export default {
       author: "Author",
       brief: "Undergraduate student in Nanjing University since 2016",
       major: "Major in Software Engineering",
-      resume: " resume",
+      resume: " Resume",
       mailToMe: " Mail to me",
       more: " More about me",
     },

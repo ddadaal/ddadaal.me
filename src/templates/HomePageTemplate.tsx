@@ -12,17 +12,12 @@ import { I18nConsumer } from "../i18n/I18nContext";
 import { ArticleGroups } from "../models/ArticleGroups";
 import { createLangPathMap, getNodeFromLang } from "../utils/articleGroupUtils";
 
+
 interface Props {
-  data: {
-    allMarkdownRemark: {
-      edges: Array<{
-        node: ArticleNode,
-      }>,
-    },
-  };
   pageContext: {
     index: number;
     pageCount: number;
+    items: ArticleNode[];
     articleGroups: ArticleGroups;
   };
   location: Location;
@@ -62,13 +57,13 @@ function PageIndicator(props: { pageCount: number, current: number }) {
 }
 
 export default function Index(props: Props) {
-  const { pageCount, index, articleGroups } = props.pageContext;
+  const { pageCount, index, articleGroups, items } = props.pageContext;
   return (
     <HomePageLayout location={props.location} articleGroups={articleGroups}>
       <div className="blog-posts">
-        {props.data.allMarkdownRemark.edges
-          .filter((post) => post.node.frontmatter.title.length > 0)
-          .map(({ node }) => {
+        {items
+          .filter((node) => node.frontmatter.title.length > 0)
+          .map((node) => {
             return (
               <I18nConsumer key={node.id}>
                 {({ language }) => {
@@ -100,33 +95,3 @@ export default function Index(props: Props) {
     </HomePageLayout>
   );
 }
-
-export const query = graphql`
-  query homepageQuery(
-    $skip: Int!
-    $limit: Int!
-  ) {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
-      filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true }, lang: { eq: "cn" } } }
-    ) {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            date
-            id_name
-            title
-            tags
-            hide_heading
-            lang
-            ignored
-          }
-        }
-      }
-    }
-  }
-`;

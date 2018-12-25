@@ -7,12 +7,18 @@ interface Props {
   replacements?: React.ReactNode[];
 }
 
-export default function I18nString(props: Props) {
-  return (
-    <I18nConsumer>
-      { ({ get }) => {
-        return get(props.id[GET_VALUE], props.replacements);
-      }}
-    </I18nConsumer>
-  );
+export default class I18nString extends React.Component<Props> {
+  shouldComponentUpdate(prevProps: Props) {
+    return prevProps.id[GET_VALUE] !== this.props.id[GET_VALUE];
+  }
+
+  render() {
+    return (
+      <I18nConsumer>
+        {({ get }) => {
+          return get(this.props.id[GET_VALUE], this.props.replacements);
+        }}
+      </I18nConsumer>
+    );
+  }
 }

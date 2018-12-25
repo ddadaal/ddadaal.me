@@ -38,7 +38,7 @@ export default function ArticleItem(props: Props) {
       <I18nConsumer>
         {({ language }) => {
           return (
-            <Link to={langPaths[language.id] || langPaths.cn}>
+            <Link to={langPaths[language.id] || langPaths[Object.keys(langPaths)[0]]}>
               <h1>{title}</h1>
             </Link>
           );

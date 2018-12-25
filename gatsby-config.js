@@ -28,49 +28,43 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-
-              const articleGroups = {};
-              allMarkdownRemark.edges.forEach(({ node }) => {
-                const id = node.frontmatter.id_name;
-                articleGroups[id] = articleGroups[id] || [];
-                node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`}`;
-                articleGroups[id].push(node);
-              });
-
-              return Object.values(articleGroups)
-                .map((nodes) => nodes[0])
-                .map((node) => ({
-                  ...node.frontmatter,
-                  description: node.excerpt,
-                  url: node.path,
-                  guid: node.path,
-                  custom_elements: [{ "content:encoded": node.html }]
-                }));
-            },
             query: `
-              {
-                allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true } }}
-                ) {
-                  edges {
-                    node {
-                      excerpt(pruneLength: 250)
-                      html
-                      frontmatter {
-                        title
-                        id_name
-                        date
-                        tags
-                        lang
-                      }
+            {
+              allMarkdownRemark(
+                limit: 1000,
+                sort: { order: DESC, fields: [frontmatter___date] },
+                filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true } }}
+              ) {
+                edges {
+                  node {
+                    excerpt(pruneLength: 250)
+                    html
+                    frontmatter {
+                      title
+                      id_name
+                      date
+                      tags
+                      lang
                     }
                   }
                 }
               }
-            `,
+            }
+          `,
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+
+              return allMarkdownRemark.edges.map(({ node }) => {
+                const path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`}`;
+                return {
+                  ...node.frontmatter,
+                  description: node.excerpt,
+                  url: path,
+                  guid: path,
+                  custom_elements: [{ "content:encoded": node.html }]
+                }
+
+              });
+            },
             output: "/rss.xml",
             title: "VicBlog RSS",
           },
