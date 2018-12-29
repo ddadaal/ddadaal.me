@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import ArticleItem from "../components/ArticleItem";
 import HomePageLayout from "../layouts/HomePageLayout";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
@@ -8,19 +8,18 @@ import { ArticleNode } from "../models/ArticleNode";
 import { range } from "../utils/Array";
 import BlogIntroCard from "../components/BlogIntroCard";
 import SelfIntroCard from "../components/SelfIntroCard";
-import { I18nConsumer } from "../i18n/I18nContext";
 import { ArticleGroups } from "../models/ArticleGroups";
-import { createLangPathMap, getNodeFromLang } from "../utils/articleGroupUtils";
+import withStores, { WithStoresProps } from "@/stores/withStores";
+import { I18nStore } from "@/stores/I18nStore";
+import { ArticleStore } from "@/stores/ArticleStore";
 
 
-interface Props {
+interface Props extends WithStoresProps {
   pageContext: {
     index: number;
     pageCount: number;
     items: ArticleNode[];
-    articleGroups: ArticleGroups;
   };
-  location: Location;
 }
 
 const Sidebar = styled.div`
@@ -56,42 +55,36 @@ function PageIndicator(props: { pageCount: number, current: number }) {
   );
 }
 
-export default function Index(props: Props) {
-  const { pageCount, index, articleGroups, items } = props.pageContext;
+export default withStores(I18nStore, ArticleStore)(function Index(props: Props) {
+  const { pageCount, index, items } = props.pageContext;
+  const { language } = props.useStore(I18nStore);
+  const articleStore = props.useStore(ArticleStore);
   return (
-    <HomePageLayout location={props.location} articleGroups={articleGroups}>
+    <HomePageLayout>
       <div className="blog-posts">
         {items
           .filter((node) => node.frontmatter.title.length > 0)
           .map((node) => {
+            const postInThisLanguage = articleStore.getNodeFromLang(node.frontmatter.id, language);
             return (
-              <I18nConsumer key={node.id}>
-                {({ language }) => {
-                  const group = articleGroups[node.frontmatter.id_name];
-                  const postInThisLanguage = getNodeFromLang(language, node.frontmatter.id_name, articleGroups);
-                  const langPaths = createLangPathMap(group);
-                  return (
-                    <ArticleItem
-                      key={postInThisLanguage.id}
-                      idName={postInThisLanguage.frontmatter.id_name}
-                      title={postInThisLanguage.frontmatter.title}
-                      excerpt={postInThisLanguage.excerpt}
-                      date={postInThisLanguage.frontmatter.date}
-                      tags={postInThisLanguage.frontmatter.tags}
-                      langPaths={langPaths}
-                    />
-                  );
-                }}
-              </I18nConsumer>
+              <ArticleItem
+                key={postInThisLanguage.id}
+                id={postInThisLanguage.frontmatter.id}
+                title={postInThisLanguage.frontmatter.title}
+                excerpt={postInThisLanguage.excerpt}
+                date={postInThisLanguage.frontmatter.date}
+                tags={postInThisLanguage.frontmatter.tags}
+              />
             );
+
           })
         }
         <PageIndicator pageCount={pageCount} current={index} />
       </div>
       <Sidebar>
-        <BlogIntroCard articleGroups={articleGroups}/>
-        <SelfIntroCard articleGroups={articleGroups} />
+        <BlogIntroCard />
+        <SelfIntroCard />
       </Sidebar>
     </HomePageLayout>
   );
-}
+});

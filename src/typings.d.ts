@@ -26,3 +26,5 @@ declare module "*.png" {
   const module: any;
   export = module;
 }
+
+declare type Omit<T, K extends keyof any> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;

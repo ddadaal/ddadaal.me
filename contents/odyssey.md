@@ -1,6 +1,6 @@
 ---
 
-id_name: "odyssey"
+id: "odyssey"
 absolute_path: "/about/odyssey"
 date: "2018/12/19 23:45"
 title: "A Personal Blog Odyssey"

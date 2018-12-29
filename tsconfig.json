@@ -10,8 +10,15 @@
     "removeComments": false,
     "preserveConstEnums": true,
     "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*" :["./src/*"],
+      "~/*": ["./*"]
+    },
+
   },
   "include": [
     "./src/**/*"
-  ]
+  ],
+
 }

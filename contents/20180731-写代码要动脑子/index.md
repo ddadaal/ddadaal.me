@@ -1,5 +1,5 @@
 ---
-id_name: "think-while-coding"
+id: "think-while-coding"
 date: "2018/07/31 14:12"
 title: "写代码要动脑子！"
 lang: cn

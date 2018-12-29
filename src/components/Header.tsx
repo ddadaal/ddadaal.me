@@ -17,14 +17,15 @@ import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
 import LanguageSelector from "./LanguageSelector";
-import { I18nConsumer } from "../i18n/I18nContext";
 import { ArticleGroups } from "../models/ArticleGroups";
-import { removeLangFromPath, getNodeFromLang } from "../utils/articleGroupUtils";
+import withStores, { WithStoresProps } from "@/stores/withStores";
+import { ArticleStore } from "@/stores/ArticleStore";
+import { I18nStore } from "@/stores/I18nStore";
+import { LocationStore, removeLangFromPath } from "@/stores/LocationStore";
 
-interface Props {
+interface Props extends WithStoresProps {
   title: string;
-  location: Location;
-  articleGroups: ArticleGroups;
+
 }
 
 interface State {
@@ -68,51 +69,49 @@ function atHomePage(pathname: string) {
   return pathname === "/" || pathname.match(/\/\d+/) !== null;
 }
 
-const root = lang().headers;
+const root = lang.headers;
 
 
-export function NavbarLanguageSelector() {
+const NavbarLanguageSelector = withStores(I18nStore)(({ useStore }) => {
+
+  const { state, allLanguages, changeLanguage } = useStore(I18nStore);
+
   return (
-    <I18nConsumer>
-      {({ language, changeLanguage, allLanguages }) => {
-        return <LanguageSelector
-          allLanguages={allLanguages}
-          currentLanguage={language.name}
-          changeLanguage={changeLanguage}
-          prompt={language.definitions.languageSelector.select}
-        />
-      }}
-    </I18nConsumer>
-  )
-}
+    <LanguageSelector
+      allLanguages={allLanguages}
+      currentLanguage={state.language.name}
+      changeLanguage={changeLanguage}
+      prompt={state.language.definitions.languageSelector.select}
+    />
+  );
+});
 
 
 
-function PathItem(props: {
+const PathItem = withStores(ArticleStore, I18nStore)((props: {
   Outer: React.ComponentType<{ active: boolean }>,
   children?: React.ReactNode,
-  id_name: string,
+  id: string,
   currentPathname: string,
-  articleGroups: ArticleGroups
-}) {
-  const { Outer, children, currentPathname, id_name, articleGroups } = props;
-  return (
-    <I18nConsumer>
-      {({ language }) => {
-        const node = getNodeFromLang(language, id_name, articleGroups);
-        return (
-          <Outer active={removeLangFromPath(currentPathname).startsWith(removeLangFromPath(node.path!))}>
-            <NavLink to={node.path!}>
-              {children}
-            </NavLink>
-          </Outer>
-        );
-      }}
-    </I18nConsumer>
-  )
-}
+} & WithStoresProps) => {
 
-export default class Header extends React.PureComponent<Props, State> {
+  const { Outer, children, currentPathname, id, useStore } = props;
+  const articleStore = useStore(ArticleStore);
+
+  const { language } = useStore(I18nStore);
+  const node = articleStore.getNodeFromLang(id, language);
+
+  return (
+    <Outer active={currentPathname.startsWith(removeLangFromPath(node.path!))}>
+      <NavLink to={node.path!}>
+        {children}
+      </NavLink>
+    </Outer>
+  );
+
+});
+
+class Header extends React.PureComponent<Props, State> {
 
   state = {
     isOpen: false,
@@ -125,7 +124,7 @@ export default class Header extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { pathname } = this.props.location;
+    const locationStore = this.props.useStore(LocationStore);
     return (
       <NavbarDiv>
         <Navbar color="light" light={true} expand="md">
@@ -133,7 +132,7 @@ export default class Header extends React.PureComponent<Props, State> {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
-              <NavItem active={atHomePage(removeLangFromPath(pathname))}>
+              <NavItem active={atHomePage(locationStore.pathnameWithoutLanguage)}>
                 <NavLink to="/">
                   <FaHome />
                   <I18nString id={root.home} />
@@ -141,9 +140,8 @@ export default class Header extends React.PureComponent<Props, State> {
               </NavItem>
               <PathItem
                 Outer={NavItem}
-                id_name={"resume"}
-                articleGroups={this.props.articleGroups}
-                currentPathname={pathname}
+                id={"resume"}
+                currentPathname={locationStore.pathnameWithoutLanguage}
               >
                 <FaFile />
                 <I18nString id={root.resume} />
@@ -152,7 +150,7 @@ export default class Header extends React.PureComponent<Props, State> {
                 <DropdownToggle
                   nav={true}
                   caret={true}
-                  className={removeLangFromPath(pathname).startsWith("/about/") ? "active" : undefined}
+                  className={locationStore.pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
                 >
                   <FaInfo />
                   <I18nString id={root.about._root} />
@@ -160,18 +158,16 @@ export default class Header extends React.PureComponent<Props, State> {
                 <DropdownMenu right={true}>
                   <PathItem
                     Outer={DropdownItem}
-                    id_name={"odyssey"}
-                    articleGroups={this.props.articleGroups}
-                    currentPathname={pathname}
+                    id={"odyssey"}
+                    currentPathname={locationStore.pathnameWithoutLanguage}
                   >
                     <FaMale />
                     <I18nString id={root.about.odyssey} />
                   </PathItem>
                   <PathItem
                     Outer={DropdownItem}
-                    id_name={"about-project"}
-                    articleGroups={this.props.articleGroups}
-                    currentPathname={pathname}
+                    id={"about-project"}
+                    currentPathname={locationStore.pathnameWithoutLanguage}
                   >
                     <FaGlobe />
                     <I18nString id={root.about.website} />
@@ -179,9 +175,8 @@ export default class Header extends React.PureComponent<Props, State> {
 
                   <PathItem
                     Outer={DropdownItem}
-                    id_name={"about-me"}
-                    articleGroups={this.props.articleGroups}
-                    currentPathname={pathname}
+                    id={"about-me"}
+                    currentPathname={locationStore.pathnameWithoutLanguage}
                   >
                     <FaMale />
                     <I18nString id={root.about.me} />
@@ -199,3 +194,5 @@ export default class Header extends React.PureComponent<Props, State> {
   }
 
 }
+
+export default withStores(LocationStore)(Header);

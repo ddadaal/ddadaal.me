@@ -1,5 +1,5 @@
 ---
-id_name: "lexer-lalr1parser"
+id: "lexer-lalr1parser"
 date: '2018/11/19 13:37'
 title: "正则语法分析器和LALR(1)词法分析器"
 tags:

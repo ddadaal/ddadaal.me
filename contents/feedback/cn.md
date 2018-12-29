@@ -1,6 +1,6 @@
 ---
 
-id_name: "feedback"
+id: "feedback"
 absolute_path: "/feedback"
 date: "2018/12/19 23:45"
 title: "反馈"

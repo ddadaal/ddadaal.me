@@ -18,10 +18,6 @@ function factory(langObj: Lang) {
   return obj;
 }
 
-const baseLang = new Lang([]);
+const lang = factory(new Lang([]));
 
-function lang(): Definitions {
-  return factory(baseLang);
-}
-
-export default lang;
+export default lang as Definitions;

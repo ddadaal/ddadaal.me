@@ -1,4 +1,7 @@
 'use strict'
+
+const path = require("path");
+
 module.exports = {
   siteMetadata: {
     title: 'VicBlog',
@@ -10,7 +13,16 @@ module.exports = {
       email: 'smallda@outlook.com'
     }
   },
+
   plugins: [
+    "gatsby-plugin-layout",
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        "@": path.join(__dirname, 'src'),
+        "~": path.join(__dirname)
+      }
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -41,7 +53,7 @@ module.exports = {
                     html
                     frontmatter {
                       title
-                      id_name
+                      id
                       date
                       tags
                       lang
@@ -54,7 +66,7 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
 
               return allMarkdownRemark.edges.map(({ node }) => {
-                const path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`}`;
+                const path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}`;
                 return {
                   ...node.frontmatter,
                   description: node.excerpt,

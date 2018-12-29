@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
 
 import "gitalk/dist/gitalk.css";
-import { I18nConsumer } from "../i18n/I18nContext";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
 
@@ -24,8 +23,6 @@ const CommentDiv = styled.div`
   }
 `;
 
-let Gitalk;
-
 class RealCommentPanel extends React.Component<Props, {}> {
   componentDidMount() {
     this.renderGitalk();
@@ -33,9 +30,8 @@ class RealCommentPanel extends React.Component<Props, {}> {
 
   async renderGitalk() {
     try {
-      if (!Gitalk) {
-        Gitalk = (await import("gitalk")).default;
-      }
+
+      const Gitalk = (await import("gitalk")).default;
 
       const gitalk = new Gitalk({
         clientID: "5640259688bc3d72b807",
@@ -63,7 +59,7 @@ class RealCommentPanel extends React.Component<Props, {}> {
   }
 }
 
-const root = lang().comments;
+const root = lang.comments;
 
 export default class CommentPanel extends React.Component<Props, State> {
   state = {
@@ -88,8 +84,8 @@ export default class CommentPanel extends React.Component<Props, State> {
         </h3>
         {
           this.state.mount
-          ? <RealCommentPanel {...this.props}/>
-          : undefined
+            ? <RealCommentPanel {...this.props} />
+            : undefined
         }
       </CommentDiv>
     );

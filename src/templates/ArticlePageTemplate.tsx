@@ -6,16 +6,16 @@ import CommentPanel from "../components/CommentPanel";
 import TagGroup from "../components/TagGroup";
 import { ArticleNode } from "../models/ArticleNode";
 import { graphql, Link, navigate } from "gatsby";
-import RootLayout from "../layouts/RootLayout";
 import { FaBackward } from "react-icons/fa";
 import styled from "styled-components";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
-import { I18nConsumer } from "../i18n/I18nContext";
 import LanguageSelector from "../components/LanguageSelector";
 import { getLanguage } from "../i18n/definition";
 import { ArticleGroups } from "../models/ArticleGroups";
-import { createLangPathMap } from "../utils/articleGroupUtils";
+import withStores, { WithStoresProps } from "@/stores/withStores";
+import { ArticleStore } from "@/stores/ArticleStore";
+import { I18nStore } from "@/stores/I18nStore";
 
 const MarkdownDisplay = styled.div`
 
@@ -50,7 +50,7 @@ const MarkdownDisplay = styled.div`
 
 `;
 
-interface Props {
+interface Props extends WithStoresProps {
   data: {
     site: {
       siteMetadata: {
@@ -65,14 +65,13 @@ interface Props {
     markdownRemark: ArticleNode;
   };
   pageContext: {
-    id_name: string;
+    id: string;
     lang: string;
-    articleGroups: ArticleGroups;
   };
   location: Location;
 }
 
-const root = lang().articlePage;
+const root = lang.articlePage;
 
 const Headbar = styled.div`
   display: flex;
@@ -80,64 +79,62 @@ const Headbar = styled.div`
   align-items: center;
 `;
 
-export default function ArticlePageTemplate(props: Props) {
+export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(props: Props) {
+
+
+  const articleStore = props.useStore(ArticleStore);
+  const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
+  const { language } = props.useStore(I18nStore);
+
   const { frontmatter, html } = props.data.markdownRemark;
 
-  const langPathMap = createLangPathMap(props.pageContext.articleGroups[props.pageContext.id_name]);
-
-
   return (
-    <RootLayout location={props.location} articleGroups={props.pageContext.articleGroups}>
-      <Page>
-        <Helmet title={`${frontmatter.title} - VicBlog`} />
-        <Headbar>
-          <Link to={"/"}>
-            <FaBackward />
-            <I18nString id={root.backToHome} />
-          </Link>
-          <LanguageSelector
-            allLanguages={
-              Object.keys(langPathMap)
-                .map((lang) => ({
-                  id: lang,
-                  name: getLanguage(lang).name,
-                }))
-            }
-            changeLanguage={(lang) => navigate(langPathMap[lang])}
-            currentLanguage={getLanguage(props.pageContext.lang).name}
-            prompt={<I18nString id={root.selectLang} />}
-          />
-        </Headbar>
+    <Page>
+      <Helmet title={`${frontmatter.title} - VicBlog`} />
+      <Headbar>
+        <Link to={"/"}>
+          <FaBackward />
+          <I18nString id={root.backToHome} />
+        </Link>
+        <LanguageSelector
+          allLanguages={
+            Object.keys(langPathMap)
+              .map((lang) => ({
+                id: lang,
+                name: getLanguage(lang).name,
+              }))
+          }
+          changeLanguage={(lang) => navigate(langPathMap[lang])}
+          currentLanguage={getLanguage(props.pageContext.lang).name}
+          prompt={<I18nString id={root.selectLang} />}
+        />
 
-        {!frontmatter.hide_heading &&
-          (
-            <div>
-              <h1>{frontmatter.title}</h1>
-              <TagGroup tags={frontmatter.tags} />
-              {frontmatter.date && <p>{frontmatter.date}</p>}
-            </div>
-          )
-        }
-        <MarkdownDisplay dangerouslySetInnerHTML={{ __html: html }} />
-        <hr />
-        <I18nConsumer>
-          {({ language }) => (
-            <CommentPanel
-              language={language.gitalkLangId}
-              articleId={frontmatter.id_name}
-              articleTitle={frontmatter.title}
-            />
-          )}
-        </I18nConsumer>
+      </Headbar>
 
-      </Page>
-    </RootLayout>
+      {!frontmatter.hide_heading &&
+        (
+          <div>
+            <h1>{frontmatter.title}</h1>
+            <TagGroup tags={frontmatter.tags} />
+            {frontmatter.date && <p>{frontmatter.date}</p>}
+          </div>
+        )
+      }
+      <MarkdownDisplay dangerouslySetInnerHTML={{ __html: html }} />
+      <hr />
+      <CommentPanel
+        language={language.gitalkLangId}
+        articleId={frontmatter.id}
+        articleTitle={frontmatter.title}
+      />
+
+    </Page>
   );
-}
+});
 
 export const query = graphql`
   query PageTemplateQuery(
-    $id_name: String!
+    $id: String!
     $lang: String!
   ) {
     site {
@@ -150,12 +147,12 @@ export const query = graphql`
         }
       }
     }
-    markdownRemark(frontmatter: { id_name: { eq: $id_name }, lang: { eq: $lang } }) {
+    markdownRemark(frontmatter: { id: { eq: $id }, lang: { eq: $lang } }) {
       html
       excerpt
       frontmatter {
         date
-        id_name
+        id
         title
         tags
         hide_heading

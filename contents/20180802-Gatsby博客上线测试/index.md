@@ -1,5 +1,5 @@
 ---
-id_name: "gatsby-powered-vicblog-beta"
+id: "gatsby-powered-vicblog-beta"
 date: "2018/08/02 16:12"
 title: "Gatsby博客上线测试"
 lang: cn

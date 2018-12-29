@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 interface Props {
   className?: string;
-  tags: string[];
+  tags?: string[];
 }
 
 const Container = styled.p`

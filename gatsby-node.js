@@ -3,16 +3,6 @@ const path = require("path");
 const indexTemplate = path.resolve("src/templates/HomePageTemplate.tsx");
 const articleTemplate = path.resolve(`src/templates/ArticlePageTemplate.tsx`);
 
-function count(obj, predicate) {
-  let value = 0;
-  for (const key in obj) {
-    if (predicate(key)) {
-      value++;
-    }
-  }
-  return value;
-}
-
 function createPaginatedHomepages(createPage, articleGroups) {
 
   const generatePath = (index) => {
@@ -44,7 +34,6 @@ function createPaginatedHomepages(createPage, articleGroups) {
         pageCount,
         index: index + 1,
         items: notIgnoredGroups.slice(index * pageSize, index * pageSize + pageSize),
-        articleGroups
       },
     })
   });
@@ -53,6 +42,8 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
 
 exports.createPages = async ({ actions, graphql }) => {
+
+  console.log("Create pages");
 
   const { createPage } = actions;
 
@@ -68,7 +59,7 @@ exports.createPages = async ({ actions, graphql }) => {
           id
           frontmatter {
             date
-            id_name
+            id
             absolute_path
             title
             ignored
@@ -89,9 +80,9 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const articleGroups = {};
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    const id = node.frontmatter.id_name;
+    const id = node.frontmatter.id;
     articleGroups[id] = articleGroups[id] || [];
-    node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`}`;
+    node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}`;
     articleGroups[id].push(node);
   });
 
@@ -107,26 +98,10 @@ exports.createPages = async ({ actions, graphql }) => {
         path,
         component: articleTemplate,
         context: {
-          id_name: node.frontmatter.id_name,
+          id: node.frontmatter.id,
           lang: node.frontmatter.lang,
-          articleGroups,
         }
       });
     });
   });
-
-
-
-  // result.data.allMarkdownRemark.edges
-  //   .forEach(({ node }) => {
-  //     const path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id_name}`}/${node.frontmatter.lang}`;
-  //     createPage({
-  //       path,
-  //       component: articleTemplate,
-  //       context: {
-  //         id_name: node.frontmatter.id_name,
-  //         lang: node.frontmatter.lang,
-  //       } // additional data can be passed via context
-  //     });
-  //   });
 };

@@ -2,18 +2,19 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";
-import { I18nConsumer } from "../i18n/I18nContext";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
 import { getLanguage } from "../i18n/definition";
+import withStores, { WithStoresProps } from "@/stores/withStores";
+import { I18nStore } from "@/stores/I18nStore";
+import { ArticleStore } from "@/stores/ArticleStore";
 
-interface Props {
-  idName: string;
+interface Props extends WithStoresProps {
+  id: string;
   title: string;
   excerpt: string;
   date: string;
   tags: string[];
-  langPaths: { [lang: string]: string }
 }
 
 const StyledPost = styled.div`
@@ -24,26 +25,25 @@ const StyledPost = styled.div`
   }
 `;
 
-const root = lang().articleItem;
+const root = lang.articleItem;
 
 const LangLink = styled(Link)`
   margin-right: 4px;
 `;
 
-export default function ArticleItem(props: Props) {
-  const { title, excerpt, date, tags, langPaths } = props;
+export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
+  const { title, excerpt, date, tags, useStore, id } = props;
+  const { language } = useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
+
+  const langPaths = articleStore.getLangPathMap(id);
+
 
   return (
     <StyledPost>
-      <I18nConsumer>
-        {({ language }) => {
-          return (
-            <Link to={langPaths[language.id] || langPaths[Object.keys(langPaths)[0]]}>
-              <h1>{title}</h1>
-            </Link>
-          );
-        }}
-      </I18nConsumer>
+      <Link to={langPaths[language.id] || langPaths[Object.keys(langPaths)[0]]}>
+        <h1>{title}</h1>
+      </Link>
 
       <TagGroup tags={tags} />
       <p>{date}</p>
@@ -57,4 +57,4 @@ export default function ArticleItem(props: Props) {
       <hr />
     </StyledPost>
   );
-}
+});

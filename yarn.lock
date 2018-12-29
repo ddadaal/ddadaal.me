@@ -1085,10 +1085,10 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-dom@^16.0.11":
+"@types/react-dom@16.0.11", "@types/react-dom@^16.0.11":
   version "16.0.11"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.11.tgz#bd10ccb0d9260343f4b9a49d4f7a8330a5c1f081"
-  integrity sha512-x6zUx9/42B5Kl2Vl9HlopV8JF64wLpX3c+Pst9kc1HgzrsH+mkehe/zmHMQTplIrR48H2gpU7ZqurQolYu8XBA==
+  resolved "http://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.0.11.tgz#bd10ccb0d9260343f4b9a49d4f7a8330a5c1f081"
+  integrity sha1-vRDMsNkmA0P0uaSdT3qDMKXB8IE=
   dependencies:
     "@types/react" "*"
 
@@ -1099,12 +1099,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "16.0.38"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.38.tgz#76617433ea10274505f60bb86eddfdd0476ffdc2"
-  integrity sha1-dmF0M+oQJ0UF9gu4bt390Edv/cI=
-
-"@types/react@^16.7.18":
+"@types/react@*", "@types/react@16.7.18", "@types/react@^16.7.18":
   version "16.7.18"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.18.tgz#f4ce0d539a893dd61e36cd11ae3a5e54f5a48337"
   integrity sha1-9M4NU5qJPdYeNs0RrjpeVPWkgzc=
@@ -1119,6 +1114,15 @@
   dependencies:
     "@types/react" "*"
     popper.js "^1.14.1"
+
+"@types/styled-components@^4.1.4":
+  version "4.1.4"
+  resolved "http://registry.npm.taobao.org/@types/styled-components/download/@types/styled-components-4.1.4.tgz#c6915ccee4413da2e1e81b4df9d7ea5b97eb56aa"
+  integrity sha1-xpFczuRBPaLh6BtN+dfqW5frVqo=
+  dependencies:
+    "@types/node" "*"
+    "@types/react" "*"
+    csstype "^2.2.0"
 
 "@types/tmp@^0.0.32":
   version "0.0.32"
@@ -3699,6 +3703,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+create-react-context@^0.1.5:
+  version "0.1.6"
+  resolved "http://registry.npm.taobao.org/create-react-context/download/create-react-context-0.1.6.tgz#0f425931d907741127acc6e31acb4f9015dd9fdc"
+  integrity sha1-D0JZMdkHdBEnrMbjGstPkBXdn9w=
+
 create-react-context@^0.2.1:
   version "0.2.3"
   resolved "http://registry.npm.taobao.org/create-react-context/download/create-react-context-0.2.3.tgz#9ec140a6914a22ef04b8b09b7771de89567cb6f3"
@@ -5932,10 +5941,10 @@ functional-red-black-tree@^1.0.1:
   resolved "http://registry.npm.taobao.org/functional-red-black-tree/download/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gatsby-cli@^2.4.7:
-  version "2.4.7"
-  resolved "http://registry.npm.taobao.org/gatsby-cli/download/gatsby-cli-2.4.7.tgz#f5821ca550f894d182435f0ee1e6a6875bd1064f"
-  integrity sha1-9YIcpVD4lNGCQ18O4eamh1vRBk8=
+gatsby-cli@^2.4.8:
+  version "2.4.8"
+  resolved "http://registry.npm.taobao.org/gatsby-cli/download/gatsby-cli-2.4.8.tgz#6f02e5076e1710aade0ad8e7524b1ec2cf2ee76f"
+  integrity sha1-bwLlB24XEKreCtjnUksews8u528=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -5994,6 +6003,13 @@ gatsby-plugin-feed@^2.0.11:
     pify "^3.0.0"
     rss "^1.2.2"
 
+gatsby-plugin-layout@^1.0.11:
+  version "1.0.11"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-layout/download/gatsby-plugin-layout-1.0.11.tgz#02f9a0103cbd17bdf66fd9a5ca5434d5c089ce88"
+  integrity sha1-AvmgEDy9F732b9mlylQ01cCJzog=
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-manifest@^2.0.12:
   version "2.0.12"
   resolved "http://registry.npm.taobao.org/gatsby-plugin-manifest/download/gatsby-plugin-manifest-2.0.12.tgz#7e25f8997ea690969eeaa010a2d111209282f2ce"
@@ -6051,10 +6067,15 @@ gatsby-plugin-react-svg@^2.0.0:
   dependencies:
     svg-react-loader "^0.4.4"
 
-gatsby-plugin-sharp@^2.0.16:
-  version "2.0.16"
-  resolved "http://registry.npm.taobao.org/gatsby-plugin-sharp/download/gatsby-plugin-sharp-2.0.16.tgz#3f65fce65a0ec33a533e909706d3638a84fae2e7"
-  integrity sha1-P2X85loOwzpTPpCXBtNjioT64uc=
+gatsby-plugin-root-import@^2.0.4:
+  version "2.0.4"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-root-import/download/gatsby-plugin-root-import-2.0.4.tgz#262c01c2384df498369a808b1741379527ecb57f"
+  integrity sha1-JiwBwjhN9Jg2moCLF0E3lSfstX8=
+
+gatsby-plugin-sharp@^2.0.17:
+  version "2.0.17"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-sharp/download/gatsby-plugin-sharp-2.0.17.tgz#4098d0dee82f881410f10a15c16e596e46dc5c01"
+  integrity sha1-QJjQ3ugviBQQ8QoVwW5ZbkbcXAE=
   dependencies:
     "@babel/runtime" "^7.0.0"
     async "^2.1.2"
@@ -6230,10 +6251,10 @@ gatsby-transformer-sharp@^2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.76:
-  version "2.0.76"
-  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.76.tgz#a28b975f4e80d80be6501d6ee15e4fae8d766342"
-  integrity sha1-oouXX06A2AvmUB1u4V5Pro12Y0I=
+gatsby@^2.0.77:
+  version "2.0.77"
+  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.77.tgz#5bfb447fcba2087182c96bd1650f87303c3c274a"
+  integrity sha1-W/tEf8uiCHGCyWvRZQ+HMDw8J0o=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6287,7 +6308,7 @@ gatsby@^2.0.76:
     friendly-errors-webpack-plugin "^1.6.1"
     fs-exists-cached "1.0.0"
     fs-extra "^5.0.0"
-    gatsby-cli "^2.4.7"
+    gatsby-cli "^2.4.8"
     gatsby-link "^2.0.7"
     gatsby-plugin-page-creator "^2.0.5"
     gatsby-react-router-scroll "^2.0.2"
@@ -13918,6 +13939,13 @@ unset-value@^1.0.0:
   dependencies:
     has-value "^0.3.1"
     isobject "^3.0.0"
+
+unstated@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/unstated/download/unstated-2.1.1.tgz#36b124dfb2e7a12d39d0bb9c46dfb6e51276e3a2"
+  integrity sha1-NrEk37LnoS050LucRt+25RJ246I=
+  dependencies:
+    create-react-context "^0.1.5"
 
 unzip-response@^1.0.2:
   version "1.0.2"

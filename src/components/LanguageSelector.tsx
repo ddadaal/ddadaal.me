@@ -1,5 +1,4 @@
 import * as React from "react";
-import { I18nConsumer } from "../i18n/I18nContext";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 
 interface Props {

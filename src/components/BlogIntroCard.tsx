@@ -5,17 +5,21 @@ import StackedDiv from "../layouts/components/StackedDiv";
 import { Link } from "gatsby";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
-import { I18nConsumer } from "../i18n/I18nContext";
-import { ArticleGroups } from "../models/ArticleGroups";
-import { getNodeFromLang } from "../utils/articleGroupUtils";
+import withStores, { WithStoresProps } from "@/stores/withStores";
+import { ArticleStore } from "@/stores/ArticleStore";
+import { I18nStore } from "@/stores/I18nStore";
 
-interface Props {
-  articleGroups: ArticleGroups;
+interface Props extends WithStoresProps {
+
 }
 
-const root = lang().blogIntro;
+const root = lang.blogIntro;
 
-export default function BlogIntroCard(props: Props) {
+export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props: Props) {
+
+  const articleStore = props.useStore(ArticleStore);
+  const i18nStore = props.useStore(I18nStore);
+
   return (
     <Card>
       <CardBody>
@@ -37,17 +41,13 @@ export default function BlogIntroCard(props: Props) {
             <FaRss />
             RSS
           </CardLink>
-          <I18nConsumer>
-            {({ language }) => (
-              <Link className="card-link" to={getNodeFromLang(language, "feedback", props.articleGroups).path!}>
-                <FaRegCommentDots />
-                <I18nString id={root.feedback} />
-              </Link>
-            )}
-          </I18nConsumer>
-
+          <Link className="card-link" to={articleStore.getNodeFromLang("feedback", i18nStore.state.language).path!}>
+            <FaRegCommentDots />
+            <I18nString id={root.feedback} />
+          </Link>
         </StackedDiv>
       </CardBody>
     </Card>
   );
-}
+});
+

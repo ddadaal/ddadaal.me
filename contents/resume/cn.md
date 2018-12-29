@@ -1,6 +1,6 @@
 ---
 
-id_name: "resume"
+id: "resume"
 absolute_path: "/resume"
 date: "2018-11-04T14:18:00.962Z"
 title: "简历"

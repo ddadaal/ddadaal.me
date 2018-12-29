@@ -5,17 +5,20 @@ import { Link } from "gatsby";
 import StackedDiv from "../layouts/components/StackedDiv";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
-import { I18nConsumer } from "../i18n/I18nContext";
-import { getNodeFromLang } from "../utils/articleGroupUtils";
-import { ArticleGroups } from "../models/ArticleGroups";
+import withStores, { WithStoresProps } from "@/stores/withStores";
+import { ArticleStore } from "@/stores/ArticleStore";
+import { I18nStore } from "@/stores/I18nStore";
 
-interface Props {
-  articleGroups: ArticleGroups;
+interface Props extends WithStoresProps {
 }
 
-const root = lang().selfIntro;
+const root = lang.selfIntro;
 
-export default function SelfIntroCard(props: Props) {
+export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props: Props) {
+
+  const articleStore = props.useStore(ArticleStore);
+  const i18nStore = props.useStore(I18nStore);
+
   return (
     <Card>
       <CardBody>
@@ -34,28 +37,20 @@ export default function SelfIntroCard(props: Props) {
           <I18nString id={root.major} />
         </CardText>
         <StackedDiv>
-          <I18nConsumer>
-            {({ language }) =>
-              <Link className="card-link" to={getNodeFromLang(language, "resume", props.articleGroups).path!}>
-                <FaFile />
-                <I18nString id={root.resume} />
-              </Link>
-            }
-          </I18nConsumer>
+          <Link className="card-link" to={articleStore.getNodeFromLang("resume", i18nStore.state.language).path!}>
+            <FaFile />
+            <I18nString id={root.resume} />
+          </Link>
           <CardLink href="mailto://smallda@outlook.com">
             <FaEnvelope />
             <I18nString id={root.mailToMe} />
           </CardLink>
-          <I18nConsumer>
-            {({ language }) =>
-              <Link className="card-link" to={getNodeFromLang(language, "about-me", props.articleGroups).path!}>
-                <FaEllipsisH />
-                <I18nString id={root.more} />
-              </Link>
-            }
-          </I18nConsumer>
+          <Link className="card-link" to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path!}>
+            <FaEllipsisH />
+            <I18nString id={root.more} />
+          </Link>
         </StackedDiv>
       </CardBody>
     </Card>
   );
-}
+});

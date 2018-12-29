@@ -1,5 +1,6 @@
 import { ArticleNode } from "./ArticleNode";
+import { Language } from "../i18n/definition";
 
 export interface ArticleGroups {
-  [id_name: string]: ArticleNode[];
+  [id: string]: ArticleNode[];
 }

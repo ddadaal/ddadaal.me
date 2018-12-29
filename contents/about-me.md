@@ -1,6 +1,6 @@
 ---
 
-id_name: "about-me"
+id: "about-me"
 absolute_path: "/about/me"
 date: "2018/12/19 23:45"
 title: "About Me"

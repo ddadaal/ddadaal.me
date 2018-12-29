@@ -1,5 +1,5 @@
 ---
-id_name: "gatsby-powered-vicblog-online"
+id: "gatsby-powered-vicblog-online"
 date: "2018/11/17 14:51"
 title: "New Blog Online"
 lang: en

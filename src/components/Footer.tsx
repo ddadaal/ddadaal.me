@@ -12,7 +12,7 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const root = lang().footer;
+const root = lang.footer;
 
 export default function Footer(props: Props) {
   return (

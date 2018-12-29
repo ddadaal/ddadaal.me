@@ -1,6 +1,6 @@
 ---
 
-id_name: "how-to-use-dependency-correctly-in-react"
+id: "how-to-use-dependency-correctly-in-react"
 date: 2018/12/06 21:39
 title: "在React中如何正确地使用依赖"
 draft: true

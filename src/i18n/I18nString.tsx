@@ -1,24 +1,18 @@
 import * as React from "react";
-import { I18nConsumer } from "./I18nContext";
 import { GET_VALUE } from "./lang";
+import { connect } from "net";
+import { I18nStore } from "@/stores/I18nStore";
+import withStores, { WithStoresProps } from "@/stores/withStores";
 
-interface Props {
+interface Props extends WithStoresProps {
   id: string;
   replacements?: React.ReactNode[];
 }
 
-export default class I18nString extends React.Component<Props> {
-  shouldComponentUpdate(prevProps: Props) {
-    return prevProps.id[GET_VALUE] !== this.props.id[GET_VALUE];
-  }
+export default withStores(I18nStore)(function I18nString({ useStore, id, replacements }: Props) {
 
-  render() {
-    return (
-      <I18nConsumer>
-        {({ get }) => {
-          return get(this.props.id[GET_VALUE], this.props.replacements);
-        }}
-      </I18nConsumer>
-    );
-  }
-}
+  const i18nStore = useStore(I18nStore);
+
+  return i18nStore.translate(id[GET_VALUE], replacements) as any;
+
+});
