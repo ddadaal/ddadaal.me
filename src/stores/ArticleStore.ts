@@ -7,7 +7,7 @@ interface IArticleStore {
   articleGroups: ArticleGroups;
 }
 
-export function createArticleGroups(allMarkdownRemark) {
+export function createArticleGroups(allMarkdownRemark: { edges:  { node: ArticleNode }[] }) {
   const articleGroups = {};
   allMarkdownRemark.edges.forEach(({ node }) => {
     const id = node.frontmatter.id;

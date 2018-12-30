@@ -16,7 +16,7 @@ export default {
     },
     footer: {
       codeBy: "由{}自豪地编写",
-      themedWith: "由{}和{}描绘主题",
+      themedWith: "由{}和魔改版{}描绘主题",
       poweredBy: "由{}，{}和{}强势驱动",
       license: "本站所有文章在{}协议下授权",
       madeWithLove: "用❤制作",
@@ -30,22 +30,22 @@ export default {
     articlePage: {
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
+      toc: "目录",
     },
     articleItem: {
       availableLanguages: "可用语言：",
     },
     selfIntro: {
-      name: "陈俊达",
       author: "作者",
-      brief: "南京大学2016级本科生",
-      major: "软件工程专业",
+      university: "南京大学软件学院",
+      grade: "2016级本科生",
       resume: " 简历",
       mailToMe: " 给我发电子邮件",
       more: " 更多关于我的信息",
     },
     blogIntro: {
-      subtitle: "一个个人博客",
-      description: "我的技术，感悟，代码和日常生活",
+      subtitle: " - 一个个人博客",
+      description: "技术，感悟，代码和日常生活",
       sourceCode: "在GitHub上的博客源码",
       feedback: "反馈",
     },

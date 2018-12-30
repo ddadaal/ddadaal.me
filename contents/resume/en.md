@@ -7,6 +7,8 @@ title: "Resume"
 lang: en
 ignored: true
 hide_heading: true
+no_toc: true
+
 
 ---
 

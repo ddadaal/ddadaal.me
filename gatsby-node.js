@@ -54,8 +54,12 @@ exports.createPages = async ({ actions, graphql }) => {
     ) {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 250, truncate: true)
           html
+          headings {
+            depth
+            value
+          }
           id
           frontmatter {
             date
@@ -66,6 +70,7 @@ exports.createPages = async ({ actions, graphql }) => {
             tags
             hide_heading
             lang
+            no_toc
           }
         }
       }
@@ -98,8 +103,7 @@ exports.createPages = async ({ actions, graphql }) => {
         path,
         component: articleTemplate,
         context: {
-          id: node.frontmatter.id,
-          lang: node.frontmatter.lang,
+          article: node,
         }
       });
     });

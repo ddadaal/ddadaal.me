@@ -1,25 +1,26 @@
 import * as React from "react";
 import Helmet from "react-helmet";
 
-import Page from "../layouts/components/Page";
-import CommentPanel from "../components/CommentPanel";
-import TagGroup from "../components/TagGroup";
-import { ArticleNode } from "../models/ArticleNode";
-import { graphql, Link, navigate } from "gatsby";
+import Page from "@/layouts/components/Page";
+import CommentPanel from "@/components/CommentPanel";
+import TagGroup from "@/components/TagGroup";
+import { ArticleNode } from "@/models/ArticleNode";
+import { Link, navigate } from "gatsby";
 import { FaBackward } from "react-icons/fa";
 import styled from "styled-components";
-import I18nString from "../i18n/I18nString";
-import lang from "../i18n/lang";
-import LanguageSelector from "../components/LanguageSelector";
-import { getLanguage } from "../i18n/definition";
-import { ArticleGroups } from "../models/ArticleGroups";
+import I18nString from "@/i18n/I18nString";
+import lang from "@/i18n/lang";
+import LanguageSelector from "@/components/LanguageSelector";
+import { getLanguage } from "@/i18n/definition";;
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
+import TocPanel from "@/components/TocPanel";
+import { Row, Col } from "reactstrap";
 
 const MarkdownDisplay = styled.div`
 
-  h1, h2, h3, h4, h5, h6 {
+  /* h1, h2, h3, h4, h5, h6 {
     margin: 8px 0;
     padding-bottom: 0.3em;
     border-bottom: 1px solid;
@@ -38,35 +39,12 @@ const MarkdownDisplay = styled.div`
   h3 {
     font-size: 1.6em;
   }
-
-  table * {
-    padding: 4px;
-  }
-
-
-  table td {
-    border: 1px white solid;
-  }
-
+  */
 `;
 
 interface Props extends WithStoresProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-        description: string;
-        author: {
-          name: string;
-          url: string;
-        }
-      };
-    };
-    markdownRemark: ArticleNode;
-  };
   pageContext: {
-    id: string;
-    lang: string;
+    article: ArticleNode;
   };
   location: Location;
 }
@@ -83,10 +61,12 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
 
 
   const articleStore = props.useStore(ArticleStore);
-  const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
+
   const { language } = props.useStore(I18nStore);
 
-  const { frontmatter, html } = props.data.markdownRemark;
+  const { frontmatter, html } = props.pageContext.article;
+
+  const langPathMap = articleStore.getLangPathMap(frontmatter.id);
 
   return (
     <Page>
@@ -105,12 +85,11 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
               }))
           }
           changeLanguage={(lang) => navigate(langPathMap[lang])}
-          currentLanguage={getLanguage(props.pageContext.lang).name}
+          currentLanguage={getLanguage(frontmatter.lang).name}
           prompt={<I18nString id={root.selectLang} />}
         />
 
       </Headbar>
-
       {!frontmatter.hide_heading &&
         (
           <div>
@@ -120,44 +99,26 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           </div>
         )
       }
-      <MarkdownDisplay dangerouslySetInnerHTML={{ __html: html }} />
-      <hr />
+      <Row>
+        <Col md={frontmatter.no_toc ? 12 : 8} sm={12} >
+          <MarkdownDisplay className="markdown" dangerouslySetInnerHTML={{ __html: html }} />
+        </Col>
+        {
+          frontmatter.no_toc
+            ? null
+            : (
+              <Col md={4} className="d-none d-md-block" >
+                <TocPanel headings={props.pageContext.article.headings} />
+              </Col>
+            )
+        }
+
+      </Row>
       <CommentPanel
         language={language.gitalkLangId}
         articleId={frontmatter.id}
         articleTitle={frontmatter.title}
       />
-
     </Page>
   );
 });
-
-export const query = graphql`
-  query PageTemplateQuery(
-    $id: String!
-    $lang: String!
-  ) {
-    site {
-      siteMetadata {
-        title
-        description
-        author {
-          name
-          url
-        }
-      }
-    }
-    markdownRemark(frontmatter: { id: { eq: $id }, lang: { eq: $lang } }) {
-      html
-      excerpt
-      frontmatter {
-        date
-        id
-        title
-        tags
-        hide_heading
-        lang
-      }
-    }
-  }
-`;

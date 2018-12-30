@@ -33,7 +33,7 @@ export default function Footer(props: Props) {
       <p>
         <I18nString id={root.themedWith} replacements={[
           <a key="reactstrap" href={"https://reactstrap.github.io/"}> Reactstrap</a>,
-          <a key="theme" href={"https://bootswatch.com/darkly/"}> Bootswatch Darkly</a>,
+          <a key="theme" href={"https://bootswatch.com/flatly/"}> Bootswatch Flatly</a>,
         ]} />
       </p>
       <p>

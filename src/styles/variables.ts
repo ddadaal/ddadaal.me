@@ -31,5 +31,9 @@ export const dimensions = {
 };
 
 export const heights = {
-  header: 60,
+  header: 64,
 };
+
+export const colors = {
+  main: "#2C3E50",
+}

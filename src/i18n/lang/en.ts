@@ -16,7 +16,7 @@ export default {
     },
     footer: {
       codeBy: "Code proudly by {}",
-      themedWith: "Themed with {}, {} ",
+      themedWith: "Themed with {} and modified version of {} ",
       poweredBy: "Powered by {}, {} and {}",
       license: "All articles licensed under {}",
       madeWithLove: "Made with ❤",
@@ -27,6 +27,7 @@ export default {
     articlePage: {
       backToHome: "Back to home",
       selectLang: "Select a language for article",
+      toc: "Table of Contents"
     },
     articleItem: {
       availableLanguages: "Available in ",
@@ -35,17 +36,16 @@ export default {
       title: " Comments",
     },
     selfIntro: {
-      name: "Chen Junda",
       author: "Author",
-      brief: "Undergraduate student in Nanjing University since 2016",
-      major: "Major in Software Engineering",
+      university: "Nanjing University Software Institution",
+      grade: "Undergrade since 2016",
       resume: " Resume",
       mailToMe: " Mail to me",
       more: " More about me",
     },
     blogIntro: {
-      subtitle: "A personal blog",
-      description: "Articles on technologies, experiences and my daily life",
+      subtitle: " - A personal blog",
+      description: "Technologies, experiences and daily life",
       sourceCode: "Blog Source Code on GitHub",
       feedback: "Feedback",
     },

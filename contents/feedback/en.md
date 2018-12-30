@@ -6,6 +6,7 @@ date: "2018/12/19 23:45"
 title: "Feedback"
 ignored: true
 lang: en
+no_toc: true
 
 ---
 

@@ -11,10 +11,10 @@ VicBlog is a static personal blog built with Gatsby.
 ## Features
 
 - Static website with modern web technologies
-- Full Support for Progressive Web Application
-- Articles written on markdown
+- Progressive Web Application Support
 - Full i18n
-- Source code and contents separated
+- Styling with both [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
+- Articles written on markdown; Source code and contents separated
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 
@@ -35,6 +35,8 @@ yarn run build
 # **After build**, serve the production build locally
 yarn run serve
 ```
+
+## Firewall Notice
 
 Notice that a dependency **sharp** needs to pull [prebuilt binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. GitHub hosts release files on AWS, which is sometimes blocked in China. Failure to download these files will cause failure in installation and following steps.
 

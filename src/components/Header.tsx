@@ -12,7 +12,7 @@ import { Link } from "gatsby";
 import * as React from "react";
 import Icon from "../../assets/logo.svg";
 import styled from "styled-components";
-import { widths } from "../styles/variables";
+import { widths, heights, colors } from "../styles/variables";
 import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
@@ -56,13 +56,15 @@ function Branding(props: { title: string }) {
 }
 
 const NavbarDiv = styled.div`
-  background-color: #303030;
+  background-color: ${colors.main};
 
-  & > *{
+  & > nav {
     max-width: ${widths.xl}px;
     margin-left: auto;
     margin-right: auto;
+    padding: 8px 16px;
   }
+
 `;
 
 function atHomePage(pathname: string) {
@@ -111,6 +113,17 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
 
 });
 
+const StyledDropdownItem = styled(DropdownItem)`
+.nav-link {
+  color: black !important;
+
+}
+
+.nav-link:hover {
+  color: white !important;
+}
+`;
+
 class Header extends React.PureComponent<Props, State> {
 
   state = {
@@ -127,7 +140,7 @@ class Header extends React.PureComponent<Props, State> {
     const locationStore = this.props.useStore(LocationStore);
     return (
       <NavbarDiv>
-        <Navbar color="light" light={true} expand="md">
+        <Navbar dark={true} expand="md" className="bg-primary">
           <Branding title={this.props.title} />
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar={true}>
@@ -157,7 +170,7 @@ class Header extends React.PureComponent<Props, State> {
                 </DropdownToggle>
                 <DropdownMenu right={true}>
                   <PathItem
-                    Outer={DropdownItem}
+                    Outer={StyledDropdownItem}
                     id={"odyssey"}
                     currentPathname={locationStore.pathnameWithoutLanguage}
                   >
@@ -165,7 +178,7 @@ class Header extends React.PureComponent<Props, State> {
                     <I18nString id={root.about.odyssey} />
                   </PathItem>
                   <PathItem
-                    Outer={DropdownItem}
+                    Outer={StyledDropdownItem}
                     id={"about-project"}
                     currentPathname={locationStore.pathnameWithoutLanguage}
                   >
@@ -174,7 +187,7 @@ class Header extends React.PureComponent<Props, State> {
                   </PathItem>
 
                   <PathItem
-                    Outer={DropdownItem}
+                    Outer={StyledDropdownItem}
                     id={"about-me"}
                     currentPathname={locationStore.pathnameWithoutLanguage}
                   >

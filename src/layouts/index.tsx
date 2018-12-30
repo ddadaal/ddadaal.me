@@ -2,12 +2,12 @@ import * as React from "react";
 import Helmet from "react-helmet";
 
 import "prismjs/themes/prism-okaidia.css";
-import "../styles/bootstrap.css";
+import "@/styles/index.scss";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import ScrollToTop from "react-scroll-up";
-import icon512 from "../../assets/icon.png";
+import icon512 from "~/assets/icon.png";
 
 import styled from "styled-components";
 
@@ -15,7 +15,6 @@ import { StaticQuery, graphql } from "gatsby";
 import { FaArrowUp } from "react-icons/fa";
 
 import { IconContext } from "react-icons";
-import { ArticleGroups } from "../models/ArticleGroups";
 import StoreProvider from "@/stores/StoreProvider";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
@@ -49,16 +48,6 @@ const LayoutRoot = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  .icons {
-    margin-top: -2px;
-    margin-right: 4px;
-  }
-
-  .link-anchor {
-    fill: white;
-  }
-
 `;
 
 const query = graphql`
@@ -75,8 +64,12 @@ const query = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 250, truncate: true)
           html
+          headings {
+            depth
+            value
+          }
           id
           frontmatter {
             date
@@ -87,10 +80,12 @@ const query = graphql`
             tags
             hide_heading
             lang
+            no_toc
           }
         }
       }
-    }
+
+  }
   }
 `;
 

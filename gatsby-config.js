@@ -15,6 +15,12 @@ module.exports = {
   },
 
   plugins: [
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        includePaths: [path.join(__dirname, "src/styles")],
+      },
+    },
     "gatsby-plugin-layout",
     {
       resolve: 'gatsby-plugin-root-import',
@@ -49,7 +55,7 @@ module.exports = {
               ) {
                 edges {
                   node {
-                    excerpt(pruneLength: 250)
+                    excerpt(pruneLength: 250, truncate: true)
                     html
                     frontmatter {
                       title

@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { FaCode, FaRss, FaRegCommentDots } from "react-icons/fa";
-import StackedDiv from "../layouts/components/StackedDiv";
+import StackedDiv from "@/layouts/components/StackedDiv";
 import { Link } from "gatsby";
-import I18nString from "../i18n/I18nString";
-import lang from "../i18n/lang";
+import I18nString from "@/i18n/I18nString";
+import lang from "@/i18n/lang";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
+import CardHeader from "reactstrap/lib/CardHeader";
 
 interface Props extends WithStoresProps {
 
@@ -22,12 +23,7 @@ export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props:
 
   return (
     <Card>
-      <CardBody>
-        <CardTitle>VicBlog</CardTitle>
-        <CardSubtitle>
-          <I18nString id={root.subtitle} />
-        </CardSubtitle>
-      </CardBody>
+      <CardHeader>VicBlog <I18nString id={root.subtitle} /></CardHeader>
       <CardBody>
         <CardText>
           <I18nString id={root.description} />

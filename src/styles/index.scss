@@ -1,0 +1,43 @@
+// Markdown defaults
+
+@import "./bootswatch.scss";
+@import "./variables.scss";
+
+.markdown {
+  table {
+    @extend .table;
+  }
+
+  blockquote {
+    @extend .blockquote;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 8px 0;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 12px 0;
+
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+  }
+}
+
+.dropdown h6 {
+  color: $black;
+}
+
+.icons {
+  margin-top: -2px;
+  margin-right: 4px;
+}

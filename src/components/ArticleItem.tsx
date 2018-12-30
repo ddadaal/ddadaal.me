@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";
 import I18nString from "../i18n/I18nString";
@@ -31,6 +31,19 @@ const LangLink = styled(Link)`
   margin-right: 4px;
 `;
 
+const StyledH = styled.h2`
+  :hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
+
+const StyledTitle = (props: { children: React.ReactNode, to: string}) => {
+  return (
+    <StyledH onClick={() => navigate(props.to)}>{props.children}</StyledH>
+  )
+};
+
 export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
   const { title, excerpt, date, tags, useStore, id } = props;
   const { language } = useStore(I18nStore);
@@ -38,12 +51,11 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
 
   const langPaths = articleStore.getLangPathMap(id);
 
-
   return (
     <StyledPost>
-      <Link to={langPaths[language.id] || langPaths[Object.keys(langPaths)[0]]}>
-        <h1>{title}</h1>
-      </Link>
+      <StyledTitle to={langPaths[language.id] || Object.values(langPaths)[0]}>
+        {title}
+      </StyledTitle>
 
       <TagGroup tags={tags} />
       <p>{date}</p>
