@@ -15,21 +15,20 @@
   h1, h2, h3, h4, h5, h6 {
     margin: 8px 0;
     padding-bottom: 0.3em;
-    border-bottom: 1px solid;
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 2.2em;
     margin: 12px 0;
-
+    border-bottom: 1px solid lightgray;
   }
 
   h2 {
-    font-size: 1.8em;
+    font-size: 2em;
   }
 
   h3 {
-    font-size: 1.6em;
+    font-size: 1.8em;
   }
 }
 
@@ -41,3 +40,17 @@
   margin-top: -2px;
   margin-right: 4px;
 }
+
+  .active {
+    .nav-link {
+      color: $info !important;
+    }
+  }
+
+  .navbar-dark {
+    .navbar-nav {
+      .nav-link.active {
+        color: $info;
+      }
+    }
+  }

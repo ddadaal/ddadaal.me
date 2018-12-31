@@ -6309,10 +6309,10 @@ gatsby-transformer-sharp@^2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@^2.0.77:
-  version "2.0.77"
-  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.77.tgz#5bfb447fcba2087182c96bd1650f87303c3c274a"
-  integrity sha1-W/tEf8uiCHGCyWvRZQ+HMDw8J0o=
+gatsby@^2.0.78:
+  version "2.0.78"
+  resolved "http://registry.npm.taobao.org/gatsby/download/gatsby-2.0.78.tgz#d59ac4becddf8d13b70bb4fc00f5f1e0f37ef77c"
+  integrity sha1-1ZrEvs3fjRO3C7T8APXx4PN+93w=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -11428,11 +11428,6 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
-
-react-anchor-link-smooth-scroll@^1.0.11:
-  version "1.0.11"
-  resolved "http://registry.npm.taobao.org/react-anchor-link-smooth-scroll/download/react-anchor-link-smooth-scroll-1.0.11.tgz#e53f55b89382df0d85470ebd20e6b349d62eb19d"
-  integrity sha1-5T9VuJOC3w2FRw69IOazSdYusZ0=
 
 react-dev-utils@^4.2.1:
   version "4.2.1"

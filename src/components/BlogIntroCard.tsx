@@ -37,7 +37,7 @@ export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props:
             <FaRss />
             RSS
           </CardLink>
-          <Link className="card-link" to={articleStore.getNodeFromLang("feedback", i18nStore.state.language).path!}>
+          <Link className="card-link" to={articleStore.getNodeFromLang("feedback", i18nStore.state.language).path}>
             <FaRegCommentDots />
             <I18nString id={root.feedback} />
           </Link>

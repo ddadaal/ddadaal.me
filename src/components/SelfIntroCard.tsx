@@ -33,15 +33,11 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
           <I18nString id={root.grade} />
         </CardText>
         <StackedDiv>
-          <Link className="card-link" to={articleStore.getNodeFromLang("resume", i18nStore.state.language).path!}>
-            <FaFile />
-            <I18nString id={root.resume} />
-          </Link>
           <CardLink href="mailto://smallda@outlook.com">
             <FaEnvelope />
             <I18nString id={root.mailToMe} />
           </CardLink>
-          <Link className="card-link" to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path!}>
+          <Link className="card-link" to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path}>
             <FaEllipsisH />
             <I18nString id={root.more} />
           </Link>

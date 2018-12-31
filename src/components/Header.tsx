@@ -12,7 +12,7 @@ import { Link } from "gatsby";
 import * as React from "react";
 import Icon from "../../assets/logo.svg";
 import styled from "styled-components";
-import { widths, heights, colors } from "../styles/variables";
+import { widths, heights, colors, breakpoints } from "../styles/variables";
 import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
 import I18nString from "../i18n/I18nString";
 import lang from "../i18n/lang";
@@ -55,17 +55,7 @@ function Branding(props: { title: string }) {
   );
 }
 
-const NavbarDiv = styled.div`
-  background-color: ${colors.main};
 
-  & > nav {
-    max-width: ${widths.xl}px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 8px 16px;
-  }
-
-`;
 
 function atHomePage(pathname: string) {
   return pathname === "/" || pathname.match(/\/\d+/) !== null;
@@ -104,8 +94,8 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
   const node = articleStore.getNodeFromLang(id, language);
 
   return (
-    <Outer active={currentPathname.startsWith(removeLangFromPath(node.path!))}>
-      <NavLink to={node.path!}>
+    <Outer active={currentPathname.startsWith(removeLangFromPath(node.path))}>
+      <NavLink to={node.path}>
         {children}
       </NavLink>
     </Outer>
@@ -124,6 +114,21 @@ const StyledDropdownItem = styled(DropdownItem)`
 }
 `;
 
+const StyledNavbar = styled(Navbar)`
+
+  max-width: ${breakpoints.xl}px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px 16px;
+
+`;
+
+const Container = styled.div`
+  .placeholder {
+    height: ${heights.header}px;
+  }
+`;
+
 class Header extends React.PureComponent<Props, State> {
 
   state = {
@@ -139,70 +144,65 @@ class Header extends React.PureComponent<Props, State> {
   render() {
     const locationStore = this.props.useStore(LocationStore);
     return (
-      <NavbarDiv>
-        <Navbar dark={true} expand="md" className="bg-primary">
-          <Branding title={this.props.title} />
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar={true}>
-            <Nav className="ml-auto" navbar={true}>
-              <NavItem active={atHomePage(locationStore.pathnameWithoutLanguage)}>
-                <NavLink to="/">
-                  <FaHome />
-                  <I18nString id={root.home} />
-                </NavLink>
-              </NavItem>
-              <PathItem
-                Outer={NavItem}
-                id={"resume"}
-                currentPathname={locationStore.pathnameWithoutLanguage}
-              >
-                <FaFile />
-                <I18nString id={root.resume} />
-              </PathItem>
-              <UncontrolledDropdown nav={true} inNavbar={true}>
-                <DropdownToggle
-                  nav={true}
-                  caret={true}
-                  className={locationStore.pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
-                >
-                  <FaInfo />
-                  <I18nString id={root.about._root} />
-                </DropdownToggle>
-                <DropdownMenu right={true}>
-                  <PathItem
-                    Outer={StyledDropdownItem}
-                    id={"odyssey"}
-                    currentPathname={locationStore.pathnameWithoutLanguage}
+      <Container>
+        <div className="placeholder" />
+        <div className="fixed-top bg-primary">
+          <StyledNavbar dark={true} expand="md" className="bg-primary">
+            <Branding title={this.props.title} />
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar={true}>
+              <Nav className="ml-auto" navbar={true}>
+                <NavItem active={atHomePage(locationStore.pathnameWithoutLanguage)}>
+                  <NavLink to="/">
+                    <FaHome />
+                    <I18nString id={root.home} />
+                  </NavLink>
+                </NavItem>
+                <UncontrolledDropdown nav={true} inNavbar={true}>
+                  <DropdownToggle
+                    nav={true}
+                    caret={true}
+                    className={locationStore.pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
                   >
-                    <FaMale />
-                    <I18nString id={root.about.odyssey} />
-                  </PathItem>
-                  <PathItem
-                    Outer={StyledDropdownItem}
-                    id={"about-project"}
-                    currentPathname={locationStore.pathnameWithoutLanguage}
-                  >
-                    <FaGlobe />
-                    <I18nString id={root.about.website} />
-                  </PathItem>
+                    <FaInfo />
+                    <I18nString id={root.about._root} />
+                  </DropdownToggle>
+                  <DropdownMenu right={true}>
+                    <PathItem
+                      Outer={StyledDropdownItem}
+                      id={"odyssey"}
+                      currentPathname={locationStore.pathnameWithoutLanguage}
+                    >
+                      <FaMale />
+                      <I18nString id={root.about.odyssey} />
+                    </PathItem>
+                    <PathItem
+                      Outer={StyledDropdownItem}
+                      id={"about-project"}
+                      currentPathname={locationStore.pathnameWithoutLanguage}
+                    >
+                      <FaGlobe />
+                      <I18nString id={root.about.website} />
+                    </PathItem>
 
-                  <PathItem
-                    Outer={StyledDropdownItem}
-                    id={"about-me"}
-                    currentPathname={locationStore.pathnameWithoutLanguage}
-                  >
-                    <FaMale />
-                    <I18nString id={root.about.me} />
-                  </PathItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <NavItem>
-                <NavbarLanguageSelector />
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </NavbarDiv>
+                    <PathItem
+                      Outer={StyledDropdownItem}
+                      id={"about-me"}
+                      currentPathname={locationStore.pathnameWithoutLanguage}
+                    >
+                      <FaMale />
+                      <I18nString id={root.about.me} />
+                    </PathItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+                <NavItem>
+                  <NavbarLanguageSelector />
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </StyledNavbar>
+        </div>
+      </Container>
     );
   }
 

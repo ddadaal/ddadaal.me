@@ -17,6 +17,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/TocPanel";
 import { Row, Col } from "reactstrap";
+import { heights } from "@/styles/variables";
 
 const MarkdownDisplay = styled.div`
 

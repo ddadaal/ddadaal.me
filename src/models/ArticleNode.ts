@@ -5,7 +5,7 @@ export interface Heading {
 
 
 export interface ArticleNode {
-  path?: string;
+  path: string;
   excerpt: string;
   id: string;
   headings: Heading[];

@@ -40,7 +40,7 @@ export default {
       university: "Nanjing University Software Institution",
       grade: "Undergrade since 2016",
       resume: " Resume",
-      mailToMe: " Mail to me",
+      mailToMe: " smallda@outlook.com",
       more: " More about me",
     },
     blogIntro: {

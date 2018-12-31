@@ -6,6 +6,7 @@ date: "2018/12/19 23:45"
 title: "About Me"
 ignored: true
 lang: en
+hide_heading: false
 
 ---
 

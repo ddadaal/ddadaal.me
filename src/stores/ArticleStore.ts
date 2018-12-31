@@ -35,7 +35,7 @@ export class ArticleStore extends Store<IArticleStore> {
     const group = this.state.articleGroups[id];
     return Object.values(group).reduce((prev, curr) => ({
       ...prev,
-      [curr.frontmatter.lang]: curr.path!,
+      [curr.frontmatter.lang]: curr.path,
     }), {});
   }
 

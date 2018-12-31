@@ -40,7 +40,7 @@ export default {
       university: "南京大学软件学院",
       grade: "2016级本科生",
       resume: " 简历",
-      mailToMe: " 给我发电子邮件",
+      mailToMe: " smallda@outlook.com",
       more: " 更多关于我的信息",
     },
     blogIntro: {

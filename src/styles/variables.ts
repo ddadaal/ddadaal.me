@@ -36,4 +36,5 @@ export const heights = {
 
 export const colors = {
   main: "#2C3E50",
+  headerBg: "#2C3E50"
 }
