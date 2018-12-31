@@ -12,9 +12,9 @@ no_toc: true
 
 <div>
 
-I am eager to hear what you, dear readers, think about my website and even myself!
+I am eager to hear what you, dear readers, think about my website!
 
-If you have a word for anything about me, you can
+If you have a word, you can
 
 - write it down on the comment panel below, or
 - [contact me](/en/about/me#contacts)!

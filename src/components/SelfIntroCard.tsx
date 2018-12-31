@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
-import { FaEllipsisH, FaEnvelope, FaFile } from "react-icons/fa";
+import { FaEllipsisH, FaEnvelope, FaFile, FaGithub } from "react-icons/fa";
 import { Link } from "gatsby";
 import StackedDiv from "@/layouts/components/StackedDiv";
 import I18nString from "@/i18n/I18nString";
@@ -36,6 +36,10 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
           <CardLink href="mailto://smallda@outlook.com">
             <FaEnvelope />
             <I18nString id={root.mailToMe} />
+          </CardLink>
+          <CardLink href="https://github.com/viccrubs">
+            <FaGithub />
+            GitHub
           </CardLink>
           <Link className="card-link" to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path}>
             <FaEllipsisH />

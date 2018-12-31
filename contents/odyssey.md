@@ -19,9 +19,9 @@ Personal blog was a **FASHION** for Internet pioneers at the time when Internet 
 
 **Ordinary people** recorded their everyday lives, just as what we do in social media today.
 
-**Professionals** selflessly shared their experiences and knowledge, which learners fron around the world can learn and improve themselves as they wished, like MOOC but completely voluntary and free of charge. They even communicated a lot via comments, emails and IMs.
+**Professionals** selflessly shared their experiences and knowledge, with which learners from around the world can learn and improve themselves as they wished, like MOOC but completely voluntary and free of charge. They even communicated a lot via comments, emails and IMs.
 
-**Independent webmasters** even made profits from their sites with high-quality contents, , cooperation with companies or ads.
+**Independent webmasters** even made profits from their sites with high-quality contents, cooperation with companies or ads.
 
 **Some of blog owners**, however, styled their blogs with tons of animations, colors and weird shapes, impressing the viewers most of whom were just new to this fancy world.
 
@@ -33,21 +33,21 @@ It was 2010. At my age of 12, with the desire to have my own "free zone", I step
 
 ## 2010-2013: Exploration
 
-`lofter`, `QQZone`...
+lofter, QQZone...
 
 Several blog services from online providers are full of functions out of box and have no hassles to use them, but always left me unsatisfied: they make me feel **limited**.
 
-`WordPress`, [typecho](http://typecho.org/)...
+WordPress, [typecho](http://typecho.org/)...
 
 When I started to learn the skills to build a site,  I found self-hosting blog fancier and more attractive. I chose `typecho` for its simplicity and customizability. The joy, proud and satisfaction when I applied a **Windows 8 Metro** theme onto my `typecho` site hosted on [SAE](https://sae.sina.com.cn/?m=dashboard) in 2012 are still fresh and rememberable today.
 
-My days in junior high school were complemented by the exploration of and the attempts to crafting the best blog for me.
+My days in junior high school were complemented by the exploration of and the attempts to crafting the best blog for myself.
 
-## 2013: Spark that dimmed
+## 2013: Dimmed Spark
 
-The story doesn't end here. Despite of the rich functionalities and customizability, these blogs are still programmed by others. The **limits** still exist. It's not mine!
+The story doesn't end here. Despite of the rich functionalities and customizability, these blogs are still programmed by others. The **limits** still exist.
 
-As I grew up and learned more, I started to seek for **something truly mine, something that I am the true master**.
+As I grew up and learned more, I started to seek for **something truly mine, something that I am the true master of**.
 
 It was a hot day in my summer vacation, after the High School Entrance Exam. A seemingly crazy idea struke me.
 
@@ -60,7 +60,7 @@ It was a hot day in my summer vacation, after the High School Entrance Exam. A s
 **But it is impossible.**
 
 - I was only slightly capable of writing simple programs with VBS and C#.
-- HTML/CSS were aliens to me, not to mention full-fledged programming languages and frameworks.
+- HTML/CSS were aliens to me, not to mention full-fledge programming languages and framework.
 
 What's worse, high school was around the corner. If I would like to be admitted into a good university, I had to focus on study more than anything else. Not only self-building blog but the all the blog things must be compromised.
 
@@ -70,23 +70,6 @@ Building my own personal blog was an idea emerged at my age of 15....
 
 which was put aside.
 
-## 2016-
+## 2016-Now:
 
-TBD
-
-
-
-
-------------------------------------------------------
-
-After getting used to the life in university, I devoted my first winter vacation on this VicBlog, and another to rewrite it, and another to migrate to a static blog.
-
-Exactly the blog on your browser.
-
-It seems that my long-lasting dream finally comes true.
-
-**And I am gonna maintain and evolve it as long as I am alive.**
-
--------------------------------------------------------------------------------
-
-In Nanjing University, April 7, 2018
+To be continue...

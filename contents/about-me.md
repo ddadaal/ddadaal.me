@@ -13,15 +13,14 @@ hide_heading: false
 ## Basics
 
 - Male
-- Born in March 20, 1998
-- Hometown in Chongqing
+- Born in March 20, 1998 in Chongqing
 - Undergraduate of Software Engineering in Nanjing University since 2016.
-- Seeking for a girlfriend with determination to pursue her dream
+- Seeking for a girlfriend with a determination to pursue career
 
 ## Programming Preferences
 
-- Full Stack Web
-- Most used languages: C#, TypeScript, Java, Python
+- Web frontend and backend design and implementation
+- Most used languages: TypeScript, Java, C#, Python
 - Most used frameworks: React, ASP.NET Core, Spring Boot, Flask
 - Fields of interests: System, Architecture, Software Engineering
 
@@ -32,9 +31,10 @@ hide_heading: false
 - Love computer games. FPS mostly (Battlefield franchise main, ~~Overwatch~~, FarCry...) and others too (Mass Effect....).
 - Am a Microsoft fan.
 - Like playing badminton.
-- Prefer absolute or instrumental music.
-- Started playing electronic piano at the age of 4 and passed level 10 exam for amateurs at 11. Am picking it up again.
+- Prefer absolute or instrumental music. Interested in choir recently.
+- Started playing electronic piano at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recentlys.
 - Like to stay and play with friends.
+- Try to write good articles but...
 
 ## Devices in Use
 
@@ -47,11 +47,13 @@ hide_heading: false
 
 ## Contacts
 
-- QQ: 540232834
-- Email: [smallda@outlook.com](mailto:smallda@outlook.com)
-- LinkedIn: [https://www.linkedin.com/in/chenjunda/](https://www.linkedin.com/in/chenjunda/)
-- Github: [https://github.com/viccrubs](https://github.com/viccrubs)
-- Steam & Origin & UPlay & Battle.net(CN, Overwatch only): VicCrubs
-- Zhihu: https://zhihu.com/people/VicCrubs
-- Quora: https://www.quora.com/profile/Chen-Junda-3
-- Netease Cloud Music: VicCrubs
+| Channel | Contact |
+| --- | -- |
+| QQ | 540232834 |
+| Email | [smallda@outlook.com](mailto:smallda@outlook.com) |
+| LinkedIn | [https://www.linkedin.com/in/chenjunda/](https://www.linkedin.com/in/chenjunda/) |
+| Github| [https://github.com/viccrubs](https://github.com/viccrubs) |
+| Steam & Origin & UPlay & Battle.net(CN, Overwatch only) | VicCrubs |
+| Zhihu|  https://zhihu.com/people/VicCrubs |
+| Quora| https://www.quora.com/profile/Chen-Junda-3 |
+| Netease Cloud Music | VicCrubs |
