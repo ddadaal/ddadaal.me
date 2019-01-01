@@ -9,6 +9,7 @@ import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
+import { StatisticsStore } from "@/stores/StatisticsStore";
 
 interface Props extends WithStoresProps {
 
@@ -16,10 +17,11 @@ interface Props extends WithStoresProps {
 
 const root = lang.blogIntro;
 
-export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props: Props) {
+export default withStores(ArticleStore, I18nStore, StatisticsStore)(function BlogIntroCard(props: Props) {
 
   const articleStore = props.useStore(ArticleStore);
   const i18nStore = props.useStore(I18nStore);
+  const statisticsStore = props.useStore(StatisticsStore);
 
   return (
     <Card>

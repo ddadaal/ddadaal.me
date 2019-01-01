@@ -9,7 +9,7 @@ lang: en
 
 ---
 
-## Preface
+# Preface
 
 VicBlog was a story, an odyssey, that has started at 2010 and still goes on.
 
@@ -31,7 +31,7 @@ A blog is one's free zone.
 
 It was 2010. At my age of 12, with the desire to have my own "free zone", I stepped onto the road to seek my dream blog.
 
-## 2010-2013: Exploration
+# 2010-2013: Exploration
 
 lofter, QQZone...
 
@@ -43,7 +43,7 @@ When I started to learn the skills to build a site,  I found self-hosting blog f
 
 My days in junior high school were complemented by the exploration of and the attempts to crafting the best blog for myself.
 
-## 2013: Dimmed Spark
+# 2013: Dimmed Spark
 
 The story doesn't end here. Despite of the rich functionalities and customizability, these blogs are still programmed by others. The **limits** still exist.
 
@@ -70,6 +70,6 @@ Building my own personal blog was an idea emerged at my age of 15....
 
 which was put aside.
 
-## 2016-Now:
+# 2016-Now:
 
-To be continue...
+To be continued...

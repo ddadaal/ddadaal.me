@@ -1,6 +1,9 @@
 'use strict'
 
+const dayjs = require("dayjs");
+
 const path = require("path");
+
 
 module.exports = {
   siteMetadata: {
@@ -11,9 +14,8 @@ module.exports = {
       name: 'Chen Junda',
       url: 'https://viccrubs.me',
       email: 'smallda@outlook.com'
-    }
+    },
   },
-
   plugins: [
     {
       resolve: `gatsby-plugin-sass`,
@@ -51,7 +53,7 @@ module.exports = {
               allMarkdownRemark(
                 limit: 1000,
                 sort: { order: DESC, fields: [frontmatter___date] },
-                filter: { frontmatter: { ignored: { ne: true }, draft: { ne: true } }}
+                filter: { frontmatter: { ignored: { ne: true } }}
               ) {
                 edges {
                   node {
@@ -115,6 +117,7 @@ module.exports = {
           },
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
+          `gatsby-remark-emoji`,
           'gatsby-remark-smartypants',
           {
             resolve: 'gatsby-remark-images',
@@ -166,6 +169,7 @@ module.exports = {
         icon: "assets/icon.png", // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    'gatsby-plugin-sitemap'
   ]
 }

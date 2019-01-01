@@ -10,21 +10,21 @@ hide_heading: false
 
 ---
 
-## Basics
+# Basics
 
 - Male
 - Born in March 20, 1998 in Chongqing
 - Undergraduate of Software Engineering in Nanjing University since 2016.
 - Seeking for a girlfriend with a determination to pursue career
 
-## Programming Preferences
+# Programming Preferences
 
 - Web frontend and backend design and implementation
 - Most used languages: TypeScript, Java, C#, Python
 - Most used frameworks: React, ASP.NET Core, Spring Boot, Flask
 - Fields of interests: System, Architecture, Software Engineering
 
-## I...
+# I...
 
 - Love computers (both hardware and software) and any tech things.
 - Love programming.
@@ -36,7 +36,7 @@ hide_heading: false
 - Like to stay and play with friends.
 - Try to write good articles but...
 
-## Devices in Use
+# Devices in Use
 
 | Device | Specs | Usage |
 | -- | -- | -- |
@@ -45,7 +45,7 @@ hide_heading: false
 | Lenovo ThinkPad X1 Carbon 2018 | i7 8550U + 16 GB + 512 GB PM981 + 2K HDR Display | Mobile workstation |
 | Huami Sportwatch 1 | - | Notification center at wrist |
 
-## Contacts
+# Contacts
 
 | Channel | Contact |
 | --- | -- |

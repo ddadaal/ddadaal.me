@@ -1,13 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 import Link from "gatsby-link";
-import I18nString from "../i18n/I18nString";
-import lang from "../i18n/lang";
+import I18nString from "@/i18n/I18nString";
+import lang from "@/i18n/lang";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 
 interface Props extends WithStoresProps {
+
 }
 
 const Container = styled.div`
@@ -25,6 +26,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
 
   return (
     <Container>
+
       <p>
         <I18nString id={root.codeBy} replacements={[
           <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,

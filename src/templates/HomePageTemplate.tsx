@@ -5,20 +5,21 @@ import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import styled from "styled-components";
 import { ArticleNode } from "@/models/ArticleNode";
 import { range } from "@/utils/Array";
-import BlogIntroCard from "@/components/BlogIntroCard";
-import SelfIntroCard from "@/components/SelfIntroCard";
+import BlogIntroCard from "@/components/cards/BlogIntroCard";
+import SelfIntroCard from "@/components/cards/SelfIntroCard";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import Page from "@/layouts/components/Page";
 import { Row, Col } from "reactstrap";
+import StatisticsCard from "@/components/cards/StatisticsCard";
 
 
 interface Props extends WithStoresProps {
   pageContext: {
     index: number;
     pageCount: number;
-    items: ArticleNode[];
+    ids: string[];
   };
 }
 
@@ -57,18 +58,22 @@ function PageIndicator(props: { pageCount: number, current: number }) {
 }
 
 export default withStores(I18nStore, ArticleStore)(function Index(props: Props) {
-  const { pageCount, index, items } = props.pageContext;
+  const { pageCount, index, ids } = props.pageContext;
   const { language } = props.useStore(I18nStore);
   const articleStore = props.useStore(ArticleStore);
+
+  const items = ids.map((id) => {
+    return articleStore.state.articleGroups[id];
+  });
+
   return (
     <Page>
       <Row>
         <Col md={8} xs={12}>
           <div className="blog-posts">
             {items
-              .filter((node) => node.frontmatter.title.length > 0)
-              .map((node) => {
-                const postInThisLanguage = articleStore.getNodeFromLang(node.frontmatter.id, language);
+              .map((nodes) => {
+                const postInThisLanguage = articleStore.getNodeFromLang(nodes[0].frontmatter.id, language);
                 return (
                   <ArticleItem
                     key={postInThisLanguage.id}
@@ -77,6 +82,7 @@ export default withStores(I18nStore, ArticleStore)(function Index(props: Props) 
                     excerpt={postInThisLanguage.excerpt}
                     date={postInThisLanguage.frontmatter.date}
                     tags={postInThisLanguage.frontmatter.tags}
+                    timeToRead={postInThisLanguage.timeToRead}
                   />
                 );
 
@@ -89,6 +95,7 @@ export default withStores(I18nStore, ArticleStore)(function Index(props: Props) 
           <Sidebar>
             <BlogIntroCard />
             <SelfIntroCard />
+            <StatisticsCard />
           </Sidebar>
         </Col>
       </Row>

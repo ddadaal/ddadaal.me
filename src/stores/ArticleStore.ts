@@ -2,26 +2,27 @@ import Store from "./Store";
 import { ArticleNode } from "@/models/ArticleNode";
 import { ArticleGroups } from "@/models/ArticleGroups";
 import { Language } from "@/i18n/definition";
+import { SiteMetadata } from "@/models/SiteMetadata";
 
 interface IArticleStore {
   articleGroups: ArticleGroups;
 }
 
-export function createArticleGroups(allMarkdownRemark: { edges:  { node: ArticleNode }[] }) {
-  const articleGroups = {};
-  allMarkdownRemark.edges.forEach(({ node }) => {
+export function createArticleGroups(articles: ArticleNode[]) {
+  const articleGroups = {} as ArticleGroups;
+  articles.forEach((node) => {
     const id = node.frontmatter.id;
     articleGroups[id] = articleGroups[id] || [];
     node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}`;
     articleGroups[id].push(node);
   });
+
   return articleGroups;
 }
 
 export class ArticleStore extends Store<IArticleStore> {
   constructor(articleGroups: ArticleGroups) {
     super();
-
     this.state = { articleGroups };
   }
 

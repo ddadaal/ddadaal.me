@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
 
 import "gitalk/dist/gitalk.css";
-import I18nString from "../i18n/I18nString";
-import lang from "../i18n/lang";
+import I18nString from "@/i18n/I18nString";
+import lang from "@/i18n/lang";
 
 interface Props {
   articleId: string;

@@ -3,6 +3,8 @@ const path = require("path");
 const indexTemplate = path.resolve("src/templates/HomePageTemplate.tsx");
 const articleTemplate = path.resolve(`src/templates/ArticlePageTemplate.tsx`);
 
+const dayjs = require("dayjs");
+
 function createPaginatedHomepages(createPage, articleGroups) {
 
   const generatePath = (index) => {
@@ -33,42 +35,32 @@ function createPaginatedHomepages(createPage, articleGroups) {
         skip: index * pageSize,
         pageCount,
         index: index + 1,
-        items: notIgnoredGroups.slice(index * pageSize, index * pageSize + pageSize),
+        ids: notIgnoredGroups.slice(index * pageSize, index * pageSize + pageSize).map((x) => x.frontmatter.id),
       },
     })
   });
 
 }
 
-
 exports.createPages = async ({ actions, graphql }) => {
 
+
   const { createPage } = actions;
+
+
 
   const result = await graphql(`{
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { draft: { ne: true } }}
     ) {
       edges {
         node {
-          excerpt(pruneLength: 250, truncate: true)
-          html
-          headings {
-            depth
-            value
-          }
-          id
           frontmatter {
-            date
             id
-            absolute_path
-            title
-            ignored
-            tags
-            hide_heading
             lang
-            no_toc
+            ignored
+            date
+            absolute_path
           }
         }
       }
@@ -78,8 +70,6 @@ exports.createPages = async ({ actions, graphql }) => {
   if (result.errors) {
     throw result.errors;
   }
-
-
 
   const articleGroups = {};
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
@@ -91,7 +81,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   createPaginatedHomepages(
     createPage,
-    articleGroups
+    articleGroups,
   );
 
   Object.values(articleGroups).forEach((nodes) => {
@@ -101,7 +91,8 @@ exports.createPages = async ({ actions, graphql }) => {
         path,
         component: articleTemplate,
         context: {
-          article: node,
+          id: node.frontmatter.id,
+          lang: node.frontmatter.lang,
         }
       });
     });

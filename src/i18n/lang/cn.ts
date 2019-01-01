@@ -31,9 +31,11 @@ export default {
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
       toc: "目录",
+      timeToRead: "预计阅读时间：{}分钟"
     },
     articleItem: {
       availableLanguages: "可用语言：",
+      timeToRead: "预计阅读时间：{}分钟"
     },
     selfIntro: {
       author: "作者",
@@ -48,6 +50,14 @@ export default {
       description: "技术，感悟，代码和日常生活",
       sourceCode: "在GitHub上的博客源码",
       feedback: "反馈",
+      lastUpdated: "上次更新于{}",
+    },
+    statistics: {
+      title: "统计信息",
+      key: "统计项",
+      value: "统计值",
+      articleCount: "总文章数",
+      lastUpdated: "最后更新"
     },
   },
 };

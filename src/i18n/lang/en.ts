@@ -27,10 +27,12 @@ export default {
     articlePage: {
       backToHome: "Back to home",
       selectLang: "Select a language for article",
-      toc: "Table of Contents"
+      toc: "Table of Contents",
+      timeToRead: "Estimated time to read: {} minutes",
     },
     articleItem: {
       availableLanguages: "Available in ",
+      timeToRead: "Estimated time to read: {} minutes",
     },
     comments: {
       title: " Comments",
@@ -48,6 +50,14 @@ export default {
       description: "Technologies, experiences and daily life",
       sourceCode: "Blog Source Code on GitHub",
       feedback: "Feedback",
+      lastUpdated: "Last updated in {}",
+    },
+    statistics: {
+      title: "Statistics",
+      key: "Key",
+      value: "Value",
+      articleCount: "Number of articles: {}",
+      lastUpdated: "Last updated in {}"
     },
   },
 };

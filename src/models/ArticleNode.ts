@@ -9,6 +9,10 @@ export interface ArticleNode {
   excerpt: string;
   id: string;
   headings: Heading[];
+  timeToRead: number;
+  wordCount: {
+    words: number
+  };
   frontmatter: {
     absolute_path?: string;
     date: string;

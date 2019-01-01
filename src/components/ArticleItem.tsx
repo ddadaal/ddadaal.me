@@ -2,9 +2,9 @@ import * as React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";
-import I18nString from "../i18n/I18nString";
-import lang from "../i18n/lang";
-import { getLanguage } from "../i18n/definition";
+import I18nString from "@/i18n/I18nString";
+import lang from "@/i18n/lang";
+import { getLanguage } from "@/i18n/definition";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
@@ -15,6 +15,7 @@ interface Props extends WithStoresProps {
   excerpt: string;
   date: string;
   tags: string[];
+  timeToRead: number;
 }
 
 const StyledPost = styled.div`
@@ -38,7 +39,7 @@ const StyledH = styled.h2`
   }
 `;
 
-const StyledTitle = (props: { children: React.ReactNode, to: string}) => {
+const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
   return (
     <StyledH onClick={() => navigate(props.to)}>{props.children}</StyledH>
   )
@@ -58,7 +59,11 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
       </StyledTitle>
 
       <TagGroup tags={tags} />
-      <p>{date}</p>
+      <p>{date} | <I18nString
+        id={root.timeToRead}
+        replacements={[props.timeToRead]}
+      />
+      </p>
       <p>{excerpt}</p>
       <p>
         <I18nString id={root.availableLanguages} />

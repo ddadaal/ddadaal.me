@@ -45,7 +45,8 @@ const MarkdownDisplay = styled.div`
 
 interface Props extends WithStoresProps {
   pageContext: {
-    article: ArticleNode;
+    id: string;
+    lang: string;
   };
   location: Location;
 }
@@ -63,11 +64,16 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
 
   const articleStore = props.useStore(ArticleStore);
 
-  const { language } = props.useStore(I18nStore);
+  const i18nStore = props.useStore(I18nStore);
 
-  const { frontmatter, html } = props.pageContext.article;
+  const { id, lang } = props.pageContext;
 
-  const langPathMap = articleStore.getLangPathMap(frontmatter.id);
+  const language = i18nStore.getLanguage(lang)!;
+
+
+  const { frontmatter, html, timeToRead, headings } = articleStore.getNodeFromLang(id, language);
+
+  const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
   return (
     <Page>
@@ -96,7 +102,10 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           <div>
             <h1>{frontmatter.title}</h1>
             <TagGroup tags={frontmatter.tags} />
-            {frontmatter.date && <p>{frontmatter.date}</p>}
+            <p>{frontmatter.date} | <I18nString
+              id={root.timeToRead}
+              replacements={[timeToRead]}
+            /></p>
           </div>
         )
       }
@@ -109,7 +118,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
             ? null
             : (
               <Col md={4} className="d-none d-md-block" >
-                <TocPanel headings={props.pageContext.article.headings} />
+                <TocPanel headings={headings} />
               </Col>
             )
         }

@@ -10,14 +10,14 @@ import {
 } from "reactstrap";
 import { Link } from "gatsby";
 import * as React from "react";
-import Icon from "../../assets/logo.svg";
+import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
-import { widths, heights, colors, breakpoints } from "../styles/variables";
+import { widths, heights, colors, breakpoints } from "@/styles/variables";
 import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
-import I18nString from "../i18n/I18nString";
-import lang from "../i18n/lang";
+import I18nString from "@/i18n/I18nString";
+import lang from "@/i18n/lang";
 import LanguageSelector from "./LanguageSelector";
-import { ArticleGroups } from "../models/ArticleGroups";
+import { ArticleGroups } from "@/models/ArticleGroups";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
@@ -32,9 +32,9 @@ interface State {
   isOpen: boolean;
 }
 
-function NavLink(props: { to: string, children: React.ReactNode }) {
+function NavLink(props: { to: string, children: React.ReactNode, onClick(): void }) {
   return (
-    <Link to={props.to} className="nav-link">
+    <Link to={props.to} onClick={props.onClick} className="nav-link">
       {props.children}
     </Link>
   );
@@ -85,9 +85,10 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
   children?: React.ReactNode,
   id: string,
   currentPathname: string,
+  onClick(): void,
 } & WithStoresProps) => {
 
-  const { Outer, children, currentPathname, id, useStore } = props;
+  const { Outer, children, currentPathname, id, useStore, onClick } = props;
   const articleStore = useStore(ArticleStore);
 
   const { language } = useStore(I18nStore);
@@ -95,7 +96,7 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
 
   return (
     <Outer active={currentPathname.startsWith(removeLangFromPath(node.path))}>
-      <NavLink to={node.path}>
+      <NavLink to={node.path} onClick={onClick}>
         {children}
       </NavLink>
     </Outer>
@@ -141,6 +142,10 @@ class Header extends React.PureComponent<Props, State> {
     });
   }
 
+  close = () => {
+    this.setState({ isOpen: false });
+  }
+
   render() {
     const locationStore = this.props.useStore(LocationStore);
 
@@ -156,12 +161,13 @@ class Header extends React.PureComponent<Props, State> {
             <Collapse isOpen={this.state.isOpen} navbar={true}>
               <Nav className="ml-auto" navbar={true}>
                 <NavItem active={atHomePage(pathnameWithoutLanguage)}>
-                  <NavLink to="/">
+                  <NavLink to="/" onClick={this.close}>
                     <FaHome />
                     <I18nString id={root.home} />
                   </NavLink>
                 </NavItem>
                 <PathItem
+                  onClick={this.close}
                   Outer={NavItem}
                   id={"resume"}
                   currentPathname={pathnameWithoutLanguage}
@@ -180,6 +186,7 @@ class Header extends React.PureComponent<Props, State> {
                   </DropdownToggle>
                   <DropdownMenu right={true}>
                     <PathItem
+                      onClick={this.close}
                       Outer={StyledDropdownItem}
                       id={"odyssey"}
                       currentPathname={pathnameWithoutLanguage}
@@ -188,6 +195,7 @@ class Header extends React.PureComponent<Props, State> {
                       <I18nString id={root.about.odyssey} />
                     </PathItem>
                     <PathItem
+                      onClick={this.close}
                       Outer={StyledDropdownItem}
                       id={"about-project"}
                       currentPathname={pathnameWithoutLanguage}
@@ -197,6 +205,7 @@ class Header extends React.PureComponent<Props, State> {
                     </PathItem>
 
                     <PathItem
+                      onClick={this.close}
                       Outer={StyledDropdownItem}
                       id={"about-me"}
                       currentPathname={pathnameWithoutLanguage}

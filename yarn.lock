@@ -798,6 +798,13 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
+"@babel/runtime@^7.2.0":
+  version "7.2.0"
+  resolved "http://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
+  integrity sha1-sD5C7t31iY4AZG5MhA+ge6jcrX8=
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "http://registry.npm.taobao.org/@babel/template/download/@babel/template-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
@@ -1092,10 +1099,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-helmet@^5.0.7":
-  version "5.0.7"
-  resolved "http://registry.npm.taobao.org/@types/react-helmet/download/@types/react-helmet-5.0.7.tgz#1cae65b2c37fe54cf56f40cd388836d4619dbc51"
-  integrity sha1-HK5lssN/5Uz1b0DNOIg21GGdvFE=
+"@types/react-helmet@^5.0.8":
+  version "5.0.8"
+  resolved "http://registry.npm.taobao.org/@types/react-helmet/download/@types/react-helmet-5.0.8.tgz#f080eea6652e44f60b4574463d238f268d81d9af"
+  integrity sha1-8IDupmUuRPYLRXRGPSOPJo2B2a8=
   dependencies:
     "@types/react" "*"
 
@@ -4106,6 +4113,11 @@ dateformat@^2.0.0:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
   integrity sha1-QGXiATz5+5Ft39gu+1Bq1MZ2kGI=
 
+dayjs@^1.7.8:
+  version "1.7.8"
+  resolved "http://registry.npm.taobao.org/dayjs/download/dayjs-1.7.8.tgz#05d288f8d4b2140110cc1519cfe317d6f1f11a3c"
+  integrity sha1-BdKI+NSyFAEQzBUZz+MX1vHxGjw=
+
 debug@2, debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.3, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9, debug@~2.6.4, debug@~2.6.6:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -4774,6 +4786,11 @@ emoji-regex@^6.5.1:
   version "6.5.1"
   resolved "http://registry.npm.taobao.org/emoji-regex/download/emoji-regex-6.5.1.tgz#9baea929b155565c11ea41c6626eaa65cef992c2"
   integrity sha1-m66pKbFVVlwR6kHGYm6qZc75ksI=
+
+emojione@^3.1.2:
+  version "3.1.7"
+  resolved "http://registry.npm.taobao.org/emojione/download/emojione-3.1.7.tgz#2d3c725c696f179c9dde3acb655c621ee9429b1e"
+  integrity sha1-LTxyXGlvF5yd3jrLZVxiHulCmx4=
 
 emojis-list@^2.0.0:
   version "2.1.0"
@@ -6159,6 +6176,16 @@ gatsby-plugin-sharp@^2.0.17:
     sharp "^0.21.0"
     svgo "^0.7.2"
 
+gatsby-plugin-sitemap@^2.0.4:
+  version "2.0.4"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-sitemap/download/gatsby-plugin-sitemap-2.0.4.tgz#cb7221f8f9d3458b3efcf4aaffd140c108b18688"
+  integrity sha1-y3Ih+PnTRYs+/PSq/9FAwQixhog=
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    minimatch "^3.0.4"
+    pify "^3.0.0"
+    sitemap "^1.12.0"
+
 gatsby-plugin-styled-components@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.0.4.tgz#f34546bd8b80b87f4b5acddfcced4a900da8482d"
@@ -6208,6 +6235,14 @@ gatsby-remark-copy-linked-files@^2.0.8:
     probe-image-size "^4.0.0"
     unist-util-visit "^1.3.0"
 
+gatsby-remark-emoji@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/gatsby-remark-emoji/download/gatsby-remark-emoji-0.0.2.tgz#fcac2ccbb854c17f122ffb7f4faf20764a11b359"
+  integrity sha1-/Kwsy7hUwX8SL/t/T68gdkoRs1k=
+  dependencies:
+    bluebird "^3.5.0"
+    emojione "^3.1.2"
+
 gatsby-remark-images@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.1.tgz#01ac72451841ba5b82b9b260fe99ffca005c1eb4"
@@ -6221,10 +6256,10 @@ gatsby-remark-images@^3.0.1:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.0.1"
 
-gatsby-remark-prismjs@^3.1.4:
-  version "3.1.4"
-  resolved "http://registry.npm.taobao.org/gatsby-remark-prismjs/download/gatsby-remark-prismjs-3.1.4.tgz#c19875f2a4e2d882f6df350c6d8e834a64f0066c"
-  integrity sha1-wZh18qTi2IL23zUMbY6DSmTwBmw=
+gatsby-remark-prismjs@^3.2.0:
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/gatsby-remark-prismjs/download/gatsby-remark-prismjs-3.2.0.tgz#1bf44bd5973c4bf40baa7855139402f923bfaea4"
+  integrity sha1-G/RL1Zc8S/QLqnhVE5QC+SO/rqQ=
   dependencies:
     "@babel/runtime" "^7.0.0"
     parse-numeric-range "^0.0.2"
@@ -11566,11 +11601,12 @@ react@^16.7.0:
     prop-types "^15.6.2"
     scheduler "^0.12.0"
 
-reactstrap@^7.0.0:
-  version "7.0.0"
-  resolved "http://registry.npm.taobao.org/reactstrap/download/reactstrap-7.0.0.tgz#7e55c99f7212243f77868cf8dd870003f041c9e1"
-  integrity sha1-flXJn3ISJD93hoz43YcAA/BByeE=
+reactstrap@^7.0.2:
+  version "7.0.2"
+  resolved "http://registry.npm.taobao.org/reactstrap/download/reactstrap-7.0.2.tgz#c390224913f11c7ccbd98f56f3d850ce50bda9a9"
+  integrity sha1-w5AiSRPxHHzL2Y9W89hQzlC9qak=
   dependencies:
+    "@babel/runtime" "^7.2.0"
     classnames "^2.2.3"
     lodash.isfunction "^3.0.9"
     lodash.isobject "^3.0.2"
@@ -12687,6 +12723,14 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+sitemap@^1.12.0:
+  version "1.13.0"
+  resolved "http://registry.npm.taobao.org/sitemap/download/sitemap-1.13.0.tgz#569cbe2180202926a62a266cd3de09c9ceb43f83"
+  integrity sha1-Vpy+IYAgKSamKiZs094Jyc60P4M=
+  dependencies:
+    underscore "^1.7.0"
+    url-join "^1.1.0"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -14007,6 +14051,11 @@ underscore.string@^3.3.4:
     sprintf-js "^1.0.3"
     util-deprecate "^1.0.2"
 
+underscore@^1.7.0:
+  version "1.9.1"
+  resolved "http://registry.npm.taobao.org/underscore/download/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
+  integrity sha1-BtzjSg5op7q8KbNluOdLiSUgOWE=
+
 unherit@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/unherit/-/unherit-1.1.0.tgz#6b9aaedfbf73df1756ad9e316dd981885840cd7d"
@@ -14252,6 +14301,11 @@ urix@^0.1.0, urix@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+
+url-join@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/url-join/download/url-join-1.1.0.tgz#741c6c2f4596c4830d6718460920d0c92202dc78"
+  integrity sha1-dBxsL0WWxIMNZxhGCSDQySIC3Hg=
 
 url-join@^4.0.0:
   version "4.0.0"
