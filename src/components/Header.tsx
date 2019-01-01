@@ -143,6 +143,9 @@ class Header extends React.PureComponent<Props, State> {
 
   render() {
     const locationStore = this.props.useStore(LocationStore);
+
+    const { pathnameWithoutLanguage } = locationStore;
+
     return (
       <Container>
         <div className="placeholder" />
@@ -152,17 +155,25 @@ class Header extends React.PureComponent<Props, State> {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar={true}>
               <Nav className="ml-auto" navbar={true}>
-                <NavItem active={atHomePage(locationStore.pathnameWithoutLanguage)}>
+                <NavItem active={atHomePage(pathnameWithoutLanguage)}>
                   <NavLink to="/">
                     <FaHome />
                     <I18nString id={root.home} />
                   </NavLink>
                 </NavItem>
+                <PathItem
+                  Outer={NavItem}
+                  id={"resume"}
+                  currentPathname={pathnameWithoutLanguage}
+                >
+                  <FaFile />
+                  <I18nString id={root.resume} />
+                </PathItem>
                 <UncontrolledDropdown nav={true} inNavbar={true}>
                   <DropdownToggle
                     nav={true}
                     caret={true}
-                    className={locationStore.pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
+                    className={pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
                   >
                     <FaInfo />
                     <I18nString id={root.about._root} />
@@ -171,7 +182,7 @@ class Header extends React.PureComponent<Props, State> {
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"odyssey"}
-                      currentPathname={locationStore.pathnameWithoutLanguage}
+                      currentPathname={pathnameWithoutLanguage}
                     >
                       <FaMale />
                       <I18nString id={root.about.odyssey} />
@@ -179,7 +190,7 @@ class Header extends React.PureComponent<Props, State> {
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"about-project"}
-                      currentPathname={locationStore.pathnameWithoutLanguage}
+                      currentPathname={pathnameWithoutLanguage}
                     >
                       <FaGlobe />
                       <I18nString id={root.about.website} />
@@ -188,7 +199,7 @@ class Header extends React.PureComponent<Props, State> {
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"about-me"}
-                      currentPathname={locationStore.pathnameWithoutLanguage}
+                      currentPathname={pathnameWithoutLanguage}
                     >
                       <FaMale />
                       <I18nString id={root.about.me} />

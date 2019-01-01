@@ -15,7 +15,7 @@ export default {
       },
     },
     footer: {
-      codeBy: "Code proudly by {}",
+      codeBy: "Coded proudly by {}",
       themedWith: "Themed with {} and modified version of {} ",
       poweredBy: "Powered by {}, {} and {}",
       license: "All articles licensed under {}",

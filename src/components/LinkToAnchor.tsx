@@ -6,7 +6,7 @@ interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLA
 
 export default class LinkToAnchor extends React.Component<Props> {
 
-  smoothScroll = (e) => {
+  smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
     let offset = () => 0;
     if (typeof this.props.offset !== 'undefined') {
@@ -17,7 +17,7 @@ export default class LinkToAnchor extends React.Component<Props> {
       }
     }
 
-    const id = e.currentTarget.getAttribute('href').slice(1);
+    const id = e.currentTarget.getAttribute('href')!.slice(1);
     window.scroll({
       top: document.getElementById(id)!.offsetTop - offset(),
       behavior: 'smooth'

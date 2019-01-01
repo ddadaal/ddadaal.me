@@ -160,8 +160,8 @@ module.exports = {
         name: "VicBlog",
         short_name: "VicBlog",
         start_url: "/",
-        background_color: "#222222",
-        theme_color: "#3498DB",
+        background_color: "#FFFFFF",
+        theme_color: "#4E96D8",
         display: "minimal-ui",
         icon: "assets/icon.png", // This path is relative to the root of the site.
       },

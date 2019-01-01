@@ -37,9 +37,13 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
             <FaEnvelope />
             <I18nString id={root.mailToMe} />
           </CardLink>
+          <Link className="card-link" to={articleStore.getNodeFromLang("resume", i18nStore.state.language).path}>
+            <FaFile />
+            <I18nString id={root.resume} />
+          </Link>
           <CardLink href="https://github.com/viccrubs">
             <FaGithub />
-            GitHub
+            {" "}GitHub
           </CardLink>
           <Link className="card-link" to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path}>
             <FaEllipsisH />

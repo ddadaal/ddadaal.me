@@ -43,8 +43,6 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
 exports.createPages = async ({ actions, graphql }) => {
 
-  console.log("Create pages");
-
   const { createPage } = actions;
 
   const result = await graphql(`{
