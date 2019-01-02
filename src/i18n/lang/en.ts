@@ -29,10 +29,15 @@ export default {
       selectLang: "Select a language for article",
       toc: "Table of Contents",
       timeToRead: "Estimated time to read: {} minutes",
+      wordCount: "{} Words",
+    },
+    articleStatistics: {
+      timeToRead: "Estimated time to read: {} minutes",
+      wordCount: "{} Words",
     },
     articleItem: {
       availableLanguages: "Available in ",
-      timeToRead: "Estimated time to read: {} minutes",
+
     },
     comments: {
       title: " Comments",

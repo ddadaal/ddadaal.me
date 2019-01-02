@@ -42,9 +42,7 @@ export default class RootLayout extends React.Component<Props, {}> {
 
   locationStore = new LocationStore(this.props.location);
 
-  articleStore = new ArticleStore(
-    this.props.articleGroups,
-  );
+  articleStore = new ArticleStore(this.props.articleGroups);
 
   statisticsStore = new StatisticsStore(this.props.statistics);
 

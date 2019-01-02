@@ -7,4 +7,5 @@ export interface SiteMetadata {
     url: string;
     email: string;
   }
+  lastUpdated: string;
 }

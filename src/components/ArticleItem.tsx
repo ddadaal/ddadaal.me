@@ -8,6 +8,7 @@ import { getLanguage } from "@/i18n/definition";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
+import ArticleStatistics from "./ArticleStatistics";
 
 interface Props extends WithStoresProps {
   id: string;
@@ -16,6 +17,7 @@ interface Props extends WithStoresProps {
   date: string;
   tags: string[];
   timeToRead: number;
+  wordCount: number;
 }
 
 const StyledPost = styled.div`
@@ -46,7 +48,7 @@ const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
 };
 
 export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
-  const { title, excerpt, date, tags, useStore, id } = props;
+  const { title, excerpt, date, tags, useStore, id, wordCount, timeToRead } = props;
   const { language } = useStore(I18nStore);
   const articleStore = useStore(ArticleStore);
 
@@ -59,11 +61,9 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
       </StyledTitle>
 
       <TagGroup tags={tags} />
-      <p>{date} | <I18nString
-        id={root.timeToRead}
-        replacements={[props.timeToRead]}
-      />
-      </p>
+      <ArticleStatistics date={date} wordCount={wordCount} timeToRead={timeToRead} />
+
+
       <p>{excerpt}</p>
       <p>
         <I18nString id={root.availableLanguages} />

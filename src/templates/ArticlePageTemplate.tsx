@@ -4,7 +4,7 @@ import Helmet from "react-helmet";
 import Page from "@/layouts/components/Page";
 import CommentPanel from "@/components/CommentPanel";
 import TagGroup from "@/components/TagGroup";
-import { ArticleNode } from "@/models/ArticleNode";
+import { ArticleNode, Heading } from "@/models/ArticleNode";
 import { Link, navigate } from "gatsby";
 import { FaBackward } from "react-icons/fa";
 import styled from "styled-components";
@@ -18,6 +18,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/TocPanel";
 import { Row, Col } from "reactstrap";
 import { heights } from "@/styles/variables";
+import ArticleStatistics from "@/components/ArticleStatistics";
 
 const MarkdownDisplay = styled.div`
 
@@ -47,6 +48,8 @@ interface Props extends WithStoresProps {
   pageContext: {
     id: string;
     lang: string;
+    html: string;
+    headings: Heading[];
   };
   location: Location;
 }
@@ -66,12 +69,12 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
 
   const i18nStore = props.useStore(I18nStore);
 
-  const { id, lang } = props.pageContext;
+  const { id, lang, html, headings } = props.pageContext;
 
   const language = i18nStore.getLanguage(lang)!;
 
 
-  const { frontmatter, html, timeToRead, headings } = articleStore.getNodeFromLang(id, language);
+  const { frontmatter, timeToRead, wordCount: { words: wordCount } } = articleStore.getNodeFromLang(id, language);
 
   const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
@@ -102,10 +105,13 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           <div>
             <h1>{frontmatter.title}</h1>
             <TagGroup tags={frontmatter.tags} />
-            <p>{frontmatter.date} | <I18nString
-              id={root.timeToRead}
-              replacements={[timeToRead]}
-            /></p>
+            <ArticleStatistics
+              date={frontmatter.date}
+              wordCount={wordCount}
+              timeToRead={timeToRead}
+            />
+
+
           </div>
         )
       }

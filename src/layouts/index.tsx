@@ -21,8 +21,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-const lastUpdated = dayjs().format("YYYY/MM/DD HH:mm:ss");
-
 
 const query = graphql`
   query IndexLayoutQuery {
@@ -30,21 +28,17 @@ const query = graphql`
       siteMetadata {
         title
         description
+        lastUpdated
       }
     }
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
+    allMarkdownRemark {
       edges {
         node {
           excerpt(pruneLength: 250, truncate: true)
-          html
           timeToRead
-          headings {
-            depth
-            value
+          wordCount {
+            words
           }
-          id
           frontmatter {
             date
             id
@@ -70,7 +64,7 @@ export default function (props: Props) {
         const articleGroups = createArticleGroups(data.allMarkdownRemark.edges.map(({ node }) => node));
 
         const statistics = {
-          lastUpdated,
+          lastUpdated: data.site.siteMetadata.lastUpdated,
           totalArticleCount: Object.keys(articleGroups).length,
         };
 

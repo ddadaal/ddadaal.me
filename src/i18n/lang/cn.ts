@@ -24,6 +24,10 @@ export default {
     languageSelector: {
       select: "选择一个网站语言",
     },
+    articleStatistics: {
+      timeToRead: "预计阅读时间：{}分钟",
+      wordCount: "共有{}字",
+    },
     comments: {
       title: " 评论",
     },
@@ -31,11 +35,10 @@ export default {
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
       toc: "目录",
-      timeToRead: "预计阅读时间：{}分钟"
+
     },
     articleItem: {
       availableLanguages: "可用语言：",
-      timeToRead: "预计阅读时间：{}分钟"
     },
     selfIntro: {
       author: "作者",

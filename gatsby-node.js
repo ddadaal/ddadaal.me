@@ -62,6 +62,11 @@ exports.createPages = async ({ actions, graphql }) => {
             date
             absolute_path
           }
+          html
+          headings {
+            depth
+            value
+          }
         }
       }
     }
@@ -93,6 +98,8 @@ exports.createPages = async ({ actions, graphql }) => {
         context: {
           id: node.frontmatter.id,
           lang: node.frontmatter.lang,
+          html: node.html,
+          headings: node.headings,
         }
       });
     });

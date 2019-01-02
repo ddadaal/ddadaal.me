@@ -7,11 +7,9 @@ export interface Heading {
 export interface ArticleNode {
   path: string;
   excerpt: string;
-  id: string;
-  headings: Heading[];
   timeToRead: number;
   wordCount: {
-    words: number
+    words: number,
   };
   frontmatter: {
     absolute_path?: string;
@@ -24,5 +22,4 @@ export interface ArticleNode {
     lang: string;
     no_toc?: boolean;
   };
-  html: string;
 }

@@ -1,3 +1,11 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "LineCount.excludes": [
+    "**/.vscode/**",
+    "**/node_modules/**",
+    "**/.cache/**",
+    "**/contents/**",
+    "**/public/**",
+    "**/yarn.lock"
+  ]
 }
