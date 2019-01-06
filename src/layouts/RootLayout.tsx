@@ -42,7 +42,7 @@ export default class RootLayout extends React.Component<Props, {}> {
 
   locationStore = new LocationStore(this.props.location);
 
-  articleStore = new ArticleStore(this.props.articleGroups);
+  articleStore = new ArticleStore(this.props.articleGroups, this.props.siteMetadata.siteUrl);
 
   statisticsStore = new StatisticsStore(this.props.statistics);
 
@@ -66,7 +66,8 @@ export default class RootLayout extends React.Component<Props, {}> {
               title={siteMetadata.title}
               meta={[
                 { name: "description", content: siteMetadata.description },
-                { name: "keywords", content: "gatsbyjs, gatsby, javascript, sample, something" },
+                { name: "keywords", content: "gatsbyjs, gatsby, react, viccrubs, vicblog, blog" },
+                { name: "og:description", content: siteMetadata.description },
               ]}
               link={[
                 { rel: "icon", type: "image/png", href: icon512 },

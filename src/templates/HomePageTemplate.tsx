@@ -13,6 +13,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import Page from "@/layouts/components/Page";
 import { Row, Col } from "reactstrap";
 import StatisticsCard from "@/components/cards/StatisticsCard";
+import Helmet from "react-helmet";
 
 
 interface Props extends WithStoresProps {
@@ -59,7 +60,7 @@ function PageIndicator(props: { pageCount: number, current: number }) {
 
 export default withStores(I18nStore, ArticleStore)(function Index(props: Props) {
   const { pageCount, index, ids } = props.pageContext;
-  const { language } = props.useStore(I18nStore);
+  const { language, allLanguages } = props.useStore(I18nStore);
   const articleStore = props.useStore(ArticleStore);
 
   const items = ids.map((id) => {
@@ -68,6 +69,18 @@ export default withStores(I18nStore, ArticleStore)(function Index(props: Props) 
 
   return (
     <Page>
+      <Helmet meta={[
+        { name: "og:title", content: "VicBlog" },
+        { name: "og:url", content: articleStore.state.baseUrl },
+        { name: "og:site_name", content: "VicBlog" },
+        { name: "og:locale", content: language.detailedId },
+        ...allLanguages
+          .filter((x) => x !== language)
+          .map((x) => ({
+            name: "og:locale:alternate",
+            content: x.detailedId
+          }))
+      ]} />
       <Row>
         <Col md={8} xs={12}>
           <div className="blog-posts">

@@ -2,6 +2,7 @@ export default {
   id: "cn",
   gitalkLangId: "zh-CN",
   languages: ["cn", "zh-CN"],
+  detailedId: "zh-CN",
   name: "简体中文",
   definitions: {
     headers: {

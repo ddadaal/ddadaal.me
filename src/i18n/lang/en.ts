@@ -2,6 +2,7 @@ export default {
   id: "en",
   gitalkLangId: "en",
   languages: [ "en", "en-US" ],
+  detailedId: "en-US",
   name: "English",
   definitions: {
     headers: {
@@ -28,8 +29,6 @@ export default {
       backToHome: "Back to home",
       selectLang: "Select a language for article",
       toc: "Table of Contents",
-      timeToRead: "Estimated time to read: {} minutes",
-      wordCount: "{} Words",
     },
     articleStatistics: {
       timeToRead: "Estimated time to read: {} minutes",

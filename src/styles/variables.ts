@@ -10,6 +10,7 @@ export const widths = {
   md: 720,
   lg: 960,
   xl: 1140,
+  mainContent: 1140,
 };
 
 export const dimensions = {

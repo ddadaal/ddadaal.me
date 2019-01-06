@@ -4,6 +4,8 @@ const dayjs = require("dayjs");
 
 const path = require("path");
 
+require("dayjs/locale/zh-cn");
+
 
 module.exports = {
   siteMetadata: {
@@ -15,7 +17,7 @@ module.exports = {
       url: 'https://viccrubs.me',
       email: 'smallda@outlook.com'
     },
-    lastUpdated: dayjs().format("YYYY/MM/DD HH:mm:ss"),
+    lastUpdated: dayjs().locale("zh-cn").format("YYYY/MM/DD HH:mm:ss ZZ"),
   },
   plugins: [
     {

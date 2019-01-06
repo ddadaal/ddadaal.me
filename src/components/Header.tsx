@@ -117,7 +117,7 @@ const StyledDropdownItem = styled(DropdownItem)`
 
 const StyledNavbar = styled(Navbar)`
 
-  max-width: ${breakpoints.xl}px;
+  max-width: ${widths.mainContent}px;
     margin-left: auto;
     margin-right: auto;
     padding: 4px 16px;

@@ -12,8 +12,8 @@ interface Props {
 const root = lang.articleStatistics;
 
 const Span = styled.span`
-  margin-left: 4px;
-  padding-left: 4px;
+  margin-left: 8px;
+  padding-left: 8px;
   border-left: 1px solid black;
 `;
 
@@ -22,8 +22,8 @@ export default function ArticleStatistics(props: Props) {
   return (
     <p>
       {date}
-      <Span><I18nString id={root.timeToRead} replacements={[props.timeToRead]} /></Span>
-      <Span><I18nString id={root.wordCount} replacements={[props.wordCount]} /></Span>
+      <Span><I18nString id={root.timeToRead} replacements={[timeToRead]} /></Span>
+      <Span><I18nString id={root.wordCount} replacements={[wordCount]} /></Span>
     </p>
   )
 }

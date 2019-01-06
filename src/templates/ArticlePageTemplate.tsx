@@ -74,13 +74,33 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
   const language = i18nStore.getLanguage(lang)!;
 
 
-  const { frontmatter, timeToRead, wordCount: { words: wordCount } } = articleStore.getNodeFromLang(id, language);
+  const { frontmatter, timeToRead, path, wordCount: { words: wordCount } } = articleStore.getNodeFromLang(id, language);
 
   const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
   return (
     <Page>
-      <Helmet title={`${frontmatter.title} - VicBlog`} />
+      <Helmet
+        title={`${frontmatter.title} - VicBlog`}
+        meta={[
+          { name: "og:title", content: frontmatter.title },
+          { name: "og:type", content: "article" },
+          { name: "og:url", content: `${articleStore.state.baseUrl}${path}` },
+          { name: "og:locale", content: language.detailedId },
+          ...Object.keys(langPathMap)
+            .filter((x) => x !== lang)
+            .map((lang) => ({
+              name: "og:locale:alternate",
+              content: i18nStore.getLanguage(lang)!.detailedId
+            })),
+          { name: "og:site_name", content: "VicBlog" },
+          { name: "og:article:published_time", content: frontmatter.date },
+          ...(frontmatter.tags || []).map((x) => ({
+            name: "og:article:tag",
+            content: x
+            }))
+        ]}
+      />
       <Headbar>
         <Link to={"/"}>
           <FaBackward />
@@ -116,14 +136,13 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
         )
       }
       <Row>
-        <Col md={frontmatter.no_toc ? 12 : 8} sm={12} >
+        <Col md={frontmatter.no_toc ? 12 : 9} sm={12} >
           <MarkdownDisplay className="markdown" dangerouslySetInnerHTML={{ __html: html }} />
         </Col>
         {
-          frontmatter.no_toc
-            ? null
-            : (
-              <Col md={4} className="d-none d-md-block" >
+          !frontmatter.no_toc
+            && (
+              <Col md={3} className="d-none d-md-block" >
                 <TocPanel headings={headings} />
               </Col>
             )

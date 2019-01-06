@@ -20,7 +20,7 @@ const StyledContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  max-width: ${widths.xl}px;
+  max-width: ${widths.mainContent}px;
 `;
 
 export default function Page(props: PageProps) {

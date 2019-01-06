@@ -29,6 +29,7 @@ const query = graphql`
         title
         description
         lastUpdated
+        siteUrl
       }
     }
     allMarkdownRemark {

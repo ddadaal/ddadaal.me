@@ -6,6 +6,7 @@ import { SiteMetadata } from "@/models/SiteMetadata";
 
 interface IArticleStore {
   articleGroups: ArticleGroups;
+  baseUrl: string;
 }
 
 export function createArticleGroups(articles: ArticleNode[]) {
@@ -21,9 +22,9 @@ export function createArticleGroups(articles: ArticleNode[]) {
 }
 
 export class ArticleStore extends Store<IArticleStore> {
-  constructor(articleGroups: ArticleGroups) {
+  constructor(articleGroups: ArticleGroups, baseUrl: string) {
     super();
-    this.state = { articleGroups };
+    this.state = { articleGroups, baseUrl };
   }
 
   getNodeFromLang(id: string, language: Language) {
