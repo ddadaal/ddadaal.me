@@ -20,6 +20,7 @@ import { Row, Col } from "reactstrap";
 import { heights } from "@/styles/variables";
 import ArticleStatistics from "@/components/ArticleStatistics";
 
+
 const MarkdownDisplay = styled.div`
 
   /* h1, h2, h3, h4, h5, h6 {
@@ -64,7 +65,6 @@ const Headbar = styled.div`
 
 export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(props: Props) {
 
-
   const articleStore = props.useStore(ArticleStore);
 
   const i18nStore = props.useStore(I18nStore);
@@ -98,7 +98,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           ...(frontmatter.tags || []).map((x) => ({
             name: "og:article:tag",
             content: x
-            }))
+          }))
         ]}
       />
       <Headbar>
@@ -141,11 +141,11 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
         </Col>
         {
           !frontmatter.no_toc
-            && (
-              <Col md={3} className="d-none d-md-block" >
-                <TocPanel headings={headings} />
-              </Col>
-            )
+          && (
+            <Col md={3} className="d-none d-md-block" >
+              <TocPanel headings={headings} />
+            </Col>
+          )
         }
 
       </Row>

@@ -1,6 +1,7 @@
 export interface Heading {
   depth: number;
   value: string;
+  slug: string;
 }
 
 

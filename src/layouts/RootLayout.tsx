@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "react-scroll-up";
 import icon512 from "~/assets/icon.png";
 import { FaArrowUp } from "react-icons/fa";
+import NewContentPop from "@/components/NewContentPop";
 
 const LayoutMain = styled.main`
   display: flex;
@@ -74,6 +75,7 @@ export default class RootLayout extends React.Component<Props, {}> {
                 { rel: "shortcut icon", type: "image/png", href: icon512 },
               ]}
             />
+            <NewContentPop />
             <Header title={siteMetadata.title} />
             <LayoutMain>{children}</LayoutMain>
             <ScrollToTop showUnder={160}>

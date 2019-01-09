@@ -9,15 +9,10 @@ import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ArticleStatistics from "./ArticleStatistics";
+import { ArticleNode } from "@/models/ArticleNode";
 
 interface Props extends WithStoresProps {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  tags: string[];
-  timeToRead: number;
-  wordCount: number;
+  article: ArticleNode;
 }
 
 const StyledPost = styled.div`
@@ -48,7 +43,8 @@ const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
 };
 
 export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
-  const { title, excerpt, date, tags, useStore, id, wordCount, timeToRead } = props;
+  const { article, useStore } = props;
+  const { frontmatter: { id, title, tags, date }, timeToRead, wordCount: { words }, excerpt } = article;
   const { language } = useStore(I18nStore);
   const articleStore = useStore(ArticleStore);
 
@@ -61,7 +57,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
       </StyledTitle>
 
       <TagGroup tags={tags} />
-      <ArticleStatistics date={date} wordCount={wordCount} timeToRead={timeToRead} />
+      <ArticleStatistics date={date} wordCount={words} timeToRead={timeToRead} />
 
 
       <p>{excerpt}</p>

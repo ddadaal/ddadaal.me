@@ -9,6 +9,7 @@ import { Link } from "gatsby";
 import LinkToAnchor from "./LinkToAnchor";
 import { heights } from "@/styles/variables";
 
+
 interface Props {
   headings: Heading[];
   className?: string;
@@ -26,22 +27,31 @@ const Container = styled.div`
 
 `;
 
-const Item = styled(LinkToAnchor)<{ depth: number }>`
+const Item = styled(LinkToAnchor) <{ depth: number; isTop: boolean }>`
   padding-left: ${props => props.depth * 16}px;
   :hover {
     cursor: pointer;
   }
   display: block;
   padding-top: 2px;
+
+  text-decoration: ${props => props.isTop ? "underline" : "unset"};
 `;
 
 interface State {
   topHeadingIndex: number;
 }
 
-function isElementOutViewport(el: Element) {
-  var rect = el.getBoundingClientRect();
-  return rect.bottom < 0 || rect.right < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight;
+function getTop(heading: Heading) {
+  return document.getElementById(heading.slug)!.getBoundingClientRect().top - heights.header;
+}
+
+function isWindowBetween(el1: Heading, el2: Heading) {
+  try {
+    return getTop(el1) < 2 && getTop(el2) >= 2;
+  } catch (e) {
+    return false;
+  }
 }
 
 export default class TocPanel extends React.Component<Props, State>  {
@@ -50,50 +60,49 @@ export default class TocPanel extends React.Component<Props, State>  {
     topHeadingIndex: 0,
   };
 
-  timer: NodeJS.Timeout | undefined = undefined;
-
   onScroll = (ev) => {
-    // if (typeof this.timer === 'number') {
-    //   clearTimeout(this.timer);
-    // }
-    // // this.timer = setTimeout(() => {
-    // const items = document.getElementsByClassName("toc-item");
-    // for (let i = 0; i < items.length; i++) {
-    //   const item = items[i];
-    //   const element = document.getElementById(item.id.slice(3))!;
-    //   if (!isElementOutViewport(element)) {
-    //     this.setState({ topHeadingIndex: i });
+    // this.timer = setTimeout(() => {
 
-    //     break;
-    //   }
-    // }
-    // }, 200);
+    const { headings } = this.props;
+
+    if (headings.length == 0) { return; }
+    if (getTop(headings[0]) > 0) {
+      this.setState({ topHeadingIndex: 0 });
+      return;
+    }
+
+    for (let i = 1; i < headings.length; i++) {
+
+      if (isWindowBetween(headings[i - 1], headings[i])) {
+        this.setState({ topHeadingIndex: i - 1 });
+        return;
+      }
+
+
+    }
+    this.setState({ topHeadingIndex: headings.length - 1 });
   };
 
-  // componentDidMount() {
-  //   window.addEventListener("scroll", this.onScroll, false);
-  // }
+  componentDidMount() {
+    window.addEventListener("scroll", this.onScroll, false);
+  }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("scroll", this.onScroll);
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+  }
 
   render() {
-    const slugger = new GithubSlugger();
-
     return (
       <Container className={this.props.className}>
         <p><MdToc /><I18nString id={root.toc} /></p>
         {this.props.headings.map((heading, i) => {
-          const slugged = slugger.slug(heading.value);
           return (
             <Item
               className="toc-item"
-              id={`${i}`}
               key={i}
-              href={`#${slugged}`}
+              href={`#${heading.slug}`}
               depth={heading.depth - 1}
-            // active={i === this.state.topHeadingIndex}
+              isTop={i === this.state.topHeadingIndex}
             >
               {heading.value}
             </Item>

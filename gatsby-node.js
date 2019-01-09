@@ -3,6 +3,8 @@ const path = require("path");
 const indexTemplate = path.resolve("src/templates/HomePageTemplate.tsx");
 const articleTemplate = path.resolve(`src/templates/ArticlePageTemplate.tsx`);
 
+const GitHubSlugger = require("github-slugger");
+
 const dayjs = require("dayjs");
 
 function createPaginatedHomepages(createPage, articleGroups) {
@@ -92,6 +94,7 @@ exports.createPages = async ({ actions, graphql }) => {
   Object.values(articleGroups).forEach((nodes) => {
     nodes.forEach((node) => {
       const path = node.path;
+      const slugger = new GitHubSlugger();
       createPage({
         path,
         component: articleTemplate,
@@ -99,7 +102,10 @@ exports.createPages = async ({ actions, graphql }) => {
           id: node.frontmatter.id,
           lang: node.frontmatter.lang,
           html: node.html,
-          headings: node.headings,
+          headings: node.headings.map((x) => ({
+            ...x,
+            slug: slugger.slug(x.value),
+          })),
         }
       });
     });

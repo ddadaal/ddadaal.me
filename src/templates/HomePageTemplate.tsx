@@ -86,18 +86,9 @@ export default withStores(I18nStore, ArticleStore)(function Index(props: Props) 
           <div className="blog-posts">
             {items
               .map((nodes) => {
-                const postInThisLanguage = articleStore.getNodeFromLang(nodes[0].frontmatter.id, language);
+                const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, language);
                 return (
-                  <ArticleItem
-                    wordCount={postInThisLanguage.wordCount.words}
-                    key={postInThisLanguage.frontmatter.id}
-                    id={postInThisLanguage.frontmatter.id}
-                    title={postInThisLanguage.frontmatter.title}
-                    excerpt={postInThisLanguage.excerpt}
-                    date={postInThisLanguage.frontmatter.date}
-                    tags={postInThisLanguage.frontmatter.tags}
-                    timeToRead={postInThisLanguage.timeToRead}
-                  />
+                  <ArticleItem article={node} key={node.frontmatter.id}/>
                 );
 
               })

@@ -1,3 +1,8 @@
 exports.onServiceWorkerUpdateFound = () => {
-  console.log("New contents found. Refresh your browser to see them :D.")
+  const elements = document.getElementsByClassName("newcontentpop");
+
+  if (elements.length > 0) {
+    elements[0].classList.remove("no-display");
+  }
+
 };

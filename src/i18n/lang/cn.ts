@@ -5,6 +5,10 @@ export default {
   detailedId: "zh-CN",
   name: "简体中文",
   definitions: {
+    newContentPop: {
+      refresh: "刷新",
+      other: "以查看最新内容 :D",
+    },
     headers: {
       home: "主页",
       resume: "简历",

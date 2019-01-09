@@ -5,6 +5,10 @@ export default {
   detailedId: "en-US",
   name: "English",
   definitions: {
+    newContentPop: {
+      refresh: "Refresh",
+      other: " to see new contents :D",
+    },
     headers: {
       home: "Home",
       resume: "Resume",
