@@ -2,6 +2,7 @@ import * as React from "react";
 import { heights } from "@/styles/variables";
 
 interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+  targetAnchor: string;
 }
 
 function absoluteTopPosition(el: Element) {
@@ -10,15 +11,13 @@ function absoluteTopPosition(el: Element) {
   return rect.top + scrollTop;
 }
 
-export default class LinkToAnchor extends React.Component<Props> {
+export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
 
   smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
 
-
-    const id = e.currentTarget.getAttribute('href')!.slice(1);
     window.scroll({
-      top: absoluteTopPosition(document.getElementById(id)!) - heights.header,
+      top: absoluteTopPosition(document.getElementById(this.props.targetAnchor)!) - heights.header,
       behavior: 'smooth'
     });
 
@@ -27,8 +26,9 @@ export default class LinkToAnchor extends React.Component<Props> {
     }
   }
   render() {
+    const { targetAnchor, ...rest } = this.props;
     return (
-      <a {...this.props} onClick={this.smoothScroll} />
+      <a {...rest} onClick={this.smoothScroll} />
     )
   }
 }

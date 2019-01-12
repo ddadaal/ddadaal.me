@@ -56,32 +56,3 @@
   }
 
 
-.newcontentpop {
-  position: fixed;
-
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  animation: popenter 0.5s forwards;
-  z-index: 2000;
-  background-color: white;
-  padding: 8px;
-  border: 1px solid gray;
-  border-radius: 16px;
-
-
-}
-.no-display {
-  display: none;
-}
-
-
-
-@keyframes popenter {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: 30px;
-  }
-}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import TagGroup from "./TagGroup";
+import TagGroup from "../TagGroup";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import { getLanguage } from "@/i18n/definition";

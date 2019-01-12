@@ -65,7 +65,7 @@ export default function (props: Props) {
         const articleGroups = createArticleGroups(data.allMarkdownRemark.edges.map(({ node }) => node));
 
         const statistics = {
-          lastUpdated: data.site.siteMetadata.lastUpdated,
+          lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),
           totalArticleCount: Object.keys(articleGroups).length,
         };
 

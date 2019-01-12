@@ -8,7 +8,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 
 interface Props extends WithStoresProps {
-
+  className?: string;
 }
 
 const Container = styled.div`
@@ -25,8 +25,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
   const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.language).path;
 
   return (
-    <Container>
-
+    <Container className={props.className}>
       <p>
         <I18nString id={root.codeBy} replacements={[
           <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,

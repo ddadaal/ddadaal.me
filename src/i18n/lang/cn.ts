@@ -47,7 +47,7 @@ export default {
     },
     selfIntro: {
       author: "作者",
-      university: "南京大学软件学院",
+      university: "南京大学软件工程",
       grade: "2016级本科生",
       resume: " 简历",
       mailToMe: " smallda@outlook.com",

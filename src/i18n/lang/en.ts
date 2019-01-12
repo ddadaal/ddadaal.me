@@ -47,7 +47,7 @@ export default {
     },
     selfIntro: {
       author: "Author",
-      university: "Nanjing University Software Institution",
+      university: "Nanjing University Software Engineering",
       grade: "Undergrade since 2016",
       resume: " Resume",
       mailToMe: " smallda@outlook.com",
@@ -64,8 +64,8 @@ export default {
       title: "Statistics",
       key: "Key",
       value: "Value",
-      articleCount: "Number of articles: {}",
-      lastUpdated: "Last updated in {}"
+      articleCount: "Number of articles",
+      lastUpdated: "Last updated"
     },
   },
 };

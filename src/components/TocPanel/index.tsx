@@ -1,13 +1,11 @@
 import * as React from "react";
 import { Heading } from "@/models/ArticleNode";
-import GithubSlugger from "github-slugger";
 import { MdToc } from "react-icons/md";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import styled from "styled-components";
-import { Link } from "gatsby";
-import LinkToAnchor from "./LinkToAnchor";
 import { heights } from "@/styles/variables";
+import TocPanelLink from "./TocPanelLink";
 
 
 interface Props {
@@ -19,23 +17,15 @@ const root = lang.articlePage;
 
 const Container = styled.div`
   border-left: 1px solid lightgray;
-  padding-left: 16px;
 
   position: sticky;
   top: ${heights.header + 32}px;
   z-index: 1020;
 
-`;
-
-const Item = styled(LinkToAnchor) <{ depth: number; isTop: boolean }>`
-  padding-left: ${props => props.depth * 16}px;
-  :hover {
-    cursor: pointer;
+  &> p {
+    margin-left: 4px;
   }
-  display: block;
-  padding-top: 2px;
 
-  text-decoration: ${props => props.isTop ? "underline" : "unset"};
 `;
 
 interface State {
@@ -97,15 +87,14 @@ export default class TocPanel extends React.Component<Props, State>  {
         <p><MdToc /><I18nString id={root.toc} /></p>
         {this.props.headings.map((heading, i) => {
           return (
-            <Item
-              className="toc-item"
+            <TocPanelLink
               key={i}
-              href={`#${heading.slug}`}
-              depth={heading.depth - 1}
-              isTop={i === this.state.topHeadingIndex}
+              targetAnchor={heading.slug}
+              depth={heading.depth}
+              active={i === this.state.topHeadingIndex}
             >
               {heading.value}
-            </Item>
+            </TocPanelLink>
           );
         })}
       </Container>

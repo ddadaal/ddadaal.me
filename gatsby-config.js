@@ -17,7 +17,7 @@ module.exports = {
       url: 'https://viccrubs.me',
       email: 'smallda@outlook.com'
     },
-    lastUpdated: dayjs().format("YYYY/MM/DD HH:mm:ss ZZ"),
+    lastUpdated: dayjs().format(),
   },
   plugins: [
     {

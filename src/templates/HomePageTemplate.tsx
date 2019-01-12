@@ -1,6 +1,6 @@
 import * as React from "react";
 import { navigate } from "gatsby";
-import ArticleItem from "@/components/ArticleItem";
+import ArticleItem from "@/components/Article/ArticleItem";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import styled from "styled-components";
 import { ArticleNode } from "@/models/ArticleNode";
@@ -14,6 +14,8 @@ import Page from "@/layouts/components/Page";
 import { Row, Col } from "reactstrap";
 import StatisticsCard from "@/components/cards/StatisticsCard";
 import Helmet from "react-helmet";
+import PageIndicator from "@/components/PageIndicator";
+import Footer from "@/components/Footer";
 
 
 interface Props extends WithStoresProps {
@@ -30,33 +32,6 @@ const Sidebar = styled.div`
   }
 
 `;
-
-function toPage(pageIndex: number) {
-  const path = "/" + (pageIndex === 1 ? "" : pageIndex);
-  return () => navigate(path);
-}
-
-function PageIndicator(props: { pageCount: number, current: number }) {
-  const { pageCount, current } = props;
-
-  return (
-    <Pagination aria-label="Page">
-      <PaginationItem>
-        <PaginationLink disabled={current === 1} previous={true} onClick={toPage(current - 1)} />
-      </PaginationItem>
-      {range(1, pageCount + 1).map((x) =>
-        <PaginationItem active={current === x} key={x}>
-          <PaginationLink onClick={toPage(x)}>
-            {x}
-          </PaginationLink>
-        </PaginationItem>
-      )}
-      <PaginationItem>
-        <PaginationLink disabled={current === pageCount} next={true} onClick={toPage(current + 1)} />
-      </PaginationItem>
-    </Pagination>
-  );
-}
 
 export default withStores(I18nStore, ArticleStore)(function Index(props: Props) {
   const { pageCount, index, ids } = props.pageContext;

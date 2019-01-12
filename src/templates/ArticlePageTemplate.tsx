@@ -2,7 +2,7 @@ import * as React from "react";
 import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
-import CommentPanel from "@/components/CommentPanel";
+import CommentPanel from "@/components/Article/CommentPanel";
 import TagGroup from "@/components/TagGroup";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
 import { Link, navigate } from "gatsby";
@@ -18,7 +18,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/TocPanel";
 import { Row, Col } from "reactstrap";
 import { heights } from "@/styles/variables";
-import ArticleStatistics from "@/components/ArticleStatistics";
+import ArticleStatistics from "@/components/Article/ArticleStatistics";
 
 
 const MarkdownDisplay = styled.div`
@@ -147,7 +147,6 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
             </Col>
           )
         }
-
       </Row>
       <CommentPanel
         language={language.gitalkLangId}
