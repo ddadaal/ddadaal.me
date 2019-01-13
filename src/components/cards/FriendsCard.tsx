@@ -30,7 +30,7 @@ export default function FriendsCard() {
                   {x.description}
                 </ListGroupItemText>
               </ListGroupItem>
-            )
+            );
           })}
         </ListGroup>
       </CardBody>
