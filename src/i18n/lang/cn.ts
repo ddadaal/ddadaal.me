@@ -49,16 +49,20 @@ export default {
       author: "作者",
       university: "南京大学软件工程",
       grade: "2016级本科生",
-      resume: " 简历",
-      mailToMe: " smallda@outlook.com",
-      more: " 更多关于我的信息",
+      resume: "简历",
+      mailToMe: "smallda@outlook.com",
+      more: "更多我的信息",
+      moreLink: "更多",
     },
     blogIntro: {
       subtitle: " - 一个个人博客",
-      description: "技术，感悟，代码和日常生活",
+      description1: "基于Gatsby开发的博客",
+      description2: "技术，感悟，代码和日常生活",
       sourceCode: "在GitHub上的博客源码",
       feedback: "反馈",
       lastUpdated: "上次更新于{}",
+      more: "更多博客信息",
+      moreLink: "更多",
     },
     statistics: {
       title: "统计信息",
@@ -67,5 +71,10 @@ export default {
       articleCount: "总文章数",
       lastUpdated: "最后更新"
     },
+    friends: {
+      title: "友情链接",
+      hire: "如果您希望您的链接加入本站友情链接，请联系我 :D",
+
+    }
   },
 };

@@ -10,7 +10,7 @@ export const widths = {
   md: 720,
   lg: 960,
   xl: 1140,
-  mainContent: 1140,
+  mainContent: 1260,
 };
 
 export const dimensions = {
@@ -37,5 +37,6 @@ export const heights = {
 
 export const colors = {
   main: "#2C3E50",
-  headerBg: "#2C3E50"
+  headerBg: "#2C3E50",
+  tocLinkActiveColor: "#3498DB",
 }

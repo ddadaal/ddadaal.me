@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import ScrollLinkToAnchor from "./ScrollLinkToAnchor";
+import { colors } from "@/styles/variables";
 
 interface Props {
   active: boolean;
@@ -24,14 +25,14 @@ const Item = styled(ScrollLinkToAnchor) <{
 
   ${props => props.active
     ? `
-      border-left: 4px solid #3498DB;
+      border-left: 4px solid ${colors.tocLinkActiveColor};
       padding-left: ${props.depth * 16-4}px;
-      color: #3498DB !important;
+      color: ${colors.tocLinkActiveColor} !important;
     `
     : ""}
 
   :hover {
-    color: #3498DB !important;
+    color: ${colors.tocLinkActiveColor} !important;
   }
 `;
 

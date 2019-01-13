@@ -5,7 +5,7 @@ interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLA
   targetAnchor: string;
 }
 
-function absoluteTopPosition(el: Element) {
+function absoluteTopPosition(el: HTMLElement) {
   const rect = el.getBoundingClientRect();
   const scrollTop = window.pageYOffset;
   return rect.top + scrollTop;
@@ -16,10 +16,16 @@ export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
   smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
 
-    window.scroll({
-      top: absoluteTopPosition(document.getElementById(this.props.targetAnchor)!) - heights.header,
-      behavior: 'smooth'
-    });
+    const element = document.getElementById(this.props.targetAnchor);
+
+    if (element) {
+      window.scroll({
+        top: absoluteTopPosition(element) - heights.header,
+        behavior: 'smooth'
+      });
+
+    }
+
 
     if (this.props.onClick) {
       this.props.onClick(e);

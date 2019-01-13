@@ -13,7 +13,7 @@ import * as React from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
-import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo } from "react-icons/fa";
+import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen } from "react-icons/fa";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import LanguageSelector from "./LanguageSelector";
@@ -191,7 +191,7 @@ class Header extends React.PureComponent<Props, State> {
                       id={"odyssey"}
                       currentPathname={pathnameWithoutLanguage}
                     >
-                      <FaMale />
+                      <FaBookOpen />
                       <I18nString id={root.about.odyssey} />
                     </PathItem>
                     <PathItem

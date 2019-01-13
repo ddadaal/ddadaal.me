@@ -130,7 +130,7 @@ Core member of software team, backend architect, leader of web frontend team, sp
 - Good at public presentations and speeches. Act as the speaker for most projects and competitions.
 - Solid English skill and fit in English environment. CET4: 628, CET6: 556.
 - Active in volunteering and helping others. Willing to make the society better. 112 hours of volunteering time. Participated in IT Xia IT technology Charity Club and Lily Studio.
-
+- Got internship offer from **Microsoft Research Asia DKI(Data, Knowledge and Intelligence) group on frontend development** in Jan 2019 but refused due to time conflict.
 # Download PDF version
 
 [English](./english.pdf)

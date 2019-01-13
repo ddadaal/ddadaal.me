@@ -49,16 +49,20 @@ export default {
       author: "Author",
       university: "Nanjing University Software Engineering",
       grade: "Undergrade since 2016",
-      resume: " Resume",
-      mailToMe: " smallda@outlook.com",
-      more: " More about me",
+      resume: "Resume",
+      mailToMe: "smallda@outlook.com",
+      more: "More about me",
+      moreLink: "More",
     },
     blogIntro: {
       subtitle: " - A personal blog",
-      description: "Technologies, experiences and daily life",
+      description1: "A blog built on Gatsby",
+      description2: "Technologies, experiences and daily life",
       sourceCode: "Blog Source Code on GitHub",
       feedback: "Feedback",
       lastUpdated: "Last updated in {}",
+      more: "More about VicBlog",
+      moreLink: "More",
     },
     statistics: {
       title: "Statistics",
@@ -67,5 +71,9 @@ export default {
       articleCount: "Number of articles",
       lastUpdated: "Last updated"
     },
+    friends: {
+      title: "Friends",
+      hire: "Contact me if you'd like your website added to this list :D",
+    }
   },
 };

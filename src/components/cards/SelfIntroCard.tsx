@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
-import { FaEllipsisH, FaEnvelope, FaFile, FaGithub } from "react-icons/fa";
+import { FaEllipsisH, FaEnvelope, FaFile, FaGithub, FaMale } from "react-icons/fa";
 import { Link } from "gatsby";
 import StackedDiv from "@/layouts/components/StackedDiv";
 import I18nString from "@/i18n/I18nString";
@@ -22,8 +22,15 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
 
   return (
     <Card>
-      <CardHeader>
-        <I18nString id={root.author} />
+      <CardHeader className="d-flex justify-content-between align-items-center">
+        <span><FaMale /> <I18nString id={root.author} /></span>
+        <Link
+          className="card-link"
+          to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path}
+          title={i18nStore.language.definitions.selfIntro.more}
+        >
+          <I18nString id={root.moreLink} />
+        </Link>
       </CardHeader>
       <CardBody>
         <CardText>
@@ -43,12 +50,9 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
           </Link>
           <CardLink href="https://github.com/viccrubs">
             <FaGithub />
-            {" "}GitHub
+            GitHub
           </CardLink>
-          <Link className="card-link" to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path}>
-            <FaEllipsisH />
-            <I18nString id={root.more} />
-          </Link>
+
         </StackedDiv>
       </CardBody>
     </Card>

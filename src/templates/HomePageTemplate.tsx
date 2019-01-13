@@ -1,10 +1,6 @@
 import * as React from "react";
-import { navigate } from "gatsby";
 import ArticleItem from "@/components/Article/ArticleItem";
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import styled from "styled-components";
-import { ArticleNode } from "@/models/ArticleNode";
-import { range } from "@/utils/Array";
 import BlogIntroCard from "@/components/cards/BlogIntroCard";
 import SelfIntroCard from "@/components/cards/SelfIntroCard";
 import withStores, { WithStoresProps } from "@/stores/withStores";
@@ -15,7 +11,7 @@ import { Row, Col } from "reactstrap";
 import StatisticsCard from "@/components/cards/StatisticsCard";
 import Helmet from "react-helmet";
 import PageIndicator from "@/components/PageIndicator";
-import Footer from "@/components/Footer";
+import FriendsCard from "@/components/Cards/FriendsCard";
 
 
 interface Props extends WithStoresProps {
@@ -76,6 +72,7 @@ export default withStores(I18nStore, ArticleStore)(function Index(props: Props) 
             <BlogIntroCard />
             <SelfIntroCard />
             <StatisticsCard />
+            <FriendsCard />
           </Sidebar>
         </Col>
       </Row>
