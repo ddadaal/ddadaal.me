@@ -1,14 +1,14 @@
 import * as React from "react";
 import ArticleItem from "@/components/Article/ArticleItem";
 import styled from "styled-components";
-import BlogIntroCard from "@/components/cards/BlogIntroCard";
-import SelfIntroCard from "@/components/cards/SelfIntroCard";
+import BlogIntroCard from "@/components/Cards/BlogIntroCard";
+import SelfIntroCard from "@/components/Cards/SelfIntroCard";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import Page from "@/layouts/components/Page";
 import { Row, Col } from "reactstrap";
-import StatisticsCard from "@/components/cards/StatisticsCard";
+import StatisticsCard from "@/components/Cards/StatisticsCard";
 import Helmet from "react-helmet";
 import PageIndicator from "@/components/PageIndicator";
 import FriendsCard from "@/components/Cards/FriendsCard";
