@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle, CardHeader, Alert, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from "reactstrap";
+import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle, CardHeader, Alert, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, UncontrolledTooltip } from "reactstrap";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import { FaUserFriends } from "react-icons/fa";
@@ -14,13 +14,16 @@ const links = [
 export default function FriendsCard() {
   return (
     <Card>
-      <CardHeader>
-        <FaUserFriends /> <I18nString id={root.title} />
+      <CardHeader className="d-flex justify-content-between align-items-center">
+        <span><FaUserFriends /> <I18nString id={root.title} /></span>
+        <div>
+          <span id="UncontrolledTooltipExample">?</span>
+          <UncontrolledTooltip placement="left" target="UncontrolledTooltipExample">
+            <I18nString id={root.hire} />
+          </UncontrolledTooltip>
+        </div>
       </CardHeader>
       <CardBody>
-        <Alert color="info">
-          <I18nString id={root.hire} />
-        </Alert>
         <ListGroup>
           {links.map((x) => {
             return (

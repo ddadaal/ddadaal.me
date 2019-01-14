@@ -71,8 +71,8 @@ export default withStores(I18nStore, ArticleStore)(function Index(props: Props) 
           <Sidebar>
             <BlogIntroCard />
             <SelfIntroCard />
-            <StatisticsCard />
             <FriendsCard />
+            <StatisticsCard />
           </Sidebar>
         </Col>
       </Row>

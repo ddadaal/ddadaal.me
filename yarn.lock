@@ -4024,10 +4024,10 @@ dateformat@^2.0.0:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
   integrity sha1-QGXiATz5+5Ft39gu+1Bq1MZ2kGI=
 
-dayjs@^1.7.8:
-  version "1.7.8"
-  resolved "http://registry.npm.taobao.org/dayjs/download/dayjs-1.7.8.tgz#05d288f8d4b2140110cc1519cfe317d6f1f11a3c"
-  integrity sha1-BdKI+NSyFAEQzBUZz+MX1vHxGjw=
+dayjs@^1.8.0:
+  version "1.8.0"
+  resolved "http://registry.npm.taobao.org/dayjs/download/dayjs-1.8.0.tgz#507963ac3023f4b1f9f399a278356946fc4c9ae9"
+  integrity sha1-UHljrDAj9LH585mieDVpRvxMmuk=
 
 debug@2, debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.3, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9, debug@~2.6.4, debug@~2.6.6:
   version "2.6.9"
@@ -6070,10 +6070,10 @@ gatsby-plugin-react-svg@^2.0.0:
   dependencies:
     svg-react-loader "^0.4.4"
 
-gatsby-plugin-root-import@^2.0.4:
-  version "2.0.4"
-  resolved "http://registry.npm.taobao.org/gatsby-plugin-root-import/download/gatsby-plugin-root-import-2.0.4.tgz#262c01c2384df498369a808b1741379527ecb57f"
-  integrity sha1-JiwBwjhN9Jg2moCLF0E3lSfstX8=
+gatsby-plugin-root-import@^2.0.5:
+  version "2.0.5"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-root-import/download/gatsby-plugin-root-import-2.0.5.tgz#04e520dc661d67f49aa7950f11b7c780fd2fdbd3"
+  integrity sha1-BOUg3GYdZ/Sap5UPEbfHgP0v29M=
 
 gatsby-plugin-sass@^2.0.7:
   version "2.0.7"

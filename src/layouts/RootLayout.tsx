@@ -27,6 +27,7 @@ const LayoutRoot = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  word-wrap: break-word;
 `;
 
 interface Props {
