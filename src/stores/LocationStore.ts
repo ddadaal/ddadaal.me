@@ -44,6 +44,10 @@ export class LocationStore extends Store<ILocationStore> {
   }
 
   get query() {
-    return parseQuery(this.state.location.search.substr(1));
+    if (this.state.location.search) {
+      return parseQuery(this.state.location.search);
+    } else {
+      return {};
+    }
   }
 }
