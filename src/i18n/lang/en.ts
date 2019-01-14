@@ -23,6 +23,8 @@ export default {
     search: {
       inputPlaceholder: "Search",
       notFound: "Not found.",
+      title: "{} search result",
+      info: "Number of results: {}",
     },
     footer: {
       codeBy: "Coded proudly by {}",
@@ -64,7 +66,7 @@ export default {
     },
     blogIntro: {
       subtitle: " - A personal blog",
-      description1: "A blog built on Gatsby",
+      description1: "A static blog built with Gatsby",
       description2: "Technologies, experiences and daily life",
       sourceCode: "Blog Source Code on GitHub",
       feedback: "Feedback",

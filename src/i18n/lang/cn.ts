@@ -22,6 +22,8 @@ export default {
     search: {
       inputPlaceholder: "搜索",
       notFound: "未找到",
+      title: "{} 搜索结果",
+      info: "结果数：{}",
     },
     footer: {
       codeBy: "由{}自豪地编写",
@@ -63,7 +65,7 @@ export default {
     },
     blogIntro: {
       subtitle: " - 一个个人博客",
-      description1: "基于Gatsby开发的博客",
+      description1: "基于Gatsby开发的静态博客",
       description2: "技术，感悟，代码和日常生活",
       sourceCode: "在GitHub上的博客源码",
       feedback: "反馈",

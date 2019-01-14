@@ -22,7 +22,7 @@ import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore, removeLangFromPath } from "@/stores/LocationStore";
-import Search from "./Search";
+import SearchBar from "@/components/Search/SearchBar";
 
 interface Props extends WithStoresProps {
   title: string;
@@ -33,7 +33,7 @@ interface State {
   isOpen: boolean;
 }
 
-function NavLink(props: { to: string, children: React.ReactNode, onClick(): void }) {
+function NavLink(props: { to: string, children: React.ReactNode, onClick?(): void }) {
   return (
     <Link to={props.to} onClick={props.onClick} className="nav-link">
       {props.children}
@@ -80,13 +80,16 @@ const NavbarLanguageSelector = withStores(I18nStore)(({ useStore }) => {
 });
 
 
+function doNothing() {
+
+}
 
 const PathItem = withStores(ArticleStore, I18nStore)((props: {
   Outer: React.ComponentType<{ active: boolean }>,
   children?: React.ReactNode,
   id: string,
   currentPathname: string,
-  onClick(): void,
+  onClick?(): void,
 } & WithStoresProps) => {
 
   const { Outer, children, currentPathname, id, useStore, onClick } = props;
@@ -97,7 +100,7 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
 
   return (
     <Outer active={currentPathname.startsWith(removeLangFromPath(node.path))}>
-      <NavLink to={node.path} onClick={onClick}>
+      <NavLink to={node.path} onClick={onClick || doNothing}>
         {children}
       </NavLink>
     </Outer>
@@ -117,19 +120,25 @@ const StyledDropdownItem = styled(DropdownItem)`
 `;
 
 const StyledNavbar = styled(Navbar)`
-
   max-width: ${widths.mainContent}px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 4px 16px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4px 16px;
 
 `;
 
 const Container = styled.div`
-  .placeholder {
+`;
+
+const Placeholder = styled.div<{ height: number }>`
+  height: ${props => props.height}px;
+  transition: height 0.3s ease-in-out;
+
+  @media (min-width: ${breakpoints.md}px) {
     height: ${heights.header}px;
   }
 `;
+
 
 class Header extends React.PureComponent<Props, State> {
 
@@ -154,26 +163,23 @@ class Header extends React.PureComponent<Props, State> {
 
     return (
       <Container>
-        <div className="placeholder" />
+        <Placeholder height={this.state.isOpen ? 250 : heights.header} />
         <div className="fixed-top bg-primary">
           <StyledNavbar dark={true} expand="md" className="bg-primary">
             <Branding title={this.props.title} />
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar={true}>
               <Nav className="ml-auto" navbar={true}>
-                {/* <NavItem>
-
-                  <Search />
-
-                </NavItem> */}
+                <NavItem>
+                  <SearchBar />
+                </NavItem>
                 <NavItem active={atHomePage(pathnameWithoutLanguage)}>
-                  <NavLink to="/" onClick={this.close}>
+                  <NavLink to="/">
                     <FaHome />
                     <I18nString id={root.home} />
                   </NavLink>
                 </NavItem>
                 <PathItem
-                  onClick={this.close}
                   Outer={NavItem}
                   id={"resume"}
                   currentPathname={pathnameWithoutLanguage}
@@ -192,7 +198,6 @@ class Header extends React.PureComponent<Props, State> {
                   </DropdownToggle>
                   <DropdownMenu right={true}>
                     <PathItem
-                      onClick={this.close}
                       Outer={StyledDropdownItem}
                       id={"odyssey"}
                       currentPathname={pathnameWithoutLanguage}
@@ -201,7 +206,6 @@ class Header extends React.PureComponent<Props, State> {
                       <I18nString id={root.about.odyssey} />
                     </PathItem>
                     <PathItem
-                      onClick={this.close}
                       Outer={StyledDropdownItem}
                       id={"about-project"}
                       currentPathname={pathnameWithoutLanguage}
@@ -211,7 +215,7 @@ class Header extends React.PureComponent<Props, State> {
                     </PathItem>
 
                     <PathItem
-                      onClick={this.close}
+
                       Outer={StyledDropdownItem}
                       id={"about-me"}
                       currentPathname={pathnameWithoutLanguage}

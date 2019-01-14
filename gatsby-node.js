@@ -28,16 +28,16 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
   const pageCount = Math.ceil(notIgnoredGroups.length / pageSize);
 
-  Array.from({ length: pageCount }).forEach((_, index) => {
+  Array.from({ length: pageCount }).forEach((_, pageIndex) => {
     createPage({
-      path: generatePath(index),
+      path: generatePath(pageIndex),
       component: indexTemplate,
       context: {
         limit: pageSize,
-        skip: index * pageSize,
+        skip: pageIndex * pageSize,
         pageCount,
-        index: index + 1,
-        ids: notIgnoredGroups.slice(index * pageSize, index * pageSize + pageSize).map((x) => x.frontmatter.id),
+        pageIndex: pageIndex,
+        ids: notIgnoredGroups.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize).map((x) => x.frontmatter.id),
       },
     })
   });

@@ -1,31 +1,32 @@
 import * as React from "react";
-import { navigate} from "gatsby";
+import { navigate } from "gatsby";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { range } from "@/utils/Array";
 
 
-function toPage(pageIndex: number) {
-  const path = "/" + (pageIndex === 1 ? "" : pageIndex);
-  return () => navigate(path);
+interface Props {
+  pageCount: number;
+  pageIndex: number; // starts with 0
+  toPage(pageNum: number): () => void;
 }
 
-export default function PageIndicator(props: { pageCount: number, current: number }) {
-  const { pageCount, current } = props;
+export default function PageIndicator(props: Props) {
+  const { pageCount, pageIndex, toPage } = props;
 
   return (
     <Pagination aria-label="Page">
       <PaginationItem>
-        <PaginationLink disabled={current === 1} previous={true} onClick={toPage(current - 1)} />
+        <PaginationLink disabled={pageCount === 0 || pageIndex === 0} previous={true} onClick={toPage(pageIndex-1)} />
       </PaginationItem>
-      {range(1, pageCount + 1).map((x) =>
-        <PaginationItem active={current === x} key={x}>
+      {range(0, pageCount).map((x) =>
+        <PaginationItem active={pageIndex === x} key={x}>
           <PaginationLink onClick={toPage(x)}>
-            {x}
+            {x+1}
           </PaginationLink>
         </PaginationItem>
       )}
       <PaginationItem>
-        <PaginationLink disabled={current === pageCount} next={true} onClick={toPage(current + 1)} />
+        <PaginationLink disabled={pageCount === 0 || pageIndex === pageCount-1 } next={true} onClick={toPage(pageIndex+1)} />
       </PaginationItem>
     </Pagination>
   );
