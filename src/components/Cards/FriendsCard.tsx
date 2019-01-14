@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle, CardHeader, Alert, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, UncontrolledTooltip } from "reactstrap";
+import { CardLink, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, UncontrolledTooltip } from "reactstrap";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import { FaUserFriends } from "react-icons/fa";
+import ListGroupHeader from "@/components/UI/ListGroup/ListGroupHeader";
 
 const root = lang.friends;
 
@@ -13,8 +14,9 @@ const links = [
 
 export default function FriendsCard() {
   return (
-    <Card>
-      <CardHeader className="d-flex justify-content-between align-items-center">
+
+    <ListGroup>
+      <ListGroupHeader className="d-flex justify-content-between align-items-center">
         <span><FaUserFriends /> <I18nString id={root.title} /></span>
         <div>
           <span id="UncontrolledTooltipExample">?</span>
@@ -22,21 +24,17 @@ export default function FriendsCard() {
             <I18nString id={root.hire} />
           </UncontrolledTooltip>
         </div>
-      </CardHeader>
-      <CardBody>
-        <ListGroup>
-          {links.map((x) => {
-            return (
-              <ListGroupItem key={x.name}>
-                <ListGroupItemHeading><CardLink href={x.link}>{x.name}</CardLink></ListGroupItemHeading>
-                <ListGroupItemText>
-                  {x.description}
-                </ListGroupItemText>
-              </ListGroupItem>
-            );
-          })}
-        </ListGroup>
-      </CardBody>
-    </Card>
+      </ListGroupHeader>
+      {links.map((x) => {
+        return (
+          <ListGroupItem key={x.name}>
+            <ListGroupItemHeading><CardLink href={x.link}>{x.name}</CardLink></ListGroupItemHeading>
+            <ListGroupItemText>
+              {x.description}
+            </ListGroupItemText>
+          </ListGroupItem>
+        );
+      })}
+    </ListGroup>
   );
 }

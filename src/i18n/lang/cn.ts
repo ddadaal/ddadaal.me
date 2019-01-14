@@ -19,6 +19,10 @@ export default {
         me: "关于我",
       },
     },
+    search: {
+      inputPlaceholder: "搜索",
+      notFound: "未找到",
+    },
     footer: {
       codeBy: "由{}自豪地编写",
       themedWith: "由{}和魔改版{}描绘主题",
@@ -40,6 +44,9 @@ export default {
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
       toc: "目录",
+      share: {
+        title: "分享",
+      }
 
     },
     articleItem: {

@@ -18,6 +18,11 @@ export default {
         website: "About Website",
         me: "About Me",
       },
+
+    },
+    search: {
+      inputPlaceholder: "Search",
+      notFound: "Not found.",
     },
     footer: {
       codeBy: "Coded proudly by {}",
@@ -33,6 +38,9 @@ export default {
       backToHome: "Back to home",
       selectLang: "Select a language for article",
       toc: "Table of Contents",
+      share: {
+        title: "Share",
+      }
     },
     articleStatistics: {
       timeToRead: "Estimated time to read: {} minutes",

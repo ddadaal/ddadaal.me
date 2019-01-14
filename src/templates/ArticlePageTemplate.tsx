@@ -20,6 +20,7 @@ import { Row, Col } from "reactstrap";
 import { heights } from "@/styles/variables";
 import ArticleStatistics from "@/components/Article/ArticleStatistics";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
+import Share from "@/components/Article/Share";
 
 interface Props extends WithStoresProps {
   pageContext: {
@@ -124,6 +125,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           )
         }
       </Row>
+      {/* <Share articleId={id} /> */}
       <CommentPanel
         language={i18nStore.language.gitalkLangId}
         articleId={frontmatter.id}

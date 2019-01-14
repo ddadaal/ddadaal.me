@@ -13,10 +13,6 @@ interface Props {
   language: string;
 }
 
-interface State {
-  mount: boolean;
-}
-
 const CommentDiv = styled.div`
   .gt-action-text {
     color: #6190e8;;
@@ -60,6 +56,11 @@ class RealCommentPanel extends React.Component<Props, {}> {
 }
 
 const root = lang.comments;
+
+interface State {
+  mount: boolean;
+}
+
 
 export default class CommentPanel extends React.Component<Props, State> {
   state = {

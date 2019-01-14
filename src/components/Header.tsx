@@ -22,6 +22,7 @@ import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore, removeLangFromPath } from "@/stores/LocationStore";
+import Search from "./Search";
 
 interface Props extends WithStoresProps {
   title: string;
@@ -160,6 +161,11 @@ class Header extends React.PureComponent<Props, State> {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar={true}>
               <Nav className="ml-auto" navbar={true}>
+                {/* <NavItem>
+
+                  <Search />
+
+                </NavItem> */}
                 <NavItem active={atHomePage(pathnameWithoutLanguage)}>
                   <NavLink to="/" onClick={this.close}>
                     <FaHome />
