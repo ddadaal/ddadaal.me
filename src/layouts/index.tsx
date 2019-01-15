@@ -1,7 +1,4 @@
 import * as React from "react";
-import Helmet from "react-helmet";
-
-import "prismjs/themes/prism-okaidia.css";
 import "@/styles/index.scss";
 
 import { StaticQuery, graphql } from "gatsby";
@@ -53,7 +50,7 @@ const query = graphql`
           }
         }
       }
-      }
+    }
   }
 `;
 

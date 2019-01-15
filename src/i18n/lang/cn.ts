@@ -27,9 +27,9 @@ export default {
     },
     footer: {
       codeBy: "由{}自豪地编写",
-      themedWith: "由{}和魔改版{}描绘主题",
-      poweredBy: "由{}，{}和{}强势驱动",
-      license: "本站所有文章在{}协议下授权",
+      themedWith: "描绘主题于",
+      poweredBy: "强势驱动于",
+      license: "除非特别注明，本站所有文章在{}协议下授权",
       madeWithLove: "用❤制作",
     },
     languageSelector: {

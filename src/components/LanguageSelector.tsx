@@ -7,11 +7,11 @@ interface Props {
   prompt: React.ReactNode;
 }
 
-export default function LanguageSelector({ allLanguages, changeLanguage, currentLanguage: language, prompt }: Props) {
+export default function LanguageSelector({ allLanguages, changeLanguage, currentLanguage, prompt }: Props) {
   return (
     <UncontrolledDropdown>
       <DropdownToggle caret={true}>
-        {language}
+        {currentLanguage}
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header={true}>{prompt}</DropdownItem>

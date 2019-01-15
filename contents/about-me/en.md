@@ -13,16 +13,9 @@ hide_heading: false
 # Basics
 
 - Male
-- Born in March 20, 1998 in Chongqing
+- Born in March 20, 1998
 - Undergraduate of Software Engineering in Nanjing University since 2016.
 - Seeking for a girlfriend with a determination to pursue career
-
-# Programming Preferences
-
-- Web frontend and backend design and implementation
-- Most used languages: TypeScript, Java, C#, Python
-- Most used frameworks: React, ASP.NET Core, Spring Boot, Flask
-- Fields of interests: System, Architecture, Software Engineering
 
 # I...
 

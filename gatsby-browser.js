@@ -1,8 +1,8 @@
 exports.onServiceWorkerUpdateFound = () => {
-  const elements = document.getElementsByClassName("newcontentpop");
+  const elements = document.getElementsByClassName("nonewcontent");
 
-  if (elements.length > 0) {
-    elements[0].classList.remove("no-display");
+  for (const el of elements) {
+    el.classList.remove("nonewcontent");
   }
 
 };

@@ -107,18 +107,18 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              className: `link-anchor`,
-            },
-          },
-          {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
               wrapperStyle: 'margin-bottom: 1rem'
             }
           },
-          'gatsby-remark-prismjs',
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              showLineNumbers: true,
+            }
+          },
+
           'gatsby-remark-copy-linked-files',
           `gatsby-remark-emoji`,
           'gatsby-remark-smartypants',

@@ -28,9 +28,9 @@ export default {
     },
     footer: {
       codeBy: "Coded proudly by {}",
-      themedWith: "Themed with {} and modified version of {} ",
-      poweredBy: "Powered by {}, {} and {}",
-      license: "All articles licensed under {}",
+      themedWith: "Themed with",
+      poweredBy: "Powered by",
+      license: "Unless otherwise stated, articles on this site are licensed under {}",
       madeWithLove: "Made with ❤",
     },
     languageSelector: {

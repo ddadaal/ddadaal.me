@@ -19,8 +19,8 @@ export default function FriendsCard() {
       <ListGroupHeader className="d-flex justify-content-between align-items-center">
         <span><FaUserFriends /> <I18nString id={root.title} /></span>
         <div>
-          <span id="UncontrolledTooltipExample">?</span>
-          <UncontrolledTooltip placement="left" target="UncontrolledTooltipExample">
+          <span id="friendscard-wanted">?</span>
+          <UncontrolledTooltip placement="left" target="friendscard-wanted">
             <I18nString id={root.hire} />
           </UncontrolledTooltip>
         </div>
@@ -28,7 +28,11 @@ export default function FriendsCard() {
       {links.map((x) => {
         return (
           <ListGroupItem key={x.name}>
-            <ListGroupItemHeading><CardLink href={x.link}>{x.name}</CardLink></ListGroupItemHeading>
+            <ListGroupItemHeading>
+              <CardLink href={x.link}>
+                {x.name}
+              </CardLink>
+            </ListGroupItemHeading>
             <ListGroupItemText>
               {x.description}
             </ListGroupItemText>

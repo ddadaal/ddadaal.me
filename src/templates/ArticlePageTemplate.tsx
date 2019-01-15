@@ -49,7 +49,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
   const language = i18nStore.getLanguage(lang)!;
 
 
-  const { frontmatter, timeToRead, path, wordCount: { words: wordCount } } = articleStore.getNodeFromLang(id, language);
+  const { frontmatter, timeToRead, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
 
   const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
@@ -59,6 +59,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
         title={`${frontmatter.title} - VicBlog`}
         meta={[
           { name: "og:title", content: frontmatter.title },
+          { name: "og:description", content: excerpt},
           { name: "og:type", content: "article" },
           { name: "og:url", content: `${articleStore.state.baseUrl}${path}` },
           { name: "og:locale", content: language.detailedId },
@@ -112,7 +113,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
       }
       <Row>
         <Col md={frontmatter.no_toc ? 12 : 9} sm={12} >
-          <ArticleContentDisplay html={html} />
+          <ArticleContentDisplay html={html} headings={headings} />
         </Col>
         {
           !frontmatter.no_toc
