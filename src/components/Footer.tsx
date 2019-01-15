@@ -6,6 +6,7 @@ import lang from "@/i18n/lang";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
+import { colors } from "@/styles/variables";
 
 interface Props extends WithStoresProps {
   className?: string;
@@ -13,6 +14,13 @@ interface Props extends WithStoresProps {
 
 const Container = styled.div`
   text-align: center;
+
+  color: white;
+  background-color: ${colors.headerBg};
+
+  padding: 8px;
+
+
 `;
 
 const root = lang.footer;
@@ -26,6 +34,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
 
   return (
     <Container className={props.className}>
+    <hr/>
       <p>
         <I18nString id={root.codeBy} replacements={[
           <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,

@@ -7,7 +7,7 @@ import TagGroup from "@/components/TagGroup";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
 import { Link, navigate } from "gatsby";
 import { FaBackward } from "react-icons/fa";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import LanguageSelector from "@/components/LanguageSelector";
@@ -17,10 +17,8 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/TocPanel";
 import { Row, Col } from "reactstrap";
-import { heights } from "@/styles/variables";
 import ArticleStatistics from "@/components/Article/ArticleStatistics";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
-import Share from "@/components/Article/Share";
 
 interface Props extends WithStoresProps {
   pageContext: {

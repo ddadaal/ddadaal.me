@@ -32,16 +32,11 @@ interface State {
   topHeadingIndex: number;
 }
 
-function getTop(heading: Heading) {
-  return document.getElementById(heading.slug)!.getBoundingClientRect().top - heights.header;
-}
+function isWindowBetween(heading: Heading) {
 
-function isWindowBetween(el1: Heading, el2: Heading) {
-  try {
-    return getTop(el1) < 2 && getTop(el2) >= 2;
-  } catch (e) {
-    return false;
-  }
+  const el = document.getElementById(heading.slug);
+
+  return el && el.getBoundingClientRect().top - heights.header >= 2;
 }
 
 export default class TocPanel extends React.Component<Props, State>  {
@@ -51,20 +46,14 @@ export default class TocPanel extends React.Component<Props, State>  {
   };
 
   onScroll = (ev) => {
-    // this.timer = setTimeout(() => {
-
     const { headings } = this.props;
 
     if (headings.length == 0) { return; }
-    if (getTop(headings[0]) > 0) {
-      this.setState({ topHeadingIndex: 0 });
-      return;
-    }
 
-    for (let i = 1; i < headings.length; i++) {
+    for (let i = 0; i < headings.length-1; i++) {
 
-      if (isWindowBetween(headings[i - 1], headings[i])) {
-        this.setState({ topHeadingIndex: i - 1 });
+      if (isWindowBetween(headings[i+1])) {
+        this.setState({ topHeadingIndex: i });
         return;
       }
 

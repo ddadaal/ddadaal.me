@@ -24,14 +24,10 @@ function toPage(pageNum: number) {
   return () => navigate(path);
 }
 
-export default withStores(I18nStore, ArticleStore)(function Index(props: Props) {
-  const { pageCount, pageIndex, ids } = props.pageContext;
-  const { language, allLanguages } = props.useStore(I18nStore);
-  const articleStore = props.useStore(ArticleStore);
-
-  const items = ids.map((id) => {
-    return articleStore.state.articleGroups[id];
-  });
+export default withStores(I18nStore, ArticleStore)(function Index({ pageContext, useStore }: Props) {
+  const { pageCount, pageIndex, ids } = pageContext;
+  const { language, allLanguages } = useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
 
   return (
     <Page>

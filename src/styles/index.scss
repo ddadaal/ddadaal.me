@@ -1,7 +1,8 @@
-// Markdown defaults
 
 @import "./bootswatch.scss";
 @import "./variables.scss";
+
+// Markdown defaults
 
 .markdown {
   table {
@@ -41,18 +42,20 @@
   margin-right: 4px;
 }
 
-  .active {
-    .nav-link {
-      color: $info !important;
+.active {
+  .nav-link {
+    color: $info !important;
+  }
+}
+
+.navbar-dark {
+  .navbar-nav {
+    .nav-link.active {
+      color: $info;
     }
   }
+}
 
-  .navbar-dark {
-    .navbar-nav {
-      .nav-link.active {
-        color: $info;
-      }
-    }
-  }
-
-
+.list-group-header {
+  background-color: $card-cap-bg;
+}

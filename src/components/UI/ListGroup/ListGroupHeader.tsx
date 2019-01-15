@@ -5,12 +5,9 @@ import styled from "styled-components";
 interface Props extends ListGroupItemProps {
 }
 
-const StyledListGroupHeader = styled(ListGroupItem)`
-  background-color: #F7F7F7;
-`;
-
 export default function ListGroupHeader(props: Props) {
+  const { className, ...rest } = props;
   return (
-    <StyledListGroupHeader {...props} />
+    <ListGroupItem className={`list-group-header ${className}`} {...rest} />
   );
 }
