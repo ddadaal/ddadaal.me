@@ -8,7 +8,6 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
-import dayjs from "dayjs";
 
 interface Props extends WithStoresProps {
   className?: string;
@@ -29,6 +28,10 @@ const Container = styled.footer`
   ul {
     list-style: none;
     padding-left: 0px;
+
+    &>li {
+      padding-bottom: 4px;
+    }
   }
 
   .footer-bottom {
@@ -101,13 +104,20 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
             <li>
               <a key="theme" href={"https://bootswatch.com/flatly/"}>Bootswatch Flatly</a>
             </li>
+            <li>
+              <a key="styled-components" href={"https://www.styled-components.com/"}>styled-components</a>
+            </li>
+
+            <li>
+              <a key="sass" href={"https://sass-lang.com/"}>SASS</a>
+            </li>
           </ul>
         </Col>
 
       </Row>
       <hr/>
       <p className="footer-bottom">
-        © {dayjs().year()} | <I18nString id={root.madeWithLove} />
+        © {new Date().getFullYear()} | <I18nString id={root.madeWithLove} />
       </p>
     </Container>
   );

@@ -12,7 +12,7 @@ no_toc: true
 
 <div>
 
-I am eager to hear what you, dear readers, think about my website!
+I am eager to hear what you, dear readers, think about my website! :smile:
 
 If you have a word, you can
 

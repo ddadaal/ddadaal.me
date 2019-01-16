@@ -12,5 +12,3 @@ lang: en
 # A Personal Blog Odyssey
 
 It has been a long way for VicBlog to be the one you are looking at right now. To see the epic journey that VicBlog and I have been through since 2010, please check out [A Personal Blog Odyssey](/en/about/odyssey).
-
-To be continued...

@@ -1021,10 +1021,18 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.7.18", "@types/react@^16.7.18":
+"@types/react@*", "@types/react@16.7.18":
   version "16.7.18"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.18.tgz#f4ce0d539a893dd61e36cd11ae3a5e54f5a48337"
   integrity sha1-9M4NU5qJPdYeNs0RrjpeVPWkgzc=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.7.19":
+  version "16.7.19"
+  resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.19.tgz#f9a527a172c7fd9375c01445cbd04834fa0fcca7"
+  integrity sha1-+aUnoXLH/ZN1wBRFy9BINPoPzKc=
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -11565,10 +11573,10 @@ react@^16.7.0:
     prop-types "^15.6.2"
     scheduler "^0.12.0"
 
-reactstrap@^7.0.2:
-  version "7.0.2"
-  resolved "http://registry.npm.taobao.org/reactstrap/download/reactstrap-7.0.2.tgz#c390224913f11c7ccbd98f56f3d850ce50bda9a9"
-  integrity sha1-w5AiSRPxHHzL2Y9W89hQzlC9qak=
+reactstrap@^7.1.0:
+  version "7.1.0"
+  resolved "http://registry.npm.taobao.org/reactstrap/download/reactstrap-7.1.0.tgz#fd7125901737a3001c8564c0f8b40e319eec23b2"
+  integrity sha1-/XElkBc3owAchWTA+LQOMZ7sI7I=
   dependencies:
     "@babel/runtime" "^7.2.0"
     classnames "^2.2.3"

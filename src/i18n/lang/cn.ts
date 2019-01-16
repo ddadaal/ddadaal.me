@@ -14,7 +14,7 @@ export default {
       resume: "简历",
       about: {
         _root: "关于",
-        odyssey: "网站背后的故事",
+        odyssey: "一个个人博客的史诗",
         website: "关于网站",
         me: "关于我",
       },
