@@ -27,8 +27,8 @@ export default {
     },
     footer: {
       codeBy: "由{}自豪地编写",
-      themedWith: "描绘主题于",
-      poweredBy: "强势驱动于",
+      themedWith: "描绘主题",
+      poweredBy: "强势驱动",
       license: "除非特别注明，本站所有文章在{}协议下授权",
       madeWithLove: "用❤制作",
     },
@@ -49,7 +49,6 @@ export default {
       share: {
         title: "分享",
       }
-
     },
     articleItem: {
       availableLanguages: "可用语言：",
@@ -66,7 +65,7 @@ export default {
     blogIntro: {
       subtitle: " - 一个个人博客",
       description1: "基于Gatsby开发的静态博客",
-      description2: "技术，感悟，代码和日常生活",
+      description2: "技术，代码，感悟和日常生活",
       sourceCode: "在GitHub上的博客源码",
       feedback: "反馈",
       lastUpdated: "上次更新于{}",

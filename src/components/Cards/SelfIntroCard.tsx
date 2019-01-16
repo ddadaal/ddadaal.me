@@ -20,13 +20,15 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
   const articleStore = props.useStore(ArticleStore);
   const i18nStore = props.useStore(I18nStore);
 
+  const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.state.language).path;
+
   return (
     <Card>
       <CardHeader className="d-flex justify-content-between align-items-center">
         <span><FaMale /> <I18nString id={root.author} /></span>
         <Link
           className="card-link"
-          to={articleStore.getNodeFromLang("about-me", i18nStore.state.language).path}
+          to={aboutMePath}
           title={i18nStore.language.definitions.selfIntro.more}
         >
           <I18nString id={root.moreLink} />
@@ -40,19 +42,18 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
           <I18nString id={root.grade} />
         </CardText>
         <StackedDiv>
+        <Link className="card-link" to={articleStore.getNodeFromLang("resume", i18nStore.state.language).path}>
+            <FaFile />
+            <I18nString id={root.resume} />
+          </Link>
           <CardLink href="mailto://smallda@outlook.com">
             <FaEnvelope />
             <I18nString id={root.mailToMe} />
           </CardLink>
-          <Link className="card-link" to={articleStore.getNodeFromLang("resume", i18nStore.state.language).path}>
-            <FaFile />
-            <I18nString id={root.resume} />
-          </Link>
           <CardLink href="https://github.com/viccrubs">
             <FaGithub />
             GitHub
           </CardLink>
-
         </StackedDiv>
       </CardBody>
     </Card>

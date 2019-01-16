@@ -20,9 +20,9 @@ hide_heading: false
 - Willing to give a hand and take responsibilities, but always end up with a mess)
 - Rational and conservative, but become sensible and even unreasonable at times
 - May have a goal, but be painful of confusion
-- Try to be self-reliant, but wish **a "she" to fight together**
+- Try to be self-reliant, but wish **a "she" to face challenges together**
 
-# My Likings
+# Likings
 
 - Extreme passion to **computers** starting at the age of 4 and counting
 - Am a Microsoft fan because it is Microsoft's products that bring me to this field

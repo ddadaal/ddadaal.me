@@ -44,9 +44,8 @@ const Container = styled.footer`
 
   .footer-contents {
     max-width: ${widths.mainContent}px;
-  margin-left: auto;
-  margin-right: auto;
-
+    margin-left: auto;
+    margin-right: auto;
   }
 
 `;
