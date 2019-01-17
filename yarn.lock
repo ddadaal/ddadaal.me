@@ -1029,10 +1029,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@^16.7.19":
-  version "16.7.19"
-  resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.19.tgz#f9a527a172c7fd9375c01445cbd04834fa0fcca7"
-  integrity sha1-+aUnoXLH/ZN1wBRFy9BINPoPzKc=
+"@types/react@^16.7.20":
+  version "16.7.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.20.tgz#13ae752c012710d0fa800985ca809814b51d3b58"
+  integrity sha512-Qd5RWkwl6SL7R2XzLk/cicjVQm1Mhc6HqXY5Ei4pWd1Vi8Fkbd5O0sA398x8fRSTPAuHdDYD9nrWmJMYTJI0vQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -1045,10 +1045,10 @@
     "@types/react" "*"
     popper.js "^1.14.1"
 
-"@types/styled-components@^4.1.5":
-  version "4.1.5"
-  resolved "http://registry.npm.taobao.org/@types/styled-components/download/@types/styled-components-4.1.5.tgz#6eca4dba53d167bd303d6555f57ebdccf1e061bf"
-  integrity sha1-bspNulPRZ70wPWVV9X69zPHgYb8=
+"@types/styled-components@^4.1.6":
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-4.1.6.tgz#9aa1d47dbc6bae540083869bcc6c639c6e9af0fe"
+  integrity sha512-w/ra/Tk9oPMvWpWId7esZNY1MOa6E9BYUPLl4scVJdYnrYuy5ITLbku8dGDCVH/vjjuegrHBCRYvFLQOYJ+uHg==
   dependencies:
     "@types/node" "*"
     "@types/react" "*"
@@ -6502,10 +6502,10 @@ gh-pages@^2.0.1:
     graceful-fs "^4.1.11"
     rimraf "^2.6.2"
 
-gitalk@^1.4.1:
-  version "1.4.1"
-  resolved "http://registry.npm.taobao.org/gitalk/download/gitalk-1.4.1.tgz#49c099f9cfe44d9c7ca6e1b24283189f6ace787d"
-  integrity sha1-ScCZ+c/kTZx8puGyQoMYn2rOeH0=
+gitalk@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/gitalk/-/gitalk-1.5.0.tgz#8d60c615b06da13e82661bf7012d94ec34a8008f"
+  integrity sha512-xao+Fs+ibAg5tetdTIDHmoVDOtMc0l7gvQd5j2geddL6JoKkonbEY05BU87Io0PpmonqIBSi/Ue+CpUDs9M/JQ==
   dependencies:
     autosize "3.0.21"
     axios "0.16.2"

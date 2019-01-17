@@ -20,10 +20,17 @@ module.exports = {
     lastUpdated: dayjs().format(),
   },
   plugins: [
+    'gatsby-plugin-typescript',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
         includePaths: [path.join(__dirname, "src/styles")],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        minify: true,
       },
     },
     "gatsby-plugin-layout",
@@ -155,8 +162,6 @@ module.exports = {
         showSpinner: false
       }
     },
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',

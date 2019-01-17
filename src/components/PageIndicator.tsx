@@ -1,5 +1,4 @@
 import * as React from "react";
-import { navigate } from "gatsby";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { range } from "@/utils/Array";
 
