@@ -4,8 +4,17 @@ import { Heading } from "@/models/ArticleNode";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 
+import components from "@/configs/InlineComponentConfig";
+
+import rehypeReact from "rehype-react"
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components,
+}).Compiler;
+
 interface Props {
-  html: string;
+  htmlAst: object;
   headings: Heading[];
 }
 
@@ -30,7 +39,9 @@ export default class ArticleContentDisplay extends React.Component<Props> {
 
   render() {
     return (
-      <MarkdownDisplay ref={this.ref} className="markdown" dangerouslySetInnerHTML={{ __html: this.props.html }} />
+      <MarkdownDisplay ref={this.ref} className="markdown">
+      {renderAst(this.props.htmlAst)}
+      </MarkdownDisplay>
     )
   }
 

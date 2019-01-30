@@ -14,7 +14,7 @@ function absoluteTopPosition(el: HTMLElement) {
 export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
 
   smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const element = document.getElementById(this.props.targetAnchor);
 

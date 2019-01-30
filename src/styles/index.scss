@@ -4,6 +4,16 @@
 
 // Markdown defaults
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("../../assets/SourceSansPro.ttf");
+}
+
+html {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  word-spacing: 0.05em;
+}
+
 .markdown {
 
   table {
@@ -47,14 +57,16 @@
   h1 {
     font-size: 2.2em;
     margin: 12px 0;
+
+    // border-bottom: 2px solid $info;
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 
   h3 {
-    font-size: 1.8em;
+    font-size: 1.4em;
   }
 
   .center {

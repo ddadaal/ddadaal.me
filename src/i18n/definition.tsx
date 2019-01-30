@@ -1,9 +1,9 @@
-import cn from "./lang/cn";
-import en from "./lang/en";
+import cn from "@/configs/i18nDefinitions/cn";
+import en from "@/configs/i18nDefinitions/en";
 
 export const allLanguages = [ cn, en ];
 
-export type Language = typeof en;
+export type Language = typeof cn;
 
 export function getLanguage(lang: string) {
   return allLanguages.find((x) => x.languages.includes(lang))!;

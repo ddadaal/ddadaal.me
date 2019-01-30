@@ -13,6 +13,10 @@ interface Props extends WithStoresProps {
   className?: string;
 }
 
+const friendLinks = [
+  { name: "idealclover", description: "翠翠酱的个人网站", link: "https://idealclover.top" },
+];
+
 const Container = styled.footer`
   /* text-align: center; */
 
@@ -62,19 +66,19 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
   return (
     <Container className={props.className}>
       <Row className="footer-contents">
-        <Col xs={12} md={6}>
+        <Col xs={12} md={3}>
           <div className="footer-brief">
 
             <p>
-              👦<I18nString id={root.codeBy} replacements={[
+              👦 <I18nString id={root.codeBy} replacements={[
                 <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,
               ]} />
             </p>
             <p>
-              📝<I18nString id={root.license} replacements={[
+              📝 <I18nString id={root.license} replacements={[
                 <a key="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
                   BY CC-SA 4.0
-          </a>,
+                </a>,
               ]} />
 
             </p>
@@ -112,7 +116,18 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
             </li>
           </ul>
         </Col>
-
+        <Col xs={12} md={3}>
+          <h6>👨‍🎓 <I18nString id={root.friends} /></h6>
+          <ul>
+          {friendLinks.map((link) => (
+              <li>
+                <a key={link.name} href={link.link}>
+                  {`${link.name} - ${link.description}`}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Col>
       </Row>
       <hr/>
       <p className="footer-bottom">

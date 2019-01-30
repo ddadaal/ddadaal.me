@@ -13,58 +13,7 @@ tags:
 
 ---
 
-
-<style>
-
-
-.resume h1, h2, h3 {
-    border-bottom-width: 0 !important;
-        margin: 8px 0;
-}
-
-.resume h1 {
-    font-size: 24px;
-    margin: 12px 0;
-    padding-bottom: 0.3em;
-    border-bottom-width: 1px !important;
-    border-bottom-style: solid;
-}
-.resume h2 {
-    font-size: 20px;
-
-}
-
-.resume h3{
-    font-size: 16px;
-
-}
-.resume ul {
-    margin: 0px;
-}
-.resume p {
-    margin: 0px;
-}
-.resume .right { float: right}
-.resume .contact {
-    margin: 20px 0;
-    text-align: center;
-}
-.resume .name {
-    font-size: 36px;
-    border-bottom: none;
-    padding: 0;
-    text-align: center;
-}
-.resume .avatar {
-    float: right;
-    height: 100px;
-    margin: 0px;
-}
-
-</style>
-
-<div class="resume">
-<div>
+<resume-layout>
 
 <h1 class="name">
 Chen Junda
@@ -73,7 +22,6 @@ Chen Junda
 <h3 class="contact">陈俊达 | 18523206096 | smallda@outlook.com | QQ 540232834 | WeChat h_smallda
 
 </h3>
-</div>
 
 # Education
 
@@ -131,10 +79,11 @@ Core member of software team, backend architect, leader of web frontend team, sp
 - Solid English skill and fit in English environment. CET4: 628, CET6: 556.
 - Active in volunteering and helping others. Willing to make the society better. 112 hours of volunteering time. Participated in IT Xia IT technology Charity Club and Lily Studio.
 - Got internship offer from **Microsoft Research Asia DKI(Data, Knowledge and Intelligence) group on frontend development** in Jan 2019 but refused due to time conflict.
+
 # Download PDF version
 
 [English](./english.pdf)
 
 [中文](./chinese.pdf)
 
-</div>
+</resume-layout>

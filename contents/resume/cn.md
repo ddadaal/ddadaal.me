@@ -13,57 +13,7 @@ tags:
 
 ---
 
-<style>
-
-
-.resume h1, h2, h3 {
-    border-bottom-width: 0 !important;
-        margin: 8px 0;
-}
-
-.resume h1 {
-    font-size: 24px;
-    margin: 12px 0;
-    padding-bottom: 0.3em;
-    border-bottom-width: 1px !important;
-    border-bottom-style: solid;
-}
-.resume h2 {
-    font-size: 20px;
-
-}
-
-.resume h3{
-    font-size: 16px;
-
-}
-.resume ul {
-    margin: 0px;
-}
-.resume p {
-    margin: 0px;
-}
-.resume .right { float: right}
-.resume .contact {
-    margin: 20px 0;
-    text-align: center;
-}
-.resume .name {
-    font-size: 36px;
-    border-bottom: none;
-    padding: 0;
-    text-align: center;
-}
-.resume .avatar {
-    float: right;
-    height: 100px;
-    margin: 0px;
-}
-
-</style>
-
-<div class="resume">
-<div>
+<resume-layout>
 
 <h1 class="name">
 陈俊达
@@ -72,8 +22,6 @@ tags:
 <h3 class="contact">18523206096 | smallda@outlook.com | QQ 540232834 | 微信 h_smallda
 
 </h3>
-</div>
-</html>
 
 # 教育经历
 
@@ -136,4 +84,4 @@ tags:
 
 [English](./english.pdf)
 
-</div>
+</resume-layout>

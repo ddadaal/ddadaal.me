@@ -1,6 +1,7 @@
 import Store from "./Store";
 import { Language, getLanguage, allLanguages } from "@/i18n/definition";
 import { isServer } from "@/utils/isServer";
+import { GET_VALUE } from "@/i18n/lang";
 
 interface II18nStore {
   language: Language;
@@ -56,7 +57,10 @@ export class I18nStore extends Store<II18nStore> {
   }
 
   translate = (id: string, replacements?: React.ReactNode[]): React.ReactNode | string => {
-    const def = this.getDefinition(id);
+
+    const trueId = id[GET_VALUE] as string;
+
+    const def = this.getDefinition(trueId);
     if (!replacements || replacements.length === 0) {
       return def;
     }

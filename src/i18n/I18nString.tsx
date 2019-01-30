@@ -13,6 +13,6 @@ export default withStores(I18nStore)(function I18nString({ useStore, id, replace
 
   const i18nStore = useStore(I18nStore);
 
-  return i18nStore.translate(id[GET_VALUE], replacements) as any;
+  return i18nStore.translate(id, replacements) as any;
 
 });

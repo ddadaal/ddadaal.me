@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import TagGroup from "../TagGroup";
+import TagGroup from "./TagGroup";
 import I18nString from "@/i18n/I18nString";
 import lang from "@/i18n/lang";
 import { getLanguage } from "@/i18n/definition";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
-import ArticleStatistics from "./ArticleStatistics";
+import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
 
 interface Props extends WithStoresProps {
@@ -56,9 +56,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
         {title}
       </StyledTitle>
 
-      <TagGroup tags={tags} />
-      <ArticleStatistics date={date} wordCount={words} timeToRead={timeToRead} />
-
+      <ArticleFrontmatter date={date} wordCount={words} timeToRead={timeToRead} tags={tags} />
 
       <p>{excerpt}</p>
       <p>

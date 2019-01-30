@@ -109,14 +109,14 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
 });
 
 const StyledDropdownItem = styled(DropdownItem)`
-.nav-link {
-  color: black !important;
+  .nav-link {
+    color: black !important;
 
-}
+  }
 
-.nav-link:hover {
-  color: white !important;
-}
+  .nav-link:hover {
+    color: white !important;
+  }
 `;
 
 const StyledNavbar = styled(Navbar)`

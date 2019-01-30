@@ -23,15 +23,17 @@ export default {
     search: {
       inputPlaceholder: "Search",
       notFound: "Not found.",
-      title: "{} search result",
+      title: "Search result for {}",
       info: "Number of results: {}",
     },
     footer: {
       codeBy: "Coded proudly by {}",
       themedWith: "Themed with",
       poweredBy: "Powered by",
-      license: "Unless otherwise stated, articles on this site are licensed under {}",
+      license: "Articles are licensed under {} unless otherwise stated",
       madeWithLove: "Made with ❤",
+      friends: "Friends",
+      friendLinkhire: "Contact me if you'd like your website added to this list :D",
     },
     languageSelector: {
       select: "Select a language for website",
@@ -44,9 +46,10 @@ export default {
         title: "Share",
       }
     },
-    articleStatistics: {
-      timeToRead: "Estimated time to read: {} minutes",
+    articleFrontmatter: {
+      timeToRead: "Time to read: {} minutes",
       wordCount: "{} Words",
+      tagLinkTitle: "Search articles tagged with {}",
     },
     articleItem: {
       availableLanguages: "Available in ",
@@ -65,7 +68,7 @@ export default {
       moreLink: "More",
     },
     blogIntro: {
-      subtitle: " - A personal blog",
+      subtitle: " - A Personal Blog",
       description1: "A static blog built with Gatsby",
       description2: "Technologies, experiences and daily life",
       sourceCode: "Blog Source Code on GitHub",
@@ -81,9 +84,5 @@ export default {
       articleCount: "Number of articles",
       lastUpdated: "Last updated"
     },
-    friends: {
-      title: "Friends",
-      hire: "Contact me if you'd like your website added to this list :D",
-    }
   },
 };

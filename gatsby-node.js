@@ -64,7 +64,7 @@ exports.createPages = async ({ actions, graphql }) => {
             date
             absolute_path
           }
-          html
+          htmlAst
           headings {
             depth
             value
@@ -91,17 +91,20 @@ exports.createPages = async ({ actions, graphql }) => {
     articleGroups,
   );
 
+  const slugger = new GitHubSlugger();
+
+
   Object.values(articleGroups).forEach((nodes) => {
     nodes.forEach((node) => {
+      slugger.reset();
       const path = node.path;
-      const slugger = new GitHubSlugger();
       createPage({
         path,
         component: articleTemplate,
         context: {
           id: node.frontmatter.id,
           lang: node.frontmatter.lang,
-          html: node.html,
+          htmlAst: node.htmlAst,
           headings: node.headings.map((x) => ({
             ...x,
             slug: slugger.slug(x.value),

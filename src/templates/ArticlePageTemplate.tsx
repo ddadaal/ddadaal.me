@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
-import TagGroup from "@/components/TagGroup";
+import TagGroup from "@/components/Article/TagGroup";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
 import { Link, navigate } from "gatsby";
 import { FaBackward } from "react-icons/fa";
@@ -17,14 +17,14 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/TocPanel";
 import { Row, Col } from "reactstrap";
-import ArticleStatistics from "@/components/Article/ArticleStatistics";
+import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 
 interface Props extends WithStoresProps {
   pageContext: {
     id: string;
     lang: string;
-    html: string;
+    htmlAst: object;
     headings: Heading[];
   };
   location: Location;
@@ -44,7 +44,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
 
   const i18nStore = props.useStore(I18nStore);
 
-  const { id, lang, html, headings } = props.pageContext;
+  const { id, lang, htmlAst, headings } = props.pageContext;
 
   const language = i18nStore.getLanguage(lang)!;
 
@@ -100,8 +100,8 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
         (
           <div>
             <h1>{frontmatter.title}</h1>
-            <TagGroup tags={frontmatter.tags} />
-            <ArticleStatistics
+            <ArticleFrontmatter
+              tags={frontmatter.tags}
               date={frontmatter.date}
               wordCount={wordCount}
               timeToRead={timeToRead}
@@ -113,7 +113,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
       }
       <Row>
         <Col md={frontmatter.no_toc ? 12 : 9} sm={12} >
-          <ArticleContentDisplay html={html} headings={headings} />
+          <ArticleContentDisplay htmlAst={htmlAst} headings={headings} />
         </Col>
         {
           !frontmatter.no_toc
