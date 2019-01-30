@@ -11,8 +11,9 @@ VicBlog is a static personal blog built with Gatsby.
 ## Features
 
 - Static website with modern web technologies
-- **Search** functionality!!
+- Synchronous & Native **Search**
     - Most static blogs don't support search but mine does 😄
+    - Native support for searching articles without any third-party services
 - Progressive Web Application Support
 - Full i18n
 - Styling with both [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)

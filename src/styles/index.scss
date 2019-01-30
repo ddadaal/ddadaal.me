@@ -12,22 +12,41 @@
 
   blockquote {
     @extend .blockquote;
+
+    padding: 16px;
+
+    background-color: #F8F8F8;
+  }
+
+  // line-highlight
+  .gatsby-highlight-code-line {
+    background-color: #feb;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid #f99;
   }
 
   h1, h2, h3, h4, h5, h6 {
     margin: 8px 0;
     padding-bottom: 0.3em;
 
-    &::before {
-      content: "# ";
-      color: $info;
-    }
+    border-left: 4px solid $info;
+
+    padding-left: 12px;
+
+
+    // &::before {
+    //   content: "# ";
+    //   color: $info;
+    // }
   }
 
   h1 {
     font-size: 2.2em;
     margin: 12px 0;
-    border-bottom: 1px solid lightgray;
   }
 
   h2 {

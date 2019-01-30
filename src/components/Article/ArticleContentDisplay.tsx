@@ -19,11 +19,13 @@ export default class ArticleContentDisplay extends React.Component<Props> {
 
   componentDidMount() {
 
+    // add header slug
     var headingElements = this.ref.current!.querySelectorAll('h1,h2,h3,h4,h5,h6');
 
     this.props.headings.forEach((heading, index) => {
       headingElements[index].id = heading.slug;
     });
+
   }
 
   render() {
