@@ -1,12 +1,12 @@
 # VicBlog Gatsby
 
-[![Build Status](https://travis-ci.org/viccrubs/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/viccrubs/VicBlog-Gatsby)
+[![Build Status](https://travis-ci.org/vicblog/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/vicblog/VicBlog-Gatsby)
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
 VicBlog is a static personal blog built with Gatsby.
 
-[Check it out now!(https://viccrubs.me)](https://viccrubs.me)
+[Check it out now!](https://viccrubs.me)
 
 ## Features
 
@@ -14,10 +14,10 @@ VicBlog is a static personal blog built with Gatsby.
 - Synchronous & Native **Search**
     - Native support for searching articles without any third-party services
 - Progressive Web Application Support
-- Full i18n
+- Support multi-language (Chinese & English)
 - Styling with both [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
 - Articles written on markdown; Source code and contents separated
-    - Content supports inline react components
+    - Supports inline react components
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 

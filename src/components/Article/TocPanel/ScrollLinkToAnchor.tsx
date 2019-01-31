@@ -26,7 +26,6 @@ export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
 
     }
 
-
     if (this.props.onClick) {
       this.props.onClick(e);
     }

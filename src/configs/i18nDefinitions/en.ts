@@ -31,6 +31,7 @@ export default {
       themedWith: "Themed with",
       poweredBy: "Powered by",
       license: "Articles are licensed under {} unless otherwise stated",
+      contacts: "Contact me",
       madeWithLove: "Made with ❤",
       friends: "Friends",
       friendLinkhire: "Contact me if you'd like your website added to this list :D",

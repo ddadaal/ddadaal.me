@@ -215,7 +215,6 @@ class Header extends React.PureComponent<Props, State> {
                     </PathItem>
 
                     <PathItem
-
                       Outer={StyledDropdownItem}
                       id={"about-me"}
                       currentPathname={pathnameWithoutLanguage}

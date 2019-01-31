@@ -8,6 +8,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
+import Contacts from "./Contacts";
 
 interface Props extends WithStoresProps {
   className?: string;
@@ -66,7 +67,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
   return (
     <Container className={props.className}>
       <Row className="footer-contents">
-        <Col xs={12} md={3}>
+        <Col xs={12} md={5}>
           <div className="footer-brief">
 
             <p>
@@ -82,9 +83,13 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
               ]} />
 
             </p>
+            <p>
+              <span id="contacts">📲 <I18nString id={root.contacts}/></span>
+              <Contacts/>
+            </p>
           </div>
         </Col>
-        <Col xs={12} md={3}>
+        <Col xs={12} md={2}>
           <h6>🚀 <I18nString id={root.poweredBy} /></h6>
           <ul>
             <li>
@@ -98,7 +103,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
             </li>
           </ul>
         </Col>
-        <Col xs={12} md={3}>
+        <Col xs={12} md={2}>
           <h6>🎨 <I18nString id={root.themedWith} /></h6>
           <ul>
             <li>

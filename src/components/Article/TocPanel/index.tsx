@@ -58,6 +58,8 @@ export default class TocPanel extends React.Component<Props, State>  {
       }
 
 
+
+
     }
     this.setState({ topHeadingIndex: headings.length - 1 });
   };

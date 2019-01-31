@@ -14,7 +14,7 @@ import { getLanguage } from "@/i18n/definition";;
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
-import TocPanel from "@/components/TocPanel";
+import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
 import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
