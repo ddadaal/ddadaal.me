@@ -19,6 +19,7 @@ import { Row, Col } from "reactstrap";
 import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
+import addSlug from "@/configs/article/astManipulators/addSlug";
 
 interface Props extends WithStoresProps {
   pageContext: {
@@ -49,7 +50,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
   const language = i18nStore.getLanguage(lang)!;
 
 
-  const { frontmatter, timeToRead, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
+  const { frontmatter, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
 
   const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
@@ -104,7 +105,6 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
               tags={frontmatter.tags}
               date={frontmatter.date}
               wordCount={wordCount}
-              timeToRead={timeToRead}
             />
 
 
@@ -113,7 +113,11 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
       }
       <Row>
         <Col md={frontmatter.no_toc ? 12 : 9} sm={12} >
-          <ArticleContentDisplay htmlAst={htmlAst} headings={headings} />
+          <ArticleContentDisplay
+            htmlAst={htmlAst}
+            headings={headings}
+
+          />
         </Col>
         {
           !frontmatter.no_toc

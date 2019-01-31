@@ -33,7 +33,6 @@ const query = graphql`
       edges {
         node {
           excerpt(pruneLength: 250, truncate: true)
-          timeToRead
           wordCount {
             words
           }

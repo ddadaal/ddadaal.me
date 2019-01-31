@@ -21,6 +21,8 @@ tags:
 @Override
 public void updateMission(String missionId, int credits, MissionType missionType) throws SystemException, IOException, MissionIdDoesNotExistException, ClassNotFoundException {
     Mission mission = null;
+
+    // highlight-start
     switch (missionType) {
         case IMAGE:
             mission = imageMissionDao.findImageMissionByMissionId(missionId);
@@ -39,6 +41,7 @@ public void updateMission(String missionId, int credits, MissionType missionType
             break;
 
     }
+    // highlight-end
     mission.setCredits(mission.getCredits() + credits);
     updateMission(mission);
 }
@@ -52,6 +55,7 @@ public String updateInstanceDetailVo(InstanceDetailVo instanceDetailVo) throws S
     InstanceVo instanceVo = instanceDetailVo.getInstance();
     Instance result = null;
 
+    // highlight-start
     switch (missionType) {
         case IMAGE:
             ImageInstanceDetailVo imageInstanceDetailVo = (ImageInstanceDetailVo) instanceDetailVo;
@@ -78,8 +82,9 @@ public String updateInstanceDetailVo(InstanceDetailVo instanceDetailVo) throws S
             AudioInstance audioInstance = generateAudioInstance(instanceVo, audioInstanceDetailVo);
             result = saveAudioInstance(audioInstance);
             break;
-
     }
+    // highlight-end
+
     if (result == null)
         throw new SystemException();
     return result.getInstanceId();
@@ -93,16 +98,16 @@ public String updateInstanceDetailVo(InstanceDetailVo instanceDetailVo) throws S
 public VideoInstance getVideoInstance(String instanceId)  {
     VideoInstance videoInstance = videoInstanceDao.findVideoInstanceByInstanceId(instanceId);
     try {
-    FileInputStream fileIn = new FileInputStream(PathUtil.getSerPath() + "video_instance" + "_" + instanceId);
-    ObjectInputStream in = new ObjectInputStream(fileIn);
-    List<VideoResult> videoResults = (List<VideoResult>) in.readObject();
-    in.close();
-    fileIn.close();
-    videoInstance.setVideoResults(videoResults);
+        FileInputStream fileIn = new FileInputStream(PathUtil.getSerPath() + "video_instance" + "_" + instanceId);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        List<VideoResult> videoResults = (List<VideoResult>) in.readObject();
+        in.close();
+        fileIn.close();
+        videoInstance.setVideoResults(videoResults);
     } catch (IOException e) {
         System.out.println("Results for " + instanceId + "not found. Returns empty list.");
         videoInstance.setVideoResults(new ArrayList<>());
-    }catch (ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
         e.printStackTrace();
     }
     return videoInstance;
@@ -111,16 +116,16 @@ public VideoInstance getVideoInstance(String instanceId)  {
 public AudioInstance getAudioInstance(String instanceId) {
     AudioInstance audioInstance = audioInstanceDao.findAudioInstanceByInstanceId(instanceId);
     try {
-    FileInputStream fileIn = new FileInputStream(PathUtil.getSerPath() + "audio_instance" + "_" + instanceId);
-    ObjectInputStream in = new ObjectInputStream(fileIn);
-    List<AudioResult> audioResults = (List<AudioResult>) in.readObject();
-    in.close();
-    fileIn.close();
-    audioInstance.setAudioResults(audioResults);
+        FileInputStream fileIn = new FileInputStream(PathUtil.getSerPath() + "audio_instance" + "_" + instanceId);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        List<AudioResult> audioResults = (List<AudioResult>) in.readObject();
+        in.close();
+        fileIn.close();
+        audioInstance.setAudioResults(audioResults);
     } catch (IOException e) {
         System.out.println("Results for " + instanceId + "not found. Returns empty list.");
         audioInstance.setAudioResults(new ArrayList<>());
-    }catch (ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
         e.printStackTrace();
     }
     return audioInstance;
@@ -129,12 +134,12 @@ public AudioInstance getAudioInstance(String instanceId) {
 public ThreeDimensionInstance getThreeDimensionInstance(String instanceId) {
     ThreeDimensionInstance threeDimensionInstance = threeDimensionInstanceDao.findThreeDimensionInstanceByInstanceId(instanceId);
     try {
-    FileInputStream fileIn = new FileInputStream(PathUtil.getSerPath() + "threeDimension_instance" + "_" + instanceId);
-    ObjectInputStream in = new ObjectInputStream(fileIn);
-    List<ThreeDimensionResult> threeDimensionResults = (List<ThreeDimensionResult>) in.readObject();
-    in.close();
-    fileIn.close();
-    threeDimensionInstance.setThreeDimensionResults(threeDimensionResults);
+        FileInputStream fileIn = new FileInputStream(PathUtil.getSerPath() + "threeDimension_instance" + "_" +    instanceId);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        List<ThreeDimensionResult> threeDimensionResults = (List<ThreeDimensionResult>) in.readObject();
+        in.close();
+        fileIn.close();
+        threeDimensionInstance.setThreeDimensionResults(threeDimensionResults);
     } catch (IOException e) {
         System.out.println("Results for " + instanceId + "not found. Returns empty list.");
         threeDimensionInstance.setThreeDimensionResults(new ArrayList<>());

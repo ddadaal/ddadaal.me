@@ -39,7 +39,7 @@ export default {
     },
     articleFrontmatter: {
       timeToRead: "阅读时间：{}分钟",
-      wordCount: "共有{}词",
+      wordCount: "{}词",
       tagLinkTitle: "搜索带有{}标签的文章",
     },
     comments: {

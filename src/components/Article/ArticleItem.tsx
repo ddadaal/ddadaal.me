@@ -44,7 +44,7 @@ const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
 
 export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
   const { article, useStore } = props;
-  const { frontmatter: { id, title, tags, date }, timeToRead, wordCount: { words }, excerpt } = article;
+  const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
   const { language } = useStore(I18nStore);
   const articleStore = useStore(ArticleStore);
 
@@ -56,7 +56,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
         {title}
       </StyledTitle>
 
-      <ArticleFrontmatter date={date} wordCount={words} timeToRead={timeToRead} tags={tags} />
+      <ArticleFrontmatter date={date} wordCount={words} tags={tags} />
 
       <p>{excerpt}</p>
       <p>

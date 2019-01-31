@@ -2,13 +2,13 @@ import * as React from "react";
 import lang from "@/i18n/lang";
 import I18nString from "@/i18n/I18nString";
 import styled from "styled-components";
-import { Badge } from "reactstrap";
+import { Badge, Row, Col } from "reactstrap";
 import TagGroup from "./TagGroup";
 import { FaCalendarAlt, FaClock, FaFileWord, FaTags } from "react-icons/fa";
+import { breakpoints } from "@/styles/variables";
 
 interface Props {
   date: string;
-  timeToRead: number;
   wordCount: number;
   tags: string[];
 }
@@ -23,22 +23,36 @@ const Span = styled.span`
   /* border-left: 1px solid black; */
 `;
 
-const P = styled.div`
+const Tags = styled(Span)`
+  display: inline;
+  /* @media (max-width: ${breakpoints.md}px) {
+    display: block;
+    margin-bottom: 4px;
+  } */
+`;
+
+const ContainerRow = styled.div`
   font-size: 0.9em;
   margin: 8px 0;
 
-  display: flex;
-  align-items: center;
+  vertical-align: center;
 `;
 
 export default function ArticleFrontmatter(props: Props) {
-  const { date, timeToRead, wordCount, tags } = props;
+  const { date, wordCount, tags } = props;
   return (
-    <P>
-      { tags && <Span><FaTags /><TagGroup tags={tags || []} /></Span>}
-      <Span><FaCalendarAlt />{date}</Span>
-      <Span><FaClock /><I18nString id={root.timeToRead} replacements={[timeToRead]} /></Span>
-      <Span><FaFileWord /><I18nString id={root.wordCount} replacements={[wordCount]} /></Span>
-    </P>
+    <ContainerRow>
+
+      {tags && <Tags ><FaTags /><TagGroup tags={tags || []} /></Tags>}
+      <Span>
+        <FaCalendarAlt />
+        {date}
+      </Span>
+      {/* <Span><FaClock /><I18nString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
+      <Span>
+        <FaFileWord />
+        <I18nString id={root.wordCount} replacements={[wordCount]} />
+      </Span>
+    </ContainerRow>
   )
 }

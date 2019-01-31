@@ -46,7 +46,7 @@ def generate_one(length):
     return reduce(lambda x,y: x*10+y, map(lambda i: generate_digit(i), range(1,length+1)))
 
 def generate_multiple(length, num):
-return [generate_one(length) for i in range(0,num)]
+    return [generate_one(length) for i in range(0,num)]
 ```
 
 # 代码使用

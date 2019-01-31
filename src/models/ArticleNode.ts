@@ -8,7 +8,6 @@ export interface Heading {
 export interface ArticleNode {
   path: string;
   excerpt: string;
-  timeToRead: number;
   wordCount: {
     words: number,
   };
