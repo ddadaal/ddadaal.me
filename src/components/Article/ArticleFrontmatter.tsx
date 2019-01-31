@@ -4,6 +4,7 @@ import I18nString from "@/i18n/I18nString";
 import styled from "styled-components";
 import { Badge } from "reactstrap";
 import TagGroup from "./TagGroup";
+import { FaCalendarAlt, FaClock, FaFileWord, FaTags } from "react-icons/fa";
 
 interface Props {
   date: string;
@@ -17,31 +18,27 @@ const root = lang.articleFrontmatter;
 const color = "#7f8c8d";
 
 const Span = styled.span`
-  margin-left: 8px;
-  padding-left: 8px;
-  border-left: 1px solid black;
+  margin-right: 8px;
+  padding-right: 8px;
+  /* border-left: 1px solid black; */
 `;
 
-const P = styled.p`
+const P = styled.div`
   font-size: 0.9em;
-  padding: 0px;
+  margin: 8px 0;
+
+  display: flex;
+  align-items: center;
 `;
 
 export default function ArticleFrontmatter(props: Props) {
   const { date, timeToRead, wordCount, tags } = props;
   return (
     <P>
-      {tags
-        ? (
-        <>
-          <TagGroup tags={tags} />
-          <Span>{date}</Span>
-        </>
-        )
-        : date
-      }
-      <Span><I18nString id={root.timeToRead} replacements={[timeToRead]} /></Span>
-      <Span><I18nString id={root.wordCount} replacements={[wordCount]} /></Span>
+      { tags && <Span><FaTags /><TagGroup tags={tags || []} /></Span>}
+      <Span><FaCalendarAlt />{date}</Span>
+      <Span><FaClock /><I18nString id={root.timeToRead} replacements={[timeToRead]} /></Span>
+      <Span><FaFileWord /><I18nString id={root.wordCount} replacements={[wordCount]} /></Span>
     </P>
   )
 }

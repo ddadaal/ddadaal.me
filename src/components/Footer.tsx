@@ -120,8 +120,8 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
           <h6>👨‍🎓 <I18nString id={root.friends} /></h6>
           <ul>
           {friendLinks.map((link) => (
-              <li>
-                <a key={link.name} href={link.link}>
+              <li key={link.name}>
+                <a href={link.link}>
                   {`${link.name} - ${link.description}`}
                 </a>
               </li>

@@ -2,14 +2,12 @@
 @import "./bootswatch.scss";
 @import "./variables.scss";
 
-// Markdown defaults
-
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("../../assets/SourceSansPro.ttf");
 }
 
-html {
+body {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   word-spacing: 0.05em;
 }

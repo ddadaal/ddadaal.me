@@ -3,7 +3,6 @@ import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
-import TagGroup from "@/components/Article/TagGroup";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
 import { Link, navigate } from "gatsby";
 import { FaBackward } from "react-icons/fa";
@@ -19,12 +18,13 @@ import TocPanel from "@/components/TocPanel";
 import { Row, Col } from "reactstrap";
 import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
+import { HtmlAst } from "@/models/HtmlAst";
 
 interface Props extends WithStoresProps {
   pageContext: {
     id: string;
     lang: string;
-    htmlAst: object;
+    htmlAst: HtmlAst;
     headings: Heading[];
   };
   location: Location;

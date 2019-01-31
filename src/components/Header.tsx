@@ -127,7 +127,7 @@ const StyledNavbar = styled(Navbar)`
 
 `;
 
-const Container = styled.div`
+const Container = styled.header`
 `;
 
 const Placeholder = styled.div<{ height: number }>`
