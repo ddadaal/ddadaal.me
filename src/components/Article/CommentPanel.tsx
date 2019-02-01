@@ -32,8 +32,8 @@ class RealCommentPanel extends React.Component<Props, {}> {
       const gitalk = new Gitalk({
         clientID: "5640259688bc3d72b807",
         clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
-        repo: "viccrubs.github.io",
-        owner: "viccrubs",
+        repo: "vicblog.github.io",
+        owner: "vicblog",
         admin: ["viccrubs"],
         language: this.props.language,
         id: this.props.articleId,
