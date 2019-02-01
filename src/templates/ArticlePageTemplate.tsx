@@ -7,7 +7,7 @@ import { ArticleNode, Heading } from "@/models/ArticleNode";
 import { Link, navigate } from "gatsby";
 import { FaBackward } from "react-icons/fa";
 import styled, { keyframes } from "styled-components";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import LanguageSelector from "@/components/LanguageSelector";
 import { getLanguage } from "@/i18n/definition";;
@@ -19,7 +19,6 @@ import { Row, Col } from "reactstrap";
 import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
-import addSlug from "@/configs/article/astManipulators/addSlug";
 
 interface Props extends WithStoresProps {
   pageContext: {
@@ -81,7 +80,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
       <Headbar>
         <Link to={"/"}>
           <FaBackward />
-          <I18nString id={root.backToHome} />
+          <LocalizedString id={root.backToHome} />
         </Link>
         <LanguageSelector
           allLanguages={
@@ -93,7 +92,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           }
           changeLanguage={(lang) => navigate(langPathMap[lang])}
           currentLanguage={getLanguage(frontmatter.lang).name}
-          prompt={<I18nString id={root.selectLang} />}
+          prompt={<LocalizedString id={root.selectLang} />}
         />
 
       </Headbar>

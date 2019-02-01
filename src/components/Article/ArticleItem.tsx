@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { getLanguage } from "@/i18n/definition";
 import withStores, { WithStoresProps } from "@/stores/withStores";
@@ -26,7 +26,7 @@ const StyledPost = styled.div`
 const root = lang.articleItem;
 
 const LangLink = styled(Link)`
-  margin-right: 4px;
+  margin-right: 8px;
 `;
 
 const StyledH = styled.h2`
@@ -60,7 +60,7 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
 
       <p>{excerpt}</p>
       <p>
-        <I18nString id={root.availableLanguages} />
+        <LocalizedString id={root.availableLanguages} />
         {Object.entries(langPaths).map(([lang, path]) => (
           <LangLink key={lang} to={path}>{getLanguage(lang).name}</LangLink>
         ))}

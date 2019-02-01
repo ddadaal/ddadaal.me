@@ -5,8 +5,9 @@ import { navigate, Link } from "gatsby"
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import lang from "@/i18n/lang";
+import Localize from "@/i18n/Localize";
 
-interface Props extends WithStoresProps {
+interface Props {
   className?: string;
   tags: string[];
 }
@@ -19,24 +20,24 @@ const MarginedBadge = styled(Badge)`
   }
 `
 
-export default withStores(I18nStore)(function TagGroup(props: Props) {
-  const i18nStore = props.useStore(I18nStore);
-
-  const createTitle = (tag: string) =>
-    i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [tag]) as string
+export default function TagGroup(props: Props) {
 
   return (
     <>
       {
-        props.tags.map((x) =>
-          <MarginedBadge color={"info"} pill={true} key={x}>
-            <Link to={`/search?query=${x}`} title={createTitle(x)}>
-              {x}
-            </Link>
-          </MarginedBadge>
+        props.tags.map((tag) =>
+          <Localize id={lang.articleFrontmatter.tagLinkTitle} replacements={[tag]}>
+            {(localizedTitle) => (
+              <MarginedBadge color={"info"} pill={true} key={tag}>
+                <Link to={`/search?query=${tag}`} title={localizedTitle}>
+                  {tag}
+                </Link>
+              </MarginedBadge>
+            )}
+          </Localize>
         )
       }
     </>
   );
 
-});
+}

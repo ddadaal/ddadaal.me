@@ -9,7 +9,7 @@ interface Props extends WithStoresProps {
   replacements?: React.ReactNode[];
 }
 
-export default withStores(I18nStore)(function I18nString({ useStore, id, replacements }: Props) {
+export default withStores(I18nStore)(function LocalizedString({ useStore, id, replacements }: Props) {
 
   const i18nStore = useStore(I18nStore);
 

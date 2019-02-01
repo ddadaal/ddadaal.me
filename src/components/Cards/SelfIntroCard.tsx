@@ -3,7 +3,7 @@ import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "rea
 import { FaEllipsisH, FaEnvelope, FaFile, FaGithub, FaMale } from "react-icons/fa";
 import { Link } from "gatsby";
 import StackedDiv from "@/layouts/components/StackedDiv";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
@@ -25,30 +25,30 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
   return (
     <Card>
       <CardHeader className="d-flex justify-content-between align-items-center">
-        <span><FaMale /> <I18nString id={root.author} /></span>
+        <span><FaMale /> <LocalizedString id={root.author} /></span>
         <Link
           className="card-link"
           to={aboutMePath}
           title={i18nStore.language.definitions.selfIntro.more}
         >
-          <I18nString id={root.moreLink} />
+          <LocalizedString id={root.moreLink} />
         </Link>
       </CardHeader>
       <CardBody>
         <CardText>
-          <I18nString id={root.university} />
+          <LocalizedString id={root.university} />
         </CardText>
         <CardText>
-          <I18nString id={root.grade} />
+          <LocalizedString id={root.grade} />
         </CardText>
         <StackedDiv>
         <Link className="card-link" to={articleStore.getNodeFromLang("resume", i18nStore.state.language).path}>
             <FaFile />
-            <I18nString id={root.resume} />
+            <LocalizedString id={root.resume} />
           </Link>
           <CardLink href="mailto://smallda@outlook.com">
             <FaEnvelope />
-            <I18nString id={root.mailToMe} />
+            <LocalizedString id={root.mailToMe} />
           </CardLink>
           <CardLink href="https://github.com/viccrubs">
             <FaGithub />

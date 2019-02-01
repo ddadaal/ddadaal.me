@@ -8,9 +8,7 @@ import components from "@/configs/article/InlineComponentConfig";
 
 import rehypeReact from "rehype-react"
 import { HtmlAst } from "@/models/HtmlAst";
-import { AstManipulator } from "@/configs/article/astManipulators/AstManipulator";
 import addSlug from "@/configs/article/astManipulators/addSlug";
-import addCodeHeader from "@/configs/article/astManipulators/addCodeHeader";
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,

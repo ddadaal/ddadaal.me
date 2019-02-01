@@ -1,6 +1,6 @@
 import * as React from "react";
 import lang from "@/i18n/lang";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import styled, { keyframes } from "styled-components";
 
 interface Props {
@@ -37,9 +37,9 @@ export default function NewContentPop(props: Props) {
   return (
     <NewContentPopContainer className="nonewcontent">
       <a href="" onClick={() => location.reload()}>
-        <I18nString id={root.refresh} />
+        <LocalizedString id={root.refresh} />
       </a>
-      <I18nString id={root.other} />
+      <LocalizedString id={root.other} />
     </NewContentPopContainer>
   );
 }

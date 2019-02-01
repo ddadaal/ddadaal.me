@@ -5,9 +5,9 @@ import styled from "styled-components";
 import { IconType } from "react-icons";
 
 const contacts = [
-  [FaQq, "tencent://message/?Menu=yes&uin=540232834", "540232834"],
+  [FaQq, "http://wpa.qq.com/msgrd?v=3&uin=540232834&site=qq&menu=yes", "540232834"],
   [FaMailBulk, "mailto://smallda@outlook.com", "smallda@outlook.com"],
-  [FaLinkedin, "https://www.linkedin.com/in/chenjunda/"],
+  [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "陈俊达"],
   [FaGithub, "https://github.com/viccrubs", "viccrubs"],
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "陈俊达"],
@@ -34,7 +34,7 @@ export default function Contacts() {
         const [Icon, link, title] = contact;
         return (
           <Contact key={link}>
-            <a href={link} title={title}>
+            <a href={link} title={title} target="__blank">
               <Icon />
             </a>
           </Contact>

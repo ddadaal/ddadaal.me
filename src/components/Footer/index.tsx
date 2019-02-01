@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import Link from "gatsby-link";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
@@ -24,7 +24,7 @@ const Container = styled.footer`
   color: white;
   background-color: ${colors.headerBg};
 
-  padding: 32px;
+  padding: 32px 0px;
 
   hr {
     color: white;
@@ -71,12 +71,12 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
           <div className="footer-brief">
 
             <p>
-              👦 <I18nString id={root.codeBy} replacements={[
+              👦 <LocalizedString id={root.codeBy} replacements={[
                 <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,
               ]} />
             </p>
             <p>
-              📝 <I18nString id={root.license} replacements={[
+              📝 <LocalizedString id={root.license} replacements={[
                 <a key="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
                   BY CC-SA 4.0
                 </a>,
@@ -84,13 +84,13 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
 
             </p>
             <p>
-              <span id="contacts">📲 <I18nString id={root.contacts}/></span>
+              <span id="contacts">📲 <LocalizedString id={root.contacts}/></span>
               <Contacts/>
             </p>
           </div>
         </Col>
         <Col xs={12} md={2}>
-          <h6>🚀 <I18nString id={root.poweredBy} /></h6>
+          <h6>🚀 <LocalizedString id={root.poweredBy} /></h6>
           <ul>
             <li>
               <a key="React" href={"https://reactjs.org/"}>React</a>
@@ -101,10 +101,13 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
             <li>
               <a key="Pages" href={"https://pages.github.com/"}>GitHub Pages</a>
             </li>
+            <li>
+              <a key="TypeScript" href={"https://www.typescriptlang.org/"}>TypeScript</a>
+            </li>
           </ul>
         </Col>
         <Col xs={12} md={2}>
-          <h6>🎨 <I18nString id={root.themedWith} /></h6>
+          <h6>🎨 <LocalizedString id={root.themedWith} /></h6>
           <ul>
             <li>
               <a key="reactstrap" href={"https://reactstrap.github.io/"}>Reactstrap</a>
@@ -122,7 +125,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
           </ul>
         </Col>
         <Col xs={12} md={3}>
-          <h6>👨‍🎓 <I18nString id={root.friends} /></h6>
+          <h6>👨‍🎓 <LocalizedString id={root.friends} /></h6>
           <ul>
           {friendLinks.map((link) => (
               <li key={link.name}>
@@ -136,7 +139,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
       </Row>
       <hr/>
       <p className="footer-bottom">
-        © {new Date().getFullYear()} | <I18nString id={root.madeWithLove} />
+        © {new Date().getFullYear()} | <LocalizedString id={root.madeWithLove} />
       </p>
     </Container>
   );

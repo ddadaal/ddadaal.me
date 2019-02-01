@@ -1,6 +1,6 @@
 import * as React from "react";
 import lang from "@/i18n/lang";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import styled from "styled-components";
 import { Badge, Row, Col } from "reactstrap";
 import TagGroup from "./TagGroup";
@@ -48,10 +48,10 @@ export default function ArticleFrontmatter(props: Props) {
         <FaCalendarAlt />
         {date}
       </Span>
-      {/* <Span><FaClock /><I18nString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
+      {/* <Span><FaClock /><LocalizedString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
       <Span>
         <FaFileWord />
-        <I18nString id={root.wordCount} replacements={[wordCount]} />
+        <LocalizedString id={root.wordCount} replacements={[wordCount]} />
       </Span>
     </ContainerRow>
   )

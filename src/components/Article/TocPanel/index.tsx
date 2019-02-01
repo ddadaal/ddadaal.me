@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Heading } from "@/models/ArticleNode";
 import { MdToc } from "react-icons/md";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import styled from "styled-components";
 import { heights } from "@/styles/variables";
@@ -56,10 +56,6 @@ export default class TocPanel extends React.Component<Props, State>  {
         this.setState({ topHeadingIndex: i });
         return;
       }
-
-
-
-
     }
     this.setState({ topHeadingIndex: headings.length - 1 });
   };
@@ -75,7 +71,7 @@ export default class TocPanel extends React.Component<Props, State>  {
   render() {
     return (
       <Container className={this.props.className}>
-        <p><MdToc /><I18nString id={root.toc} /></p>
+        <p><MdToc /><LocalizedString id={root.toc} /></p>
         {this.props.headings.map((heading, i) => {
           return (
             <TocPanelLink
@@ -91,5 +87,4 @@ export default class TocPanel extends React.Component<Props, State>  {
       </Container>
     );
   }
-
 }

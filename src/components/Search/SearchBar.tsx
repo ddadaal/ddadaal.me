@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
-import withStores, { WithStoresProps } from "@/stores/withStores";
-import { I18nStore } from "@/stores/I18nStore";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
+import Localize from "@/i18n/Localize";
+import lang from "@/i18n/lang";
 
 
-interface Props extends WithStoresProps {
+interface Props {
   onSearch?(): void;
 }
 
@@ -14,7 +14,7 @@ interface State {
   input: string;
 }
 
-class SearchBar extends React.Component<Props, State> {
+export default class SearchBar extends React.Component<Props, State> {
 
   state = { input: "" };
 
@@ -34,16 +34,19 @@ class SearchBar extends React.Component<Props, State> {
   }
 
   render() {
-    const i18nStore = this.props.useStore(I18nStore);
 
     return (
       <InputGroup>
-        <Input
-          value={this.state.input}
-          onChange={this.onChange}
-          placeholder={i18nStore.language.definitions.search.inputPlaceholder}
-          onKeyPress={this.onKeyPress}
-        />
+        <Localize id={lang.search.inputPlaceholder}>
+          {(result) => (
+            <Input
+              value={this.state.input}
+              onChange={this.onChange}
+              placeholder={result}
+              onKeyPress={this.onKeyPress}
+            />
+          )}
+        </Localize>
         <InputGroupAddon addonType="append">
           <Button onClick={this.onSearch} color="secondary"><FaSearch /></Button>
         </InputGroupAddon>
@@ -52,5 +55,4 @@ class SearchBar extends React.Component<Props, State> {
   }
 }
 
-export default withStores(I18nStore)(SearchBar);
 

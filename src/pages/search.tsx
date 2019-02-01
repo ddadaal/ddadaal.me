@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ArticleNode } from "@/models/ArticleNode";
 import ArticleItem from "@/components/Article/ArticleItem";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/components/Page";
 import withStores from "@/stores/withStores";
@@ -62,9 +62,9 @@ export default withStores(LocationStore, ArticleStore)(function SearchPage({ use
   return (
     <Page>
       <ArticleListLayout>
-        <h3><I18nString id={root.title} replacements={[<strong>{query}</strong>]} /></h3>
+        <h3><LocalizedString id={root.title} replacements={[<strong>{query}</strong>]} /></h3>
         <small>
-          <I18nString id={root.info} replacements={[
+          <LocalizedString id={root.info} replacements={[
             totalCount
           ]} />
         </small>

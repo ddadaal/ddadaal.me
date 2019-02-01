@@ -14,7 +14,7 @@ hide_heading: false
 
 - am born and raised in Chongqing, China
 - am an undergraduate majoring Software Engineering in Nanjing University since 2016
-- look forward to joining foreign companies and become a respectable software engineer
+- look forward to joining foreign companies and become a software engineer that doesn't overwork
 
 # Personalities
 

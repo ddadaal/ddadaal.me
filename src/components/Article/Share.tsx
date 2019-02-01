@@ -1,5 +1,5 @@
 import * as React from "react";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { FaShare } from "react-icons/fa";
 
@@ -14,7 +14,7 @@ export default function Share(props: Props) {
     <p>
       <h3>
         <FaShare />
-        <I18nString id={root.title} />
+        <LocalizedString id={root.title} />
       </h3>
     </p>
   )

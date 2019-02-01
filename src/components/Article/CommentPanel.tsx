@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
 
 import "gitalk/dist/gitalk.css";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 
 interface Props {
@@ -81,7 +81,7 @@ export default class CommentPanel extends React.Component<Props, State> {
       <CommentDiv>
         <h3>
           <FaComments />
-          <I18nString id={root.title} />
+          <LocalizedString id={root.title} />
         </h3>
         {
           this.state.mount

@@ -14,7 +14,7 @@ import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
 import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen } from "react-icons/fa";
-import I18nString from "@/i18n/I18nString";
+import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import LanguageSelector from "./LanguageSelector";
 import { ArticleGroups } from "@/models/ArticleGroups";
@@ -171,21 +171,22 @@ class Header extends React.PureComponent<Props, State> {
             <Collapse isOpen={this.state.isOpen} navbar={true}>
               <Nav className="ml-auto" navbar={true}>
                 <NavItem>
-                  <SearchBar />
+                  <SearchBar onSearch={this.close} />
                 </NavItem>
                 <NavItem active={atHomePage(pathnameWithoutLanguage)}>
-                  <NavLink to="/">
+                  <NavLink to="/" onClick={this.close}>
                     <FaHome />
-                    <I18nString id={root.home} />
+                    <LocalizedString id={root.home} />
                   </NavLink>
                 </NavItem>
                 <PathItem
                   Outer={NavItem}
                   id={"resume"}
                   currentPathname={pathnameWithoutLanguage}
+                  onClick={this.close}
                 >
                   <FaFile />
-                  <I18nString id={root.resume} />
+                  <LocalizedString id={root.resume} />
                 </PathItem>
                 <UncontrolledDropdown nav={true} inNavbar={true}>
                   <DropdownToggle
@@ -194,33 +195,36 @@ class Header extends React.PureComponent<Props, State> {
                     className={pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
                   >
                     <FaInfo />
-                    <I18nString id={root.about._root} />
+                    <LocalizedString id={root.about._root} />
                   </DropdownToggle>
                   <DropdownMenu right={true}>
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"odyssey"}
                       currentPathname={pathnameWithoutLanguage}
+                      onClick={this.close}
                     >
                       <FaBookOpen />
-                      <I18nString id={root.about.odyssey} />
+                      <LocalizedString id={root.about.odyssey} />
                     </PathItem>
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"about-project"}
                       currentPathname={pathnameWithoutLanguage}
+                      onClick={this.close}
                     >
                       <FaGlobe />
-                      <I18nString id={root.about.website} />
+                      <LocalizedString id={root.about.website} />
                     </PathItem>
 
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"about-me"}
                       currentPathname={pathnameWithoutLanguage}
+                      onClick={this.close}
                     >
                       <FaMale />
-                      <I18nString id={root.about.me} />
+                      <LocalizedString id={root.about.me} />
                     </PathItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
