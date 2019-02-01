@@ -12,12 +12,22 @@ export default {
     headers: {
       home: "Home",
       resume: "Resume",
+      articlePlans: "Article Plans",
       about: {
         _root: "About",
         odyssey: "The Odyssey",
         website: "About Website",
         me: "About Me",
       },
+
+    },
+    articlePlans: {
+      title: "Article Plans",
+      description: "These are articles planned to be written and published.",
+      articleTitle: "Title",
+      tags: "Tags",
+      startTime: "Plan Time",
+      deadline: "Estimated Publish Time",
 
     },
     search: {
@@ -61,8 +71,7 @@ export default {
     },
     selfIntro: {
       author: "Author",
-      university: "Nanjing University Software Engineering",
-      grade: "Undergrade since 2016",
+      university: "Undergraduate in Nanjing University Software Engineering since 2016",
       resume: "Resume",
       mailToMe: "smallda@outlook.com",
       more: "More about me",

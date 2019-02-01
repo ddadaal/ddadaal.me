@@ -4,9 +4,6 @@ const dayjs = require("dayjs");
 
 const path = require("path");
 
-require("dayjs/locale/zh-cn");
-
-
 module.exports = {
   siteMetadata: {
     title: 'VicBlog',
@@ -109,6 +106,7 @@ module.exports = {
         path: `${__dirname}/contents`
       }
     },
+    `gatsby-transformer-json`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -160,7 +158,8 @@ module.exports = {
         // Setting a color is optional.
         color: `#3498DB`,
         // Disable the loading spinner.
-        showSpinner: false
+        showSpinner: false,
+        minimum: 0,
       }
     },
     'gatsby-plugin-sharp',

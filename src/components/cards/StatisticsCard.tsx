@@ -13,7 +13,7 @@ export default withStores(StatisticsStore)(({ useStore }) => {
   const store = useStore(StatisticsStore);
 
   return (
-    <ListGroup flush={false}>
+    <ListGroup flush={false} className="hover-card">
       <ListGroupHeader>
         <FaChartLine /><LocalizedString id={root.title} />
       </ListGroupHeader>

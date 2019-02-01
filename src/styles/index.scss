@@ -112,3 +112,12 @@ body {
   margin-top: 16px;
   padding-left: 8px;
 }
+
+.hover-card {
+
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0rem .2rem .4rem rgba(0,0,0,.3);
+  }
+}

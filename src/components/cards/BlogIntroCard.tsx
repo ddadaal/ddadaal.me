@@ -24,7 +24,7 @@ export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props:
   const i18nStore = props.useStore(I18nStore);
 
   return (
-    <Card>
+    <Card className="hover-card">
       <CardHeader className="d-flex justify-content-between align-items-center">
         <span><FaGlobe /> VicBlog <LocalizedString id={root.subtitle} /></span>
         <Link

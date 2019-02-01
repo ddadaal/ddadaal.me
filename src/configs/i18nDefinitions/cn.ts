@@ -12,12 +12,22 @@ export default {
     headers: {
       home: "主页",
       resume: "简历",
+      articlePlans: "文章计划",
       about: {
         _root: "关于",
         odyssey: "一个个人博客的史诗",
         website: "关于网站",
         me: "关于我",
       },
+    },
+    articlePlans: {
+      title: "文章计划",
+      description: "以下为目前计划编写和发布的文章。",
+      articleTitle: "标题",
+      tags: "标签",
+      startTime: "列入计划时间",
+      deadline: "预期发布时间",
+
     },
     search: {
       inputPlaceholder: "搜索",
@@ -59,8 +69,7 @@ export default {
     },
     selfIntro: {
       author: "作者",
-      university: "南京大学软件工程",
-      grade: "2016级本科生",
+      university: "南京大学软件工程2016级本科生",
       resume: "简历",
       mailToMe: "smallda@outlook.com",
       more: "更多我的信息",

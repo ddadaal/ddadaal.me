@@ -85,7 +85,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
             </p>
             <p>
               <span id="contacts">📲 <LocalizedString id={root.contacts}/></span>
-              <Contacts/>
+              <Contacts color="light" size={1.6}/>
             </p>
           </div>
         </Col>

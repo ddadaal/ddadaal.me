@@ -1,25 +1,34 @@
 import * as React from "react";
 
-import { FaQq, FaMailBulk, FaLinkedin, FaGithub, FaSteam, FaZhihu, FaQuora } from "react-icons/fa";
+import { FaQq, FaMailBulk, FaLinkedin, FaGithub, FaSteam, FaZhihu, FaQuora, FaStackOverflow } from "react-icons/fa";
 import styled from "styled-components";
-import { IconType } from "react-icons";
+
+import DoubanIcon from "~/assets/icons/douban.svg";
+
+interface Props {
+  color: "light" | "dark";
+  size: number;
+}
 
 const contacts = [
-  [FaQq, "http://wpa.qq.com/msgrd?v=3&uin=540232834&site=qq&menu=yes", "540232834"],
-  [FaMailBulk, "mailto://smallda@outlook.com", "smallda@outlook.com"],
-  [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "陈俊达"],
-  [FaGithub, "https://github.com/viccrubs", "viccrubs"],
-  [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Victor Crubs"],
-  [FaZhihu, "https://zhihu.com/people/VicCrubs", "陈俊达"],
-  [FaQuora, "https://www.quora.com/profile/Chen-Junda-3", "Chen Junda"],
-] as Array<[IconType, string, string]>
+  [FaQq, "http://wpa.qq.com/msgrd?v=3&uin=540232834&site=qq&menu=yes", "QQ: 540232834"],
+  [FaMailBulk, "mailto://smallda@outlook.com", "E-mail: smallda@outlook.com"],
+  [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "LinkedIn: 陈俊达"],
+  [FaGithub, "https://github.com/viccrubs", "GitHub: viccrubs"],
+  [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],
+  [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
+  [FaQuora, "https://www.quora.com/profile/Chen-Junda-3", "Quora: Chen Junda"],
+  [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: VicCrubs"],
+  [FaStackOverflow, "https://stackoverflow.com/users/2725415/chen-junda", "Stack Overflow: Chen Junda"],
+] as Array<[React.ComponentType, string, string]>
 
-const Contact = styled.span`
+const Contact = styled.span<{ color: string, size: number }>`
   svg {
-    height: 1.6em;
-    width: 1.6em;
+    height: ${props => props.size}em;
+    width: ${props => props.size}em;
     margin: 12px 12px 12px 0;
-    color: white;
+    color: ${props => props.color};
+    fill: ${props => props.color};
   }
 `;
 
@@ -27,13 +36,16 @@ const Container = styled.div`
   margin: 4px 0;
 `;
 
-export default function Contacts() {
+export default function Contacts(props: Props) {
+
+  const color = props.color === "light" ? "white" : "black";
+
   return (
     <Container>
       {contacts.map((contact) => {
         const [Icon, link, title] = contact;
         return (
-          <Contact key={link}>
+          <Contact key={link} color={color} size={props.size}>
             <a href={link} title={title} target="__blank">
               <Icon />
             </a>

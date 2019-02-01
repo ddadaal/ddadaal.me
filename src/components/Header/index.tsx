@@ -13,16 +13,16 @@ import * as React from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
-import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen } from "react-icons/fa";
+import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaCalendarAlt } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import LanguageSelector from "./LanguageSelector";
+import LanguageSelector from "../LanguageSelector";
 import { ArticleGroups } from "@/models/ArticleGroups";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore, removeLangFromPath } from "@/stores/LocationStore";
-import SearchBar from "@/components/Search/SearchBar";
+import SearchBar from "@/components/Header/SearchBar";
 
 interface Props extends WithStoresProps {
   title: string;
@@ -134,11 +134,15 @@ const Placeholder = styled.div<{ height: number }>`
   height: ${props => props.height}px;
   transition: height 0.3s ease-in-out;
 
+
   @media (min-width: ${breakpoints.md}px) {
     height: ${heights.header}px;
   }
 `;
 
+const StyledDropdownMenu = styled(DropdownMenu)`
+    box-shadow: 0rem .3rem .6rem rgba(0,0,0,.3);
+`;
 
 class Header extends React.PureComponent<Props, State> {
 
@@ -179,6 +183,12 @@ class Header extends React.PureComponent<Props, State> {
                     <LocalizedString id={root.home} />
                   </NavLink>
                 </NavItem>
+                {/* <NavItem active={pathnameWithoutLanguage.startsWith("/articlePlans")}>
+                  <NavLink to="/articlePlans" onClick={this.close}>
+                    <FaCalendarAlt />
+                    <LocalizedString id={root.articlePlans} />
+                  </NavLink>
+                </NavItem> */}
                 <PathItem
                   Outer={NavItem}
                   id={"resume"}
@@ -197,7 +207,7 @@ class Header extends React.PureComponent<Props, State> {
                     <FaInfo />
                     <LocalizedString id={root.about._root} />
                   </DropdownToggle>
-                  <DropdownMenu right={true}>
+                  <StyledDropdownMenu right={true}>
                     <PathItem
                       Outer={StyledDropdownItem}
                       id={"odyssey"}
@@ -226,7 +236,7 @@ class Header extends React.PureComponent<Props, State> {
                       <FaMale />
                       <LocalizedString id={root.about.me} />
                     </PathItem>
-                  </DropdownMenu>
+                  </StyledDropdownMenu>
                 </UncontrolledDropdown>
                 <NavItem>
                   <NavbarLanguageSelector />
