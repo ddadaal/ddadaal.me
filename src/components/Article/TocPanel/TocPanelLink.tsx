@@ -12,24 +12,20 @@ interface Props {
 
 const Item = styled(ScrollLinkToAnchor) <{
   depth: number;
-  active: boolean;
 }>`
   padding-left: ${props => props.depth * 16}px;
   :hover {
     cursor: pointer;
   }
   display: block;
-  padding-top: 2px;
+  padding-bottom: 8px;
 
 
-
-  ${props => props.active
-    ? `
-      border-left: 4px solid ${colors.tocLinkActiveColor};
-      padding-left: ${props.depth * 16-4}px;
-      color: ${colors.tocLinkActiveColor} !important;
-    `
-    : ""}
+  &.active {
+    border-left: 4px solid ${colors.tocLinkActiveColor};
+    padding-left: ${props => props.depth * 16-4}px;
+    color: ${colors.tocLinkActiveColor} !important;
+  }
 
   :hover {
     color: ${colors.tocLinkActiveColor} !important;
@@ -38,13 +34,15 @@ const Item = styled(ScrollLinkToAnchor) <{
 
 
 export default function TocPanelLink(props: Props) {
+  const { active, depth, targetAnchor, children } = props;
+
   return (
     <Item
-      active={props.active}
-      depth={props.depth}
-      targetAnchor={props.targetAnchor}
+      className={active ? "active" : undefined}
+      depth={depth}
+      targetAnchor={targetAnchor}
     >
-      {props.children}
+      {children}
     </Item>
 
   )

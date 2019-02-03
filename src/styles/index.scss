@@ -8,11 +8,17 @@
 }
 
 body {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-  word-spacing: 0.05em;
+  // font-family: sans-serif;
+  // font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.2px;
+  text-rendering: optimizeLegibility;
+
 }
 
 .markdown {
+
+  overflow-wrap: break-word;
+  line-height: 1.7em;
 
   table {
     @extend .table;

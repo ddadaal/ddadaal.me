@@ -8,7 +8,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
-import Contacts from "./Contacts";
+import Contacts from "../Contacts";
 
 interface Props extends WithStoresProps {
   className?: string;
@@ -71,7 +71,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
           <div className="footer-brief">
 
             <p>
-              👦 <LocalizedString id={root.codeBy} replacements={[
+              👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
                 <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,
               ]} />
             </p>
@@ -85,7 +85,7 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
             </p>
             <p>
               <span id="contacts">📲 <LocalizedString id={root.contacts}/></span>
-              <Contacts color="light" size={1.6}/>
+              <Contacts color="white" size={1.6}/>
             </p>
           </div>
         </Col>

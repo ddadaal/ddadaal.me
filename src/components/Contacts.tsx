@@ -6,7 +6,7 @@ import styled from "styled-components";
 import DoubanIcon from "~/assets/icons/douban.svg";
 
 interface Props {
-  color: "light" | "dark";
+  color: string;
   size: number;
 }
 
@@ -38,14 +38,12 @@ const Container = styled.div`
 
 export default function Contacts(props: Props) {
 
-  const color = props.color === "light" ? "white" : "black";
-
   return (
     <Container>
       {contacts.map((contact) => {
         const [Icon, link, title] = contact;
         return (
-          <Contact key={link} color={color} size={props.size}>
+          <Contact key={link} color={props.color} size={props.size}>
             <a href={link} title={title} target="__blank">
               <Icon />
             </a>

@@ -41,14 +41,14 @@ pre[class*="language-"] {
     margin: .5em 0;
     overflow: auto;
     border: 1px solid #dddddd;
-    background-color: white;
+    background-color: #F7F7F7;
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
     padding: .2em;
     padding-top: 1px; padding-bottom: 1px;
-    background: #f8f8f8;
+    background: #F7F7F7;
     border: 1px solid #dddddd;
 }
 

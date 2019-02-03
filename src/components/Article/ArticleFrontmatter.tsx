@@ -43,7 +43,7 @@ export default function ArticleFrontmatter(props: Props) {
   return (
     <ContainerRow>
 
-      {tags && <Tags ><FaTags /><TagGroup tags={tags || []} /></Tags>}
+      {tags && <Tags ><FaTags /><TagGroup tags={tags} /></Tags>}
       <Span>
         <FaCalendarAlt />
         {date}

@@ -26,7 +26,7 @@ export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props:
   return (
     <Card className="hover-card">
       <CardHeader className="d-flex justify-content-between align-items-center">
-        <span><FaGlobe /> VicBlog <LocalizedString id={root.subtitle} /></span>
+        <span>💻 VicBlog <LocalizedString id={root.subtitle} /></span>
         <Link
           className="card-link"
           to={articleStore.getNodeFromLang("about-project", i18nStore.state.language).path}

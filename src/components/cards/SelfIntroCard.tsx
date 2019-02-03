@@ -9,7 +9,7 @@ import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
-import Contacts from "../Footer/Contacts";
+import Contacts from "../Contacts";
 
 interface Props extends WithStoresProps {
 }
@@ -26,7 +26,7 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
   return (
     <Card className="hover-card">
       <CardHeader className="d-flex justify-content-between align-items-center">
-        <span><FaMale /> <LocalizedString id={root.author} /></span>
+        <span>👦 <LocalizedString id={root.author} /></span>
         <Link
           className="card-link"
           to={aboutMePath}
@@ -40,7 +40,7 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
           <LocalizedString id={root.university} />
         </CardText>
         <CardText>
-          <Contacts color="dark" size={1.4}/>
+          <Contacts color="black" size={1.4}/>
         </CardText>
       </CardBody>
     </Card>

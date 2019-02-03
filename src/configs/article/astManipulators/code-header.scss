@@ -1,0 +1,13 @@
+@import "../../../styles/variables.scss";
+
+.code-header {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.code-header {
+  padding: 4px;
+  background-color: $blue;
+  color: white;
+}

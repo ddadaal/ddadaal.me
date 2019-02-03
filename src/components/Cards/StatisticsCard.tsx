@@ -15,7 +15,7 @@ export default withStores(StatisticsStore)(({ useStore }) => {
   return (
     <ListGroup flush={false} className="hover-card">
       <ListGroupHeader>
-        <FaChartLine /><LocalizedString id={root.title} />
+      📈 <LocalizedString id={root.title} />
       </ListGroupHeader>
       <ListGroupItem className="d-flex justify-content-between align-items-center">
         <LocalizedString id={root.articleCount} />
