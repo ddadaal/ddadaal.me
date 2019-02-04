@@ -80,10 +80,10 @@ Core member of software team, backend architect, leader of web frontend team, sp
 - Active in volunteering and helping others. Willing to make the society better. 112 hours of volunteering time. Participated in IT Xia IT technology Charity Club and Lily Studio
 - Got internship offer from **Microsoft Research Asia DKI(Data, Knowledge and Intelligence) group on frontend development** in Jan 2019 but refused due to time conflict
 
-# Download PDF version
+# Other Versions and Downloads
 
-[English](./english.pdf)
+English：[View](/resume/en)，[Download](./english.pdf)
 
-[中文](./chinese.pdf)
+中文：[浏览](/resume/cn)，[下载](./chinese.pdf)
 
 </resume-layout>

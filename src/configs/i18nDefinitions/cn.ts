@@ -38,7 +38,7 @@ export default {
     footer: {
       codeBy: "由{}自豪地编写",
       themedWith: "描绘主题",
-      poweredBy: "强势驱动",
+      poweredBy: "强力驱动",
       license: "除非特别注明，本站文章在{}协议下授权",
       contacts: "联系我",
       madeWithLove: "用❤制作",

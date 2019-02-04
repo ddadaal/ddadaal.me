@@ -3,6 +3,7 @@ const path = require("path");
 const indexTemplate = path.resolve("src/templates/HomePageTemplate.tsx");
 const articleTemplate = path.resolve(`src/templates/ArticlePageTemplate.tsx`);
 
+
 const GitHubSlugger = require("github-slugger");
 
 const dayjs = require("dayjs");
@@ -10,7 +11,7 @@ const dayjs = require("dayjs");
 function createPaginatedHomepages(createPage, articleGroups) {
 
   const generatePath = (index) => {
-    return index === 0 ? "/" : `/${index + 1}`;
+    return index === 0 ? "/" : `/articles/${index + 1}`;
   };
 
   const notIgnoredGroups = [];
@@ -47,7 +48,7 @@ function createPaginatedHomepages(createPage, articleGroups) {
 exports.createPages = async ({ actions, graphql }) => {
 
 
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
 
 
@@ -82,7 +83,7 @@ exports.createPages = async ({ actions, graphql }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const id = node.frontmatter.id;
     articleGroups[id] = articleGroups[id] || [];
-    node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}`;
+    node.path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
     articleGroups[id].push(node);
   });
 
@@ -93,8 +94,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const slugger = new GitHubSlugger();
 
-
   Object.values(articleGroups).forEach((nodes) => {
+    let indexPageCreated = false; // indicates whether the index path (the path not containing lang) is created
     nodes.forEach((node) => {
       slugger.reset();
       const path = node.path;
@@ -111,6 +112,29 @@ exports.createPages = async ({ actions, graphql }) => {
           })),
         }
       });
+
+      if (!indexPageCreated) {
+        slugger.reset();
+        const paths = node.path.split("/");
+        paths.pop();
+        const path = paths.join("/");
+
+        createRedirect({
+          fromPath: path,
+          toPath: node.path,
+          isPermanent: true,
+          redirectInBrowser: true,
+        });
+
+        createRedirect({
+          fromPath: path + "/",
+          toPath: node.path,
+          isPermanent: true,
+          redirectInBrowser: true,
+        });
+
+        indexPageCreated = true;
+      }
     });
   });
 };

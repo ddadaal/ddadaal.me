@@ -4,17 +4,6 @@ interface ILocationStore {
   location: Location;
 }
 
-export function removeLangFromPath(pathname: string) {
-  let i = 0, slashCount = 0;
-  while (slashCount < 2 && i < pathname.length) {
-    if (pathname[i] === '/') {
-      slashCount++;
-    }
-    i++;
-  }
-  return pathname.substring(i - 1);
-}
-
 function parseQuery(queryString: string) {
   var query = {};
   var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
@@ -37,10 +26,6 @@ export class LocationStore extends Store<ILocationStore> {
 
   updateLocation(location: Location) {
     this.setState({ location });
-  }
-
-  get pathnameWithoutLanguage() {
-    return removeLangFromPath(this.pathname);
   }
 
   get query() {

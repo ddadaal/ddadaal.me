@@ -27,7 +27,11 @@ export default withStores(ArticleStore, I18nStore)(function ArticleList({ ids, p
         .map((nodes) => {
           const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
           return (
-            <ArticleItem article={node} key={node.frontmatter.id} />
+            <ArticleItem
+              article={node}
+              key={node.frontmatter.id}
+              currentArticleLanguage={node.frontmatter.lang}
+            />
           );
 
         })

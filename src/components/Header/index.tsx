@@ -21,7 +21,7 @@ import { ArticleGroups } from "@/models/ArticleGroups";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
-import { LocationStore, removeLangFromPath } from "@/stores/LocationStore";
+import { LocationStore } from "@/stores/LocationStore";
 import SearchBar from "@/components/Header/SearchBar";
 
 interface Props extends WithStoresProps {
@@ -59,7 +59,7 @@ function Branding(props: { title: string }) {
 
 
 function atHomePage(pathname: string) {
-  return pathname === "/" || pathname.match(/\/\d+/) !== null;
+  return pathname === "/" || pathname.match(/\/articles\/\d+/) !== null;
 }
 
 const root = lang.headers;
@@ -84,7 +84,7 @@ function doNothing() {
 
 }
 
-const PathItem = withStores(ArticleStore, I18nStore)((props: {
+const ArticlePathItem = withStores(ArticleStore, I18nStore)((props: {
   Outer: React.ComponentType<{ active: boolean }>,
   children?: React.ReactNode,
   id: string,
@@ -98,8 +98,13 @@ const PathItem = withStores(ArticleStore, I18nStore)((props: {
   const { language } = useStore(I18nStore);
   const node = articleStore.getNodeFromLang(id, language);
 
+  const targetPageUrlParts = node.path.split("/");
+  targetPageUrlParts.pop();
+
+
+
   return (
-    <Outer active={currentPathname.startsWith(removeLangFromPath(node.path))}>
+    <Outer active={currentPathname.startsWith(targetPageUrlParts.join("/"))}>
       <NavLink to={node.path} onClick={onClick || doNothing}>
         {children}
       </NavLink>
@@ -125,14 +130,18 @@ const StyledNavbar = styled(Navbar)`
   margin-right: auto;
   padding: 4px 16px;
 
+  background-color: ${colors.headerBg};
+
 `;
 
 const Container = styled.header`
 `;
 
-const Placeholder = styled.div<{ height: number }>`
-  height: ${props => props.height}px;
+const Placeholder = styled.div`
+  height: ${(props: { height: number}) => props.height}px;
   transition: height 0.3s ease-in-out;
+
+  background-color: ${colors.headerBg};
 
 
   @media (min-width: ${breakpoints.md}px) {
@@ -163,13 +172,13 @@ class Header extends React.PureComponent<Props, State> {
   render() {
     const locationStore = this.props.useStore(LocationStore);
 
-    const { pathnameWithoutLanguage } = locationStore;
+    const { pathname } = locationStore;
 
     return (
       <Container>
         <Placeholder height={this.state.isOpen ? 250 : heights.header} />
         <div className="fixed-top bg-primary">
-          <StyledNavbar dark={true} expand="md" className="bg-primary">
+          <StyledNavbar dark={true} expand="md">
             <Branding title={this.props.title} />
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar={true}>
@@ -177,7 +186,7 @@ class Header extends React.PureComponent<Props, State> {
                 <NavItem>
                   <SearchBar onSearch={this.close} />
                 </NavItem>
-                <NavItem active={atHomePage(pathnameWithoutLanguage)}>
+                <NavItem active={atHomePage(pathname)}>
                   <NavLink to="/" onClick={this.close}>
                     <FaHome />
                     <LocalizedString id={root.home} />
@@ -189,53 +198,53 @@ class Header extends React.PureComponent<Props, State> {
                     <LocalizedString id={root.articlePlans} />
                   </NavLink>
                 </NavItem> */}
-                <PathItem
+                <ArticlePathItem
                   Outer={NavItem}
                   id={"resume"}
-                  currentPathname={pathnameWithoutLanguage}
+                  currentPathname={pathname}
                   onClick={this.close}
                 >
                   <FaFile />
                   <LocalizedString id={root.resume} />
-                </PathItem>
+                </ArticlePathItem>
                 <UncontrolledDropdown nav={true} inNavbar={true}>
                   <DropdownToggle
                     nav={true}
                     caret={true}
-                    className={pathnameWithoutLanguage.startsWith("/about/") ? "active" : undefined}
+                    className={pathname.startsWith("/about/") ? "active" : undefined}
                   >
                     <FaInfo />
                     <LocalizedString id={root.about._root} />
                   </DropdownToggle>
                   <StyledDropdownMenu right={true}>
-                    <PathItem
+                    <ArticlePathItem
                       Outer={StyledDropdownItem}
                       id={"odyssey"}
-                      currentPathname={pathnameWithoutLanguage}
+                      currentPathname={pathname}
                       onClick={this.close}
                     >
                       <FaBookOpen />
                       <LocalizedString id={root.about.odyssey} />
-                    </PathItem>
-                    <PathItem
+                    </ArticlePathItem>
+                    <ArticlePathItem
                       Outer={StyledDropdownItem}
                       id={"about-project"}
-                      currentPathname={pathnameWithoutLanguage}
+                      currentPathname={pathname}
                       onClick={this.close}
                     >
                       <FaGlobe />
                       <LocalizedString id={root.about.website} />
-                    </PathItem>
+                    </ArticlePathItem>
 
-                    <PathItem
+                    <ArticlePathItem
                       Outer={StyledDropdownItem}
                       id={"about-me"}
-                      currentPathname={pathnameWithoutLanguage}
+                      currentPathname={pathname}
                       onClick={this.close}
                     >
                       <FaMale />
                       <LocalizedString id={root.about.me} />
-                    </PathItem>
+                    </ArticlePathItem>
                   </StyledDropdownMenu>
                 </UncontrolledDropdown>
                 <NavItem>

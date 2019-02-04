@@ -19,6 +19,7 @@ import { Row, Col } from "reactstrap";
 import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
+import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
 
 interface Props extends WithStoresProps {
   pageContext: {
@@ -36,6 +37,16 @@ const Headbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+`;
+
+const ArticleHeader = styled.div`
+  text-align: center;
+`;
+
+const Title = styled.h1`
+  font-size: 2.4em;
+  padding: 4px 0;
 `;
 
 export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(props: Props) {
@@ -49,17 +60,17 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
   const language = i18nStore.getLanguage(lang)!;
 
 
-  const { frontmatter, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
+  const { frontmatter: { title, date, tags, hide_heading, no_toc }, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
 
   const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
   return (
-    <Page>
+    <div>
       <Helmet
-        title={`${frontmatter.title} - VicBlog`}
+        title={`${title} - VicBlog`}
         meta={[
-          { name: "og:title", content: frontmatter.title },
-          { name: "og:description", content: excerpt},
+          { name: "og:title", content: title },
+          { name: "og:description", content: excerpt },
           { name: "og:type", content: "article" },
           { name: "og:url", content: `${articleStore.state.baseUrl}${path}` },
           { name: "og:locale", content: language.detailedId },
@@ -70,69 +81,42 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
               content: i18nStore.getLanguage(lang)!.detailedId
             })),
           { name: "og:site_name", content: "VicBlog" },
-          { name: "og:article:published_time", content: frontmatter.date },
-          ...(frontmatter.tags || []).map((x) => ({
+          { name: "og:article:published_time", content: date },
+          ...(tags || []).map((x) => ({
             name: "og:article:tag",
             content: x
           }))
         ]}
       />
-      <Headbar>
-        <Link to={"/"}>
-          <FaBackward />
-          <LocalizedString id={root.backToHome} />
-        </Link>
-        <LanguageSelector
-          allLanguages={
-            Object.keys(langPathMap)
-              .map((lang) => ({
-                id: lang,
-                name: getLanguage(lang).name,
-              }))
-          }
-          changeLanguage={(lang) => navigate(langPathMap[lang])}
-          currentLanguage={getLanguage(frontmatter.lang).name}
-          prompt={<LocalizedString id={root.selectLang} />}
-        />
-
-      </Headbar>
-      {!frontmatter.hide_heading &&
+      {!hide_heading &&
         (
-          <div>
-            <h1>{frontmatter.title}</h1>
-            <ArticleFrontmatter
-              tags={frontmatter.tags}
-              date={frontmatter.date}
-              wordCount={wordCount}
-            />
-
-
-          </div>
+          <ArticlePageHeader title={title} id={id} tags={tags} date={date} wordCount={wordCount} currentArticleLanguage={lang} />
         )
       }
-      <Row>
-        <Col md={frontmatter.no_toc ? 12 : 9} sm={12} >
-          <ArticleContentDisplay
-            htmlAst={htmlAst}
-            headings={headings}
-
-          />
-        </Col>
-        {
-          !frontmatter.no_toc
-          && (
-            <Col md={3} className="d-none d-md-block" >
-              <TocPanel headings={headings} />
-            </Col>
-          )
-        }
-      </Row>
-      {/* <Share articleId={id} /> */}
-      <CommentPanel
-        language={i18nStore.language.gitalkLangId}
-        articleId={frontmatter.id}
-        articleTitle={frontmatter.title}
-      />
-    </Page>
+      <Page>
+        <Row>
+          <Col md={no_toc ? 12 : 9} sm={12} >
+            <ArticleContentDisplay
+              htmlAst={htmlAst}
+              headings={headings}
+            />
+          </Col>
+          {
+            !no_toc
+            && (
+              <Col md={3} className="d-none d-md-block" >
+                <TocPanel headings={headings} />
+              </Col>
+            )
+          }
+        </Row>
+        {/* <Share articleId={id} /> */}
+        <CommentPanel
+          language={i18nStore.language.gitalkLangId}
+          articleId={id}
+          articleTitle={title}
+        />
+      </Page>
+    </div>
   );
 });

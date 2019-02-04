@@ -81,7 +81,7 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
 
               return allMarkdownRemark.edges.map(({ node }) => {
-                const path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}`;
+                const path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
                 return {
                   ...node.frontmatter,
                   description: node.excerpt,

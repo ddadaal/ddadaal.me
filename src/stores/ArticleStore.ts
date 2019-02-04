@@ -14,12 +14,14 @@ export function createArticleGroups(articles: ArticleNode[]) {
   articles.forEach((node) => {
     const id = node.frontmatter.id;
     articleGroups[id] = articleGroups[id] || [];
-    node.path = `/${node.frontmatter.lang}${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}`;
+    node.path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
     articleGroups[id].push(node);
   });
 
   return articleGroups;
 }
+
+export type LangPathMap = Map<string, string>;
 
 export class ArticleStore extends Store<IArticleStore> {
   constructor(articleGroups: ArticleGroups, baseUrl: string) {
@@ -33,12 +35,15 @@ export class ArticleStore extends Store<IArticleStore> {
     return node;
   }
 
-  getLangPathMap(id: string): { [lang: string]: string } {
+  getLangPathMap(id: string): LangPathMap {
     const group = this.state.articleGroups[id];
-    return Object.values(group).reduce((prev, curr) => ({
-      ...prev,
-      [curr.frontmatter.lang]: curr.path,
-    }), {});
+    const map: LangPathMap = new Map();
+
+    group.forEach((node) => {
+      map.set(node.frontmatter.lang, node.path);
+    });
+
+    return map;
   }
 
 }

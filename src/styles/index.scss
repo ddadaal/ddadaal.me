@@ -10,7 +10,7 @@
 body {
   // font-family: sans-serif;
   // font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
   text-rendering: optimizeLegibility;
 
 }
@@ -18,10 +18,12 @@ body {
 .markdown {
 
   overflow-wrap: break-word;
-  line-height: 1.7em;
+  line-height: 1.6em;
 
   table {
     @extend .table;
+
+    overflow: auto;
   }
 
   blockquote {
@@ -59,7 +61,7 @@ body {
   }
 
   h1 {
-    font-size: 2.2em;
+    font-size: 2.0em;
     margin: 12px 0;
 
     // border-bottom: 2px solid $info;
@@ -70,7 +72,7 @@ body {
   }
 
   h3 {
-    font-size: 1.4em;
+    font-size: 1.6em;
   }
 
   .center {

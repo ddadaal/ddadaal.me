@@ -13,10 +13,11 @@ import { ArticleNode } from "@/models/ArticleNode";
 
 interface Props extends WithStoresProps {
   article: ArticleNode;
+  currentArticleLanguage: string;
 }
 
 const StyledPost = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   h1 {
     font-size: 3em;
@@ -25,15 +26,15 @@ const StyledPost = styled.div`
 
 const root = lang.articleItem;
 
-const LangLink = styled(Link)`
-  margin-right: 8px;
-`;
-
 const StyledH = styled.h2`
   :hover {
     cursor: pointer;
     text-decoration: underline;
   }
+
+  font-size: 2em;
+  padding: 4px 0;
+  /* font-weight: bold; */
 `;
 
 const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
@@ -43,7 +44,7 @@ const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
 };
 
 export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
-  const { article, useStore } = props;
+  const { article, useStore, currentArticleLanguage } = props;
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
   const { language } = useStore(I18nStore);
   const articleStore = useStore(ArticleStore);
@@ -52,19 +53,16 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
 
   return (
     <StyledPost>
-      <StyledTitle to={langPaths[language.id] || Object.values(langPaths)[0]}>
+      <StyledTitle to={langPaths.has(language.id)
+        ? langPaths.get(language.id)!!
+        : langPaths.values().next().value
+      }>
         {title}
       </StyledTitle>
 
-      <ArticleFrontmatter date={date} wordCount={words} tags={tags} />
+      <ArticleFrontmatter currentArticleLanguage={currentArticleLanguage} date={date} wordCount={words} tags={tags} articleId={id} />
 
       <p>{excerpt}</p>
-      <p>
-        <LocalizedString id={root.availableLanguages} />
-        {Object.entries(langPaths).map(([lang, path]) => (
-          <LangLink key={lang} to={path}>{getLanguage(lang).name}</LangLink>
-        ))}
-      </p>
       <hr />
     </StyledPost>
   );

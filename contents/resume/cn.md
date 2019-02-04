@@ -79,10 +79,10 @@ tags:
 - 乐于帮助他人，立志于用自己努力让社会更美好。志愿时长112小时，参加了IT侠、小百合工作室等公益组织
 - 2019年1月获得**微软亚洲研究院DKI（数据知识智能）组工程方向前端**的实习offer，但是由于时间冲突没有前往
 
-# 下载PDF版本
+# 其他版本与下载
 
-[中文](./chinese.pdf)
+中文：[浏览](/resume/cn)，[下载](./chinese.pdf)
 
-[English](./english.pdf)
+English：[View](/resume/en)，[Download](./english.pdf)
 
 </resume-layout>

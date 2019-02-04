@@ -10,7 +10,7 @@ export const widths = {
   md: 720,
   lg: 960,
   xl: 1140,
-  mainContent: 1280,
+  mainContent: 1200,
 };
 
 export const dimensions = {
@@ -28,7 +28,6 @@ export const dimensions = {
     regular: 1.45,
     heading: 1.2,
   },
-  containerPadding: 1,
 };
 
 export const heights = {

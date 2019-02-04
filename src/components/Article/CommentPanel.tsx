@@ -14,6 +14,8 @@ interface Props {
 }
 
 const CommentDiv = styled.div`
+  margin-top: 32px;
+
   .gt-action-text {
     color: #6190e8;;
   }
@@ -48,9 +50,7 @@ class RealCommentPanel extends React.Component<Props, {}> {
 
   render() {
     return (
-      <CommentDiv>
         <div id={"comments"} />
-      </CommentDiv>
     );
   }
 }

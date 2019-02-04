@@ -63,5 +63,5 @@ export default function ResumeLayout(props: Props) {
     <Resume>
       {props.children}
     </Resume>
-  )
+  );
 }

@@ -64,7 +64,6 @@ export default {
     },
     articleItem: {
       availableLanguages: "Available in ",
-
     },
     comments: {
       title: " Comments",

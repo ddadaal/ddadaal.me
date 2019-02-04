@@ -949,6 +949,11 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@emmetio/extract-abbreviation@0.1.6":
+  version "0.1.6"
+  resolved "http://registry.npm.taobao.org/@emmetio/extract-abbreviation/download/@emmetio/extract-abbreviation-0.1.6.tgz#e4a9856c1057f0aff7d443b8536477c243abe28c"
+  integrity sha1-5KmFbBBX8K/31EO4U2R3wkOr4ow=
+
 "@emotion/is-prop-valid@^0.7.3":
   version "0.7.3"
   resolved "http://registry.npm.taobao.org/@emotion/is-prop-valid/download/@emotion/is-prop-valid-0.7.3.tgz#a6bf4fa5387cbba59d44e698a4680f481a8da6cc"
@@ -1105,15 +1110,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.7.18":
-  version "16.7.18"
-  resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.18.tgz#f4ce0d539a893dd61e36cd11ae3a5e54f5a48337"
-  integrity sha1-9M4NU5qJPdYeNs0RrjpeVPWkgzc=
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
-
-"@types/react@^16.8.1":
+"@types/react@*", "@types/react@16.8.1", "@types/react@^16.8.1":
   version "16.8.1"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.8.1.tgz#b431b104ecc6febda170b718caa9f50be66a6750"
   integrity sha1-tDGxBOzG/r2hcLcYyqn1C+ZqZ1A=
@@ -8285,6 +8282,11 @@ json5@^2.1.0:
   dependencies:
     minimist "^1.2.0"
 
+jsonc-parser@^1.0.0:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/jsonc-parser/download/jsonc-parser-1.0.3.tgz#1d53d7160e401a783dbceabaad82473f80e6ad7e"
+  integrity sha1-HVPXFg5AGng9vOq6rYJHP4DmrX4=
+
 jsonfile@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-4.0.0.tgz#8771aae0799b64076b76640fca058f9c10e33ecb"
@@ -10960,10 +10962,15 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
   integrity sha1-gV7R9uvGWSb4ZbMQwHE7yzMVzks=
 
-prettier@^1.16.0, prettier@^1.16.3:
+prettier@^1.16.0:
   version "1.16.3"
   resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.16.3.tgz#8c62168453badef702f34b45b6ee899574a6a65d"
   integrity sha1-jGIWhFO63vcC80tFtu6JlXSmpl0=
+
+prettier@^1.16.4:
+  version "1.16.4"
+  resolved "http://registry.npm.taobao.org/prettier/download/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
+  integrity sha1-c+N+c+AYrS25x2dC4mR+IXkMlxc=
 
 pretty-bytes@^4.0.2:
   version "4.0.2"
@@ -13842,6 +13849,21 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typescript-styled-plugin@^0.13.0:
+  version "0.13.0"
+  resolved "http://registry.npm.taobao.org/typescript-styled-plugin/download/typescript-styled-plugin-0.13.0.tgz#e5d3d1293b9b85cffd473f01a7f4917ad6035ee5"
+  integrity sha1-5dPRKTubhc/9Rz8Bp/SRetYDXuU=
+  dependencies:
+    typescript-template-language-service-decorator "^2.0.0"
+    vscode-css-languageservice "^3.0.12"
+    vscode-emmet-helper "1.2.11"
+    vscode-languageserver-types "^3.13.0"
+
+typescript-template-language-service-decorator@^2.0.0:
+  version "2.2.0"
+  resolved "http://registry.npm.taobao.org/typescript-template-language-service-decorator/download/typescript-template-language-service-decorator-2.2.0.tgz#4ee6d580f307fb9239978e69626f2775b8a59b2a"
+  integrity sha1-TubVgPMH+5I5l45pYm8ndbilmyo=
+
 typescript@^3.3.1:
   version "3.3.1"
   resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.3.1.tgz#6de14e1db4b8a006ac535e482c8ba018c55f750b"
@@ -14429,6 +14451,33 @@ vm-browserify@0.0.4:
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
+
+vscode-css-languageservice@^3.0.12:
+  version "3.0.12"
+  resolved "http://registry.npm.taobao.org/vscode-css-languageservice/download/vscode-css-languageservice-3.0.12.tgz#fb4aac5ae3c5b761b1db1d7224b78ff824284dc3"
+  integrity sha1-+0qsWuPFt2Gx2x1yJLeP+CQoTcM=
+  dependencies:
+    vscode-languageserver-types "^3.13.0"
+    vscode-nls "^4.0.0"
+
+vscode-emmet-helper@1.2.11:
+  version "1.2.11"
+  resolved "http://registry.npm.taobao.org/vscode-emmet-helper/download/vscode-emmet-helper-1.2.11.tgz#4de78223666bf917eb6dc4b225b6c40f6901950c"
+  integrity sha1-TeeCI2Zr+RfrbcSyJbbED2kBlQw=
+  dependencies:
+    "@emmetio/extract-abbreviation" "0.1.6"
+    jsonc-parser "^1.0.0"
+    vscode-languageserver-types "^3.6.0-next.1"
+
+vscode-languageserver-types@^3.13.0, vscode-languageserver-types@^3.6.0-next.1:
+  version "3.14.0"
+  resolved "http://registry.npm.taobao.org/vscode-languageserver-types/download/vscode-languageserver-types-3.14.0.tgz#d3b5952246d30e5241592b6dde8280e03942e743"
+  integrity sha1-07WVIkbTDlJBWStt3oKA4DlC50M=
+
+vscode-nls@^4.0.0:
+  version "4.0.0"
+  resolved "http://registry.npm.taobao.org/vscode-nls/download/vscode-nls-4.0.0.tgz#4001c8a6caba5cedb23a9c5ce1090395c0e44002"
+  integrity sha1-QAHIpsq6XO2yOpxc4QkDlcDkQAI=
 
 ware@^1.2.0:
   version "1.3.0"

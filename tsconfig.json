@@ -15,7 +15,11 @@
       "@/*" :["./src/*"],
       "~/*": ["./*"]
     },
-
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   },
   "include": [
     "./src/**/*"

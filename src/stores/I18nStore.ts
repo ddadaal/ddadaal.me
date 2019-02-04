@@ -25,7 +25,7 @@ export class I18nStore extends Store<II18nStore> {
   }
 
   getLanguage = (lang: string) => {
-    return allLanguages.find((x) => x.languages.includes(lang));
+    return allLanguages.find((x) => x.name === lang || x.languages.includes(lang));
   }
 
   get language() {
