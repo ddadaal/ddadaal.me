@@ -37,7 +37,7 @@ Chen Junda
 ## SAP <span class="right">July 2018-Present</span>
 ### Member of VT Intern Program
 
-- Attended basic training by SAP about supply chain
+<br/>
 
 ## Nanjing University Microsoft Student Club<span class="right">July 2017-Present</span>
 ### Undersecretary of Technology Department (2017-2018), President(2018-2019)
@@ -49,26 +49,25 @@ Chen Junda
 
 # Part of Recent Project Experiences (GitHub: viccrubs)
 
-## VicBlog <span class="right">October 2016-Present</span>
-Personal project
-- Personal Blog with thoughts and experiences during study and practice. Website: viccrubs.me; Related repos: github.com/vicblog
-- Changed from `Flask in VPS` to `ASP.NET Core + React in Azure` to `Gatsby`
-- Playground for fancy new technologies. Applied with technologies in their early stage like ASP.NET Core 1.0, React 15, TypeScript 2.1, Ant Design 1.x, PWA and more
-
 ## ChainStore <span class="right">April 2018-Present</span>
-Plan of core system architecture, implementation of web application layer of core system and backend of demo application, speaker in final presentation for software
+### Plan of core system architecture, implementation of web application layer of core system and backend of demo application, speaker in final presentation for software
 - Distributed Storage System based on Blockchain. Supports multi-node network and detection and recovery on data corruption
 - Participate in designing core architecture using `Spring Boot`. Implemented web application using `Kotlin ` and Web backend of demo application (supply chain management system) using `C#` and `ASP.NET Core`
 - **Third prize** in “Chain Valley（链谷杯）” National Blockchain Application Competition, and
 - **National Second Prize** and **Eastern China Regional First Prize** in The Third National College Blockchain Competition
 
 ## A+Quant <span class="right">June-November, 2018</span>
-Core member of software team, backend architect, leader of web frontend team, speaker in final presentation for software
+### Leader of web frontend team backend architect, speaker in final presentation for software
 - An Asset Allocation System Based on Artificial Intelligence
 - The only **First prize** in The 14th Citi Financial Innovation Application Competition in 2018
 - Team of 27 people, Leader of Web Frontend Team. Core member of software team. Designed backend (`Python` and `Flask`) and web frontend (`React` and `1TypeScript`) architecture. Implemented all common and complicated functions and some business functions in frontend
 - Single Page Application using `React`, `MobX`, `TypeScript` and `Ant Design`. Layered architecture with Dependency Injection for dependency management and Mock for parallel development. Full support for multi-language. Complete responsive design with support for mobile, tablets and large screen devices
 
+## VicBlog <span class="right">October 2016-Present</span>
+### Personal project
+- Personal Blog with thoughts and experiences during study and practice. Website: viccrubs.me; Related repos: github.com/vicblog
+- Changed from `Flask in VPS` to `ASP.NET Core + React in Azure` to `Gatsby`
+- Playground for fancy new technologies. Applied with technologies in their early stage like ASP.NET Core 1.0, React 15, TypeScript 2.1, Ant Design 1.x, PWA and more
 
 # Skills/Others
 
