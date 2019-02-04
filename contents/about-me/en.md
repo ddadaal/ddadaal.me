@@ -27,7 +27,7 @@ hide_heading: false
 - Willing to give a hand and take responsibilities, but always end up with a mess
 - Rational, but become sensible and even unreasonable at times
 - May have a goal, but feel painful of confusion
-- Try to be self-reliant, but wish **a "she" to face challenges together**
+- Try to be self-reliant, but wish **a "she" with similar personalities to face challenges together**
 
 # Likings
 
