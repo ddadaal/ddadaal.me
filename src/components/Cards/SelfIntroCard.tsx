@@ -39,9 +39,7 @@ export default function SelfIntroCard(props: Props) {
         <CardText>
           <LocalizedString id={root.university} />
         </CardText>
-        <CardText>
           <Contacts color="black" size={1.4}/>
-        </CardText>
       </CardBody>
     </Card>
   );

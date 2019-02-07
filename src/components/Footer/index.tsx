@@ -84,10 +84,10 @@ export default function Footer(props: Props) {
               ]} />
 
             </p>
-            <p>
+            <div>
               <span id="contacts">📲 <LocalizedString id={root.contacts}/></span>
               <Contacts color="white" size={1.6}/>
-            </p>
+            </div>
           </div>
         </Col>
         <Col xs={12} md={2}>
