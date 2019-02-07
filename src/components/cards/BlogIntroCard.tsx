@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { FaCode, FaRss, FaRegCommentDots, FaGlobe, FaEllipsisH } from "react-icons/fa";
 import StackedDiv from "@/layouts/components/StackedDiv";

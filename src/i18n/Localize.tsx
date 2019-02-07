@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "@/stores/stater";

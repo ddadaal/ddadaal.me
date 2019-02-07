@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Heading } from "@/models/ArticleNode";
 import { MdToc } from "react-icons/md";
 import LocalizedString from "@/i18n/LocalizedString";

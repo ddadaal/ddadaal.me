@@ -1,6 +1,4 @@
-import * as React from "react";
-import { GET_VALUE } from "./lang";
-import { connect } from "net";
+import React from "react";
 import { I18nStore } from "@/stores/I18nStore";
 
 import { useStore } from "@/stores/stater";

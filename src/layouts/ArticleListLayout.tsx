@@ -1,6 +1,5 @@
-import * as React from "react";
+import React from "react";
 import { Row, Col } from "reactstrap";
-import ArticleItemList from "@/components/Article/ArticleItemList";
 import BlogIntroCard from "@/components/Cards/BlogIntroCard";
 import SelfIntroCard from "@/components/Cards/SelfIntroCard";
 import StatisticsCard from "@/components/Cards/StatisticsCard";

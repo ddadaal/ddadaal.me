@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/components/Page";
@@ -51,8 +51,7 @@ export default function SearchPage() {
     });
   }
 
-  // @ts-ignore
-  searchResult.sort((a, b) => new Date(b[0].frontmatter.date) - new Date(a[0].frontmatter.date));
+  searchResult.sort((a, b) => new Date(b[0].frontmatter.date).getTime() - new Date(a[0].frontmatter.date).getTime());
 
   const totalCount = searchResult.length;
 

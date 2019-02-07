@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";

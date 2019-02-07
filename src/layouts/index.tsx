@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import "@/styles/index.scss";
 
 import { StaticQuery, graphql } from "gatsby";
@@ -7,6 +7,7 @@ import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
 import { createArticleGroups } from "@/stores/ArticleStore";
 import { ArticleNode } from "@/models/ArticleNode";
+import { ArticleGroups } from "@/models/ArticleGroups";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
@@ -53,11 +54,18 @@ const query = graphql`
 `;
 
 export default function(props: Props) {
+
+  const articleGroupsMemo = useRef(null as null | ArticleGroups);
+
   return (
     <StaticQuery query={query}>
       {(data: InitialData) => {
 
-        const articleGroups = createArticleGroups(data.allMarkdownRemark.edges.map(({ node }) => node));
+        if (!articleGroupsMemo.current) {
+          articleGroupsMemo.current = createArticleGroups(data.allMarkdownRemark.edges.map(({ node }) => node));
+        }
+
+        const articleGroups = articleGroupsMemo.current;
 
         const statistics = {
           lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),

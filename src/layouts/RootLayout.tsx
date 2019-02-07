@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleGroups } from "@/models/ArticleGroups";
@@ -49,6 +49,14 @@ export default class RootLayout extends React.Component<Props, {}> {
   statisticsStore = new StatisticsStore(this.props.statistics);
 
   componentDidUpdate() {
+    this.updateLocation();
+  }
+
+  componentDidMount() {
+    this.updateLocation();
+  }
+
+  updateLocation() {
     this.locationStore.updateLocation(this.props.location);
   }
 

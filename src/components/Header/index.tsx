@@ -9,7 +9,7 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { Link } from "gatsby";
-import * as React from "react";
+import React, { useState } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
@@ -58,6 +58,7 @@ function Branding(props: { title: string }) {
 }
 
 function atHomePage(pathname: string) {
+  console.log("at home page", pathname === "/");
   return pathname === "/" || pathname.match(/\/articles\/\d+/) !== null;
 }
 
@@ -85,11 +86,11 @@ const ArticlePathItem = (props: {
   Outer: React.ComponentType<{ active: boolean }>,
   children?: React.ReactNode,
   id: string,
-  currentPathname: string,
   onClick?(): void,
 }) => {
 
-  const { Outer, children, currentPathname, id, onClick } = props;
+  const { Outer, children, id, onClick } = props;
+  const { pathname } = useStore(LocationStore);
   const articleStore = useStore(ArticleStore);
 
   const { language } = useStore(I18nStore);
@@ -98,8 +99,10 @@ const ArticlePathItem = (props: {
   const targetPageUrlParts = node.path.split("/");
   targetPageUrlParts.pop();
 
+  const active = pathname.startsWith(targetPageUrlParts.join("/"))
+
   return (
-    <Outer active={currentPathname.startsWith(targetPageUrlParts.join("/"))}>
+    <Outer active={active}>
       <NavLink to={node.path} onClick={onClick || doNothing}>
         {children}
       </NavLink>
@@ -150,7 +153,8 @@ const StyledDropdownMenu = styled(DropdownMenu)`
 
 export default function Header(props: Props) {
   const locationStore = useStore(LocationStore);
-  const [isOpen, setOpen] = React.useState(false);
+
+  const [isOpen, setOpen] = useState(false);
 
   const { pathname } = locationStore;
 
@@ -185,7 +189,6 @@ export default function Header(props: Props) {
               <ArticlePathItem
                 Outer={NavItem}
                 id={"resume"}
-                currentPathname={pathname}
                 onClick={close}
               >
                 <FaFile />
@@ -204,7 +207,6 @@ export default function Header(props: Props) {
                   <ArticlePathItem
                     Outer={StyledDropdownItem}
                     id={"odyssey"}
-                    currentPathname={pathname}
                     onClick={close}
                   >
                     <FaBookOpen />
@@ -213,7 +215,6 @@ export default function Header(props: Props) {
                   <ArticlePathItem
                     Outer={StyledDropdownItem}
                     id={"about-project"}
-                    currentPathname={pathname}
                     onClick={close}
                   >
                     <FaGlobe />
@@ -223,7 +224,6 @@ export default function Header(props: Props) {
                   <ArticlePathItem
                     Outer={StyledDropdownItem}
                     id={"about-me"}
-                    currentPathname={pathname}
                     onClick={close}
                   >
                     <FaMale />

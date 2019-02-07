@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { heights } from "@/styles/variables";
 
 interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {

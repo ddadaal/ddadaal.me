@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { FaShare } from "react-icons/fa";

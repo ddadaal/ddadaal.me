@@ -23,6 +23,5 @@
   },
   "include": [
     "./src/**/*", "__tests__/enzyme.js"
-  ],
-
+  ]
 }

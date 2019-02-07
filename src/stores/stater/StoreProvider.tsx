@@ -1,9 +1,9 @@
-import * as React from "react";
+import React, { createContext } from "react";
 import { Store, StoreType } from "./Store";
 
 type IProviderContext = Map<StoreType<any>, Store<any>>;
 
-export const ProviderContext = React.createContext<IProviderContext>(new Map());
+export const ProviderContext = createContext<IProviderContext>(new Map());
 
 interface Props {
   stores: Store<any>[];

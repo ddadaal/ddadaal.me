@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import TagGroup from "./TagGroup";

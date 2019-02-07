@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { FaQq, FaMailBulk, FaLinkedin, FaGithub, FaSteam, FaZhihu, FaQuora, FaStackOverflow } from "react-icons/fa";
 import styled from "styled-components";

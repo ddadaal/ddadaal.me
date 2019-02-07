@@ -1,8 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { StatisticsStore } from "@/stores/StatisticsStore";
 import lang from "@/i18n/lang";
-import { Card, CardHeader, CardBody, CardText, Table, ListGroup, ListGroupItem, Badge } from "reactstrap";
-import { FaChartLine } from "react-icons/fa";
+import { ListGroup, ListGroupItem, Badge } from "reactstrap";
 import LocalizedString from "@/i18n/LocalizedString";
 import ListGroupHeader from "../UI/ListGroup/ListGroupHeader";
 import { useStore } from "@/stores/stater";

@@ -1,6 +1,6 @@
 import { StoreType } from "./Store";
 import { ProviderContext } from "./StoreProvider";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useState, useRef, useLayoutEffect } from "react";
 
 export function useStore<ST extends StoreType<any>>(storeType: ST): InstanceType<ST> {
   const providedStores = useContext(ProviderContext);
@@ -8,20 +8,19 @@ export function useStore<ST extends StoreType<any>>(storeType: ST): InstanceType
   const store = providedStores.get(storeType);
 
   if (!store) {
-    throw new Error(`${storeType} hasn't been provided.`);
+    throw new Error(`${storeType.name} hasn't been provided.`);
   }
 
   const [_, update] = useState({}); // dummy state used to cause update
 
-  const [listener, setListener] = useState(() => () => { // save the listener to unsubscribe
-    update({}); // have to create a new object since React won't update if the state doesn't change
-  });
+  const { current: listener } = useRef(() => update({})); // create a persistent update function
 
-  store.unsubscribe(listener);
-  store.subscribe(listener);
+  // store.unsubscribe(listener);
 
 
-  useEffect(() => {
+  useLayoutEffect(() => { // use layout effect to priorize subscription to location update in the top
+    store.subscribe(listener);
+
     return () => {
       store.unsubscribe(listener);
     };

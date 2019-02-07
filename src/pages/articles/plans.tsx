@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { ArticlePlan } from "@/models/ArticlePlan";
 import LocalizedString from "@/i18n/LocalizedString";

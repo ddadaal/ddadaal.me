@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { FaEllipsisH, FaEnvelope, FaFile, FaGithub, FaMale, FaAddressBook } from "react-icons/fa";
 import { Link } from "gatsby";

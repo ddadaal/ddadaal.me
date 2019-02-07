@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Badge } from "reactstrap";
 import styled from "styled-components";
 import { navigate, Link } from "gatsby";

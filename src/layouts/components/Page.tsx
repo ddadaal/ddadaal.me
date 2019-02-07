@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
-import { dimensions, widths } from "@/styles/variables";
+import { widths } from "@/styles/variables";
 
 const StyledPage = styled.div`
   display: block;

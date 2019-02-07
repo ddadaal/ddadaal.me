@@ -1,30 +1,27 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "esnext",
+    "target": "es6",
     "jsx": "react",
-    "sourceMap": false,
-    "experimentalDecorators": true,
-    "noImplicitUseStrict": true,
-    "removeComments": true,
-    "moduleResolution": "node",
+    "lib": ["dom", "es2015", "es2017"],
+    "outDir": "./dist/",
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "baseUrl": "../",
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "baseUrl": ".",
     "paths": {
       "@/*" :["./src/*"],
       "~/*": ["./*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   },
-  "exclude": [
-    "node_modules",
-    "out",
-    ".next"
+  "include": [
+    "./src/**/*", "__tests__/enzyme.js"
   ]
 }

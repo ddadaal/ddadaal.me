@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled, { keyframes } from "styled-components";
