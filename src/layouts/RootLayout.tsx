@@ -7,7 +7,6 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { StatisticsStore } from "@/stores/StatisticsStore";
 import { Statistics } from "@/models/Statistics";
 import { IconContext } from "react-icons";
-import StoreProvider from "@/stores/StoreProvider";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Header from "@/components/Header";
@@ -16,6 +15,7 @@ import ScrollToTop from "react-scroll-up";
 import icon512 from "~/assets/icon.png";
 import { FaArrowUp } from "react-icons/fa";
 import NewContentPop from "@/components/NewContentPop";
+import { StoreProvider } from "@/stores/stater";
 
 const LayoutMain = styled.main`
   display: flex;
@@ -58,11 +58,11 @@ export default class RootLayout extends React.Component<Props, {}> {
     return (
       <IconContext.Provider value={{ className: "icons" }}>
         <StoreProvider stores={[
-          this.i18nStore,
-          this.locationStore,
-          this.articleStore,
           this.statisticsStore,
-        ]} >
+          this.locationStore,
+          this.i18nStore,
+          this.articleStore,
+        ]}>
           <LayoutRoot>
             <Helmet
               title={siteMetadata.title}

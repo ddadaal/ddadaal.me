@@ -2,30 +2,29 @@ import * as React from "react";
 import styled from "styled-components";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
-import { colors } from "@/styles/variables";
+import { colors, heights } from "@/styles/variables";
 import Bg from "~/assets/articlePageHeader.png";
 
 interface Props {
   title: string;
   id: string;
-  tags?: string[];
+  tags: string[] | null;
   date: string;
   wordCount: number;
   currentArticleLanguage: string;
 }
 
-const headerHeight = 192;
 
 const RootContainer = styled.div`
   position: relative;
-  height: ${headerHeight}px;
+  height: ${heights.articleHeader}px;
   width: 100%;
   background-color: ${colors.headerBg};
 `;
 
 const InnerContainer = styled.div`
   position: absolute;
-  height: ${headerHeight}px;
+  height: ${heights.articleHeader}px;
   width: 100%;
 `;
 
@@ -46,7 +45,7 @@ const ImgContainer = styled(InnerContainer)`
 
   & > img {
     float: right;
-    height: ${headerHeight}px;
+    height: ${heights.articleHeader}px;
 
   }
 

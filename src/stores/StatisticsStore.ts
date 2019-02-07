@@ -1,4 +1,4 @@
-import Store from "./Store";
+import { Store } from "@/stores/stater";
 import { Statistics } from "@/models/Statistics";
 
 interface IStatisticsStore  extends Statistics {
@@ -6,8 +6,6 @@ interface IStatisticsStore  extends Statistics {
 
 export class StatisticsStore extends Store<IStatisticsStore> {
   constructor(statistics: IStatisticsStore) {
-    super();
-    this.state = statistics;
+    super(statistics);
   }
-
 }

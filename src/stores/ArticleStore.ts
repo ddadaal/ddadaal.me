@@ -1,4 +1,4 @@
-import Store from "./Store";
+import { Store } from "@/stores/stater";
 import { ArticleNode } from "@/models/ArticleNode";
 import { ArticleGroups } from "@/models/ArticleGroups";
 import { Language } from "@/i18n/definition";
@@ -25,8 +25,7 @@ export type LangPathMap = Map<string, string>;
 
 export class ArticleStore extends Store<IArticleStore> {
   constructor(articleGroups: ArticleGroups, baseUrl: string) {
-    super();
-    this.state = { articleGroups, baseUrl };
+    super({ articleGroups, baseUrl });
   }
 
   getNodeFromLang(id: string, language: Language) {

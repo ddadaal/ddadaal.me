@@ -6,7 +6,7 @@ import CommentPanel from "@/components/Article/CommentPanel";
 import { Heading } from "@/models/ArticleNode";
 import styled from "styled-components";
 import langRoot from "@/i18n/lang";
-import withStores, { WithStoresProps } from "@/stores/withStores";
+
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/Article/TocPanel";
@@ -14,8 +14,9 @@ import { Row, Col } from "reactstrap";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
   pageContext: {
     id: string;
     lang: string;
@@ -27,27 +28,11 @@ interface Props extends WithStoresProps {
 
 const root = langRoot.articlePage;
 
-const Headbar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+export default function ArticlePageTemplate(props: Props) {
 
-`;
+  const articleStore = useStore(ArticleStore);
 
-const ArticleHeader = styled.div`
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  font-size: 2.4em;
-  padding: 4px 0;
-`;
-
-export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(props: Props) {
-
-  const articleStore = props.useStore(ArticleStore);
-
-  const i18nStore = props.useStore(I18nStore);
+  const i18nStore = useStore(I18nStore);
 
   const { id, lang, htmlAst, headings } = props.pageContext;
 
@@ -121,4 +106,4 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
       </Page>
     </div>
   );
-});
+};

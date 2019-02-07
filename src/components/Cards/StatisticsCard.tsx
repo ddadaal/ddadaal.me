@@ -1,15 +1,15 @@
 import * as React from "react";
-import withStores from "@/stores/withStores";
 import { StatisticsStore } from "@/stores/StatisticsStore";
 import lang from "@/i18n/lang";
 import { Card, CardHeader, CardBody, CardText, Table, ListGroup, ListGroupItem, Badge } from "reactstrap";
 import { FaChartLine } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import ListGroupHeader from "../UI/ListGroup/ListGroupHeader";
+import { useStore } from "@/stores/stater";
 
 const root = lang.statistics;
 
-export default withStores(StatisticsStore)(({ useStore }) => {
+export default () => {
   const store = useStore(StatisticsStore);
 
   return (
@@ -29,4 +29,4 @@ export default withStores(StatisticsStore)(({ useStore }) => {
       </ListGroupItem>
     </ListGroup>
   );
-});
+};

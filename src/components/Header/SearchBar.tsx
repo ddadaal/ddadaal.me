@@ -9,49 +9,36 @@ interface Props {
   onSearch?(): void;
 }
 
-interface State {
-  input: string;
-}
+export default function SearchBar(props: Props) {
+  const [ input, setInput ] = React.useState("");
 
-export default class SearchBar extends React.Component<Props, State> {
-
-  state = { input: "" };
-
-  onKeyPress = (ev) => {
-    if (ev.key === "Enter") {
-      this.onSearch();
+  const onSearch = () => {
+    navigate(`/search?query=${encodeURIComponent(input)}`);
+    if (props.onSearch) {
+      props.onSearch();
     }
   }
 
-  onSearch = () => {
-    navigate(`/search?query=${encodeURIComponent(this.state.input)}`);
-    if (this.props.onSearch) {
-      this.props.onSearch();
-    }
-  }
+  return (
+    <InputGroup>
+      <Localize id={lang.search.inputPlaceholder}>
+        {(result) => (
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={result}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                onSearch();
+              }
+            }}
+          />
+        )}
+      </Localize>
+      <InputGroupAddon addonType="append">
+        <Button onClick={onSearch} color="secondary"><FaSearch /></Button>
+      </InputGroupAddon>
+    </InputGroup>
+  );
 
-  onChange = (e) => {
-    this.setState({ input: e.target.value });
-  }
-
-  render() {
-
-    return (
-      <InputGroup>
-        <Localize id={lang.search.inputPlaceholder}>
-          {(result) => (
-            <Input
-              value={this.state.input}
-              onChange={this.onChange}
-              placeholder={result}
-              onKeyPress={this.onKeyPress}
-            />
-          )}
-        </Localize>
-        <InputGroupAddon addonType="append">
-          <Button onClick={this.onSearch} color="secondary"><FaSearch /></Button>
-        </InputGroupAddon>
-      </InputGroup>
-    );
-  }
 }

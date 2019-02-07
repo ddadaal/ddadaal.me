@@ -1,19 +1,18 @@
 import * as React from "react";
 import { ArticleStore } from "@/stores/ArticleStore";
-import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
   ids: string[];
   pageCount: number;
   pageIndex: number;
   toPage(pageIndex: number): () => void;
 }
 
-export default withStores(ArticleStore, I18nStore)(
-  function ArticleList({ ids, pageCount, pageIndex, toPage, useStore }: Props) {
+export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props) {
 
     const articleStore = useStore(ArticleStore);
     const i18nStore = useStore(I18nStore);
@@ -40,4 +39,4 @@ export default withStores(ArticleStore, I18nStore)(
         <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
       </div>
     );
-  });
+  };

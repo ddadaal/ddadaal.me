@@ -7,15 +7,15 @@ import TagGroup from "./TagGroup";
 import { FaCalendarAlt, FaClock, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { LangPathMap, ArticleStore } from "@/stores/ArticleStore";
-import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { Link } from "gatsby";
+import { useStore } from "@/stores/stater";
 
 interface Props {
   articleId: string;
   date: string;
   wordCount: number;
-  tags?: string[];
+  tags: string[] | null;
   currentArticleLanguage: string;
 }
 
@@ -81,9 +81,8 @@ const DisabledLangLink = styled.span`
 
 `;
 
-const LanguageSwitcher = withStores(I18nStore, ArticleStore)(
-  (props: { currentArticleLanguage: string; articleId: string; } & WithStoresProps) => {
-    const { useStore, articleId, currentArticleLanguage } = props;
+const LanguageSwitcher = (props: { currentArticleLanguage: string; articleId: string; }) => {
+    const { articleId, currentArticleLanguage } = props;
     const i18nStore = useStore(I18nStore);
     const articleStore = useStore(ArticleStore);
 
@@ -103,4 +102,4 @@ const LanguageSwitcher = withStores(I18nStore, ArticleStore)(
         ))}
       </>
     );
-  });
+  };

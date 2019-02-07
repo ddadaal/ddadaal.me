@@ -3,14 +3,15 @@ import styled from "styled-components";
 import Link from "gatsby-link";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import withStores, { WithStoresProps } from "@/stores/withStores";
+
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import Contacts from "../Contacts";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
   className?: string;
 }
 
@@ -57,10 +58,10 @@ const Container = styled.footer`
 
 const root = lang.footer;
 
-export default withStores(ArticleStore, I18nStore)(function Footer(props: Props) {
+export default function Footer(props: Props) {
 
-  const articleStore = props.useStore(ArticleStore);
-  const i18nStore = props.useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
+  const i18nStore = useStore(I18nStore);
 
   const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.language).path;
 
@@ -143,4 +144,4 @@ export default withStores(ArticleStore, I18nStore)(function Footer(props: Props)
       </p>
     </Container>
   );
-});
+};

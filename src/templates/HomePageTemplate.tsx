@@ -1,5 +1,5 @@
 import * as React from "react";
-import withStores, { WithStoresProps } from "@/stores/withStores";
+
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import Page from "@/layouts/components/Page";
@@ -7,8 +7,9 @@ import Helmet from "react-helmet";
 import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
   pageContext: {
     pageIndex: number;
     pageCount: number;
@@ -21,7 +22,7 @@ function toPage(pageNum: number) {
   return () => navigate(path);
 }
 
-export default withStores(I18nStore, ArticleStore)(function Index({ pageContext, useStore }: Props) {
+export default function Index({ pageContext }: Props) {
   const { pageCount, pageIndex, ids } = pageContext;
   const { language, allLanguages } = useStore(I18nStore);
   const articleStore = useStore(ArticleStore);
@@ -45,4 +46,4 @@ export default withStores(I18nStore, ArticleStore)(function Index({ pageContext,
       </ArticleListLayout>
     </Page>
   );
-});
+};

@@ -11,6 +11,7 @@ VicBlog is a static personal blog built with Gatsby.
 ## Features
 
 - Static website with modern web technologies
+- Hook based State Management [stater](https://github.com/viccrubs/stater)
 - Synchronous & Native **Search**
     - Native support for searching articles without any third-party services
 - Progressive Web Application Support

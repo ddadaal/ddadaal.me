@@ -5,21 +5,21 @@ import { Link } from "gatsby";
 import StackedDiv from "@/layouts/components/StackedDiv";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
 import Contacts from "../Contacts";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
 }
 
 const root = lang.selfIntro;
 
-export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props: Props) {
+export default function SelfIntroCard(props: Props) {
 
-  const articleStore = props.useStore(ArticleStore);
-  const i18nStore = props.useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
+  const i18nStore = useStore(I18nStore);
 
   const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.state.language).path;
 
@@ -45,4 +45,4 @@ export default withStores(ArticleStore, I18nStore)(function SelfIntroCard(props:
       </CardBody>
     </Card>
   );
-});
+};

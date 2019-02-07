@@ -2,7 +2,7 @@ import * as React from "react";
 import { Badge } from "reactstrap";
 import styled from "styled-components";
 import { navigate, Link } from "gatsby";
-import withStores, { WithStoresProps } from "@/stores/withStores";
+
 import { I18nStore } from "@/stores/I18nStore";
 import lang from "@/i18n/lang";
 import Localize from "@/i18n/Localize";

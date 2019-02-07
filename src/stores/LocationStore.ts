@@ -1,4 +1,4 @@
-import Store from "./Store";
+import { Store } from "@/stores/stater";
 
 interface ILocationStore {
   location: Location;
@@ -9,7 +9,7 @@ function parseQuery(queryString: string) {
   const pairs = (queryString[0] === "?" ? queryString.substr(1) : queryString).split("&");
 
   pairs.forEach((pair) => {
-    const splittedPair = pair.split["="];
+    const splittedPair = pair.split("=");
     query[decodeURIComponent(splittedPair[0])] = decodeURIComponent(splittedPair[1] || "");
 
   });
@@ -19,8 +19,7 @@ function parseQuery(queryString: string) {
 
 export class LocationStore extends Store<ILocationStore> {
   constructor(location: Location) {
-    super();
-    this.state = { location };
+    super({ location });
   }
 
   get pathname() {

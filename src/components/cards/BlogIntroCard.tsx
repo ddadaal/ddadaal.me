@@ -5,22 +5,22 @@ import StackedDiv from "@/layouts/components/StackedDiv";
 import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import withStores, { WithStoresProps } from "@/stores/withStores";
+
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
-import { StatisticsStore } from "@/stores/StatisticsStore";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
 
 }
 
 const root = lang.blogIntro;
 
-export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props: Props) {
+export default function BlogIntroCard(props: Props) {
 
-  const articleStore = props.useStore(ArticleStore);
-  const i18nStore = props.useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
+  const i18nStore = useStore(I18nStore);
 
   return (
     <Card className="hover-card">
@@ -61,4 +61,4 @@ export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props:
       </CardBody>
     </Card>
   );
-});
+};

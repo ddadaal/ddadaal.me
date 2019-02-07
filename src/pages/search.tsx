@@ -1,16 +1,13 @@
 import * as React from "react";
-import { ArticleNode } from "@/models/ArticleNode";
-import ArticleItem from "@/components/Article/ArticleItem";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/components/Page";
-import withStores from "@/stores/withStores";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleStore } from "@/stores/ArticleStore";
-import { Row, Col } from "reactstrap";
 import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
+import { useStore } from "@/stores/stater";
 
 const root = lang.search;
 
@@ -21,14 +18,16 @@ interface Query {
 
 const pageSize = 5;
 
-export default withStores(LocationStore, ArticleStore)(function SearchPage({ useStore }) {
+export default function SearchPage() {
 
   const articleStore = useStore(ArticleStore);
-  const { query, page = 1 } = useStore(LocationStore).query as Query;
+  const locationStore = useStore(LocationStore);
+  const { query, page = 1 } = locationStore.query as Query;
 
   const pageIndex = page - 1;
 
-  let searchResult = Object.entries(articleStore.state.articleGroups).map((x) => x[1]);
+  let searchResult = Object.values(articleStore.state.articleGroups);
+
 
   if (query) {
     searchResult = searchResult.filter((x) => {
@@ -39,7 +38,7 @@ export default withStores(LocationStore, ArticleStore)(function SearchPage({ use
 
       // filter according to tag
       if (x.some((y) =>
-        y.frontmatter.tags !== undefined
+        y.frontmatter.tags !== null
         && y.frontmatter.tags.some(
           ((tag) => tag.toUpperCase().includes(query.toUpperCase())),
         ),
@@ -89,4 +88,4 @@ export default withStores(LocationStore, ArticleStore)(function SearchPage({ use
 
     </Page>
   );
-});
+};

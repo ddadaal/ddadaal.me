@@ -1,4 +1,4 @@
-import Store from "./Store";
+import { Store } from "@/stores/stater";
 import { Language, getLanguage, allLanguages } from "@/i18n/definition";
 import { isServer } from "@/utils/isServer";
 import { GET_VALUE } from "@/i18n/lang";
@@ -15,7 +15,9 @@ function getInitialLanguage() {
 }
 
 export class I18nStore extends Store<II18nStore> {
-  state = { language: getLanguage(getInitialLanguage()) };
+  constructor() {
+    super({ language: getLanguage(getInitialLanguage()) })
+  }
 
   changeLanguage = (language: string) => {
     this.setState({

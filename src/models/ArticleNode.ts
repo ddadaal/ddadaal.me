@@ -15,7 +15,7 @@ export interface ArticleNode {
     date: string;
     id: string;
     ignored?: boolean;
-    tags?: string[];
+    tags: string[] | null;
     title: string;
     hide_heading?: boolean;
     lang: string;

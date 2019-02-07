@@ -5,13 +5,13 @@ import TagGroup from "./TagGroup";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { getLanguage } from "@/i18n/definition";
-import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
+import { useStore } from "@/stores/stater";
 
-interface Props extends WithStoresProps {
+interface Props {
   article: ArticleNode;
   currentArticleLanguage: string;
 }
@@ -43,8 +43,8 @@ const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
   );
 };
 
-export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
-  const { article, useStore, currentArticleLanguage } = props;
+export default function ArticleItem(props: Props) {
+  const { article, currentArticleLanguage } = props;
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
   const { language } = useStore(I18nStore);
   const articleStore = useStore(ArticleStore);
@@ -72,4 +72,4 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
       <hr />
     </StyledPost>
   );
-});
+};
