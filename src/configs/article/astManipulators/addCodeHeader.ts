@@ -1,8 +1,14 @@
-import { HtmlAstElement } from '@/models/HtmlAst';
-import { HtmlAst } from '@/models/HtmlAst';
-import { AstManipulator, createElement, createText } from '@/configs/article/astManipulators/AstManipulator';
+import { HtmlAstElement } from "@/models/HtmlAst";
+import { HtmlAst } from "@/models/HtmlAst";
+import { createElement, createText } from "@/configs/article/astManipulators/AstManipulator";
 
 import "./code-header.scss";
+
+const languageTexts = {
+  python: "Python",
+  csharp: "C#",
+  java: "Java",
+};
 
 function visit(el: HtmlAstElement) {
   if (el.type === "element" && el.tagName === "div" && el.properties.dataLanguage) {
@@ -14,10 +20,10 @@ function visit(el: HtmlAstElement) {
       pre.children.unshift(
         createElement("div", { className: "code-header" }, [
           createElement("div", { className: "code-header-inner"}, [
-            createText(language)
-          ])
-        ])
-      )
+            createText(languageTexts[language] || language),
+          ]),
+        ]),
+      );
     }
 
     el.children.forEach(visit);
@@ -27,5 +33,3 @@ function visit(el: HtmlAstElement) {
 export default function addCodeHeader(htmlAst: HtmlAst) {
   htmlAst.children.forEach(visit);
 }
-
-

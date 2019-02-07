@@ -2,6 +2,9 @@
 @import "./bootswatch.scss";
 @import "./variables.scss";
 
+@import "./markdown.scss";
+@import "./misc.scss";
+
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("../../assets/SourceSansPro.ttf");
@@ -15,117 +18,4 @@ body {
 
 }
 
-.markdown {
 
-  overflow-wrap: break-word;
-  line-height: 1.6em;
-
-  table {
-    @extend .table;
-
-    overflow: auto;
-  }
-
-  blockquote {
-    @extend .blockquote;
-
-    padding: 16px;
-
-    background-color: #F8F8F8;
-  }
-
-  // line-highlight
-  .gatsby-highlight-code-line {
-    background-color: #feb;
-    display: block;
-    margin-right: -1em;
-    margin-left: -1em;
-    padding-right: 1em;
-    padding-left: 0.75em;
-    border-left: 0.25em solid #f99;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 8px 0;
-    padding-bottom: 0.3em;
-
-    border-left: 4px solid $info;
-
-    padding-left: 12px;
-
-
-    // &::before {
-    //   content: "# ";
-    //   color: $info;
-    // }
-  }
-
-  h1 {
-    font-size: 2.0em;
-    margin: 12px 0;
-
-    // border-bottom: 2px solid $info;
-  }
-
-  h2 {
-    font-size: 1.8em;
-  }
-
-  h3 {
-    font-size: 1.6em;
-  }
-
-  .center {
-    text-align: center;
-  }
-}
-
-.dropdown h6 {
-  color: $black;
-}
-
-.icons {
-  margin-top: -2px;
-  margin-right: 4px;
-}
-
-.active {
-  .nav-link {
-    color: $info !important;
-  }
-}
-
-.navbar-dark {
-  .navbar-nav {
-    .nav-link.active {
-      color: $info;
-    }
-  }
-}
-
-.list-group-header {
-  background-color: $card-cap-bg;
-}
-
-#friendscard-wanted {
-  color: $info;
-  cursor: pointer;
-}
-
-.nonewcontent {
-  display: none;
-}
-
-.line-numbers-rows {
-  margin-top: 16px;
-  padding-left: 8px;
-}
-
-.hover-card {
-
-  transition: all .2s ease-in-out;
-
-  &:hover {
-    box-shadow: 0rem .2rem .4rem rgba(0,0,0,.3);
-  }
-}

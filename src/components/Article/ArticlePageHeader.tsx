@@ -16,7 +16,6 @@ interface Props {
 
 const headerHeight = 192;
 
-
 const RootContainer = styled.div`
   position: relative;
   height: ${headerHeight}px;
@@ -58,8 +57,6 @@ const Title = styled.h1`
   font-size: 2.4em;
   padding: 4px 0;
 `;
-
-
 
 export default function ArticlePageHeader(props: Props) {
 

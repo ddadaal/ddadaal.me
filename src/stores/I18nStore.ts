@@ -67,23 +67,8 @@ export class I18nStore extends Store<II18nStore> {
     return this.replacePlaceholders(def, replacements);
   }
 
-  getPathWithoutLang(path: string) {
-    let i = 0, slashCount = 0;
-    while (slashCount < 2 && i < path.length) {
-      if (path[i] === '/') {
-        slashCount++;
-      }
-      i++;
-    }
-    return path.substring(i - 1);
-
-
-  }
-
   get allLanguages() {
     return allLanguages;
   }
-
-
 
 }

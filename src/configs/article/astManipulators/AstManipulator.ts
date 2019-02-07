@@ -1,5 +1,5 @@
-import { HtmlAstElement, HtmlAstText, HtmlAstChild } from './../../../models/HtmlAst';
-import { HtmlAst } from '../../../models/HtmlAst';
+import { HtmlAstElement, HtmlAstText, HtmlAstChild } from "./../../../models/HtmlAst";
+import { HtmlAst } from "../../../models/HtmlAst";
 
 export type AstManipulator = (htmlAst: HtmlAst) => void;
 
@@ -7,7 +7,7 @@ export function createText(text: string): HtmlAstText {
   return {
     type: "text",
     value: text,
-  }
+  };
 }
 
 export function createElement(
@@ -20,5 +20,5 @@ export function createElement(
     tagName,
     properties,
     children,
-  }
+  };
 }

@@ -6,6 +6,6 @@ export interface SiteMetadata {
     name: string;
     url: string;
     email: string;
-  }
+  };
   lastUpdated: string;
 }

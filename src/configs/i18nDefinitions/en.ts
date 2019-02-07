@@ -55,7 +55,7 @@ export default {
       toc: "Table of Contents",
       share: {
         title: "Share",
-      }
+      },
     },
     articleFrontmatter: {
       timeToRead: "{} mins to read",
@@ -91,7 +91,7 @@ export default {
       key: "Key",
       value: "Value",
       articleCount: "Number of articles",
-      lastUpdated: "Last updated"
+      lastUpdated: "Last updated",
     },
   },
 };

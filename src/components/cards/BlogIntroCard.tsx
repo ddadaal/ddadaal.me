@@ -11,7 +11,6 @@ import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
 import { StatisticsStore } from "@/stores/StatisticsStore";
 
-
 interface Props extends WithStoresProps {
 
 }
@@ -63,4 +62,3 @@ export default withStores(ArticleStore, I18nStore)(function BlogIntroCard(props:
     </Card>
   );
 });
-

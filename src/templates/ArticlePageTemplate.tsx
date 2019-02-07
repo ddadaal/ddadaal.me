@@ -3,20 +3,14 @@ import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
-import { ArticleNode, Heading } from "@/models/ArticleNode";
-import { Link, navigate } from "gatsby";
-import { FaBackward } from "react-icons/fa";
-import styled, { keyframes } from "styled-components";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
-import LanguageSelector from "@/components/LanguageSelector";
-import { getLanguage } from "@/i18n/definition";;
+import { Heading } from "@/models/ArticleNode";
+import styled from "styled-components";
+import langRoot from "@/i18n/lang";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
-import ArticleFrontmatter from "@/components/Article/ArticleFrontmatter";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
@@ -31,7 +25,7 @@ interface Props extends WithStoresProps {
   location: Location;
 }
 
-const root = lang.articlePage;
+const root = langRoot.articlePage;
 
 const Headbar = styled.div`
   display: flex;
@@ -59,8 +53,9 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
 
   const language = i18nStore.getLanguage(lang)!;
 
-
-  const { frontmatter: { title, date, tags, hide_heading, no_toc }, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
+  const { frontmatter: {
+    title, date, tags, hide_heading, no_toc,
+  }, path, wordCount: { words: wordCount }, excerpt } = articleStore.getNodeFromLang(id, language);
 
   const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
 
@@ -76,21 +71,28 @@ export default withStores(I18nStore, ArticleStore)(function ArticlePageTemplate(
           { name: "og:locale", content: language.detailedId },
           ...Object.keys(langPathMap)
             .filter((x) => x !== lang)
-            .map((lang) => ({
+            .map((x) => ({
               name: "og:locale:alternate",
-              content: i18nStore.getLanguage(lang)!.detailedId
+              content: i18nStore.getLanguage(x)!.detailedId,
             })),
           { name: "og:site_name", content: "VicBlog" },
           { name: "og:article:published_time", content: date },
           ...(tags || []).map((x) => ({
             name: "og:article:tag",
-            content: x
-          }))
+            content: x,
+          })),
         ]}
       />
       {!hide_heading &&
         (
-          <ArticlePageHeader title={title} id={id} tags={tags} date={date} wordCount={wordCount} currentArticleLanguage={lang} />
+          <ArticlePageHeader
+            title={title}
+            id={id}
+            tags={tags}
+            date={date}
+            wordCount={wordCount}
+            currentArticleLanguage={lang}
+          />
         )
       }
       <Page>

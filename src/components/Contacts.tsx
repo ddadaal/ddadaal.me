@@ -20,15 +20,15 @@ const contacts = [
   [FaQuora, "https://www.quora.com/profile/Chen-Junda-3", "Quora: Chen Junda"],
   [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: VicCrubs"],
   [FaStackOverflow, "https://stackoverflow.com/users/2725415/chen-junda", "Stack Overflow: Chen Junda"],
-] as Array<[React.ComponentType, string, string]>
+] as Array<[React.ComponentType, string, string]>;
 
 const Contact = styled.span<{ color: string, size: number }>`
   svg {
-    height: ${props => props.size}em;
-    width: ${props => props.size}em;
+    height: ${(props) => props.size}em;
+    width: ${(props) => props.size}em;
     margin: 12px 12px 12px 0;
-    color: ${props => props.color};
-    fill: ${props => props.color};
+    color: ${(props) => props.color};
+    fill: ${(props) => props.color};
   }
 `;
 
@@ -51,5 +51,5 @@ export default function Contacts(props: Props) {
         );
       })}
     </Container>
-  )
+  );
 }

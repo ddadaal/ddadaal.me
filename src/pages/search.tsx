@@ -12,7 +12,6 @@ import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
 
-
 const root = lang.search;
 
 interface Query {
@@ -39,7 +38,12 @@ export default withStores(LocationStore, ArticleStore)(function SearchPage({ use
       }
 
       // filter according to tag
-      if (x.some((y) => y.frontmatter.tags && y.frontmatter.tags.some((tag => tag.toUpperCase().includes(query.toUpperCase()))))) {
+      if (x.some((y) =>
+        y.frontmatter.tags !== undefined
+        && y.frontmatter.tags.some(
+          ((tag) => tag.toUpperCase().includes(query.toUpperCase())),
+        ),
+      )) {
         return true;
       }
 
@@ -55,20 +59,23 @@ export default withStores(LocationStore, ArticleStore)(function SearchPage({ use
 
   const pageCount = Math.ceil(totalCount / pageSize);
 
-
   // pagination
-  searchResult = searchResult.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)
+  searchResult = searchResult.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
 
   return (
     <Page>
       <ArticleListLayout>
-        <h3><LocalizedString id={root.title} replacements={[<strong>{query}</strong>]} /></h3>
+        <h3>
+          <LocalizedString id={root.title} replacements={[
+            <strong key={"query"}>{query}</strong>,
+          ]} />
+        </h3>
         <small>
           <LocalizedString id={root.info} replacements={[
-            totalCount
+            totalCount,
           ]} />
         </small>
-        <hr/>
+        <hr />
         <ArticleItemList
           ids={searchResult.map((x) => x[0].frontmatter.id)}
           pageCount={pageCount}

@@ -27,7 +27,6 @@ const enterAnimation = keyframes`
   }
 `;
 
-
 const StyledContainer = styled.div`
   position: relative;
   margin-left: auto;

@@ -4,7 +4,6 @@ export interface Heading {
   slug: string;
 }
 
-
 export interface ArticleNode {
   path: string;
   excerpt: string;

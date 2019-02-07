@@ -120,7 +120,6 @@ module.exports = {
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              showLineNumbers: true,
               inlineCodeMarker: "±",
             }
           },
@@ -159,7 +158,6 @@ module.exports = {
         color: `#3498DB`,
         // Disable the loading spinner.
         showSpinner: false,
-        minimum: 0,
       }
     },
     'gatsby-plugin-sharp',

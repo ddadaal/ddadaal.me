@@ -17,5 +17,5 @@ export default function Share(props: Props) {
         <LocalizedString id={root.title} />
       </h3>
     </p>
-  )
+  );
 }

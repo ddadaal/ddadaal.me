@@ -1,4 +1,4 @@
-import { AstManipulator } from './AstManipulator';
+import { AstManipulator } from "./AstManipulator";
 import { HtmlAst, HtmlAstElement, HtmlAstChild } from "@/models/HtmlAst";
 
 const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
@@ -25,7 +25,7 @@ function addSlug(slugs: string[]): AstManipulator {
     for (const el of htmlAst.children) {
         rec(el);
     }
-  }
+  };
 }
 
 export default addSlug;

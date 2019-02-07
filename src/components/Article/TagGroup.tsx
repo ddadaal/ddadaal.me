@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Badge } from "reactstrap";
 import styled from "styled-components";
-import { navigate, Link } from "gatsby"
+import { navigate, Link } from "gatsby";
 import withStores, { WithStoresProps } from "@/stores/withStores";
 import { I18nStore } from "@/stores/I18nStore";
 import lang from "@/i18n/lang";
@@ -18,7 +18,7 @@ const MarginedBadge = styled(Badge)`
   a {
     color: white;
   }
-`
+`;
 
 export default function TagGroup(props: Props) {
 
@@ -26,7 +26,7 @@ export default function TagGroup(props: Props) {
     <>
       {
         props.tags.map((tag) =>
-          <Localize id={lang.articleFrontmatter.tagLinkTitle} replacements={[tag]}>
+          <Localize key={tag} id={lang.articleFrontmatter.tagLinkTitle} replacements={[tag]}>
             {(localizedTitle) => (
               <MarginedBadge color={"info"} pill={true} key={tag}>
                 <Link to={`/search?query=${tag}`} title={localizedTitle}>
@@ -34,7 +34,7 @@ export default function TagGroup(props: Props) {
                 </Link>
               </MarginedBadge>
             )}
-          </Localize>
+          </Localize>,
         )
       }
     </>

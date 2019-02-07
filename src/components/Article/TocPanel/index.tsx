@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { heights, colors } from "@/styles/variables";
 import ScrollLinkToAnchor from "./ScrollLinkToAnchor";
 
-
 interface Props {
   headings: Heading[];
   className?: string;
@@ -28,7 +27,6 @@ const Container = styled.div`
 
 `;
 
-
 interface ItemProps {
   depth: number;
 }
@@ -44,7 +42,7 @@ const Item = styled(ScrollLinkToAnchor)`
 
   &.active {
     border-left: 4px solid ${colors.tocLinkActiveColor};
-    padding-left: ${(props: ItemProps) => props.depth * 16-4}px;
+    padding-left: ${(props: ItemProps) => props.depth * 16 - 4}px;
     color: ${colors.tocLinkActiveColor} !important;
   }
 
@@ -52,7 +50,6 @@ const Item = styled(ScrollLinkToAnchor)`
     color: ${colors.tocLinkActiveColor} !important;
   }
 `;
-
 
 interface State {
 }
@@ -78,20 +75,20 @@ export default class TocPanel extends React.Component<Props, State>  {
   onScroll = (ev) => {
     const { headings } = this.props;
 
-    for (let i = 0; i < headings.length-1; i++) {
-      if (isWindowBetween(this.headingElements[i+1])) {
+    for (let i = 0; i < headings.length - 1; i++) {
+      if (isWindowBetween(this.headingElements[i + 1])) {
         this.setActive(i);
         return;
       }
     }
 
-    this.setActive(headings.length-1);
+    this.setActive(headings.length - 1);
 
-  };
+  }
 
   componentDidMount() {
 
-    if (this.props.headings.length == 0) { return; }
+    if (this.props.headings.length === 0) { return; }
 
     this.props.headings.forEach((heading) => {
       // add heading element
@@ -110,7 +107,7 @@ export default class TocPanel extends React.Component<Props, State>  {
   }
 
   componentWillUnmount() {
-    if (this.props.headings.length == 0) { return; }
+    if (this.props.headings.length === 0) { return; }
 
     window.removeEventListener("scroll", this.onScroll);
   }

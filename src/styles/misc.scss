@@ -1,0 +1,51 @@
+@import "./variables.scss";
+
+.dropdown h6 {
+  color: $black;
+}
+
+.icons {
+  margin-top: -2px;
+  margin-right: 4px;
+}
+
+.active {
+  .nav-link {
+    color: $info !important;
+  }
+}
+
+.navbar-dark {
+  .navbar-nav {
+    .nav-link.active {
+      color: $info;
+    }
+  }
+}
+
+.list-group-header {
+  background-color: $card-cap-bg;
+}
+
+#friendscard-wanted {
+  color: $info;
+  cursor: pointer;
+}
+
+.nonewcontent {
+  display: none;
+}
+
+.line-numbers-rows {
+  margin-top: 16px;
+  padding-left: 8px;
+}
+
+.hover-card {
+
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0rem .2rem .4rem rgba(0,0,0,.3);
+  }
+}

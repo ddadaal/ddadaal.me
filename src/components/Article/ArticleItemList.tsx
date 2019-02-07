@@ -12,31 +12,32 @@ interface Props extends WithStoresProps {
   toPage(pageIndex: number): () => void;
 }
 
-export default withStores(ArticleStore, I18nStore)(function ArticleList({ ids, pageCount, pageIndex, toPage, useStore }: Props) {
+export default withStores(ArticleStore, I18nStore)(
+  function ArticleList({ ids, pageCount, pageIndex, toPage, useStore }: Props) {
 
-  const articleStore = useStore(ArticleStore);
-  const i18nStore = useStore(I18nStore);
+    const articleStore = useStore(ArticleStore);
+    const i18nStore = useStore(I18nStore);
 
-  const items = ids.map((id) => {
-    return articleStore.state.articleGroups[id];
+    const items = ids.map((id) => {
+      return articleStore.state.articleGroups[id];
+    });
+
+    return (
+      <div>
+        {items
+          .map((nodes) => {
+            const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
+            return (
+              <ArticleItem
+                article={node}
+                key={node.frontmatter.id}
+                currentArticleLanguage={node.frontmatter.lang}
+              />
+            );
+
+          })
+        }
+        <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
+      </div>
+    );
   });
-
-  return (
-    <div>
-      {items
-        .map((nodes) => {
-          const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
-          return (
-            <ArticleItem
-              article={node}
-              key={node.frontmatter.id}
-              currentArticleLanguage={node.frontmatter.lang}
-            />
-          );
-
-        })
-      }
-      <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
-    </div>
-  )
-});

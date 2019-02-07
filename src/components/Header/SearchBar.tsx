@@ -5,7 +5,6 @@ import { FaSearch } from "react-icons/fa";
 import Localize from "@/i18n/Localize";
 import lang from "@/i18n/lang";
 
-
 interface Props {
   onSearch?(): void;
 }
@@ -22,11 +21,13 @@ export default class SearchBar extends React.Component<Props, State> {
     if (ev.key === "Enter") {
       this.onSearch();
     }
-  };
+  }
 
   onSearch = () => {
     navigate(`/search?query=${encodeURIComponent(this.state.input)}`);
-    this.props.onSearch && this.props.onSearch();
+    if (this.props.onSearch) {
+      this.props.onSearch();
+    }
   }
 
   onChange = (e) => {
@@ -54,5 +55,3 @@ export default class SearchBar extends React.Component<Props, State> {
     );
   }
 }
-
-

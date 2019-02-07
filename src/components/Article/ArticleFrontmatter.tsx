@@ -1,5 +1,5 @@
 import * as React from "react";
-import lang from "@/i18n/lang";
+import langRoot from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled from "styled-components";
 import { Badge, Row, Col } from "reactstrap";
@@ -19,7 +19,7 @@ interface Props {
   currentArticleLanguage: string;
 }
 
-const root = lang.articleFrontmatter;
+const root = langRoot.articleFrontmatter;
 
 const color = "#7f8c8d";
 
@@ -68,7 +68,7 @@ export default function ArticleFrontmatter(props: Props) {
         <LanguageSwitcher articleId={articleId} currentArticleLanguage={currentArticleLanguage} />
       </Span>
     </ContainerRow>
-  )
+  );
 }
 
 const LangLink = styled(Link)`
@@ -81,26 +81,26 @@ const DisabledLangLink = styled.span`
 
 `;
 
-const LanguageSwitcher = withStores(I18nStore, ArticleStore)((props: { currentArticleLanguage: string; articleId: string; } & WithStoresProps) => {
-  const { useStore, articleId, currentArticleLanguage } = props;
-  const i18nStore = useStore(I18nStore);
-  const articleStore = useStore(ArticleStore);
+const LanguageSwitcher = withStores(I18nStore, ArticleStore)(
+  (props: { currentArticleLanguage: string; articleId: string; } & WithStoresProps) => {
+    const { useStore, articleId, currentArticleLanguage } = props;
+    const i18nStore = useStore(I18nStore);
+    const articleStore = useStore(ArticleStore);
 
-  const langPathMap = articleStore.getLangPathMap(articleId);
+    const langPathMap = articleStore.getLangPathMap(articleId);
 
-  const pathOfCurrentLanguage = langPathMap.get(currentArticleLanguage)!!;
+    const pathOfCurrentLanguage = langPathMap.get(currentArticleLanguage)!!;
 
-  langPathMap.delete(currentArticleLanguage);
+    langPathMap.delete(currentArticleLanguage);
 
-
-  return (
-    <>
-      <DisabledLangLink>
-        {i18nStore.getLanguage(currentArticleLanguage)!!.name}
-      </DisabledLangLink>
-        { Array.from(langPathMap.entries()).map(([lang, path]) => (
+    return (
+      <>
+        <DisabledLangLink>
+          {i18nStore.getLanguage(currentArticleLanguage)!!.name}
+        </DisabledLangLink>
+        {Array.from(langPathMap.entries()).map(([lang, path]) => (
           <LangLink key={lang} to={path}>{i18nStore.getLanguage(lang)!!.name}</LangLink>
         ))}
-    </>
-  );
-});
+      </>
+    );
+  });

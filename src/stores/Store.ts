@@ -6,6 +6,4 @@ export default class Store<T extends object> extends Container<T> {
   }
 }
 
-export interface StoreType<T extends object> {
-  new(...args): Store<T>;
-}
+export type StoreType<T extends object> = new(...args) => Store<T>;

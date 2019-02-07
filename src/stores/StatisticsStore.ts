@@ -10,5 +10,4 @@ export class StatisticsStore extends Store<IStatisticsStore> {
     this.state = statistics;
   }
 
-
 }

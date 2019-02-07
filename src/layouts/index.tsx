@@ -18,7 +18,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-
 const query = graphql`
   query IndexLayoutQuery {
     site {
@@ -53,7 +52,7 @@ const query = graphql`
   }
 `;
 
-export default function (props: Props) {
+export default function(props: Props) {
   return (
     <StaticQuery query={query}>
       {(data: InitialData) => {
@@ -77,5 +76,5 @@ export default function (props: Props) {
         );
       }}
     </StaticQuery>
-  )
+  );
 }

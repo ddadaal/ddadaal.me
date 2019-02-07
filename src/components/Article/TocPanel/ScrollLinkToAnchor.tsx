@@ -21,7 +21,7 @@ export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
     if (element) {
       window.scroll({
         top: absoluteTopPosition(element) - heights.header,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
 
     }
@@ -34,6 +34,6 @@ export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
     const { targetAnchor, ...rest } = this.props;
     return (
       <a {...rest} onClick={this.smoothScroll} />
-    )
+    );
   }
 }

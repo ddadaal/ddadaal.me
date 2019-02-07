@@ -61,7 +61,6 @@ interface State {
   mount: boolean;
 }
 
-
 export default class CommentPanel extends React.Component<Props, State> {
   state = {
     mount: true,

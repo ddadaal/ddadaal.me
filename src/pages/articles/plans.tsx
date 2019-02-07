@@ -5,13 +5,12 @@ import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/components/Page";
 
-
 interface Props {
   data: {
     allPlansJson: {
-      edges: { node: ArticlePlan }[]
-    }
-  }
+      edges: { node: ArticlePlan }[],
+    },
+  };
 }
 
 const root = lang.articlePlans;
@@ -27,13 +26,13 @@ export default function ArticlePlansPage(props: Props) {
       <hr/>
       {plans.map((plan) => {
         return (
-          <div>
+          <div key={plan.id}>
             <h3>{plan.title}</h3>
           </div>
-        )
+        );
       })}
     </Page>
-  )
+  );
 
 }
 

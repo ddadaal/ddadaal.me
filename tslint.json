@@ -19,7 +19,7 @@
       "jsx-alignment": false,
       "jsx-no-lambda": false,
       "no-trailing-whitespace": false,
-      "array-type": false,
+      "array-type": false
     },
     "rulesDirectory": []
 }

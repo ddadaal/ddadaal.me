@@ -13,11 +13,10 @@ export interface HtmlAstElement {
 
 export type HtmlAstChild = HtmlAstText | HtmlAstElement;
 
-
 export interface HtmlAst {
   type: string;
   data: {
     quirksMode: boolean;
   };
-  children: HtmlAstChild[]
+  children: HtmlAstChild[];
 }

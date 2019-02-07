@@ -56,14 +56,11 @@ function Branding(props: { title: string }) {
   );
 }
 
-
-
 function atHomePage(pathname: string) {
   return pathname === "/" || pathname.match(/\/articles\/\d+/) !== null;
 }
 
 const root = lang.headers;
-
 
 const NavbarLanguageSelector = withStores(I18nStore)(({ useStore }) => {
 
@@ -78,7 +75,6 @@ const NavbarLanguageSelector = withStores(I18nStore)(({ useStore }) => {
     />
   );
 });
-
 
 function doNothing() {
 
@@ -100,8 +96,6 @@ const ArticlePathItem = withStores(ArticleStore, I18nStore)((props: {
 
   const targetPageUrlParts = node.path.split("/");
   targetPageUrlParts.pop();
-
-
 
   return (
     <Outer active={currentPathname.startsWith(targetPageUrlParts.join("/"))}>

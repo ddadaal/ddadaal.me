@@ -2,7 +2,6 @@ import * as React from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { range } from "@/utils/Array";
 
-
 interface Props {
   pageCount: number;
   pageIndex: number; // starts with 0
@@ -22,11 +21,16 @@ export default function PageIndicator(props: Props) {
           <PaginationLink onClick={toPage(x)}>
             {x + 1}
           </PaginationLink>
-        </PaginationItem>
+        </PaginationItem>,
       )}
       <PaginationItem>
-        <PaginationLink disabled={pageCount === 0 || pageIndex === pageCount - 1} next={true} onClick={toPage(pageIndex + 1)} />
+        <PaginationLink
+          disabled={pageCount === 0 || pageIndex === pageCount - 1}
+          next={true}
+          onClick={toPage(pageIndex + 1)}
+        />
       </PaginationItem>
+
     </Pagination>
   );
 }

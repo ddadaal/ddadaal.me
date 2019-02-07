@@ -38,4 +38,4 @@ export const colors = {
   main: "#2C3E50",
   headerBg: "#2C3E50",
   tocLinkActiveColor: "#3498DB",
-}
+};

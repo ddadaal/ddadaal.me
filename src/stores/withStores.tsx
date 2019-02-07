@@ -7,12 +7,14 @@ export interface WithStoresProps {
 }
 
 export default function withStores(...stores: Array<StoreType<any>>) {
-  return <P extends {}>(WrappedComponent: React.ComponentType<P & WithStoresProps>): React.ComponentType<Omit<P, keyof WithStoresProps>> => {
+  return <P extends {}>
+  (WrappedComponent: React.ComponentType<P & WithStoresProps>) => {
 
     const Component = (props: P) => (
       <Subscribe to={stores}>
         {(...injectedStores) => {
-          const useStore = (containerType: StoreType<any>) => injectedStores.find((x) => x instanceof containerType) as any;
+          const useStore = (containerType: StoreType<any>) =>
+           injectedStores.find((x) => x instanceof containerType) as any;
 
           return (
             <WrappedComponent
@@ -26,6 +28,6 @@ export default function withStores(...stores: Array<StoreType<any>>) {
       </Subscribe>
     );
 
-    return Component as any;
+    return Component as any as React.ComponentType<Omit<P, keyof WithStoresProps>>;
   };
 }

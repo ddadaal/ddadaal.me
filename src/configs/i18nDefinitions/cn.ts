@@ -62,7 +62,7 @@ export default {
       toc: "目录",
       share: {
         title: "分享",
-      }
+      },
     },
     articleItem: {
       availableLanguages: "可用语言：",
@@ -90,7 +90,7 @@ export default {
       key: "统计项",
       value: "统计值",
       articleCount: "总文章数",
-      lastUpdated: "最后更新"
+      lastUpdated: "最后更新",
     },
   },
 };

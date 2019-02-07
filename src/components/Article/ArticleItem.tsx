@@ -40,7 +40,7 @@ const StyledH = styled.h2`
 const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
   return (
     <StyledH onClick={() => navigate(props.to)}>{props.children}</StyledH>
-  )
+  );
 };
 
 export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: Props) {
@@ -60,7 +60,13 @@ export default withStores(I18nStore, ArticleStore)(function ArticleItem(props: P
         {title}
       </StyledTitle>
 
-      <ArticleFrontmatter currentArticleLanguage={currentArticleLanguage} date={date} wordCount={words} tags={tags} articleId={id} />
+      <ArticleFrontmatter
+        currentArticleLanguage={currentArticleLanguage}
+        date={date}
+        wordCount={words}
+        tags={tags}
+        articleId={id}
+      />
 
       <p>{excerpt}</p>
       <hr />

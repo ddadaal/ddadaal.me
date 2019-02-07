@@ -8,7 +8,6 @@ import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
 
-
 interface Props extends WithStoresProps {
   pageContext: {
     pageIndex: number;
@@ -16,8 +15,6 @@ interface Props extends WithStoresProps {
     ids: string[];
   };
 }
-
-
 
 function toPage(pageNum: number) {
   const path = pageNum === 0 ? "/" : `/articles/${pageNum + 1}`;
@@ -40,8 +37,8 @@ export default withStores(I18nStore, ArticleStore)(function Index({ pageContext,
           .filter((x) => x !== language)
           .map((x) => ({
             name: "og:locale:alternate",
-            content: x.detailedId
-          }))
+            content: x.detailedId,
+          })),
       ]} />
       <ArticleListLayout>
         <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
