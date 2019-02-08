@@ -24,12 +24,21 @@ const contacts = [
 
 const Contact = styled.span<{ color: string, size: number }>`
   svg {
+    transition: transform 0.2s linear;
+
     height: ${(props) => props.size}em;
     width: ${(props) => props.size}em;
     margin: 12px 12px 12px 0;
     color: ${(props) => props.color};
     fill: ${(props) => props.color};
+
+    &:hover {
+      transform: scale(1.4);
+    }
+
+
   }
+
 `;
 
 const Container = styled.div`

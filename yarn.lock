@@ -1039,10 +1039,18 @@
   dependencies:
     "@types/enzyme" "*"
 
-"@types/enzyme@*", "@types/enzyme@^3.1.16":
+"@types/enzyme@*":
   version "3.1.16"
   resolved "http://registry.npm.taobao.org/@types/enzyme/download/@types/enzyme-3.1.16.tgz#b29e1d7148e4e15a773a9b9f2149ea4c42d3a91d"
   integrity sha1-sp4dcUjk4Vp3OpufIUnqTELTqR0=
+  dependencies:
+    "@types/cheerio" "*"
+    "@types/react" "*"
+
+"@types/enzyme@^3.1.17":
+  version "3.1.17"
+  resolved "http://registry.npm.taobao.org/@types/enzyme/download/@types/enzyme-3.1.17.tgz#41f553bfdbaa00880488feabb3ade47d5489db42"
+  integrity sha1-QfVTv9uqAIgEiP6rs63kfVSJ20I=
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
@@ -1096,10 +1104,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
   integrity sha1-2Bdthk7kh1PQU3g+TkY67Ia42C4=
 
-"@types/node@^10.12.21":
-  version "10.12.21"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.21.tgz#7e8a0c34cf29f4e17a36e9bd0ea72d45ba03908e"
-  integrity sha1-fooMNM8p9OF6Num9DqctRboDkI4=
+"@types/node@^10.12.23":
+  version "10.12.23"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.23.tgz#308a3acdc5d1c842aeadc50b867d99c46cfae868"
+  integrity sha1-MIo6zcXRyEKurcULhn2ZxGz66Gg=
 
 "@types/node@^7.0.11":
   version "7.0.66"
@@ -15032,10 +15040,10 @@ typescript-template-language-service-decorator@^2.0.0:
   resolved "http://registry.npm.taobao.org/typescript-template-language-service-decorator/download/typescript-template-language-service-decorator-2.2.0.tgz#4ee6d580f307fb9239978e69626f2775b8a59b2a"
   integrity sha1-TubVgPMH+5I5l45pYm8ndbilmyo=
 
-typescript@^3.3.1:
-  version "3.3.1"
-  resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.3.1.tgz#6de14e1db4b8a006ac535e482c8ba018c55f750b"
-  integrity sha1-beFOHbS4oAasU15ILIugGMVfdQs=
+typescript@^3.3.3:
+  version "3.3.3"
+  resolved "http://registry.npm.taobao.org/typescript/download/typescript-3.3.3.tgz#f1657fc7daa27e1a8930758ace9ae8da31403221"
+  integrity sha1-8WV/x9qifhqJMHWKzpro2jFAMiE=
 
 ua-parser-js@^0.7.18:
   version "0.7.18"

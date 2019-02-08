@@ -58,7 +58,6 @@ function Branding(props: { title: string }) {
 }
 
 function atHomePage(pathname: string) {
-  console.log("at home page", pathname === "/");
   return pathname === "/" || pathname.match(/\/articles\/\d+/) !== null;
 }
 
