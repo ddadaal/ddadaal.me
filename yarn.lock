@@ -6167,6 +6167,15 @@ gatsby-plugin-manifest@^2.0.17:
     bluebird "^3.5.0"
     sharp "^0.21.3"
 
+gatsby-plugin-matomo@^0.6.0:
+  version "0.6.0"
+  resolved "http://registry.npm.taobao.org/gatsby-plugin-matomo/download/gatsby-plugin-matomo-0.6.0.tgz#96c218477a971f45280002f2038310584c0fe2df"
+  integrity sha1-lsIYR3qXH0UoAALyA4MQWEwP4t8=
+  dependencies:
+    babel-runtime "^6.26.0"
+    react "^16.6.3"
+    react-hot-loader "^4.3.12"
+
 gatsby-plugin-nprogress@^2.0.8:
   version "2.0.8"
   resolved "http://registry.npm.taobao.org/gatsby-plugin-nprogress/download/gatsby-plugin-nprogress-2.0.8.tgz#7d7d38982ac52f7d8993ab26de50e091fdc7511d"
@@ -12350,6 +12359,21 @@ react-helmet@^5.2.0:
     prop-types "^15.5.4"
     react-side-effect "^1.1.0"
 
+react-hot-loader@^4.3.12:
+  version "4.6.5"
+  resolved "http://registry.npm.taobao.org/react-hot-loader/download/react-hot-loader-4.6.5.tgz#059619c8ac2aae9c6e8178ddc2eac535093cdd2e"
+  integrity sha1-BZYZyKwqrpxugXjdwurFNQk83S4=
+  dependencies:
+    fast-levenshtein "^2.0.6"
+    global "^4.3.0"
+    hoist-non-react-statics "^2.5.0"
+    loader-utils "^1.1.0"
+    lodash.merge "^4.6.1"
+    prop-types "^15.6.1"
+    react-lifecycles-compat "^3.0.4"
+    shallowequal "^1.0.2"
+    source-map "^0.7.3"
+
 react-hot-loader@^4.6.2:
   version "4.6.3"
   resolved "http://registry.npm.taobao.org/react-hot-loader/download/react-hot-loader-4.6.3.tgz#d9c8923c45b35fd51538ba4297081a00be6bccb1"
@@ -12431,7 +12455,7 @@ react-transition-group@^2.3.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.8.1:
+react@^16.6.3, react@^16.8.1:
   version "16.8.1"
   resolved "http://registry.npm.taobao.org/react/download/react-16.8.1.tgz#ae11831f6cb2a05d58603a976afc8a558e852c4a"
   integrity sha1-rhGDH2yyoF1YYDqXavyKVY6FLEo=

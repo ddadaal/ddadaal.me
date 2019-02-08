@@ -40,6 +40,7 @@
     "gatsby-plugin-feed": "^2.0.13",
     "gatsby-plugin-layout": "^1.0.12",
     "gatsby-plugin-manifest": "^2.0.17",
+    "gatsby-plugin-matomo": "^0.6.0",
     "gatsby-plugin-nprogress": "^2.0.8",
     "gatsby-plugin-offline": "^2.0.23",
     "gatsby-plugin-react-helmet": "^3.0.6",
