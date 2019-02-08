@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-matomo',
       options: {
-        siteId: 'VicBlog',
+        siteId: '1',
         matomoUrl: 'https://analytics.viccrubs.me',
         siteUrl: 'https://viccrubs.me',
       }
