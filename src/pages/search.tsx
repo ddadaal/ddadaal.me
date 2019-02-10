@@ -7,7 +7,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 const root = lang.search;
 

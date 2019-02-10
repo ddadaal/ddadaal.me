@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   pageContext: {

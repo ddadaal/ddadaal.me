@@ -14,7 +14,7 @@ import { Row, Col } from "reactstrap";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   pageContext: {

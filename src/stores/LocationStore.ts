@@ -1,4 +1,4 @@
-import { Store } from "@/stores/stater";
+import { Store } from "simstate";
 
 interface ILocationStore {
   location: Location;
@@ -19,7 +19,8 @@ function parseQuery(queryString: string) {
 
 export class LocationStore extends Store<ILocationStore> {
   constructor(location: Location) {
-    super({ location });
+    super();
+    this.state = { location };
   }
 
   get pathname() {

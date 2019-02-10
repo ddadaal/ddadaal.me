@@ -1,4 +1,4 @@
-import { Store } from "@/stores/stater";
+import { Store } from "simstate";
 import { Language, getLanguage, allLanguages } from "@/i18n/definition";
 import { isServer } from "@/utils/isServer";
 import { GET_VALUE } from "@/i18n/lang";
@@ -16,7 +16,8 @@ function getInitialLanguage() {
 
 export class I18nStore extends Store<II18nStore> {
   constructor() {
-    super({ language: getLanguage(getInitialLanguage()) })
+    super();
+    this.state = { language: getLanguage(getInitialLanguage()) };
   }
 
   changeLanguage = (language: string) => {

@@ -9,7 +9,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import Contacts from "../Contacts";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   className?: string;

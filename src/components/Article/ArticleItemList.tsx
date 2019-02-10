@@ -3,7 +3,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   ids: string[];

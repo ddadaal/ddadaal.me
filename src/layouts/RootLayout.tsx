@@ -15,7 +15,7 @@ import ScrollToTop from "react-scroll-up";
 import icon512 from "~/assets/icon.png";
 import { FaArrowUp } from "react-icons/fa";
 import NewContentPop from "@/components/NewContentPop";
-import { StoreProvider } from "@/stores/stater";
+import { StoreProvider } from "simstate";
 
 const LayoutMain = styled.main`
   display: flex;

@@ -9,7 +9,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   article: ArticleNode;

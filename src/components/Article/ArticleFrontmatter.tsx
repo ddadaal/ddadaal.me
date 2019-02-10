@@ -9,7 +9,7 @@ import { breakpoints } from "@/styles/variables";
 import { LangPathMap, ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { Link } from "gatsby";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   articleId: string;

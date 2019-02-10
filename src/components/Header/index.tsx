@@ -23,7 +23,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import SearchBar from "@/components/Header/SearchBar";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
   title: string;

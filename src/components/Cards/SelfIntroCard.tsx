@@ -9,7 +9,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
 import Contacts from "../Contacts";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 interface Props {
 }

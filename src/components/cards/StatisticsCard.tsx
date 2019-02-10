@@ -4,7 +4,7 @@ import lang from "@/i18n/lang";
 import { ListGroup, ListGroupItem, Badge } from "reactstrap";
 import LocalizedString from "@/i18n/LocalizedString";
 import ListGroupHeader from "../UI/ListGroup/ListGroupHeader";
-import { useStore } from "@/stores/stater";
+import { useStore } from "simstate";
 
 const root = lang.statistics;
 
