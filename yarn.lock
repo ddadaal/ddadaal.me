@@ -13666,10 +13666,12 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simstate@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/simstate/-/simstate-1.0.2.tgz#8a5814218d689a08d19fb9bdf0b223af61f0b22f"
-  integrity sha512-hYX0KbX0liXlaFYWzxeGx//BWoKYlE71uz7mL4IxClwMsm7IEDJzfKSayjYpxXPro/b79eVNGNg4rzbtpArlFw==
+simstate@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/simstate/-/simstate-1.1.0.tgz#b9e2b9779994e303bf0fd004cbfb76bfc924bf25"
+  integrity sha512-yK10NJBbE83I1zlq8Hlk2SicR4BR0Dkv8YTLUgTHQoWsdskW4AQP0zWOrExXBd9sGA/txOx6diqxNERVUx6Ziw==
+  dependencies:
+    tslib "^1.9.3"
 
 sisteransi@^1.0.0:
   version "1.0.0"
@@ -14948,7 +14950,7 @@ ts-jest@^23.10.5:
     semver "^5.5"
     yargs-parser "10.x"
 
-tslib@^1.6.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.6.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=

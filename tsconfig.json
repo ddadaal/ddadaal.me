@@ -6,7 +6,7 @@
     "lib": ["dom", "es2015", "es2017"],
     "outDir": "./dist/",
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "removeComments": false,
     "preserveConstEnums": true,
     "strictNullChecks": true,
@@ -19,7 +19,8 @@
       {
         "name": "typescript-styled-plugin"
       }
-    ]
+    ],
+    "importHelpers": true
   },
   "include": [
     "./src/**/*", "__tests__/enzyme.js"
