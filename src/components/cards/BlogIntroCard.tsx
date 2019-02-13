@@ -9,7 +9,7 @@ import lang from "@/i18n/lang";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
-import { useStore } from "simstate";
+import { useStores } from "simstate";
 
 interface Props {
 
@@ -19,8 +19,7 @@ const root = lang.blogIntro;
 
 export default function BlogIntroCard(props: Props) {
 
-  const articleStore = useStore(ArticleStore);
-  const i18nStore = useStore(I18nStore);
+  const [articleStore, i18nStore] = useStores(ArticleStore, I18nStore);
 
   return (
     <Card className="hover-card">
@@ -61,4 +60,4 @@ export default function BlogIntroCard(props: Props) {
       </CardBody>
     </Card>
   );
-};
+}

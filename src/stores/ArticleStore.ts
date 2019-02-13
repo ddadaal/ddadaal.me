@@ -9,6 +9,8 @@ interface IArticleStore {
   baseUrl: string;
 }
 
+export type LangPathMap = Map<string, string>;
+
 export function createArticleGroups(articles: ArticleNode[]) {
   const articleGroups = {} as ArticleGroups;
   articles.forEach((node) => {
@@ -21,9 +23,8 @@ export function createArticleGroups(articles: ArticleNode[]) {
   return articleGroups;
 }
 
-export type LangPathMap = Map<string, string>;
-
 export class ArticleStore extends Store<IArticleStore> {
+
   constructor(articleGroups: ArticleGroups, baseUrl: string) {
     super();
     this.state = { articleGroups, baseUrl };

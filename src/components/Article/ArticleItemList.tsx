@@ -3,7 +3,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
-import { useStore } from "simstate";
+import { useStores } from "simstate";
 
 interface Props {
   ids: string[];
@@ -14,29 +14,28 @@ interface Props {
 
 export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props) {
 
-    const articleStore = useStore(ArticleStore);
-    const i18nStore = useStore(I18nStore);
+  const [articleStore, i18nStore] = useStores(ArticleStore, I18nStore);
 
-    const items = ids.map((id) => {
-      return articleStore.state.articleGroups[id];
-    });
+  const items = ids.map((id) => {
+    return articleStore.state.articleGroups[id];
+  });
 
-    return (
-      <div>
-        {items
-          .map((nodes) => {
-            const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
-            return (
-              <ArticleItem
-                article={node}
-                key={node.frontmatter.id}
-                currentArticleLanguage={node.frontmatter.lang}
-              />
-            );
+  return (
+    <div>
+      {items
+        .map((nodes) => {
+          const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
+          return (
+            <ArticleItem
+              article={node}
+              key={node.frontmatter.id}
+              currentArticleLanguage={node.frontmatter.lang}
+            />
+          );
 
-          })
-        }
-        <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
-      </div>
-    );
-  };
+        })
+      }
+      <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
+    </div>
+  );
+}

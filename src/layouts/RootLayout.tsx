@@ -38,6 +38,8 @@ interface Props {
   children?: React.ReactNode;
 }
 
+const iconContext = { className: "icons" };
+
 export default class RootLayout extends React.Component<Props, {}> {
 
   i18nStore = new I18nStore();
@@ -64,7 +66,7 @@ export default class RootLayout extends React.Component<Props, {}> {
     const { children, siteMetadata } = this.props;
 
     return (
-      <IconContext.Provider value={{ className: "icons" }}>
+      <IconContext.Provider value={iconContext}>
         <StoreProvider stores={[
           this.statisticsStore,
           this.locationStore,

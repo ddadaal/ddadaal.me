@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "removeComments": false,
     "preserveConstEnums": true,
+    "downlevelIteration": true,
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {

@@ -46,4 +46,4 @@ export default function Index({ pageContext }: Props) {
       </ArticleListLayout>
     </Page>
   );
-};
+}

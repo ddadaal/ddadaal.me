@@ -1012,6 +1012,13 @@
   resolved "http://registry.npm.taobao.org/@sindresorhus/is/download/@sindresorhus/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha1-mgb08TfuhNffBGDB/bETX/psUP0=
 
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.npmjs.org/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
+  dependencies:
+    axios "*"
+
 "@types/cheerio@*":
   version "0.22.10"
   resolved "http://registry.npm.taobao.org/@types/cheerio/download/@types/cheerio-0.22.10.tgz#780d552467824be4a241b29510a7873a7432c4a6"
@@ -1084,10 +1091,10 @@
   resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
 
-"@types/jest@^24.0.0":
-  version "24.0.0"
-  resolved "http://registry.npm.taobao.org/@types/jest/download/@types/jest-24.0.0.tgz#848492026c327b3548d92be0352a545c36a21e8a"
-  integrity sha1-hISSAmwyezVI2SvgNSpUXDaiHoo=
+"@types/jest@^24.0.3":
+  version "24.0.3"
+  resolved "https://registry.npmjs.org/@types/jest/-/jest-24.0.3.tgz#df8dc56565bd2d27fcbd099434f04f9891e16ab7"
+  integrity sha512-keRxrIwZZ/Ml83cGl3G0OjGlBO4UFQCCa5QlBPz2pY+ZvSnoeUvMJw0vmL4JU6g4vbpIW5H4qSq1xv9h8naAfg==
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -1104,10 +1111,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
   integrity sha1-2Bdthk7kh1PQU3g+TkY67Ia42C4=
 
-"@types/node@^10.12.24":
-  version "10.12.24"
-  resolved "https://registry.npmjs.org/@types/node/-/node-10.12.24.tgz#b13564af612a22a20b5d95ca40f1bffb3af315cf"
-  integrity sha512-GWWbvt+z9G5otRBW8rssOFgRY87J9N/qbhqfjMZ+gUuL6zoL+Hm6gP/8qQBG4jjimqdaNLCehcVapZ/Fs2WjCQ==
+"@types/node@^11.9.3":
+  version "11.9.3"
+  resolved "https://registry.npmjs.org/@types/node/-/node-11.9.3.tgz#14adbb5ab8cd563f549fbae8dbe92e0b7d6e76cc"
+  integrity sha512-DMiqG51GwES/c4ScBY0u5bDlH44+oY8AeYHjY1SGCWidD7h08o1dfHue/TGK7REmif2KiJzaUskO+Q0eaeZ2fQ==
 
 "@types/node@^7.0.11":
   version "7.0.66"
@@ -1143,6 +1150,14 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-native@*":
+  version "0.57.35"
+  resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.57.35.tgz#362bbfa28a5700bac6fd814f8cb4aae1521cd9d3"
+  integrity sha512-RQnpq9qi1JiAF9331r+WcBSsTYhpl3wcMZPI+UvZWwNG1X7HxZCgaU3+7/zb8VT8GAuKmmp0SUYXhxXba3C53A==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@16.8.2", "@types/react@^16.8.2":
   version "16.8.2"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.8.2.tgz#3b7a7f7ea89d1c7d68b00849fb5de839011c077b"
@@ -1159,13 +1174,13 @@
     "@types/react" "*"
     popper.js "^1.14.1"
 
-"@types/styled-components@^4.1.8":
-  version "4.1.8"
-  resolved "http://registry.npm.taobao.org/@types/styled-components/download/@types/styled-components-4.1.8.tgz#15c8a53bb4b9066e528fafb7558963dee5690ae0"
-  integrity sha1-FcilO7S5Bm5Sj6+3VYlj3uVpCuA=
+"@types/styled-components@^4.1.9":
+  version "4.1.9"
+  resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.9.tgz#68cecd5e15f8e1eef81b61a919e172c4053edbff"
+  integrity sha512-qg1VcvnQm6BHr7KV7Rneq2WUa6U0WVJCPasDfah0JafeE/wdNqxGXurefSVXGRCHzKqkoAvakjtA9n1dTizqdA==
   dependencies:
-    "@types/node" "*"
     "@types/react" "*"
+    "@types/react-native" "*"
     csstype "^2.2.0"
 
 "@types/tmp@^0.0.32":
@@ -1882,20 +1897,20 @@ aws4@^1.8.0:
   resolved "http://registry.npm.taobao.org/aws4/download/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha1-8OAD2cqef1nHpQiUXXsu+aBKVC8=
 
+axios@*, axios@^0.18.0:
+  version "0.18.0"
+  resolved "http://registry.npm.taobao.org/axios/download/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
+
 axios@0.16.2:
   version "0.16.2"
   resolved "http://registry.npm.taobao.org/axios/download/axios-0.16.2.tgz#ba4f92f17167dfbab40983785454b9ac149c3c6d"
   integrity sha1-uk+S8XFn37q0CYN4VFS5rBScPG0=
   dependencies:
     follow-redirects "^1.2.3"
-    is-buffer "^1.1.5"
-
-axios@^0.18.0:
-  version "0.18.0"
-  resolved "http://registry.npm.taobao.org/axios/download/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
-  integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
-  dependencies:
-    follow-redirects "^1.3.0"
     is-buffer "^1.1.5"
 
 axobject-query@^2.0.1:
@@ -2415,10 +2430,10 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap@^4.2.1:
-  version "4.2.1"
-  resolved "http://registry.npm.taobao.org/bootstrap/download/bootstrap-4.2.1.tgz#8f8bdca024dbf0e8644da32e918c8a03a90a5757"
-  integrity sha1-j4vcoCTb8OhkTaMukYyKA6kKV1c=
+bootstrap@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.0.tgz#2559ccb8d45426ac6c54db23eb3d1c9f4257fa22"
+  integrity sha512-M0vqY0Z6UDweV2nLFl5dXcb+GIo53EBCGMMVxCGH5vJxl/jsr+HkULBMd4kn9rdpdBZwd3BduCgMOYOwJybo4Q==
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -5336,11 +5351,6 @@ express-graphql@^0.6.12:
     http-errors "^1.3.0"
     raw-body "^2.3.2"
 
-express-history-api-fallback@^2.2.1:
-  version "2.2.1"
-  resolved "http://registry.npm.taobao.org/express-history-api-fallback/download/express-history-api-fallback-2.2.1.tgz#3a2ad27f7bebc90fc533d110d7c6d83097bcd057"
-  integrity sha1-OirSf3vryQ/FM9EQ18bYMJe80Fc=
-
 express@^4.16.2, express@^4.16.3:
   version "4.16.3"
   resolved "http://registry.npm.taobao.org/express/download/express-4.16.3.tgz#6af8a502350db3246ecc4becf6b5a34d22f7ed53"
@@ -6086,10 +6096,10 @@ functional-red-black-tree@^1.0.1:
   resolved "http://registry.npm.taobao.org/functional-red-black-tree/download/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gatsby-cli@^2.4.9:
-  version "2.4.9"
-  resolved "http://registry.npm.taobao.org/gatsby-cli/download/gatsby-cli-2.4.9.tgz#4b085eff9ac0daa063d7d3ebfdfe6b1cde1f198b"
-  integrity sha1-Swhe/5rA2qBj19Pr/f5rHN4fGYs=
+gatsby-cli@^2.4.10:
+  version "2.4.10"
+  resolved "https://registry.npmjs.org/gatsby-cli/-/gatsby-cli-2.4.10.tgz#b8361d69a0601855b82268ac06bced42bb457610"
+  integrity sha512-NXs5tRu9wP7HBsPqFur1xKSKe+KyGrn/Y0aNwmgACkw7gHCzSblhgjl9c4Z9mbG7eQ3HsuCA4rpxux13ZKFMUw==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -6129,10 +6139,10 @@ gatsby-plugin-canonical-urls@^2.0.10:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-gatsby-plugin-catch-links@^2.0.10:
-  version "2.0.10"
-  resolved "http://registry.npm.taobao.org/gatsby-plugin-catch-links/download/gatsby-plugin-catch-links-2.0.10.tgz#ff46cff931d2488702178cef3ce7eb1df7d28b59"
-  integrity sha1-/0bP+THSSIcCF4zvPOfrHffSi1k=
+gatsby-plugin-catch-links@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.npmjs.org/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.0.11.tgz#c2d390978ffe5a353901b981116fdf231103b625"
+  integrity sha512-tnnXRSNdH5oIdH70WIvOHu7zNZQeHvY210fcNGZLJ00JNetetJqkBlklRgGIqG7kClBoHB7LcGxMu/2cXnHH/g==
   dependencies:
     "@babel/runtime" "^7.0.0"
     escape-string-regexp "^1.0.5"
@@ -6387,10 +6397,10 @@ gatsby-transformer-json@^2.1.8:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
 
-gatsby-transformer-remark@^2.2.4:
-  version "2.2.4"
-  resolved "http://registry.npm.taobao.org/gatsby-transformer-remark/download/gatsby-transformer-remark-2.2.4.tgz#32eef785c78a6746d54918b588531722e7e29031"
-  integrity sha1-Mu73hceKZ0bVSRi1iFMXIufikDE=
+gatsby-transformer-remark@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.npmjs.org/gatsby-transformer-remark/-/gatsby-transformer-remark-2.2.5.tgz#18fe15c08c20a93a823b4b3e5c435b383beeee4f"
+  integrity sha512-RdOu6Sk0ynwNmJwSsRd9JenN4/90wKgl203dokwoydB9wgL5pdZIbHCtB0kA+XBiRd316ihB039N58XHG3CT3Q==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6424,10 +6434,10 @@ gatsby-transformer-sharp@^2.1.13:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@^2.0.118:
-  version "2.0.118"
-  resolved "https://registry.npmjs.org/gatsby/-/gatsby-2.0.118.tgz#abcf280b08a0fe79142b67842eb3fa80f1873a4d"
-  integrity sha512-/6lJDH3nMl/vRZApi++EeV6eH3eDAyTU5lYy4d0PALnRpFc+zhweMgaftcb4EwnUC+ZAQZiLEUCXpyyeKLFo1g==
+gatsby@^2.0.119:
+  version "2.0.119"
+  resolved "https://registry.npmjs.org/gatsby/-/gatsby-2.0.119.tgz#c27d89ddef340e51184bf98a07d400bf8ea57428"
+  integrity sha512-3l3n3PB/YVfa4n5S0Q3zPfatvmlY+cn/H74Yc8vXRF6cLndlRdvgA432UEws5apQholaVVZ6iY1phdmAEEWxpQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6475,14 +6485,13 @@ gatsby@^2.0.118:
     eslint-plugin-react "^7.8.2"
     express "^4.16.3"
     express-graphql "^0.6.12"
-    express-history-api-fallback "^2.2.1"
     fast-levenshtein "~2.0.4"
     file-loader "^1.1.11"
     flat "^4.0.0"
     friendly-errors-webpack-plugin "^1.6.1"
     fs-exists-cached "1.0.0"
     fs-extra "^5.0.0"
-    gatsby-cli "^2.4.9"
+    gatsby-cli "^2.4.10"
     gatsby-link "^2.0.10"
     gatsby-plugin-page-creator "^2.0.6"
     gatsby-react-router-scroll "^2.0.4"
@@ -12379,10 +12388,10 @@ react-hot-loader@^4.6.2:
     shallowequal "^1.0.2"
     source-map "^0.7.3"
 
-react-icons@^3.3.0:
-  version "3.3.0"
-  resolved "http://registry.npm.taobao.org/react-icons/download/react-icons-3.3.0.tgz#09409cad23c39149e419af5c928eee6f9f456b93"
-  integrity sha1-CUCcrSPDkUnkGa9cko7ub59Fa5M=
+react-icons@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-3.4.0.tgz#3be5139a81bad5fa8ffbc0a87137275dc7a75737"
+  integrity sha512-5cyYrl34KGovU/MH3YO+wN1k787vv3EKLeGDyaGOY92jSTQ/xRjkQ7iim5Ml9rgMLU1i0vszev80kWV4uRZ3Bw==
 
 react-is@^16.6.0:
   version "16.6.0"
@@ -13666,10 +13675,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simstate@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/simstate/-/simstate-1.1.0.tgz#b9e2b9779994e303bf0fd004cbfb76bfc924bf25"
-  integrity sha512-yK10NJBbE83I1zlq8Hlk2SicR4BR0Dkv8YTLUgTHQoWsdskW4AQP0zWOrExXBd9sGA/txOx6diqxNERVUx6Ziw==
+simstate@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/simstate/-/simstate-1.3.1.tgz#71532c44407684a1f476707a132a0e0bfb842e79"
+  integrity sha512-ZSmsrfCihXOXymky1k6mF+UuNBQjF+O+3usLwlLX/gjdbzIjEKae4mDt9Qu+QVUu2vHvjANNWlSV73/HeDV/9Q==
   dependencies:
     tslib "^1.9.3"
 

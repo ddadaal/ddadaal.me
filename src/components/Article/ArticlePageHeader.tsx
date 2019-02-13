@@ -14,7 +14,6 @@ interface Props {
   currentArticleLanguage: string;
 }
 
-
 const RootContainer = styled.div`
   position: relative;
   height: ${heights.articleHeader}px;
@@ -53,7 +52,7 @@ const ImgContainer = styled(InnerContainer)`
 `;
 
 const Title = styled.h1`
-  font-size: 2.4em;
+  font-size: 2em;
   padding: 4px 0;
 `;
 

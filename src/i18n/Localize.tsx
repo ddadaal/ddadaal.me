@@ -15,4 +15,4 @@ export default function Localize({ id, replacements, children }: Props) {
   const result = store.translate(id, replacements) as string;
 
   return children(result);
-};
+}

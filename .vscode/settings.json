@@ -7,5 +7,9 @@
     "**/contents/**",
     "**/public/**",
     "**/yarn.lock"
-  ]
+  ],
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "jest.autoEnable": false
 }

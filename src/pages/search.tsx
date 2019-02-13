@@ -7,7 +7,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { useStore } from "simstate";
+import { useStore, useStores } from "simstate";
 
 const root = lang.search;
 
@@ -20,14 +20,13 @@ const pageSize = 5;
 
 export default function SearchPage() {
 
-  const articleStore = useStore(ArticleStore);
-  const locationStore = useStore(LocationStore);
+  const [articleStore, locationStore] = useStores(ArticleStore, LocationStore);
+
   const { query, page = 1 } = locationStore.query as Query;
 
   const pageIndex = page - 1;
 
   let searchResult = Object.values(articleStore.state.articleGroups);
-
 
   if (query) {
     searchResult = searchResult.filter((x) => {
@@ -87,4 +86,4 @@ export default function SearchPage() {
 
     </Page>
   );
-};
+}

@@ -9,7 +9,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import Contacts from "../Contacts";
-import { useStore } from "simstate";
+import { useStore, useStores } from "simstate";
 
 interface Props {
   className?: string;
@@ -60,8 +60,7 @@ const root = lang.footer;
 
 export default function Footer(props: Props) {
 
-  const articleStore = useStore(ArticleStore);
-  const i18nStore = useStore(I18nStore);
+  const [i18nStore, articleStore] = useStores(I18nStore, ArticleStore);
 
   const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.language).path;
 
@@ -144,4 +143,4 @@ export default function Footer(props: Props) {
       </p>
     </Container>
   );
-};
+}

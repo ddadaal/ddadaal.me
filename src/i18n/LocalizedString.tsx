@@ -14,4 +14,4 @@ export default function LocalizedString({ id, replacements }: Props) {
 
   return i18nStore.translate(id, replacements) as any;
 
-};
+}

@@ -9,7 +9,7 @@ import { breakpoints } from "@/styles/variables";
 import { LangPathMap, ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { Link } from "gatsby";
-import { useStore } from "simstate";
+import { useStores } from "simstate";
 
 interface Props {
   articleId: string;
@@ -83,8 +83,7 @@ const DisabledLangLink = styled.span`
 
 const LanguageSwitcher = (props: { currentArticleLanguage: string; articleId: string; }) => {
     const { articleId, currentArticleLanguage } = props;
-    const i18nStore = useStore(I18nStore);
-    const articleStore = useStore(ArticleStore);
+    const [i18nStore, articleStore] = useStores(I18nStore, ArticleStore);
 
     const langPathMap = articleStore.getLangPathMap(articleId);
 

@@ -3,7 +3,7 @@ import {
   DropdownToggle,
   Nav,
   Navbar,
-  NavItem,
+  NavItem as BSNavItem,
   NavbarToggler,
   NavLink as ReactstrapNavLink,
   UncontrolledDropdown,
@@ -13,17 +13,15 @@ import React, { useState } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
-import { FaHome, FaRss, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaCalendarAlt } from "react-icons/fa";
+import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import LanguageSelector from "../LanguageSelector";
-import { ArticleGroups } from "@/models/ArticleGroups";
-
-import { ArticleStore } from "@/stores/ArticleStore";
-import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import SearchBar from "@/components/Header/SearchBar";
 import { useStore } from "simstate";
+import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
+import ArticlePathItem from "@/components/Header/ArticlePathItem";
+import NavItem from "@/components/Header/NavItem";
 
 interface Props {
   title: string;
@@ -32,14 +30,6 @@ interface Props {
 
 interface State {
   isOpen: boolean;
-}
-
-function NavLink(props: { to: string, children: React.ReactNode, onClick?(): void }) {
-  return (
-    <Link to={props.to} onClick={props.onClick} className="nav-link">
-      {props.children}
-    </Link>
-  );
 }
 
 const StyledLogo = styled(Icon)`
@@ -62,53 +52,6 @@ function atHomePage(pathname: string) {
 }
 
 const root = lang.headers;
-
-const NavbarLanguageSelector = () => {
-
-  const { state, allLanguages, changeLanguage } = useStore(I18nStore);
-
-  return (
-    <LanguageSelector
-      allLanguages={allLanguages}
-      currentLanguage={state.language.name}
-      changeLanguage={changeLanguage}
-      prompt={state.language.definitions.languageSelector.select}
-    />
-  );
-};
-
-function doNothing() {
-
-}
-
-const ArticlePathItem = (props: {
-  Outer: React.ComponentType<{ active: boolean }>,
-  children?: React.ReactNode,
-  id: string,
-  onClick?(): void,
-}) => {
-
-  const { Outer, children, id, onClick } = props;
-  const { pathname } = useStore(LocationStore);
-  const articleStore = useStore(ArticleStore);
-
-  const { language } = useStore(I18nStore);
-  const node = articleStore.getNodeFromLang(id, language);
-
-  const targetPageUrlParts = node.path.split("/");
-  targetPageUrlParts.pop();
-
-  const active = pathname.startsWith(targetPageUrlParts.join("/"))
-
-  return (
-    <Outer active={active}>
-      <NavLink to={node.path} onClick={onClick || doNothing}>
-        {children}
-      </NavLink>
-    </Outer>
-  );
-
-};
 
 const StyledDropdownItem = styled(DropdownItem)`
   .nav-link {
@@ -170,15 +113,15 @@ export default function Header(props: Props) {
           <NavbarToggler onClick={() => setOpen(!isOpen)} />
           <Collapse isOpen={isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
-              <NavItem>
+              <BSNavItem>
                 <SearchBar onSearch={close} />
+              </BSNavItem>
+
+              <NavItem active={atHomePage(pathname)} to="/" onClick={close}>
+                <FaHome />
+                <LocalizedString id={root.home} />
               </NavItem>
-              <NavItem active={atHomePage(pathname)}>
-                <NavLink to="/" onClick={close}>
-                  <FaHome />
-                  <LocalizedString id={root.home} />
-                </NavLink>
-              </NavItem>
+
               {/* <NavItem active={pathnameWithoutLanguage.startsWith("/articlePlans")}>
                 <NavLink to="/articlePlans" onClick={close}>
                   <FaCalendarAlt />
@@ -186,7 +129,7 @@ export default function Header(props: Props) {
                 </NavLink>
               </NavItem> */}
               <ArticlePathItem
-                Outer={NavItem}
+                Outer={BSNavItem}
                 id={"resume"}
                 onClick={close}
               >
@@ -230,9 +173,9 @@ export default function Header(props: Props) {
                   </ArticlePathItem>
                 </StyledDropdownMenu>
               </UncontrolledDropdown>
-              <NavItem>
+              <BSNavItem>
                 <NavbarLanguageSelector />
-              </NavItem>
+              </BSNavItem>
             </Nav>
           </Collapse>
         </StyledNavbar>

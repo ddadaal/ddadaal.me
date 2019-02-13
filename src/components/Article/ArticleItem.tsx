@@ -1,15 +1,12 @@
 import React from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import styled from "styled-components";
-import TagGroup from "./TagGroup";
-import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import { getLanguage } from "@/i18n/definition";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
-import { useStore } from "simstate";
+import { useStores } from "simstate";
 
 interface Props {
   article: ArticleNode;
@@ -46,8 +43,8 @@ const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
 export default function ArticleItem(props: Props) {
   const { article, currentArticleLanguage } = props;
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
-  const { language } = useStore(I18nStore);
-  const articleStore = useStore(ArticleStore);
+
+  const [articleStore, { language }] = useStores(ArticleStore, I18nStore);
 
   const langPaths = articleStore.getLangPathMap(id);
 
@@ -72,4 +69,4 @@ export default function ArticleItem(props: Props) {
       <hr />
     </StyledPost>
   );
-};
+}

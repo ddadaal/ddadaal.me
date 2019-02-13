@@ -24,10 +24,6 @@ pre[class*="language-"] {
     hyphens: none;
 }
 
-pre[class*="language-"] {
-  position: relative;
-}
-
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
@@ -41,7 +37,8 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-    padding: 1em;
+    position: relative;
+    padding: 1em .5em;
     margin: .5em 0;
     overflow: auto;
     border: 1px solid #dddddd;

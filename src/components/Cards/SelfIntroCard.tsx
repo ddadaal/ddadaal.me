@@ -9,7 +9,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
 import Contacts from "../Contacts";
-import { useStore } from "simstate";
+import { useStores } from "simstate";
 
 interface Props {
 }
@@ -18,8 +18,7 @@ const root = lang.selfIntro;
 
 export default function SelfIntroCard(props: Props) {
 
-  const articleStore = useStore(ArticleStore);
-  const i18nStore = useStore(I18nStore);
+  const [articleStore, i18nStore] = useStores(ArticleStore, I18nStore);
 
   const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.state.language).path;
 
@@ -43,4 +42,4 @@ export default function SelfIntroCard(props: Props) {
       </CardBody>
     </Card>
   );
-};
+}

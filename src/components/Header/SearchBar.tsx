@@ -17,7 +17,7 @@ export default function SearchBar(props: Props) {
     if (props.onSearch) {
       props.onSearch();
     }
-  }
+  };
 
   return (
     <InputGroup>
