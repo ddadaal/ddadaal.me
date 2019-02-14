@@ -971,6 +971,28 @@
   resolved "http://registry.npm.taobao.org/@emotion/unitless/download/@emotion/unitless-0.7.2.tgz#b180097bb44a40c3b59efea9cf28df2fe542d518"
   integrity sha1-sYAJe7RKQMO1nv6pzyjfL+VC1Rg=
 
+"@gatsbyjs/relay-compiler@2.0.0-printer-fix.2":
+  version "2.0.0-printer-fix.2"
+  resolved "https://registry.npmjs.org/@gatsbyjs/relay-compiler/-/relay-compiler-2.0.0-printer-fix.2.tgz#214db0e6072d40ea78ad5fabdb49d56bc95f4e99"
+  integrity sha512-7GeCCEQ7O15lMTT/SXy9HuRde4cv5vs465ZnLK2QCajSDLior+20yrMqHn1PGsJYK6nNZH7p3lw9qTCpqmuc7Q==
+  dependencies:
+    "@babel/generator" "^7.0.0"
+    "@babel/parser" "^7.0.0"
+    "@babel/polyfill" "^7.0.0"
+    "@babel/runtime" "^7.0.0"
+    "@babel/traverse" "^7.0.0"
+    "@babel/types" "^7.0.0"
+    babel-preset-fbjs "^3.1.2"
+    chalk "^2.4.1"
+    fast-glob "^2.2.2"
+    fb-watchman "^2.0.0"
+    fbjs "^1.0.0"
+    immutable "~3.7.6"
+    nullthrows "^1.1.0"
+    relay-runtime "2.0.0"
+    signedsource "^1.0.0"
+    yargs "^9.0.0"
+
 "@mapbox/hast-util-table-cell-style@^0.1.3":
   version "0.1.3"
   resolved "http://registry.npm.taobao.org/@mapbox/hast-util-table-cell-style/download/@mapbox/hast-util-table-cell-style-0.1.3.tgz#5b7166ae01297d72216932b245e4b2f0b642dca6"
@@ -1039,10 +1061,10 @@
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.29.tgz#a1e514adfbd92f03a224ba54d693111dbf1f3754"
   integrity sha1-oeUUrfvZLwOiJLpU1pMRHb8fN1Q=
 
-"@types/enzyme-adapter-react-16@^1.0.3":
-  version "1.0.3"
-  resolved "http://registry.npm.taobao.org/@types/enzyme-adapter-react-16/download/@types/enzyme-adapter-react-16-1.0.3.tgz#0cf7025b036694ca8d596fe38f24162e7117acf1"
-  integrity sha1-DPcCWwNmlMqNWW/jjyQWLnEXrPE=
+"@types/enzyme-adapter-react-16@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@types/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.4.tgz#27722d28dcc814a99be7f557f3e364a1e889773a"
+  integrity sha512-SWCatt3aKVL0A8JACs2nkV9dDuTZOSOSlNVubcxfEe+YLePxg8Be2slSa5gl+WM/BUW0/c3UClvyzhnzLJh1IQ==
   dependencies:
     "@types/enzyme" "*"
 
@@ -1054,10 +1076,10 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
-"@types/enzyme@^3.1.17":
-  version "3.1.17"
-  resolved "http://registry.npm.taobao.org/@types/enzyme/download/@types/enzyme-3.1.17.tgz#41f553bfdbaa00880488feabb3ade47d5489db42"
-  integrity sha1-QfVTv9uqAIgEiP6rs63kfVSJ20I=
+"@types/enzyme@^3.1.18":
+  version "3.1.18"
+  resolved "https://registry.npmjs.org/@types/enzyme/-/enzyme-3.1.18.tgz#4b984b9a3eb9fd025c4d77e0f53d3301c3c31ef9"
+  integrity sha512-AXxcTvIEBDzcCLpLZxdSHUOvBuyAzxtsi/DGzVdAxqQRqplG9+8xxVErAJYwF+aI48/LtL2BjU6DdD+phc7IfQ==
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
@@ -1091,10 +1113,17 @@
   resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
   integrity sha1-DmcOolTVWSQbbus4lPh1SZHnMiA=
 
-"@types/jest@^24.0.3":
-  version "24.0.3"
-  resolved "https://registry.npmjs.org/@types/jest/-/jest-24.0.3.tgz#df8dc56565bd2d27fcbd099434f04f9891e16ab7"
-  integrity sha512-keRxrIwZZ/Ml83cGl3G0OjGlBO4UFQCCa5QlBPz2pY+ZvSnoeUvMJw0vmL4JU6g4vbpIW5H4qSq1xv9h8naAfg==
+"@types/jest-diff@*":
+  version "20.0.1"
+  resolved "https://registry.npmjs.org/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
+  integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
+
+"@types/jest@^24.0.4":
+  version "24.0.4"
+  resolved "https://registry.npmjs.org/@types/jest/-/jest-24.0.4.tgz#9e91eeebd464536a2f57043fb50da29a91d1271d"
+  integrity sha512-7PbnoOkfxpvmPehi8hf/JapEc3nwQi2hOs3cB5SsiBiPcniT0ejrbjjEIY4bPsXlEYFuS/RiN/jpA6hrcbOokA==
+  dependencies:
+    "@types/jest-diff" "*"
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -1136,10 +1165,17 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-dom@16.8.0", "@types/react-dom@^16.8.0":
+"@types/react-dom@16.8.0":
   version "16.8.0"
   resolved "http://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.8.0.tgz#c565f43f9d2ec911f9e0b8f3b74e25e67879aa3f"
   integrity sha1-xWX0P50uyRH54Ljzt04l5nh5qj8=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-dom@^16.8.1":
+  version "16.8.1"
+  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.8.1.tgz#e43810a5e44b37854a9c7cd99e6c43e4f522c7c6"
+  integrity sha512-Vyo4LqUvpjNC9RMXV6kXcsvW6U/WKOuHbz+mtY43Fu8AslHjQ5/Yx+sj0agGLkbnqOlQgyIgosewcxdjMirVXA==
   dependencies:
     "@types/react" "*"
 
@@ -1158,10 +1194,18 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.8.2", "@types/react@^16.8.2":
+"@types/react@*", "@types/react@16.8.2":
   version "16.8.2"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.8.2.tgz#3b7a7f7ea89d1c7d68b00849fb5de839011c077b"
   integrity sha1-O3p/fqidHH1osAhJ+13oOQEcB3s=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.8.3":
+  version "16.8.3"
+  resolved "https://registry.npmjs.org/@types/react/-/react-16.8.3.tgz#7b67956f682bea30a5a09b3242c0784ff196c848"
+  integrity sha512-PjPocAxL9SNLjYMP4dfOShW/rj9FDBJGu3JFRt0zEYf77xfihB6fq8zfDpMrV6s82KnAi7F1OEe5OsQX25Ybdw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -1174,10 +1218,10 @@
     "@types/react" "*"
     popper.js "^1.14.1"
 
-"@types/styled-components@^4.1.9":
-  version "4.1.9"
-  resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.9.tgz#68cecd5e15f8e1eef81b61a919e172c4053edbff"
-  integrity sha512-qg1VcvnQm6BHr7KV7Rneq2WUa6U0WVJCPasDfah0JafeE/wdNqxGXurefSVXGRCHzKqkoAvakjtA9n1dTizqdA==
+"@types/styled-components@^4.1.10":
+  version "4.1.10"
+  resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.10.tgz#7d23d0f1f5b32a78a9207d0300480d47251a3e98"
+  integrity sha512-BrXaqsBG2iiT/U1SLLMa32rt3nYdKVBnMSgsbC7bmoGHp9sefmp6wF3FrEUCUFPTRuKf0AgYIP4HRaTo/pj0Ng==
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -2007,10 +2051,10 @@ babel-plugin-macros@^2.4.2:
     cosmiconfig "^5.0.5"
     resolve "^1.8.1"
 
-babel-plugin-remove-graphql-queries@^2.5.5:
-  version "2.5.5"
-  resolved "http://registry.npm.taobao.org/babel-plugin-remove-graphql-queries/download/babel-plugin-remove-graphql-queries-2.5.5.tgz#c6f49f7131076415b5fa206c8ad3a308c1e8d05a"
-  integrity sha1-xvSfcTEHZBW1+iBsitOjCMHo0Fo=
+babel-plugin-remove-graphql-queries@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.6.0.tgz#3a6809a3b37d5f6d4a699048797274b74ed21f14"
+  integrity sha512-3DgWDynWNRZ6Ehp++GbGLm/xzJo5KBaPwCeTjyprSUcNioYRMocti5gYHep0/DE/bBq99juM3OtaAxWVh0Wj/g==
 
 "babel-plugin-styled-components@>= 1":
   version "1.8.0"
@@ -2430,10 +2474,10 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.0.tgz#2559ccb8d45426ac6c54db23eb3d1c9f4257fa22"
-  integrity sha512-M0vqY0Z6UDweV2nLFl5dXcb+GIo53EBCGMMVxCGH5vJxl/jsr+HkULBMd4kn9rdpdBZwd3BduCgMOYOwJybo4Q==
+bootstrap@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
+  integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -3988,10 +4032,10 @@ dateformat@^2.0.0:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
   integrity sha1-QGXiATz5+5Ft39gu+1Bq1MZ2kGI=
 
-dayjs@^1.8.5:
-  version "1.8.5"
-  resolved "http://registry.npm.taobao.org/dayjs/download/dayjs-1.8.5.tgz#0b066770f89a20022218544989f3d23e5e8db29a"
-  integrity sha1-CwZncPiaIAIiGFRJifPSPl6Nspo=
+dayjs@^1.8.6:
+  version "1.8.6"
+  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.8.6.tgz#b7a8ccfef173dae03e83a05a58788c9dbe948a35"
+  integrity sha512-NLhaSS1/wWLRFy0Kn/VmsAExqll2zxRUPmPbqJoeMKQrFxG+RT94VMSE+cVljB6A76/zZkR0Xub4ihTHQ5HgGg==
 
 debug@2, debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.3, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9, debug@~2.6.4, debug@~2.6.6:
   version "2.6.9"
@@ -5160,6 +5204,11 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+event-source-polyfill@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/event-source-polyfill/-/event-source-polyfill-1.0.5.tgz#b34be2740a685a8dc65ae750065fc983538ffcfe"
+  integrity sha512-PdStgZ3+G2o2gjqsBYbV4931ByVmwLwSrX7mFgawCL+9I1npo9dwAQTnWtNWXe5IY2P8+AbbPteeOueiEtRCUA==
+
 eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
@@ -6284,14 +6333,14 @@ gatsby-plugin-styled-components@^3.0.5:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-gatsby-plugin-typescript@^2.0.7:
-  version "2.0.7"
-  resolved "http://registry.npm.taobao.org/gatsby-plugin-typescript/download/gatsby-plugin-typescript-2.0.7.tgz#ef17ab84185bf25497477c48ad543266bfe47ede"
-  integrity sha1-7xerhBhb8lSXR3xIrVQyZr/kft4=
+gatsby-plugin-typescript@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npmjs.org/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.0.8.tgz#911d6b036e256492135c0db7b923859e5ce90aa0"
+  integrity sha512-2gIBKscvJ4c/buTF3i00m7Seric/vfN8NcluUkZfUuv3KJVYCGw0n0D/5nb9kDxBhmeTV7Nwr/gcecGjaNxTNw==
   dependencies:
     "@babel/preset-typescript" "^7.0.0"
     "@babel/runtime" "^7.0.0"
-    babel-plugin-remove-graphql-queries "^2.5.5"
+    babel-plugin-remove-graphql-queries "^2.6.0"
 
 gatsby-react-router-scroll@^2.0.4:
   version "2.0.4"
@@ -6434,10 +6483,10 @@ gatsby-transformer-sharp@^2.1.13:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@^2.0.119:
-  version "2.0.119"
-  resolved "https://registry.npmjs.org/gatsby/-/gatsby-2.0.119.tgz#c27d89ddef340e51184bf98a07d400bf8ea57428"
-  integrity sha512-3l3n3PB/YVfa4n5S0Q3zPfatvmlY+cn/H74Yc8vXRF6cLndlRdvgA432UEws5apQholaVVZ6iY1phdmAEEWxpQ==
+gatsby@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/gatsby/-/gatsby-2.1.2.tgz#3233a9dc99d4c7f5a7eeadd94e9a5515b1c8b702"
+  integrity sha512-70kwwQkDwvAUTuf8nFwlHMtRF5Ut3X/PFx/L0AvOCFEHcNqAdDMPd5c6Nz8/zmeRSpY/paLS+ZYtDw/ymr6Mgw==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6445,6 +6494,7 @@ gatsby@^2.0.119:
     "@babel/polyfill" "^7.0.0"
     "@babel/runtime" "^7.0.0"
     "@babel/traverse" "^7.0.0"
+    "@gatsbyjs/relay-compiler" "2.0.0-printer-fix.2"
     "@reach/router" "^1.1.1"
     address "1.0.3"
     autoprefixer "^9.4.3"
@@ -6453,7 +6503,7 @@ gatsby@^2.0.119:
     babel-loader "^8.0.0"
     babel-plugin-add-module-exports "^0.2.1"
     babel-plugin-dynamic-import-node "^1.2.0"
-    babel-plugin-remove-graphql-queries "^2.5.5"
+    babel-plugin-remove-graphql-queries "^2.6.0"
     babel-preset-gatsby "^0.1.7"
     better-opn "0.1.4"
     better-queue "^3.8.6"
@@ -6483,6 +6533,7 @@ gatsby@^2.0.119:
     eslint-plugin-import "^2.9.0"
     eslint-plugin-jsx-a11y "^6.0.3"
     eslint-plugin-react "^7.8.2"
+    event-source-polyfill "^1.0.5"
     express "^4.16.3"
     express-graphql "^0.6.12"
     fast-levenshtein "~2.0.4"
@@ -6533,7 +6584,6 @@ gatsby@^2.0.119:
     react-error-overlay "^3.0.0"
     react-hot-loader "^4.6.2"
     redux "^4.0.0"
-    relay-compiler "2.0.0"
     request "^2.85.0"
     semver "^5.6.0"
     shallow-compare "^1.2.2"
@@ -12783,28 +12833,6 @@ rehype-react@^3.1.0:
     "@mapbox/hast-util-table-cell-style" "^0.1.3"
     has "^1.0.1"
     hast-to-hyperscript "^5.0.0"
-
-relay-compiler@2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/relay-compiler/download/relay-compiler-2.0.0.tgz#f51b8e4fdf337b24ceb45cb7f80dac2729ab132a"
-  integrity sha1-9RuOT98zeyTOtFy3+A2sJymrEyo=
-  dependencies:
-    "@babel/generator" "^7.0.0"
-    "@babel/parser" "^7.0.0"
-    "@babel/polyfill" "^7.0.0"
-    "@babel/runtime" "^7.0.0"
-    "@babel/traverse" "^7.0.0"
-    "@babel/types" "^7.0.0"
-    babel-preset-fbjs "^3.1.2"
-    chalk "^2.4.1"
-    fast-glob "^2.2.2"
-    fb-watchman "^2.0.0"
-    fbjs "^1.0.0"
-    immutable "~3.7.6"
-    nullthrows "^1.1.0"
-    relay-runtime "2.0.0"
-    signedsource "^1.0.0"
-    yargs "^9.0.0"
 
 relay-runtime@2.0.0:
   version "2.0.0"

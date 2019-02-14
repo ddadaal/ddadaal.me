@@ -11,7 +11,7 @@ tags:
 
 [MobX](https://github.com/mobxjs/mobx) and [react.di](https://github.com/RobinBuschmann/react.di) are excellent libraries to integrate observable and object-oriented paradigm into a React app. MobX simplifies the way state is changed by introducing observable mechanism and is generally more performant than a flux framework like Redux. In the mean time, `react.di` brings the widely-adopted `Dependency Injection` mechanism into the frontend which greatly helps in managing complicated dependency relation. MobX with react.di were always my go-to choice for my last React projects.
 
-On the flip side, however, during their extensive use in the A+Quant project for the Citicup Competition, some problems occurred that force me to rethink the impact they brought into my codebase. Although the integration works seeminglessly on the surface, the inconsistencies from deep down between **functional paradigm**(of React) and **object-oriented paradigm**(of MobX and react.di) bring not only conflicts in programming styles between how my project evolves and how React will develop, but also some hidden bugs and problems that sometimes quite hard to debug.
+On the flip side, however, during their extensive application in the A+Quant project for the Citicup Competition, some problems occurred that force me to rethink the impact they brought into my codebase. Although the integration works seeminglessly on the surface, the inconsistencies from deep down between **functional paradigm**(of React) and **object-oriented paradigm**(of MobX and react.di) bring not only conflicts in programming styles between how my project evolves and how React will develop, but also some hidden bugs and problems that sometimes quite hard to debug.
 
 # Conflicts in programming styles
 
@@ -46,19 +46,7 @@ export class LocaleMessage extends React.Component<{ id: string }> {
 This component is stateless and therefore should be a functional component, but since it relies on LocaleStore, a dependency that contains the actual information needed for the translation, it has to be written as a class compoennt for the instance to be declared and injected. In comparison with `render props` and `HOC` with `simstate`, class components look less compact and more verbose. (It is not the best, obviously, which is why `Hooks` is so important. More on this later.)
 
 ```tsx
-// render props
-const LocaleMessageWithRenderProps = ({ id }: { id: string }) => (
-  <StoreConsumer storeTypes={[LocaleStore]}>
-    {({ useStore }) => useStore(LocaleStore).get(id)}
-  </StoreConsumer>
-);
 
-// HOC
-const LocaleMessageWithHOC = withStores(LocaleStore)(
-  ({ useStore, id }: WithStoreProps & { id: string }) => (
-    useStore(LocaleStore).get(id)
-  )
-);
 ```
 
 What's more important, the former (OOP) is also not as extensible, at least not so easy to extend, as render-props and HOCs are, either.
