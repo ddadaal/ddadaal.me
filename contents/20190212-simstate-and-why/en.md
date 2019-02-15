@@ -106,30 +106,7 @@ Apart from hating to wait, there are some other reasons that made me build this 
 
 So, with the eagerness in addition to the simplicity of the implementation of `unstated`, I built my own library based on it and started deriving some new functions that I think would useful, like the Hooks integration. Implementing the initial version of `simstate` took me just one day, and it has always taken the place of `unstated` in my blog project.
 
-Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and conditional update based on the actually updated states (examples below). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
-
-```tsx
-class AStore extends Store<{ a: number, b: number}> {
-  state = { a: 1, b: 1};
-  // only modify one of the prop
-  incrementB = () => { this.setState({ b: this.state.b + 1 }); };
-}
-
-// currently the component will update when incrementB is called,
-// even the component doesn't relies on prop b at all!
-const Component = () => {
-  const store = useStore(AStore);
-  return <span>{store.state.a}</span>;
-}
-
-// expected: the component will not update when incrementB is called
-const Expected = () => {
-  const store = useStore(AStore, "a"); // dependent props are specified with types checked
-  return <span>{store.state.a}</span>;
-}
-
-// Looks so similar to MobX....
-```
+Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and [partial observer](https://github.com/viccrubs/simstate/blob/partial-observer/partial-observer-proposal.md). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
 
 ## Learning the knowledge to manage an open source project
 
@@ -139,6 +116,7 @@ I have always wanted to maintain a open source project by my own, and here comes
 - Semantic versioning with [standard-version](https://github.com/conventional-changelog/standard-version) and why and how to write good git commit message
 - [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) and all the unit tests tactics just to get 100% test coverage
 - More efforts and concentration than ever before on the performance and package size of a frontend code
+- Realizing the API design should be careful since they can not be changed easily in the future
 - more to expect...
 
 # Finally
