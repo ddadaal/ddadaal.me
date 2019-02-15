@@ -1,5 +1,5 @@
 ---
-id: "simstate"
+id: "simstate-and-why"
 date: "2019/2/14 23:50"
 title: "Simstate and Why"
 lang: en
@@ -26,7 +26,7 @@ Please read [repo's README](https://github.com/viccrubs/simstate) for why and ho
 
 ## Respect React's programming pattern
 
-[MobX](https://github.com/mobxjs/mobx) and [react.di](https://github.com/RobinBuschmann/react.di) were extensively used for my last projects to have an frontend infrastructure that looks like that in backend, which effectively solved state and dependency management problems. However, some problems occurred during their integration in the context of React, the most important of which is the inconsistencies between the code styles in OOP with Dependency Injection Pattern (encouraged by react.di) and functional pattern (by React).
+[MobX](https://github.com/mobxjs/mobx) and [react.di](https://github.com/RobinBuschmann/react.di) were extensively used for my last projects to have an frontend infrastructure that looks like backend, which helps a lot in state and dependency management. However, some problems occurred during their integration in the context of React, the most important of which is the inconsistencies between the code styles in OOP with Dependency Injection Pattern (encouraged by react.di) and functional pattern (by React).
 
 The following code snippet shows the differences between the patterns with an example to implement a commonly seen component in our code, with event handlers and dependency to external data store.
 
@@ -37,7 +37,8 @@ interface Props {
 }
 
 // OOP with DI.
-// Class component is required to have an instance member for dependency to inject :/
+// Class component is required
+// to have an instance member for dependency to inject :/
 @observer
 export class AComponent extends React.Component<Props> {
 
@@ -88,23 +89,24 @@ const ComponentWitHooks = ({ id }: Props) => {
 }
 ```
 
-The `HOC`, `render props` and `Hooks` are the ones that are more compact, easy to write and adherent to React's philosophy than class based components. The code style of DI adds more mental burdens for developers by constantly switching between two programming patterns. You may argue that it is more like a personal taste: it is true, but it is also obvious that recently React focuses more on functional component over class component, and the whole ecosystem is moving to functional components at a rapid speed.
+The `HOC`, `render props` and `Hooks` are the ones that are more compact, easy to write and most importantly, adherent to React's philosophy than class based components are. The code style of DI adds more mental burdens for developers by constantly switching between two programming patterns. You may argue that it is more like a personal taste: it is true, but it is also obvious that recently React focuses more on functional component over class component, and the whole ecosystem is moving to functional components at a rapid speed.
 
 
 ## Implement the functions and patterns I like
 
-The immediate choice after realizing the aforementional problems is the [unstated](https://github.com/jamiebuilds/unstated). Based on the not-so-new [React Context](https://reactjs.org/docs/context.html) released in React 16.3, it provides a hybird solution between MobX and Redux: Define state and operation in a class like MobX. But instead of using observables mechanism to detect changes automagically, it requires calling a `setState` function to initiate a state change, like a normal class component. It turns out to be a excellent balance point for many people, including me. In fact, `simstate` almost implements the exact same functionalities with most code looking alike.
+The immediate choice after realizing the aforementional problems is the [unstated](https://github.com/jamiebuilds/unstated). Based on the not-so-new [React Context](https://reactjs.org/docs/context.html) coming with React 16.3, it provides a hybird solution between MobX and Redux: Define state and operation in a class like MobX. But instead of using observables mechanism to detect and react to changes automagically, it requires calling a `setState` function to initiate a state change, like a normal class component. It turns out to be a excellent balance point for many developers, including me. In fact, `simstate` almost implements the exact same functionalities with most code looking alike.
 
-The much hyped [React Hooks](https://reactjs.org/docs/hooks-intro.html) is an another striking thing for all React developers. It gives so much power to functional components in an unexpected way, that nearly every class component can be rewritten into a functional component and restore the clarity React should have been in the first place. (See the previous section for comparison). Not after that, the author of unstated posted a twitter revealing the incoming hook powered unstated. It was awesome and ambitious, but it hasn't released yet.
+The much hyped [React Hooks](https://reactjs.org/docs/hooks-intro.html) is an another striking thing for all React developers when it is revealed. It gives so much power to functional components in an unexpected way, that nearly every class component can be rewritten into a functional component, and makes the code much clearer than before (See the previous section for comparison, and the YouTube video [React Today and Tomorrow and 90% Cleaner React with Hooks](https://www.youtube.com/watch?v=dpw9EHDh2bM)). Not after that, the author of unstated posted a twitter revealing the incoming hook powered unstated. It was awesome and ambitious, but it hasn't released yet.
+
 ![](./unstated-hooks.png)
 
-To clarify, I am not blaming `unstated`: it wants to achieve more than just what I want. I just want to *hookify* the use of store, but `unstated` wants to *hookify* store itself as well. It is way more challenging than `simstate` has done now. However, I can't wait any longer to put Hooks into my project.
+To clarify, I am not blaming `unstated`: it wants to achieve more. I just want to *hookify* the use of store, but `unstated` plans to *hookify* store itself as well. It is way more challenging than `simstate` has done now, so it is absolutely reasonable why the new version has not been released. However, I can't wait any longer to put Hooks into my project.
 
 Apart from hating to wait, there are some other reasons that made me build this project. During my 2 year's React usage, I have tried MobX, Redux as well as some other libraries and put all pf them into different real projects, but all of them left me with some disappointments. Rather than endless waiting and learning new libraries, it seems more practical and meaningful to build my own library and integrate it with my own thoughts and experiences.
 
 So, with the eagerness in addition to the simplicity of the implementation of `unstated`, I built my own library based on it and started deriving some new functions that I think would useful, like the Hooks integration. Implementing the initial version of `simstate` took me just one day, and it has always taken the place of `unstated` in my blog project.
 
-Of course, I have more expectations and plans to do with it, like more support for server-side rendering and conditional update based on the actually updated states (examples below). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
+Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and conditional update based on the actually updated states (examples below). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
 
 ```tsx
 class AStore extends Store<{ a: number, b: number}> {
@@ -122,21 +124,21 @@ const Component = () => {
 
 // expected: the component will not update when incrementB is called
 const Expected = () => {
-  const store = useStore(AStore, "a"); // dependent props are specified with type checked
+  const store = useStore(AStore, "a"); // dependent props are specified with types checked
   return <span>{store.state.a}</span>;
 }
 
 // Looks so similar to MobX....
 ```
 
-## Learning the knowledges to manage a open source project
+## Learning the knowledge to manage an open source project
 
-I have always wanted to maintain a open source project by my own, and here comes the chance. I have much things that I have never got in touch with before. It will also be an excellent chance to have a clearer look and a more real experiences at the open source world.
+I have always wanted to maintain a open source project by my own, and here comes the chance. It will also be an excellent chance to learn the tactics of manage an open source project, and have a clearer look and a more real experiences at the open source world.
 
 - Release and manage a library on npm
-- semantic versioning with [standard-version](https://github.com/conventional-changelog/standard-version) and why and how to write good git commit message
+- Semantic versioning with [standard-version](https://github.com/conventional-changelog/standard-version) and why and how to write good git commit message
 - [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) and all the unit tests tactics just to get 100% test coverage
-- More efforts and concentration than ever before on the performance of a frontend code
+- More efforts and concentration than ever before on the performance and package size of a frontend code
 - more to expect...
 
 # Finally
