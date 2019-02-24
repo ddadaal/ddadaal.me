@@ -2,10 +2,14 @@ language: node_js
 
 node_js:
 - "lts/*"
+branches:
+  only:
+  - master
 install:
 - yarn
 script:
 - yarn run build
+
 
 cache: yarn
 
