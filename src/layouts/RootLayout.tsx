@@ -16,6 +16,7 @@ import icon512 from "~/assets/icon.png";
 import { FaArrowUp } from "react-icons/fa";
 import NewContentPop from "@/components/NewContentPop";
 import { StoreProvider } from "simstate";
+import { CurrentArticleStore } from "@/stores/CurrentArticleStore";
 
 const LayoutMain = styled.main`
   display: flex;
@@ -50,6 +51,8 @@ export default class RootLayout extends React.Component<Props, {}> {
 
   statisticsStore = new StatisticsStore(this.props.statistics);
 
+  currentArticleStore = new CurrentArticleStore(undefined);
+
   componentDidUpdate() {
     this.updateLocation();
   }
@@ -72,6 +75,7 @@ export default class RootLayout extends React.Component<Props, {}> {
           this.locationStore,
           this.i18nStore,
           this.articleStore,
+          this.currentArticleStore,
         ]}>
           <LayoutRoot>
             <Helmet

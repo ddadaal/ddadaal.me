@@ -1,5 +1,5 @@
 import React from "react";
-import { useStores } from "simstate";
+import { useStore } from "simstate";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
@@ -19,7 +19,9 @@ const ArticlePathItem = (props: {
 
   const { Outer, children, id, onClick } = props;
 
-  const [ locationStore, articleStore, i18nStore ] = useStores(LocationStore, ArticleStore, I18nStore);
+  const articleStore = useStore(ArticleStore);
+  const i18nStore = useStore(I18nStore);
+  const locationStore = useStore(LocationStore);
 
   const { pathname } = locationStore;
 

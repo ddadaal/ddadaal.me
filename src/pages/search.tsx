@@ -7,7 +7,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { useStore, useStores } from "simstate";
+import { useStore } from "simstate";
 
 const root = lang.search;
 
@@ -20,7 +20,8 @@ const pageSize = 5;
 
 export default function SearchPage() {
 
-  const [articleStore, locationStore] = useStores(ArticleStore, LocationStore);
+  const locationStore = useStore(LocationStore);
+  const articleStore = useStore(ArticleStore);
 
   const { query, page = 1 } = locationStore.query as Query;
 

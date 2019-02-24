@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
 import { Heading } from "@/models/ArticleNode";
-import styled from "styled-components";
 import langRoot from "@/i18n/lang";
 
 import { ArticleStore } from "@/stores/ArticleStore";
@@ -14,7 +13,8 @@ import { Row, Col } from "reactstrap";
 import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
-import { useStore, useStores } from "simstate";
+import { useStore } from "simstate";
+import { CurrentArticleStore } from "@/stores/CurrentArticleStore";
 
 interface Props {
   pageContext: {
@@ -30,13 +30,17 @@ const root = langRoot.articlePage;
 
 export default function ArticlePageTemplate(props: Props) {
 
-  const [articleStore, i18nStore] = useStores(ArticleStore, I18nStore);
+  const i18nStore = useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
+  const currentArticleStore = useStore(CurrentArticleStore);
 
   const { id, lang, htmlAst, headings } = props.pageContext;
 
   const language = i18nStore.getLanguage(lang)!;
 
   const articleNode = articleStore.getNodeFromLang(id, language);
+
+  currentArticleStore.setArticle(articleNode);
 
   const { frontmatter: {
     title, date, tags, hide_heading, no_toc,
