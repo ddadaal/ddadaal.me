@@ -4,7 +4,7 @@ import Link from "gatsby-link";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
@@ -60,10 +60,10 @@ const root = lang.footer;
 
 export default function Footer(props: Props) {
 
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
-  const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.language).path;
+  const aboutMePath = metadataStore.getNodeFromLang("about-me", i18nStore.language).path;
 
   return (
     <Container className={props.className}>

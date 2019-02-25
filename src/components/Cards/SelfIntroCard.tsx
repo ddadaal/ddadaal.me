@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import StackedDiv from "@/layouts/components/StackedDiv";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
 import Contacts from "../Contacts";
@@ -18,10 +18,10 @@ const root = lang.selfIntro;
 
 export default function SelfIntroCard(props: Props) {
 
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
-  const aboutMePath = articleStore.getNodeFromLang("about-me", i18nStore.state.language).path;
+  const aboutMePath = metadataStore.getNodeFromLang("about-me", i18nStore.state.language).path;
 
   return (
     <Card className="hover-card">

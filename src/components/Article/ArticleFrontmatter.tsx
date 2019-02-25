@@ -6,10 +6,10 @@ import { Badge, Row, Col } from "reactstrap";
 import TagGroup from "./TagGroup";
 import { FaCalendarAlt, FaClock, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
-import { LangPathMap, ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
+import { MetadataStore } from "@/stores/MetadataStore";
 
 interface Props {
   articleId: string;
@@ -84,9 +84,9 @@ const DisabledLangLink = styled.span`
 const LanguageSwitcher = (props: { currentArticleLanguage: string; articleId: string; }) => {
     const { articleId, currentArticleLanguage } = props;
     const i18nStore = useStore(I18nStore);
-    const articleStore = useStore(ArticleStore);
+    const metadataStore = useStore(MetadataStore);
 
-    const langPathMap = articleStore.getLangPathMap(articleId);
+    const langPathMap = metadataStore.getLangPathMap(articleId);
 
     const pathOfCurrentLanguage = langPathMap.get(currentArticleLanguage)!!;
 

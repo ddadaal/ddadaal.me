@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import CardHeader from "reactstrap/lib/CardHeader";
 import { useStore } from "simstate";
@@ -20,7 +20,7 @@ const root = lang.blogIntro;
 export default function BlogIntroCard(props: Props) {
 
   const i18nStore = useStore(I18nStore);
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
 
   return (
     <Card className="hover-card">
@@ -28,7 +28,7 @@ export default function BlogIntroCard(props: Props) {
         <span>💻 VicBlog <LocalizedString id={root.subtitle} /></span>
         <Link
           className="card-link"
-          to={articleStore.getNodeFromLang("about-project", i18nStore.state.language).path}
+          to={metadataStore.getNodeFromLang("about-project", i18nStore.state.language).path}
           title={i18nStore.language.definitions.blogIntro.more}
         >
           <LocalizedString id={root.moreLink} />
@@ -52,7 +52,7 @@ export default function BlogIntroCard(props: Props) {
           </CardLink>
           <Link
             className="card-link"
-            to={articleStore.getNodeFromLang("feedback", i18nStore.state.language).path}
+            to={metadataStore.getNodeFromLang("feedback", i18nStore.state.language).path}
           >
             <FaRegCommentDots />
             <LocalizedString id={root.feedback} />

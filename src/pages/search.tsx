@@ -3,7 +3,7 @@ import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/components/Page";
 import { LocationStore } from "@/stores/LocationStore";
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
@@ -21,13 +21,13 @@ const pageSize = 5;
 export default function SearchPage() {
 
   const locationStore = useStore(LocationStore);
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
 
   const { query, page = 1 } = locationStore.query as Query;
 
   const pageIndex = page - 1;
 
-  let searchResult = Object.values(articleStore.state.articleGroups);
+  let searchResult = Object.values(metadataStore.state.articleGroups);
 
   if (query) {
     searchResult = searchResult.filter((x) => {

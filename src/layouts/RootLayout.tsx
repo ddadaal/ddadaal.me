@@ -3,8 +3,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleGroups } from "@/models/ArticleGroups";
 import { SiteMetadata } from "@/models/SiteMetadata";
-import { ArticleStore } from "@/stores/ArticleStore";
-import { StatisticsStore } from "@/stores/StatisticsStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { Statistics } from "@/models/Statistics";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
@@ -16,7 +15,7 @@ import icon512 from "~/assets/icon.png";
 import { FaArrowUp } from "react-icons/fa";
 import NewContentPop from "@/components/NewContentPop";
 import { StoreProvider } from "simstate";
-import { CurrentArticleStore } from "@/stores/CurrentArticleStore";
+import { ArticleStore } from "@/stores/ArticleStore";
 
 const LayoutMain = styled.main`
   display: flex;
@@ -47,11 +46,13 @@ export default class RootLayout extends React.Component<Props, {}> {
 
   locationStore = new LocationStore(this.props.location);
 
-  articleStore = new ArticleStore(this.props.articleGroups, this.props.siteMetadata.siteUrl);
+  metadataStore = new MetadataStore({
+    articleGroups: this.props.articleGroups,
+    baseUrl: this.props.siteMetadata.siteUrl,
+    statistics: this.props.statistics,
+  });
 
-  statisticsStore = new StatisticsStore(this.props.statistics);
-
-  currentArticleStore = new CurrentArticleStore(undefined);
+  articleStore = new ArticleStore(undefined);
 
   componentDidUpdate() {
     this.updateLocation();
@@ -71,11 +72,10 @@ export default class RootLayout extends React.Component<Props, {}> {
     return (
       <IconContext.Provider value={iconContext}>
         <StoreProvider stores={[
-          this.statisticsStore,
           this.locationStore,
           this.i18nStore,
+          this.metadataStore,
           this.articleStore,
-          this.currentArticleStore,
         ]}>
           <LayoutRoot>
             <Helmet

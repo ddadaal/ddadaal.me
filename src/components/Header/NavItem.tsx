@@ -1,7 +1,6 @@
-import React from "react";
-import { Link } from "gatsby";
-import { NavItem as BSNavItem } from "reactstrap";
 import NavLink from "@/components/Header/NavLink";
+import React from "react";
+import { NavItem as BSNavItem } from "reactstrap";
 
 interface Props {
   active: boolean;

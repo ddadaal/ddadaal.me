@@ -1,7 +1,7 @@
 import React from "react";
 
 import { I18nStore } from "@/stores/I18nStore";
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import Page from "@/layouts/components/Page";
 import Helmet from "react-helmet";
 import { navigate } from "gatsby";
@@ -25,13 +25,13 @@ function toPage(pageNum: number) {
 export default function Index({ pageContext }: Props) {
   const { pageCount, pageIndex, ids } = pageContext;
   const { language, allLanguages } = useStore(I18nStore);
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
 
   return (
     <Page>
       <Helmet meta={[
         { name: "og:title", content: "VicBlog" },
-        { name: "og:url", content: articleStore.state.baseUrl },
+        { name: "og:url", content: metadataStore.state.baseUrl },
         { name: "og:site_name", content: "VicBlog" },
         { name: "og:locale", content: language.detailedId },
         ...allLanguages

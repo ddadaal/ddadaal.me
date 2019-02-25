@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 import styled from "styled-components";
 import lang from "@/i18n/lang";
 import { I18nStore } from "@/stores/I18nStore";
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
 import { useStore } from "simstate";
@@ -45,9 +45,9 @@ export default function ArticleItem(props: Props) {
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
 
   const { language } = useStore(I18nStore);
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
 
-  const langPaths = articleStore.getLangPathMap(id);
+  const langPaths = metadataStore.getLangPathMap(id);
 
   return (
     <StyledPost>

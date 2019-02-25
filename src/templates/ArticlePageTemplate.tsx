@@ -6,7 +6,7 @@ import CommentPanel from "@/components/Article/CommentPanel";
 import { Heading } from "@/models/ArticleNode";
 import langRoot from "@/i18n/lang";
 
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
@@ -14,7 +14,7 @@ import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
 import { useStore } from "simstate";
-import { CurrentArticleStore } from "@/stores/CurrentArticleStore";
+import { ArticleStore } from "@/stores/ArticleStore";
 
 interface Props {
   pageContext: {
@@ -31,22 +31,22 @@ const root = langRoot.articlePage;
 export default function ArticlePageTemplate(props: Props) {
 
   const i18nStore = useStore(I18nStore);
+  const metadataStore = useStore(MetadataStore);
   const articleStore = useStore(ArticleStore);
-  const currentArticleStore = useStore(CurrentArticleStore);
 
   const { id, lang, htmlAst, headings } = props.pageContext;
 
   const language = i18nStore.getLanguage(lang)!;
 
-  const articleNode = articleStore.getNodeFromLang(id, language);
+  const articleNode = metadataStore.getNodeFromLang(id, language);
 
-  currentArticleStore.setArticle(articleNode);
+  articleStore.setArticle(articleNode);
 
   const { frontmatter: {
     title, date, tags, hide_heading, no_toc,
   }, path, wordCount: { words: wordCount }, excerpt } = articleNode;
 
-  const langPathMap = articleStore.getLangPathMap(props.pageContext.id);
+  const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 
   return (
     <div>
@@ -56,7 +56,7 @@ export default function ArticlePageTemplate(props: Props) {
           { name: "og:title", content: title },
           { name: "og:description", content: excerpt },
           { name: "og:type", content: "article" },
-          { name: "og:url", content: `${articleStore.state.baseUrl}${path}` },
+          { name: "og:url", content: `${metadataStore.state.baseUrl}${path}` },
           { name: "og:locale", content: language.detailedId },
           ...Object.keys(langPathMap)
             .filter((x) => x !== lang)

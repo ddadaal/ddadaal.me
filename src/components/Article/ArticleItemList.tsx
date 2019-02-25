@@ -1,5 +1,5 @@
 import React from "react";
-import { ArticleStore } from "@/stores/ArticleStore";
+import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
@@ -15,17 +15,17 @@ interface Props {
 export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props) {
 
   const i18nStore = useStore(I18nStore);
-  const articleStore = useStore(ArticleStore);
+  const metadataStore = useStore(MetadataStore);
 
   const items = ids.map((id) => {
-    return articleStore.state.articleGroups[id];
+    return metadataStore.state.articleGroups[id];
   });
 
   return (
     <div>
       {items
         .map((nodes) => {
-          const node = articleStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
+          const node = metadataStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
           return (
             <ArticleItem
               article={node}

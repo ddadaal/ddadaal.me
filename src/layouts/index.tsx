@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
-import { createArticleGroups } from "@/stores/ArticleStore";
+import { createArticleGroups } from "@/stores/MetadataStore";
 import { ArticleNode } from "@/models/ArticleNode";
 import { ArticleGroups } from "@/models/ArticleGroups";
 
