@@ -4,7 +4,9 @@ date: "2019/2/14 23:50"
 title: "Simstate and Why"
 lang: en
 tags:
+  - simstate
   - React
+  - JavaScript
 ---
 
 # What is it?
@@ -26,7 +28,7 @@ Please read [repo's README](https://github.com/viccrubs/simstate) for why and ho
 
 ## Respect React's programming pattern
 
-[MobX](https://github.com/mobxjs/mobx) and [react.di](https://github.com/RobinBuschmann/react.di) were extensively used for my last projects to have an frontend infrastructure that looks like backend, which helps a lot in state and dependency management. However, some problems occurred during their integration in the context of React, the most important of which is the inconsistencies between the code styles in OOP with Dependency Injection Pattern (encouraged by react.di) and functional pattern (by React).
+[MobX](https://github.com/mobxjs/mobx) and [react.di](https://github.com/RobinBuschmann/react.di) were extensively used for my last projects to have an frontend infrastructure that looks like backend, which helps a lot in state and dependency management. However, some problems occurred during their integration in the context of React, the most important of which are the inconsistencies between the code styles in OOP with Dependency Injection pattern (encouraged by react.di) and functional pattern (by React).
 
 The following code snippet shows the differences between the patterns with an example to implement a commonly seen component in our code, with event handlers and dependency to external data store.
 
@@ -44,9 +46,7 @@ export class AComponent extends React.Component<Props> {
 
   @Inject store: Store;
 
-  handler = () => {
-
-  };
+  handler = () => { };
 
   render() {
     return (
@@ -104,11 +104,11 @@ To clarify, I am not blaming `unstated`: it wants to achieve more. I just want t
 
 Apart from hating to wait, there are some other reasons that made me build this project. During my 2 year's React usage, I have tried MobX, Redux as well as some other libraries and put all pf them into different real projects, but all of them left me with some disappointments. Rather than endless waiting and learning new libraries, it seems more practical and meaningful to build my own library and integrate it with my own thoughts and experiences.
 
-So, with the eagerness in addition to the simplicity of the implementation of `unstated`, I built my own library based on it and started deriving some new functions that I think would useful, like the Hooks integration. Implementing the initial version of `simstate` took me just one day, and it has always taken the place of `unstated` in my blog project.
+So, with the eagerness in addition to the simplicity of the implementation of `unstated`, I built my own library based on it and started deriving some new features that I think would be useful, like the Hooks integration. Implementing the initial version of `simstate` took me just one day, and it has always taken the place of `unstated` in my blog project.
 
 Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and [partial observer](https://github.com/viccrubs/simstate/blob/partial-observer/partial-observer-proposal.md). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
 
-## Learning the knowledge to manage an open source project
+## Learning the run an open source project
 
 I have always wanted to maintain a open source project by my own, and here comes the chance. It will also be an excellent chance to learn the tactics of manage an open source project, and have a clearer look and a more real experiences at the open source world.
 

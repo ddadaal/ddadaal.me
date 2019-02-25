@@ -6,7 +6,7 @@ import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
-import { useStores } from "simstate";
+import { useStore } from "simstate";
 
 interface Props {
   article: ArticleNode;
@@ -44,7 +44,8 @@ export default function ArticleItem(props: Props) {
   const { article, currentArticleLanguage } = props;
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
 
-  const [articleStore, { language }] = useStores(ArticleStore, I18nStore);
+  const { language } = useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
 
   const langPaths = articleStore.getLangPathMap(id);
 

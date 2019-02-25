@@ -3,7 +3,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import { I18nStore } from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
-import { useStores } from "simstate";
+import { useStore } from "simstate";
 
 interface Props {
   ids: string[];
@@ -14,7 +14,8 @@ interface Props {
 
 export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props) {
 
-  const [articleStore, i18nStore] = useStores(ArticleStore, I18nStore);
+  const i18nStore = useStore(I18nStore);
+  const articleStore = useStore(ArticleStore);
 
   const items = ids.map((id) => {
     return articleStore.state.articleGroups[id];

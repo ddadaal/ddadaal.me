@@ -2,7 +2,6 @@ import { Store } from "simstate";
 import { ArticleNode } from "@/models/ArticleNode";
 import { ArticleGroups } from "@/models/ArticleGroups";
 import { Language } from "@/i18n/definition";
-import { SiteMetadata } from "@/models/SiteMetadata";
 
 interface IArticleStore {
   articleGroups: ArticleGroups;

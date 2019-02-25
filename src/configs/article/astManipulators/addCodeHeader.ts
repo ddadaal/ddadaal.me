@@ -9,6 +9,8 @@ const languageTexts = {
   csharp: "C#",
   java: "Java",
   tsx: "TypeScript React",
+  ts: "TypeScript",
+  js: "JavaScript",
 };
 
 function visit(el: HtmlAstElement) {

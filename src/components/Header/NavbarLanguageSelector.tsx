@@ -1,25 +1,29 @@
 import React from "react";
-import { useStores } from "simstate";
+import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import { ArticleStore } from "@/stores/ArticleStore";
 import { LocationStore } from "@/stores/LocationStore";
 import LanguageSelector from "@/components/LanguageSelector";
 import { navigate } from "gatsby";
+import { CurrentArticleStore } from "@/stores/CurrentArticleStore";
 
 const NavbarLanguageSelector = () => {
 
-  const [i18nStore, articleStore] = useStores(I18nStore, ArticleStore);
+  const articleStore = useStore(ArticleStore);
+  const i18nStore = useStore(I18nStore);
+  const currentArticleStore = useStore(CurrentArticleStore);
+
   const { state, allLanguages, changeLanguage } = i18nStore;
 
   const change = (lang: string) => {
     changeLanguage(lang);
-    // const article = articleStore.state.currentArticle;
-    // if (article) {
-    //   const targetNode = articleStore.getNodeFromLang(article.frontmatter.id, i18nStore.getLanguage(lang)!);
-    //   if (targetNode) {
-    //     navigate(targetNode.path);
-    //   }
-    // }
+    const article = currentArticleStore.state.article;
+    if (article) {
+      const targetNode = articleStore.getNodeFromLang(article.frontmatter.id, i18nStore.getLanguage(lang)!);
+      if (targetNode) {
+        navigate(targetNode.path);
+      }
+    }
   };
 
   return (
