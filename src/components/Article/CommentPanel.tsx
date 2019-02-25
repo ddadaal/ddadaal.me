@@ -61,7 +61,7 @@ export default function CommentPanel(props: Props) {
               owner: "vicblog",
               admin: ["viccrubs"],
               language: props.language,
-              id: props.articleId,
+              id: props.articleId.substring(0, 50),
               distractionFreeMode: false,
             }} />
           )
