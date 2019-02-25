@@ -109,7 +109,7 @@ So, with the eagerness in addition to the simplicity of the implementation of `u
 
 Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and [partial observer](https://github.com/viccrubs/simstate/blob/partial-observer/partial-observer-proposal.md). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
 
-## Learning the knowledge to manage an open source project
+## Learning the run an open source project
 
 I have always wanted to maintain a open source project by my own, and here comes the chance. It will also be an excellent chance to learn the tactics of manage an open source project, and have a clearer look and a more real experiences at the open source world.
 
