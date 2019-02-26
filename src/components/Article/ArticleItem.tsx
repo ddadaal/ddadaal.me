@@ -51,10 +51,7 @@ export default function ArticleItem(props: Props) {
 
   return (
     <StyledPost>
-      <StyledTitle to={langPaths.has(language.id)
-        ? langPaths.get(language.id)!!
-        : langPaths.values().next().value
-      }>
+      <StyledTitle to={langPaths.get(language.id) || langPaths.values().next().value}>
         {title}
       </StyledTitle>
 

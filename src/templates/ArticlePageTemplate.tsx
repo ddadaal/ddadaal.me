@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useEffect } from "react";
 import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
@@ -40,7 +40,12 @@ export default function ArticlePageTemplate(props: Props) {
 
   const articleNode = metadataStore.getNodeFromLang(id, language);
 
-  articleStore.setArticle(articleNode);
+  useEffect(() => {
+    articleStore.setArticle(articleNode);
+    return () => {
+      articleStore.setArticle(undefined);
+    };
+  }, [articleNode]);
 
   const { frontmatter: {
     title, date, tags, hide_heading, no_toc,
