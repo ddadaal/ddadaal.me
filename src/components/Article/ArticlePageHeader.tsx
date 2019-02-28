@@ -1,9 +1,7 @@
+import { colors, heights } from "@/styles/variables";
 import React from "react";
 import styled from "styled-components";
 import ArticleFrontmatter from "./ArticleFrontmatter";
-import { ArticleNode } from "@/models/ArticleNode";
-import { colors, heights } from "@/styles/variables";
-import Bg from "~/assets/articlePageHeader.png";
 
 interface Props {
   title: string;

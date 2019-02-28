@@ -1278,10 +1278,10 @@
     "@types/react" "*"
     popper.js "^1.14.1"
 
-"@types/styled-components@^4.1.10":
-  version "4.1.10"
-  resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.10.tgz#7d23d0f1f5b32a78a9207d0300480d47251a3e98"
-  integrity sha512-BrXaqsBG2iiT/U1SLLMa32rt3nYdKVBnMSgsbC7bmoGHp9sefmp6wF3FrEUCUFPTRuKf0AgYIP4HRaTo/pj0Ng==
+"@types/styled-components@^4.1.11":
+  version "4.1.11"
+  resolved "http://registry.npm.taobao.org/@types/styled-components/download/@types/styled-components-4.1.11.tgz#1bd97988a69be550ef8a967b87827ff943f21c4e"
+  integrity sha1-G9l5iKab5VDvipZ7h4J/+UPyHE4=
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
@@ -13636,10 +13636,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-simstate@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/simstate/-/simstate-2.0.0.tgz#7657d0ce896e2b2e647eadc79791702404feb6c6"
-  integrity sha512-x+/RjWtTi0kft4otmsxKDufaVafrvJ2MYWki8i+T0zGUznH8+0b+wgeNjg/iOsHaoPWBBPD2YMdwq9DY1INBcA==
+simstate@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/simstate/download/simstate-2.0.1.tgz#ea68a2f5a6fee00414edfd7262dd30708a2d236b"
+  integrity sha1-6mii9ab+4AQU7f1yYt0wcIotI2s=
   dependencies:
     tslib "^1.9.3"
 
@@ -14987,17 +14987,17 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript-styled-plugin@^0.13.0:
-  version "0.13.0"
-  resolved "http://registry.npm.taobao.org/typescript-styled-plugin/download/typescript-styled-plugin-0.13.0.tgz#e5d3d1293b9b85cffd473f01a7f4917ad6035ee5"
-  integrity sha1-5dPRKTubhc/9Rz8Bp/SRetYDXuU=
+typescript-styled-plugin@^0.14.0:
+  version "0.14.0"
+  resolved "http://registry.npm.taobao.org/typescript-styled-plugin/download/typescript-styled-plugin-0.14.0.tgz#6691a8e673ed9eacee52c38fecd87d428eff0f71"
+  integrity sha1-ZpGo5nPtnqzuUsOP7Nh9Qo7/D3E=
   dependencies:
-    typescript-template-language-service-decorator "^2.0.0"
-    vscode-css-languageservice "^3.0.12"
+    typescript-template-language-service-decorator "^2.2.0"
+    vscode-css-languageservice "^3.0.13-next.12"
     vscode-emmet-helper "1.2.11"
     vscode-languageserver-types "^3.13.0"
 
-typescript-template-language-service-decorator@^2.0.0:
+typescript-template-language-service-decorator@^2.2.0:
   version "2.2.0"
   resolved "http://registry.npm.taobao.org/typescript-template-language-service-decorator/download/typescript-template-language-service-decorator-2.2.0.tgz#4ee6d580f307fb9239978e69626f2775b8a59b2a"
   integrity sha1-TubVgPMH+5I5l45pYm8ndbilmyo=
@@ -15564,10 +15564,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vscode-css-languageservice@^3.0.12:
-  version "3.0.12"
-  resolved "http://registry.npm.taobao.org/vscode-css-languageservice/download/vscode-css-languageservice-3.0.12.tgz#fb4aac5ae3c5b761b1db1d7224b78ff824284dc3"
-  integrity sha1-+0qsWuPFt2Gx2x1yJLeP+CQoTcM=
+vscode-css-languageservice@^3.0.13-next.12:
+  version "3.0.13"
+  resolved "http://registry.npm.taobao.org/vscode-css-languageservice/download/vscode-css-languageservice-3.0.13.tgz#1788735b65fde54181ea458e6a52cc2bd6dd9126"
+  integrity sha1-F4hzW2X95UGB6kWOalLMK9bdkSY=
   dependencies:
     vscode-languageserver-types "^3.13.0"
     vscode-nls "^4.0.0"

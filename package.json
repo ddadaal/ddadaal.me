@@ -64,7 +64,7 @@
     "react-scroll-up": "^1.3.3",
     "reactstrap": "^7.1.0",
     "rehype-react": "^3.1.0",
-    "simstate": "^2.0.0",
+    "simstate": "^2.0.1",
     "styled-components": "^4.1.3",
     "styled-normalize": "^8.0.6",
     "tslib": "^1.9.3",
@@ -83,7 +83,7 @@
     "@types/enzyme": "^3.9.0",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.9",
-    "@types/styled-components": "^4.1.10",
+    "@types/styled-components": "^4.1.11",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "gatsby-plugin-react-svg": "^2.0.0",
@@ -94,7 +94,7 @@
     "ts-jest": "^24.0.0",
     "tslint": "^5.13.0",
     "tslint-react": "^3.6.0",
-    "typescript-styled-plugin": "^0.13.0"
+    "typescript-styled-plugin": "^0.14.0"
   },
   "resolutions": {
     "@types/react": "16.8.3",

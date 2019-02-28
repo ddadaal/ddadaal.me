@@ -1,11 +1,9 @@
+import lang from "@/i18n/lang";
+import Localize from "@/i18n/Localize";
+import { Link } from "gatsby";
 import React from "react";
 import { Badge } from "reactstrap";
 import styled from "styled-components";
-import { navigate, Link } from "gatsby";
-
-import { I18nStore } from "@/stores/I18nStore";
-import lang from "@/i18n/lang";
-import Localize from "@/i18n/Localize";
 
 interface Props {
   className?: string;
