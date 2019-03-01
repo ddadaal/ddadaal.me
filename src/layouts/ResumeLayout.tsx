@@ -7,55 +7,53 @@ interface Props {
 
 const Resume = styled.div`
 
-  h1, h2, h3 {
-    border-bottom-width: 0 !important;
-    /* margin: 8px 0; */
+  line-height: 26px;
 
-    border-left: none;
+  body {
+    line-height: 18px;
+}
 
-    padding-left: 0px;
-  }
+h1, h2, h3 {
+    line-height: 18px;
 
-  h1 {
-    font-size: 24px;
-    margin: 12px 0;
-    padding-bottom: 0.3em;
-    border-bottom-width: 1px !important;
-    border-bottom-style: solid;
-  }
-  h2 {
+}
+h1 {
     font-size: 20px;
-
-  }
-
-  h3 {
+    margin: 12px 0;
+}
+h2 {
     font-size: 16px;
+    margin: 4px 0;
+}
+h2 .highlight {
+    font-weight: 700;
+    font-size: 18px;
+}
 
-  }
-  ul {
+h3{
+    line-height: 16px;
+    font-size: 14px;
+    margin: 1px 0;
+}
+ul {
     margin: 0px;
-  }
-  p {
+}
+p {
     margin: 0px;
-  }
-  .right {
-    float: right;
-  }
-  .contact {
+}
+.right { float: right}
+.contact {
     margin: 20px 0;
     text-align: center;
-  }
-  .name {
+}
+.name {
     font-size: 36px;
     border-bottom: none;
     padding: 0;
+    margin: 20px 0px;
     text-align: center;
-  }
-  .avatar {
-    float: right;
-    height: 100px;
-    margin: 0px;
-  }
+}
+
 `;
 
 export default function ResumeLayout(props: Props) {
