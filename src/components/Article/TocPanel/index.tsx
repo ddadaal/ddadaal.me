@@ -54,14 +54,13 @@ const Item = styled(ScrollLinkToAnchor)`
 interface State {
 }
 
-function isWindowBetween(element: HTMLElement) {
+function isWindowBetween(element: HTMLElement | null) {
 
-  return element.getBoundingClientRect().top - heights.header >= 2;
+  return element && element.getBoundingClientRect().top - heights.header >= 2;
 }
 
 export default class TocPanel extends React.Component<Props, State>  {
 
-  headingElements: HTMLElement[] = [];
   tocItemElements: HTMLElement[] = [];
 
   currentIndex: number = 0;
@@ -76,7 +75,7 @@ export default class TocPanel extends React.Component<Props, State>  {
     const { headings } = this.props;
 
     for (let i = 0; i < headings.length - 1; i++) {
-      if (isWindowBetween(this.headingElements[i + 1])) {
+      if (isWindowBetween(document.getElementById(headings[i + 1].slug))) {
         this.setActive(i);
         return;
       }
@@ -92,10 +91,8 @@ export default class TocPanel extends React.Component<Props, State>  {
 
     this.props.headings.forEach((heading) => {
       // add heading element
-      const el = document.getElementById(heading.slug);
       const tocEl = document.getElementById(`tocitem-${heading.slug}`);
-      if (el && tocEl) {
-        this.headingElements.push(el);
+      if (tocEl) {
         this.tocItemElements.push(tocEl);
 
       }
@@ -103,7 +100,7 @@ export default class TocPanel extends React.Component<Props, State>  {
 
     this.setActive(0);
 
-    window.addEventListener("scroll", this.onScroll, true);
+    window.addEventListener("scroll", this.onScroll);
   }
 
   componentWillUnmount() {
