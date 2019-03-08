@@ -5,6 +5,7 @@ title: "An Infinite Loop Caused by Updating a Map during Iteration"
 lang: en
 tags:
   - JavaScript
+  - frontend
 ---
 
 # The Problem

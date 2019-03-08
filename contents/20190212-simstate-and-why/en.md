@@ -7,6 +7,7 @@ tags:
   - simstate
   - React
   - JavaScript
+  - frontend
 ---
 
 # What is it?
