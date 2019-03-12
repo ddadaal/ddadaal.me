@@ -17,14 +17,6 @@ module.exports = {
     lastUpdated: dayjs().format(),
   },
   plugins: [
-    {
-      resolve: 'gatsby-plugin-matomo',
-      options: {
-        siteId: '1',
-        matomoUrl: 'https://analytics.viccrubs.me',
-        siteUrl: 'https://viccrubs.me',
-      }
-    },
     'gatsby-plugin-typescript',
     {
       resolve: `gatsby-plugin-sass`,

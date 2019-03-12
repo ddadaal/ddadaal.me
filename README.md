@@ -21,7 +21,7 @@ VicBlog is a static personal blog built with Gatsby.
     - Supports inline react components
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
-- Analytics via [Matomo] deployed on-premise
+- Analytics via [CNZZ](https://www.cnzz.com)
 
 ## Development
 
