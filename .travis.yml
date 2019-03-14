@@ -7,12 +7,9 @@ branches:
   only:
   - master
 install:
-- yarn
+- npm
 script:
-- yarn run build
-
-
-cache: yarn
+- npm run build
 
 deploy:
   provider: pages

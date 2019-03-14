@@ -40,7 +40,7 @@ export default {
       codeBy: "Coded proudly by {}",
       themedWith: "Themed with",
       poweredBy: "Powered by",
-      license: "Articles are licensed under {} unless otherwise stated",
+      license: "Unless otherwise stated, articles are licensed under {}",
       contacts: "Contact me",
       madeWithLove: "Made with ❤",
       friends: "Friends",

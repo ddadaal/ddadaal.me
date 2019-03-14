@@ -10,14 +10,14 @@ import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import Contacts from "../Contacts";
 import { useStore } from "simstate";
+import friendLinks from "@/configs/friendLinks";
+import Brief from "@/components/Footer/Brief";
+import List from "@/components/Footer/List";
+import MadeWithLove from "@/components/Footer/MadeWithLove";
 
 interface Props {
   className?: string;
 }
-
-const friendLinks = [
-  { name: "idealclover", description: "翠翠酱的个人网站", link: "https://idealclover.top" },
-];
 
 const Container = styled.footer`
   /* text-align: center; */
@@ -31,23 +31,6 @@ const Container = styled.footer`
     color: white;
   }
 
-  ul {
-    list-style: none;
-    padding-left: 0px;
-
-    &>li {
-      padding-bottom: 4px;
-    }
-  }
-
-  .footer-bottom {
-    text-align: center;
-  }
-
-  .footer-brief {
-
-  }
-
   .footer-contents {
     max-width: ${widths.mainContent}px;
     margin-left: auto;
@@ -56,92 +39,50 @@ const Container = styled.footer`
 
 `;
 
+const powerBys = [
+  ["React", "https://reactjs.org/"],
+  ["Gatsby", "https://www.gatsbyjs.org/"],
+  ["GitHub Pages", "https://pages.github.com/"],
+  ["TypeScript", "https://www.typescriptlang.org/"],
+].map(([name, link]) => ({ name, link }));
+
+const themedWiths = [
+  ["reactstrap", "https://reactstrap.github.io/"],
+  ["Bootswatch Flatly", "https://bootswatch.com/flatly/"],
+  ["styled-components", "https://www.styled-components.com/"],
+  ["SASS", "https://sass-lang.com/"],
+].map(([name, link]) => ({ name, link }));
+
+const friends = friendLinks.map(({ name, link, description }) => ({
+  name: `${name} - ${description}`,
+  link,
+}));
+
 const root = lang.footer;
 
 export default function Footer(props: Props) {
 
-  const metadataStore = useStore(MetadataStore);
-  const i18nStore = useStore(I18nStore);
-
-  const aboutMePath = metadataStore.getNodeFromLang("about-me", i18nStore.language).path;
-
   return (
     <Container className={props.className}>
       <Row className="footer-contents">
-        <Col xs={12} md={5}>
-          <div className="footer-brief">
-
-            <p>
-              👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
-                <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,
-              ]} />
-            </p>
-            <p>
-              📝 <LocalizedString id={root.license} replacements={[
-                <a key="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-                  BY CC-SA 4.0
-                </a>,
-              ]} />
-
-            </p>
-            <div>
-              <span id="contacts">📲 <LocalizedString id={root.contacts}/></span>
-              <Contacts color="white" size={1.6}/>
-            </div>
-          </div>
+        <Col xs={{ size: 12, order: 1 }} md={{ size: 5, order: 1 }}>
+          <Brief />
         </Col>
-        <Col xs={12} md={2}>
+        <Col className={"d-sm-none d-md-block"} md={{ size: 2, order: 2 }}>
           <h6>🚀 <LocalizedString id={root.poweredBy} /></h6>
-          <ul>
-            <li>
-              <a key="React" href={"https://reactjs.org/"}>React</a>
-            </li>
-            <li>
-              <a key="Gatsby" href={"https://www.gatsbyjs.org/"}>Gatsby</a>
-            </li>
-            <li>
-              <a key="Pages" href={"https://pages.github.com/"}>GitHub Pages</a>
-            </li>
-            <li>
-              <a key="TypeScript" href={"https://www.typescriptlang.org/"}>TypeScript</a>
-            </li>
-          </ul>
+          <List links={powerBys} />
         </Col>
-        <Col xs={12} md={2}>
+        <Col className={"d-sm-none d-md-block"} md={{ size: 2, order: 3 }}>
           <h6>🎨 <LocalizedString id={root.themedWith} /></h6>
-          <ul>
-            <li>
-              <a key="reactstrap" href={"https://reactstrap.github.io/"}>Reactstrap</a>
-            </li>
-            <li>
-              <a key="theme" href={"https://bootswatch.com/flatly/"}>Bootswatch Flatly</a>
-            </li>
-            <li>
-              <a key="styled-components" href={"https://www.styled-components.com/"}>styled-components</a>
-            </li>
-
-            <li>
-              <a key="sass" href={"https://sass-lang.com/"}>SASS</a>
-            </li>
-          </ul>
+          <List links={themedWiths} />
         </Col>
-        <Col xs={12} md={3}>
+        <Col xs={{ size: 12, order: 2 }} md={{ size: 3, order: 4 }}>
           <h6>👨‍🎓 <LocalizedString id={root.friends} /></h6>
-          <ul>
-          {friendLinks.map((link) => (
-              <li key={link.name}>
-                <a href={link.link}>
-                  {`${link.name} - ${link.description}`}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <List links={friends} />
         </Col>
       </Row>
-      <hr/>
-      <p className="footer-bottom">
-        © {new Date().getFullYear()} | <LocalizedString id={root.madeWithLove} />
-      </p>
+      <hr />
+      <MadeWithLove />
     </Container>
   );
 }
