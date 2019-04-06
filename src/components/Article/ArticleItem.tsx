@@ -15,10 +15,6 @@ interface Props {
 
 const StyledPost = styled.div`
   margin-bottom: 24px;
-
-  h1 {
-    font-size: 3em;
-  }
 `;
 
 const root = lang.articleItem;
@@ -29,7 +25,7 @@ const StyledH = styled.h2`
     text-decoration: underline;
   }
 
-  font-size: 2em;
+  font-size: 30px;
   padding: 4px 0;
   /* font-weight: bold; */
 `;

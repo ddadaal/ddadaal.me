@@ -11,6 +11,7 @@ const languageTexts = {
   tsx: "TypeScript React",
   ts: "TypeScript",
   js: "JavaScript",
+  kotlin: "Kotlin",
 };
 
 function visit(el: HtmlAstElement) {
