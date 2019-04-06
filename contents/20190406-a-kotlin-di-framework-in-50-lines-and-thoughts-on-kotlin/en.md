@@ -260,7 +260,7 @@ All injected instances are singleton, which is how DI is usually used.
 
 You can also simply **new** an object (which should not be annotated with @ServiceImpl) if singleton injection is not enough, or context parameters are required when using a service. **New-ed** object can still use its dependencies. No extra learning needed.
 
-- **Circular** and **Hierarchy** Dependency
+- **Circular** and **hierarchy** Dependency
 
 Unlike commonly used **constructor injection** and **setter injection**, dependent object are fetched **dynamically** from the container **when the property is being accessed**. Nothing will be injected during the instantiation of objects. So there would be no problem to have circular and hierarchy dependency structure at all.
 
@@ -272,7 +272,7 @@ With other DI frameworks (like [autofac](https://autofac.readthedocs.io/en/lates
 
 - Can not use dependency in `init` block
 
-All services are instantiated **randomly** (to be more precise, in order of when it is scanned), regardless of **their dependency relationships**. For example, **if A uses B, it is possible that B is instantiated earier than A**, in which case access to B inside A's `init` block would cause `NotProvidedException` since at that time A instance has not been in the container. This problem can be solved with **prior dependency relationship analysis** or **custom after-instantiation hook**.
+All services are instantiated **randomly** (to be more precise, in the order of time when it is scanned), regardless of **their dependency relationships**. For example, **if A uses B, it is possible that B is instantiated earier than A**, in which case access to B inside A's `init` block would cause `NotProvidedException` since at that time A instance has not been in the container. This problem can be solved with **prior dependency relationship analysis** or **custom after-instantiation hook**.
 
 - No advanced features like object lifetime control, scope, test...
 
@@ -282,9 +282,9 @@ It should be emphasized that our 50 lines of code only targets to **small applic
 
 My first impression to Kotlin was a mixed bag:
 
-It had lots of features that C# and Java did't, which does improve code experiences a lot: **strict nullity check**, **pattern matching**(which C# is introducing), **delegation**, **function type** (`kotlin±(Int, String) -> String`, which is more intuitive than `Action` delegations in C#, and various and differently named built-in functional interfaces (like `Consumer`, `Producer`) in Java which are hard to remember) and more;
+It had lots of features that C# and Java did't, which does improve coding experience a lot: **strict nullity check**, **pattern matching**(which C# is introducing), **delegation**, **function type** (`kotlin±(Int, String) -> String`, which is more intuitive than `Action` delegations in C#, and various and differently named built-in functional interfaces (like `Consumer`, `Producer`) in Java which are hard to remember), **inline functons** and more;
 
-Some parts of language design confused me at first, but later was proved to be excellent. For example **[lambda](https://kotlinlang.org/docs/reference/lambdas.html#lambda-expressions-and-anonymous-functions)** in Kotlin nee to be wrapped with a brace(`{}`) pair  (like `kotlin±func(arr, {a, b ->  a < b})` (just an example)), which seems not less consistent in Java where the braces are not required (like `java±func(arr, (a, b) -> a < b)`). However with the ability to [write the last lambda parameter outside of parentheses](https://kotlinlang.org/docs/reference/lambdas.html#lambda-expressions-and-anonymous-functions) (`kotlin±func(arr) {a, b -> x a < b}`), the extra abilities it brings easily overpower the inconsistency problem.
+Some parts of language seemed confusing at first, but later was proved to be excellent. For example **[lambda](https://kotlinlang.org/docs/reference/lambdas.html#lambda-expressions-and-anonymous-functions)** in Kotlin needs to be wrapped with a brace(`{}`) pair  (like `kotlin±func(arr, {a, b ->  a < b})` (just an example)), where Java doesn't (`java±func(arr, (a, b) -> a < b)`). However with the ability to [write the last lambda parameter outside of parentheses](https://kotlinlang.org/docs/reference/lambdas.html#lambda-expressions-and-anonymous-functions) (`kotlin±func(arr) {a, b -> x a < b}`), the extra abilities it brings overweigh the disadvantages.
 
 For example, with the help of [TornadoFX](https://tornadofx.io/), an excellent JavaFX framework for Kotlin, building JavaFX views can be done **directly in Kotlin** elegantly, which is even better than FXML, since *strongly-typed-ness* makes coding way less error-prone, verbose and intuitive than XML.
 
@@ -297,6 +297,8 @@ vbox {
 			replaceWith<StudentCheckinView>(sizeToScene = true)
 		}
 	}
+	// a list view whose data source is aList
+	listview(aList)
 }
 ```
 
