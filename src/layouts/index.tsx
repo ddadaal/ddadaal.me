@@ -11,6 +11,7 @@ import { ArticleGroups } from "@/models/ArticleGroups";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
+  allTagsJson: { nodes: Tag[] };
   allMarkdownRemark: { edges: { node: ArticleNode }[] };
 }
 
@@ -27,6 +28,13 @@ const query = graphql`
         description
         lastUpdated
         siteUrl
+      }
+    }
+    allTagsJson {
+      nodes {
+        tag
+        cn
+        en
       }
     }
     allMarkdownRemark {
@@ -78,6 +86,7 @@ export default function(props: Props) {
             siteMetadata={data.site.siteMetadata}
             statistics={statistics}
             articleGroups={articleGroups}
+            tags={data.allTagsJson.nodes}
           >
           {props.children}
           </RootLayout>

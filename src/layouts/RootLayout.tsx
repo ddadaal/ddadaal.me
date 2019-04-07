@@ -36,6 +36,7 @@ interface Props {
   siteMetadata: SiteMetadata;
   statistics: Statistics;
   children?: React.ReactNode;
+  tags: Tag[];
 }
 
 const iconContext = { className: "icons" };
@@ -50,6 +51,7 @@ export default class RootLayout extends React.Component<Props, {}> {
     this.props.statistics,
     this.props.articleGroups,
     this.props.siteMetadata.siteUrl,
+    this.props.tags,
   );
 
   articleStore = new ArticleStore(null);

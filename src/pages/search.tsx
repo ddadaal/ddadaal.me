@@ -30,18 +30,20 @@ export default function SearchPage() {
   let searchResult = Object.values(metadataStore.articleGroups);
 
   if (query) {
-    searchResult = searchResult.filter((x) => {
+    searchResult = searchResult.filter((articles) => {
       // filter according to title
-      if (x.some((y) => y.frontmatter.title.toUpperCase().includes(query.toUpperCase()))) {
+      if (articles.some((article) => article.frontmatter.title.toUpperCase().includes(query.toUpperCase()))) {
         return true;
       }
 
       // filter according to tag
-      if (x.some((y) =>
-        y.frontmatter.tags !== null
-        && y.frontmatter.tags.some(
-          ((tag) => tag.toUpperCase().includes(query.toUpperCase())),
-        ),
+      if (articles.some((article) =>
+        article.frontmatter.tags !== null // article has tags
+        && article.frontmatter.tags.some(((tag) => // one of the tag satisfies:
+            metadataStore.getAllVariationsOfTag(tag).some((existingTag) =>
+              existingTag.toUpperCase().includes(query.toUpperCase()),
+            )
+        )),
       )) {
         return true;
       }

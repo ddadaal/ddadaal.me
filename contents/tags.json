@@ -1,48 +1,57 @@
-{
-  "problem-investigation": {
+[
+  {
+    "tag": "problem-investigation",
     "cn": "问题探究",
     "en": "Problem Investigation"
   },
-  "project": {
+  {
+    "tag": "project",
     "cn": "我的项目",
     "en": "My Projects"
   },
-  "code-trick": {
+  {
+    "tag": "code-trick",
     "cn": "代码技巧",
     "en": "Code Tricks"
   },
-  "web-frontend": {
+  {
+    "tag": "web-frontend",
     "cn": "Web前端",
     "en": "Web Front-end"
   },
-  "thoughts": {
+  {
+    "tag": "thoughts",
     "cn": "看法",
     "en": "Thoughts"
   },
-  "hands-on": {
+  {
+    "tag": "hands-on",
     "cn": "上手",
     "en": "Hands On"
   },
-  "blog": {
+  {
+    "tag": "blog",
     "cn": "博客",
     "en": "Blog"
   },
-  "math": {
+  {
+    "tag": "math",
     "cn": "数学",
     "en": "Math"
   },
-  "interview-experiences": {
+  {
+    "tag": "interview-experiences",
     "cn": "面试经验",
     "en": "Interview Experiences"
   },
-  "annual-summary": {
+  {
+    "tag": "annual-summary",
     "cn": "年度总结",
     "en": "Annual Summary"
   },
-  "in-class": {
+  {
+    "tag": "in-class",
     "cn": "课内作业",
     "en": "In Class"
   }
-
-
-}
+]

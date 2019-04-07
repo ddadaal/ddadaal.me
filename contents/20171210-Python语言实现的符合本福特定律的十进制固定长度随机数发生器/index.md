@@ -5,7 +5,7 @@ title: "Python语言实现的符合本福特定律的十进制固定长度随机
 lang: cn
 tags:
   - python
-  - math
+  - Math
   - in-class
 ---
 

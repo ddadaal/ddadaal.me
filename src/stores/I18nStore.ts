@@ -14,6 +14,8 @@ function getInitialLanguage() {
   return navigator.language;
 }
 
+const splitter = /(\{\})/;
+
 export class I18nStore extends Store<II18nStore> {
   constructor() {
     super();
@@ -36,12 +38,22 @@ export class I18nStore extends Store<II18nStore> {
   }
 
   replacePlaceholders = (definition: string, replacements: React.ReactNode[]): React.ReactNode | string => {
-    const splitter = /(\{\})/;
     const array = definition.split(splitter) as React.ReactNode[];
     let ri = 0;
+
+    let containsNonString = false;
+
     for (let i = 1; i < array.length; i += 2) {
+      if (typeof replacements[ri] !== "string") {
+        containsNonString = true;
+      }
       array[i] = replacements[ri++];
     }
+
+    if (!containsNonString) {
+      return array.join();
+    }
+
     return array;
   }
 

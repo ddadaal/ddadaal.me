@@ -3,7 +3,7 @@ import langRoot from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled from "styled-components";
 import { Badge, Row, Col } from "reactstrap";
-import TagGroup from "./TagGroup";
+import ArticleTagGroup from "@/components/Article/TagGroup";
 import { FaCalendarAlt, FaClock, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { I18nStore } from "@/stores/I18nStore";
@@ -52,7 +52,7 @@ export default function ArticleFrontmatter(props: Props) {
   return (
     <ContainerRow>
 
-      {tags && <Tags ><FaTags /><TagGroup tags={tags} /></Tags>}
+      {tags && <Tags ><FaTags /><ArticleTagGroup tags={tags} /></Tags>}
       <Span>
         <FaCalendarAlt />
         {date}

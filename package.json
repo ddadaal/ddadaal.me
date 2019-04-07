@@ -17,7 +17,9 @@
     "test": "echo \"no tests specified\"",
     "testJest": "jest",
     "serve": "gatsby serve",
-    "migrate": "ts-jest config:migrate ./jest.config.js"
+    "migrate": "ts-jest config:migrate ./jest.config.js",
+    "upddep": "ncu -u --registry=https://registry.npm.taobao.org && npm run iftb",
+    "iftb": "npm install --registry=https://registry.npm.taobao.org"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -95,7 +97,7 @@
     "typescript-styled-plugin": "^0.14.0"
   },
   "resolutions": {
-    "@types/react": "16.8.3",
-    "@types/react-dom": "16.8.0"
+    "@types/react": "16.8.12",
+    "@types/react-dom": "16.8.3"
   }
 }
