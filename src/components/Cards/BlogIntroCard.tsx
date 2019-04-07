@@ -28,7 +28,7 @@ export default function BlogIntroCard(props: Props) {
         <span>💻 VicBlog <LocalizedString id={root.subtitle} /></span>
         <Link
           className="card-link"
-          to={metadataStore.getNodeFromLang("about-project", i18nStore.state.language).path}
+          to={metadataStore.getArticleOfLang("about-project", i18nStore.state.language).path}
           title={i18nStore.language.definitions.blogIntro.more}
         >
           <LocalizedString id={root.moreLink} />
@@ -52,7 +52,7 @@ export default function BlogIntroCard(props: Props) {
           </CardLink>
           <Link
             className="card-link"
-            to={metadataStore.getNodeFromLang("feedback", i18nStore.state.language).path}
+            to={metadataStore.getArticleOfLang("feedback", i18nStore.state.language).path}
           >
             <FaRegCommentDots />
             <LocalizedString id={root.feedback} />

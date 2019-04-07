@@ -27,7 +27,7 @@ export default function SearchPage() {
 
   const pageIndex = page - 1;
 
-  let searchResult = Object.values(metadataStore.state.articleGroups);
+  let searchResult = Object.values(metadataStore.articleGroups);
 
   if (query) {
     searchResult = searchResult.filter((x) => {

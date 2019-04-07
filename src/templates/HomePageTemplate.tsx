@@ -31,7 +31,7 @@ export default function Index({ pageContext }: Props) {
     <Page>
       <Helmet meta={[
         { name: "og:title", content: "VicBlog" },
-        { name: "og:url", content: metadataStore.state.baseUrl },
+        { name: "og:url", content: metadataStore.baseUrl },
         { name: "og:site_name", content: "VicBlog" },
         { name: "og:locale", content: language.detailedId },
         ...allLanguages

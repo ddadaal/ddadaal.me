@@ -10,7 +10,7 @@ import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
-import ArticleContentDisplay from "@/components/Article/ArticleContentDisplay";
+import ArticleContentDisplay from "@/components/Article/ContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
 import { useStore } from "simstate";
@@ -38,12 +38,12 @@ export default function ArticlePageTemplate(props: Props) {
 
   const language = i18nStore.getLanguage(lang)!;
 
-  const articleNode = metadataStore.getNodeFromLang(id, language);
+  const articleNode = metadataStore.getArticleOfLang(id, language);
 
   useEffect(() => {
     articleStore.setArticle(articleNode);
     return () => {
-      articleStore.setArticle(undefined);
+      articleStore.setArticle(null);
     };
   }, [articleNode]);
 
@@ -61,7 +61,7 @@ export default function ArticlePageTemplate(props: Props) {
           { name: "og:title", content: title },
           { name: "og:description", content: excerpt },
           { name: "og:type", content: "article" },
-          { name: "og:url", content: `${metadataStore.state.baseUrl}${path}` },
+          { name: "og:url", content: `${metadataStore.baseUrl}${path}` },
           { name: "og:locale", content: language.detailedId },
           ...Object.keys(langPathMap)
             .filter((x) => x !== lang)

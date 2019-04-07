@@ -4,8 +4,9 @@ date: "2017/12/10 00:04"
 title: "Python语言实现的符合本福特定律的十进制固定长度随机数发生器"
 lang: cn
 tags:
-  - Python
-  - 数学
+  - python
+  - math
+  - in-class
 ---
 
 # 前言

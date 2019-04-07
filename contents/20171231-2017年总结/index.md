@@ -4,7 +4,7 @@ date: "2017/12/31 23:45"
 title: "2017年总结"
 lang: cn
 tags:
-  - 年终总结
+  - annual-summary
 ---
 
 是时候来简单梳理下我的2017年了。

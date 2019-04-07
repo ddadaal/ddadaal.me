@@ -5,6 +5,8 @@ title: "A Kotlin DI Framework in 50 Lines and Thoughts on Kotlin"
 lang: en
 tags:
   - Kotlin
+  - code-trick
+  - thoughts
 ---
 
 # Why
@@ -310,7 +312,7 @@ But the defects cannot obscure the virtues.
 
 The features (including *grammar sugars*) Kotlin has have opened my eyes, showing me how a programming language that is modern, well-designed and has no history burdens can be like, how these features and grammar sugars can make coding much more productive and enjoyful, and most importantly, **how our ways of thinking a problem can be different**.
 
-Everyone knows that programming languages are just tools: that's true, but tools can also influence how we look at problems.
+Everyone knows that programming languages are just tools: that's true, but **tools can also influence how we look at problems**.
 
 A programmer who only knew procedural programming language would try to solve every problems procedurally, quickly being overwhelmed by exponentially growing complexity; A OOP only programmer would wrap everything into objects, resulting in piles of useless boilerplate codes and a class hierarchy so complicated that only god could understand it; A FP originalist would try to use FP on everything, ignoring the nature of the problem, the communities of selected technologies and his/her teammates, all leading to the failure of the project.
 

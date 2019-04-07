@@ -4,7 +4,7 @@ date: "2019/03/08 19:30"
 title: 7天Hackathon，Web前端极速入门指南
 lang: cn
 tags:
-  - frontend
+  - web-frontend
 ---
 
 # 前言

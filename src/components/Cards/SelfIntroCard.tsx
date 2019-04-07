@@ -21,7 +21,7 @@ export default function SelfIntroCard(props: Props) {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
-  const aboutMePath = metadataStore.getNodeFromLang("about-me", i18nStore.state.language).path;
+  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.state.language).path;
 
   return (
     <Card className="hover-card">

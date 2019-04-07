@@ -7,7 +7,8 @@ tags:
   - simstate
   - React
   - JavaScript
-  - frontend
+  - web-frontend
+  - project
 ---
 
 # What is it?
@@ -19,7 +20,7 @@ tags:
 
 As the title indicates, this is yet another React state management library favoring [React Hooks](https://reactjs.org/docs/hooks-intro.html) and [TypeScript](https://www.typescriptlang.org/).
 
-GitHub：https://github.com/viccrubs/simstate
+GitHub：<https://github.com/viccrubs/simstate>
 
 # Why use it?
 

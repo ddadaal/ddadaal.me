@@ -4,12 +4,6 @@ import { ArticleGroups } from "@/models/ArticleGroups";
 import { Language } from "@/i18n/definition";
 import { ArticleNode } from "@/models/ArticleNode";
 
-interface Metadata {
-  statistics: Statistics;
-  articleGroups: ArticleGroups;
-  baseUrl: string;
-}
-
 export type LangPathMap = Map<string, string>;
 
 export function createArticleGroups(articles: ArticleNode[]) {
@@ -24,20 +18,21 @@ export function createArticleGroups(articles: ArticleNode[]) {
   return articleGroups;
 }
 
-export class MetadataStore extends Store<Metadata> {
-  constructor(data: Metadata) {
-    super();
-    this.state = data;
-  }
+export class MetadataStore extends Store<{}> {
+  constructor(
+    public statistics: Statistics,
+    public articleGroups: ArticleGroups,
+    public baseUrl: string,
+  ) { super(); }
 
-  getNodeFromLang(id: string, language: Language) {
-    const group = this.state.articleGroups[id];
+  getArticleOfLang(id: string, language: Language): ArticleNode {
+    const group = this.articleGroups[id];
     const node = group.find((x) => language.languages.includes(x.frontmatter.lang)) || group[0];
     return node;
   }
 
   getLangPathMap(id: string): LangPathMap {
-    const group = this.state.articleGroups[id];
+    const group = this.articleGroups[id];
     const map: LangPathMap = new Map();
 
     group.forEach((node) => {
@@ -46,5 +41,4 @@ export class MetadataStore extends Store<Metadata> {
 
     return map;
   }
-
 }

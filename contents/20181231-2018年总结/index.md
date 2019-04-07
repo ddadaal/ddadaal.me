@@ -4,7 +4,7 @@ date: "2019/2/4 23:13"
 title: "2018年总结"
 lang: cn
 tags:
-  - 年终总结
+  - annual-summary
 ---
 
 # 前言

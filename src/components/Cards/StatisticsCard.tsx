@@ -11,7 +11,7 @@ const root = lang.statistics;
 export default function StatisticsCard() {
   const store = useStore(MetadataStore);
 
-  const { statistics } = store.state;
+  const { statistics } = store;
 
   return (
     <ListGroup flush={false} className="hover-card">

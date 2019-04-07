@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleGroups } from "@/models/ArticleGroups";
@@ -46,13 +46,13 @@ export default class RootLayout extends React.Component<Props, {}> {
 
   locationStore = new LocationStore(this.props.location);
 
-  metadataStore = new MetadataStore({
-    articleGroups: this.props.articleGroups,
-    baseUrl: this.props.siteMetadata.siteUrl,
-    statistics: this.props.statistics,
-  });
+  metadataStore = new MetadataStore(
+    this.props.statistics,
+    this.props.articleGroups,
+    this.props.siteMetadata.siteUrl,
+  );
 
-  articleStore = new ArticleStore(undefined);
+  articleStore = new ArticleStore(null);
 
   componentDidUpdate() {
     this.updateLocation();

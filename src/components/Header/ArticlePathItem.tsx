@@ -27,7 +27,7 @@ const ArticlePathItem = (props: {
 
   const { language } = i18nStore;
 
-  const node = metadataStore.getNodeFromLang(id, language);
+  const node = metadataStore.getArticleOfLang(id, language);
 
   const targetPageUrlParts = node.path.split("/");
   targetPageUrlParts.pop();

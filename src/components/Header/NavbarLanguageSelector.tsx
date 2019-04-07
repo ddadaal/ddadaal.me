@@ -19,7 +19,7 @@ const NavbarLanguageSelector = () => {
     changeLanguage(lang);
     const article = articleStore.state.article;
     if (article) {
-      const targetNode = metadataStore.getNodeFromLang(article.frontmatter.id, i18nStore.getLanguage(lang)!);
+      const targetNode = metadataStore.getArticleOfLang(article.frontmatter.id, i18nStore.getLanguage(lang)!);
       if (targetNode) {
         navigate(targetNode.path);
       }

@@ -4,7 +4,7 @@ date: "2017/11/06 23:55"
 title: "院自建GitLab CI配置实录"
 lang: cn
 tags:
-  - CI
+  - hands-on
 ---
 
 # 动机

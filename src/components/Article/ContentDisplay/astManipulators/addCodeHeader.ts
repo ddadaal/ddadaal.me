@@ -1,18 +1,8 @@
 import { HtmlAstElement } from "@/models/HtmlAst";
 import { HtmlAst } from "@/models/HtmlAst";
-import { createElement, createText } from "@/configs/article/astManipulators/AstManipulator";
-
+import { createElement, createText } from "@/components/Article/ContentDisplay/astManipulators/AstManipulator";
+import languageTexts from "@/configs/article/LanguageTexts";
 import "./code-header.scss";
-
-const languageTexts = {
-  python: "Python",
-  csharp: "C#",
-  java: "Java",
-  tsx: "TypeScript React",
-  ts: "TypeScript",
-  js: "JavaScript",
-  kotlin: "Kotlin",
-};
 
 function visit(el: HtmlAstElement) {
   if (el.type === "element") {

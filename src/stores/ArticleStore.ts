@@ -2,17 +2,17 @@ import { Store } from "simstate";
 import { ArticleNode } from "@/models/ArticleNode";
 
 interface State {
-  article: ArticleNode | undefined;
+  article: ArticleNode | null;
 }
 
 export class ArticleStore extends Store<State> {
 
-  constructor(article: ArticleNode | undefined) {
+  constructor(article: ArticleNode | null) {
     super();
     this.state = { article };
   }
 
-  setArticle(article: ArticleNode | undefined) {
+  setArticle(article: ArticleNode | null) {
     if (this.state.article !== article) {
       this.setState({ article });
     }

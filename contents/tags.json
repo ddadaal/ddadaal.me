@@ -1,0 +1,48 @@
+{
+  "problem-investigation": {
+    "cn": "问题探究",
+    "en": "Problem Investigation"
+  },
+  "project": {
+    "cn": "我的项目",
+    "en": "My Projects"
+  },
+  "code-trick": {
+    "cn": "代码技巧",
+    "en": "Code Tricks"
+  },
+  "web-frontend": {
+    "cn": "Web前端",
+    "en": "Web Front-end"
+  },
+  "thoughts": {
+    "cn": "看法",
+    "en": "Thoughts"
+  },
+  "hands-on": {
+    "cn": "上手",
+    "en": "Hands On"
+  },
+  "blog": {
+    "cn": "博客",
+    "en": "Blog"
+  },
+  "math": {
+    "cn": "数学",
+    "en": "Math"
+  },
+  "interview-experiences": {
+    "cn": "面试经验",
+    "en": "Interview Experiences"
+  },
+  "annual-summary": {
+    "cn": "年度总结",
+    "en": "Annual Summary"
+  },
+  "in-class": {
+    "cn": "课内作业",
+    "en": "In Class"
+  }
+
+
+}

@@ -18,14 +18,14 @@ export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props
   const metadataStore = useStore(MetadataStore);
 
   const items = ids.map((id) => {
-    return metadataStore.state.articleGroups[id];
+    return metadataStore.articleGroups[id];
   });
 
   return (
     <div>
       {items
         .map((nodes) => {
-          const node = metadataStore.getNodeFromLang(nodes[0].frontmatter.id, i18nStore.language);
+          const node = metadataStore.getArticleOfLang(nodes[0].frontmatter.id, i18nStore.language);
           return (
             <ArticleItem
               article={node}

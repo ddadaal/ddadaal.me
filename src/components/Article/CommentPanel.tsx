@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
@@ -31,7 +31,7 @@ export default function CommentPanel(props: Props) {
 
   const firstUpdate = React.useRef(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
@@ -39,7 +39,7 @@ export default function CommentPanel(props: Props) {
     setMount(false);
   }, [props.language]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isServer() && !mount) {
       setMount(true);
     }

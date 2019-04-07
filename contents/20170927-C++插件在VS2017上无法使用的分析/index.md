@@ -5,6 +5,7 @@ title: "C++插件在VS2017上无法使用的分析"
 lang: cn
 tags:
   - C++
+  - problem-investigation
 ---
 
 ## 前言

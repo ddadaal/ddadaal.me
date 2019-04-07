@@ -4,7 +4,7 @@ date: "2019/01/11 23:21"
 title: "MSRA DKI组前端面经"
 lang: cn
 tags:
-  - 面试经验
+  - interview-experiences
 ---
 
 # 开端

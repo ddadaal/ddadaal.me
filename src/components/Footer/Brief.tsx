@@ -14,7 +14,7 @@ export default function Brief() {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
-  const aboutMePath = metadataStore.getNodeFromLang("about-me", i18nStore.language).path;
+  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.language).path;
 
   return (
     <div className="footer-brief">
