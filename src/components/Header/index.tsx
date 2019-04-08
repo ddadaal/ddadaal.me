@@ -47,10 +47,6 @@ function Branding(props: { title: string }) {
   );
 }
 
-function atHomePage(pathname: string) {
-  return pathname === "/" || pathname.match(/\/articles\/\d+/) !== null;
-}
-
 const root = lang.headers;
 
 const StyledDropdownItem = styled(DropdownItem)`
@@ -90,7 +86,7 @@ const Placeholder = styled.div`
 `;
 
 const StyledDropdownMenu = styled(DropdownMenu)`
-    box-shadow: 0rem .3rem .6rem rgba(0,0,0,.3);
+    box-shadow: 0 .3rem .6rem rgba(0,0,0,.3);
 `;
 
 export default function Header(props: Props) {
@@ -116,12 +112,14 @@ export default function Header(props: Props) {
               <BSNavItem>
                 <SearchBar onSearch={close} />
               </BSNavItem>
-
-              <NavItem active={atHomePage(pathname)} to="/" onClick={close}>
+              <NavItem active={pathname === "/"} to="/" onClick={close}>
                 <FaHome />
                 <LocalizedString id={root.home} />
               </NavItem>
-
+              <NavItem active={pathname.startsWith("/articles")} to="/articles" onClick={close}>
+                <FaBookOpen />
+                <LocalizedString id={root.articles} />
+              </NavItem>
               {/* <NavItem active={pathnameWithoutLanguage.startsWith("/articlePlans")}>
                 <NavLink to="/articlePlans" onClick={close}>
                   <FaCalendarAlt />

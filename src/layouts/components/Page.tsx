@@ -40,7 +40,7 @@ const StyledContainer = styled.div`
 export default function Page(props: PageProps) {
   return (
     <StyledPage>
-      <StyledContainer  className={props.className}>
+      <StyledContainer className={props.className}>
         {props.children}
       </StyledContainer>
     </StyledPage>

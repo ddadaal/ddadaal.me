@@ -11,6 +11,7 @@ export default {
     },
     headers: {
       home: "主页",
+      articles: "文章",
       resume: "简历",
       articlePlans: "文章计划",
       about: {

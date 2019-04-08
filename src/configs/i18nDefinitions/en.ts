@@ -11,6 +11,7 @@ export default {
     },
     headers: {
       home: "Home",
+      articles: "Articles",
       resume: "Resume",
       articlePlans: "Article Plans",
       about: {

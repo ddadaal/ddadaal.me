@@ -1,8 +1,7 @@
 const path = require("path");
 
-const indexTemplate = path.resolve("src/templates/HomePageTemplate.tsx");
+const indexTemplate = path.resolve("src/templates/ArticleListPageTemplate.tsx");
 const articleTemplate = path.resolve(`src/templates/ArticlePageTemplate.tsx`);
-
 
 const GitHubSlugger = require("github-slugger");
 
@@ -11,7 +10,7 @@ const dayjs = require("dayjs");
 function createPaginatedHomepages(createPage, articleGroups) {
 
   const generatePath = (index) => {
-    return index === 0 ? "/" : `/articles/${index + 1}`;
+    return `/articles${index === 0 ? "" : `/${index + 1}`}`;
   };
 
   const notIgnoredGroups = [];
@@ -47,10 +46,7 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
 exports.createPages = async ({ actions, graphql }) => {
 
-
   const { createPage, createRedirect } = actions;
-
-
 
   const result = await graphql(`{
     allMarkdownRemark(
