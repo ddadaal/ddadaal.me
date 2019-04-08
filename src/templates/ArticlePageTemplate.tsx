@@ -39,9 +39,13 @@ const enterAnimation = keyframes`
   }
 `;
 
-const DifferentPage = styled(Page)`
+const PageWithHeader = styled(Page)`
    animation: ${enterAnimation} 0.2s ease-in-out;
 `;
+
+function PageComponent({ hasHeader, children }: { hasHeader: boolean, children: React.ReactNode }) {
+  return hasHeader ? <PageWithHeader>{children}</PageWithHeader> : <Page>{children}</Page>;
+}
 
 export default function ArticlePageTemplate(props: Props) {
 
@@ -104,7 +108,7 @@ export default function ArticlePageTemplate(props: Props) {
           />
         )
       }
-      <DifferentPage>
+      <PageComponent hasHeader={!hide_heading}>
         <Row>
           <Col md={no_toc ? 12 : 9} sm={12} >
             <ArticleContentDisplay
@@ -127,7 +131,7 @@ export default function ArticlePageTemplate(props: Props) {
           articleId={id}
           articleTitle={title}
         />
-      </DifferentPage>
+      </PageComponent>
     </div>
   );
 }

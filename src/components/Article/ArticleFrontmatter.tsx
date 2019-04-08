@@ -3,13 +3,13 @@ import langRoot from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled, { keyframes } from "styled-components";
 import { Badge, Row, Col } from "reactstrap";
-import ArticleTagGroup from "@/components/Article/TagGroup";
 import { FaCalendarAlt, FaClock, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { I18nStore } from "@/stores/I18nStore";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
+import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
 
 interface Props {
   articleId: string;
@@ -51,7 +51,9 @@ export default function ArticleFrontmatter(props: Props) {
   return (
     <ContainerRow>
 
-      {tags && <Tags ><FaTags /><ArticleTagGroup tags={tags} /></Tags>}
+      {tags && <Tags ><FaTags />{
+        tags.map((tag) => <ArticleTag tag={tag} key={tag} />)
+      }</Tags>}
       <Span>
         <FaCalendarAlt />
         {date}

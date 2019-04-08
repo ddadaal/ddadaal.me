@@ -5,8 +5,7 @@ import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import LocalizedString from "@/i18n/LocalizedString";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
-import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
+import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 
 const root = lang.tagsCard;
 
@@ -23,7 +22,7 @@ export default function TagsCard() {
       </BaseCardHeader>
       <CardBody>
         {tags.map((tag) => (
-          <ArticleTag key={tag} tag={tag} containsCount={true} />
+          <CountedArticleTag key={tag} tag={tag}/>
         ))}
       </CardBody>
     </BaseCard>

@@ -17,10 +17,9 @@ const Tag = styled(Link)`
 
 interface Props {
   tag: string;
-  containsCount?: boolean;
 }
 
-export default function ArticleTag({ tag, containsCount }: Props) {
+export default function ArticleTag({ tag }: Props) {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
@@ -28,11 +27,10 @@ export default function ArticleTag({ tag, containsCount }: Props) {
 
   const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
   const toLink = `/search?query=${tagOfLang}`;
-  const count = metadataStore.getCountOfTag(tag);
 
   return (
     <Tag className="badge badge-info" to={toLink} title={title}>
-      {tagOfLang} {containsCount ? `(${count})` : null}
+      {tagOfLang}
     </Tag>
   );
 }
