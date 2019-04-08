@@ -1,6 +1,6 @@
 import { colors, heights } from "@/styles/variables";
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 
 interface Props {
@@ -12,11 +12,24 @@ interface Props {
   currentArticleLanguage: string;
 }
 
+const enterAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const RootContainer = styled.div`
   position: relative;
   height: ${heights.articleHeader}px;
   width: 100%;
   background-color: ${colors.headerBg};
+  
 `;
 
 const InnerContainer = styled.div`
@@ -35,6 +48,9 @@ const InfoLayer = styled(InnerContainer)`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+   animation: ${enterAnimation} 0.2s ease-out;
+
 `;
 
 const ImgContainer = styled(InnerContainer)`

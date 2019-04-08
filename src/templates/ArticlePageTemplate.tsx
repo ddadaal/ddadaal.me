@@ -15,6 +15,7 @@ import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
 import { useStore } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
+import styled, { keyframes } from "styled-components";
 
 interface Props {
   pageContext: {
@@ -27,6 +28,20 @@ interface Props {
 }
 
 const root = langRoot.articlePage;
+
+const enterAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+  }
+`;
+
+const DifferentPage = styled(Page)`
+   animation: ${enterAnimation} 0.2s ease-in-out;
+`;
 
 export default function ArticlePageTemplate(props: Props) {
 
@@ -89,7 +104,7 @@ export default function ArticlePageTemplate(props: Props) {
           />
         )
       }
-      <Page>
+      <DifferentPage>
         <Row>
           <Col md={no_toc ? 12 : 9} sm={12} >
             <ArticleContentDisplay
@@ -112,7 +127,7 @@ export default function ArticlePageTemplate(props: Props) {
           articleId={id}
           articleTitle={title}
         />
-      </Page>
+      </DifferentPage>
     </div>
   );
 }

@@ -6,8 +6,8 @@ const StyledPage = styled.div`
   display: block;
   flex: 1;
   position: relative;
-  padding: 1rem;
-  margin-bottom: 3rem;
+  padding: 16px;
+  margin-bottom: 48px;
 `;
 
 interface PageProps {
@@ -39,8 +39,8 @@ const StyledContainer = styled.div`
 
 export default function Page(props: PageProps) {
   return (
-    <StyledPage className={props.className}>
-      <StyledContainer>
+    <StyledPage>
+      <StyledContainer  className={props.className}>
         {props.children}
       </StyledContainer>
     </StyledPage>

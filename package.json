@@ -85,7 +85,7 @@
     "@types/styled-components": "^4.1.13",
     "babel-plugin-styled-components": "^1.10.0",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-adapter-react-16": "^1.12.1",
     "gatsby-plugin-react-svg": "^2.1.1",
     "gatsby-plugin-root-import": "^2.0.5",
     "github-slugger": "^1.2.1",

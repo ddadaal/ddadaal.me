@@ -1,7 +1,7 @@
 import React from "react";
 import langRoot from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Badge, Row, Col } from "reactstrap";
 import ArticleTagGroup from "@/components/Article/TagGroup";
 import { FaCalendarAlt, FaClock, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
@@ -21,14 +21,13 @@ interface Props {
 
 const root = langRoot.articleFrontmatter;
 
-const color = "#7f8c8d";
-
 const Span = styled.span`
   margin-right: 8px;
   padding-right: 8px;
   margin-bottom: 4px;
   /* border-left: 1px solid black; */
   display: inline-block;
+  
 `;
 
 const Tags = styled(Span)`
