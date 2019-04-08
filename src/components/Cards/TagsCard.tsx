@@ -13,7 +13,11 @@ export default function TagsCard() {
 
   const metadataStore = useStore(MetadataStore);
 
-  const tags = Array.from(metadataStore.tagMap.keys());
+  const tags = Array.from(metadataStore.tagMap.entries())
+    .sort((a, b) => b[1].count - a[1].count)
+    .map((entry) => entry[0]);
+
+  console.log(tags);
 
   return (
     <BaseCard>
