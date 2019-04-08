@@ -61,7 +61,7 @@ const query = graphql`
 
 export default function(props: Props) {
 
-  const articleGroupsMemo = useRef(null as null | ArticleGroups);
+  const articleGroupsMemo = useRef<null | ArticleGroups>(null);
 
   return (
     <StaticQuery query={query}>
@@ -82,7 +82,7 @@ export default function(props: Props) {
         const tagMap = new Map() as TagMap;
 
         data.allTagsJson.nodes.forEach(({ tag, ...variations}) => {
-          tagMap.set(tag, variations);
+          tagMap.set(tag, { count: 0, variations });
         });
 
         // for each tags
@@ -90,12 +90,14 @@ export default function(props: Props) {
             if (node.frontmatter.tags) {
               node.frontmatter.tags.forEach((tag) => {
                 if (!tagMap.has(tag)) {
-                  tagMap.set(tag, tag);
+                  tagMap.set(tag, { count: 1, variations: tag });
+                } else {
+                  tagMap.get(tag)!!.count++;
                 }
               });
             }
         });
-        
+
         return (
           <RootLayout
             location={props.location}

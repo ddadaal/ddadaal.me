@@ -7,7 +7,7 @@ import styled from "styled-components";
 import lang from "@/i18n/lang";
 import { I18nStore } from "@/stores/I18nStore";
 
-const MarginedBadge = styled(Badge)`
+const Tag = styled(Link)`
   margin-right: 4px;
 
   a {
@@ -17,22 +17,22 @@ const MarginedBadge = styled(Badge)`
 
 interface Props {
   tag: string;
+  containsCount?: boolean;
 }
 
-export default function ArticleTag({ tag }: Props) {
+export default function ArticleTag({ tag, containsCount }: Props) {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
-  const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [tag]) as string;
-
   const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.language) || tag;
 
-  return (
-      <MarginedBadge color={"info"} pill={true} key={tag}>
-        <Link to={`/search?query=${tagOfLang}`} title={title}>
-          {tagOfLang}
-        </Link>
-      </MarginedBadge>
-  );
+  const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
+  const toLink = `/search?query=${tagOfLang}`;
+  const count = metadataStore.getCountOfTag(tag);
 
+  return (
+    <Tag className="badge badge-info" to={toLink} title={title}>
+      {tagOfLang} {containsCount ? `(${count})` : null}
+    </Tag>
+  );
 }

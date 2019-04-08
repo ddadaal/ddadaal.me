@@ -4,14 +4,21 @@ import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
 interface Props {
   className?: string;
   tags: string[];
+  containsCount?: boolean;
 }
 
-export default function ArticleTagGroup(props: Props) {
+export default function ArticleTagGroup({ tags, containsCount }: Props) {
 
   return (
     <>
       {
-        props.tags.map((tag) => <ArticleTag key={tag} tag={tag} />)
+        tags.map((tag) => (
+          <ArticleTag
+            key={tag}
+            tag={tag}
+            containsCount={containsCount}
+          />
+        ))
       }
     </>
   );

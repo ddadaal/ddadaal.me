@@ -47,43 +47,49 @@ export class MetadataStore extends Store<{}> {
   }
 
   getTagOfLang(tag: string, language: Language): string | null {
-    const variations = this.tagMap.get(tag);
+    const info = this.tagMap.get(tag);
 
-    if (!variations) {
+    if (!info) {
       return null;
     }
+
+    const { variations } = info;
 
     if (typeof variations === "string") {
       return variations;
     }
 
-    return variations[language.id] || null;
-
+    return variations[language.id] || variations[0];
   }
 
   getAllVariationsOfTag(tag: string): string[] {
     const variations = [tag];
 
     const value = this.tagMap.get(tag);
-    if (value && typeof value === "object") {
-      Object.values(value).forEach((variation) => {
+    if (value && typeof (value.variations) === "object") {
+      Object.values(value.variations).forEach((variation) => {
         variations.push(variation);
       });
     }
     return variations;
   }
 
-  getTagsOfLang(language: Language): string[] {
+  getAllTagsOfLang(language: Language): string[] {
     const tags = [] as string[];
-    this.tagMap.forEach((value, key) => {
-        if (typeof value === "string") {
-          tags.push(value);
+    this.tagMap.forEach(({ count, variations }, key) => {
+        if (typeof variations === "string") {
+          tags.push(variations);
         } else {
-          tags.push(value[language.id] || value[0]);
+          tags.push(variations[language.id] || variations[0]);
         }
 
     });
 
     return tags;
+  }
+
+  getCountOfTag(tag: string): number {
+    const info = this.tagMap.get(tag);
+    return info ? info.count : 0;
   }
 }
