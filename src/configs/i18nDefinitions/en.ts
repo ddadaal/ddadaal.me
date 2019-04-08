@@ -93,5 +93,9 @@ export default {
       articleCount: "Number of articles",
       lastUpdated: "Last updated",
     },
+    tagsCard: {
+      title: "Tags",
+
+    },
   },
 };

@@ -51,7 +51,7 @@ export class I18nStore extends Store<II18nStore> {
     }
 
     if (!containsNonString) {
-      return array.join();
+      return array.join("");
     }
 
     return array;

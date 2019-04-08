@@ -4,6 +4,7 @@ import BlogIntroCard from "@/components/Cards/BlogIntroCard";
 import SelfIntroCard from "@/components/Cards/SelfIntroCard";
 import StatisticsCard from "@/components/Cards/StatisticsCard";
 import styled from "styled-components";
+import TagsCard from "@/components/Cards/TagsCard";
 
 interface Props {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ export default function ArticleListLayout(props: Props) {
         <Sidebar>
           <BlogIntroCard />
           <SelfIntroCard />
+          <TagsCard />
           <StatisticsCard />
         </Sidebar>
       </Col>

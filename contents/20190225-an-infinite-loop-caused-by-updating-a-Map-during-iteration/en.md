@@ -4,7 +4,7 @@ date: "2019/02/25 15:30"
 title: "An Infinite Loop Caused by Updating a Map during Iteration"
 lang: en
 tags:
-  - javascript
+  - JavaScript
   - web-frontend
   - problem-investigation
 ---

@@ -25,10 +25,12 @@ export default function ArticleTag({ tag }: Props) {
 
   const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [tag]) as string;
 
+  const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.language) || tag;
+
   return (
       <MarginedBadge color={"info"} pill={true} key={tag}>
-        <Link to={`/search?query=${tag}`} title={title}>
-          {metadataStore.getTagOfLang(tag, i18nStore.language) || tag}
+        <Link to={`/search?query=${tagOfLang}`} title={title}>
+          {tagOfLang}
         </Link>
       </MarginedBadge>
   );

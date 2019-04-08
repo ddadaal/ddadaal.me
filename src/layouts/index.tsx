@@ -12,7 +12,7 @@ import { ArticleGroups } from "@/models/ArticleGroups";
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
   allTagsJson: { nodes: Tag[] };
-  allMarkdownRemark: { edges: { node: ArticleNode }[] };
+  allMarkdownRemark: { nodes: ArticleNode[] };
 }
 
 interface Props {
@@ -38,23 +38,21 @@ const query = graphql`
       }
     }
     allMarkdownRemark {
-      edges {
-        node {
-          excerpt(pruneLength: 250, truncate: true)
-          wordCount {
-            words
-          }
-          frontmatter {
-            date
-            id
-            absolute_path
-            title
-            ignored
-            tags
-            hide_heading
-            lang
-            no_toc
-          }
+      nodes {
+        excerpt(pruneLength: 250, truncate: true)
+        wordCount {
+          words
+        }
+        frontmatter {
+          date
+          id
+          absolute_path
+          title
+          ignored
+          tags
+          hide_heading
+          lang
+          no_toc
         }
       }
     }
@@ -70,7 +68,7 @@ export default function(props: Props) {
       {(data: InitialData) => {
 
         if (!articleGroupsMemo.current) {
-          articleGroupsMemo.current = createArticleGroups(data.allMarkdownRemark.edges.map(({ node }) => node));
+          articleGroupsMemo.current = createArticleGroups(data.allMarkdownRemark.nodes);
         }
 
         const articleGroups = articleGroupsMemo.current;
@@ -80,13 +78,31 @@ export default function(props: Props) {
           totalArticleCount: Object.keys(articleGroups).length,
         };
 
+        // create tag map
+        const tagMap = new Map() as TagMap;
+
+        data.allTagsJson.nodes.forEach(({ tag, ...variations}) => {
+          tagMap.set(tag, variations);
+        });
+
+        // for each tags
+        data.allMarkdownRemark.nodes.forEach((node) => {
+            if (node.frontmatter.tags) {
+              node.frontmatter.tags.forEach((tag) => {
+                if (!tagMap.has(tag)) {
+                  tagMap.set(tag, tag);
+                }
+              });
+            }
+        });
+        
         return (
           <RootLayout
             location={props.location}
             siteMetadata={data.site.siteMetadata}
             statistics={statistics}
             articleGroups={articleGroups}
-            tags={data.allTagsJson.nodes}
+            tagMap={tagMap}
           >
           {props.children}
           </RootLayout>

@@ -20,20 +20,13 @@ export function createArticleGroups(articles: ArticleNode[]) {
 
 export class MetadataStore extends Store<{}> {
 
-  tagMap = new Map<string, { [lang: string]: string }>();
-
   constructor(
     public statistics: Statistics,
     public articleGroups: ArticleGroups,
     public baseUrl: string,
-    tags: Tag[]
+    public tagMap: TagMap,
   ) {
     super();
-
-    // init tag map
-    tags.forEach(({ tag, ...variations }) => {
-      this.tagMap.set(tag, variations as any);
-    });
   }
 
   getArticleOfLang(id: string, language: Language): ArticleNode {
@@ -60,17 +53,37 @@ export class MetadataStore extends Store<{}> {
       return null;
     }
 
+    if (typeof variations === "string") {
+      return variations;
+    }
+
     return variations[language.id] || null;
 
   }
 
   getAllVariationsOfTag(tag: string): string[] {
     const variations = [tag];
-    Object.values(this.tagMap.get(tag) || {}).forEach((variation) => {
-      variations.push(variation);
-    });
 
+    const value = this.tagMap.get(tag);
+    if (value && typeof value === "object") {
+      Object.values(value).forEach((variation) => {
+        variations.push(variation);
+      });
+    }
     return variations;
   }
 
+  getTagsOfLang(language: Language): string[] {
+    const tags = [] as string[];
+    this.tagMap.forEach((value, key) => {
+        if (typeof value === "string") {
+          tags.push(value);
+        } else {
+          tags.push(value[language.id] || value[0]);
+        }
+
+    });
+
+    return tags;
+  }
 }

@@ -1,15 +1,13 @@
 import React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
-import { FaEllipsisH, FaEnvelope, FaFile, FaGithub, FaMale, FaAddressBook } from "react-icons/fa";
 import { Link } from "gatsby";
-import StackedDiv from "@/layouts/components/StackedDiv";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
-import CardHeader from "reactstrap/lib/CardHeader";
 import Contacts from "../Contacts";
 import { useStore } from "simstate";
+import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 
 interface Props {
 }
@@ -24,8 +22,8 @@ export default function SelfIntroCard(props: Props) {
   const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.state.language).path;
 
   return (
-    <Card className="hover-card">
-      <CardHeader className="d-flex justify-content-between align-items-center">
+    <BaseCard>
+      <BaseCardHeader>
         <span>👦 <LocalizedString id={root.author} /></span>
         <Link
           className="card-link"
@@ -34,13 +32,13 @@ export default function SelfIntroCard(props: Props) {
         >
           <LocalizedString id={root.moreLink} />
         </Link>
-      </CardHeader>
+      </BaseCardHeader>
       <CardBody>
         <CardText>
           <LocalizedString id={root.university} />
         </CardText>
           <Contacts color="black" size={1.4}/>
       </CardBody>
-    </Card>
+    </BaseCard>
   );
 }

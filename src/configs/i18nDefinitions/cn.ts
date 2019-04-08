@@ -92,5 +92,9 @@ export default {
       articleCount: "总文章数",
       lastUpdated: "最后更新",
     },
+    tagsCard: {
+      title: "标签",
+
+    },
   },
 };

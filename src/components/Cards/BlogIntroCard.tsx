@@ -8,8 +8,8 @@ import lang from "@/i18n/lang";
 
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
-import CardHeader from "reactstrap/lib/CardHeader";
 import { useStore } from "simstate";
+import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 
 interface Props {
 
@@ -23,8 +23,8 @@ export default function BlogIntroCard(props: Props) {
   const metadataStore = useStore(MetadataStore);
 
   return (
-    <Card className="hover-card">
-      <CardHeader className="d-flex justify-content-between align-items-center">
+    <BaseCard>
+      <BaseCardHeader>
         <span>💻 VicBlog <LocalizedString id={root.subtitle} /></span>
         <Link
           className="card-link"
@@ -33,7 +33,7 @@ export default function BlogIntroCard(props: Props) {
         >
           <LocalizedString id={root.moreLink} />
         </Link>
-      </CardHeader>
+      </BaseCardHeader>
       <CardBody>
         <CardText>
           <LocalizedString id={root.description1} />
@@ -59,6 +59,6 @@ export default function BlogIntroCard(props: Props) {
           </Link>
         </StackedDiv>
       </CardBody>
-    </Card>
+    </BaseCard>
   );
 }
