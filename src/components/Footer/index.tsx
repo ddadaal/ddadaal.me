@@ -65,20 +65,16 @@ export default function Footer(props: Props) {
   return (
     <Container className={props.className}>
       <Row className="footer-contents">
-        <Col xs={{ size: 12, order: 1 }} md={{ size: 5, order: 1 }}>
+        <Col xs={{ size: 12, order: 1 }} md={{ size: 6, order: 1 }}>
           <Brief/>
         </Col>
-        <Col className={"d-sm-none d-md-block"} md={{ size: 2, order: 2 }}>
+        <Col className={"d-sm-none d-md-block"} md={{ size: 3, order: 2 }}>
           <h6>🚀 <LocalizedString id={root.poweredBy}/></h6>
           <List links={powerBys}/>
         </Col>
-        <Col className={"d-sm-none d-md-block"} md={{ size: 2, order: 3 }}>
+        <Col className={"d-sm-none d-md-block"} md={{ size: 3, order: 3 }}>
           <h6>🎨 <LocalizedString id={root.themedWith}/></h6>
           <List links={themedWiths}/>
-        </Col>
-        <Col xs={{ size: 12, order: 2 }} md={{ size: 3, order: 4 }}>
-          <h6>👨‍🎓 <LocalizedString id={root.friends}/></h6>
-          <List links={friends}/>
         </Col>
       </Row>
       <hr/>

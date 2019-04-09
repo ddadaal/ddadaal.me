@@ -31,7 +31,7 @@ export const dimensions = {
 };
 
 export const heights = {
-  header: 64,
+  header: 60,
   articleHeader: 192,
 };
 
@@ -39,4 +39,6 @@ export const colors = {
   main: "#2C3E50",
   headerBg: "#2C3E50",
   tocLinkActiveColor: "#3498DB",
+  extremelyLightGray: "#F7F7F7",
+  lightGray: "#DCDCDC",
 };

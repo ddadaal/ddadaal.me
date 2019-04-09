@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import { MetadataStore } from "@/stores/MetadataStore";
@@ -15,7 +15,7 @@ const NavbarLanguageSelector = () => {
 
   const { state, allLanguages, changeLanguage } = i18nStore;
 
-  const change = (lang: string) => {
+  const change = useCallback((lang: string) => {
     changeLanguage(lang);
     const article = articleStore.state.article;
     if (article) {
@@ -24,7 +24,7 @@ const NavbarLanguageSelector = () => {
         navigate(targetNode.path);
       }
     }
-  };
+  }, []);
 
   return (
     <LanguageSelector

@@ -7,7 +7,7 @@ interface Props {
 
 const Ul = styled.ul`
   list-style: none;
-  padding-left: 0px;
+  padding-left: 0;
 `;
 
 const Li = styled.li`

@@ -9,7 +9,7 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { Link } from "gatsby";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
@@ -66,19 +66,22 @@ const StyledNavbar = styled(Navbar)`
   margin-right: auto;
   padding: 4px 16px;
 
-  background-color: ${colors.headerBg};
+  // background-color: ${colors.headerBg};
+    
+  transition: width 0.2s ease-in-out;
 
 `;
 
 const Container = styled.header`
+  .transparent {
+    background-color: transparent !important;
+  }
+  transition: background-color 0.3s linear;
 `;
 
 const Placeholder = styled.div`
   height: ${(props: { height: number }) => props.height}px;
   transition: height 0.3s ease-in-out;
-
-  background-color: ${colors.headerBg};
-
 
   @media (min-width: ${breakpoints.md}px) {
     height: ${heights.header}px;
@@ -87,6 +90,10 @@ const Placeholder = styled.div`
 
 const StyledDropdownMenu = styled(DropdownMenu)`
     box-shadow: 0 .3rem .6rem rgba(0,0,0,.3);
+`;
+
+const NavbarContainer = styled.div`
+  background-color: ${colors.headerBg};
 `;
 
 export default function Header(props: Props) {
@@ -102,8 +109,8 @@ export default function Header(props: Props) {
 
   return (
     <Container>
-      <Placeholder height={isOpen ? 250 : heights.header} />
-      <div className="fixed-top bg-primary">
+      <Placeholder className={"bg-primary"} height={isOpen ? 250 : heights.header} />
+      <NavbarContainer className="fixed-top">
         <StyledNavbar dark={true} expand="md">
           <Branding title={props.title} />
           <NavbarToggler onClick={() => setOpen(!isOpen)} />
@@ -177,7 +184,7 @@ export default function Header(props: Props) {
             </Nav>
           </Collapse>
         </StyledNavbar>
-      </div>
+      </NavbarContainer>
     </Container>
   );
 }

@@ -6,6 +6,7 @@ import lang from "@/i18n/lang";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { Badge } from "reactstrap";
+import { colors } from "@/styles/variables";
 
 interface Props {
   tag: string;
@@ -17,10 +18,10 @@ const Item = styled(Link)`
   
   padding: 2px;
   
-  background-color: #F7F7F7;
+  background-color: ${colors.extremelyLightGray};
   
   &:hover {
-    background-color: #dcdcdc;
+    background-color: ${colors.lightGray};
     text-decoration: none;
   }
   

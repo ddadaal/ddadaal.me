@@ -2,6 +2,10 @@ import { colors, heights } from "@/styles/variables";
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import ArticleFrontmatter from "./ArticleFrontmatter";
+import {
+  RootContainer as BaseRootContainer,
+  InnerContainer as BaseInnerContainer
+} from "@/layouts/LayeredLayout";
 
 interface Props {
   title: string;
@@ -24,16 +28,14 @@ const enterAnimation = keyframes`
   }
 `;
 
-const RootContainer = styled.div`
-  position: relative;
+const RootContainer = styled(BaseRootContainer)`
   height: ${heights.articleHeader}px;
   width: 100%;
   background-color: ${colors.headerBg};
   
 `;
 
-const InnerContainer = styled.div`
-  position: absolute;
+const InnerContainer = styled(BaseInnerContainer)`
   height: ${heights.articleHeader}px;
   width: 100%;
 `;

@@ -98,5 +98,8 @@ export default {
       title: "Tags",
 
     },
+    friends: {
+      title: "Friends",
+    },
   },
 };

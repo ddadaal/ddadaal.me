@@ -20,11 +20,11 @@ export default function StatisticsCard() {
       </ListGroupHeader>
       <ListGroupItem className="d-flex justify-content-between align-items-center">
         <LocalizedString id={root.articleCount} />
-        <Badge pill={true} color="primary">{statistics.totalArticleCount}</Badge>
+        <Badge pill={true} color="info">{statistics.totalArticleCount}</Badge>
       </ListGroupItem>
       <ListGroupItem className="d-flex justify-content-between align-items-center">
         <LocalizedString id={root.lastUpdated} />
-        <Badge pill={true} color="primary">
+        <Badge pill={true} color="info">
           {statistics.lastUpdated}
         </Badge>
       </ListGroupItem>

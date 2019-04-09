@@ -43,7 +43,6 @@ export default {
       license: "除非特别注明，本站文章在{}协议下授权",
       contacts: "联系我",
       madeWithLove: "用❤制作",
-      friends: "友情链接",
       friendLinkhire: "如果您希望您的链接加入本站友情链接，请联系我！",
     },
     languageSelector: {
@@ -95,7 +94,11 @@ export default {
     },
     tagsCard: {
       title: "标签",
-
+    },
+    friends: {
+      title: "朋友们",
+    },
+    homepage: {
     },
   },
 };
