@@ -6,6 +6,7 @@ import { colors, heights } from "@/styles/variables";
 import Contacts from "@/components/Contacts";
 import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import Particles from "@/components/Particles";
+import bgImg from "~/assets/mainbg.jpg";
 
 interface Props {
 
@@ -18,23 +19,33 @@ const Title = styled(RootContainer)`
 `;
 
 const ImgContainer = styled(InnerContainer)`
-
-  background-color: ${colors.headerBg};
-  height: 100%;
+  height: ${titleHeight}px;
+  width: 100%;
   z-index: 1;
+  overflow: auto;
+
+  img {
+    width: 100%;
+  }
+`;
+
+const ParticlesContainer = styled(InnerContainer)`
+
+  height: 100%;
+  z-index: 2;
 `;
 
 const TextContent = styled(InnerContainer)`
-  z-index: 2;
+  z-index: 3;
   color: white;
-  text-align: center; 
-  
+  text-align: center;
+
   margin-top: 56px;
 `;
 
 const TitleText = styled.h1`
    padding: 12px 0;
-      
+
 `;
 
 const Slogan = styled.h4`
@@ -46,10 +57,13 @@ export default function HomePage(props: Props) {
     <div>
       <Title>
         <ImgContainer>
+          <img src={bgImg} />
+        </ImgContainer>
+        <ParticlesContainer>
           <Particles marginTop={heights.header}
                      height={titleHeight}
           />
-        </ImgContainer>
+        </ParticlesContainer>
         <TextContent>
           <TitleText>Hello</TitleText>
           <Slogan>from a Student | Programmer | Dreamer</Slogan>

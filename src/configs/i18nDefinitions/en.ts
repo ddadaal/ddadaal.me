@@ -101,5 +101,7 @@ export default {
     friends: {
       title: "Friends",
     },
+    homepage: {
+    },
   },
 };
