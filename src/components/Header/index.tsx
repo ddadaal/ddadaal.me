@@ -24,12 +24,7 @@ import ArticlePathItem from "@/components/Header/ArticlePathItem";
 import NavItem from "@/components/Header/NavItem";
 
 interface Props {
-  title: string;
 
-}
-
-interface State {
-  isOpen: boolean;
 }
 
 const StyledLogo = styled(Icon)`
@@ -38,11 +33,11 @@ const StyledLogo = styled(Icon)`
   margin-right: 8px;
 `;
 
-function Branding(props: { title: string }) {
+function Branding() {
   return (
     <Link to={"/"} className={"navbar-brand"}>
       <StyledLogo />
-      {props.title}
+      VicBlog
     </Link>
   );
 }
@@ -67,7 +62,7 @@ const StyledNavbar = styled(Navbar)`
   padding: 4px 16px;
 
   // background-color: ${colors.headerBg};
-    
+
   transition: width 0.2s ease-in-out;
 
 `;
@@ -79,12 +74,18 @@ const Container = styled.header`
   transition: background-color 0.3s linear;
 `;
 
+interface PlaceholderProps { isOpen: boolean; transparent: boolean; }
+
 const Placeholder = styled.div`
-  height: ${(props: { height: number }) => props.height}px;
-  transition: height 0.3s ease-in-out;
+  height: ${({ isOpen, transparent }: PlaceholderProps) => isOpen ? 300 : transparent ? 0 : heights.header}px;
+
+  @media (max-width: ${breakpoints.md}px) {
+    transition: height 0.3s ease-in-out;
+
+  }
 
   @media (min-width: ${breakpoints.md}px) {
-    height: ${heights.header}px;
+    height: ${({ transparent }: PlaceholderProps) => transparent ? 0 : heights.header}px;
   }
 `;
 
@@ -93,7 +94,7 @@ const StyledDropdownMenu = styled(DropdownMenu)`
 `;
 
 const NavbarContainer = styled.div`
-  background-color: ${colors.headerBg};
+  transition: background-color 0.2s ease-in-out;
 `;
 
 export default function Header(props: Props) {
@@ -103,23 +104,46 @@ export default function Header(props: Props) {
 
   const { pathname } = locationStore;
 
+  const navbarRef = useRef<HTMLDivElement>(null);
+
+  const atHomePage = pathname === "/";
+
+  useEffect(() => {
+    const handler = () => {
+      if (atHomePage && window.scrollY === 0) {
+        navbarRef.current!!.style.backgroundColor = "transparent";
+      } else {
+        navbarRef.current!!.style.backgroundColor = colors.headerBg;
+      }
+    }
+    handler();
+
+    window.addEventListener("scroll", handler);
+    return () => {
+      window.removeEventListener("scroll", handler);
+    }
+  }, [atHomePage]);
+
   const close = () => {
     setOpen(false);
   };
 
   return (
     <Container>
-      <Placeholder className={"bg-primary"} height={isOpen ? 250 : heights.header} />
-      <NavbarContainer className="fixed-top">
+      <Placeholder className={"bg-primary"}
+        isOpen={isOpen}
+        transparent={atHomePage}
+       />
+      <NavbarContainer ref={navbarRef} className="fixed-top">
         <StyledNavbar dark={true} expand="md">
-          <Branding title={props.title} />
+          <Branding />
           <NavbarToggler onClick={() => setOpen(!isOpen)} />
           <Collapse isOpen={isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
               <BSNavItem>
                 <SearchBar onSearch={close} />
               </BSNavItem>
-              <NavItem active={pathname === "/"} to="/" onClick={close}>
+              <NavItem active={atHomePage} to="/" onClick={close}>
                 <FaHome />
                 <LocalizedString id={root.home} />
               </NavItem>
@@ -127,12 +151,6 @@ export default function Header(props: Props) {
                 <FaBookOpen />
                 <LocalizedString id={root.articles} />
               </NavItem>
-              {/* <NavItem active={pathnameWithoutLanguage.startsWith("/articlePlans")}>
-                <NavLink to="/articlePlans" onClick={close}>
-                  <FaCalendarAlt />
-                  <LocalizedString id={root.articlePlans} />
-                </NavLink>
-              </NavItem> */}
               <ArticlePathItem
                 Outer={BSNavItem}
                 id={"resume"}

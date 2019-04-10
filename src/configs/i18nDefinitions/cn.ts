@@ -99,6 +99,15 @@ export default {
       title: "朋友们",
     },
     homepage: {
+      morning: "上午好",
+      afternoon: "下午好",
+      evening: "晚上好",
+      from: "来自一个学生 | 程序员 | 有梦想的咸鱼",
+      links: {
+        articles: "文章",
+        resume: "简历",
+        myGithub: "我的GitHub",
+      },
     },
   },
 };

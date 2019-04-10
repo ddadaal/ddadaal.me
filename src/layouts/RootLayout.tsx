@@ -100,7 +100,7 @@ export default class RootLayout extends React.Component<Props, {}> {
               ]}
             />
             <NewContentPop />
-            <Header title={siteMetadata.title} />
+            <Header />
             <LayoutMain>{children}</LayoutMain>
             <ScrollToTop showUnder={160}>
               <h3><FaArrowUp /></h3>

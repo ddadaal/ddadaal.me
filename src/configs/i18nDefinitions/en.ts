@@ -102,6 +102,15 @@ export default {
       title: "Friends",
     },
     homepage: {
+      morning: "Good Morning",
+      afternoon: "Good Afternoon",
+      evening: "Good evening",
+      from: "From a Student | Programmer | Dreamer",
+      links: {
+        articles: "Articles",
+        resume: "Resume",
+        myGithub: "My GitHub",
+      },
     },
   },
 };

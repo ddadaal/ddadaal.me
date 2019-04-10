@@ -23,6 +23,9 @@
     ],
     "importHelpers": true
   },
+  "exclude": [
+    "node_modules",
+  ],
   "include": [
     "./src/**/*", "__tests__/enzyme.js"
   ]
