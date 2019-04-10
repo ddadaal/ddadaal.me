@@ -10,15 +10,16 @@ no_toc: true
 
 ---
 
-<div>
+<div style="text-align: center;">
 
 I am eager to hear what you, dear readers, think about my website! :smile:
 
-If you have a word, you can
+If you have a word, please write it down on the **comment panel** below.
+ 
+Or **contact me** through the following channels.
 
-- write it down on the comment panel below, or
-- [contact me](#contacts)!
+<feedback-contacts></feedback-contacts>
 
-I'd greatly appreciated it!
+I'd be greatly appreciated it!
 
 </div>

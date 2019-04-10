@@ -9,7 +9,7 @@ import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import { Button } from "reactstrap";
-import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk } from "react-icons/fa";
+import { FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk, FaRegCommentDots } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
@@ -82,11 +82,11 @@ export default function HomePage(props: Props) {
         <ImgContainer>
           <img src={bgImg}/>
         </ImgContainer>
-        <ParticlesContainer>
-          <Particles marginTop={heights.header}
-                     height={titleHeight}
-          />
-        </ParticlesContainer>
+        {/*<ParticlesContainer>*/}
+        {/*  <Particles marginTop={heights.header}*/}
+        {/*             height={titleHeight}*/}
+        {/*  />*/}
+        {/*</ParticlesContainer>*/}
         <TextContent>
           <TitleText><LocalizedString id={selectDate()}/></TitleText>
           <Slogan><LocalizedString id={root.from}/></Slogan>
@@ -97,12 +97,10 @@ export default function HomePage(props: Props) {
             <Link className={"btn btn-info"} to={metadataStore.getArticleOfLang("resume", i18nStore.language).path}>
               <FaFile/><LocalizedString id={root.links.resume}/>
             </Link>
-            <a className={"btn btn-info"} target={"_blank"} href={"mailto://smallda@outlook.com"}>
-              <FaMailBulk/>Email
-            </a>
-            <a className={"btn btn-info"} target={"_blank"} href={"https://github.com/viccrubs"}>
-              <FaGithub/><LocalizedString id={root.links.myGithub}/>
-            </a>
+            <Link className={"btn btn-info"} to={metadataStore.getArticleOfLang("feedback", i18nStore.language).path}>
+              <FaRegCommentDots />
+              <LocalizedString id={root.links.feedback}/>
+            </Link>
           </LinkContainer>
         </TextContent>
       </Title>

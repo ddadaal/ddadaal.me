@@ -1,5 +1,5 @@
 import React from "react";
-import ParticlesOriginal from "react-particles-js";
+// import ParticlesOriginal from "react-particles-js";
 
 interface Props {
   width?: number;
@@ -34,6 +34,7 @@ const params = {
 export default class Particles extends React.PureComponent<Props, {}> {
   render() {
     const { width, marginTop, height } = this.props;
-    return <ParticlesOriginal height={`${height}px`} params={params} />;
+    // return <ParticlesOriginal height={`${height}px`} params={params} />;
+    return null;
   }
 }

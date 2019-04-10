@@ -106,7 +106,7 @@ export default {
       links: {
         articles: "文章",
         resume: "简历",
-        myGithub: "我的GitHub",
+        feedback: "反馈 & 留言",
       },
     },
   },

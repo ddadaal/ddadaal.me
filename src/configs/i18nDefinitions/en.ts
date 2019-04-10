@@ -109,7 +109,7 @@ export default {
       links: {
         articles: "Articles",
         resume: "Resume",
-        myGithub: "My GitHub",
+        feedback: "Feedback",
       },
     },
   },
