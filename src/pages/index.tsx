@@ -9,7 +9,11 @@ import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import { Button } from "reactstrap";
-import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaGithub } from "react-icons/fa";
+import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk } from "react-icons/fa";
+import { Link } from "gatsby";
+import { I18nStore } from "@/stores/I18nStore";
+import { useStore } from "simstate";
+import { MetadataStore } from "@/stores/MetadataStore";
 
 interface Props {
 
@@ -57,7 +61,54 @@ const Slogan = styled.h4`
   padding: 12px 0;
 `;
 
+const LinkContainer = styled.div`
+   padding: 12px 0;
+
+  & > * {
+    margin-right: 4px;  
+  }
+`;
+
 const root = lang.homepage;
+
+export default function HomePage(props: Props) {
+
+  const i18nStore = useStore(I18nStore);
+  const metadataStore = useStore(MetadataStore);
+
+  return (
+    <div>
+      <Title>
+        <ImgContainer>
+          <img src={bgImg}/>
+        </ImgContainer>
+        <ParticlesContainer>
+          <Particles marginTop={heights.header}
+                     height={titleHeight}
+          />
+        </ParticlesContainer>
+        <TextContent>
+          <TitleText><LocalizedString id={selectDate()}/></TitleText>
+          <Slogan><LocalizedString id={root.from}/></Slogan>
+          <LinkContainer>
+            <Link className={"btn btn-info"} to={"/articles"}>
+              <FaBookOpen/><LocalizedString id={root.links.articles}/>
+            </Link>
+            <Link className={"btn btn-info"} to={metadataStore.getArticleOfLang("resume", i18nStore.language).path}>
+              <FaFile/><LocalizedString id={root.links.resume}/>
+            </Link>
+            <a className={"btn btn-info"} target={"_blank"} href={"mailto://smallda@outlook.com"}>
+              <FaMailBulk/>Email
+            </a>
+            <a className={"btn btn-info"} target={"_blank"} href={"https://github.com/viccrubs"}>
+              <FaGithub/><LocalizedString id={root.links.myGithub}/>
+            </a>
+          </LinkContainer>
+        </TextContent>
+      </Title>
+    </div>
+  );
+}
 
 function selectDate(): string {
   const hour = new Date().getHours();
@@ -68,39 +119,4 @@ function selectDate(): string {
   } else {
     return root.evening;
   }
-}
-
-const LinkContainer = styled.div`
-   padding: 12px 0;
-
-  & > * {
-    margin-right: 4px;  
-  }
-`;
-
-export default function HomePage(props: Props) {
-  return (
-    <div>
-      <Title>
-        <ImgContainer>
-          <img src={bgImg} />
-        </ImgContainer>
-        <ParticlesContainer>
-          <Particles marginTop={heights.header}
-                     height={titleHeight}
-          />
-        </ParticlesContainer>
-        <TextContent>
-          <TitleText><LocalizedString id={selectDate()} /></TitleText>
-          <Slogan><LocalizedString id={root.from} /></Slogan>
-          <LinkContainer>
-            <Button color={"info"}><FaBookOpen /><LocalizedString id={root.links.articles}/></Button>
-            <Button color={"info"}><FaFile /><LocalizedString id={root.links.resume}/></Button>
-            <Button color={"info"}><FaGithub /><LocalizedString id={root.links.myGithub}/></Button>
-
-          </LinkContainer>
-        </TextContent>
-      </Title>
-    </div>
-  );
 }

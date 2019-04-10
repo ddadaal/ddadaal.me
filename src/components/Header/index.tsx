@@ -9,7 +9,7 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { Link } from "gatsby";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
@@ -61,22 +61,19 @@ const StyledNavbar = styled(Navbar)`
   margin-right: auto;
   padding: 4px 16px;
 
-  // background-color: ${colors.headerBg};
-
   transition: width 0.2s ease-in-out;
 
 `;
 
 const Container = styled.header`
-  .transparent {
-    background-color: transparent !important;
-  }
-  transition: background-color 0.3s linear;
+
 `;
 
 interface PlaceholderProps { isOpen: boolean; transparent: boolean; }
 
 const Placeholder = styled.div`
+  
+  background-color: ${colors.headerBg};
   height: ${({ isOpen, transparent }: PlaceholderProps) => isOpen ? 300 : transparent ? 0 : heights.header}px;
 
   @media (max-width: ${breakpoints.md}px) {
@@ -115,22 +112,22 @@ export default function Header(props: Props) {
       } else {
         navbarRef.current!!.style.backgroundColor = colors.headerBg;
       }
-    }
+    };
     handler();
 
     window.addEventListener("scroll", handler);
     return () => {
       window.removeEventListener("scroll", handler);
-    }
+    };
   }, [atHomePage]);
 
-  const close = () => {
+  const close = useCallback(() => {
     setOpen(false);
-  };
+  }, []);
 
   return (
     <Container>
-      <Placeholder className={"bg-primary"}
+      <Placeholder
         isOpen={isOpen}
         transparent={atHomePage}
        />

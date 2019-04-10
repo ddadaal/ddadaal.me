@@ -104,7 +104,7 @@ export default {
     homepage: {
       morning: "Good Morning",
       afternoon: "Good Afternoon",
-      evening: "Good evening",
+      evening: "Good Evening",
       from: "From a Student | Programmer | Dreamer",
       links: {
         articles: "Articles",
