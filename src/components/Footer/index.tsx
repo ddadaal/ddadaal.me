@@ -14,6 +14,7 @@ import friendLinks from "@/configs/friendLinks";
 import Brief from "@/components/Footer/Brief";
 import List from "@/components/Footer/List";
 import MadeWithLove from "@/components/Footer/MadeWithLove";
+import ListGroupHeader from "@/components/UI/ListGroup/ListGroupHeader";
 
 interface Props {
   className?: string;
@@ -65,16 +66,20 @@ export default function Footer(props: Props) {
   return (
     <Container className={props.className}>
       <Row className="footer-contents">
-        <Col xs={{ size: 12, order: 1 }} md={{ size: 6, order: 1 }}>
+        <Col md={{ size: 4 }}>
           <Brief/>
         </Col>
-        <Col className={"d-sm-none d-md-block"} md={{ size: 3, order: 2 }}>
+        <Col className={"d-none d-sm-none d-md-block"} md={{ size: 2 }}>
           <h6>🚀 <LocalizedString id={root.poweredBy}/></h6>
           <List links={powerBys}/>
         </Col>
-        <Col className={"d-sm-none d-md-block"} md={{ size: 3, order: 3 }}>
+        <Col className={"d-none d-sm-none d-md-block"} md={{ size: 2 }}>
           <h6>🎨 <LocalizedString id={root.themedWith}/></h6>
           <List links={themedWiths}/>
+        </Col>
+        <Col md={{ size: 4 }}>
+          <h6>👨‍🎓 <LocalizedString id={lang.friends.title}/></h6>
+          <List links={friends}/>
         </Col>
       </Row>
       <hr/>
