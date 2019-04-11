@@ -109,6 +109,8 @@ export default {
       links: {
         articles: "Articles",
         resume: "Resume",
+        aboutMe: "About Me",
+        aboutProject: "About Project",
         feedback: "Feedback",
       },
     },

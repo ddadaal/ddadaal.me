@@ -106,7 +106,9 @@ export default {
       links: {
         articles: "文章",
         resume: "简历",
-        feedback: "反馈 & 留言",
+        aboutMe: "关于我",
+        aboutProject: "关于项目",
+        feedback: "反馈",
       },
     },
   },
