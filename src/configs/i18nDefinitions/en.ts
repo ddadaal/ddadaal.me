@@ -51,6 +51,7 @@ export default {
       select: "Select a language for website",
     },
     articlePage: {
+      title: "Articles",
       backToHome: "Back to home",
       selectLang: "Select a language for article",
       toc: "Table of Contents",

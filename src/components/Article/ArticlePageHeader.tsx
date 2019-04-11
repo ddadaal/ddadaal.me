@@ -1,11 +1,12 @@
 import { colors, heights } from "@/styles/variables";
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled  from "styled-components";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import {
   RootContainer as BaseRootContainer,
-  InnerContainer as BaseInnerContainer
+  InnerContainer as BaseInnerContainer,
 } from "@/layouts/LayeredLayout";
+import moveInAnimation from "@/styles/moveInAnimation";
 
 interface Props {
   title: string;
@@ -15,18 +16,6 @@ interface Props {
   wordCount: number;
   currentArticleLanguage: string;
 }
-
-const enterAnimation = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 const RootContainer = styled(BaseRootContainer)`
   height: ${heights.articleHeader}px;
@@ -51,7 +40,7 @@ const InfoLayer = styled(InnerContainer)`
   align-items: center;
   justify-content: center;
   
-   animation: ${enterAnimation} 0.2s ease-out;
+   animation: ${moveInAnimation} 0.2s ease-out;
 
 `;
 

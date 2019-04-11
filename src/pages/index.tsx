@@ -1,20 +1,18 @@
 import React from "react";
 
-import styled from "styled-components";
-import { heights } from "@/styles/variables";
 import Contacts from "@/components/Contacts";
 import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
-import Particles from "@/components/Particles";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { Button } from "reactstrap";
 import { FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk, FaRegCommentDots, FaGlobe, FaMale } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import styled, { keyframes } from "styled-components";
+import moveInAnimation from "@/styles/moveInAnimation";
 
 interface Props {
 
@@ -34,13 +32,7 @@ const Bg = styled(RootContainer)`
   align-items: center;
   justify-items: center;
   justify-content: center;
- 
-`;
-
-const ParticlesContainer = styled(InnerContainer)`
-
-  height: 100%;
-  z-index: 2;
+  
 `;
 
 const TextContent = styled(InnerContainer)`
@@ -51,6 +43,8 @@ const TextContent = styled(InnerContainer)`
   & > * {
      padding: 12px 0;
   }
+    animation: ${moveInAnimation} 0.2s ease-in-out;
+
 `;
 
 const TitleText = styled.h1`

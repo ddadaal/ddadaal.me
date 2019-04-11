@@ -70,7 +70,7 @@ export default function ArticlePageTemplate(props: Props) {
   const {
     frontmatter: {
       title, date, tags, hide_heading, no_toc,
-    }, path, wordCount: {words: wordCount}, excerpt
+    }, path, wordCount: {words: wordCount}, excerpt,
   } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);

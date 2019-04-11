@@ -57,6 +57,7 @@ export default {
       title: " 评论",
     },
     articlePage: {
+      title: "文章",
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
       toc: "目录",

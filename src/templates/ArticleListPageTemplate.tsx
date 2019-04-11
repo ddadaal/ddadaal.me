@@ -23,15 +23,17 @@ function toPage(pageNum: number) {
   return () => navigate(path);
 }
 
-export default function Index({pageContext}: Props) {
+export default function ArticleListPageTemplate({pageContext}: Props) {
   const {pageCount, pageIndex, ids} = pageContext;
   const {language, allLanguages} = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
 
   return (
     <ArticleListLayout>
-      <Helmet meta={[
-        {name: "og:title", content: "VicBlog"},
+      <Helmet
+        title={`${language.definitions.articlePage.title} - VicBlog`}
+        meta={[
+        {name: "og:title", content: `${language.definitions.articlePage.title} - VicBlog`},
         {name: "og:url", content: metadataStore.baseUrl},
         {name: "og:site_name", content: "VicBlog"},
         {name: "og:locale", content: language.detailedId},
