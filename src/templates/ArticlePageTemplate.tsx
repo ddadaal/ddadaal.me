@@ -16,6 +16,7 @@ import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
 import { useStore } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 
 interface Props {
   pageContext: {
@@ -43,7 +44,7 @@ const PageWithHeader = styled(Page)`
    animation: ${enterAnimation} 0.2s ease-in-out;
 `;
 
-function PageComponent({ hasHeader, children }: { hasHeader: boolean, children: React.ReactNode }) {
+function PageComponent({hasHeader, children}: { hasHeader: boolean, children: React.ReactNode }) {
   return hasHeader ? <PageWithHeader>{children}</PageWithHeader> : <Page>{children}</Page>;
 }
 
@@ -53,7 +54,7 @@ export default function ArticlePageTemplate(props: Props) {
   const metadataStore = useStore(MetadataStore);
   const articleStore = useStore(ArticleStore);
 
-  const { id, lang, htmlAst, headings } = props.pageContext;
+  const {id, lang, htmlAst, headings} = props.pageContext;
 
   const language = i18nStore.getLanguage(lang)!;
 
@@ -66,37 +67,40 @@ export default function ArticlePageTemplate(props: Props) {
     };
   }, [articleNode]);
 
-  const { frontmatter: {
-    title, date, tags, hide_heading, no_toc,
-  }, path, wordCount: { words: wordCount }, excerpt } = articleNode;
+  const {
+    frontmatter: {
+      title, date, tags, hide_heading, no_toc,
+    }, path, wordCount: {words: wordCount}, excerpt
+  } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 
   return (
-    <div>
-      <Helmet
-        title={`${title} - VicBlog`}
-        meta={[
-          { name: "og:title", content: title },
-          { name: "og:description", content: excerpt },
-          { name: "og:type", content: "article" },
-          { name: "og:url", content: `${metadataStore.baseUrl}${path}` },
-          { name: "og:locale", content: language.detailedId },
-          ...Object.keys(langPathMap)
-            .filter((x) => x !== lang)
-            .map((x) => ({
-              name: "og:locale:alternate",
-              content: i18nStore.getLanguage(x)!.detailedId,
+    <HeaderFooterLayout transparentHeader={false}>
+      <div>
+        <Helmet
+          title={`${title} - VicBlog`}
+          meta={[
+            {name: "og:title", content: title},
+            {name: "og:description", content: excerpt},
+            {name: "og:type", content: "article"},
+            {name: "og:url", content: `${metadataStore.baseUrl}${path}`},
+            {name: "og:locale", content: language.detailedId},
+            ...Object.keys(langPathMap)
+              .filter((x) => x !== lang)
+              .map((x) => ({
+                name: "og:locale:alternate",
+                content: i18nStore.getLanguage(x)!.detailedId,
+              })),
+            {name: "og:site_name", content: "VicBlog"},
+            {name: "og:article:published_time", content: date},
+            ...(tags || []).map((x) => ({
+              name: "og:article:tag",
+              content: x,
             })),
-          { name: "og:site_name", content: "VicBlog" },
-          { name: "og:article:published_time", content: date },
-          ...(tags || []).map((x) => ({
-            name: "og:article:tag",
-            content: x,
-          })),
-        ]}
-      />
-      {!hide_heading &&
+          ]}
+        />
+        {!hide_heading &&
         (
           <ArticlePageHeader
             title={title}
@@ -107,31 +111,32 @@ export default function ArticlePageTemplate(props: Props) {
             currentArticleLanguage={lang}
           />
         )
-      }
-      <PageComponent hasHeader={!hide_heading}>
-        <Row>
-          <Col md={no_toc ? 12 : 9} sm={12} >
-            <ArticleContentDisplay
-              htmlAst={htmlAst}
-              headings={headings}
-            />
-          </Col>
-          {
-            !no_toc
-            && (
-              <Col md={3} className="d-none d-md-block" >
-                <TocPanel headings={headings} />
-              </Col>
-            )
-          }
-        </Row>
-        {/* <Share articleId={id} /> */}
-        <CommentPanel
-          language={i18nStore.language.gitalkLangId}
-          articleId={id}
-          articleTitle={title}
-        />
-      </PageComponent>
-    </div>
+        }
+        <PageComponent hasHeader={!hide_heading}>
+          <Row>
+            <Col md={no_toc ? 12 : 9} sm={12}>
+              <ArticleContentDisplay
+                htmlAst={htmlAst}
+                headings={headings}
+              />
+            </Col>
+            {
+              !no_toc
+              && (
+                <Col md={3} className="d-none d-md-block">
+                  <TocPanel headings={headings}/>
+                </Col>
+              )
+            }
+          </Row>
+          {/* <Share articleId={id} /> */}
+          <CommentPanel
+            language={i18nStore.language.gitalkLangId}
+            articleId={id}
+            articleTitle={title}
+          />
+        </PageComponent>
+      </div>
+    </HeaderFooterLayout>
   );
 }

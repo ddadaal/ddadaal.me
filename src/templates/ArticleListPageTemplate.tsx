@@ -23,28 +23,26 @@ function toPage(pageNum: number) {
   return () => navigate(path);
 }
 
-export default function Index({ pageContext }: Props) {
-  const { pageCount, pageIndex, ids } = pageContext;
-  const { language, allLanguages } = useStore(I18nStore);
+export default function Index({pageContext}: Props) {
+  const {pageCount, pageIndex, ids} = pageContext;
+  const {language, allLanguages} = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
 
   return (
-    <Page>
+    <ArticleListLayout>
       <Helmet meta={[
-        { name: "og:title", content: "VicBlog" },
-        { name: "og:url", content: metadataStore.baseUrl },
-        { name: "og:site_name", content: "VicBlog" },
-        { name: "og:locale", content: language.detailedId },
+        {name: "og:title", content: "VicBlog"},
+        {name: "og:url", content: metadataStore.baseUrl},
+        {name: "og:site_name", content: "VicBlog"},
+        {name: "og:locale", content: language.detailedId},
         ...allLanguages
           .filter((x) => x !== language)
           .map((x) => ({
             name: "og:locale:alternate",
             content: x.detailedId,
           })),
-      ]} />
-      <ArticleListLayout>
-        <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
-      </ArticleListLayout>
-    </Page>
+      ]}/>
+      <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage}/>
+    </ArticleListLayout>
   );
 }

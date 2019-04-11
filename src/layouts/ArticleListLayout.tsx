@@ -6,6 +6,8 @@ import StatisticsCard from "@/components/Cards/StatisticsCard";
 import styled from "styled-components";
 import TagsCard from "@/components/Cards/TagsCard";
 import FriendsCard from "@/components/Cards/FriendsCard";
+import Page from "@/layouts/components/Page";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 
 interface Props {
   children: React.ReactNode;
@@ -20,19 +22,23 @@ const Sidebar = styled.div`
 
 export default function ArticleListLayout(props: Props) {
   return (
-    <Row>
-      <Col md={8} xs={12}>
-        {props.children}
-      </Col>
-      <Col md={4} xs={12}>
-        <Sidebar>
-          <BlogIntroCard />
-          <SelfIntroCard />
-          <TagsCard />
-          <FriendsCard/>
-          <StatisticsCard />
-        </Sidebar>
-      </Col>
-    </Row>
+    <HeaderFooterLayout transparentHeader={false}>
+      <Page>
+        <Row>
+          <Col md={8} xs={12}>
+            {props.children}
+          </Col>
+          <Col md={4} xs={12}>
+            <Sidebar>
+              <BlogIntroCard/>
+              <SelfIntroCard/>
+              <TagsCard/>
+              <FriendsCard/>
+              <StatisticsCard/>
+            </Sidebar>
+          </Col>
+        </Row>
+      </Page>
+    </HeaderFooterLayout>
   );
 }

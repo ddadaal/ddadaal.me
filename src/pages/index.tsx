@@ -14,6 +14,7 @@ import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 
 interface Props {
 
@@ -33,6 +34,7 @@ const Bg = styled(RootContainer)`
   align-items: center;
   justify-items: center;
   justify-content: center;
+ 
 `;
 
 const ParticlesContainer = styled(InnerContainer)`
@@ -74,34 +76,36 @@ export default function HomePage(props: Props) {
 
   const getArticleLink = (id: string) => {
     return metadataStore.getArticleOfLang(id, i18nStore.language).path;
-  }
+  };
 
   return (
-    <Bg>
-      <TextContent>
-        <TitleText><LocalizedString id={selectDate()}/></TitleText>
-        <Slogan><LocalizedString id={root.from}/></Slogan>
-        <LinkContainer>
-          <Link className={"btn btn-info"} to={"/articles"}>
-            <FaBookOpen/><LocalizedString id={root.links.articles}/>
-          </Link>
-          <Link className={"btn btn-info"} to={getArticleLink("resume")}>
-            <FaFile/><LocalizedString id={root.links.resume}/>
-          </Link>
-          <Link className={"btn btn-info"} to={getArticleLink("about-me")}>
-            <FaMale/><LocalizedString id={root.links.aboutMe}/>
-          </Link>
-          <Link className={"btn btn-info"} to={getArticleLink("about-project")}>
-            <FaGlobe/><LocalizedString id={root.links.aboutProject}/>
-          </Link>
-          <Link className={"btn btn-info"} to={getArticleLink("feedback")}>
-            <FaRegCommentDots/>
-            <LocalizedString id={root.links.feedback}/>
-          </Link>
-        </LinkContainer>
-        <Contacts size={1.6} color={"white"} />
-      </TextContent>
-    </Bg>
+    <HeaderFooterLayout transparentHeader={true}>
+      <Bg>
+        <TextContent>
+          <TitleText><LocalizedString id={selectDate()}/></TitleText>
+          <Slogan><LocalizedString id={root.from}/></Slogan>
+          <LinkContainer>
+            <Link className={"btn btn-info"} to={"/articles"}>
+              <FaBookOpen/><LocalizedString id={root.links.articles}/>
+            </Link>
+            <Link className={"btn btn-info"} to={getArticleLink("resume")}>
+              <FaFile/><LocalizedString id={root.links.resume}/>
+            </Link>
+            <Link className={"btn btn-info"} to={getArticleLink("about-me")}>
+              <FaMale/><LocalizedString id={root.links.aboutMe}/>
+            </Link>
+            <Link className={"btn btn-info"} to={getArticleLink("about-project")}>
+              <FaGlobe/><LocalizedString id={root.links.aboutProject}/>
+            </Link>
+            <Link className={"btn btn-info"} to={getArticleLink("feedback")}>
+              <FaRegCommentDots/>
+              <LocalizedString id={root.links.feedback}/>
+            </Link>
+          </LinkContainer>
+          <Contacts size={1.6} color={"white"}/>
+        </TextContent>
+      </Bg>
+    </HeaderFooterLayout>
   );
 }
 

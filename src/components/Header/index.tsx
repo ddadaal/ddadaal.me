@@ -24,22 +24,7 @@ import ArticlePathItem from "@/components/Header/ArticlePathItem";
 import NavItem from "@/components/Header/NavItem";
 
 interface Props {
-
-}
-
-const StyledLogo = styled(Icon)`
-  width: 42px;
-  height: 42px;
-  margin-right: 8px;
-`;
-
-function Branding() {
-  return (
-    <Link to={"/"} className={"navbar-brand"}>
-      <StyledLogo />
-      VicBlog
-    </Link>
-  );
+  transparentHeader: boolean;
 }
 
 const root = lang.headers;
@@ -94,7 +79,7 @@ const NavbarContainer = styled.div`
   transition: background-color 0.2s ease-in-out;
 `;
 
-export default function Header(props: Props) {
+export default function Header({ transparentHeader }: Props) {
   const locationStore = useStore(LocationStore);
 
   const [isOpen, setOpen] = useState(false);
@@ -107,7 +92,7 @@ export default function Header(props: Props) {
 
   useEffect(() => {
     const handler = () => {
-      if (atHomePage && window.scrollY === 0) {
+      if (transparentHeader && window.scrollY === 0) {
         navbarRef.current!!.style.backgroundColor = "transparent";
       } else {
         navbarRef.current!!.style.backgroundColor = colors.headerBg;
@@ -119,7 +104,7 @@ export default function Header(props: Props) {
     return () => {
       window.removeEventListener("scroll", handler);
     };
-  }, [atHomePage]);
+  }, [transparentHeader]);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -129,7 +114,7 @@ export default function Header(props: Props) {
     <Container>
       <Placeholder
         isOpen={isOpen}
-        transparent={atHomePage}
+        transparent={transparentHeader}
        />
       <NavbarContainer ref={navbarRef} className="fixed-top">
         <StyledNavbar dark={true} expand="md">
@@ -201,5 +186,20 @@ export default function Header(props: Props) {
         </StyledNavbar>
       </NavbarContainer>
     </Container>
+  );
+}
+
+const StyledLogo = styled(Icon)`
+  width: 42px;
+  height: 42px;
+  margin-right: 8px;
+`;
+
+function Branding() {
+  return (
+    <Link to={"/"} className={"navbar-brand"}>
+      <StyledLogo />
+      VicBlog
+    </Link>
   );
 }

@@ -17,12 +17,6 @@ import NewContentPop from "@/components/NewContentPop";
 import { StoreProvider } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 
-const LayoutMain = styled.main`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-`;
-
 const LayoutRoot = styled.div`
   display: flex;
   flex-direction: column;
@@ -100,12 +94,10 @@ export default class RootLayout extends React.Component<Props, {}> {
               ]}
             />
             <NewContentPop />
-            <Header />
-            <LayoutMain>{children}</LayoutMain>
             <ScrollToTop showUnder={160}>
               <h3><FaArrowUp /></h3>
             </ScrollToTop>
-            <Footer />
+            {children}
           </LayoutRoot>
         </StoreProvider>
       </IconContext.Provider>

@@ -23,7 +23,7 @@ export default function SearchPage() {
   const locationStore = useStore(LocationStore);
   const metadataStore = useStore(MetadataStore);
 
-  const { query, page = 1 } = locationStore.query as Query;
+  const {query, page = 1} = locationStore.query as Query;
 
   const pageIndex = page - 1;
 
@@ -63,30 +63,27 @@ export default function SearchPage() {
   searchResult = searchResult.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
 
   return (
-    <Page>
-      <ArticleListLayout>
-        <h3>
-          <LocalizedString id={root.title} replacements={[
-            <strong key={"query"}>{query}</strong>,
-          ]} />
-        </h3>
-        <small>
-          <LocalizedString id={root.info} replacements={[
-            totalCount,
-          ]} />
-        </small>
-        <hr />
-        <ArticleItemList
-          ids={searchResult.map((x) => x[0].frontmatter.id)}
-          pageCount={pageCount}
-          pageIndex={page - 1}
-          toPage={(pageNum) => {
-            const path = `/search?query=${encodeURIComponent(query || "")}&page=${pageNum + 1}`;
-            return () => navigate(path);
-          }}
-        />
-      </ArticleListLayout>
-
-    </Page>
+    <ArticleListLayout>
+      <h3>
+        <LocalizedString id={root.title} replacements={[
+          <strong key={"query"}>{query}</strong>,
+        ]}/>
+      </h3>
+      <small>
+        <LocalizedString id={root.info} replacements={[
+          totalCount,
+        ]}/>
+      </small>
+      <hr/>
+      <ArticleItemList
+        ids={searchResult.map((x) => x[0].frontmatter.id)}
+        pageCount={pageCount}
+        pageIndex={page - 1}
+        toPage={(pageNum) => {
+          const path = `/search?query=${encodeURIComponent(query || "")}&page=${pageNum + 1}`;
+          return () => navigate(path);
+        }}
+      />
+    </ArticleListLayout>
   );
 }
