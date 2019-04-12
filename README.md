@@ -4,7 +4,7 @@
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
-VicBlog is a static personal blog built with Gatsby.
+VicBlog is a static personal blog, currently built with Gatsby.
 
 [Check it out now!](https://viccrubs.me)
 
@@ -25,20 +25,26 @@ VicBlog is a static personal blog built with Gatsby.
 
 ## Development
 
-**[Yarn](https://yarnpkg.com/zh-Hans/)** instead of NPM is required.
+NPM is required.
 
 ``` bash
 # install dependencies
-yarn install
+npm install
+
+# Install dependencies From TaoBao
+npm run iftb
 
 # serve with hot reload at localhost:8000
-yarn start
+npm start
 
 # run production build
-yarn run build
+npm run build
 
 # **After build**, serve the production build locally
-yarn run serve
+npm run serve
+
+# Update dependencies with npm-check-updates & install dependencies
+npm run upddep
 ```
 
 ## Firewall Notice
@@ -52,12 +58,12 @@ If you encountered download error mentioned above, follow the following steps to
 1. Download the file yourself and place the file into a directory
 2. Run `python -m http.server {port} --bind {url}` and keep it running until the installation completes.
 3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
-5. `yarn install` and you are ready to go!
+5. `npm install` and you are ready to go!
 
 
 ## Continuous Integration and Delivery
 
-[Travis-CI](https://travis-ci.org) builds and publishes directly into viccrubs.github.io for every commit.
+[Travis-CI](https://travis-ci.org) builds and publishes directly into viccrubs.github.io for every commit to master.
 
 ## Credits
 
