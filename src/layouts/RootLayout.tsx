@@ -10,12 +10,12 @@ import styled from "styled-components";
 import Helmet from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ScrollToTop from "react-scroll-up";
 import icon512 from "~/assets/icon.png";
 import { FaArrowUp } from "react-icons/fa";
 import NewContentPop from "@/components/NewContentPop";
 import { StoreProvider } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
+import ToTop from "@/components/ToTop";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -94,9 +94,7 @@ export default class RootLayout extends React.Component<Props, {}> {
               ]}
             />
             <NewContentPop />
-            <ScrollToTop showUnder={160}>
-              <h3><FaArrowUp /></h3>
-            </ScrollToTop>
+            <ToTop />
             {children}
           </LayoutRoot>
         </StoreProvider>
