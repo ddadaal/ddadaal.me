@@ -1,5 +1,5 @@
 import React from "react";
-import styled  from "styled-components";
+import styled from "styled-components";
 import { widths } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
 

@@ -111,7 +111,7 @@ export default {
         articles: "Articles",
         resume: "Resume",
         aboutMe: "About Me",
-        aboutProject: "About Project",
+        aboutProject: "About Website",
         feedback: "Feedback",
       },
     },

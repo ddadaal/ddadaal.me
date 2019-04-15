@@ -108,7 +108,7 @@ export default {
         articles: "文章",
         resume: "简历",
         aboutMe: "关于我",
-        aboutProject: "关于项目",
+        aboutProject: "关于网站",
         feedback: "反馈",
       },
     },
