@@ -6,6 +6,7 @@ import { MetadataStore } from "@/stores/MetadataStore";
 import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import Contacts from "@/components/Contacts";
+import SeparatedRow from "@/components/Footer/SeparatedRow";
 
 const root = lang.footer;
 
@@ -32,10 +33,15 @@ export default function Brief() {
         ]} />
 
       </p>
+      <p>
+        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.statistics.lastUpdated}</strong>
+
+      </p>
       <div>
         <span id="contacts">📲 <LocalizedString id={root.contacts} /></span>
         <Contacts color="white" size={1.6} />
       </div>
+
     </div>
   );
 }

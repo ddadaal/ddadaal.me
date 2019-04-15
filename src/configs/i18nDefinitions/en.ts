@@ -48,12 +48,12 @@ export default {
       friendLinkhire: "Contact me if you'd like your website added to this list :D",
     },
     languageSelector: {
-      select: "Select a language for website",
+      select: "Select a language",
     },
     articlePage: {
       title: "Articles",
       backToHome: "Back to home",
-      selectLang: "Select a language for article",
+      selectLang: "Select a language",
       toc: "Table of Contents",
       share: {
         title: "Share",

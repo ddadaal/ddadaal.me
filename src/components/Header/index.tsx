@@ -31,8 +31,12 @@ const root = lang.headers;
 
 const StyledDropdownItem = styled(DropdownItem)`
   .nav-link {
-    color: black !important;
+    color: ${({ active }) => active ? "white" : "black"}!important;
 
+  }
+  
+  .active > a {
+    color: white !important;
   }
 
   .nav-link:hover {
@@ -91,11 +95,14 @@ export default function Header({ transparentHeader }: Props) {
   const atHomePage = pathname === "/";
 
   useEffect(() => {
+
+    const navbar = navbarRef.current!!;
+
     const handler = () => {
       if (transparentHeader && window.scrollY === 0) {
-        navbarRef.current!!.style.backgroundColor = "transparent";
+        navbar.style.backgroundColor = "transparent";
       } else {
-        navbarRef.current!!.style.backgroundColor = colors.headerBg;
+        navbar.style.backgroundColor = colors.headerBg;
       }
     };
     handler();

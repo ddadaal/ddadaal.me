@@ -15,6 +15,7 @@ import Brief from "@/components/Footer/Brief";
 import List from "@/components/Footer/List";
 import MadeWithLove from "@/components/Footer/MadeWithLove";
 import ListGroupHeader from "@/components/UI/ListGroup/ListGroupHeader";
+import SeparatedRow from "@/components/Footer/SeparatedRow";
 
 interface Props {
   className?: string;
@@ -26,7 +27,7 @@ const Container = styled.footer`
   color: white;
   background-color: ${colors.headerBg};
 
-  padding: 32px 0px;
+  padding: 32px 0;
 
   hr {
     color: white;
@@ -62,6 +63,8 @@ const friends = friendLinks.map(({ name, link, description }) => ({
 const root = lang.footer;
 
 export default function Footer(props: Props) {
+
+  const metadataStore = useStore(MetadataStore);
 
   return (
     <Container className={props.className}>

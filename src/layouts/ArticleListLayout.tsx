@@ -33,7 +33,6 @@ export default function ArticleListLayout(props: Props) {
               <BlogIntroCard/>
               <SelfIntroCard/>
               <TagsCard/>
-              <StatisticsCard/>
             </Sidebar>
           </Col>
         </Row>

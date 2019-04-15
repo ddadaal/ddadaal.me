@@ -46,7 +46,7 @@ export default {
       friendLinkhire: "如果您希望您的链接加入本站友情链接，请联系我！",
     },
     languageSelector: {
-      select: "选择一个网站语言",
+      select: "选择语言",
     },
     articleFrontmatter: {
       timeToRead: "阅读时间：{}分钟",
