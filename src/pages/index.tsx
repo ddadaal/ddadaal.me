@@ -21,14 +21,7 @@ interface Props {
 
 const Bg = styled(RootContainer)`
   height: 100vh;
-
-  background-image: url(${bgImg});
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
+  
   display: flex;
   align-items: center;
   justify-items: center;
