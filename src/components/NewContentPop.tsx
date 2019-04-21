@@ -2,6 +2,7 @@ import React from "react";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled, { keyframes } from "styled-components";
+import { heights } from "@/styles/variables";
 
 interface Props {
 
@@ -12,7 +13,7 @@ const enter = keyframes`
     top: 0;
   }
   100% {
-    top: 30px;
+    top: ${heights.header + 32}px;
   }
 `;
 
