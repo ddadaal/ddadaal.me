@@ -6,6 +6,7 @@ node_js:
 branches:
   only:
   - master
+  - codingnettest
 install:
 - npm install
 script:
@@ -21,3 +22,21 @@ deploy:
   repo: vicblog/vicblog.github.io
   fqdn: viccrubs.me
   target-branch: master
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $CODINGNET_TOKEN  # Set in the settings page of your repository, as a secure variable
+  on:
+    branch: codingnettest
+  local-dir: public
+  repo: viccrubs/viccrubs.coding.me.git
+  github_url: git.coding.net
+  target-branch: master
+
+# deploy:
+#   provider: script
+#   skip-cleanup: true
+#   script: bash scripts/codingdeploy.sh
+#   on:
+#     branch: master
