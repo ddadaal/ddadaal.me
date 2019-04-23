@@ -30,7 +30,7 @@ deploy:
   on:
     branch: codingnettest
   local-dir: public
-  repo: viccrubs/viccrubs.coding.me.git
+  repo: viccrubs/viccrubs.coding.me
   github_url: git.coding.net
   target-branch: master
 
