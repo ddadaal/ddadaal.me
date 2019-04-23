@@ -5,6 +5,9 @@ title: "2017年总结"
 lang: cn
 tags:
   - annual-summary
+  
+related:
+  - summary-for-2018
 ---
 
 是时候来简单梳理下我的2017年了。

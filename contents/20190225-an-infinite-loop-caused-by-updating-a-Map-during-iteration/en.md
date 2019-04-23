@@ -7,6 +7,9 @@ tags:
   - JavaScript
   - web-frontend
   - problem-investigation
+  
+related: 
+  - simstate-and-why
 ---
 
 # The Problem

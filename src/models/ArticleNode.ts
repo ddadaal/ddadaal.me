@@ -20,5 +20,6 @@ export interface ArticleNode {
     hide_heading?: boolean;
     lang: string;
     no_toc?: boolean;
+    related?: string[];
   };
 }

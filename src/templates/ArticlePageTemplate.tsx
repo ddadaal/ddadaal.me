@@ -17,6 +17,7 @@ import { useStore } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import RelatedArticles from "@/components/Article/RelatedArticles";
 
 interface Props {
   pageContext: {
@@ -69,7 +70,7 @@ export default function ArticlePageTemplate(props: Props) {
 
   const {
     frontmatter: {
-      title, date, tags, hide_heading, no_toc,
+      title, date, tags, hide_heading, no_toc, related,
     }, path, wordCount: {words: wordCount}, excerpt,
   } = articleNode;
 
@@ -130,6 +131,8 @@ export default function ArticlePageTemplate(props: Props) {
             }
           </Row>
           {/* <Share articleId={id} /> */}
+          {related ? <RelatedArticles ids={related} /> : null}
+          <hr />
           <CommentPanel
             language={i18nStore.language.gitalkLangId}
             articleId={id}

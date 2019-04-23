@@ -60,6 +60,7 @@ exports.createPages = async ({ actions, graphql }) => {
             ignored
             date
             absolute_path
+            related
           }
           htmlAst
           headings {

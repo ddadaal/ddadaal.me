@@ -53,6 +53,7 @@ const query = graphql`
           hide_heading
           lang
           no_toc
+          related
         }
       }
     }

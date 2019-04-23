@@ -64,6 +64,9 @@ export default {
       share: {
         title: "分享",
       },
+      relatedArticles: {
+        text: "相关文章",
+      },
     },
     articleItem: {
       availableLanguages: "可用语言：",
@@ -99,6 +102,7 @@ export default {
     friends: {
       title: "朋友们",
     },
+
     homepage: {
       morning: "上午好",
       afternoon: "下午好",

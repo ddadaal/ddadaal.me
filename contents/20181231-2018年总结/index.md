@@ -5,6 +5,9 @@ title: "2018年总结"
 lang: cn
 tags:
   - annual-summary
+  
+related:
+  - summary-for-2017
 ---
 
 # 前言

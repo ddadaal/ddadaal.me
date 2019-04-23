@@ -6,6 +6,9 @@ lang: cn
 tags:
   - interview-experiences
   - Microsoft
+
+related:
+  - 2019-spring-ms-intern-interview-experiences
 ---
 
 # 开端

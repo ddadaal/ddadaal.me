@@ -7,6 +7,7 @@ import { MetadataStore } from "@/stores/MetadataStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
 import { useStore } from "simstate";
+import { containsChinese } from "@/utils/containsChinese";
 
 interface Props {
   article: ArticleNode;
@@ -25,9 +26,8 @@ const StyledH = styled.h2`
     text-decoration: underline;
   }
 
-  font-size: 30px;
+  font-size: 32px;
   padding: 4px 0;
-  /* font-weight: bold; */
 `;
 
 const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
@@ -59,8 +59,13 @@ export default function ArticleItem(props: Props) {
         articleId={id}
       />
 
-      <p>{excerpt}</p>
+      <p>{limitLength(excerpt)}</p>
       <hr />
     </StyledPost>
   );
+}
+
+function limitLength(content: string) {
+  const lengthLimit = containsChinese(content) ? 130 : 300;
+  return content.substring(0, lengthLimit) + "...";
 }

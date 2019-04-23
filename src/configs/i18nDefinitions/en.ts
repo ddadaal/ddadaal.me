@@ -58,6 +58,9 @@ export default {
       share: {
         title: "Share",
       },
+      relatedArticles: {
+        text: "Related Articles",
+      },
     },
     articleFrontmatter: {
       timeToRead: "{} mins to read",
