@@ -12,19 +12,18 @@ script:
 - npm run build
 
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  on:
-    branch: master
-  local-dir: public
-  repo: vicblog/vicblog.github.io
-  fqdn: githubpages.viccrubs.me
-  target-branch: master
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    on:
+      branch: master
+    local-dir: public
+    repo: vicblog/vicblog.github.io
+    fqdn: viccrubs.me
+    target-branch: master
 
-deploy:
-  provider: script
-  skip-cleanup: true
-  script: bash scripts/codingdeploy.sh
-  on:
-    branch: master
+  - provider: script
+    skip-cleanup: true
+    script: bash scripts/codingdeploy.sh
+    on:
+      branch: master
