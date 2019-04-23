@@ -12,6 +12,7 @@ import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import styled, { keyframes } from "styled-components";
+import { colors } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
 
 interface Props {
@@ -20,26 +21,29 @@ interface Props {
 
 const Bg = styled(RootContainer)`
   height: 100vh;
-  
+
+  background-color: ${colors.homepageBgColor};
   background-image: url(${bgImg});
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
+
+
+
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: center;
-  
+
 `;
 
 const TextContent = styled(InnerContainer)`
   z-index: 3;
   color: white;
   text-align: center;
-  
+
   & > * {
      padding: 12px 0;
   }
@@ -57,7 +61,7 @@ const Slogan = styled.h4`
 const LinkContainer = styled.div`
 
   & > * {
-    margin: 4px;  
+    margin: 4px;
   }
 `;
 
