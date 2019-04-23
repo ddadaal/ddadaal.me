@@ -24,19 +24,8 @@ deploy:
   target-branch: master
 
 deploy:
-  provider: pages
+  provider: script
   skip-cleanup: true
-  github-token: $CODINGNET_TOKEN  # Set in the settings page of your repository, as a secure variable
+  script: bash scripts/codingdeploy.sh
   on:
     branch: codingnettest
-  local-dir: public
-  repo: viccrubs/viccrubs.coding.me
-  github_url: git.coding.net
-  target-branch: master
-
-# deploy:
-#   provider: script
-#   skip-cleanup: true
-#   script: bash scripts/codingdeploy.sh
-#   on:
-#     branch: master
