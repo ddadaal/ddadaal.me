@@ -5,7 +5,7 @@ import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk, FaRegCommentDots, FaGlobe, FaMale } from "react-icons/fa";
+import { FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk, FaRegCommentDots, FaGlobe, FaMale, FaGithubAlt, FaClock, FaCode } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
@@ -14,6 +14,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import styled, { keyframes } from "styled-components";
 import { colors } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
+import Localize from "@/i18n/Localize";
 
 interface Props {
 
@@ -49,6 +50,14 @@ const TextContent = styled(InnerContainer)`
   }
     animation: ${moveInAnimation} 0.2s ease-in-out;
 
+`;
+
+const BottomTextContent = styled(InnerContainer)`
+  z-index: 3;
+  color: white;
+  text-align: center;
+  
+  bottom: 8px;
 `;
 
 const TitleText = styled.h1`
@@ -101,7 +110,13 @@ export default function HomePage(props: Props) {
             </Link>
           </LinkContainer>
           <Contacts size={1.6} color={"white"}/>
+          <p>
+            <FaClock />
+            <LocalizedString id={lang.statistics.lastUpdated} />：
+            <strong> {metadataStore.statistics.lastUpdated}</strong>
+          </p>
         </TextContent>
+
       </Bg>
     </HeaderFooterLayout>
   );

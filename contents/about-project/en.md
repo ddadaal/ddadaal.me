@@ -9,6 +9,15 @@ lang: en
 
 ---
 
+# Website Information
+
+[![Build Status](https://travis-ci.org/vicblog/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/vicblog/VicBlog-Gatsby)
+
+VicBlog is a website designed and coded from the ground up, without the use of existing website solutions like Wordpress, Typecho, Hexoetc. Any discussions and contributions to the repository are welcomed.
+
+
+GitHub: https://github.com/vicblog/VicBlog-Gatsby
+
 # A Personal Blog Odyssey
 
 It has been a long way for VicBlog to be the one you are looking at right now. To see the epic journey that VicBlog and I have been through since 2010, please check out [A Personal Blog Odyssey](/en/about/odyssey).

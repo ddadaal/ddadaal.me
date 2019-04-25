@@ -9,11 +9,19 @@ lang: cn
 
 ---
 
+# 项目信息
+
+[![Build Status](https://travis-ci.org/vicblog/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/vicblog/VicBlog-Gatsby)
+
+VicBlog是一个自己实现的网站，并未使用现成网站/博客框架（例如WordPress, Typecho、Hexo等），欢迎讨论和贡献本项目。
+
+项目地址：https://github.com/vicblog/VicBlog-Gatsby
+
 # 一个个人博客的史诗
 
 VicBlog经历了很多，才变成你现在看到这个网站。想知道VicBlog和我在这个从2010年开始的史诗中的经历，请看[一个个人博客的史诗](/en/about/odyssey).
 
-# 实现
+# 历史实现
 
 自从2016年开始，VicBlog已经用多种技术栈实现过。所有的实现都放在了[vicblog](https://github.com/vicblog) 组织中。
 

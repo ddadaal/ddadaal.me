@@ -14,14 +14,15 @@ const StyledPage = styled.div`
 interface PageProps {
   className?: string;
   children?: React.ReactNode;
+  maxWidth?: number;
 }
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div<{ maxWidth: number }>`
   position: relative;
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  max-width: ${widths.mainContent}px;
+  max-width: ${({ maxWidth }) => maxWidth}px;
 
   animation: ${moveInAnimation} 0.2s ease-out;
 `;
@@ -29,9 +30,13 @@ const StyledContainer = styled.div`
 export default function Page(props: PageProps) {
   return (
     <StyledPage>
-      <StyledContainer className={props.className}>
+      <StyledContainer maxWidth={props.maxWidth} className={props.className}>
         {props.children}
       </StyledContainer>
     </StyledPage>
   );
 }
+
+Page.defaultProps = {
+  maxWidth: widths.mainContent,
+};

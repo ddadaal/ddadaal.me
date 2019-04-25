@@ -31,7 +31,7 @@ const NavbarLanguageSelector = () => {
       allLanguages={allLanguages}
       currentLanguage={state.language.name}
       changeLanguage={change}
-      prompt={"🌐 " + state.language.definitions.languageSelector.select}
+      prompt={state.language.definitions.languageSelector.select}
     />
   );
 };
