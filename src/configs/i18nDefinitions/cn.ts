@@ -67,6 +67,12 @@ export default {
       relatedArticles: {
         text: "相关文章",
       },
+      actionSidebar: {
+        thumbUp: "赞",
+        thumbedUp: "谢谢！",
+        link: "复制链接",
+        linkCopied: "已复制！",
+      },
     },
     articleItem: {
       availableLanguages: "可用语言：",

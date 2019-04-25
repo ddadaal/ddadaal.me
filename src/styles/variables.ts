@@ -10,7 +10,8 @@ export const widths = {
   md: 720,
   lg: 960,
   xl: 1140,
-  mainContent: 1200,
+  mainContent: 1320,
+  articleContent: 740,
 };
 
 export const dimensions = {

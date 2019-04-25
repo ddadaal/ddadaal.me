@@ -18,6 +18,7 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
+import ArticleActionSidebar from "@/components/Article/ActionSidebar";
 
 interface Props {
   pageContext: {
@@ -115,7 +116,10 @@ export default function ArticlePageTemplate(props: Props) {
         }
         <PageComponent hasHeader={!hide_heading}>
           <Row>
-            <Col md={no_toc ? 12 : 9} sm={12}>
+            <Col className="d-none d-lg-block" lg={2}>
+              <ArticleActionSidebar article={articleNode} />
+            </Col>
+            <Col md={no_toc ? 12 : 9} lg={no_toc ? 8 : 8} sm={12}>
               <ArticleContentDisplay
                 htmlAst={htmlAst}
                 headings={headings}
@@ -124,7 +128,7 @@ export default function ArticlePageTemplate(props: Props) {
             {
               !no_toc
               && (
-                <Col md={3} className="d-none d-md-block">
+                <Col md={3} lg={2} className="d-none d-md-block">
                   <TocPanel headings={headings}/>
                 </Col>
               )

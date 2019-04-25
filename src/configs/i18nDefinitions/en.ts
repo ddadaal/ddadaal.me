@@ -61,6 +61,12 @@ export default {
       relatedArticles: {
         text: "Related Articles",
       },
+      actionSidebar: {
+        thumbUp: "Thumb up",
+        thumbedUp: "Thank you!",
+        link: "Copy link",
+        linkCopied: "Link Copied!",
+      },
     },
     articleFrontmatter: {
       timeToRead: "{} mins to read",

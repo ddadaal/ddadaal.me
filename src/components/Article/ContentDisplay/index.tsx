@@ -9,6 +9,7 @@ import rehypeReact from "rehype-react";
 import { HtmlAst } from "@/models/HtmlAst";
 import addSlug from "@/components/Article/ContentDisplay/astManipulators/addSlug";
 import addCodeHeader from "@/components/Article/ContentDisplay/astManipulators/addCodeHeader";
+import { widths } from "@/styles/variables";
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -21,6 +22,9 @@ interface Props {
 }
 
 const MarkdownDisplay = styled.article`
+  max-width: ${widths.articleContent}px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default function ArticleContentDisplay(props: Props) {

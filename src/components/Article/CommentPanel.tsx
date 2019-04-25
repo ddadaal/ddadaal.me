@@ -8,6 +8,7 @@ import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import { isServer } from "@/utils/isServer";
+import { widths } from "@/styles/variables";
 
 interface Props {
   articleId: string;
@@ -17,6 +18,10 @@ interface Props {
 
 const CommentDiv = styled.div`
   margin-top: 32px;
+
+  max-width: ${widths.articleContent}px;
+  margin-left: auto;
+  margin-right: auto;
 
   .gt-action-text {
     color: #6190e8;;
