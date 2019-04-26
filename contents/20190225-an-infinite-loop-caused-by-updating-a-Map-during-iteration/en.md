@@ -7,8 +7,8 @@ tags:
   - JavaScript
   - web-frontend
   - problem-investigation
-  
-related: 
+
+related:
   - simstate-and-why
 ---
 
@@ -16,13 +16,13 @@ related:
 
 I accidently encountered a problem during the development of the 2.0 version of [simstate](/articles/simstate-and-why): During an iteration of a set of `observers` stored in a ES6 Map, which contained only one element, an infinite loop occurred.
 
-![](./loop-that-never-ends.png)
+![Loop that never ends](./loop-that-never-ends.png)
 
 # Investigation
 
 This problem confused me quite a lot. It had been confirmed that this Map had only one element and the element remained unchanged between and inside loops, and the all elements in `promises` array were the same.
 
-![](./only-one-element.png)
+![Only one element in the map](./only-one-element.png)
 
 My first thought was **data race**. It might be true for other languages with real multi-threading capability, but this is JavaScript: it is single thread only, and so there would be no such concurrent related problems.
 

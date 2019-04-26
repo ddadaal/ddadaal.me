@@ -69,4 +69,10 @@
   .center {
     text-align: center;
   }
+
+  .gatsby-resp-image-figcaption {
+    text-align: center;
+    color: $gray-600;
+    margin: 16px;
+  }
 }

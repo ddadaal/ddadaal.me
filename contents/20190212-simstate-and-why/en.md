@@ -100,7 +100,7 @@ The immediate choice after realizing the aforementional problems is the [unstate
 
 The much hyped [React Hooks](https://reactjs.org/docs/hooks-intro.html) is an another striking thing for all React developers when it is revealed. It gives so much power to functional components in an unexpected way, that nearly every class component can be rewritten into a functional component, and makes the code much clearer than before (See the previous section for comparison, and the YouTube video [React Today and Tomorrow and 90% Cleaner React with Hooks](https://www.youtube.com/watch?v=dpw9EHDh2bM)). Not after that, the author of unstated posted a twitter revealing the incoming hook powered unstated. It was awesome and ambitious, but it hasn't released yet.
 
-![](./unstated-hooks.png)
+![A glimpse of Hooks in unstated](./unstated-hooks.png)
 
 To clarify, I am not blaming `unstated`: it wants to achieve more. I just want to *hookify* the use of store, but `unstated` plans to *hookify* store itself as well. It is way more challenging than `simstate` has done now, so it is absolutely reasonable why the new version has not been released. However, I can't wait any longer to put Hooks into my project.
 

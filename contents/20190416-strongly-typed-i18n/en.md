@@ -177,7 +177,7 @@ function LocalizedString({ id }: { id: string }) {
 
 The core idea is to **record the key at every access** using Proxy. By lying to TS compiler about the actual type of the lang, all the type related features are naturally enabled, like the autocompletion showing in the picture below.
 
-![](./lang-autocompletion.png)
+![Lang object autocompletion](./lang-autocompletion.png)
 
 By making the proxy object **immutable**, we can introduce a common object containing the **common prefix** without sacrificing type inferenece, resulting in cleaner code, especially when multiple components are needed.
 
@@ -195,7 +195,7 @@ const root = lang.app.header.userIndicator.loggedIn.dropdown;
 <LocalizedString id={root.logout.buttom.text} />
 
 ```
-![](./root-autocompletion.png)
+![root object autocompletion](./root-autocompletion.png)
 
 # Drawbacks and Conclusion
 
