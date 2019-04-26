@@ -18,6 +18,8 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
+import ArticleActions from "@/components/Article/Actions";
+import { heights } from "@/styles/variables";
 
 interface Props {
   pageContext: {
@@ -125,11 +127,14 @@ export default function ArticlePageTemplate(props: Props) {
               !no_toc
               && (
                 <Col md={3} className="d-none d-md-block">
-                  <TocPanel headings={headings}/>
+                  <StickySidePanel>
+                    <TocPanel headings={headings}/>
+                  </StickySidePanel>
                 </Col>
               )
             }
           </Row>
+
           {/* <Share articleId={id} /> */}
           {related ? <RelatedArticles ids={related} /> : null}
           <hr />
@@ -143,3 +148,8 @@ export default function ArticlePageTemplate(props: Props) {
     </HeaderFooterLayout>
   );
 }
+
+const StickySidePanel = styled.div`
+  position: sticky;
+  top: ${heights.header + 32}px;
+`

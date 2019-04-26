@@ -41,5 +41,6 @@ export const colors = {
   tocLinkActiveColor: "#3498DB",
   extremelyLightGray: "#F7F7F7",
   lightGray: "#DCDCDC",
+  gray: "#7b8a8b",
   homepageBgColor: "#232323",
 };

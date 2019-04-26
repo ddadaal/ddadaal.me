@@ -61,6 +61,17 @@ export default {
       relatedArticles: {
         text: "Related Articles",
       },
+      actions: {
+        like: {
+          like: "Like",
+          clicked: "Thank you!",
+          liked: "Liked!",
+        },
+        copyLink: {
+          copyLink: "Copy Link",
+          copied: "Link copied!",
+        },
+      },
     },
     articleFrontmatter: {
       timeToRead: "{} mins to read",

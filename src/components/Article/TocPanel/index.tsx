@@ -17,8 +17,6 @@ const root = lang.articlePage;
 const Container = styled.div`
   border-left: 1px solid lightgray;
 
-  position: sticky;
-  top: ${heights.header + 32}px;
   z-index: 1020;
 
   &> p {

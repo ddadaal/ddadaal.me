@@ -67,6 +67,17 @@ export default {
       relatedArticles: {
         text: "相关文章",
       },
+      actions: {
+        like: {
+          like: "赞！",
+          clicked: "谢谢！",
+          liked: "已赞",
+        },
+        copyLink: {
+          copyLink: "复制链接",
+          copied: "已复制链接！",
+        },
+      },
     },
     articleItem: {
       availableLanguages: "可用语言：",

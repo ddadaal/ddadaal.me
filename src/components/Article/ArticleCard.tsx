@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { CardBody } from "reactstrap";
 import { navigate } from "gatsby";
 import { containsChinese } from "@/utils/containsChinese";
+import { colors } from "@/styles/variables";
 
 interface Props {
   articleId: string;
@@ -42,8 +43,9 @@ export default function ArticleCard({ articleId, className }: Props) {
 
   return (
     <Card className={className} onClick={() => navigate(localizedArticle.path)}>
-      <BaseCardHeader>{localizedArticle.frontmatter.title}</BaseCardHeader>
       <CardBody>
+        <Date>{localizedArticle.frontmatter.date}</Date>
+        <Title>{localizedArticle.frontmatter.title}</Title>
         {limitLength(localizedArticle.excerpt)}
       </CardBody>
 
@@ -52,6 +54,18 @@ export default function ArticleCard({ articleId, className }: Props) {
 }
 
 function limitLength(content: string) {
-  const lengthLimit = containsChinese(content) ? 100 : 180;
+  const lengthLimit = containsChinese(content) ? 100 : 200;
   return content.substring(0, lengthLimit) + "...";
 }
+
+const Title = styled.p`
+  margin-bottom: 2px; 
+  font-weight: bold;
+  font-size: 18px;
+`;
+
+const Date = styled.p`
+  margin-bottom: 2px;
+  font-size: 12px;
+  color: ${colors.gray};
+`;
