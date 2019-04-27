@@ -26,7 +26,7 @@ export default function ArticleTag({ tag }: Props) {
   const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.language) || tag;
 
   const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
-  const toLink = `/search?query=${tagOfLang}`;
+  const toLink = `/articles/search?query=${tagOfLang}`;
 
   return (
     <Tag className="badge badge-info" to={toLink} title={title}>
