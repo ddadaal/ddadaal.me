@@ -5,7 +5,7 @@ import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { FaFile, FaInfo, FaBookOpen, FaGithub, FaMailBulk, FaRegCommentDots, FaGlobe, FaMale, FaGithubAlt, FaClock, FaCode } from "react-icons/fa";
+import { FaFile, FaBookOpen, FaRegCommentDots, FaGlobe, FaMale, FaClock } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
@@ -56,7 +56,7 @@ const BottomTextContent = styled(InnerContainer)`
   z-index: 3;
   color: white;
   text-align: center;
-  
+
   bottom: 8px;
 `;
 

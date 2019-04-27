@@ -37,7 +37,7 @@ module.exports = {
         typePrefix: '',
 
         // The url, this should be the endpoint you are attempting to pull data from
-        url: `https://api.github.com/repos/viccrubs/Presentations/contents/`,
+        url: `https://api.github.com/repos/viccrubs/Slides/contents/`,
 
         method: 'get',
 

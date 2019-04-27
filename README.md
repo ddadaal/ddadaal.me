@@ -19,6 +19,7 @@ VicBlog is a static personal blog, currently built with Gatsby.
 - Styling with both [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
 - Articles written on markdown; Source code and contents separated
     - Supports inline react components
+- Auto generated [slide directory](https://viccrubs.me/slides) using GitHub API v3
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 - Analytics via [CNZZ](https://www.cnzz.com)
@@ -58,7 +59,7 @@ If you encountered download error mentioned above, follow the following steps to
 1. Download the file yourself and place the file into a directory
 2. Run `python -m http.server {port} --bind {url}` and keep it running until the installation completes.
 3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
-5. `npm install` and you are ready to go!
+4. `npm install` and you are ready to go!
 
 
 ## Continuous Integration and Delivery
