@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
 import Localize from "@/i18n/Localize";
 import lang from "@/i18n/lang";
+import { useStore } from "simstate";
+import { LocationStore } from "@/stores/LocationStore";
 
 interface Props {
   onSearch?(): void;
 }
 
 export default function SearchBar(props: Props) {
-  const [ input, setInput ] = React.useState("");
+  const locationStore = useStore(LocationStore);
+
+  console.log(locationStore.pathname);
+
+  const [ input, setInput ] = useState("");
 
   const onSearch = () => {
-    navigate(`/search?query=${encodeURIComponent(input)}`);
+    navigate(`/articles/search?query=${encodeURIComponent(input)}`);
     if (props.onSearch) {
       props.onSearch();
     }

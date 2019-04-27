@@ -11,7 +11,7 @@ function doNothing() {
 }
 
 const ArticlePathItem = (props: {
-  Outer: React.ComponentType<{ active: boolean }>,
+  Outer: React.ComponentType<{ active?: boolean }>,
   children?: React.ReactNode,
   id: string,
   onClick?(): void,

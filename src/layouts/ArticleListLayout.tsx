@@ -8,6 +8,7 @@ import TagsCard from "@/components/Cards/TagsCard";
 import FriendsCard from "@/components/Cards/FriendsCard";
 import Page from "@/layouts/components/Page";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import SearchCard from "@/components/Cards/SearchCard";
 
 interface Props {
   children: React.ReactNode;
@@ -30,9 +31,11 @@ export default function ArticleListLayout(props: Props) {
           </Col>
           <Col md={4} xs={12}>
             <Sidebar>
-              <BlogIntroCard/>
-              <SelfIntroCard/>
+              <SearchCard />
               <TagsCard/>
+
+              {/*<BlogIntroCard/>*/}
+              {/*<SelfIntroCard/>*/}
             </Sidebar>
           </Col>
         </Row>

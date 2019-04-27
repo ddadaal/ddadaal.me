@@ -7,42 +7,6 @@ const GitHubSlugger = require("github-slugger");
 
 const dayjs = require("dayjs");
 
-function createPaginatedHomepages(createPage, articleGroups) {
-
-  const generatePath = (index) => {
-    return `/articles${index === 0 ? "" : `/${index + 1}`}`;
-  };
-
-  const notIgnoredGroups = [];
-
-  for (const key in articleGroups) {
-    const node = articleGroups[key][0];
-    if (!node.frontmatter.ignored) {
-      notIgnoredGroups.push(node);
-    }
-  }
-
-  notIgnoredGroups.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
-
-  const pageSize = 5;
-
-  const pageCount = Math.ceil(notIgnoredGroups.length / pageSize);
-
-  Array.from({ length: pageCount }).forEach((_, pageIndex) => {
-    createPage({
-      path: generatePath(pageIndex),
-      component: indexTemplate,
-      context: {
-        limit: pageSize,
-        skip: pageIndex * pageSize,
-        pageCount,
-        pageIndex: pageIndex,
-        ids: notIgnoredGroups.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize).map((x) => x.frontmatter.id),
-      },
-    })
-  });
-
-}
 
 exports.createPages = async ({ actions, graphql }) => {
 
@@ -89,6 +53,52 @@ exports.createPages = async ({ actions, graphql }) => {
     articleGroups,
   );
 
+  createArticlePages(
+    createPage,
+    createRedirect,
+    articleGroups,
+  );
+
+};
+
+function createPaginatedHomepages(createPage, articleGroups) {
+
+  const generatePath = (index) => {
+    return `/articles${index === 0 ? "" : `/${index + 1}`}`;
+  };
+
+  const notIgnoredGroups = [];
+
+  for (const key in articleGroups) {
+    const node = articleGroups[key][0];
+    if (!node.frontmatter.ignored) {
+      notIgnoredGroups.push(node);
+    }
+  }
+
+  notIgnoredGroups.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+
+  const pageSize = 5;
+
+  const pageCount = Math.ceil(notIgnoredGroups.length / pageSize);
+
+  Array.from({ length: pageCount }).forEach((_, pageIndex) => {
+    createPage({
+      path: generatePath(pageIndex),
+      component: indexTemplate,
+      context: {
+        limit: pageSize,
+        skip: pageIndex * pageSize,
+        pageCount,
+        pageIndex: pageIndex,
+        ids: notIgnoredGroups.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize).map((x) => x.frontmatter.id),
+      },
+    })
+  });
+
+}
+
+function createArticlePages(createPage, createRedirect, articleGroups) {
   const slugger = new GitHubSlugger();
 
   Object.values(articleGroups).forEach((nodes) => {
@@ -134,4 +144,8 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     });
   });
-};
+}
+
+function createPresentations(createPage) {
+
+}

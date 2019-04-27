@@ -32,7 +32,7 @@ export const dimensions = {
 
 export const heights = {
   header: 60,
-  articleHeader: 192,
+  banner: 192,
 };
 
 export const colors = {

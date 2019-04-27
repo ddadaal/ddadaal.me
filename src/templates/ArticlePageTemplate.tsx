@@ -1,9 +1,9 @@
-import React, { useLayoutEffect, useEffect } from "react";
+import React, { useLayoutEffect, useEffect, PropsWithChildren } from "react";
 import Helmet from "react-helmet";
 
 import Page from "@/layouts/components/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
-import { Heading } from "@/models/ArticleNode";
+import { ArticleNode, Heading } from "@/models/ArticleNode";
 import langRoot from "@/i18n/lang";
 
 import { MetadataStore } from "@/stores/MetadataStore";
@@ -12,7 +12,7 @@ import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
 import ArticleContentDisplay from "@/components/Article/ContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
-import ArticlePageHeader from "@/components/Article/ArticlePageHeader";
+import ArticlePageBanner from "@/components/Article/ArticlePageBanner";
 import { useStore } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
@@ -20,6 +20,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
 import ArticleActions from "@/components/Article/Actions";
 import { heights } from "@/styles/variables";
+import BannerLayout from "@/layouts/BannerLayout";
 
 interface Props {
   pageContext: {
@@ -51,6 +52,38 @@ function PageComponent({hasHeader, children}: { hasHeader: boolean, children: Re
   return hasHeader ? <PageWithHeader>{children}</PageWithHeader> : <Page>{children}</Page>;
 }
 
+function RootLayout({article, children, lang}: PropsWithChildren<{ article: ArticleNode; lang: string; }>) {
+
+  const {
+    frontmatter: {
+      id, title, date, tags, hide_heading, no_toc, related,
+    }, path, wordCount: {words: wordCount}, excerpt,
+  } = article;
+
+  if (hide_heading) {
+    return (
+      <HeaderFooterLayout transparentHeader={false}>
+        {children}
+      </HeaderFooterLayout>
+    );
+  } else {
+    return (
+      <BannerLayout transparentHeader={false} banner={
+        <ArticlePageBanner
+          title={title}
+          id={id}
+          tags={tags}
+          date={date}
+          wordCount={wordCount}
+          currentArticleLanguage={lang}
+        />
+      }>
+        {children}
+      </BannerLayout>
+    );
+  }
+}
+
 export default function ArticlePageTemplate(props: Props) {
 
   const i18nStore = useStore(I18nStore);
@@ -79,7 +112,7 @@ export default function ArticlePageTemplate(props: Props) {
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 
   return (
-    <HeaderFooterLayout transparentHeader={false}>
+    <RootLayout article={articleNode} lang={lang}>
       <div>
         <Helmet
           title={`${title} - VicBlog`}
@@ -103,18 +136,6 @@ export default function ArticlePageTemplate(props: Props) {
             })),
           ]}
         />
-        {!hide_heading &&
-        (
-          <ArticlePageHeader
-            title={title}
-            id={id}
-            tags={tags}
-            date={date}
-            wordCount={wordCount}
-            currentArticleLanguage={lang}
-          />
-        )
-        }
         <PageComponent hasHeader={!hide_heading}>
           <Row>
             <Col md={no_toc ? 12 : 9} sm={12}>
@@ -136,8 +157,8 @@ export default function ArticlePageTemplate(props: Props) {
           </Row>
 
           {/* <Share articleId={id} /> */}
-          {related ? <RelatedArticles ids={related} /> : null}
-          <hr />
+          {related ? <RelatedArticles ids={related}/> : null}
+          <hr/>
           <CommentPanel
             language={i18nStore.language.gitalkLangId}
             articleId={id}
@@ -145,11 +166,11 @@ export default function ArticlePageTemplate(props: Props) {
           />
         </PageComponent>
       </div>
-    </HeaderFooterLayout>
+    </RootLayout>
   );
 }
 
 const StickySidePanel = styled.div`
   position: sticky;
   top: ${heights.header + 32}px;
-`
+`;

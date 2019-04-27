@@ -13,11 +13,11 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
-import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen } from "react-icons/fa";
+import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { LocationStore } from "@/stores/LocationStore";
-import SearchBar from "@/components/Header/SearchBar";
+import SearchBar from "@/components/SearchBar";
 import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
 import ArticlePathItem from "@/components/Header/ArticlePathItem";
@@ -48,7 +48,7 @@ const StyledNavbar = styled(Navbar)`
   max-width: ${widths.mainContent}px;
   margin-left: auto;
   margin-right: auto;
-  padding: 4px 16px;
+  padding: 4px 8px;
 
   transition: width 0.2s ease-in-out;
 
@@ -129,9 +129,6 @@ export default function Header({ transparentHeader }: Props) {
           <NavbarToggler onClick={() => setOpen(!isOpen)} />
           <Collapse isOpen={isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
-              <BSNavItem>
-                <SearchBar onSearch={close} />
-              </BSNavItem>
               <NavItem active={atHomePage} to="/" onClick={close}>
                 <FaHome />
                 <LocalizedString id={root.home} />
@@ -139,6 +136,10 @@ export default function Header({ transparentHeader }: Props) {
               <NavItem active={pathname.startsWith("/articles")} to="/articles" onClick={close}>
                 <FaBookOpen />
                 <LocalizedString id={root.articles} />
+              </NavItem>
+              <NavItem active={pathname.startsWith("/slides")} to="/slides" onClick={close}>
+                <FaSlideshare />
+                <LocalizedString id={root.slides} />
               </NavItem>
               <ArticlePathItem
                 Outer={BSNavItem}

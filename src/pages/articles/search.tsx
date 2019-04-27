@@ -80,7 +80,7 @@ export default function SearchPage() {
         pageCount={pageCount}
         pageIndex={page - 1}
         toPage={(pageNum) => {
-          const path = `/search?query=${encodeURIComponent(query || "")}&page=${pageNum + 1}`;
+          const path = `/articles/search?query=${encodeURIComponent(query || "")}&page=${pageNum + 1}`;
           return () => navigate(path);
         }}
       />

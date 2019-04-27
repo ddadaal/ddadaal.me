@@ -31,7 +31,7 @@ export class LocationStore extends Store<ILocationStore> {
     this.setState({ location });
   }
 
-  get query() {
+  get query(): any {
     if (this.state.location.search) {
       return parseQuery(this.state.location.search);
     } else {
