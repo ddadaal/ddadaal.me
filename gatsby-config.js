@@ -17,6 +17,7 @@ module.exports = {
     lastUpdated: dayjs().format(),
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     'gatsby-plugin-typescript',
     {
       resolve: `gatsby-plugin-sass`,

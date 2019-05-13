@@ -26,26 +26,26 @@ VicBlog is a static personal blog, currently built with Gatsby.
 
 ## Development
 
-NPM is required.
+Yarn is required.
 
 ``` bash
 # install dependencies
-npm install
+yarn install
 
 # Install dependencies From TaoBao
-npm run iftb
+yarn run iftb
 
 # serve with hot reload at localhost:8000
-npm start
+yarn start
 
 # run production build
-npm run build
+yarn run build
 
 # **After build**, serve the production build locally
-npm run serve
+yarn run serve
 
 # Update dependencies with npm-check-updates & install dependencies
-npm run upddep
+yarn run upddep
 ```
 
 ## Firewall Notice
