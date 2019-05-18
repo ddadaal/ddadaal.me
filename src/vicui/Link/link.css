@@ -1,0 +1,15 @@
+.vu-link {
+
+  /** global **/
+  a, a:visited, a:active {
+    text-decoration: none;
+  }
+
+
+  color: var(--link-color);
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

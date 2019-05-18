@@ -5,8 +5,9 @@ import { I18nStore } from "@/stores/I18nStore";
 import lang from "@/i18n/lang";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { Badge } from "reactstrap";
 import { colors } from "@/styles/variables";
+import { Tag } from "@/vicui";
+import { navigate } from "@reach/router";
 
 interface Props {
   tag: string;
@@ -15,25 +16,25 @@ interface Props {
 const Item = styled(Link)`
   margin: 0 4px 4px 0;
   display: inline-block;
-  
+
   padding: 2px;
-  
+
   background-color: ${colors.extremelyLightGray};
-  
+
   &:hover {
     background-color: ${colors.lightGray};
     text-decoration: none;
   }
-  
+
   transition: background-color 0.2s linear;
- 
+
 `;
 
 const Text = styled.span`
     color: black;
     padding: 4px;
     font-size: 14px;
-  
+
 `;
 
 export default function CountedArticleTag({ tag }: Props) {
@@ -47,10 +48,10 @@ export default function CountedArticleTag({ tag }: Props) {
   const count = metadataStore.getCountOfTag(tag);
 
   return (
-    <Item title={title} to={toLink}>
+    <Tag mx={3} onClick={() => navigate(toLink)}>
       <Text>{tagOfLang}</Text>
-      <Badge color={"info"}>{count}</Badge>
-    </Item>
+      <Tag variant="info">{count}</Tag>
+    </Tag>
   );
 
 }

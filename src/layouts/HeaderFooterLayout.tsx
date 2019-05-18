@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styled from "styled-components";
+import Navbar from "@/components/Header/Navbar";
 
 interface Props {
   transparentHeader: boolean;
@@ -16,7 +17,7 @@ const LayoutMain = styled.main`
 export default function HeaderFooterLayout(props: PropsWithChildren<Props>) {
   return (
     <>
-      <Header transparentHeader={props.transparentHeader} />
+      <Navbar transparentHeader={props.transparentHeader} />
       <LayoutMain>{props.children}</LayoutMain>
       <Footer />
     </>

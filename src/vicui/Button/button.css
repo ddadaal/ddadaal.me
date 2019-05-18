@@ -1,0 +1,41 @@
+.vu-btn {
+  padding: 8px;
+
+  transition: var(--transition-fast);
+
+  border: none;
+
+  user-select: none;
+
+  text-align: center;
+
+  display: inline-block;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:focus, &:active {
+    opacity: 0.8;
+  }
+
+  &.default {
+    background-color: var(--btn-default-bg);
+    color: var(--btn-default-color);
+    outline: var(--btn-default-outline);
+
+    &:hover {
+      background-color: var(--btn-default-hover-bg);
+    }
+
+    &:focus, &:active {
+      background-color: var(--btn-default-active-bg);
+    }
+  }
+
+  &.primary {
+
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+  }
+}

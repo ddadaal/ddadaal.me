@@ -1,0 +1,26 @@
+.vu-tag {
+  display: inline-block;
+  padding: 4px;
+
+  transition: var(--transition-fast);
+  user-select: none;
+
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    cursor: normal;
+  }
+
+
+  &.normal {
+    background-color: var(--tag-default-bg);
+    color: var(--tag-default-color);
+  }
+
+  &.info {
+    background-color: var(--tag-info-bg);
+    color: var(--tag-info-color);
+
+  }
+}

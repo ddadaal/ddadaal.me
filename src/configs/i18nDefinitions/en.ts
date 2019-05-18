@@ -61,7 +61,7 @@ export default {
     articlePage: {
       title: "Articles",
       backToHome: "Back to home",
-      selectLang: "Select a language",
+      selectLang: "Select language",
       toc: "Table of Contents",
       share: {
         title: "Share",

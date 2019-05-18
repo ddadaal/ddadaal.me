@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
-import "@/styles/index.scss";
 
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, useStaticQuery } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
@@ -60,57 +59,47 @@ const query = graphql`
   }
 `;
 
-export default function(props: Props) {
+export default function (props: Props) {
 
-  const articleGroupsMemo = useRef<null | ArticleGroups>(null);
+  const data: InitialData = useStaticQuery(query);
+  const articleGroupsMemo = useRef<ArticleGroups>(createArticleGroups(data.allMarkdownRemark.nodes));
+
+  const articleGroups = articleGroupsMemo.current;
+
+  const statistics = {
+    lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),
+    totalArticleCount: Object.keys(articleGroups).length,
+  };
+
+  // create tag map
+  const tagMap = new Map() as TagMap;
+
+  data.allTagsJson.nodes.forEach(({ tag, ...variations }) => {
+    tagMap.set(tag, { count: 0, variations });
+  });
+
+  // for each tags
+  data.allMarkdownRemark.nodes.forEach((node) => {
+    if (node.frontmatter.tags) {
+      node.frontmatter.tags.forEach((tag) => {
+        if (!tagMap.has(tag)) {
+          tagMap.set(tag, { count: 1, variations: tag });
+        } else {
+          tagMap.get(tag)!!.count++;
+        }
+      });
+    }
+  });
 
   return (
-    <StaticQuery query={query}>
-      {(data: InitialData) => {
-
-        if (!articleGroupsMemo.current) {
-          articleGroupsMemo.current = createArticleGroups(data.allMarkdownRemark.nodes);
-        }
-
-        const articleGroups = articleGroupsMemo.current;
-
-        const statistics = {
-          lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),
-          totalArticleCount: Object.keys(articleGroups).length,
-        };
-
-        // create tag map
-        const tagMap = new Map() as TagMap;
-
-        data.allTagsJson.nodes.forEach(({ tag, ...variations}) => {
-          tagMap.set(tag, { count: 0, variations });
-        });
-
-        // for each tags
-        data.allMarkdownRemark.nodes.forEach((node) => {
-            if (node.frontmatter.tags) {
-              node.frontmatter.tags.forEach((tag) => {
-                if (!tagMap.has(tag)) {
-                  tagMap.set(tag, { count: 1, variations: tag });
-                } else {
-                  tagMap.get(tag)!!.count++;
-                }
-              });
-            }
-        });
-
-        return (
-          <RootLayout
-            location={props.location}
-            siteMetadata={data.site.siteMetadata}
-            statistics={statistics}
-            articleGroups={articleGroups}
-            tagMap={tagMap}
-          >
-          {props.children}
-          </RootLayout>
-        );
-      }}
-    </StaticQuery>
+    <RootLayout
+      location={props.location}
+      siteMetadata={data.site.siteMetadata}
+      statistics={statistics}
+      articleGroups={articleGroups}
+      tagMap={tagMap}
+    >
+      {props.children}
+    </RootLayout>
   );
 }

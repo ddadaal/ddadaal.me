@@ -1,0 +1,131 @@
+.vu-theme {
+
+  /* variables defined here */
+
+  /* colors;
+    reference: Microsoft UI Fabric
+  */
+  --white: #ffffff;
+  --gray-10: #faf9f8;
+  --gray-20: #f3f2f1;
+  --gray-30: #edebe9;
+  --gray-40: #e1dfdd;
+  --gray-50: #d2d0ce;
+  --gray-60: #c8c6c4;
+  --gray-70: #bebbb8;
+  --gray-80: #b3b0ad;
+  --gray-90: #a19f9d;
+  --gray-100: #979593;
+  --gray-110: #8a8886;
+  --gray-120: #797775;
+  --gray-130: #605e5c;
+  --gray-140: #484644;
+  --gray-150: #3b3a39;
+  --gray-160: #323130;
+  --gray-170: #292827;
+  --gray-180: #252423;
+  --gray-190: #201f1e;
+  --gray-200: #1b1a19;
+  --gray-210: #161514;
+  --gray-220: #11100f;
+  --black: #000000;
+  --yellow: #fce100;
+  --red-10: #d13438;
+  --red-20: #a4262c;
+  --cyan-10: #00b7c3;
+  --cyan-20: #038387;
+  --cyan-30: #005b70;
+  --cyan-40: #005e50;
+  --cyanblue-10: #0078d4;
+  --cyanblue-20: #004e8c;
+  --greencyan-10: #00ad56;
+  --green-10: #498205;
+  --green-20: #0b6a0b;
+  --yellowgreen-10: #8cdb18;
+  --blue-10: #4f6bed;
+  --magentapink-10: #e3008c;
+  --magentapink-20: #9b0062;
+  --magenta-10: #c239b3;
+  --magenta-20: #881798;
+  --magentablue-10: #8378de;
+  --magentablue-20: #8764b8;
+  --magentablue-30: #5c2e91;
+  --magentablue-40: #373277;
+  --orange-10: #ffaa44;
+  --orange-20: #ca5010;
+  --orange-30: #8e562e;
+
+
+
+  /* box-shadow */
+  --boxshadow-4: 0 1.6px 3.6px 0 rgba(0, 0, 0, .132), 0 0.3px 0.9px 0 rgba(0, 0, 0, .108);
+  --boxshadow-8: 0 3.2px 7.2px 0 rgba(0, 0, 0, .132), 0 0.6px 1.8px 0 rgba(0, 0, 0, .108);
+  --boxshadow-16: 0 6.4px 14.4px 0 rgba(0, 0, 0, .132), 0 1.2px 3.6px 0 rgba(0, 0, 0, .108);
+  --boxshadow-32: 0 25.6px 57.6px 0 rgba(0, 0, 0, .22), 0 4.8px 14.4px 0 rgba(0, 0, 0, .18);
+
+  /* important colors */
+  --color-primary: var(--cyanblue-10);
+  --color-success: var(--green-10);
+  --color-info: var(--cyanblue-10);
+  --color-warning: var(--yellow);
+  --color-danger: var(--red-10);
+  --color-body: var(--gray-20);
+  --color-bg: var(--white);
+  --color-font: var(--black);
+  --color-font-reversed: var(--white);
+  --color-gray: var(--gray-30);
+  --color-grayer: var(--gray-50);
+  --color-grayest: var(--gray-70);
+  --color-dark: var(--gray-170);
+
+  /* borders */
+  --border-normal: 1px solid;
+
+  /* transitions */
+  --transition-fast: all 60ms ease-in-out;
+  --transition-normal: all 150ms ease-in-out;
+  --transition-slow: all 200ms ease-in-out;
+  --transition-slower: all 250ms ease-in-out;
+
+  /* buttons */
+  --btn-default-outline: var(--border-normal) var(--color-gray);
+  --btn-default-bg: var(--color-bg);
+  --btn-default-color: var(--color-font);
+  --btn-default-hover-bg: var(--color-grayer);
+  --btn-default-active-bg: var(--color-grayest);
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-color: var(--color-font-reversed);
+
+  /* tags */
+  --tag-default-bg: var(--color-gray);
+  --tag-default-color: var(--color-font);
+  --tag-info-bg: var(--color-info);
+  --tag-info-color: var(--color-font-reversed);
+
+  /* cards */
+  --card-bg: var(--color-bg);
+  --card-border: var(--border-normal) var(--color-grayer);
+  --card-header-bg: var(--color-gray);
+
+  /* input */
+  --input-border: var(--border-normal) var(--color-grayer);
+  --input-hover-border: var(--border-normal) var(--color-grayest);
+  --input-active-border: var(--border-normal) var(--color-primary);
+
+  /* dropdown */
+  --dropdown-menu-bg: var(--color-bg);
+  --dropdown-menu-border: var(--border-normal) var(--color-gray);
+  --dropdown-item-padding-x: 16px;
+  --dropdown-item-padding: 4px var(--dropdown-item-padding-x);
+  --dropdown-item-color: var(--color-font);
+  --dropdown-item-hover-bg: var(--color-gray);
+  --dropdown-item-hover-color: var(--color-font);
+  --dropdown-item-active-bg: var(--color-primary);
+  --dropdown-item-active-color: var(--color-font-reversed);
+  --dropdown-divider-color: var(--color-gray);
+  --dropdown-header-color: var(--color-dark);
+  --dropdown-header-padding: 8px var(--dropdown-item-padding-x);
+
+  /* link */
+  --link-color: var(--color-primary);
+}

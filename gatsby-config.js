@@ -3,6 +3,9 @@
 const dayjs = require("dayjs");
 
 const path = require("path");
+const nested = require('postcss-nested');
+const atImport = require("postcss-import");
+
 
 module.exports = {
   siteMetadata: {
@@ -228,6 +231,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    'gatsby-plugin-sitemap'
+    'gatsby-plugin-sitemap',
   ]
 }

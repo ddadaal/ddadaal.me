@@ -1,0 +1,78 @@
+.vu-dropdown {
+  display: inline-block;
+  position: relative;
+
+  &__menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+
+    background-color: var(--dropdown-menu-bg);
+    border: var(--dropdown-menu-border);
+
+    /* padding: 8px 0; */
+
+    overflow: hidden;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  &__toggle {
+    &::after {
+      display: inline-block;
+      margin-left: 4.08px;
+      vertical-align: 4.08px;
+      content: "";
+      border-top: 4.8px solid;
+      border-right: 4.8px solid transparent;
+      border-bottom: 0;
+      border-left: 4.8px solid transparent;
+    }
+  }
+
+  &__item {
+    display: block;
+    width: 100%;
+    padding: var(--dropdown-item-padding);
+
+    color: var(--dropdown-item-color);
+
+
+    &:hover {
+      background-color: var(--dropdown-item-hover-bg);
+      color: var(--dropdown-item-hover-color);
+      cursor: pointer;
+    }
+
+    &.active, &:focus, &:active {
+      background-color: var(--dropdown-item-active-bg);
+      color: var(--dropdown-item-active-color);
+    }
+  }
+
+  &__divider {
+    height: 0;
+    margin: 4px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--dropdown-divider-color);
+  }
+
+  &__header {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: var(--dropdown-header-padding);
+    color: var(--dropdown-header-color);
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+
+}
+
+
+
+

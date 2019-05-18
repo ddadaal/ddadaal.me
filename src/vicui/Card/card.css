@@ -1,0 +1,21 @@
+.vu-card {
+  background-color: var(--card-bg);
+  border: var(--card-border);
+
+  &:hover {
+    box-shadow: var(--boxshadow-4);
+    transform: translate3d(0, -4px, 0);
+  }
+
+  transition: var(--transition-fast);
+
+  &__header {
+    padding: 8px 16px;
+    background-color: var(--card-header-bg);
+  }
+
+  &__body {
+    padding: 16px;
+  }
+
+}

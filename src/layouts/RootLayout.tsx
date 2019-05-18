@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleGroups } from "@/models/ArticleGroups";
@@ -16,6 +16,8 @@ import NewContentPop from "@/components/NewContentPop";
 import { StoreProvider } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ToTop from "@/components/ToTop";
+import { VuThemeProvider } from "@/vicui";
+import "normalize.css";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -35,44 +37,36 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-export default class RootLayout extends React.Component<Props, {}> {
+export default function RootLayout(props: Props) {
 
-  i18nStore = new I18nStore();
+  const { location, articleGroups, siteMetadata, statistics, children, tagMap } = props;
 
-  locationStore = new LocationStore(this.props.location);
+  const i18nStore = useRef(new I18nStore()).current;
 
-  metadataStore = new MetadataStore(
-    this.props.statistics,
-    this.props.articleGroups,
-    this.props.siteMetadata.siteUrl,
-    this.props.tagMap,
-  );
+  const locationStore = useRef(new LocationStore(location)).current;
 
-  articleStore = new ArticleStore(null);
+  const metadataStore = useRef(new MetadataStore(
+    statistics,
+    articleGroups,
+    siteMetadata.siteUrl,
+    tagMap,
+  )).current;
 
-  componentDidUpdate() {
-    this.updateLocation();
-  }
+  const articleStore = useRef(new ArticleStore(null)).current;
 
-  componentDidMount() {
-    this.updateLocation();
-  }
+  useEffect(() => {
+    locationStore.updateLocation(location);
+  }, [location]);
 
-  updateLocation() {
-    this.locationStore.updateLocation(this.props.location);
-  }
-
-  render() {
-    const { children, siteMetadata } = this.props;
-
-    return (
-      <IconContext.Provider value={iconContext}>
-        <StoreProvider stores={[
-          this.locationStore,
-          this.i18nStore,
-          this.metadataStore,
-          this.articleStore,
-        ]}>
+  return (
+    <IconContext.Provider value={iconContext}>
+      <StoreProvider stores={[
+        locationStore,
+        i18nStore,
+        metadataStore,
+        articleStore,
+      ]}>
+        <VuThemeProvider>
           <LayoutRoot>
             <Helmet
               title={siteMetadata.title}
@@ -93,12 +87,15 @@ export default class RootLayout extends React.Component<Props, {}> {
                 },
               ]}
             />
+
             <NewContentPop />
             <ToTop />
+
             {children}
+
           </LayoutRoot>
-        </StoreProvider>
-      </IconContext.Provider>
-    );
-  }
+        </VuThemeProvider>
+      </StoreProvider>
+    </IconContext.Provider>
+  );
 }
