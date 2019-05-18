@@ -1,7 +1,7 @@
 import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import Page from "@/layouts/components/Page";
+import Page from "@/layouts/Page";
 import { LocationStore } from "@/stores/LocationStore";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { navigate } from "gatsby";

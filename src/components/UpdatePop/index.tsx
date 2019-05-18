@@ -3,6 +3,7 @@ import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled, { keyframes } from "styled-components";
 import { heights } from "@/styles/variables";
+import "./style.scss";
 
 interface Props {
 
@@ -30,13 +31,14 @@ const NewContentPopContainer = styled.div`
   border: 1px solid gray;
   border-radius: 16px;
 
+  display: none;
 `;
 
 const root = lang.newContentPop;
 
 export default function NewContentPop(props: Props) {
   return (
-    <NewContentPopContainer className="nonewcontent">
+    <NewContentPopContainer id={"new-content-pop"}>
       <a href="" onClick={() => location.reload()}>
         <LocalizedString id={root.refresh} />
       </a>

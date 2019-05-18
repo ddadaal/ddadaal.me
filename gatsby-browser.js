@@ -1,8 +1,7 @@
 exports.onServiceWorkerUpdateFound = () => {
-  const elements = document.getElementsByClassName("nonewcontent");
-
-  for (const el of elements) {
-    el.classList.remove("nonewcontent");
-  }
+  window.addEventListener("load", () => {
+    const elem = document.getElementById("new-content-pop");
+    elem.classList.add("new-content");
+  });
 
 };

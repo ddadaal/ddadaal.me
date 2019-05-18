@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Page from "@/layouts/components/Page";
+import Page from "@/layouts/Page";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 
 const NotFoundPage = () => (

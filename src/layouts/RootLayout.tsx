@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
 import { ArticleGroups } from "@/models/ArticleGroups";
@@ -8,14 +8,12 @@ import { Statistics } from "@/models/Statistics";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import icon512 from "~/assets/icon.png";
-import { FaArrowUp } from "react-icons/fa";
-import NewContentPop from "@/components/NewContentPop";
+import UpdatePop from "@/components/UpdatePop";
 import { StoreProvider } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ToTop from "@/components/ToTop";
+import "@/styles/index.scss";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -35,70 +33,58 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-export default class RootLayout extends React.Component<Props, {}> {
+export default function RootLayout(props: Props) {
 
-  i18nStore = new I18nStore();
+  const i18nStore = useRef(new I18nStore()).current;
 
-  locationStore = new LocationStore(this.props.location);
+  const locationStore = useRef(new LocationStore(props.location)).current;
 
-  metadataStore = new MetadataStore(
-    this.props.statistics,
-    this.props.articleGroups,
-    this.props.siteMetadata.siteUrl,
-    this.props.tagMap,
+  const metadataStore = useRef(new MetadataStore(
+    props.statistics,
+    props.articleGroups,
+    props.siteMetadata.siteUrl,
+    props.tagMap,
+  )).current;
+
+  const articleStore = useRef(new ArticleStore(null)).current;
+
+  useEffect(() => {
+    locationStore.updateLocation(props.location);
+  }, [props.location]);
+
+  return (
+    <IconContext.Provider value={iconContext}>
+      <StoreProvider stores={[
+        locationStore,
+        i18nStore,
+        metadataStore,
+        articleStore,
+      ]}>
+        <LayoutRoot>
+          <Helmet
+            title={props.siteMetadata.title}
+            meta={[
+              { name: "description", content: props.siteMetadata.description },
+              { name: "keywords", content: "gatsbyjs, gatsby, react, viccrubs, vicblog, blog" },
+              { name: "og:description", content: props.siteMetadata.description },
+            ]}
+            link={[
+              { rel: "icon", type: "image/png", href: icon512 },
+              { rel: "shortcut icon", type: "image/png", href: icon512 },
+            ]}
+            script={[
+              {
+                type: "text/javascript",
+                src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
+                async: true,
+              },
+            ]}
+          />
+          <UpdatePop />
+          <ToTop />
+          {props.children}
+        </LayoutRoot>
+      </StoreProvider>
+    </IconContext.Provider>
   );
-
-  articleStore = new ArticleStore(null);
-
-  componentDidUpdate() {
-    this.updateLocation();
-  }
-
-  componentDidMount() {
-    this.updateLocation();
-  }
-
-  updateLocation() {
-    this.locationStore.updateLocation(this.props.location);
-  }
-
-  render() {
-    const { children, siteMetadata } = this.props;
-
-    return (
-      <IconContext.Provider value={iconContext}>
-        <StoreProvider stores={[
-          this.locationStore,
-          this.i18nStore,
-          this.metadataStore,
-          this.articleStore,
-        ]}>
-          <LayoutRoot>
-            <Helmet
-              title={siteMetadata.title}
-              meta={[
-                { name: "description", content: siteMetadata.description },
-                { name: "keywords", content: "gatsbyjs, gatsby, react, viccrubs, vicblog, blog" },
-                { name: "og:description", content: siteMetadata.description },
-              ]}
-              link={[
-                { rel: "icon", type: "image/png", href: icon512 },
-                { rel: "shortcut icon", type: "image/png", href: icon512 },
-              ]}
-              script={[
-                {
-                  type: "text/javascript",
-                  src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
-                  async: true,
-                },
-              ]}
-            />
-            <NewContentPop />
-            <ToTop />
-            {children}
-          </LayoutRoot>
-        </StoreProvider>
-      </IconContext.Provider>
-    );
-  }
 }

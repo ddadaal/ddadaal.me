@@ -22,6 +22,8 @@ import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
 import ArticlePathItem from "@/components/Header/ArticlePathItem";
 import NavItem from "@/components/Header/NavItem";
+import { useEventListener } from "@/utils/useEventListener";
+import Placeholder from "@/components/Header/HeaderPlaceholder";
 
 interface Props {
   transparentHeader: boolean;
@@ -29,12 +31,12 @@ interface Props {
 
 const root = lang.headers;
 
-const StyledDropdownItem = styled(DropdownItem)`
+const StyledDropdownItem = styled(DropdownItem)<{ active: boolean}>`
   .nav-link {
     color: ${({ active }) => active ? "white" : "black"}!important;
 
   }
-  
+
   .active > a {
     color: white !important;
   }
@@ -42,45 +44,30 @@ const StyledDropdownItem = styled(DropdownItem)`
   .nav-link:hover {
     color: white !important;
   }
-`;
+` as React.ComponentType<{ active: boolean }>;
 
 const StyledNavbar = styled(Navbar)`
-  max-width: ${widths.mainContent}px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 4px 8px;
+  && {
+    max-width: ${widths.mainContent}px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px 8px;
 
-  transition: width 0.2s ease-in-out;
-
+    transition: width 0.2s ease-in-out;
+  }
 `;
 
 const Container = styled.header`
 
 `;
 
-interface PlaceholderProps { isOpen: boolean; transparent: boolean; }
-
-const Placeholder = styled.div`
-  
-  background-color: ${colors.headerBg};
-  height: ${({ isOpen, transparent }: PlaceholderProps) => isOpen ? 300 : transparent ? 0 : heights.header}px;
-
-  @media (max-width: ${breakpoints.md}px) {
-    transition: height 0.3s ease-in-out;
-
-  }
-
-  @media (min-width: ${breakpoints.md}px) {
-    height: ${({ transparent }: PlaceholderProps) => transparent ? 0 : heights.header}px;
-  }
-`;
-
 const StyledDropdownMenu = styled(DropdownMenu)`
     box-shadow: 0 .3rem .6rem rgba(0,0,0,.3);
 `;
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled.div<{ transparent: boolean }>`
   transition: background-color 0.2s ease-in-out;
+  background-color: ${({ transparent }) => transparent ? "transparent" : colors.headerBg};
 `;
 
 export default function Header({ transparentHeader }: Props) {
@@ -90,27 +77,12 @@ export default function Header({ transparentHeader }: Props) {
 
   const { pathname } = locationStore;
 
-  const navbarRef = useRef<HTMLDivElement>(null);
-
   const atHomePage = pathname === "/";
 
-  useEffect(() => {
+  const [isTransparent, setTransparent] = useState(transparentHeader);
 
-    const navbar = navbarRef.current!!;
-
-    const handler = () => {
-      if (transparentHeader && window.scrollY === 0) {
-        navbar.style.backgroundColor = "transparent";
-      } else {
-        navbar.style.backgroundColor = colors.headerBg;
-      }
-    };
-    handler();
-
-    window.addEventListener("scroll", handler);
-    return () => {
-      window.removeEventListener("scroll", handler);
-    };
+  useEventListener(window, "scroll", () => {
+    setTransparent(transparentHeader && window.scrollY === 0);
   }, [transparentHeader]);
 
   const close = useCallback(() => {
@@ -122,8 +94,8 @@ export default function Header({ transparentHeader }: Props) {
       <Placeholder
         isOpen={isOpen}
         transparent={transparentHeader}
-       />
-      <NavbarContainer ref={navbarRef} className="fixed-top">
+      />
+      <NavbarContainer transparent={isTransparent} className="fixed-top">
         <StyledNavbar dark={true} expand="md">
           <Branding />
           <NavbarToggler onClick={() => setOpen(!isOpen)} />

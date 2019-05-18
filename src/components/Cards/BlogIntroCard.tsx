@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { FaCode, FaRss, FaRegCommentDots, FaGlobe, FaEllipsisH } from "react-icons/fa";
-import StackedDiv from "@/layouts/components/StackedDiv";
 import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
@@ -41,23 +40,21 @@ export default function BlogIntroCard(props: Props) {
         <CardText>
           <LocalizedString id={root.description2} />
         </CardText>
-        <StackedDiv>
-          <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby">
-            <FaCode />
-            <LocalizedString id={root.sourceCode} />
+        <CardLink href="https://github.com/viccrubs/VicBlog-Gatsby">
+          <FaCode />
+          <LocalizedString id={root.sourceCode} />
+        </CardLink>
+        <CardLink href="/rss.xml">
+          <FaRss />
+          RSS
           </CardLink>
-          <CardLink href="/rss.xml">
-            <FaRss />
-            RSS
-          </CardLink>
-          <Link
-            className="card-link"
-            to={metadataStore.getArticleOfLang("feedback", i18nStore.state.language).path}
-          >
-            <FaRegCommentDots />
-            <LocalizedString id={root.feedback} />
-          </Link>
-        </StackedDiv>
+        <Link
+          className="card-link"
+          to={metadataStore.getArticleOfLang("feedback", i18nStore.state.language).path}
+        >
+          <FaRegCommentDots />
+          <LocalizedString id={root.feedback} />
+        </Link>
       </CardBody>
     </BaseCard>
   );

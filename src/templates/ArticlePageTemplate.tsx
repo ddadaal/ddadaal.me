@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useEffect, PropsWithChildren } from "react";
 import Helmet from "react-helmet";
 
-import Page from "@/layouts/components/Page";
+import Page from "@/layouts/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
 import langRoot from "@/i18n/lang";
@@ -38,7 +38,7 @@ const enterAnimation = keyframes`
   from {
     opacity: 0;
   }
-  
+
   to {
     opacity: 1;
   }

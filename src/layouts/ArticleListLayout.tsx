@@ -6,7 +6,7 @@ import StatisticsCard from "@/components/Cards/StatisticsCard";
 import styled from "styled-components";
 import TagsCard from "@/components/Cards/TagsCard";
 import FriendsCard from "@/components/Cards/FriendsCard";
-import Page from "@/layouts/components/Page";
+import Page from "@/layouts/Page";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import SearchCard from "@/components/Cards/SearchCard";
 

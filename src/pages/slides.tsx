@@ -4,7 +4,7 @@ import BannerLayout, { Title } from "@/layouts/BannerLayout";
 import styled from "styled-components";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import Page from "@/layouts/components/Page";
+import Page from "@/layouts/Page";
 import Helmet from "react-helmet";
 import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
@@ -112,11 +112,11 @@ const YearNode = styled.h2`
   font-size: 28px;
   font-weight: bold;
   margin-left: 0px;
-  
+
   padding: 0 8px;
-  
+
   border-left: 4px ${colors.tocLinkActiveColor} solid;
-  
+
 `;
 
 const PreNode = styled.div`
