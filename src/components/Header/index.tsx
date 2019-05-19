@@ -13,38 +13,23 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, heights, colors, breakpoints } from "@/styles/variables";
-import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare } from "react-icons/fa";
+import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare, FaToolbox } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { LocationStore } from "@/stores/LocationStore";
 import SearchBar from "@/components/SearchBar";
 import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
-import ArticlePathItem from "@/components/Header/ArticlePathItem";
 import NavItem from "@/components/Header/NavItem";
 import { useEventListener } from "@/utils/useEventListener";
 import Placeholder from "@/components/Header/HeaderPlaceholder";
+import { isServer } from "@/utils/isServer";
 
 interface Props {
   transparentHeader: boolean;
 }
 
 const root = lang.headers;
-
-const StyledDropdownItem = styled(DropdownItem)<{ active: boolean}>`
-  .nav-link {
-    color: ${({ active }) => active ? "white" : "black"}!important;
-
-  }
-
-  .active > a {
-    color: white !important;
-  }
-
-  .nav-link:hover {
-    color: white !important;
-  }
-` as React.ComponentType<{ active: boolean }>;
 
 const StyledNavbar = styled(Navbar)`
   && {
@@ -61,29 +46,20 @@ const Container = styled.header`
 
 `;
 
-const StyledDropdownMenu = styled(DropdownMenu)`
-    box-shadow: 0 .3rem .6rem rgba(0,0,0,.3);
-`;
-
 const NavbarContainer = styled.div<{ transparent: boolean }>`
   transition: background-color 0.2s ease-in-out;
   background-color: ${({ transparent }) => transparent ? "transparent" : colors.headerBg};
 `;
 
 export default function Header({ transparentHeader }: Props) {
-  const locationStore = useStore(LocationStore);
-
   const [isOpen, setOpen] = useState(false);
-
-  const { pathname } = locationStore;
-
-  const atHomePage = pathname === "/";
-
   const [isTransparent, setTransparent] = useState(transparentHeader);
 
-  useEventListener(window, "scroll", () => {
-    setTransparent(transparentHeader && window.scrollY === 0);
-  }, [transparentHeader]);
+  if (!isServer()) {
+    useEventListener(window, "scroll", () => {
+      setTransparent(transparentHeader && window.scrollY === 0);
+    }, [transparentHeader]);
+  }
 
   const close = useCallback(() => {
     setOpen(false);
@@ -101,63 +77,38 @@ export default function Header({ transparentHeader }: Props) {
           <NavbarToggler onClick={() => setOpen(!isOpen)} />
           <Collapse isOpen={isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
-              <NavItem active={atHomePage} to="/" onClick={close}>
-                <FaHome />
-                <LocalizedString id={root.home} />
-              </NavItem>
-              <NavItem active={pathname.startsWith("/articles")} to="/articles" onClick={close}>
-                <FaBookOpen />
-                <LocalizedString id={root.articles} />
-              </NavItem>
-              <NavItem active={pathname.startsWith("/slides")} to="/slides" onClick={close}>
-                <FaSlideshare />
-                <LocalizedString id={root.slides} />
-              </NavItem>
-              <ArticlePathItem
-                Outer={BSNavItem}
-                id={"resume"}
+              <NavItem
+                type="link"
+                to="/"
                 onClick={close}
-              >
-                <FaFile />
-                <LocalizedString id={root.resume} />
-              </ArticlePathItem>
-              <UncontrolledDropdown nav={true} inNavbar={true}>
-                <DropdownToggle
-                  nav={true}
-                  caret={true}
-                  className={pathname.startsWith("/about/") ? "active" : undefined}
-                >
-                  <FaInfo />
-                  <LocalizedString id={root.about._root} />
-                </DropdownToggle>
-                <StyledDropdownMenu right={true}>
-                  <ArticlePathItem
-                    Outer={StyledDropdownItem}
-                    id={"odyssey"}
-                    onClick={close}
-                  >
-                    <FaBookOpen />
-                    <LocalizedString id={root.about.odyssey} />
-                  </ArticlePathItem>
-                  <ArticlePathItem
-                    Outer={StyledDropdownItem}
-                    id={"about-project"}
-                    onClick={close}
-                  >
-                    <FaGlobe />
-                    <LocalizedString id={root.about.website} />
-                  </ArticlePathItem>
-
-                  <ArticlePathItem
-                    Outer={StyledDropdownItem}
-                    id={"about-me"}
-                    onClick={close}
-                  >
-                    <FaMale />
-                    <LocalizedString id={root.about.me} />
-                  </ArticlePathItem>
-                </StyledDropdownMenu>
-              </UncontrolledDropdown>
+                matchType={"exact"}
+                Icon={FaHome}
+                textId={root.home}
+              />
+              <NavItem
+                type="link"
+                to="/articles"
+                onClick={close}
+                matchType={"startsWith"}
+                Icon={FaBookOpen}
+                textId={root.articles}
+              />
+              <NavItem
+                type="link"
+                to="/resources"
+                onClick={close}
+                matchType={"startsWith"}
+                Icon={FaToolbox}
+                textId={root.resources}
+              />
+              <NavItem
+                type="link"
+                to="/about"
+                onClick={close}
+                matchType={"startsWith"}
+                Icon={FaInfo}
+                textId={root.about}
+              />
               <BSNavItem>
                 <NavbarLanguageSelector />
               </BSNavItem>

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
-import { ArticleGroups } from "@/models/ArticleGroups";
+import { ArticleIdMap } from "@/models/ArticleIdMap";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { Statistics } from "@/models/Statistics";
@@ -24,7 +24,7 @@ const LayoutRoot = styled.div`
 
 interface Props {
   location: Location;
-  articleGroups: ArticleGroups;
+  articleIdMap: ArticleIdMap;
   siteMetadata: SiteMetadata;
   statistics: Statistics;
   children?: React.ReactNode;
@@ -41,7 +41,7 @@ export default function RootLayout(props: Props) {
 
   const metadataStore = useRef(new MetadataStore(
     props.statistics,
-    props.articleGroups,
+    props.articleIdMap,
     props.siteMetadata.siteUrl,
     props.tagMap,
   )).current;

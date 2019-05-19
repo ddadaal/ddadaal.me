@@ -11,8 +11,6 @@ no_toc: true
 
 ---
 
-<resume-layout>
-
 <h1 class="name">
 Chen Junda
 </h1>
@@ -85,5 +83,3 @@ Chen Junda
 English：[View](/resume/en)，[Download](./english.pdf)
 
 中文：[浏览](/resume/cn)，[下载](./chinese.pdf)
-
-</resume-layout>

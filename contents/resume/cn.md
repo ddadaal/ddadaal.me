@@ -11,8 +11,6 @@ no_toc: true
 
 ---
 
-<resume-layout>
-
 <h1 class="name">
 陈俊达
 </h1>
@@ -84,5 +82,3 @@ no_toc: true
 中文：[浏览](/resume/cn)，[下载](./chinese.pdf)
 
 English：[View](/resume/en)，[Download](./english.pdf)
-
-</resume-layout>

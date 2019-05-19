@@ -32,7 +32,7 @@ const RootContainer = styled(BaseRootContainer)`
   height: ${heights.banner}px;
   width: 100%;
   background-color: ${colors.headerBg};
-  
+
 `;
 
 const InnerContainer = styled(BaseInnerContainer)`
@@ -50,7 +50,7 @@ const BannerContainer = styled.div`
   padding: 0px 8px 8px 8px;
 `;
 
-export const Title = styled.h1`
+BannerLayout.Title = styled.h1`
   font-size: 2em;
   padding: 4px 0;
 `;

@@ -6,6 +6,7 @@ import lang from "@/i18n/lang";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import LocalizedString from "@/i18n/LocalizedString";
+import { useEventListener } from "@/utils/useEventListener";
 
 const root = lang.articlePage.actions.copyLink;
 
@@ -21,27 +22,15 @@ export default function CopyLinkAction({ articleId }: Props) {
 
   const ref = useRef<HTMLLIElement>(null);
 
-  useEffect(() => {
-    const handler = () => {
-      console.log("leave");
-      setCopied(false);
-    };
-
-    console.log(ref);
-
-    ref.current!!.addEventListener("onmouseleave", handler);
-
-    return () => {
-      ref.current!!.removeEventListener("onmouseleave", handler);
-    };
-  }, []);
-
-  console.log(copied);
+  useEventListener(ref, "mouseleave", () => {
+    console.log("leave");
+    setCopied(false);
+  });
 
   return (
     <Action ref={ref} Icon={FaLink}
             onClick={() =>
-              navigator.clipboard.writeText(`${metadataStore.baseUrl}/articles/${articleId}`)
+              (navigator as any).clipboard.writeText(`${metadataStore.baseUrl}/articles/${articleId}`)
               .then(() => {
                 setCopied(true);
               })

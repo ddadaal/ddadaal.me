@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
-import { createArticleGroups } from "@/stores/MetadataStore";
+import { createArticleIdMap } from "@/stores/MetadataStore";
 import { ArticleNode } from "@/models/ArticleNode";
 
 interface InitialData {
@@ -35,7 +35,9 @@ const query = graphql`
         en
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: {  frontmatter: { ignored: { ne: true }}}
+    ) {
       nodes {
         excerpt(pruneLength: 250, truncate: true)
         wordCount {
@@ -61,11 +63,11 @@ const query = graphql`
 export default function IndexLayout(props: Props) {
 
   const data: InitialData = useStaticQuery(query);
-  const [articleGroups] = useState(() => createArticleGroups(data.allMarkdownRemark.nodes));
+  const [articleIdMap] = useState(() => createArticleIdMap(data.allMarkdownRemark.nodes));
 
   const statistics = {
     lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),
-    totalArticleCount: Object.keys(articleGroups).length,
+    totalArticleCount: Object.keys(articleIdMap).length,
   };
 
   // create tag map
@@ -93,7 +95,7 @@ export default function IndexLayout(props: Props) {
       location={props.location}
       siteMetadata={data.site.siteMetadata}
       statistics={statistics}
-      articleGroups={articleGroups}
+      articleIdMap={articleIdMap}
       tagMap={tagMap}
     >
       {props.children}

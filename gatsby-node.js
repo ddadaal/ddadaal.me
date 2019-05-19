@@ -15,6 +15,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const result = await graphql(`{
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
+      filter: {  frontmatter: { ignored: { ne: true }}}
     ) {
       edges {
         node {
@@ -48,6 +49,26 @@ exports.createPages = async ({ actions, graphql }) => {
     articleGroups[id].push(node);
   });
 
+  function redirect(from, to) {
+    createRedirect({
+      fromPath: from,
+      toPath: to,
+      isPermanent: true,
+      redirectInBrowser: true,
+    });
+
+    createRedirect({
+      fromPath: from + "/",
+      toPath: to,
+      isPermanent: true,
+      redirectInBrowser: true,
+    });
+  }
+  // create redirects
+
+  redirect("/resources", "/resources/slides");
+  redirect("/about", "/about/odyssey");
+
   createPaginatedHomepages(
     createPage,
     articleGroups,
@@ -55,9 +76,10 @@ exports.createPages = async ({ actions, graphql }) => {
 
   createArticlePages(
     createPage,
-    createRedirect,
+    redirect,
     articleGroups,
   );
+
 
 };
 
@@ -98,7 +120,7 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
 }
 
-function createArticlePages(createPage, createRedirect, articleGroups) {
+function createArticlePages(createPage, redirect, articleGroups) {
   const slugger = new GitHubSlugger();
 
   Object.values(articleGroups).forEach((nodes) => {
@@ -126,19 +148,7 @@ function createArticlePages(createPage, createRedirect, articleGroups) {
         paths.pop();
         const path = paths.join("/");
 
-        createRedirect({
-          fromPath: path,
-          toPath: node.path,
-          isPermanent: true,
-          redirectInBrowser: true,
-        });
-
-        createRedirect({
-          fromPath: path + "/",
-          toPath: node.path,
-          isPermanent: true,
-          redirectInBrowser: true,
-        });
+        redirect(path, node.path);
 
         indexPageCreated = true;
       }
@@ -146,6 +156,3 @@ function createArticlePages(createPage, createRedirect, articleGroups) {
   });
 }
 
-function createPresentations(createPage) {
-
-}

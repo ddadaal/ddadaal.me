@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import { MetadataStore } from "@/stores/MetadataStore";
-import { LocationStore } from "@/stores/LocationStore";
 import LanguageSelector from "@/components/LanguageSelector";
 import { navigate } from "gatsby";
 import { ArticleStore } from "@/stores/ArticleStore";

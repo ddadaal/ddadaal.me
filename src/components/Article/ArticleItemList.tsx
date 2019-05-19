@@ -18,7 +18,7 @@ export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props
   const metadataStore = useStore(MetadataStore);
 
   const items = ids.map((id) => {
-    return metadataStore.articleGroups[id];
+    return metadataStore.articleIdMap.get(id)!!;
   });
 
   return (

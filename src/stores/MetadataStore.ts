@@ -1,28 +1,30 @@
 import { Store } from "simstate";
 import { Statistics } from "@/models/Statistics";
-import { ArticleGroups } from "@/models/ArticleGroups";
+import { ArticleIdMap } from "@/models/ArticleIdMap";
 import { Language } from "@/i18n/definition";
 import { ArticleNode } from "@/models/ArticleNode";
+import { groupBy } from "@/utils/groupBy";
 
 export type LangPathMap = Map<string, string>;
 
-export function createArticleGroups(articles: ArticleNode[]) {
-  const articleGroups = {} as ArticleGroups;
-  articles.forEach((node) => {
-    const id = node.frontmatter.id;
-    articleGroups[id] = articleGroups[id] || [];
-    node.path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
-    articleGroups[id].push(node);
-  });
+export function createArticleIdMap(articles: ArticleNode[]): ArticleIdMap {
 
-  return articleGroups;
+  return groupBy(articles.map((article) => {
+    const { frontmatter: { id, absolute_path, lang }} = article;
+    article.path = `${absolute_path || `/articles/${id}`}/${lang}`;
+    return article;
+  }), (article) => article.frontmatter.id);
+}
+
+export function matchLangWithCurrentLanguage(lang: string, currentLanguage: Language) {
+  return currentLanguage.languages.includes(lang);
 }
 
 export class MetadataStore extends Store<{}> {
 
   constructor(
     public statistics: Statistics,
-    public articleGroups: ArticleGroups,
+    public articleIdMap: ArticleIdMap,
     public baseUrl: string,
     public tagMap: TagMap,
   ) {
@@ -30,13 +32,13 @@ export class MetadataStore extends Store<{}> {
   }
 
   getArticleOfLang(id: string, language: Language): ArticleNode {
-    const group = this.articleGroups[id];
-    const node = group.find((x) => language.languages.includes(x.frontmatter.lang)) || group[0];
+    const group = this.articleIdMap.get(id)!!;
+    const node = group.find((x) => matchLangWithCurrentLanguage(x.frontmatter.lang, language)) || group[0];
     return node;
   }
 
   getLangPathMap(id: string): LangPathMap {
-    const group = this.articleGroups[id];
+    const group = this.articleIdMap.get(id)!!;
     const map: LangPathMap = new Map();
 
     group.forEach((node) => {
@@ -77,11 +79,11 @@ export class MetadataStore extends Store<{}> {
   getAllTagsOfLang(language: Language): string[] {
     const tags = [] as string[];
     this.tagMap.forEach(({ count, variations }, key) => {
-        if (typeof variations === "string") {
-          tags.push(variations);
-        } else {
-          tags.push(variations[language.id] || variations[0]);
-        }
+      if (typeof variations === "string") {
+        tags.push(variations);
+      } else {
+        tags.push(variations[language.id] || variations[0]);
+      }
 
     });
 

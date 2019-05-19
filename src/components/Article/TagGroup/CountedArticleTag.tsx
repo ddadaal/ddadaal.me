@@ -15,25 +15,25 @@ interface Props {
 const Item = styled(Link)`
   margin: 0 4px 4px 0;
   display: inline-block;
-  
+
   padding: 2px;
-  
+
   background-color: ${colors.extremelyLightGray};
-  
+
   &:hover {
     background-color: ${colors.lightGray};
     text-decoration: none;
   }
-  
+
   transition: background-color 0.2s linear;
- 
+
 `;
 
 const Text = styled.span`
     color: black;
     padding: 4px;
     font-size: 14px;
-  
+
 `;
 
 export default function CountedArticleTag({ tag }: Props) {
@@ -43,7 +43,7 @@ export default function CountedArticleTag({ tag }: Props) {
   const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.language) || tag;
 
   const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
-  const toLink = `/search?query=${tagOfLang}`;
+  const toLink = `/articles/search?query=${tagOfLang}`;
   const count = metadataStore.getCountOfTag(tag);
 
   return (

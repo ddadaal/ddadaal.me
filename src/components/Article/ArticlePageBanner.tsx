@@ -5,7 +5,7 @@ import ArticleFrontmatter from "./ArticleFrontmatter";
 import {
   InnerContainer as BaseInnerContainer,
 } from "@/layouts/LayeredLayout";
-import { Title } from "@/layouts/BannerLayout";
+import BannerLayout from "@/layouts/BannerLayout";
 
 interface Props {
   title: string;
@@ -35,11 +35,11 @@ const ImgContainer = styled(InnerContainer)`
 
 export default function ArticlePageBanner(props: Props) {
 
-  const {title, id, tags, date, wordCount, currentArticleLanguage} = props;
+  const { title, id, tags, date, wordCount, currentArticleLanguage } = props;
 
   return (
     <>
-      <Title>{title}</Title>
+      <BannerLayout.Title>{title}</BannerLayout.Title>
       <ArticleFrontmatter
         currentArticleLanguage={currentArticleLanguage}
         articleId={id}

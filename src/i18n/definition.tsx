@@ -1,5 +1,5 @@
-import cn from "@/configs/i18nDefinitions/cn";
-import en from "@/configs/i18nDefinitions/en";
+import cn from "@/i18n/definitions/cn";
+import en from "@/i18n/definitions/en";
 
 export const allLanguages = [ cn, en ];
 

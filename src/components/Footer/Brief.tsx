@@ -13,16 +13,14 @@ const root = lang.footer;
 export default function Brief() {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useStore(I18nStore);
 
-  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.language).path;
 
   return (
     <div className="footer-brief">
 
       <p>
         👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
-          <Link key={"me"} to={aboutMePath}>VicCrubs</Link>,
+          <Link key={"me"} to={"/about/me"}>VicCrubs</Link>,
         ]} />
       </p>
       <p>

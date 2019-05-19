@@ -5,7 +5,7 @@ import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { FaFile, FaBookOpen, FaRegCommentDots, FaGlobe, FaMale, FaClock } from "react-icons/fa";
+import { FaFile, FaBookOpen, FaRegCommentDots, FaGlobe, FaMale, FaClock, FaToolbox } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
@@ -95,16 +95,16 @@ export default function HomePage(props: Props) {
             <Link className={"btn btn-info"} to={"/articles"}>
               <FaBookOpen/><LocalizedString id={root.links.articles}/>
             </Link>
-            <Link className={"btn btn-info"} to={getArticleLink("resume")}>
-              <FaFile/><LocalizedString id={root.links.resume}/>
+            <Link className={"btn btn-info"} to={"/resources"}>
+              <FaToolbox/><LocalizedString id={root.links.resources}/>
             </Link>
-            <Link className={"btn btn-info"} to={getArticleLink("about-me")}>
+            <Link className={"btn btn-info"} to={"/about/me"}>
               <FaMale/><LocalizedString id={root.links.aboutMe}/>
             </Link>
-            <Link className={"btn btn-info"} to={getArticleLink("about-project")}>
+            <Link className={"btn btn-info"} to={"/about/project"}>
               <FaGlobe/><LocalizedString id={root.links.aboutProject}/>
             </Link>
-            <Link className={"btn btn-info"} to={getArticleLink("feedback")}>
+            <Link className={"btn btn-info"} to={"/feedback"}>
               <FaRegCommentDots/>
               <LocalizedString id={root.links.feedback}/>
             </Link>
