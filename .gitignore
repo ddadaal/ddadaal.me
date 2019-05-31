@@ -120,3 +120,6 @@ $RECYCLE.BIN/
 
 # files containing sensitive information
 localdeploy.sh
+
+# out
+out/
