@@ -78,15 +78,16 @@ const root = lang.homepage;
 
 const links = [
   ["/articles", FaBookOpen, root.links.articles],
-  ["/resume", FaFile, root.links.resume],
+  ["resume", FaFile, root.links.resume],
   ["/slides", FaSlideshare, root.links.slides],
-  ["/about/me", FaMale, root.links.aboutMe],
+  ["about-me", FaMale, root.links.aboutMe],
   ["/feedback", FaRegCommentDots, root.links.feedback],
 ] as const;
 
 export default function HomePage(props: Props) {
 
   const metadataStore = useStore(MetadataStore);
+  const i18nStore = useStore(I18nStore);
 
   return (
     <HeaderFooterLayout transparentHeader={true}>
@@ -96,9 +97,13 @@ export default function HomePage(props: Props) {
           <Slogan><LocalizedString id={root.from} /></Slogan>
           <LinkContainer>
             {links.map(([to, Icon, id]) => (
-            <Link className={"btn btn-info"} key={to} to={to}>
-              <Icon /><LocalizedString id={id} />
-            </Link>
+              <Link className={"btn btn-info"} key={to} to={
+                to.startsWith("/")
+                  ? to
+                  : metadataStore.getArticleOfLang(to, i18nStore.language).path
+              }>
+                <Icon /><LocalizedString id={id} />
+              </Link>
             ))}
 
           </LinkContainer>
