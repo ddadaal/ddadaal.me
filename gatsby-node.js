@@ -15,15 +15,16 @@ exports.createPages = async ({ actions, graphql }) => {
   const result = await graphql(`{
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: {  frontmatter: { ignored: { ne: true }}}
+      filter: { frontmatter: { no_create_page: { ne: true }}}
     ) {
       edges {
         node {
           frontmatter {
             id
             lang
-            ignored
+            ignored_in_list
             date
+            no_create_page
             absolute_path
             related
           }
@@ -66,7 +67,6 @@ exports.createPages = async ({ actions, graphql }) => {
   }
   // create redirects
 
-  redirect("/resources", "/resources/slides");
   redirect("/about", "/about/odyssey");
 
   createPaginatedHomepages(
@@ -93,7 +93,7 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
   for (const key in articleGroups) {
     const node = articleGroups[key][0];
-    if (!node.frontmatter.ignored) {
+    if (!node.frontmatter.no_create_page || !node.frontmatter.ignored_in_page) {
       notIgnoredGroups.push(node);
     }
   }

@@ -54,3 +54,8 @@ BannerLayout.Title = styled.h1`
   font-size: 2em;
   padding: 4px 0;
 `;
+
+BannerLayout.Description = styled.h2`
+  font-size: 0.9em;
+  padding: 4px 0;
+`;

@@ -54,8 +54,6 @@ export class I18nStore extends Store<II18nStore> {
       return array.join("");
     }
 
-    console.log(array, containsNonPrimitive);
-
     return array;
   }
 

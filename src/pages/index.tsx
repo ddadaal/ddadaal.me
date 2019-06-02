@@ -5,7 +5,7 @@ import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { FaFile, FaBookOpen, FaRegCommentDots, FaGlobe, FaMale, FaClock, FaToolbox } from "react-icons/fa";
+import { FaFile, FaBookOpen, FaRegCommentDots, FaMale, FaClock, FaToolbox, FaBook, FaSlideshare } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
@@ -76,44 +76,37 @@ const LinkContainer = styled.div`
 
 const root = lang.homepage;
 
+const links = [
+  ["/articles", FaBookOpen, root.links.articles],
+  ["/resume", FaFile, root.links.resume],
+  ["/slides", FaSlideshare, root.links.slides],
+  ["/about/me", FaMale, root.links.aboutMe],
+  ["/feedback", FaRegCommentDots, root.links.feedback],
+] as const;
+
 export default function HomePage(props: Props) {
 
-  const i18nStore = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
-
-  const getArticleLink = (id: string) => {
-    return metadataStore.getArticleOfLang(id, i18nStore.language).path;
-  };
 
   return (
     <HeaderFooterLayout transparentHeader={true}>
       <Bg>
         <TextContent>
-          <TitleText><LocalizedString id={selectDate()}/></TitleText>
-          <Slogan><LocalizedString id={root.from}/></Slogan>
+          <TitleText><LocalizedString id={selectDate()} /></TitleText>
+          <Slogan><LocalizedString id={root.from} /></Slogan>
           <LinkContainer>
-            <Link className={"btn btn-info"} to={"/articles"}>
-              <FaBookOpen/><LocalizedString id={root.links.articles}/>
+            {links.map(([to, Icon, id]) => (
+            <Link className={"btn btn-info"} key={to} to={to}>
+              <Icon /><LocalizedString id={id} />
             </Link>
-            <Link className={"btn btn-info"} to={"/resources"}>
-              <FaToolbox/><LocalizedString id={root.links.resources}/>
-            </Link>
-            <Link className={"btn btn-info"} to={"/about/me"}>
-              <FaMale/><LocalizedString id={root.links.aboutMe}/>
-            </Link>
-            <Link className={"btn btn-info"} to={"/about/project"}>
-              <FaGlobe/><LocalizedString id={root.links.aboutProject}/>
-            </Link>
-            <Link className={"btn btn-info"} to={"/feedback"}>
-              <FaRegCommentDots/>
-              <LocalizedString id={root.links.feedback}/>
-            </Link>
+            ))}
+
           </LinkContainer>
-          <Contacts size={1.6} color={"white"}/>
+          <Contacts size={1.6} color={"white"} />
           <p>
             <FaClock />
             <LocalizedString id={lang.statistics.lastUpdated} />：
-            <strong> {metadataStore.statistics.lastUpdated}</strong>
+            <strong> {metadataStore.lastUpdated}</strong>
           </p>
         </TextContent>
 

@@ -7,28 +7,30 @@ import { groupBy } from "@/utils/groupBy";
 
 export type LangPathMap = Map<string, string>;
 
-export function createArticleIdMap(articles: ArticleNode[]): ArticleIdMap {
-
-  return groupBy(articles.map((article) => {
-    const { frontmatter: { id, absolute_path, lang }} = article;
-    article.path = `${absolute_path || `/articles/${id}`}/${lang}`;
-    return article;
-  }), (article) => article.frontmatter.id);
-}
-
 export function matchLangWithCurrentLanguage(lang: string, currentLanguage: Language) {
   return currentLanguage.languages.includes(lang);
 }
 
 export class MetadataStore extends Store<{}> {
 
+  articleCount: number = 0;
+  articleIdMap: ArticleIdMap;
+
   constructor(
-    public statistics: Statistics,
-    public articleIdMap: ArticleIdMap,
+    public lastUpdated: string,
+    articleNodes: ArticleNode[],
     public baseUrl: string,
     public tagMap: TagMap,
   ) {
     super();
+
+    // calculate articleIdMap
+    this.articleIdMap = groupBy(articleNodes.map((article) => {
+      const { frontmatter: { id, absolute_path, lang, ignored_in_list: ignored } } = article;
+      article.path = `${absolute_path || `/articles/${id}`}/${lang}`;
+      if (!ignored) { this.articleCount++; }
+      return article;
+    }), (article) => article.frontmatter.id);
   }
 
   getArticleOfLang(id: string, language: Language): ArticleNode {

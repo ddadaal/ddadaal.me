@@ -7,7 +7,6 @@ import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 
-
 interface Props {
   className?: string;
 }

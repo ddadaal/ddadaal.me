@@ -31,7 +31,7 @@ export default function SearchBar(props: Props) {
   return (
     <InputGroup className={props.className}>
       <Localize id={lang.search.inputPlaceholder} replacements={[
-        metadataStore.statistics.totalArticleCount,
+        metadataStore.articleCount,
       ]}>
         {(result) => (
           <Input

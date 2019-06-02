@@ -5,11 +5,13 @@ absolute_path: "/resume"
 date: "2018-11-04T14:18:00.962Z"
 title: "简历"
 lang: cn
-ignored: true
+ignored_in_list: true
 hide_heading: true
 no_toc: true
 
 ---
+
+<resume>
 
 <h1 class="name">
 陈俊达
@@ -77,8 +79,10 @@ no_toc: true
 - 熟悉英语环境。英语4级: 628, 6级: 556
 - 乐于帮助他人，立志于用自己的技能为他人创造价值。志愿时长112小时，参加了IT侠、小百合工作室等公益组织
 
-# 其他版本与下载
+# 下载
 
-中文：[浏览](/resume/cn)，[下载](./chinese.pdf)
+中文：[查看](/resume/cn), [下载](./chinese.pdf)
 
-English：[View](/resume/en)，[Download](./english.pdf)
+English：[View](/resume/en), [Download](./english.pdf)
+
+</resume>

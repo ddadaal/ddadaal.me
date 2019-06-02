@@ -32,6 +32,10 @@ export default function SubmenuLayout(props: Props) {
     <HeaderFooterLayout transparentHeader={false}>
       <Page>
         <Row>
+
+          <Col md={9}>
+            {props.children}
+          </Col>
           <Col md={3}>
             <Nav vertical={true}>
               {/* <MenuTitle><LocalizedString id={props.menuTextId} /></MenuTitle> */}
@@ -44,9 +48,6 @@ export default function SubmenuLayout(props: Props) {
                 </NavItem>
               ))}
             </Nav>
-          </Col>
-          <Col md={9}>
-            {props.children}
           </Col>
         </Row>
       </Page>

@@ -14,6 +14,8 @@ import { StoreProvider } from "simstate";
 import { ArticleStore } from "@/stores/ArticleStore";
 import ToTop from "@/components/ToTop";
 import "@/styles/index.scss";
+import { ArticleNode } from "@/models/ArticleNode";
+import useConstant from "@/utils/useConstant";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -24,9 +26,9 @@ const LayoutRoot = styled.div`
 
 interface Props {
   location: Location;
-  articleIdMap: ArticleIdMap;
+  articles: ArticleNode[];
   siteMetadata: SiteMetadata;
-  statistics: Statistics;
+  lastUpdated: string;
   children?: React.ReactNode;
   tagMap: TagMap;
 }
@@ -35,18 +37,18 @@ const iconContext = { className: "icons" };
 
 export default function RootLayout(props: Props) {
 
-  const i18nStore = useRef(new I18nStore()).current;
+  const i18nStore = useConstant(() => new I18nStore());
 
-  const locationStore = useRef(new LocationStore(props.location)).current;
+  const locationStore = useConstant(() => new LocationStore(props.location));
 
-  const metadataStore = useRef(new MetadataStore(
-    props.statistics,
-    props.articleIdMap,
+  const metadataStore = useConstant(() => new MetadataStore(
+    props.lastUpdated,
+    props.articles,
     props.siteMetadata.siteUrl,
     props.tagMap,
-  )).current;
+  ));
 
-  const articleStore = useRef(new ArticleStore(null)).current;
+  const articleStore = useConstant(() => new ArticleStore(null));
 
   useEffect(() => {
     locationStore.updateLocation(props.location);

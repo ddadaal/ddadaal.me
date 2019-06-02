@@ -4,7 +4,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
-import { createArticleIdMap } from "@/stores/MetadataStore";
 import { ArticleNode } from "@/models/ArticleNode";
 import useConstant from "@/utils/useConstant";
 
@@ -37,7 +36,7 @@ const query = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {  frontmatter: { ignored: { ne: true }}}
+      filter: { frontmatter: { no_create_page: { ne: true }}}
     ) {
       nodes {
         excerpt(pruneLength: 250, truncate: true)
@@ -45,11 +44,12 @@ const query = graphql`
           words
         }
         frontmatter {
+          no_create_page
           date
           id
           absolute_path
           title
-          ignored
+          ignored_in_list
           tags
           hide_heading
           lang
@@ -64,12 +64,6 @@ const query = graphql`
 export default function IndexLayout(props: Props) {
 
   const data: InitialData = useStaticQuery(query);
-  const articleIdMap = useConstant(() => createArticleIdMap(data.allMarkdownRemark.nodes));
-
-  const statistics = {
-    lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),
-    totalArticleCount: articleIdMap.size,
-  };
 
   // create tag map
   const tagMap = new Map() as TagMap;
@@ -95,8 +89,8 @@ export default function IndexLayout(props: Props) {
     <RootLayout
       location={props.location}
       siteMetadata={data.site.siteMetadata}
-      statistics={statistics}
-      articleIdMap={articleIdMap}
+      lastUpdated={dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ")}
+      articles={data.allMarkdownRemark.nodes}
       tagMap={tagMap}
     >
       {props.children}

@@ -2,29 +2,31 @@ import React, { useRef, useState, useCallback } from "react";
 import styled from "styled-components";
 import TagsCard from "@/components/Cards/TagsCard";
 import { breakpoints, colors } from "@/styles/variables";
-import SearchBar from "@/components/Article/Search/SearchBar";
+import SearchBar from "@/components/Article/SearchBar/SearchBar";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 import { useEventListener } from "@/utils/useEventListener";
-import TagDropdown from "@/components/Article/Search/TagDropdown";
-import MediaQuery from "react-responsive";
+import TagDropdown from "@/components/Article/SearchBar/TagDropdown";
+import { isServer } from "@/utils/isServer";
 
 interface Props {
 
 }
 
-const ArticleSearch: React.FC<Props> = (props) => {
+const ArticleSearchBar: React.FC<Props> = (props) => {
 
   const [show, setShow] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEventListener(window, "click", (ev) => {
-    if (containerRef.current && !containerRef.current.contains(ev.target as Node)) {
-      setShow(false);
-    }
+  if (!isServer()) {
+    useEventListener(window, "click", (ev) => {
+      if (containerRef.current && !containerRef.current.contains(ev.target as Node)) {
+        setShow(false);
+      }
 
-  });
+    });
+  }
 
   const close = useCallback(() => {
     setShow(false);
@@ -33,9 +35,7 @@ const ArticleSearch: React.FC<Props> = (props) => {
   return (
     <Container ref={containerRef}>
       <SearchBar onFocus={() => setShow(true)} />
-      <MediaQuery maxWidth={breakpoints.md}>
-        <TagDropdown onTagClicked={close} show={show} />
-      </MediaQuery>
+      <TagDropdown onTagClicked={close} show={show} />
     </Container>
   );
 };
@@ -48,6 +48,4 @@ const Container = styled.div`
   } */
 `;
 
-
-
-export default ArticleSearch;
+export default ArticleSearchBar;

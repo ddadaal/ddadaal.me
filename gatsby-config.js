@@ -110,7 +110,7 @@ module.exports = {
               allMarkdownRemark(
                 limit: 1000,
                 sort: { order: DESC, fields: [frontmatter___date] },
-                filter: { frontmatter: { ignored: { ne: true } }}
+                filter: { frontmatter: { ignored_in_list: { ne: true } }}
               ) {
                 edges {
                   node {

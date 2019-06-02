@@ -3,38 +3,17 @@ import { useStore } from "simstate";
 import { LocationStore } from "@/stores/LocationStore";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
-import { Link } from "gatsby";
-import NavLink from "@/components/Header/NavLink";
-import styled from "styled-components";
-import { DropdownItem } from "reactstrap";
+import NavItem from "@/components/Header/NavItem";
 
-function doNothing() {
-
-}
-
-const StyledDropdownItem = styled(DropdownItem)<{ active: boolean}>`
-  .nav-link {
-    color: ${({ active }) => active ? "white" : "black"}!important;
-
-  }
-
-  .active > a {
-    color: white !important;
-  }
-
-  .nav-link:hover {
-    color: white !important;
-  }
-` as React.ComponentType<{ active: boolean }>;
-
-const ArticleNavItem = (props: {
-  children?: React.ReactNode;
+interface Props {
+  Icon: React.ComponentType;
   articleId: string;
   onClick?(): void;
-}) => {
+  wrapper: "navItem" | "dropdownItem";
+  textId: string;
+}
 
-  const { children, articleId, onClick } = props;
-
+export default function ArticleNavItem({ Icon, articleId, onClick, wrapper, textId }: Props) {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
   const { pathname } = useStore(LocationStore);
@@ -46,16 +25,14 @@ const ArticleNavItem = (props: {
   const targetPageUrlParts = node.path.split("/");
   targetPageUrlParts.pop();
 
-  const active = pathname.startsWith(targetPageUrlParts.join("/"));
-
   return (
-    <StyledDropdownItem active={active}>
-      <NavLink to={node.path} onClick={onClick || doNothing}>
-        {children}
-      </NavLink>
-    </StyledDropdownItem>
+    <NavItem
+      wrapper={wrapper}
+      onClick={onClick}
+      Icon={Icon}
+      match={(pathname) => pathname.startsWith(targetPageUrlParts.join("/"))}
+      to={node.path}
+      textId={textId}
+    />
   );
-
-};
-
-export default ArticleNavItem;
+}

@@ -1,12 +1,13 @@
 import {
-  Collapse, DropdownItem, DropdownMenu,
-  DropdownToggle,
+  Collapse, DropdownItem, DropdownMenu as BSDropdownMenu,
+  DropdownToggle as BSDropdownToggle,
   Nav,
   Navbar,
   NavItem as BSNavItem,
   NavbarToggler,
   NavLink as ReactstrapNavLink,
   UncontrolledDropdown,
+  DropdownToggleProps,
 } from "reactstrap";
 import { Link } from "gatsby";
 import React, { useState, useEffect, useRef, useCallback } from "react";
@@ -23,6 +24,7 @@ import NavItem from "@/components/Header/NavItem";
 import { useEventListener } from "@/utils/useEventListener";
 import Placeholder from "@/components/Header/HeaderPlaceholder";
 import { isServer } from "@/utils/isServer";
+import ArticleNavItem from "@/components/Header/NavItem/ArticleNavItem";
 
 interface Props {
   transparentHeader: boolean;
@@ -77,37 +79,65 @@ export default function Header({ transparentHeader }: Props) {
           <Collapse isOpen={isOpen} navbar={true}>
             <Nav className="ml-auto" navbar={true}>
               <NavItem
-                type="link"
+                wrapper="navItem"
                 to="/"
                 onClick={close}
-                matchType={"exact"}
+                match={"exact"}
                 Icon={FaHome}
                 textId={root.home}
               />
               <NavItem
-                type="link"
+                wrapper="navItem"
                 to="/articles"
                 onClick={close}
-                matchType={"startsWith"}
+                match={"startsWith"}
                 Icon={FaBookOpen}
                 textId={root.articles}
               />
-              <NavItem
-                type="link"
-                to="/resources"
+              <ArticleNavItem
+                wrapper="navItem"
+                articleId="resume"
                 onClick={close}
-                matchType={"startsWith"}
-                Icon={FaToolbox}
-                textId={root.resources}
+                Icon={FaFile}
+                textId={root.resume}
               />
               <NavItem
-                type="link"
-                to="/about"
+                wrapper="navItem"
+                to="/slides"
                 onClick={close}
-                matchType={"startsWith"}
-                Icon={FaInfo}
-                textId={root.about}
+                match={"startsWith"}
+                Icon={FaSlideshare}
+                textId={root.slides}
               />
+              <UncontrolledDropdown nav={true} inNavbar={true} >
+                <DropdownToggle nav={true} caret={true}>
+                  <FaInfo />
+                  <LocalizedString id={root.about.title} />
+                </DropdownToggle>
+                <DropdownMenu right={true}>
+                  <ArticleNavItem
+                    wrapper="dropdownItem"
+                    articleId="odyssey"
+                    onClick={close}
+                    Icon={FaBookOpen}
+                    textId={root.about.odyssey}
+                  />
+                  <ArticleNavItem
+                    wrapper="dropdownItem"
+                    articleId="about-project"
+                    onClick={close}
+                    Icon={FaGlobe}
+                    textId={root.about.project}
+                  />
+                  <ArticleNavItem
+                    wrapper="dropdownItem"
+                    articleId="about-me"
+                    onClick={close}
+                    Icon={FaMale}
+                    textId={root.about.me}
+                  />
+                </DropdownMenu>
+              </UncontrolledDropdown>
               <BSNavItem>
                 <NavbarLanguageSelector />
               </BSNavItem>
@@ -125,6 +155,19 @@ const StyledLogo = styled(Icon)`
   margin-right: 8px;
 `;
 
+const DropdownMenu = styled(BSDropdownMenu)`
+  .dropdown-item {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    a.nav-link {
+      color: black;
+
+    }
+  }
+
+`;
+
 function Branding() {
   return (
     <Link to={"/"} className={"navbar-brand"}>
@@ -133,3 +176,17 @@ function Branding() {
     </Link>
   );
 }
+
+const DropdownToggle: React.FC<DropdownToggleProps> = (props) => {
+  const { pathname } = useStore(LocationStore);
+
+  const { className, ...rest } = props;
+
+  return (
+    <BSDropdownToggle {...rest} className={
+      [className, pathname.startsWith("/about") ? "active" : undefined].
+        filter((x) => !!x)
+        .join(" ")
+    } />
+  );
+};

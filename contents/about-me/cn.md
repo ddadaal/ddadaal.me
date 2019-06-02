@@ -4,7 +4,7 @@ id: "about-me"
 absolute_path: "/about/me"
 date: "2019/2/1 0:07"
 title: "关于我"
-ignored: true
+ignored_in_list: true
 lang: cn
 hide_heading: false
 

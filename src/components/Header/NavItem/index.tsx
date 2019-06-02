@@ -1,43 +1,39 @@
 import React from "react";
-import LinkNavItem from "@/components/Header/NavItem/LinkNavItem";
 import LocalizedString from "@/i18n/LocalizedString";
 import { useStore } from "simstate";
 import { LocationStore } from "@/stores/LocationStore";
-import ArticleNavItem from "@/components/Header/NavItem/ArticleNavItem";
+import NavLink from "@/components/Header/NavLink";
+import { NavItem as BSNavItem, DropdownItem as BSDropdownItem } from "reactstrap";
 
-type Props = {
+interface Props {
   Icon: React.ComponentType;
   textId: string;
   onClick?(): void;
-} & ({
-  type: "link";
-  matchType: "exact" | "startsWith";
+  wrapper: "navItem" | "dropdownItem";
+  match: "exact" | "startsWith" | ((pathname: string) => boolean);
   to: string;
-} | {
-  type: "article";
-  articleId: string;
-});
+}
 
-export default function NavItem(props: Props) {
-  const children = (
-    <>
-      <props.Icon />
-      <LocalizedString id={props.textId} />
-    </>
+export default function NavItem({ Icon, textId, onClick, wrapper, match, to }: Props) {
+
+  const { pathname } = useStore(LocationStore);
+
+  const active = typeof match === "function"
+    ? match(pathname)
+    : match === "exact"
+      ? pathname === to
+      : pathname.startsWith(to);
+
+  return (
+    React.createElement(
+      wrapper === "navItem" ? BSNavItem : BSDropdownItem,
+      { active },
+      (
+        <NavLink to={to} onClick={onClick}>
+          <Icon />
+          <LocalizedString id={textId} />
+        </NavLink>
+      ),
+    )
   );
-
-  if (props.type === "link") {
-
-    return (
-      <LinkNavItem matchType={props.matchType} to={props.to} onClick={props.onClick}>
-        {children}
-      </LinkNavItem>
-    );
-  } else {
-    return (
-      <ArticleNavItem articleId={props.articleId} onClick={props.onClick}>
-        {children}
-      </ArticleNavItem>
-    );
-  }
 }

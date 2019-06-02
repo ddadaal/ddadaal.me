@@ -5,11 +5,14 @@ absolute_path: "/resume"
 date: "2018-11-04T14:18:00.962Z"
 title: "Resume"
 lang: en
-ignored: true
+ignored_in_list: true
+no_create_page: false
 hide_heading: true
 no_toc: true
 
 ---
+
+<resume>
 
 <h1 class="name">
 Chen Junda
@@ -78,8 +81,10 @@ Chen Junda
 - Solid English skill and fit in English environment. CET4: 628, CET6: 556
 - Active in volunteering and helping others. Willing to empower others with my skills. 112 hours of volunteering time. Participated in IT Xia IT technology Charity Club and Lily Studio
 
-# Other Versions and Downloads
+# Downloads
 
 English：[View](/resume/en)，[Download](./english.pdf)
 
 中文：[浏览](/resume/cn)，[下载](./chinese.pdf)
+
+</resume>

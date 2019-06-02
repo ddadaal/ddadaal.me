@@ -9,7 +9,7 @@ import FriendsCard from "@/components/Cards/FriendsCard";
 import Page from "@/layouts/Page";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import SearchCard from "@/components/Cards/SearchCard";
-import ArticleSearch from "@/components/Article/Search";
+import ArticleSearchBar from "@/components/Article/SearchBar";
 import MediaQuery from "react-responsive";
 import { breakpoints } from "@/styles/variables";
 // import SearchBar from "@/components/SearchBar";
@@ -25,26 +25,34 @@ const Sidebar = styled.div`
 
 `;
 
+const SearchBarContainer = styled.div`
+  margin: 4px 0 8px 0;
+`;
+
 export default function ArticleListLayout(props: Props) {
   return (
     <HeaderFooterLayout transparentHeader={false}>
       <Page>
         <Row>
-          <Col md={3} xs={12}>
-            <Sidebar>
-              <ArticleSearch />
-              {/* <SearchBar /> */}
-              {/* <SearchCard /> */}
-              <MediaQuery minWidth={breakpoints.md}>
-                <TagsCard />
-              </MediaQuery>
-
-              {/*<BlogIntroCard/>*/}
-              {/*<SelfIntroCard/>*/}
-            </Sidebar>
-          </Col>
-          <Col md={9} xs={12}>
+          <Col md={8} xs={12}>
+            <MediaQuery maxWidth={breakpoints.md}>
+              <SearchBarContainer>
+                <ArticleSearchBar />
+              </SearchBarContainer>
+            </MediaQuery>
             {props.children}
+          </Col>
+          <Col md={4} xs={12}>
+            <MediaQuery minWidth={breakpoints.md}>
+              <Sidebar>
+                {/* <ArticleSearchBar /> */}
+                {/* <SearchBar /> */}
+                <SearchCard />
+                <TagsCard />
+                {/*<BlogIntroCard/>*/}
+                {/*<SelfIntroCard/>*/}
+              </Sidebar>
+            </MediaQuery>
           </Col>
         </Row>
       </Page>

@@ -13,8 +13,6 @@ const root = lang.footer;
 export default function Brief() {
 
   const metadataStore = useStore(MetadataStore);
-
-
   return (
     <div className="footer-brief">
 
@@ -32,7 +30,7 @@ export default function Brief() {
 
       </p>
       <p>
-        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.statistics.lastUpdated}</strong>
+        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.lastUpdated}</strong>
 
       </p>
       <div>
