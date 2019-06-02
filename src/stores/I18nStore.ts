@@ -41,18 +41,20 @@ export class I18nStore extends Store<II18nStore> {
     const array = definition.split(splitter) as React.ReactNode[];
     let ri = 0;
 
-    let containsNonString = false;
+    let containsNonPrimitive = false;
 
     for (let i = 1; i < array.length; i += 2) {
-      if (typeof replacements[ri] !== "string") {
-        containsNonString = true;
+      if (typeof replacements[ri] === "object") {
+        containsNonPrimitive = true;
       }
       array[i] = replacements[ri++];
     }
 
-    if (!containsNonString) {
+    if (!containsNonPrimitive) {
       return array.join("");
     }
+
+    console.log(array, containsNonPrimitive);
 
     return array;
   }

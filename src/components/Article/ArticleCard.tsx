@@ -20,15 +20,15 @@ const Card = styled(BaseCard)`
 
   max-width: 300px;
   height: 200px;
-  
+
     overflow: hidden;
-  
+
   .card-body {
     font-size: 14px;
     padding: 0.75rem 1rem;
 
   }
-  
+
   :hover {
     cursor: pointer;
   }
@@ -46,7 +46,9 @@ export default function ArticleCard({ articleId, className }: Props) {
       <CardBody>
         <Date>{localizedArticle.frontmatter.date}</Date>
         <Title>{localizedArticle.frontmatter.title}</Title>
-        {limitLength(localizedArticle.excerpt)}
+        <Content>
+          {localizedArticle.excerpt}
+        </Content>
       </CardBody>
 
     </Card>
@@ -59,7 +61,7 @@ function limitLength(content: string) {
 }
 
 const Title = styled.p`
-  margin-bottom: 2px; 
+  margin-bottom: 2px;
   font-weight: bold;
   font-size: 18px;
 `;
@@ -68,4 +70,11 @@ const Date = styled.p`
   margin-bottom: 2px;
   font-size: 12px;
   color: ${colors.gray};
+`;
+
+const Content = styled.p`
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
 `;

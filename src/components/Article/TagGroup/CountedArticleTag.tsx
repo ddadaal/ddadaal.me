@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
@@ -9,6 +9,7 @@ import { Badge } from "reactstrap";
 import { colors } from "@/styles/variables";
 
 interface Props {
+  onClick?(tags: string): void;
   tag: string;
 }
 
@@ -36,7 +37,7 @@ const Text = styled.span`
 
 `;
 
-export default function CountedArticleTag({ tag }: Props) {
+export default function CountedArticleTag({ tag, onClick }: Props) {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
@@ -46,8 +47,14 @@ export default function CountedArticleTag({ tag }: Props) {
   const toLink = `/articles/search?query=${tagOfLang}`;
   const count = metadataStore.getCountOfTag(tag);
 
+  const clickHandler = useCallback(() => {
+    if (onClick) {
+      onClick(tag);
+    }
+  }, [onClick, tag]);
+
   return (
-    <Item title={title} to={toLink}>
+    <Item title={title} to={toLink} onClick={clickHandler}>
       <Text>{tagOfLang}</Text>
       <Badge color={"info"}>{count}</Badge>
     </Item>

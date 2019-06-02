@@ -7,9 +7,14 @@ import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 
+
+interface Props {
+  className?: string;
+}
+
 const root = lang.tagsCard;
 
-export default function TagsCard() {
+export default function TagsCard(props: Props) {
 
   const metadataStore = useStore(MetadataStore);
 
@@ -18,7 +23,7 @@ export default function TagsCard() {
     .map((entry) => entry[0]);
 
   return (
-    <BaseCard>
+    <BaseCard className={props.className}>
       <BaseCardHeader>
         <span>🏷️ <LocalizedString id={root.title}/></span>
       </BaseCardHeader>

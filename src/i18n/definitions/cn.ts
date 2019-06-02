@@ -51,7 +51,7 @@ export default {
     },
     search: {
       cardTitle: "搜索文章",
-      inputPlaceholder: "搜索",
+      inputPlaceholder: "在{}文章中搜索",
       notFound: "未找到",
       title: "{} 搜索结果",
       info: "结果数：{}",

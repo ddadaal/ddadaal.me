@@ -52,7 +52,7 @@ export default {
     },
     search: {
       cardTitle: "Search",
-      inputPlaceholder: "Search",
+      inputPlaceholder: "Search in {} articles",
       notFound: "Not found.",
       title: "Search result for {}",
       info: "Number of results: {}",

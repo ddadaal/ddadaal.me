@@ -7,15 +7,14 @@ export function useEventListener<R extends EventTarget, K extends keyof HTMLElem
   deps: any[] = [],
 ) {
 
-  const actualElem = "current" in element ? element.current!! : element;
-
-  const savedListener = useRef<typeof listener |  null>(null);
+  const savedListener = useRef<typeof listener | null>(null);
 
   useEffect(() => {
     savedListener.current = listener;
   }, [listener]);
 
   useEffect(() => {
+    const actualElem = "current" in element ? element.current!! : element;
     const eventHandler = (e: HTMLElementEventMap[K]) => savedListener.current!!.call(actualElem, e);
     actualElem.addEventListener(eventType, eventHandler);
 

@@ -6,6 +6,7 @@ import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
 import { createArticleIdMap } from "@/stores/MetadataStore";
 import { ArticleNode } from "@/models/ArticleNode";
+import useConstant from "@/utils/useConstant";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
@@ -63,11 +64,11 @@ const query = graphql`
 export default function IndexLayout(props: Props) {
 
   const data: InitialData = useStaticQuery(query);
-  const [articleIdMap] = useState(() => createArticleIdMap(data.allMarkdownRemark.nodes));
+  const articleIdMap = useConstant(() => createArticleIdMap(data.allMarkdownRemark.nodes));
 
   const statistics = {
     lastUpdated: dayjs(data.site.siteMetadata.lastUpdated).format("YYYY/MM/DD HH:mm:ss ZZ"),
-    totalArticleCount: Object.keys(articleIdMap).length,
+    totalArticleCount: articleIdMap.size,
   };
 
   // create tag map

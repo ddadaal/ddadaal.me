@@ -17,7 +17,6 @@ import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare, FaTo
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { LocationStore } from "@/stores/LocationStore";
-import SearchBar from "@/components/SearchBar";
 import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
 import NavItem from "@/components/Header/NavItem";

@@ -6,16 +6,19 @@ import Localize from "@/i18n/Localize";
 import lang from "@/i18n/lang";
 import { useStore } from "simstate";
 import { LocationStore } from "@/stores/LocationStore";
+import { useEventListener } from "@/utils/useEventListener";
+import { MetadataStore } from "@/stores/MetadataStore";
 
 interface Props {
   onSearch?(): void;
+  className?: string;
+  onFocus?(): void;
+  onBlur?(): void;
 }
 
 export default function SearchBar(props: Props) {
-  const locationStore = useStore(LocationStore);
 
-  console.log(locationStore.pathname);
-
+  const metadataStore = useStore(MetadataStore);
   const [ input, setInput ] = useState("");
 
   const onSearch = () => {
@@ -26,13 +29,17 @@ export default function SearchBar(props: Props) {
   };
 
   return (
-    <InputGroup>
-      <Localize id={lang.search.inputPlaceholder}>
+    <InputGroup className={props.className}>
+      <Localize id={lang.search.inputPlaceholder} replacements={[
+        metadataStore.statistics.totalArticleCount,
+      ]}>
         {(result) => (
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={result}
+            onFocus={props.onFocus}
+            onBlur={props.onBlur}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
                 onSearch();
