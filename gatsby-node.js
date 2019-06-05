@@ -93,7 +93,7 @@ function createPaginatedHomepages(createPage, articleGroups) {
 
   for (const key in articleGroups) {
     const node = articleGroups[key][0];
-    if (!node.frontmatter.no_create_page || !node.frontmatter.ignored_in_page) {
+    if (!node.frontmatter.no_create_page && !node.frontmatter.ignored_in_list) {
       notIgnoredGroups.push(node);
     }
   }
