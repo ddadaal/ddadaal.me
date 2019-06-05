@@ -173,9 +173,8 @@ module.exports = {
               inlineCodeMarker: "±",
             }
           },
-
-          'gatsby-remark-copy-linked-files',
           `gatsby-remark-emoji`,
+          'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           {
             resolve: 'gatsby-remark-images',
@@ -185,7 +184,8 @@ module.exports = {
               showCaptions: true,
               linkImagesToOriginal: false
             }
-          }
+          },
+
         ]
       }
     },
