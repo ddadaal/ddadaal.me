@@ -26,12 +26,16 @@ Chen Junda
 
 ## <span class="highlight">Nanjing University Software Engineering</span> <span class="right">September 2016-Present</span>
 
-### Undergraduate; Will Graduate in 2020；GPA 4.63/5.0; Rank 3/220
+### Undergraduate; Will Graduate in 2020；GPA 4.6185/5.0; Rank 1/223
 - **National Scholarship** (2016-2017)
 - **Tung OOCL Scholarship** (2017-2018)
 - **School-Level Outstanding Student** (2017-2018)
+- **Highest Score** and the **Leader** in all code involved teamwork assignments (SE2, SE3 and Architecture)
 
 # Internship and Organization Experiences
+
+## <span class="highlight">Microsoft Suzhou</span><span class="right">Starting from July 2019</span>
+### Software Engineer Intern
 
 ## <span class="highlight">Nanjing University Microsoft Student Club</span><span class="right">September 2016-Present</span>
 ### President (2018-2019), Undersecretary of Technology Department (2017-2018), Member (2016-2017)
@@ -41,8 +45,8 @@ Chen Junda
 - Participated in 2017 Microsoft Student Summer Camp
 
 ## <span class="highlight">Others</span>
-- Currently on SAP VT Internship Program
-- Got internship offer from **Microsoft Research Asia DKI (Data, Knowledge and Intelligence) group on frontend development** in Jan 2019 but refused due to time conflict
+- Participated in SAP VT Internship Program from 2018/7 to 2019/5
+- Got internship offer from **Microsoft Research Asia DKI (Data, Knowledge and Intelligence) group** in Jan 2019 but refused due to time conflict
 
 # Part of Recent Project Experiences (GitHub: viccrubs)
 
@@ -56,20 +60,18 @@ Chen Junda
 ### Architecture design; Implementation; Final presentation for software part
 - Supports multi-node network and detection/recovery on data corruption
 - Participate in designing core architecture using `Spring Boot`. Implemented web application using `Kotlin` and Web backend of demo application (supply chain management system) using `C#` and `ASP.NET Core`
-- **Third prize** in *Chain Valley（链谷杯）National Blockchain Application Competition*, **National Second Prize** and **Eastern China Regional First Prize** in *The Third National College Blockchain Competition*
+- **Third prize** in *Chain Valley（链谷杯）National Blockchain Application Competition*; **National Second Prize** and **Eastern China Regional First Prize** in *The Third National College Blockchain Competition*
 
 ## <span class="highlight">VicBlog</span>, Personal Blog <span class="right">October 2016-Present</span>
 ### Personal project
 - Website: https://viccrubs.me; Related repos: https://github.com/vicblog
-- Based on `Gatsby` static site generator, written in `TypeScript` and deployed on `GitHub Pages`. Previous versions used `Flask` and `ASP.NET Core + React` on `Microsoft Azure`
+- Based on `Gatsby` static site generator, self-designed code and content structure, written in `TypeScript` and deployed on `GitHub Pages`. Previous versions used `Flask` and `ASP.NET Core + React` on `Microsoft Azure`
 - Use `simstate`, a state management library developed by myself, for state management (GitHub: viccrubs/simstate)
 
-## <span class="highlight">Tag x00</span>, A Crowd-Sourcing Data Tagging Platform <span class="right">March-June, 2018</span>
-### Team leader; Completed most of frontend
-- A Term Project for a course; Got the highest score in the grade
-- Use a similar architecuture to **A+Quant**'s; **A+Quant**'s architecture is based on and improved from the architecture of this project
-- Designed a canvas component: Supports drawing rectangle or any closed areas on an image: Supports both mouse and touch; Detects click and highlight selected area; Changes size based on width while maintaining correct coordinations in all sizes
-
+## <span class="highlight">ChainPaper</span>, a Paper Sharing & Social Network Platform based on ChainStore <span class="right">May 2019</span>
+### Frontend design and implementation; Final presentation
+- A platform to freely share papers and communicate with others. **ChainStore** is used to ensure the identity and traceability of identity of papers
+- A Hackathon project. Built from scratch in 30 hours in a team of 4 students. The only **First Prize** in the NJU & Vivo Hackathon Competition
 
 # Skills/Others
 
@@ -78,8 +80,8 @@ Chen Junda
 - Rich project and teamwork experiences
 - Participate in open source. Contributed to `DefinitelyTyped` and `gitalk`
 - Good at public presentations and speeches. Act as the speaker for most projects and competitions
-- Solid English skill and fit in English environment. CET4: 628, CET6: 556
-- Active in volunteering and helping others. Willing to empower others with my skills. 112 hours of volunteering time. Participated in IT Xia IT technology Charity Club and Lily Studio
+- CET4: 628, CET6: 556
+- Active in volunteering and helping others. Willing to empower others with my skills. 112 hours of volunteering time.
 
 # Downloads
 

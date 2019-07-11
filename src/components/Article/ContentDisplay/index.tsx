@@ -15,6 +15,7 @@ const renderAst = new rehypeReact({
   components,
 }).Compiler;
 
+
 interface Props {
   htmlAst: HtmlAst;
   headings: Heading[];

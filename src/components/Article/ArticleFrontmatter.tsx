@@ -27,7 +27,7 @@ const Span = styled.span`
   margin-bottom: 4px;
   /* border-left: 1px solid black; */
   display: inline-block;
-  
+
 `;
 
 const Tags = styled(Span)`
@@ -88,8 +88,6 @@ const LanguageSwitcher = (props: { currentArticleLanguage: string; articleId: st
     const metadataStore = useStore(MetadataStore);
 
     const langPathMap = metadataStore.getLangPathMap(articleId);
-
-    const pathOfCurrentLanguage = langPathMap.get(currentArticleLanguage)!!;
 
     langPathMap.delete(currentArticleLanguage);
 

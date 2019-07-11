@@ -7,18 +7,22 @@ import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import Contacts from "@/components/Contacts";
 import SeparatedRow from "@/components/Footer/SeparatedRow";
+import { usePageLink } from "@/stores/usePageLink";
 
 const root = lang.footer;
 
 export default function Brief() {
 
   const metadataStore = useStore(MetadataStore);
+
+  const aboutMeLink = usePageLink("about-me");
+
   return (
     <div className="footer-brief">
 
       <p>
         👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
-          <Link key={"me"} to={"/about/me"}>VicCrubs</Link>,
+          <Link key={"me"} to={aboutMeLink}>VicCrubs</Link>,
         ]} />
       </p>
       <p>

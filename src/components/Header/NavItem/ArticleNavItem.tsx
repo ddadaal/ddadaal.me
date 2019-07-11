@@ -4,6 +4,7 @@ import { LocationStore } from "@/stores/LocationStore";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import NavItem from "@/components/Header/NavItem";
+import { usePageLink } from "@/stores/usePageLink";
 
 interface Props {
   Icon: React.ComponentType;
@@ -14,15 +15,10 @@ interface Props {
 }
 
 export default function ArticleNavItem({ Icon, articleId, onClick, wrapper, textId }: Props) {
-  const metadataStore = useStore(MetadataStore);
-  const i18nStore = useStore(I18nStore);
-  const { pathname } = useStore(LocationStore);
 
-  const { language } = i18nStore;
+  const path = usePageLink(articleId);
 
-  const node = metadataStore.getArticleOfLang(articleId, language);
-
-  const targetPageUrlParts = node.path.split("/");
+  const targetPageUrlParts = path.split("/");
   targetPageUrlParts.pop();
 
   return (
@@ -31,7 +27,7 @@ export default function ArticleNavItem({ Icon, articleId, onClick, wrapper, text
       onClick={onClick}
       Icon={Icon}
       match={(pathname) => pathname.startsWith(targetPageUrlParts.join("/"))}
-      to={node.path}
+      to={path}
       textId={textId}
     />
   );

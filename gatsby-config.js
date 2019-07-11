@@ -157,6 +157,8 @@ module.exports = {
       }
     },
     `gatsby-transformer-json`,
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -174,7 +176,13 @@ module.exports = {
             }
           },
           `gatsby-remark-emoji`,
-          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: "static",
+              ignoreFileExtensions: [],
+            }
+          },
           'gatsby-remark-smartypants',
           {
             resolve: 'gatsby-remark-images',
@@ -211,8 +219,6 @@ module.exports = {
         showSpinner: false,
       }
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -221,7 +227,7 @@ module.exports = {
         short_name: "VicBlog",
         start_url: "/",
         background_color: "#FFFFFF",
-        theme_color: "#4E96D8",
+        theme_color: "#3498DB",
         display: "minimal-ui",
         icon: "assets/icon.png", // This path is relative to the root of the site.
       },
