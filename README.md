@@ -1,7 +1,6 @@
 # VicBlog Gatsby
 
 [![Build Status](https://travis-ci.org/vicblog/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/vicblog/VicBlog-Gatsby)
-
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
 VicBlog is a static personal blog, currently built with Gatsby.
@@ -16,36 +15,36 @@ VicBlog is a static personal blog, currently built with Gatsby.
     - Native support for searching articles without any third-party services
 - Progressive Web Application
 - Support multi-language (Chinese & English)
-- Styling with both [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
+- Styling with [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
 - Articles written on markdown; Source code and contents separated
     - Supports inline react components
-- Auto generated [slide directory](https://viccrubs.me/slides) using GitHub API v3
+- Auto generated [slide directory](https://viccrubs.me/slides) using GitHub API v3 on every build
 - Comment system via [gitalk](https://github.com/gitalk/gitalk)
 - Icons via [react-icons](https://github.com/react-icons/react-icons)
 - Analytics via [CNZZ](https://www.cnzz.com)
 
 ## Development
 
-NPM is required.
+[Yarn](https://yarnpkg.com/) is required.
 
 ``` bash
 # install dependencies
-npm install
+yarn
 
 # Install dependencies From TaoBao
-npm run iftb
+yarn iftb
 
 # serve with hot reload at localhost:8000
-npm start
+yarn dev
 
 # run production build
-npm run build
+yarn build
 
 # **After build**, serve the production build locally
-npm run serve
+yarn serve
 
-# Update dependencies with npm-check-updates & install dependencies
-npm run upddep
+# Update dependencies with npm-check-updates & install dependencies from Taobao
+yarn upddep
 ```
 
 ## Firewall Notice
