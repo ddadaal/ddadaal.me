@@ -1,9 +1,11 @@
 # VicBlog Gatsby
 
 [![Build Status](https://travis-ci.org/vicblog/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/vicblog/VicBlog-Gatsby)
+![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783121264-44b0baa03c3161906ebe4cea.svg?style=flat-square)
+![Codacy grade](https://img.shields.io/codacy/grade/72cd7c1496d643b98404521f33b5a7ff.svg?style=flat-square)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
-VicBlog is a static personal blog, currently built with Gatsby.
+VicBlog is a static personal blog built with Gatsby.
 
 [Check it out now!](https://viccrubs.me)
 

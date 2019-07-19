@@ -51,9 +51,7 @@ export default function ArticleFrontmatter(props: Props) {
   return (
     <ContainerRow>
 
-      {tags && <Tags ><FaTags />{
-        tags.map((tag) => <ArticleTag tag={tag} key={tag} />)
-      }</Tags>}
+      {tags && <Tags ><FaTags />{tags.map((tag) => <ArticleTag tag={tag} key={tag} />)}</Tags>}
       <Span>
         <FaCalendarAlt />
         {date}
