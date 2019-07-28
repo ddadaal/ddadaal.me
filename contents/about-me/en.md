@@ -14,7 +14,7 @@ hide_heading: false
 
 - am born and raised in Chongqing, China
 - am an undergraduate majoring Software Engineering in Nanjing University since 2016
-- look forward to joining foreign companies and become a software engineer that doesn't overwork
+- look forward to becoming a software engineer that doesn't overwork
 
 # Personalities
 
@@ -37,5 +37,5 @@ hide_heading: false
 - **Badminton**
 - Prefer **pure music** (symphony, classic, piano, epic/trailer music...). Interested in **choir** recently
 - Started playing **electronic piano** at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recently
-- Consider **solving problems and contributing to the world** as the core value of everything in the world, and respect and love what does it.
+- Consider **solving problems and contributing to the world** as the core value of everything in the world, and respect and love whoever and whatever does it.
 - Hope my work can help others work and live better

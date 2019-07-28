@@ -1,6 +1,6 @@
-# VicBlog Gatsby
+# <img src="./assets/logo.svg" height="36"/> VicBlog Gatsby
 
-[![Build Status](https://travis-ci.org/vicblog/VicBlog-Gatsby.svg?branch=master)](https://travis-ci.org/vicblog/VicBlog-Gatsby)
+![Travis (.org)](https://img.shields.io/travis/vicblog/VicBlog-Gatsby?style=flat-square)
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783121264-44b0baa03c3161906ebe4cea.svg?style=flat-square)
 ![Codacy grade](https://img.shields.io/codacy/grade/72cd7c1496d643b98404521f33b5a7ff.svg?style=flat-square)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
@@ -16,7 +16,7 @@ VicBlog is a static personal blog built with Gatsby.
 - Synchronous & Native **Search**
     - Native support for searching articles without any third-party services
 - Progressive Web Application
-- Support multi-language (Chinese & English)
+- Support multiple languages (Chinese & English)
 - Styling with [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
 - Articles written on markdown; Source code and contents separated
     - Supports inline react components
@@ -45,7 +45,7 @@ yarn build
 # **After build**, serve the production build locally
 yarn serve
 
-# Update dependencies with npm-check-updates & install dependencies from Taobao
+# Update dependencies with npm-check-updates and update the package.json
 yarn upddep
 ```
 
