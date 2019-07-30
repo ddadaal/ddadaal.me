@@ -4,6 +4,7 @@
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783121264-44b0baa03c3161906ebe4cea.svg?style=flat-square)
 ![Codacy grade](https://img.shields.io/codacy/grade/72cd7c1496d643b98404521f33b5a7ff.svg?style=flat-square)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvicblog%2FVicBlog-Gatsby.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fvicblog%2FVicBlog-Gatsby?ref=badge_shield)
 
 VicBlog is a static personal blog built with Gatsby.
 
@@ -70,3 +71,7 @@ If you encountered download error mentioned above, follow the following steps to
 ## Credits
 
 Built with [Gatsby](https://www.gatsbyjs.org/) - the blazing-fast static site generator for [React](https://facebook.github.io/react/).
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvicblog%2FVicBlog-Gatsby.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fvicblog%2FVicBlog-Gatsby?ref=badge_large)
