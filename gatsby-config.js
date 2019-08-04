@@ -42,7 +42,11 @@ module.exports = {
         method: 'get',
 
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          // Set the token if GITHUB_TOKEN environment token exists
+          ...process.env.GITHUB_TOKEN ? {
+            'Authorization': `token ${process.env.GITHUB_TOKEN}`
+          } : null
         },
 
         // Name of the data to be downloaded.  Will show in graphQL or be saved to a file

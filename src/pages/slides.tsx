@@ -9,7 +9,7 @@ import Helmet from "react-helmet";
 import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import { FaGithub } from "react-icons/fa";
-import { Presentation } from "@/models/Presentation";
+import { Slide } from "@/models/Slide";
 import { colors } from "@/styles/variables";
 import { groupBy } from "@/utils/groupBy";
 import SubmenuLayout from "@/layouts/SubmenuLayout";
@@ -41,7 +41,7 @@ export default function Slides(props: Props) {
       date: `${name.substr(0, 4)}/${name.substr(4, 2)}/${name.substr(6, 2)}`,
       name: name.substring(9),
       githubUrl: html_url,
-    } as Presentation)), (data) => data.year);
+    } as Slide)), (data) => data.year);
 
     // to sorted array
     return Array.from(map.entries()).sort((a, b) => b[0].localeCompare(a[0]));

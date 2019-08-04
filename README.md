@@ -29,6 +29,8 @@ VicBlog is a static personal blog built with Gatsby.
 
 [Yarn](https://yarnpkg.com/) is required.
 
+Notice: If an environment variable is named `GITHUB_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development. Remove the environment variable `GITHUB_TOKEN` before getting started.
+
 ``` bash
 # install dependencies
 yarn

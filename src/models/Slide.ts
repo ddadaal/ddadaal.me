@@ -1,4 +1,4 @@
-export interface Presentation {
+export interface Slide {
   year: string;
   date: string;
   name: string;
