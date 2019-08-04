@@ -1,3 +1,4 @@
+#!/bin/bash
 CO_REF="git.coding.net/viccrubs/viccrubs.coding.me.git"
 
 cd ./public
