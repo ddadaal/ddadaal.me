@@ -4,12 +4,12 @@ import { Link } from "gatsby";
 import Page from "@/layouts/Page";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 
-const NotFoundPage = () => (
+const NotFoundPage = (): React.ReactNode => (
   <HeaderFooterLayout transparentHeader={false}>
     <Page>
       <h1>404: Page not found.</h1>
       <p>
-        You've entered the void!
+        You have entered the void!
       </p>
       <p>
         <Link to="/">

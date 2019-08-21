@@ -7,7 +7,7 @@ function addSlug(slugs: string[]): AstManipulator {
 
   slugs.reverse();
 
-  function rec(el: HtmlAstChild) {
+  function rec(el: HtmlAstChild): void {
     if (slugs.length === 0) {
       return;
     }

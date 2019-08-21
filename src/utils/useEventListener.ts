@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from "react";
 export function useEventListener<R extends EventTarget, K extends keyof HTMLElementEventMap>(
   element: R | React.RefObject<R>,
   eventType: K,
-  listener: (this: R, ev: HTMLElementEventMap[K]) => any,
-  deps: any[] = [],
-) {
+  listener: (this: R, ev: HTMLElementEventMap[K]) => void,
+  deps: unknown[] = [],
+): void {
 
   const savedListener = useRef<typeof listener | null>(null);
 
@@ -14,8 +14,13 @@ export function useEventListener<R extends EventTarget, K extends keyof HTMLElem
   }, [listener]);
 
   useEffect(() => {
-    const actualElem = "current" in element ? element.current!! : element;
-    const eventHandler = (e: HTMLElementEventMap[K]) => savedListener.current!!.call(actualElem, e);
+    const actualElem = "current" in element ? element.current : element;
+    if (!actualElem) { throw "Element is null."; }
+
+    const currentSavedListener = savedListener.current;
+    if (!currentSavedListener) { throw "Listener is null"; }
+
+    const eventHandler = (e: HTMLElementEventMap[K]): void => currentSavedListener.call(actualElem, e);
     actualElem.addEventListener(eventType, eventHandler);
 
     return () => {

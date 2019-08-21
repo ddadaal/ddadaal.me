@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styled from "styled-components";
@@ -13,12 +13,14 @@ const LayoutMain = styled.main`
   flex: 1;
 `;
 
-export default function HeaderFooterLayout(props: PropsWithChildren<Props>) {
+const HeaderFooterLayout: React.FC<Props> = ({ transparentHeader, children }) => {
   return (
     <>
-      <Header transparentHeader={props.transparentHeader} />
-      <LayoutMain>{props.children}</LayoutMain>
+      <Header transparentHeader={transparentHeader} />
+      <LayoutMain>{children}</LayoutMain>
       <Footer />
     </>
   );
 }
+
+export default HeaderFooterLayout;

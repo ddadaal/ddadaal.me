@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import HeaderFooterLayout from "./HeaderFooterLayout";
 import styled from "styled-components";
 import { heights, colors } from "@/styles/variables";
@@ -13,17 +13,17 @@ interface Props {
   banner: React.ReactNode;
 }
 
-export default function BannerLayout(props: PropsWithChildren<Props>) {
+const BannerLayout: React.FC<Props> = ({ transparentHeader, banner, children }) => {
   return (
-    <HeaderFooterLayout transparentHeader={props.transparentHeader}>
+    <HeaderFooterLayout transparentHeader={transparentHeader}>
       <RootContainer>
         <InnerContainer>
           <BannerContainer>
-          {props.banner}
+          {banner}
           </BannerContainer>
         </InnerContainer>
       </RootContainer>
-      {props.children}
+      {children}
     </HeaderFooterLayout>
   );
 }
@@ -50,12 +50,14 @@ const BannerContainer = styled.div`
   padding: 0px 8px 8px 8px;
 `;
 
-BannerLayout.Title = styled.h1`
+const BannerLayoutTitle = styled.h1`
   font-size: 2em;
   padding: 4px 0;
 `;
 
-BannerLayout.Description = styled.h2`
+const BannerLayoutDescription = styled.h2`
   font-size: 0.9em;
   padding: 4px 0;
 `;
+
+export { BannerLayout as default, BannerLayoutTitle, BannerLayoutDescription };

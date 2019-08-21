@@ -1,10 +1,9 @@
-import React, { useLayoutEffect, useEffect, PropsWithChildren } from "react";
+import React, { useEffect } from "react";
 import Helmet from "react-helmet";
 
 import Page from "@/layouts/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
-import langRoot from "@/i18n/lang";
 
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
@@ -18,9 +17,9 @@ import { ArticleStore } from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
-import ArticleActions from "@/components/Article/Actions";
 import { heights } from "@/styles/variables";
 import BannerLayout from "@/layouts/BannerLayout";
+import { getLanguage } from "@/i18n/definition";
 
 interface Props {
   pageContext: {
@@ -32,7 +31,6 @@ interface Props {
   location: Location;
 }
 
-const root = langRoot.articlePage;
 
 const enterAnimation = keyframes`
   from {
@@ -48,16 +46,16 @@ const PageWithHeader = styled(Page)`
    animation: ${enterAnimation} 0.2s ease-in-out;
 `;
 
-function PageComponent({hasHeader, children}: { hasHeader: boolean, children: React.ReactNode }) {
+const PageComponent: React.FC<{ hasHeader: boolean; children: React.ReactNode }> = ({ hasHeader, children }) => {
   return hasHeader ? <PageWithHeader>{children}</PageWithHeader> : <Page>{children}</Page>;
-}
+};
 
-function RootLayout({article, children, lang}: PropsWithChildren<{ article: ArticleNode; lang: string; }>) {
+const RootLayout: React.FC<{ article: ArticleNode; lang: string }> = ({ article, children, lang }) => {
 
   const {
     frontmatter: {
-      id, title, date, tags, hide_heading, no_toc, related,
-    }, path, wordCount: {words: wordCount}, excerpt,
+      id, title, date, tags, hide_heading,
+    }, wordCount: { words: wordCount },
   } = article;
 
   if (hide_heading) {
@@ -84,15 +82,15 @@ function RootLayout({article, children, lang}: PropsWithChildren<{ article: Arti
   }
 }
 
-export default function ArticlePageTemplate(props: Props) {
+const ArticlePageTemplate: React.FC<Props> = (props) => {
 
   const i18nStore = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
   const articleStore = useStore(ArticleStore);
 
-  const {id, lang, htmlAst, headings} = props.pageContext;
+  const { id, lang, htmlAst, headings } = props.pageContext;
 
-  const language = i18nStore.getLanguage(lang)!;
+  const language = getLanguage(lang);
 
   const articleNode = metadataStore.getArticleOfLang(id, language);
 
@@ -106,7 +104,7 @@ export default function ArticlePageTemplate(props: Props) {
   const {
     frontmatter: {
       title, date, tags, hide_heading, no_toc, related,
-    }, path, wordCount: {words: wordCount}, excerpt,
+    }, path, excerpt,
   } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
@@ -117,19 +115,19 @@ export default function ArticlePageTemplate(props: Props) {
         <Helmet
           title={`${title} - VicBlog`}
           meta={[
-            {name: "og:title", content: title},
-            {name: "og:description", content: excerpt},
-            {name: "og:type", content: "article"},
-            {name: "og:url", content: `${metadataStore.baseUrl}${path}`},
-            {name: "og:locale", content: language.detailedId},
+            { name: "og:title", content: title },
+            { name: "og:description", content: excerpt },
+            { name: "og:type", content: "article" },
+            { name: "og:url", content: `${metadataStore.baseUrl}${path}` },
+            { name: "og:locale", content: language.detailedId },
             ...Object.keys(langPathMap)
               .filter((x) => x !== lang)
               .map((x) => ({
                 name: "og:locale:alternate",
-                content: i18nStore.getLanguage(x)!.detailedId,
+                content: getLanguage(x).detailedId,
               })),
-            {name: "og:site_name", content: "VicBlog"},
-            {name: "og:article:published_time", content: date},
+            { name: "og:site_name", content: "VicBlog" },
+            { name: "og:article:published_time", content: date },
             ...(tags || []).map((x) => ({
               name: "og:article:tag",
               content: x,
@@ -149,7 +147,7 @@ export default function ArticlePageTemplate(props: Props) {
               && (
                 <Col md={3} className="d-none d-md-block">
                   <StickySidePanel>
-                    <TocPanel headings={headings}/>
+                    <TocPanel headings={headings} />
                   </StickySidePanel>
                 </Col>
               )
@@ -157,8 +155,8 @@ export default function ArticlePageTemplate(props: Props) {
           </Row>
 
           {/* <Share articleId={id} /> */}
-          {related ? <RelatedArticles ids={related}/> : null}
-          <hr/>
+          {related ? <RelatedArticles ids={related} /> : null}
+          <hr />
           <CommentPanel
             language={i18nStore.language.gitalkLangId}
             articleId={id}
@@ -169,6 +167,8 @@ export default function ArticlePageTemplate(props: Props) {
     </RootLayout>
   );
 }
+
+export default ArticlePageTemplate;
 
 const StickySidePanel = styled.div`
   position: sticky;

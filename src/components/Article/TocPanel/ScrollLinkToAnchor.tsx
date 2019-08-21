@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { heights } from "@/styles/variables";
 
 interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
   targetAnchor: string;
 }
 
-function absoluteTopPosition(el: HTMLElement) {
+function absoluteTopPosition(el: HTMLElement): number {
   const rect = el.getBoundingClientRect();
   const scrollTop = window.pageYOffset;
   return rect.top + scrollTop;
 }
 
-export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
-
-  smoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+const ScrollLinkToAnchor: React.FC<Props> = ({ targetAnchor, onClick, ...rest }) => {
+  const aOnClick = useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
 
-    const element = document.getElementById(this.props.targetAnchor);
+    const element = document.getElementById(targetAnchor);
 
     if (element) {
       window.scroll({
@@ -26,14 +25,14 @@ export default class ScrollLinkToAnchor extends React.PureComponent<Props> {
 
     }
 
-    if (this.props.onClick) {
-      this.props.onClick(e);
+    if (onClick) {
+      onClick(e);
     }
-  }
-  render() {
-    const { targetAnchor, ...rest } = this.props;
-    return (
-      <a {...rest} onClick={this.smoothScroll} />
-    );
-  }
+  }, [targetAnchor, onClick])
+
+  return (
+    <a {...rest} onClick={aOnClick} />
+  );
 }
+
+export default ScrollLinkToAnchor;

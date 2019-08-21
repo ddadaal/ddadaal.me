@@ -1,12 +1,11 @@
 import React from "react";
-import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
+import { BaseCard } from "@/components/Cards/components";
 import { useStore } from "~/node_modules/simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { I18nStore } from "@/stores/I18nStore";
 import styled from "styled-components";
 import { CardBody } from "reactstrap";
 import { navigate } from "gatsby";
-import { containsChinese } from "@/utils/containsChinese";
 import { colors } from "@/styles/variables";
 
 interface Props {
@@ -34,7 +33,7 @@ const Card = styled(BaseCard)`
   }
 `;
 
-export default function ArticleCard({ articleId, className }: Props) {
+const ArticleCard: React.FC<Props> = ({ articleId, className }) => {
 
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
@@ -55,10 +54,7 @@ export default function ArticleCard({ articleId, className }: Props) {
   );
 }
 
-function limitLength(content: string) {
-  const lengthLimit = containsChinese(content) ? 100 : 200;
-  return content.substring(0, lengthLimit) + "...";
-}
+export default ArticleCard;
 
 const Title = styled.p`
   margin-bottom: 2px;

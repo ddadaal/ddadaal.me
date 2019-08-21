@@ -36,7 +36,7 @@ const NewContentPopContainer = styled.div`
 
 const root = lang.newContentPop;
 
-export default function NewContentPop(props: Props) {
+const NewContentPop: React.FC<Props> = () => {
   return (
     <NewContentPopContainer id={"new-content-pop"}>
       <a href="" onClick={() => location.reload()}>
@@ -46,3 +46,5 @@ export default function NewContentPop(props: Props) {
     </NewContentPopContainer>
   );
 }
+
+export default NewContentPop;

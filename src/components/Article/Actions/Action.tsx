@@ -1,7 +1,5 @@
 import React, { PropsWithChildren, forwardRef } from "react";
 import styled from "styled-components";
-import { colors } from "@/styles/variables";
-import LocalizedString from "@/i18n/LocalizedString";
 
 interface Props {
   onClick?(): void;
@@ -22,26 +20,24 @@ export default forwardRef<HTMLLIElement, PropsWithChildren<Props>>((props, ref) 
   );
 });
 
-const Item = styled.li<{color?: string}>`
+const Item = styled.li<{ color?: string }>`
 
   display: inline;
   padding: 12px 0;
-    
+
   span {
     opacity: 0;
     transition: opacity 0.2s linear;
   }
-  
+
   &:hover {
     cursor: pointer;
-    
+
     span {
-    opacity: 1;
-
-
+      opacity: 1;
     }
   }
-  
+
   & > svg {
     width: 24px;
     height: 24px;

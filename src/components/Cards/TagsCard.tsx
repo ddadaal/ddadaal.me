@@ -1,6 +1,6 @@
 import React from "react";
 import lang from "@/i18n/lang";
-import { Card, CardBody, CardHeader, CardText } from "reactstrap";
+import { CardBody } from "reactstrap";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import LocalizedString from "@/i18n/LocalizedString";
 import { useStore } from "simstate";
@@ -13,7 +13,7 @@ interface Props {
 
 const root = lang.tagsCard;
 
-export default function TagsCard(props: Props) {
+const TagsCard: React.FC<Props> = ({ className }) => {
 
   const metadataStore = useStore(MetadataStore);
 
@@ -22,7 +22,7 @@ export default function TagsCard(props: Props) {
     .map((entry) => entry[0]);
 
   return (
-    <BaseCard className={props.className}>
+    <BaseCard className={className}>
       <BaseCardHeader>
         <span>🏷️ <LocalizedString id={root.title}/></span>
       </BaseCardHeader>
@@ -34,3 +34,5 @@ export default function TagsCard(props: Props) {
     </BaseCard>
   );
 }
+
+export default TagsCard;

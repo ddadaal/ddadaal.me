@@ -6,7 +6,7 @@ export class Lang {
   constructor(public paths: PropertyKey[]) { }
 }
 
-function factory(langObj: Lang) {
+function factory(langObj: Lang): Definitions {
   const obj = new Proxy(langObj, {
     get: (t, k) => {
       if (k === GET_VALUE) {
@@ -14,8 +14,8 @@ function factory(langObj: Lang) {
       }
       return factory(new Lang([...t.paths, k]));
     },
-  }) as any;
-  return obj;
+  }) as unknown;
+  return obj as Definitions;
 }
 
 const lang = factory(new Lang([]));

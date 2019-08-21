@@ -4,7 +4,7 @@ import { createElement, createText } from "@/components/Article/ContentDisplay/a
 import languageTexts from "@/configs/article/LanguageTexts";
 import "./code-header.scss";
 
-function visit(el: HtmlAstElement) {
+function visit(el: HtmlAstElement): void {
   if (el.type === "element") {
     if (el.tagName === "div" && el.properties.dataLanguage) {
       const language = el.properties.dataLanguage;
@@ -25,6 +25,6 @@ function visit(el: HtmlAstElement) {
   }
 }
 
-export default function addCodeHeader(htmlAst: HtmlAst) {
+export default function addCodeHeader(htmlAst: HtmlAst): void {
   htmlAst.children.forEach(visit);
 }

@@ -1,8 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
-import BannerLayout from "@/layouts/BannerLayout";
+import BannerLayout, { BannerLayoutTitle, BannerLayoutDescription } from "@/layouts/BannerLayout";
 import styled from "styled-components";
-import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/Page";
 import Helmet from "react-helmet";
@@ -12,21 +11,19 @@ import { FaGithub } from "react-icons/fa";
 import { Slide } from "@/models/Slide";
 import { colors } from "@/styles/variables";
 import { groupBy } from "@/utils/groupBy";
-import SubmenuLayout from "@/layouts/SubmenuLayout";
-import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import useConstant from "@/utils/useConstant";
 
 interface Props {
   data: {
     allSlides: {
-      nodes: { name: string; html_url: string; }[];
-    },
+      nodes: { name: string; html_url: string }[];
+    };
   };
 }
 
 const root = lang.resources.slides;
 
-export default function Slides(props: Props) {
+const Slides: React.FC<Props> = (props) => {
   const { data: { allSlides: { nodes } } } = props;
 
   const i18nStore = useStore(I18nStore);
@@ -50,8 +47,8 @@ export default function Slides(props: Props) {
   return (
     <BannerLayout transparentHeader={false} banner={
       <>
-        <BannerLayout.Title>{title}</BannerLayout.Title>
-        <BannerLayout.Description>{description}</BannerLayout.Description>
+        <BannerLayoutTitle>{title}</BannerLayoutTitle>
+        <BannerLayoutDescription>{description}</BannerLayoutDescription>
       </>
     }>
       <Page maxWidth={700}>
@@ -89,10 +86,8 @@ export default function Slides(props: Props) {
   );
 }
 
-const Container = styled(Page)`
-  max-width: 680px;
-  margin: 0 auto;
-`;
+export default Slides;
+
 
 const Year = styled.div`
   border-left: 1px lightgray solid;

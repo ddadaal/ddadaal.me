@@ -1,7 +1,6 @@
 import React from "react";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
-import { Badge } from "reactstrap";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import lang from "@/i18n/lang";
@@ -19,7 +18,7 @@ interface Props {
   tag: string;
 }
 
-export default function ArticleTag({ tag }: Props) {
+const ArticleTag: React.FC<Props> = ({ tag }) => {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
@@ -34,3 +33,5 @@ export default function ArticleTag({ tag }: Props) {
     </Tag>
   );
 }
+
+export default ArticleTag;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  links: { name: string; link: string; }[];
+  links: { name: string; link: string }[];
 }
 
 const Ul = styled.ul`
@@ -14,7 +14,7 @@ const Li = styled.li`
   padding-bottom: 4px;
 `;
 
-export default function List({ links }: Props) {
+const List: React.FC<Props> = ({ links }) => {
   return (
     <Ul>
       {links.map(({ name, link }) => (
@@ -27,3 +27,5 @@ export default function List({ links }: Props) {
     </Ul>
   );
 }
+
+export default List;

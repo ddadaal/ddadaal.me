@@ -6,13 +6,15 @@ import { useStore } from "simstate";
 interface Props {
   id: string;
   replacements?: React.ReactNode[];
-  children(result: string): React.ReactElement<any, any>;
+  children(result: string): React.ReactElement;
 }
 
-export default function Localize({ id, replacements, children }: Props) {
+const Localize: React.FC<Props> = ({ id, replacements, children }) => {
   const store = useStore(I18nStore);
 
   const result = store.translate(id, replacements) as string;
 
   return children(result);
 }
+
+export default Localize;

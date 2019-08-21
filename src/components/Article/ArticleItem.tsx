@@ -1,13 +1,12 @@
 import React from "react";
 import { navigate } from "gatsby";
 import styled from "styled-components";
-import lang from "@/i18n/lang";
 import { I18nStore } from "@/stores/I18nStore";
 import { MetadataStore } from "@/stores/MetadataStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
 import { useStore } from "simstate";
-import { containsChinese } from "@/utils/containsChinese";
+import containsChinese from "@/utils/containsChinese";
 
 interface Props {
   article: ArticleNode;
@@ -17,8 +16,6 @@ interface Props {
 const StyledPost = styled.div`
   margin-bottom: 24px;
 `;
-
-const root = lang.articleItem;
 
 const StyledH = styled.h2`
   :hover {
@@ -30,14 +27,18 @@ const StyledH = styled.h2`
   padding: 4px 0;
 `;
 
-const StyledTitle = (props: { children: React.ReactNode, to: string }) => {
+function limitLength(content: string): string {
+  const lengthLimit = containsChinese(content) ? 130 : 300;
+  return content.substring(0, lengthLimit) + "...";
+}
+
+const StyledTitle: React.FC<{ children: React.ReactNode; to: string }> = (props) => {
   return (
     <StyledH onClick={() => navigate(props.to)}>{props.children}</StyledH>
   );
 };
 
-export default function ArticleItem(props: Props) {
-  const { article, currentArticleLanguage } = props;
+const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;
 
   const { language } = useStore(I18nStore);
@@ -65,7 +66,4 @@ export default function ArticleItem(props: Props) {
   );
 }
 
-function limitLength(content: string) {
-  const lengthLimit = containsChinese(content) ? 130 : 300;
-  return content.substring(0, lengthLimit) + "...";
-}
+export default ArticleItem;

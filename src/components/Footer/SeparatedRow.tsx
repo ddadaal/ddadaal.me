@@ -1,4 +1,4 @@
-import React, { Children, PropsWithChildren, ReactNode } from "react";
+import React, { Children, ReactNode } from "react";
 import styled from "styled-components";
 
 interface Props {
@@ -9,7 +9,7 @@ const Container = styled.p`
    text-align: center;
 `;
 
-export default function SeparatedRow({ children, separator }: PropsWithChildren<Props>) {
+const SeparatedRow: React.FC<Props> = ({ children, separator }) => {
 
   const childrenArray = Children.toArray(children);
 
@@ -28,3 +28,5 @@ export default function SeparatedRow({ children, separator }: PropsWithChildren<
     </Container>
   );
 }
+
+export default SeparatedRow;

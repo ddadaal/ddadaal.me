@@ -5,8 +5,6 @@ import { FaSearch } from "react-icons/fa";
 import Localize from "@/i18n/Localize";
 import lang from "@/i18n/lang";
 import { useStore } from "simstate";
-import { LocationStore } from "@/stores/LocationStore";
-import { useEventListener } from "@/utils/useEventListener";
 import { MetadataStore } from "@/stores/MetadataStore";
 
 interface Props {
@@ -16,12 +14,12 @@ interface Props {
   onBlur?(): void;
 }
 
-export default function SearchBar(props: Props) {
+const SearchBar: React.FC<Props> = (props: Props) => {
 
   const metadataStore = useStore(MetadataStore);
-  const [ input, setInput ] = useState("");
+  const [input, setInput] = useState("");
 
-  const onSearch = () => {
+  const onSearch = (): void => {
     navigate(`/articles/search?query=${encodeURIComponent(input)}`);
     if (props.onSearch) {
       props.onSearch();
@@ -55,3 +53,5 @@ export default function SearchBar(props: Props) {
   );
 
 }
+
+export default SearchBar;

@@ -1,21 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "gatsby-link";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
-import Contacts from "../Contacts";
-import { useStore } from "simstate";
 import friendLinks from "@/configs/friendLinks";
 import Brief from "@/components/Footer/Brief";
 import List from "@/components/Footer/List";
 import MadeWithLove from "@/components/Footer/MadeWithLove";
-import ListGroupHeader from "@/components/UI/ListGroup/ListGroupHeader";
-import SeparatedRow from "@/components/Footer/SeparatedRow";
 
 interface Props {
   className?: string;
@@ -62,10 +54,7 @@ const friends = friendLinks.map(({ name, link, description }) => ({
 
 const root = lang.footer;
 
-export default function Footer(props: Props) {
-
-  const metadataStore = useStore(MetadataStore);
-
+const Footer: React.FC<Props> = (props) => {
   return (
     <Container className={props.className}>
       <Row className="footer-contents">
@@ -90,3 +79,5 @@ export default function Footer(props: Props) {
     </Container>
   );
 }
+
+export default Footer;

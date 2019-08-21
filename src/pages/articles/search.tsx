@@ -1,7 +1,6 @@
 import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import Page from "@/layouts/Page";
 import { LocationStore } from "@/stores/LocationStore";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { navigate } from "gatsby";
@@ -18,12 +17,12 @@ interface Query {
 
 const pageSize = 5;
 
-export default function SearchPage() {
+const SearchPage: React.FC = () => {
 
   const locationStore = useStore(LocationStore);
   const metadataStore = useStore(MetadataStore);
 
-  const {query, page = 1} = locationStore.query as Query;
+  const { query, page = 1 } = locationStore.query as Query;
 
   const pageIndex = page - 1;
 
@@ -40,9 +39,9 @@ export default function SearchPage() {
       if (articles.some((article) =>
         article.frontmatter.tags !== null // article has tags
         && article.frontmatter.tags.some(((tag) => // one of the tag satisfies:
-            metadataStore.getAllVariationsOfTag(tag).some((existingTag) =>
-              existingTag.toUpperCase().includes(query.toUpperCase()),
-            )
+          metadataStore.getAllVariationsOfTag(tag).some((existingTag) =>
+            existingTag.toUpperCase().includes(query.toUpperCase()),
+          )
         )),
       )) {
         return true;
@@ -67,14 +66,14 @@ export default function SearchPage() {
       <h3>
         <LocalizedString id={root.title} replacements={[
           <strong key={"query"}>{query}</strong>,
-        ]}/>
+        ]} />
       </h3>
       <small>
         <LocalizedString id={root.info} replacements={[
           totalCount,
-        ]}/>
+        ]} />
       </small>
-      <hr/>
+      <hr />
       <ArticleItemList
         ids={searchResult.map((x) => x[0].frontmatter.id)}
         pageCount={pageCount}
@@ -87,3 +86,5 @@ export default function SearchPage() {
     </ArticleListLayout>
   );
 }
+
+export default SearchPage;

@@ -9,10 +9,12 @@ const Container = styled.p`
     text-align: center;
 `;
 
-export default function MadeWithLove() {
+const MadeWithLove: React.FC = () => {
   return (
     <Container>
       © {new Date().getFullYear()} | <LocalizedString id={root.footer.madeWithLove} />
     </Container>
   );
 }
+
+export default MadeWithLove;

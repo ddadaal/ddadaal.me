@@ -8,7 +8,7 @@ export interface ArticleNode {
   path: string;
   excerpt: string;
   wordCount: {
-    words: number,
+    words: number;
   };
   frontmatter: {
     absolute_path?: string;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import { CardBody, CardText } from "reactstrap";
 import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
@@ -14,7 +14,7 @@ interface Props {
 
 const root = lang.selfIntro;
 
-export default function SelfIntroCard(props: Props) {
+const SelfIntroCard: React.FC<Props> = () => {
 
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
@@ -42,3 +42,5 @@ export default function SelfIntroCard(props: Props) {
     </BaseCard>
   );
 }
+
+export default SelfIntroCard;

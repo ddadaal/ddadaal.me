@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // graphql query strings
 declare const graphql: (query: TemplateStringsArray) => void;
 
@@ -31,5 +33,3 @@ declare module "*.jpg" {
   const module: any;
   export = module;
 }
-
-declare type Omit<T, K extends keyof any> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;

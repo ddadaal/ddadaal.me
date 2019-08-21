@@ -1,10 +1,10 @@
 import { Store } from "simstate";
 
-interface ILocationStore {
+interface State {
   location: Location;
 }
 
-function parseQuery(queryString: string) {
+function parseQuery(queryString: string): { [query: string]: string } {
   const query = {};
   const pairs = (queryString[0] === "?" ? queryString.substr(1) : queryString).split("&");
 
@@ -17,21 +17,21 @@ function parseQuery(queryString: string) {
   return query;
 }
 
-export class LocationStore extends Store<ILocationStore> {
+export class LocationStore extends Store<State> {
   constructor(location: Location) {
     super();
     this.state = { location };
   }
 
-  get pathname() {
+  get pathname(): string {
     return this.state.location.pathname;
   }
 
-  updateLocation(location: Location) {
+  updateLocation(location: Location): void {
     this.setState({ location });
   }
 
-  get query(): any {
+  get query(): { [query: string]: string } {
     if (this.state.location.search) {
       return parseQuery(this.state.location.search);
     } else {

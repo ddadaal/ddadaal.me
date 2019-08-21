@@ -5,20 +5,15 @@ import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { FaFile, FaBookOpen, FaRegCommentDots, FaMale, FaClock, FaToolbox, FaBook, FaSlideshare } from "react-icons/fa";
+import { FaFile, FaBookOpen, FaRegCommentDots, FaMale, FaClock, FaSlideshare } from "react-icons/fa";
 import { Link } from "gatsby";
 import { I18nStore } from "@/stores/I18nStore";
 import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
-import Localize from "@/i18n/Localize";
-
-interface Props {
-
-}
 
 const Bg = styled(RootContainer)`
   height: 100vh;
@@ -30,8 +25,6 @@ const Bg = styled(RootContainer)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
 
   display: flex;
   align-items: center;
@@ -52,13 +45,6 @@ const TextContent = styled(InnerContainer)`
 
 `;
 
-const BottomTextContent = styled(InnerContainer)`
-  z-index: 3;
-  color: white;
-  text-align: center;
-
-  bottom: 8px;
-`;
 
 const TitleText = styled.h1`
 
@@ -84,7 +70,18 @@ const links = [
   ["/feedback", FaRegCommentDots, root.links.feedback],
 ] as const;
 
-export default function HomePage(props: Props) {
+function selectDate(): string {
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour <= 11) {
+    return root.morning;
+  } else if (hour >= 12 && hour <= 17) {
+    return root.afternoon;
+  } else {
+    return root.evening;
+  }
+}
+
+const HomePage: React.FunctionComponent = () => {
 
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
@@ -120,13 +117,4 @@ export default function HomePage(props: Props) {
   );
 }
 
-function selectDate(): string {
-  const hour = new Date().getHours();
-  if (hour >= 6 && hour <= 11) {
-    return root.morning;
-  } else if (hour >= 12 && hour <= 17) {
-    return root.afternoon;
-  } else {
-    return root.evening;
-  }
-}
+export default HomePage;

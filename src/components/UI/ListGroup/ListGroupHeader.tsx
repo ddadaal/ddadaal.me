@@ -4,9 +4,11 @@ import { ListGroupItemProps, ListGroupItem } from "reactstrap";
 interface Props extends ListGroupItemProps {
 }
 
-export default function ListGroupHeader(props: Props) {
+const ListGroupHeader: React.FC<Props> = (props) => {
   const { className, ...rest } = props;
   return (
     <ListGroupItem className={`list-group-header ${className}`} {...rest} />
   );
-}
+};
+
+export default ListGroupHeader;

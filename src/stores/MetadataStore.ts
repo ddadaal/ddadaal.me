@@ -1,5 +1,4 @@
 import { Store } from "simstate";
-import { Statistics } from "@/models/Statistics";
 import { ArticleIdMap } from "@/models/ArticleIdMap";
 import { Language } from "@/i18n/definition";
 import { ArticleNode } from "@/models/ArticleNode";
@@ -7,13 +6,15 @@ import { groupBy } from "@/utils/groupBy";
 
 export type LangPathMap = Map<string, string>;
 
-export function matchLangWithCurrentLanguage(lang: string, currentLanguage: Language) {
+export function matchLangWithCurrentLanguage(lang: string, currentLanguage: Language): boolean {
   return currentLanguage.languages.includes(lang);
 }
 
+class NoSuchArticleException { constructor(public articleId: string) { } }
+
 export class MetadataStore extends Store<{}> {
 
-  articleCount: number = 0;
+  articleCount = 0;
   articleIdMap: ArticleIdMap;
 
   constructor(
@@ -34,13 +35,23 @@ export class MetadataStore extends Store<{}> {
   }
 
   getArticleOfLang(id: string, language: Language): ArticleNode {
-    const group = this.articleIdMap.get(id)!!;
+    const group = this.articleIdMap.get(id);
+
+    if (!group) {
+      throw new NoSuchArticleException(id);
+    }
+
     const node = group.find((x) => matchLangWithCurrentLanguage(x.frontmatter.lang, language)) || group[0];
     return node;
   }
 
   getLangPathMap(id: string): LangPathMap {
-    const group = this.articleIdMap.get(id)!!;
+    const group = this.articleIdMap.get(id);
+
+    if (!group) {
+      throw new NoSuchArticleException(id);
+    }
+
     const map: LangPathMap = new Map();
 
     group.forEach((node) => {
@@ -80,7 +91,7 @@ export class MetadataStore extends Store<{}> {
 
   getAllTagsOfLang(language: Language): string[] {
     const tags = [] as string[];
-    this.tagMap.forEach(({ count, variations }, key) => {
+    this.tagMap.forEach(({ variations }) => {
       if (typeof variations === "string") {
         tags.push(variations);
       } else {

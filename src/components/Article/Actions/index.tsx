@@ -8,7 +8,7 @@ interface Props {
   article: ArticleNode;
 }
 
-export default function ArticleActions({ article }: Props) {
+const ArticleActions: React.FC<Props> = ({ article }) => {
   return (
     <div >
      <ActionList>
@@ -23,3 +23,5 @@ const ActionList = styled.ul`
   list-style: none;
   padding-left: 0;
 `;
+
+export default ArticleActions;

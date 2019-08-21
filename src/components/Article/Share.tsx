@@ -9,7 +9,7 @@ interface Props {
 
 const root = lang.articlePage.share;
 
-export default function Share(props: Props) {
+const Share: React.FC<Props> = () => {
   return (
     <p>
       <h3>
@@ -18,4 +18,6 @@ export default function Share(props: Props) {
       </h3>
     </p>
   );
-}
+};
+
+export default Share;

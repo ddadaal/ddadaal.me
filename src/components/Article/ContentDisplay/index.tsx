@@ -21,9 +21,7 @@ interface Props {
 const MarkdownDisplay = styled.article`
 `;
 
-export default function ArticleContentDisplay(props: Props) {
-  const { htmlAst, headings } = props;
-
+const ArticleContentDisplay: React.FC<Props> = ({ htmlAst, headings }) => {
   addSlug(headings.map((x) => x.slug))(htmlAst);
   addCodeHeader(htmlAst);
 
@@ -33,3 +31,5 @@ export default function ArticleContentDisplay(props: Props) {
     </MarkdownDisplay>
   );
 }
+
+export default ArticleContentDisplay;

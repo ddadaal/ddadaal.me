@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Heading } from "@/models/ArticleNode";
 import { MdToc } from "react-icons/md";
 import LocalizedString from "@/i18n/LocalizedString";
@@ -49,81 +49,73 @@ const Item = styled(ScrollLinkToAnchor)`
   }
 `;
 
-interface State {
+function isWindowBetween(element: HTMLElement | null): boolean {
+  return !!element && element.getBoundingClientRect().top - heights.header >= 2;
 }
 
-function isWindowBetween(element: HTMLElement | null) {
+const TocPanel: React.FC<Props> = ({ headings, className }) => {
 
-  return element && element.getBoundingClientRect().top - heights.header >= 2;
-}
 
-export default class TocPanel extends React.Component<Props, State>  {
+  useEffect(() => {
 
-  tocItemElements: HTMLElement[] = [];
+    const tocItemElements: HTMLElement[] = [];
 
-  currentIndex: number = 0;
+    let currentIndex = 0;
 
-  setActive(index: number) {
-    this.tocItemElements[this.currentIndex].classList.remove("active");
-    this.currentIndex = index;
-    this.tocItemElements[index].classList.add("active");
-  }
-
-  onScroll = (ev) => {
-    const { headings } = this.props;
-
-    for (let i = 0; i < headings.length - 1; i++) {
-      if (isWindowBetween(document.getElementById(headings[i + 1].slug))) {
-        this.setActive(i);
-        return;
-      }
+    const setActive = (index: number): void => {
+      tocItemElements[currentIndex].classList.remove("active");
+      currentIndex = index;
+      tocItemElements[index].classList.add("active");
     }
 
-    this.setActive(headings.length - 1);
+    const onScroll = (): void => {
 
-  }
+      for (let i = 0; i < headings.length - 1; i++) {
+        if (isWindowBetween(document.getElementById(headings[i + 1].slug))) {
+          setActive(i);
+          return;
+        }
+      }
+      setActive(headings.length - 1);
+    }
 
-  componentDidMount() {
+    if (headings.length === 0) { return; }
 
-    if (this.props.headings.length === 0) { return; }
-
-    this.props.headings.forEach((heading) => {
+    headings.forEach((heading) => {
       // add heading element
       const tocEl = document.getElementById(`tocitem-${heading.slug}`);
       if (tocEl) {
-        this.tocItemElements.push(tocEl);
+        tocItemElements.push(tocEl);
 
       }
     });
 
-    this.setActive(0);
+    setActive(0);
 
-    window.addEventListener("scroll", this.onScroll);
-  }
+    window.addEventListener("scroll", onScroll);
 
-  componentWillUnmount() {
-    if (this.props.headings.length === 0) { return; }
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    }
+  }, [headings]);
 
-    window.removeEventListener("scroll", this.onScroll);
-  }
-
-  render() {
-    return (
-      <Container className={this.props.className}>
-        <p><MdToc /><LocalizedString id={root.toc} /></p>
-        {this.props.headings.map((heading, i) => {
-          return (
-            <Item
-              id={`tocitem-${heading.slug}`}
-              key={heading.slug}
-              targetAnchor={heading.slug}
-              depth={heading.depth}
-            >
-              {heading.value}
-            </Item>
-          );
-        })}
-      </Container>
-    );
-  }
+  return (
+    <Container className={className}>
+      <p><MdToc /><LocalizedString id={root.toc} /></p>
+      {headings.map((heading) => {
+        return (
+          <Item
+            id={`tocitem-${heading.slug}`}
+            key={heading.slug}
+            targetAnchor={heading.slug}
+            depth={heading.depth}
+          >
+            {heading.value}
+          </Item>
+        );
+      })}
+    </Container>
+  );
 }
+
+export default TocPanel;

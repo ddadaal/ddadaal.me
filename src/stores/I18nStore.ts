@@ -1,13 +1,13 @@
 import { Store } from "simstate";
-import { Language, getLanguage, allLanguages } from "@/i18n/definition";
-import { isServer } from "@/utils/isServer";
+import { Language, getLanguage } from "@/i18n/definition";
+import isServer from "@/utils/isServer";
 import { GET_VALUE } from "@/i18n/lang";
 
-interface II18nStore {
+interface State {
   language: Language;
 }
 
-function getInitialLanguage() {
+function getInitialLanguage(): string {
   if (isServer()) {
     return "cn";
   }
@@ -16,24 +16,19 @@ function getInitialLanguage() {
 
 const splitter = /(\{\})/;
 
-export class I18nStore extends Store<II18nStore> {
+export class I18nStore extends Store<State> {
   constructor() {
     super();
     this.state = { language: getLanguage(getInitialLanguage()) };
   }
 
-  changeLanguage = (language: string) => {
+  changeLanguage = (language: string): void => {
     this.setState({
       language: getLanguage(language),
     });
-
   }
 
-  getLanguage = (lang: string) => {
-    return allLanguages.find((x) => x.name === lang || x.languages.includes(lang));
-  }
-
-  get language() {
+  get language(): Language {
     return this.state.language;
   }
 
@@ -80,10 +75,6 @@ export class I18nStore extends Store<II18nStore> {
       return def;
     }
     return this.replacePlaceholders(def, replacements);
-  }
-
-  get allLanguages() {
-    return allLanguages;
   }
 
 }

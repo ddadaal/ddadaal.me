@@ -7,7 +7,7 @@ import "gitalk/dist/gitalk.css";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import GitalkComponent from "gitalk/dist/gitalk-component";
-import { isServer } from "@/utils/isServer";
+import isServer from "@/utils/isServer";
 import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 
@@ -27,7 +27,7 @@ const CommentDiv = styled.div`
 
 const root = lang.comments;
 
-export default function CommentPanel(props: Props) {
+const CommentPanel: React.FC<Props> = (props) => {
 
   const [mount, setMount] = React.useState(!isServer());
 
@@ -72,10 +72,12 @@ export default function CommentPanel(props: Props) {
       }
     </CommentDiv>
   );
-}
+};
 
-export function CommentPanelWithCurrentLanguage(props: Omit<Props, "language">) {
+const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (props) => {
   const i18nStore = useStore(I18nStore);
 
   return <CommentPanel {...props} language={i18nStore.language.gitalkLangId} />;
 }
+
+export { CommentPanel as default, CommentPanelWithCurrentLanguage };

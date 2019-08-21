@@ -2,7 +2,7 @@ import { useStore } from "simstate";
 import { I18nStore } from "@/stores/I18nStore";
 import { MetadataStore } from "@/stores/MetadataStore";
 
-export function usePageLink(articleId: string) {
+export function usePageLink(articleId: string): string {
   const i18nStore = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
 

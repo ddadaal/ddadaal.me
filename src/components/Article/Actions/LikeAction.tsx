@@ -11,8 +11,8 @@ interface Props {
 
 const root = lang.articlePage.actions.like;
 
-export default function LikeAction({ articleId }: Props) {
-  const [ liked, setLiked ] = useState(false);
+const LikeAction: React.FC<Props> = () => {
+  const [liked, setLiked] = useState(false);
 
   return (
     <Action Icon={FaThumbsUp}
@@ -25,3 +25,5 @@ export default function LikeAction({ articleId }: Props) {
   );
 
 }
+
+export default LikeAction;

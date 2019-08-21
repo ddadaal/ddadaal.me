@@ -1,20 +1,19 @@
 import {
-  Collapse, DropdownItem, DropdownMenu as BSDropdownMenu,
+  Collapse, DropdownMenu as BSDropdownMenu,
   DropdownToggle as BSDropdownToggle,
   Nav,
   Navbar,
   NavItem as BSNavItem,
   NavbarToggler,
-  NavLink as ReactstrapNavLink,
   UncontrolledDropdown,
   DropdownToggleProps,
 } from "reactstrap";
 import { Link } from "gatsby";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
-import { widths, heights, colors, breakpoints } from "@/styles/variables";
-import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare, FaToolbox } from "react-icons/fa";
+import { widths, colors } from "@/styles/variables";
+import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 import { LocationStore } from "@/stores/LocationStore";
@@ -23,7 +22,7 @@ import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
 import NavItem from "@/components/Header/NavItem";
 import { useEventListener } from "@/utils/useEventListener";
 import Placeholder from "@/components/Header/HeaderPlaceholder";
-import { isServer } from "@/utils/isServer";
+import isServer from "@/utils/isServer";
 import ArticleNavItem from "@/components/Header/NavItem/ArticleNavItem";
 
 interface Props {
@@ -52,7 +51,7 @@ const NavbarContainer = styled.div<{ transparent: boolean }>`
   background-color: ${({ transparent }) => transparent ? "transparent" : colors.headerBg};
 `;
 
-export default function Header({ transparentHeader }: Props) {
+const Header: React.FC<Props> = ({ transparentHeader }) => {
   const [isOpen, setOpen] = useState(false);
   const [isTransparent, setTransparent] = useState(transparentHeader);
 
@@ -149,6 +148,8 @@ export default function Header({ transparentHeader }: Props) {
   );
 }
 
+export default Header;
+
 const StyledLogo = styled(Icon)`
   width: 42px;
   height: 42px;
@@ -168,7 +169,7 @@ const DropdownMenu = styled(BSDropdownMenu)`
 
 `;
 
-function Branding() {
+const Branding: React.FC = () => {
   return (
     <Link to={"/"} className={"navbar-brand"}>
       <StyledLogo />

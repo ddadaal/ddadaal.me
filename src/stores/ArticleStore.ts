@@ -12,7 +12,7 @@ export class ArticleStore extends Store<State> {
     this.state = { article };
   }
 
-  setArticle(article: ArticleNode | null) {
+  setArticle(article: ArticleNode | null): void {
     if (this.state.article !== article) {
       this.setState({ article });
     }

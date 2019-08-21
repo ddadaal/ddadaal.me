@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 
@@ -33,16 +33,16 @@ const Div = styled.div`
   }
 `;
 
-export default function ToTop() {
+const ToTop: React.FC = () => {
 
-  const [ visible, setVisible ] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   useEffect(() => {
-    const handler = () => {
+    const handler = (): void => {
       setVisible(window.scrollY > 0);
     };
     handler();
@@ -58,3 +58,5 @@ export default function ToTop() {
     </Div>
   );
 }
+
+export default ToTop;

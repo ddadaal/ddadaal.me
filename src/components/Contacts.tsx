@@ -22,7 +22,7 @@ const contacts = [
   [FaStackOverflow, "https://stackoverflow.com/users/2725415/chen-junda", "Stack Overflow: Chen Junda"],
 ] as Array<[React.ComponentType, string, string]>;
 
-const Contact = styled.span<{ color: string, size: number }>`
+const Contact = styled.span<{ color: string; size: number }>`
   svg {
     transition: transform 0.2s linear;
 
@@ -45,7 +45,7 @@ const Container = styled.div`
   margin: 4px 0;
 `;
 
-export default function Contacts(props: Props) {
+const Contacts: React.FC<Props> = (props) => {
 
   return (
     <Container>
@@ -62,3 +62,5 @@ export default function Contacts(props: Props) {
     </Container>
   );
 }
+
+export default Contacts;

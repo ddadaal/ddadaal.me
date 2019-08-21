@@ -1,11 +1,10 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import { graphql, useStaticQuery } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import dayjs from "dayjs";
 import { ArticleNode } from "@/models/ArticleNode";
-import useConstant from "@/utils/useConstant";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
@@ -61,7 +60,7 @@ const query = graphql`
   }
 `;
 
-export default function IndexLayout(props: Props) {
+const IndexLayout: React.FC<Props> = (props) => {
 
   const data: InitialData = useStaticQuery(query);
 
@@ -79,6 +78,7 @@ export default function IndexLayout(props: Props) {
         if (!tagMap.has(tag)) {
           tagMap.set(tag, { count: 1, variations: tag });
         } else {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           tagMap.get(tag)!!.count++;
         }
       });
@@ -98,3 +98,5 @@ export default function IndexLayout(props: Props) {
   );
 
 }
+
+export default IndexLayout;

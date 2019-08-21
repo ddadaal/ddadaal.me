@@ -12,13 +12,15 @@ interface Props {
   toPage(pageIndex: number): () => void;
 }
 
-export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props) {
+const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => {
 
   const i18nStore = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
 
   const items = ids.map((id) => {
-    return metadataStore.articleIdMap.get(id)!!;
+    const item = metadataStore.articleIdMap.get(id);
+    if (!item) { throw `Invalid articleId ${id}` };
+    return item;
   });
 
   return (
@@ -40,3 +42,5 @@ export default function ArticleList({ ids, pageCount, pageIndex, toPage }: Props
     </div>
   );
 }
+
+export default ArticleList;

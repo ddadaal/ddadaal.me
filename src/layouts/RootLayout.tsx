@@ -1,10 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { I18nStore } from "@/stores/I18nStore";
 import { LocationStore } from "@/stores/LocationStore";
-import { ArticleIdMap } from "@/models/ArticleIdMap";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import { MetadataStore } from "@/stores/MetadataStore";
-import { Statistics } from "@/models/Statistics";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
 import Helmet from "react-helmet";
@@ -35,7 +33,7 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-export default function RootLayout(props: Props) {
+const RootLayout: React.FC<Props> = (props) => {
 
   const i18nStore = useConstant(() => new I18nStore());
 
@@ -90,3 +88,5 @@ export default function RootLayout(props: Props) {
     </IconContext.Provider>
   );
 }
+
+export default RootLayout;

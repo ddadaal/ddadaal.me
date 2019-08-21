@@ -4,14 +4,12 @@ import { Link } from "gatsby";
 import lang from "@/i18n/lang";
 import { MetadataStore } from "@/stores/MetadataStore";
 import { useStore } from "simstate";
-import { I18nStore } from "@/stores/I18nStore";
 import Contacts from "@/components/Contacts";
-import SeparatedRow from "@/components/Footer/SeparatedRow";
 import { usePageLink } from "@/stores/usePageLink";
 
 const root = lang.footer;
 
-export default function Brief() {
+const Brief: React.FC = () => {
 
   const metadataStore = useStore(MetadataStore);
 
@@ -45,3 +43,5 @@ export default function Brief() {
     </div>
   );
 }
+
+export default Brief;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
-import { range } from "@/utils/Array";
+import range from "@/utils/Array";
 
 interface Props {
   pageCount: number;
@@ -8,7 +8,7 @@ interface Props {
   toPage(pageNum: number): () => void;
 }
 
-export default function PageIndicator(props: Props) {
+const PageIndicator: React.FC<Props> = (props) => {
   const { pageCount, pageIndex, toPage } = props;
 
   return (
@@ -34,3 +34,5 @@ export default function PageIndicator(props: Props) {
     </Pagination>
   );
 }
+
+export default PageIndicator;

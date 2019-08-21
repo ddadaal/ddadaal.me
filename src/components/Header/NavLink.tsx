@@ -1,10 +1,19 @@
 import { Link } from "gatsby";
 import React from "react";
 
-export default function NavLink(props: { to: string, children: React.ReactNode, onClick?(): void }) {
+interface Props {
+  to: string;
+  children: React.ReactNode;
+  onClick?(): void;
+}
+
+
+const NavLink: React.FC<Props> = ({ to, children, onClick }) => {
   return (
-    <Link to={props.to} onClick={props.onClick} className="nav-link">
-      {props.children}
+    <Link to={to} onClick={onClick} className="nav-link">
+      {children}
     </Link>
   );
 }
+
+export default NavLink;

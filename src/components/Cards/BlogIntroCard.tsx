@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardBody, CardLink, CardSubtitle, CardText, CardTitle } from "reactstrap";
-import { FaCode, FaRss, FaRegCommentDots, FaGlobe, FaEllipsisH } from "react-icons/fa";
+import { CardBody, CardLink, CardText } from "reactstrap";
+import { FaCode, FaRss, FaRegCommentDots } from "react-icons/fa";
 import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
@@ -16,7 +16,7 @@ interface Props {
 
 const root = lang.blogIntro;
 
-export default function BlogIntroCard(props: Props) {
+const BlogIntroCard: React.FC<Props> = () => {
 
   const i18nStore = useStore(I18nStore);
   const metadataStore = useStore(MetadataStore);
@@ -59,3 +59,5 @@ export default function BlogIntroCard(props: Props) {
     </BaseCard>
   );
 }
+
+export default BlogIntroCard;

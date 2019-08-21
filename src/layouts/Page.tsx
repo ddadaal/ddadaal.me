@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { widths, colors } from "@/styles/variables";
+import { widths } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
 
 const StyledPage = styled.div`
@@ -10,7 +10,7 @@ const StyledPage = styled.div`
   padding: 16px;
 `;
 
-interface PageProps {
+interface Props {
   className?: string;
   children?: React.ReactNode;
   maxWidth?: number;
@@ -26,16 +26,14 @@ const StyledContainer = styled.div<{ maxWidth: number }>`
   animation: ${moveInAnimation} 0.2s ease-out;
 `;
 
-export default function Page(props: PageProps) {
+const Page: React.FC<Props> = ({ className, children, maxWidth = widths.mainContent }) => {
   return (
     <StyledPage>
-      <StyledContainer maxWidth={props.maxWidth!!} className={props.className}>
-        {props.children}
+      <StyledContainer maxWidth={maxWidth} className={className}>
+        {children}
       </StyledContainer>
     </StyledPage>
   );
 }
 
-Page.defaultProps = {
-  maxWidth: widths.mainContent,
-};
+export default Page;

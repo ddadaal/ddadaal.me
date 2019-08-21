@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 export function groupBy<T, K>(data: T[], keyFn: (t: T) => K): Map<K, T[]> {
   const map = new Map<K, T[]>();
   data.forEach((data) => {

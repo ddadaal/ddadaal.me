@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
+import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 
 interface Props {
   allLanguages: { id: string; name: string }[];
@@ -8,7 +8,7 @@ interface Props {
   prompt: React.ReactNode;
 }
 
-export default function LanguageSelector({ allLanguages, changeLanguage, currentLanguage, prompt }: Props) {
+const LanguageSelector: React.FC<Props> = ({ allLanguages, changeLanguage, currentLanguage, prompt }) => {
   return (
     <UncontrolledDropdown>
       <DropdownToggle caret={true}>
@@ -27,3 +27,5 @@ export default function LanguageSelector({ allLanguages, changeLanguage, current
     </UncontrolledDropdown>
   );
 }
+
+export default LanguageSelector;

@@ -59,10 +59,12 @@ const Resume = styled.div`
 
 `;
 
-export default function ResumeLayout(props: Props) {
+const ResumeLayout: React.FC<Props> = (props: Props) => {
   return (
     <Resume>
       {props.children}
     </Resume>
   );
 }
+
+export default ResumeLayout;

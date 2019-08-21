@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 
 import { FaLink } from "react-icons/fa";
 import Action from "@/components/Article/Actions/Action";
@@ -14,7 +14,7 @@ interface Props {
   articleId: string;
 }
 
-export default function CopyLinkAction({ articleId }: Props) {
+const CopyLinkAction: React.FC<Props> = ({ articleId }) => {
 
   const metadataStore = useStore(MetadataStore);
 
@@ -27,16 +27,16 @@ export default function CopyLinkAction({ articleId }: Props) {
     setCopied(false);
   });
 
+  const actionOnClick = useCallback(async () => {
+    await navigator.clipboard.writeText(`${metadataStore.baseUrl}/articles/${articleId}`)
+    setCopied(true);
+  }, [articleId]);
+
   return (
-    <Action ref={ref} Icon={FaLink}
-            onClick={() =>
-              (navigator as any).clipboard.writeText(`${metadataStore.baseUrl}/articles/${articleId}`)
-              .then(() => {
-                setCopied(true);
-              })
-            }
-    >
+    <Action ref={ref} Icon={FaLink} onClick={actionOnClick}>
       <LocalizedString id={copied ? root.copied : root.copyLink}/>
     </Action>
   );
 }
+
+export default CopyLinkAction;

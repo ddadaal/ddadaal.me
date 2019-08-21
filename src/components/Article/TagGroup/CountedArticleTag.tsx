@@ -37,7 +37,7 @@ const Text = styled.span`
 
 `;
 
-export default function CountedArticleTag({ tag, onClick }: Props) {
+const CountedArticleTag: React.FC<Props> = ({ tag, onClick }) => {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
@@ -61,3 +61,5 @@ export default function CountedArticleTag({ tag, onClick }: Props) {
   );
 
 }
+
+export default CountedArticleTag;

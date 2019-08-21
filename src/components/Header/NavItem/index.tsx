@@ -14,7 +14,7 @@ interface Props {
   to: string;
 }
 
-export default function NavItem({ Icon, textId, onClick, wrapper, match, to }: Props) {
+const NavItem: React.FC<Props> = ({ Icon, textId, onClick, wrapper, match, to }) => {
 
   const { pathname } = useStore(LocationStore);
 
@@ -37,3 +37,5 @@ export default function NavItem({ Icon, textId, onClick, wrapper, match, to }: P
     )
   );
 }
+
+export default NavItem;

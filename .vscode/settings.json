@@ -11,5 +11,17 @@
   "javascript.preferences.quoteStyle": "double",
   "typescript.preferences.quoteStyle": "double",
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "jest.autoEnable": false
+  "jest.autoEnable": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
 }

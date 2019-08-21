@@ -1,8 +1,4 @@
 import React from "react";
-import { useStore } from "simstate";
-import { LocationStore } from "@/stores/LocationStore";
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
 import NavItem from "@/components/Header/NavItem";
 import { usePageLink } from "@/stores/usePageLink";
 
@@ -14,7 +10,7 @@ interface Props {
   textId: string;
 }
 
-export default function ArticleNavItem({ Icon, articleId, onClick, wrapper, textId }: Props) {
+const ArticleNavItem: React.FC<Props> = ({ Icon, articleId, onClick, wrapper, textId }) => {
 
   const path = usePageLink(articleId);
 
@@ -32,3 +28,5 @@ export default function ArticleNavItem({ Icon, articleId, onClick, wrapper, text
     />
   );
 }
+
+export default ArticleNavItem;

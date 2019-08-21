@@ -4,7 +4,7 @@ import { useStore } from "simstate";
 import { MetadataStore } from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 import styled from "styled-components";
-import { colors, breakpoints } from "@/styles/variables";
+import { colors } from "@/styles/variables";
 
 interface Props {
   show: boolean;

@@ -1,7 +1,4 @@
 import React from "react";
-import { MetadataStore } from "@/stores/MetadataStore";
-import { useStore } from "simstate";
-import { I18nStore } from "@/stores/I18nStore";
 import { FaArrowRight } from "react-icons/fa";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
@@ -21,8 +18,11 @@ const HorizontalList = styled.ul`
 `;
 
 const RelatedCard = styled(ArticleCard)`
+&& {
   display: inline-block;
   white-space: normal;
+}
+
 `;
 
 const Container = styled.div`
@@ -31,19 +31,21 @@ const Container = styled.div`
 
 const root = lang.articlePage.relatedArticles;
 
-export default function RelatedArticles({ ids }: Props) {
+const RelatedArticles: React.FC<Props> = ({ ids }) => {
   return (
     <Container>
-    <h3>
-      <FaArrowRight />{" "}
-      <LocalizedString id={root.text} />
-    </h3>
+      <h3>
+        <FaArrowRight />{" "}
+        <LocalizedString id={root.text} />
+      </h3>
       <HorizontalList>
         {ids.map((id) => (
-            <RelatedCard articleId={id} key={id} />
+          <RelatedCard articleId={id} key={id} />
         ))}
       </HorizontalList>
     </Container>
   );
 
 }
+
+export default RelatedArticles;

@@ -1,11 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import BlogIntroCard from "@/components/Cards/BlogIntroCard";
-import SelfIntroCard from "@/components/Cards/SelfIntroCard";
-import StatisticsCard from "@/components/Cards/StatisticsCard";
 import styled from "styled-components";
 import TagsCard from "@/components/Cards/TagsCard";
-import FriendsCard from "@/components/Cards/FriendsCard";
 import Page from "@/layouts/Page";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import SearchCard from "@/components/Cards/SearchCard";
@@ -29,7 +25,8 @@ const SearchBarContainer = styled.div`
   margin: 4px 0 8px 0;
 `;
 
-export default function ArticleListLayout(props: Props) {
+
+const ArticleListLayout: React.FC<Props> = (props: Props) => {
   return (
     <HeaderFooterLayout transparentHeader={false}>
       <Page>
@@ -59,3 +56,5 @@ export default function ArticleListLayout(props: Props) {
     </HeaderFooterLayout>
   );
 }
+
+export default ArticleListLayout;
