@@ -19,7 +19,7 @@ const BannerLayout: React.FC<Props> = ({ transparentHeader, banner, children }) 
       <RootContainer>
         <InnerContainer>
           <BannerContainer>
-          {banner}
+            {banner}
           </BannerContainer>
         </InnerContainer>
       </RootContainer>

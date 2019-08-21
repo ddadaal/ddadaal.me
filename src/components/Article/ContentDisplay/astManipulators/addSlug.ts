@@ -23,7 +23,7 @@ function addSlug(slugs: string[]): AstManipulator {
 
   return (htmlAst: HtmlAst) => {
     for (const el of htmlAst.children) {
-        rec(el);
+      rec(el);
     }
   };
 }

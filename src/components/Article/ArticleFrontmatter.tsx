@@ -82,14 +82,14 @@ const DisabledLangLink = styled.span`
 `;
 
 const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: string }> = (props) => {
-    const { articleId, currentArticleLanguage } = props;
-    const metadataStore = useStore(MetadataStore);
+  const { articleId, currentArticleLanguage } = props;
+  const metadataStore = useStore(MetadataStore);
 
-    const langPathMap = metadataStore.getLangPathMap(articleId);
+  const langPathMap = metadataStore.getLangPathMap(articleId);
 
-    langPathMap.delete(currentArticleLanguage);
+  langPathMap.delete(currentArticleLanguage);
 
-    return (
+  return (
       <>
         <DisabledLangLink>
           {getLanguage(currentArticleLanguage).name}
@@ -98,5 +98,5 @@ const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: st
           <LangLink key={lang} to={path}>{getLanguage(lang).name}</LangLink>
         ))}
       </>
-    );
-  };
+  );
+};

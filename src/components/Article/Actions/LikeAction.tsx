@@ -16,9 +16,9 @@ const LikeAction: React.FC<Props> = () => {
 
   return (
     <Action Icon={FaThumbsUp}
-            onClick={() =>
-                  setLiked(true)
-            }
+      onClick={() =>
+        setLiked(true)
+      }
     >
       <LocalizedString id={liked ? root.liked : root.like}/>
     </Action>

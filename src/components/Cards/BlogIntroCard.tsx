@@ -47,7 +47,7 @@ const BlogIntroCard: React.FC<Props> = () => {
         <CardLink href="/rss.xml">
           <FaRss />
           RSS
-          </CardLink>
+        </CardLink>
         <Link
           className="card-link"
           to={metadataStore.getArticleOfLang("feedback", i18nStore.state.language).path}

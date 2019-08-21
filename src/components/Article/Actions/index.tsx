@@ -11,10 +11,10 @@ interface Props {
 const ArticleActions: React.FC<Props> = ({ article }) => {
   return (
     <div >
-     <ActionList>
-       <LikeAction articleId={article.frontmatter.id}/>
-       <CopyLinkAction articleId={article.frontmatter.id}/>
-     </ActionList>
+      <ActionList>
+        <LikeAction articleId={article.frontmatter.id}/>
+        <CopyLinkAction articleId={article.frontmatter.id}/>
+      </ActionList>
     </div>
   );
 }

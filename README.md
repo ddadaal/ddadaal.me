@@ -12,18 +12,28 @@ VicBlog is a static personal blog built with Gatsby.
 ## Features
 
 - Static website with modern web technologies
-- Hook based state management with [simstate](https://github.com/viccrubs/simstate)
 - Synchronous & Native **Search**
     - Native support for searching articles without any third-party services
 - Progressive Web Application
 - Support multiple languages (Chinese & English)
-- Styling with [styled-components](https://github.com/styled-components/styled-components) and [SCSS](https://sass-lang.com/)
 - Articles written on markdown; Source code and contents separated
     - Supports inline react components
 - Auto generated [slide directory](https://viccrubs.me/slides) using GitHub API v3 on every build
-- Comment system via [gitalk](https://github.com/gitalk/gitalk)
-- Icons via [react-icons](https://github.com/react-icons/react-icons)
 - Analytics via [CNZZ](https://www.cnzz.com)
+
+## Tools and Frameworks Used
+
+- [Gatsby](https://www.gatsbyjs.org/): the blazing-fast and flexible static site generator with a big community for [React](https://facebook.github.io/react/)
+- [TypeScript](https://www.typescriptlang.org/): the new go-to for any JavaScript projects
+- [simstate](https://github.com/viccrubs/simstate): a simple but enough strongly-typed hooks-based state management
+- [styled-components](https://github.com/styled-components/styled-components): component-ize your styles as well
+- [SCSS](https://sass-lang.com/): bootstrap used SCSS so...trying to get rid of it in the future
+- [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
+- [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
+- [ESLint](https://eslint.org/): [tslint is being deprecated](https://medium.com/palantir/tslint-in-2019-1a144c2317a9)! This project is a pioneer in fully leveraging ESLint in a React+TypeScript project!
+- [editorconfig](https://editorconfig.org/): unify code editor preferences
+- [CNZZ](https://www.cnzz.com): simple and free website analysis for mainland China
+- [GitHub Pages](https://pages.github.com): free and popular static website host
 
 ## Development
 
@@ -69,6 +79,6 @@ If you encountered download error mentioned above, follow the following steps to
 
 [Travis-CI](https://travis-ci.org) builds and publishes directly into viccrubs.github.io for every commit to master.
 
-## Credits
+## License
 
-Built with [Gatsby](https://www.gatsbyjs.org/) - the blazing-fast static site generator for [React](https://facebook.github.io/react/).
+MIT

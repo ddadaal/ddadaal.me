@@ -37,7 +37,7 @@ const SelfIntroCard: React.FC<Props> = () => {
         <CardText>
           <LocalizedString id={root.university} />
         </CardText>
-          <Contacts color="black" size={1.4}/>
+        <Contacts color="black" size={1.4}/>
       </CardBody>
     </BaseCard>
   );

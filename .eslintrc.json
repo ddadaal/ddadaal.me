@@ -15,6 +15,8 @@
     "@typescript-eslint/explicit-function-return-type": ["error", {
       "allowExpressions": true
     }],
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 2],
     "react/display-name": "off",
     "react/prop-types": "off"
   }

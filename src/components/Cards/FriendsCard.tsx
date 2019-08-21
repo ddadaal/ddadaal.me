@@ -24,7 +24,7 @@ const FriendsCard: React.FC<Props> = () => {
       </ListGroupHeader>
       {friendLinks.map(({ name, description, link }) => (
         <ListGroupItem tag={"a"} action={true} target="_blank" href={link} key={name}
-                       className="d-flex justify-content-between align-items-center">
+          className="d-flex justify-content-between align-items-center">
           <NameSpan>{name}</NameSpan>
           <Badge color={"primary"}>{description}</Badge>
         </ListGroupItem>

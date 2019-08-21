@@ -27,7 +27,7 @@ const Brief: React.FC = () => {
         📝 <LocalizedString id={root.license} replacements={[
           <a key="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
             BY CC-SA 4.0
-        </a>,
+          </a>,
         ]} />
 
       </p>
