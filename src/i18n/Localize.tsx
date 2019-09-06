@@ -1,6 +1,6 @@
 import React from "react";
 
-import { I18nStore } from "@/stores/I18nStore";
+import I18nStore from "@/stores/I18nStore";
 import { useStore } from "simstate";
 
 interface Props {

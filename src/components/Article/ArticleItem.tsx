@@ -1,8 +1,8 @@
 import React from "react";
 import { navigate } from "gatsby";
 import styled from "styled-components";
-import { I18nStore } from "@/stores/I18nStore";
-import { MetadataStore } from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
 import { useStore } from "simstate";

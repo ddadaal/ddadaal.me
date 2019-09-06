@@ -6,7 +6,7 @@ import { FaCalendarAlt, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
 import { getLanguage } from "@/i18n/definition";
 

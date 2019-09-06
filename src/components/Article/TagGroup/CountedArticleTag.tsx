@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useStore } from "simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
 import lang from "@/i18n/lang";
 import styled from "styled-components";
 import { Link } from "gatsby";

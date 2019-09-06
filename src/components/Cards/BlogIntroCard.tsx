@@ -5,8 +5,8 @@ import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
 
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
 import { useStore } from "simstate";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 
@@ -27,7 +27,7 @@ const BlogIntroCard: React.FC<Props> = () => {
         <span>💻 VicBlog <LocalizedString id={root.subtitle} /></span>
         <Link
           className="card-link"
-          to={metadataStore.getArticleOfLang("about-project", i18nStore.state.language).path}
+          to={metadataStore.getArticleOfLang("about-project", i18nStore.language).path}
           title={i18nStore.language.definitions.blogIntro.more}
         >
           <LocalizedString id={root.moreLink} />
@@ -50,7 +50,7 @@ const BlogIntroCard: React.FC<Props> = () => {
         </CardLink>
         <Link
           className="card-link"
-          to={metadataStore.getArticleOfLang("feedback", i18nStore.state.language).path}
+          to={metadataStore.getArticleOfLang("feedback", i18nStore.language).path}
         >
           <FaRegCommentDots />
           <LocalizedString id={root.feedback} />

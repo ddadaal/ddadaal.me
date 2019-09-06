@@ -1,7 +1,7 @@
 import React from "react";
 
-import { I18nStore } from "@/stores/I18nStore";
-import { MetadataStore } from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
 import Helmet from "react-helmet";
 import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";

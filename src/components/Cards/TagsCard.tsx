@@ -4,7 +4,7 @@ import { CardBody } from "reactstrap";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import LocalizedString from "@/i18n/LocalizedString";
 import { useStore } from "simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 
 interface Props {

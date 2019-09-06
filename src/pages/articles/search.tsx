@@ -1,8 +1,8 @@
 import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import { LocationStore } from "@/stores/LocationStore";
-import { MetadataStore } from "@/stores/MetadataStore";
+import LocationStore from "@/stores/LocationStore";
+import MetadataStore from "@/stores/MetadataStore";
 import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";

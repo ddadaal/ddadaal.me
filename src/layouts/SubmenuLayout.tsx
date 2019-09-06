@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import { BannerLayoutTitle } from "@/layouts/BannerLayout";
 import { useStore } from "simstate";
-import { LocationStore } from "@/stores/LocationStore";
+import LocationStore from "@/stores/LocationStore";
 
 interface NavPoint {
   textId: string;

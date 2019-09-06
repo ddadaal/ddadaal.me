@@ -6,7 +6,7 @@ import lang from "@/i18n/lang";
 import Page from "@/layouts/Page";
 import Helmet from "react-helmet";
 import { useStore } from "simstate";
-import { I18nStore } from "@/stores/I18nStore";
+import I18nStore from "@/stores/I18nStore";
 import { FaGithub } from "react-icons/fa";
 import { Slide } from "@/models/Slide";
 import { colors } from "@/styles/variables";

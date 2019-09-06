@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { I18nStore } from "@/stores/I18nStore";
-import { LocationStore } from "@/stores/LocationStore";
+import React from "react";
+import I18nStore from "@/stores/I18nStore";
+import LocationStore, { LocationProvider } from "@/stores/LocationStore";
 import { SiteMetadata } from "@/models/SiteMetadata";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import icon512 from "~/assets/icon.png";
 import UpdatePop from "@/components/UpdatePop";
-import { StoreProvider } from "simstate";
-import { ArticleStore } from "@/stores/ArticleStore";
+import { StoreProvider, createStore } from "simstate";
+import ArticleStore from "@/stores/ArticleStore";
 import ToTop from "@/components/ToTop";
 import "@/styles/index.scss";
 import { ArticleNode } from "@/models/ArticleNode";
@@ -33,24 +33,20 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-const RootLayout: React.FC<Props> = (props) => {
+const RootLayout: React.FC<Props> = ({ lastUpdated, articles, siteMetadata, tagMap, children }) => {
 
-  const i18nStore = useConstant(() => new I18nStore());
+  const i18nStore = useConstant(() => createStore(I18nStore));
 
-  const locationStore = useConstant(() => new LocationStore(props.location));
+  const locationStore = useConstant(() => createStore(LocationStore, location));
 
-  const metadataStore = useConstant(() => new MetadataStore(
-    props.lastUpdated,
-    props.articles,
-    props.siteMetadata.siteUrl,
-    props.tagMap,
+  const metadataStore = useConstant(() => createStore(MetadataStore,
+    lastUpdated,
+    articles,
+    siteMetadata.siteUrl,
+    tagMap,
   ));
 
-  const articleStore = useConstant(() => new ArticleStore(null));
-
-  useEffect(() => {
-    locationStore.updateLocation(props.location);
-  }, [props.location]);
+  const articleStore = useConstant(() => createStore(ArticleStore, null));
 
   return (
     <IconContext.Provider value={iconContext}>
@@ -60,13 +56,14 @@ const RootLayout: React.FC<Props> = (props) => {
         metadataStore,
         articleStore,
       ]}>
+        <LocationProvider location={location} />
         <LayoutRoot>
           <Helmet
-            title={props.siteMetadata.title}
+            title={siteMetadata.title}
             meta={[
-              { name: "description", content: props.siteMetadata.description },
+              { name: "description", content: siteMetadata.description },
               { name: "keywords", content: "gatsbyjs, gatsby, react, viccrubs, vicblog, blog" },
-              { name: "og:description", content: props.siteMetadata.description },
+              { name: "og:description", content: siteMetadata.description },
             ]}
             link={[
               { rel: "icon", type: "image/png", href: icon512 },
@@ -82,7 +79,7 @@ const RootLayout: React.FC<Props> = (props) => {
           />
           <UpdatePop />
           <ToTop />
-          {props.children}
+          {children}
         </LayoutRoot>
       </StoreProvider>
     </IconContext.Provider>

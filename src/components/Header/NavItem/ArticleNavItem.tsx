@@ -1,6 +1,6 @@
 import React from "react";
 import NavItem from "@/components/Header/NavItem";
-import { usePageLink } from "@/stores/usePageLink";
+import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 
 interface Props {
   Icon: React.ComponentType;
@@ -12,7 +12,7 @@ interface Props {
 
 const ArticleNavItem: React.FC<Props> = ({ Icon, articleId, onClick, wrapper, textId }) => {
 
-  const path = usePageLink(articleId);
+  const path = useArticleOfCurrentLang(articleId).path;
 
   const targetPageUrlParts = path.split("/");
   targetPageUrlParts.pop();

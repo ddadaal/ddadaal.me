@@ -4,7 +4,7 @@ import { FaLink } from "react-icons/fa";
 import Action from "@/components/Article/Actions/Action";
 import lang from "@/i18n/lang";
 import { useStore } from "simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 import LocalizedString from "@/i18n/LocalizedString";
 import { useEventListener } from "@/utils/useEventListener";
 

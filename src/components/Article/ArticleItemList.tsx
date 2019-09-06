@@ -1,6 +1,6 @@
 import React from "react";
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
 import { useStore } from "simstate";

@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import Localize from "@/i18n/Localize";
 import lang from "@/i18n/lang";
 import { useStore } from "simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 
 interface Props {
   onSearch?(): void;

@@ -1,7 +1,7 @@
 import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import { useStore } from "simstate";
-import { LocationStore } from "@/stores/LocationStore";
+import LocationStore from "@/stores/LocationStore";
 import NavLink from "@/components/Header/NavLink";
 import { NavItem as BSNavItem, DropdownItem as BSDropdownItem } from "reactstrap";
 

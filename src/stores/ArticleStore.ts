@@ -1,21 +1,8 @@
-import { Store } from "simstate";
 import { ArticleNode } from "@/models/ArticleNode";
+import { useState } from "react";
 
-interface State {
-  article: ArticleNode | null;
-}
+export default function ArticleStore(initialArticle: ArticleNode | null) {
+  const [article, setArticle] = useState(initialArticle);
 
-export class ArticleStore extends Store<State> {
-
-  constructor(article: ArticleNode | null) {
-    super();
-    this.state = { article };
-  }
-
-  setArticle(article: ArticleNode | null): void {
-    if (this.state.article !== article) {
-      this.setState({ article });
-    }
-  }
-
+  return { article, setArticle };
 }

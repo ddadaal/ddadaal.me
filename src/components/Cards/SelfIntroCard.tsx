@@ -3,8 +3,8 @@ import { CardBody, CardText } from "reactstrap";
 import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
 import Contacts from "../Contacts";
 import { useStore } from "simstate";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
@@ -19,7 +19,7 @@ const SelfIntroCard: React.FC<Props> = () => {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useStore(I18nStore);
 
-  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.state.language).path;
+  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.language).path;
 
   return (
     <BaseCard>

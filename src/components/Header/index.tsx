@@ -16,7 +16,7 @@ import { widths, colors } from "@/styles/variables";
 import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare } from "react-icons/fa";
 import LocalizedString from "@/i18n/LocalizedString";
 import lang from "@/i18n/lang";
-import { LocationStore } from "@/stores/LocationStore";
+import LocationStore from "@/stores/LocationStore";
 import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
 import NavItem from "@/components/Header/NavItem";

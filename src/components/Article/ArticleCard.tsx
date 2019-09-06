@@ -1,8 +1,8 @@
 import React from "react";
 import { BaseCard } from "@/components/Cards/components";
 import { useStore } from "~/node_modules/simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
 import styled from "styled-components";
 import { CardBody } from "reactstrap";
 import { navigate } from "gatsby";

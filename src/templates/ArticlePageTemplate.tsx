@@ -5,15 +5,15 @@ import Page from "@/layouts/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
 
-import { MetadataStore } from "@/stores/MetadataStore";
-import { I18nStore } from "@/stores/I18nStore";
+import MetadataStore from "@/stores/MetadataStore";
+import I18nStore from "@/stores/I18nStore";
 import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
 import ArticleContentDisplay from "@/components/Article/ContentDisplay";
 import { HtmlAst } from "@/models/HtmlAst";
 import ArticlePageBanner from "@/components/Article/ArticlePageBanner";
 import { useStore } from "simstate";
-import { ArticleStore } from "@/stores/ArticleStore";
+import ArticleStore from "@/stores/ArticleStore";
 import styled, { keyframes } from "styled-components";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
@@ -101,11 +101,9 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
     };
   }, [articleNode]);
 
-  const {
-    frontmatter: {
-      title, date, tags, hide_heading, no_toc, related,
-    }, path, excerpt,
-  } = articleNode;
+  const { path, excerpt, frontmatter: {
+    title, date, tags, hide_heading, no_toc, related,
+  } } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 

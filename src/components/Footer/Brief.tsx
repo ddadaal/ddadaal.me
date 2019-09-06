@@ -2,10 +2,10 @@ import React from "react";
 import LocalizedString from "@/i18n/LocalizedString";
 import { Link } from "gatsby";
 import lang from "@/i18n/lang";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
 import Contacts from "@/components/Contacts";
-import { usePageLink } from "@/stores/usePageLink";
+import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 
 const root = lang.footer;
 
@@ -13,7 +13,7 @@ const Brief: React.FC = () => {
 
   const metadataStore = useStore(MetadataStore);
 
-  const aboutMeLink = usePageLink("about-me");
+  const aboutMeLink = useArticleOfCurrentLang("about-me").path;
 
   return (
     <div className="footer-brief">

@@ -1,7 +1,7 @@
 import React from "react";
 import useConstant from "@/utils/useConstant";
 import { useStore } from "simstate";
-import { MetadataStore } from "@/stores/MetadataStore";
+import MetadataStore from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 import styled from "styled-components";
 import { colors } from "@/styles/variables";
