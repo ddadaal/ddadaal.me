@@ -33,7 +33,7 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-const RootLayout: React.FC<Props> = ({ lastUpdated, articles, siteMetadata, tagMap, children }) => {
+const RootLayout: React.FC<Props> = ({ location, lastUpdated, articles, siteMetadata, tagMap, children }) => {
 
   const i18nStore = useConstant(() => createStore(I18nStore));
 
