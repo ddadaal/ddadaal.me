@@ -1,9 +1,11 @@
 export default {
-  id: "en",
-  gitalkLangId: "en",
-  languages: ["en", "en-US"],
-  detailedId: "en-US",
-  name: "English",
+  metadata: {
+    id: "en",
+    gitalkLangId: "en",
+    langStrings: ["en", "en-US"],
+    detailedId: "en-US",
+    name: "English",
+  },
   definitions: {
     newContentPop: {
       refresh: "Refresh",

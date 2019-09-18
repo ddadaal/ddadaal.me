@@ -117,12 +117,12 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
             { name: "og:description", content: excerpt },
             { name: "og:type", content: "article" },
             { name: "og:url", content: `${metadataStore.baseUrl}${path}` },
-            { name: "og:locale", content: language.detailedId },
+            { name: "og:locale", content: language.metadata.detailedId },
             ...Object.keys(langPathMap)
               .filter((x) => x !== lang)
               .map((x) => ({
                 name: "og:locale:alternate",
-                content: getLanguage(x).detailedId,
+                content: getLanguage(x).metadata.detailedId,
               })),
             { name: "og:site_name", content: "VicBlog" },
             { name: "og:article:published_time", content: date },
@@ -156,7 +156,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           {related ? <RelatedArticles ids={related} /> : null}
           <hr />
           <CommentPanel
-            language={i18nStore.language.gitalkLangId}
+            language={i18nStore.language.metadata.gitalkLangId}
             articleId={id}
             articleTitle={title}
           />

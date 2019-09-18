@@ -35,7 +35,7 @@ function replacePlaceholders(definition: string, replacements: React.ReactNode[]
 export default function I18nStore() {
   const [language, setLanguage] = useState(getLanguage(getInitialLanguage()));
 
-  const changeLanguage = useCallback((lang: string) => setLanguage(getLanguage(lang)), []);
+  const changeLanguage = useCallback((langString: string) => setLanguage(getLanguage(langString)), []);
 
   const getDefinition = useCallback((id: string): string => {
     let content = language.definitions;

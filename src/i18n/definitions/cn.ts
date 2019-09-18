@@ -1,9 +1,11 @@
 export default {
-  id: "cn",
-  gitalkLangId: "zh-CN",
-  languages: ["cn", "zh-CN", "zh"],
-  detailedId: "zh-CN",
-  name: "简体中文",
+  metadata: {
+    id: "cn",
+    gitalkLangId: "zh-CN",
+    langStrings: ["cn", "zh-CN", "zh"],
+    detailedId: "zh-CN",
+    name: "简体中文",
+  },
   definitions: {
     newContentPop: {
       refresh: "刷新",

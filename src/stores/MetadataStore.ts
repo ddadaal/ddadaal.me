@@ -6,8 +6,8 @@ import { useMemo, useCallback } from "react";
 
 export type LangPathMap = Map<string, string>;
 
-export function matchLangWithCurrentLanguage(lang: string, currentLanguage: Language): boolean {
-  return currentLanguage.languages.includes(lang);
+export function matchLangStringWithCurrentLanguage(langString: string, currentLanguage: Language): boolean {
+  return currentLanguage.metadata.langStrings.includes(langString);
 }
 
 function noSuchArticle(articleId: string): string {
@@ -34,7 +34,7 @@ export default function MetadataStore(lastUpdated: string, articleNodes: Article
       throw noSuchArticle(id);
     }
 
-    const node = group.find((x) => matchLangWithCurrentLanguage(x.frontmatter.lang, language)) || group[0];
+    const node = group.find((x) => matchLangStringWithCurrentLanguage(x.frontmatter.lang, language)) || group[0];
     return node;
   }, []);
 
@@ -62,7 +62,7 @@ export default function MetadataStore(lastUpdated: string, articleNodes: Article
     if (typeof variations === "string") {
       return variations;
     }
-    return variations[language.id] || variations[0];
+    return variations[language.metadata.id] || variations[0];
   }, []);
 
   const getAllVariationsOfTag = useCallback((tag: string): string[] => {
@@ -83,7 +83,7 @@ export default function MetadataStore(lastUpdated: string, articleNodes: Article
       if (typeof variations === "string") {
         tags.push(variations);
       } else {
-        tags.push(variations[language.id] || variations[0]);
+        tags.push(variations[language.metadata.id] || variations[0]);
       }
     });
 

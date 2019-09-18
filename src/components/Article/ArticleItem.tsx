@@ -48,7 +48,7 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
 
   return (
     <StyledPost>
-      <StyledTitle to={langPaths.get(language.id) || langPaths.values().next().value}>
+      <StyledTitle to={langPaths.get(language.metadata.id) || langPaths.values().next().value}>
         {title}
       </StyledTitle>
 

@@ -2,7 +2,7 @@ import React from "react";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 
 interface Props {
-  allLanguages: { id: string; name: string }[];
+  allLanguages: { metadata: { id: string; name: string } }[];
   changeLanguage(id: string): void;
   currentLanguage: string;
   prompt: React.ReactNode;
@@ -18,9 +18,9 @@ const LanguageSelector: React.FC<Props> = ({ allLanguages, changeLanguage, curre
         <DropdownItem header={true}>{prompt}</DropdownItem>
         {allLanguages.map((lang) => (
           <DropdownItem
-            key={lang.id}
-            onClick={() => changeLanguage(lang.id)}>
-            {lang.name}
+            key={lang.metadata.id}
+            onClick={() => changeLanguage(lang.metadata.id)}>
+            {lang.metadata.name}
           </DropdownItem>
         ))}
       </DropdownMenu>

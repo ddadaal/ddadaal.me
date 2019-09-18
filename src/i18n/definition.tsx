@@ -5,15 +5,14 @@ export const allLanguages = [cn, en];
 
 export type Language = typeof cn;
 
-export function getLanguage(lang: string): Language {
-  const language = allLanguages.find((x) => x.languages.includes(lang));
-  if (!language) { throw `Invalid lang string ${lang}`; }
+export function getLanguage(langString: string): Language {
+  const language = allLanguages.find((x) => x.metadata.langStrings.includes(langString));
+  if (!language) { throw `Invalid lang string ${langString}`; }
   return language;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function getDefinitions(lang: string) {
-  return getLanguage(lang).definitions;
+export function getDefinitions(langString: string): Language["definitions"] {
+  return getLanguage(langString).definitions;
 }
 
 export type Definitions = ReturnType<typeof getDefinitions>;

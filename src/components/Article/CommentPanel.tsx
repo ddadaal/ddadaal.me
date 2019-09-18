@@ -77,7 +77,7 @@ const CommentPanel: React.FC<Props> = (props) => {
 const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (props) => {
   const i18nStore = useStore(I18nStore);
 
-  return <CommentPanel {...props} language={i18nStore.language.gitalkLangId} />;
+  return <CommentPanel {...props} language={i18nStore.language.metadata.gitalkLangId} />;
 }
 
 export { CommentPanel as default, CommentPanelWithCurrentLanguage };

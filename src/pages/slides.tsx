@@ -57,7 +57,7 @@ const Slides: React.FC<Props> = (props) => {
           title={`${documentTitle} - VicBlog`}
           meta={[
             { name: "og:title", content: title },
-            { name: "og:locale", content: i18nStore.language.detailedId },
+            { name: "og:locale", content: i18nStore.language.metadata.detailedId },
             { name: "og:site_name", content: "VicBlog" },
           ]}
         />

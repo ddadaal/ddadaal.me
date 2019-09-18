@@ -29,7 +29,7 @@ const NavbarLanguageSelector: React.FC = () => {
   return (
     <LanguageSelector
       allLanguages={allLanguages}
-      currentLanguage={language.name}
+      currentLanguage={language.metadata.name}
       changeLanguage={change}
       prompt={language.definitions.languageSelector.select}
     />

@@ -92,10 +92,10 @@ const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: st
   return (
       <>
         <DisabledLangLink>
-          {getLanguage(currentArticleLanguage).name}
+          {getLanguage(currentArticleLanguage).metadata.name}
         </DisabledLangLink>
         {Array.from(langPathMap.entries()).map(([lang, path]) => (
-          <LangLink key={lang} to={path}>{getLanguage(lang).name}</LangLink>
+          <LangLink key={lang} to={path}>{getLanguage(lang).metadata.name}</LangLink>
         ))}
       </>
   );

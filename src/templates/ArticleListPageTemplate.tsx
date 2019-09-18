@@ -36,12 +36,12 @@ const ArticleListPageTemplate: React.FC<Props> = ({ pageContext }) => {
           { name: "og:title", content: `${language.definitions.articlePage.title} - VicBlog` },
           { name: "og:url", content: metadataStore.baseUrl },
           { name: "og:site_name", content: "VicBlog" },
-          { name: "og:locale", content: language.detailedId },
+          { name: "og:locale", content: language.metadata.detailedId },
           ...allLanguages
             .filter((x) => x !== language)
             .map((x) => ({
               name: "og:locale:alternate",
-              content: x.detailedId,
+              content: x.metadata.detailedId,
             })),
         ]} />
       <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
