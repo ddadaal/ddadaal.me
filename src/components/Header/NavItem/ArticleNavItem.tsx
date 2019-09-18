@@ -14,15 +14,12 @@ const ArticleNavItem: React.FC<Props> = ({ Icon, articleId, onClick, wrapper, te
 
   const path = useArticleOfCurrentLang(articleId).path;
 
-  const targetPageUrlParts = path.split("/");
-  targetPageUrlParts.pop();
-
   return (
     <NavItem
       wrapper={wrapper}
       onClick={onClick}
       Icon={Icon}
-      match={(pathname) => pathname.startsWith(targetPageUrlParts.join("/"))}
+      match={(pathname) => pathname.startsWith(path)}
       to={path}
       textId={textId}
     />

@@ -17,15 +17,32 @@ function noSuchArticle(articleId: string): string {
 export default function MetadataStore(lastUpdated: string, articleNodes: ArticleNode[], baseUrl: string, tagMap: TagMap) {
 
   const articleIdMap: ArticleIdMap = useMemo(() => {
-    return groupBy(articleNodes.map((article) => {
-      const { frontmatter: { id, absolute_path, lang } } = article;
-      article.path = `${absolute_path || `/articles/${id}`}/${lang}`;
+    const map = groupBy(articleNodes.map((article) => {
+      const { frontmatter: { id, absolute_path } } = article;
+      article.path = `${absolute_path || `/articles/${id}`}`;
       return article;
     }), (article) => article.frontmatter.id);
 
+    // replicate login from page creation (the cn or first version of article has no lang postfix)
+    Array.from(map.values()).forEach((values) => {
+      // sort the articles by lang
+      values.sort((a, b) => a.frontmatter.lang.localeCompare(b.frontmatter.lang, "en"));
+
+      // except the chinese or the first version, append lang prefix
+      const exception = values.find((x) => x.frontmatter.lang === "cn") || values[0];
+      values.forEach((article) => {
+        if (article === exception) { return; }
+        article.path += `/${article.frontmatter.lang}`;
+      });
+    })
+
+    return map;
   }, [articleNodes]);
 
-  const articleCount = useMemo(() => Array.from(articleIdMap.values()).filter((group) => !group[0].frontmatter.ignored_in_list).length, [articleIdMap]);
+  const articleCount = useMemo(() =>
+    Array.from(articleIdMap.values())
+      .filter((group) => !group[0].frontmatter.ignored_in_list)
+      .length, [articleIdMap]);
 
   const getArticleOfLang = useCallback((id: string, language: Language): ArticleNode => {
     const group = articleIdMap.get(id);

@@ -1,5 +1,5 @@
 import React from "react";
-import { navigate } from "gatsby";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import I18nStore from "@/stores/I18nStore";
 import MetadataStore from "@/stores/MetadataStore";
@@ -17,12 +17,14 @@ const StyledPost = styled.div`
   margin-bottom: 24px;
 `;
 
-const StyledH = styled.h2`
+const StyledTitle = styled(Link)`
   :hover {
     cursor: pointer;
     text-decoration: underline;
+    color: black;
   }
 
+  color: black;
   font-size: 32px;
   padding: 4px 0;
 `;
@@ -31,12 +33,6 @@ function limitLength(content: string): string {
   const lengthLimit = containsChinese(content) ? 130 : 300;
   return content.substring(0, lengthLimit) + "...";
 }
-
-const StyledTitle: React.FC<{ children: React.ReactNode; to: string }> = (props) => {
-  return (
-    <StyledH onClick={() => navigate(props.to)}>{props.children}</StyledH>
-  );
-};
 
 const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
   const { frontmatter: { id, title, tags, date }, wordCount: { words }, excerpt } = article;

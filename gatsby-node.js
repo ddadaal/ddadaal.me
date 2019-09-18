@@ -46,7 +46,7 @@ exports.createPages = async ({ actions, graphql }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const id = node.frontmatter.id;
     articleGroups[id] = articleGroups[id] || [];
-    node.path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
+    node.path = node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`;
     articleGroups[id].push(node);
   });
 
@@ -123,35 +123,42 @@ function createPaginatedHomepages(createPage, articleGroups) {
 function createArticlePages(createPage, redirect, articleGroups) {
   const slugger = new GitHubSlugger();
 
-  Object.values(articleGroups).forEach((nodes) => {
-    let indexPageCreated = false; // indicates whether the index path (the path not containing lang) is created
-    nodes.forEach((node) => {
-      slugger.reset();
-      const path = node.path;
-      createPage({
-        path,
-        component: articleTemplate,
-        context: {
-          id: node.frontmatter.id,
-          lang: node.frontmatter.lang,
-          htmlAst: node.htmlAst,
-          headings: node.headings.map((x) => ({
-            ...x,
-            slug: slugger.slug(x.value),
-          })),
-        }
-      });
-
-      if (!indexPageCreated) {
-        slugger.reset();
-        const paths = node.path.split("/");
-        paths.pop();
-        const path = paths.join("/");
-
-        redirect(path, node.path);
-
-        indexPageCreated = true;
+  const createPageWithPath = (node, path) => {
+    createPage({
+      path,
+      component: articleTemplate,
+      context: {
+        id: node.frontmatter.id,
+        lang: node.frontmatter.lang,
+        htmlAst: node.htmlAst,
+        headings: node.headings.map((x) => ({
+          ...x,
+          slug: slugger.slug(x.value),
+        })),
       }
+    });
+  }
+
+  Object.entries(articleGroups).forEach(([key, nodes]) => {
+    if (nodes.length === 0) { throw new Error(`${key} has no article!`); }
+
+    // 1. Sort the nodes by lang for consistency in computing
+    nodes.sort((a, b) => a.frontmatter.lang.localeCompare(b.frontmatter.lang, "en"));
+
+    // 2. Create index page for the cn version or the first version
+    const firstNode = nodes.find((x) => x.lang === "cn") || nodes[0];
+
+    createPageWithPath(firstNode, firstNode.path);
+
+    // 2. Create a redirect from path url with lang to path without lang
+    redirect(`${firstNode.path}/${firstNode.frontmatter.lang}`, firstNode.path);
+
+    // 3. Create each page for remaining languages by appending lang id on the back of path
+    nodes.forEach((node) => {
+      if (node === firstNode) { return; }
+      slugger.reset();
+
+      createPageWithPath(node, `${node.path}/${node.frontmatter.lang}`)
     });
   });
 }
