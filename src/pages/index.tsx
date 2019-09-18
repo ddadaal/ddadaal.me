@@ -14,6 +14,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
+import isServer from "@/utils/isServer";
 
 const Bg = styled(RootContainer)`
   height: 100vh;
@@ -90,7 +91,7 @@ const HomePage: React.FunctionComponent = () => {
     <HeaderFooterLayout transparentHeader={true}>
       <Bg>
         <TextContent>
-          <TitleText><LocalizedString id={selectDate()} /></TitleText>
+          <TitleText>{isServer() ? "" : <LocalizedString id={selectDate()} />}</TitleText>
           <Slogan><LocalizedString id={root.from} /></Slogan>
           <LinkContainer>
             {links.map(([to, Icon, id]) => (
