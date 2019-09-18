@@ -19,7 +19,7 @@ deploy:
       branch: master
     local-dir: public
     repo: vicblog/vicblog.github.io
-    fqdn: viccrubs.me
+    fqdn: pages.viccrubs.me
     target-branch: master
 
   - provider: script
