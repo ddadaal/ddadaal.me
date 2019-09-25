@@ -5,7 +5,7 @@ import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
-import { FaFile, FaBookOpen, FaRegCommentDots, FaMale, FaClock, FaSlideshare } from "react-icons/fa";
+import { FaFile, FaBookOpen, FaMale, FaClock, FaSlideshare, FaRss } from "react-icons/fa";
 import { Link } from "gatsby";
 import I18nStore from "@/stores/I18nStore";
 import { useStore } from "simstate";
@@ -65,10 +65,10 @@ const root = lang.homepage;
 
 const links = [
   ["/articles", FaBookOpen, root.links.articles],
+  ["/rss.xml", FaRss, root.links.rss],
   ["resume", FaFile, root.links.resume],
   ["/slides", FaSlideshare, root.links.slides],
   ["about-me", FaMale, root.links.aboutMe],
-  ["/feedback", FaRegCommentDots, root.links.feedback],
 ] as const;
 
 function selectDate(): string {

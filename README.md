@@ -12,6 +12,7 @@ VicBlog is a static personal blog built with Gatsby.
 ## Features
 
 - Static website with modern web technologies
+- Auto-generated RSS Feed at [/rss.xml](https://viccrubs.me/rss.xml)
 - Synchronous & Native **Search**
     - Native support for searching articles without any third-party services
 - Progressive Web Application
@@ -25,7 +26,7 @@ VicBlog is a static personal blog built with Gatsby.
 
 - [Gatsby](https://www.gatsbyjs.org/): the blazing-fast and flexible static site generator with a big community for [React](https://facebook.github.io/react/)
 - [TypeScript](https://www.typescriptlang.org/): the new go-to for any JavaScript projects
-- [simstate](https://github.com/viccrubs/simstate): a simple but enough strongly-typed hooks-based state management
+- [simstate](https://github.com/viccrubs/simstate): a self-made simple but enough strongly-typed hooks-based state management
 - [styled-components](https://github.com/styled-components/styled-components): component-ize your styles as well
 - [SCSS](https://sass-lang.com/): bootstrap used SCSS so...trying to get rid of it in the future
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box

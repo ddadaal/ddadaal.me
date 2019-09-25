@@ -151,6 +151,7 @@ export default {
       from: "From a Student | Programmer | Dreamer",
       links: {
         articles: "Articles",
+        rss: "RSS",
         resume: "Resume",
         slides: "Slides",
         aboutMe: "About Me",

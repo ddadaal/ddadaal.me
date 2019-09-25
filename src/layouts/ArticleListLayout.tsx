@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React from "react";
 import { Row, Col } from "reactstrap";
 import styled from "styled-components";
@@ -8,6 +9,7 @@ import SearchCard from "@/components/Cards/SearchCard";
 import ArticleSearchBar from "@/components/Article/SearchBar";
 import MediaQuery from "react-responsive";
 import { breakpoints } from "@/styles/variables";
+import BlogIntroCard from "@/components/Cards/BlogIntroCard";
 // import SearchBar from "@/components/SearchBar";
 
 interface Props {
@@ -44,9 +46,9 @@ const ArticleListLayout: React.FC<Props> = (props: Props) => {
               <Sidebar>
                 {/* <ArticleSearchBar /> */}
                 {/* <SearchBar /> */}
+                <BlogIntroCard />
                 <SearchCard />
                 <TagsCard />
-                {/*<BlogIntroCard/>*/}
                 {/*<SelfIntroCard/>*/}
               </Sidebar>
             </MediaQuery>
