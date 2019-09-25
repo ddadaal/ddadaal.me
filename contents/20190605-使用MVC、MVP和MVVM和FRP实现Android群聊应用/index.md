@@ -1,6 +1,6 @@
 ---
 id: android-chat-in-mvc-mvp-mvvm-and-frp
-date: 2019/06/05 21:30
+date: 2019-06-05 21:30
 title: 使用MVC、MVP、MVVM和FRP实现Android局域网群聊应用
 lang: cn
 tags:

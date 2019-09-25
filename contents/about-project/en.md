@@ -1,9 +1,9 @@
 ---
 
-id: "about-project"
-absolute_path: "/about/project"
-date: "2019/3/10 15:01"
-title: "About Project VicBlog"
+id: about-project
+absolute_path: /about/project
+date: 2019-03-10 15:01
+title: About Project VicBlog
 ignored_in_list: true
 lang: en
 

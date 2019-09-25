@@ -1,7 +1,7 @@
 ---
-id: "simstate-and-why"
-date: "2019/2/14 23:50"
-title: "Simstate and Why"
+id: simstate-and-why
+date: 2019-02-14 23:50
+title: Simstate and Why
 lang: en
 tags:
   - simstate

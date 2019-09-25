@@ -1,7 +1,7 @@
 ---
-id: "fixed-length-decimal-random-generator-satisfying-benfords-law-in-python"
-date: "2017/12/10 00:04"
-title: "Python语言实现的符合本福特定律的十进制固定长度随机数发生器"
+id: fixed-length-decimal-random-generator-satisfying-benfords-law-in-python
+date: 2017-12-10 00:04
+title: Python语言实现的符合本福特定律的十进制固定长度随机数发生器
 lang: cn
 tags:
   - Python

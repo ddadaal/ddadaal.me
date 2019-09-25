@@ -1,7 +1,7 @@
 ---
-id: "an-infinite-loop-caused-by-updating-a-Map-during-iteration"
-date: "2019/02/25 15:30"
-title: "An Infinite Loop Caused by Updating a Map during Iteration"
+id: an-infinite-loop-caused-by-updating-a-Map-during-iteration
+date: 2019-02-25 15:30
+title: An Infinite Loop Caused by Updating a Map during Iteration
 lang: en
 tags:
   - JavaScript

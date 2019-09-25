@@ -1,7 +1,7 @@
 ---
-id: "cpp-testcase-viewer"
-date: "2017/10/03 20:00"
-title: "C++测例查看器"
+id: cpp-testcase-viewer
+date: 2017-10-03 20:00
+title: C++测例查看器
 lang: cn
 tags:
   - C++

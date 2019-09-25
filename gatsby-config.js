@@ -1,7 +1,6 @@
 "use strict"
 
-const dayjs = require("dayjs");
-
+const { DateTime } = require("luxon");
 const path = require("path");
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
       url: 'https://viccrubs.me',
       email: 'smallda@outlook.com'
     },
-    lastUpdated: dayjs().format(),
+    lastUpdated: DateTime.utc().toString(),
   },
   plugins: [
     'gatsby-plugin-typescript',
@@ -112,7 +111,6 @@ module.exports = {
             query: `
             {
               allMarkdownRemark(
-                limit: 1000,
                 sort: { order: DESC, fields: [frontmatter___date] },
                 filter: { frontmatter: { ignored_in_list: { ne: true } }}
               ) {
@@ -133,17 +131,16 @@ module.exports = {
             }
           `,
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-
               return allMarkdownRemark.edges.map(({ node }) => {
                 const path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
                 return {
-                  ...node.frontmatter,
+                  title: node.frontmatter.title,
+                  date: DateTime.fromSQL(node.frontmatter.date, { zone: "Asia/Shanghai" }).toString(),
                   description: node.excerpt,
                   url: path,
                   guid: path,
                   custom_elements: [{ "content:encoded": node.html }]
-                }
-
+                };
               });
             },
             output: "/rss.xml",

@@ -1,6 +1,6 @@
 ---
 id: growth-with-njumsc-2016-to-2019
-date: 2019/09/07 16:00
+date: 2019-09-07 16:00
 title: 2016至2019，和南京大学微软学生俱乐部一起成长
 lang: cn
 tags:

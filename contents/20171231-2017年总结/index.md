@@ -1,11 +1,11 @@
 ---
-id: "summary-for-2017"
-date: "2017/12/31 23:45"
-title: "2017年总结"
+id: summary-for-2017
+date: 2017-12-31 23:45
+title: 2017年总结
 lang: cn
 tags:
   - annual-summary
-  
+
 related:
   - summary-for-2018
 ---

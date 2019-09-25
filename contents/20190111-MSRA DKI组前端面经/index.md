@@ -1,7 +1,7 @@
 ---
-id: "MSRA-DKI-frontend-interview-experiences"
-date: "2019/01/11 23:21"
-title: "MSRA DKI组前端面经"
+id: MSRA-DKI-frontend-interview-experiences
+date: 2019-01-11 23:21
+title: MSRA DKI组前端面经
 lang: cn
 tags:
   - interview-experiences

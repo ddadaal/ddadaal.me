@@ -1,6 +1,6 @@
 ---
 id: 2019-spring-ms-intern-interview-experiences
-date: 2019/04/21 10:30
+date: 2019-04-21 10:30
 title: 2019年春微软实习面试经验
 lang: cn
 tags:

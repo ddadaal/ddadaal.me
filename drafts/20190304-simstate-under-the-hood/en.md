@@ -1,6 +1,6 @@
 ---
 id: "simstate-under-the-hood"
-date: "2019/3/4 23:50"
+date: "2019-3-4 23:50"
 title: "Simstate Under the Hood"
 lang: en
 tags:

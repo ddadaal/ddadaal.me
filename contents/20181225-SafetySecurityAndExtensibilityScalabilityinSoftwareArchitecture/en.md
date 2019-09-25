@@ -1,7 +1,7 @@
 ---
 
 id: security-safety-extensibility-scalability
-date: 2018/12/25 21:55
+date: 2018-12-25 21:55
 title: Safety/Security and Extensibility/Scalability in Software System Design and Architecture
 lang: en
 tags:

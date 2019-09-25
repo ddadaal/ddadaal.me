@@ -1,7 +1,7 @@
 ---
-id: "analysis-on-cpp-plugin-not-running-at-vs2017"
-date: "2017/09/27 20:32"
-title: "C++插件在VS2017上无法使用的分析"
+id: analysis-on-cpp-plugin-not-running-at-vs2017
+date: 2017-09-27 20:32
+title: C++插件在VS2017上无法使用的分析
 lang: cn
 tags:
   - C++

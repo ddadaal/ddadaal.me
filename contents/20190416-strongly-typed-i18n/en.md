@@ -1,7 +1,7 @@
 ---
 id: strongly-typed-i18n-with-typescript
-date: "2019/04/17 9:30"
-title: "Strongly Typed i18n with TypeScript"
+date: 2019-04-17 09:30
+title: Strongly Typed i18n with TypeScript
 lang: en
 tags:
   - web-frontend

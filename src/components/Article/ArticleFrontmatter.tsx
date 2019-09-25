@@ -9,6 +9,7 @@ import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
 import { getLanguage } from "@/i18n/definition";
+import { DateTime } from "luxon";
 
 interface Props {
   articleId: string;
@@ -47,13 +48,15 @@ const ContainerRow = styled.div`
 const ArticleFrontmatter: React.FC<Props> = (props) => {
   const { date, wordCount, tags, articleId, currentArticleLanguage } = props;
 
+  const dateObject = DateTime.fromSQL(date);
+
   return (
     <ContainerRow>
 
       {tags && <Tags ><FaTags />{tags.map((tag) => <ArticleTag tag={tag} key={tag} />)}</Tags>}
-      <Span>
+      <Span title={dateObject.toFormat("yyyy-MM-dd HH:mm 'UTC'Z")}>
         <FaCalendarAlt />
-        {date}
+        {dateObject.toFormat("yyyy-MM-dd HH:mm")}
       </Span>
       {/* <Span><FaClock /><LocalizedString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
       <Span>

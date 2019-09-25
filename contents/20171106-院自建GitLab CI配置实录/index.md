@@ -1,7 +1,7 @@
 ---
-id: "department-gitlab-ci-configuration"
-date: "2017/11/06 23:55"
-title: "院自建GitLab CI配置实录"
+id: department-gitlab-ci-configuration
+date: 2017-11-06 23:55
+title: 院自建GitLab CI配置实录
 lang: cn
 tags:
   - hands-on

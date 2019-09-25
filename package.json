@@ -28,7 +28,6 @@
     "@types/react-responsive": "8.0.0",
     "bootstrap": "4.3.1",
     "classnames": "2.2.6",
-    "dayjs": "1.8.16",
     "gatsby": "2.15.22",
     "gatsby-plugin-canonical-urls": "2.1.8",
     "gatsby-plugin-catch-links": "2.1.10",
@@ -55,6 +54,7 @@
     "gatsby-transformer-remark": "2.6.24",
     "gatsby-transformer-sharp": "2.2.17",
     "gitalk": "1.5.0",
+    "luxon": "1.19.3",
     "normalize.css": "8.0.1",
     "prism-themes": "1.1.0",
     "prismjs": "1.17.1",
@@ -74,6 +74,7 @@
   "devDependencies": {
     "@types/classnames": "2.2.9",
     "@types/history": "4.7.3",
+    "@types/luxon": "^1.15.2",
     "@types/node": "12.7.7",
     "@types/react": "16.9.3",
     "@types/react-dom": "16.9.1",
@@ -89,7 +90,7 @@
     "gatsby-plugin-root-import": "2.0.5",
     "github-slugger": "1.2.1",
     "node-sass": "4.12.0",
-    "ts-node": "^8.4.1",
+    "ts-node": "8.4.1",
     "typescript-styled-plugin": "0.14.0"
   }
 }

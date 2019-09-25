@@ -1,9 +1,9 @@
 ---
 
-id: "about-me"
-absolute_path: "/about/me"
-date: "2019/2/1 0:07"
-title: "About Me"
+id: about-me
+absolute_path: /about/me
+date: 2019-02-01 00:07
+title: About Me
 ignored_in_list: true
 lang: en
 hide_heading: false

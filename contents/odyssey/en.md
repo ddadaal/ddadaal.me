@@ -1,9 +1,9 @@
 ---
 
-id: "odyssey"
-absolute_path: "/about/odyssey"
-date: "2018/12/19 23:45"
-title: "A Personal Blog Odyssey"
+id: odyssey
+absolute_path: /about/odyssey
+date: 2018-12-19 23:45
+title: A Personal Blog Odyssey
 ignored_in_list: true
 lang: en
 

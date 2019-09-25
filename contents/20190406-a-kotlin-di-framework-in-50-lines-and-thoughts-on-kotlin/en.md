@@ -1,7 +1,7 @@
 ---
-id: "a-kotlin-di-framework-in-50-lines-and-thoughts-on-kotlin"
-date: "2019/04/06 15:48"
-title: "A Kotlin DI Framework in 50 Lines and Thoughts on Kotlin"
+id: a-kotlin-di-framework-in-50-lines-and-thoughts-on-kotlin
+date: 2019-04-06 15:48
+title: A Kotlin DI Framework in 50 Lines and Thoughts on Kotlin
 lang: en
 tags:
   - Kotlin

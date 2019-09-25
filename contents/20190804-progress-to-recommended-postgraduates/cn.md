@@ -1,6 +1,6 @@
 ---
 id: progress-to-recommended-postgraduates
-date: 2019/08/07 22:06
+date: 2019-08-07 22:06
 title: 北大信科 | 上交软院 | 南大软院夏令营经历
 lang: cn
 tags:
