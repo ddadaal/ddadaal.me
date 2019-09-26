@@ -1,5 +1,5 @@
 import React from "react";
-import { CardBody, CardLink, CardText } from "reactstrap";
+import { CardBody, CardText } from "reactstrap";
 import { FaCode, FaRss, FaRegCommentDots } from "react-icons/fa";
 import { Link } from "gatsby";
 import LocalizedString from "@/i18n/LocalizedString";
@@ -51,10 +51,10 @@ const BlogIntroCard: React.FC<Props> = () => {
             <FaCode />
             <LocalizedString id={root.sourceCode} />
           </a>
-          <Link to="/rss.xml" target="__blank">
+          <a href="/rss.xml" target="__blank">
             <FaRss />
             RSS
-          </Link>
+          </a>
           <Link to="/feedback">
             <FaRegCommentDots />
             <LocalizedString id={root.feedback} />

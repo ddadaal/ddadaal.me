@@ -65,7 +65,7 @@ const root = lang.homepage;
 
 const links = [
   ["/articles", FaBookOpen, root.links.articles],
-  ["/rss.xml", FaRss, root.links.rss],
+  ["/rss.xml", FaRss, root.links.rss, "href"],
   ["resume", FaFile, root.links.resume],
   ["/slides", FaSlideshare, root.links.slides],
   ["about-me", FaMale, root.links.aboutMe],
@@ -94,16 +94,36 @@ const HomePage: React.FunctionComponent = () => {
           <TitleText>{isServer() ? "" : <LocalizedString id={selectDate()} />}</TitleText>
           <Slogan><LocalizedString id={root.from} /></Slogan>
           <LinkContainer>
-            {links.map(([to, Icon, id]) => (
-              <Link className={"btn btn-info"} key={to} to={
-                to.startsWith("/")
-                  ? to
-                  : metadataStore.getArticleOfLang(to, i18nStore.language).path
-              }>
-                <Icon /><LocalizedString id={id} />
-              </Link>
-            ))}
+            {links.map(([to, Icon, id, mode = "to"]) => {
+              const commonProps = {
+                className: "btn btn-info",
+                key: to,
+              };
 
+              const children = (
+                <>
+                  <Icon />
+                  <LocalizedString id={id} />
+                </>
+              );
+
+              if (mode === "to") {
+                return (
+                  <Link {...commonProps} to={to.startsWith("/")
+                    ? to
+                    : metadataStore.getArticleOfLang(to, i18nStore.language).path
+                  }>
+                    {children}
+                  </Link>
+                )
+              } else {
+                return (
+                  <a {...commonProps} href={to}>
+                    {children}
+                  </a>
+                );
+              }
+            })}
           </LinkContainer>
           <Contacts size={1.6} color={"white"} />
           <p>
@@ -114,7 +134,7 @@ const HomePage: React.FunctionComponent = () => {
         </TextContent>
 
       </Bg>
-    </HeaderFooterLayout>
+    </HeaderFooterLayout >
   );
 }
 
