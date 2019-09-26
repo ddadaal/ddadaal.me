@@ -1,5 +1,5 @@
 ---
-wd: gatsby-powered-vicblog-online
+id: gatsby-powered-vicblog-online
 date: 2018-11-17 14:51
 title: 新博客正式上线
 lang: cn
