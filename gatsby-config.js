@@ -137,7 +137,8 @@ module.exports = {
                   title: node.frontmatter.title,
                   date: DateTime.fromSQL(node.frontmatter.date, { zone: "Asia/Shanghai" }).toString(),
                   description: node.excerpt,
-                  url: path,
+                  url: site.siteMetadata.siteUrl + path,
+                  categories: node.frontmatter.tags || [],
                   guid: path,
                   custom_elements: [{ "content:encoded": node.html }]
                 };
