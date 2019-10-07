@@ -4,7 +4,7 @@ import BannerLayout, { BannerLayoutTitle, BannerLayoutDescription } from "@/layo
 import styled from "styled-components";
 import lang from "@/i18n/lang";
 import Page from "@/layouts/Page";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import { useStore } from "simstate";
 import I18nStore from "@/stores/I18nStore";
 import { FaGithub } from "react-icons/fa";

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 
 import Page from "@/layouts/Page";
 import CommentPanel from "@/components/Article/CommentPanel";

@@ -5,7 +5,7 @@ import { SiteMetadata } from "@/models/SiteMetadata";
 import MetadataStore from "@/stores/MetadataStore";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import icon512 from "~/assets/icon.png";
 import UpdatePop from "@/components/UpdatePop";
 import { StoreProvider, createStore } from "simstate";
