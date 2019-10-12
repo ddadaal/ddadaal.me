@@ -20,9 +20,9 @@
     "prefix": "frontmatter",
     "body": [
       "---",
-      "id: \"$1\"",
-      "date: \"$2\"",
-      "title: \"$3\"",
+      "id: $1",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE",
+      "title: $3",
       "lang: $4",
       "tags:",
       "  - $5",
