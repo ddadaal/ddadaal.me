@@ -1,6 +1,6 @@
 ---
 id: a-react-form-comp-pref-optimization-with-profiler
-date: 2019-10-12 14:52
+date: 2019-10-13 11:14
 title: A React Form Component Performance Optimization with Profiler
 lang: en
 tags:
@@ -9,7 +9,7 @@ tags:
   - React
 ---
 
-> Note: This code is from a internal project. Measurements apply to protect confidential information, but the problem and methods mentioned in the article are universal and not limited to specific projects.
+> Note: This code is from an internal project. Measurements apply to protect confidential information, but the problem and methods mentioned in the article are universal and not limited to specific projects.
 
 # The Problem
 
@@ -51,7 +51,7 @@ Looking at the code, the form was implemented in a very React way: the form cont
 
 ![part of fields](fields.png)
 
-The form was pretty complicated with dozens of fields, several **sync/async and cross-field validations**, **dynamic placeholders** and some unnecessary **duplicate calculations** (which could be improved with constants and cache).
+The form was complicated with dozens of fields, several **sync/async and cross-field validations**, **dynamic placeholders** and some unnecessary **duplicate calculations** (which could be improved with constants and cache).
 
 It seemed pretty evident that the **re-renders** and **the complicated calculations** during the render were the cause to the problem.
 
@@ -83,7 +83,7 @@ Start the recoding, repeat the operations of the gif above, and I had the follow
 
 The first chart (ranked chart) showed the time to re-render for each component that had re-rendered on this commit. The second chart (flamegraph chart) shoed the re-rendered components **hierarchically**: that is, the time to render the component itself, and each of its children.
 
-As you could see, a **Dropdown** component took a significant time to re-render. In fact, all the graphes on all the last 10 commits had lead me to the same component. By following the hierarchy provided by the flamegraph, it didn't take long to locate the component, which was the dropdown **on the right side** of the first field with slow responsiveness, and implemented as follows:
+As you could see, a **Dropdown** component took a significant time to re-render. In fact, all the graphes on all the last 10 commits had led me to the same component. By following the hierarchy provided by the flamegraph, it didn't take long to locate the component, which was the dropdown **on the right side** of the first field with slow responsiveness, and implemented as follows:
 
 ![The dropdown](dropdown.png)
 
@@ -101,7 +101,7 @@ I was just a maintainer of the component, not the original authors, so I didn't 
 
 Rendering **so many options** at each render would definitely impact performance pretty hard, unless the component had thought of it and selectively re-rendered only the changed part.
 
-This project used [React Wrapper of Semantic-UI](https://react.semantic-ui.com/) which was a famous component library and open source. By deeping into the source code, I found that the dropdown did re-render every options every time without any memoing or caching.
+This project used [React Wrapper of Semantic-UI](https://react.semantic-ui.com/) which was a famous component library and open source. By diving into the source code, I found that the dropdown did re-render every options every time without any memoing or caching.
 
 https://github.com/Semantic-Org/Semantic-UI-React/blob/master/src/modules/Dropdown/Dropdown.js#L1275
 
