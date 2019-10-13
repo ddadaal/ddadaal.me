@@ -8,6 +8,19 @@ const StyledPage = styled.div`
   flex: 1;
   position: relative;
   padding: 16px;
+
+  img {
+    max-width: 100%;
+  }
+
+  table {
+    display: inline-block;
+    overflow-x: auto;
+  }
+
+  blockquote p:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 interface Props {
