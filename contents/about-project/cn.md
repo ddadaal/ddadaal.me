@@ -11,7 +11,7 @@ lang: cn
 
 # 项目信息
 
-[![Build Status](https://travis-ci.org/daacheen/daacheen.me.svg?branch=master)](https://travis-ci.org/daacheen/daacheen.me)
+[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdaacheen%2Fdaacheen.me%2Fbadge&style=flat-square)](https://actions-badge.atrox.dev/daacheen/daacheen.me/goto)
 
 daacheen.me是一个基于Gatsby开发的网站，并未使用现成网站/博客框架（例如WordPress, Typecho、Hexo等），欢迎讨论和贡献本项目。
 

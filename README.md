@@ -1,6 +1,6 @@
 # <img src="./assets/logo.svg" height="36"/> daacheen.me
 
-![Travis (.org)](https://img.shields.io/travis/daacheen/daacheen.me?style=flat-square)
+[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdaacheen%2Fdaacheen.me%2Fbadge&style=flat-square)](https://actions-badge.atrox.dev/daacheen/daacheen.me/goto)
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m783121264-44b0baa03c3161906ebe4cea.svg?style=flat-square)
 ![Codacy grade](https://img.shields.io/codacy/grade/72cd7c1496d643b98404521f33b5a7ff.svg?style=flat-square)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
