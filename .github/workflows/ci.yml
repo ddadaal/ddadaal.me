@@ -18,11 +18,7 @@ jobs:
         with:
           node-version: "10.x"
       - name: yarn install
-        uses: sergioramos/yarn-actions/install@master
-        with:
-          frozen-lockfile: true
-      - name: yarn install
-        run: yarn install
+        run: yarn
       - name: yarn build
         run: yarn build
       - name: deploy

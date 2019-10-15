@@ -37,6 +37,7 @@ Currently it is a static personal blog built with Gatsby.
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
 - [CNZZ](https://www.cnzz.com): simple and free website analysis for mainland China
 - [GitHub Pages](https://pages.github.com): free and popular static website host
+- [Github Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 
 ## Development
 
@@ -76,11 +77,6 @@ If you encountered download error mentioned above, follow the following steps to
 2. Run `python -m http.server {port} --bind {url}` and keep it running until the installation completes.
 3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
 4. `npm install` and you are ready to go!
-
-
-## Continuous Integration and Delivery
-
-At every commit to master branch, [Travis-CI](https://travis-ci.org) builds and publishes directly into coding.net and GitHub Pages.
 
 ## License
 
