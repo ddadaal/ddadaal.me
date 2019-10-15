@@ -75,7 +75,7 @@ tags:
     - GitHub能改用户名简直要感动哭了
 - [x] QQ、微信昵称从`VicCrubs`改为`daacheen`
 - [x] 注册并使用域名`daacheen.me`。原域名直接跳转到新域名。
-- [ ] 修改博客名称到`DaBlog`或者`DaaBlog`
+- [ ] 修改博客名称~~到`DaBlog`或者`DaaBlog`~~`daacheen.me`
 - [ ] 其他所有使用`viccrubs`作为标识的账号（Steam, Origin, Epic, Uplay, 知乎，Quora，Facebook，Instagram，Twitter，StackOverflow，豆瓣等）均尽力改名为`daacheen`
 
 # 最后

@@ -59,11 +59,11 @@ const CommentPanel: React.FC<Props> = (props) => {
             <GitalkComponent options={{
               clientID: "5640259688bc3d72b807",
               clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
-              repo: "vicblog.github.io",
-              owner: "vicblog",
+              repo: "daacheen.me.github.io",
+              owner: "daacheen",
               admin: ["daacheen"],
               language: props.language,
-              title: `${props.articleTitle} - VicBlog`,
+              title: `[COMMENT] ${props.articleTitle}`,
               id: props.articleId.substring(0, 50),
               distractionFreeMode: false,
             }} />

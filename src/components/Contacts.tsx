@@ -12,7 +12,7 @@ interface Props {
 
 const contacts = [
   [FaQq, "http://wpa.qq.com/msgrd?v=3&uin=540232834&site=qq&menu=yes", "QQ: 540232834"],
-  [FaMailBulk, "mailto://smallda@outlook.com", "E-mail: smallda@outlook.com"],
+  [FaMailBulk, "mailto://daacheen.me@outlook.com", "E-mail: daacheen@outlook.com"],
   [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "LinkedIn: 陈俊达"],
   [FaGithub, "https://github.com/daacheen", "GitHub: daacheen"],
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],

@@ -111,7 +111,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
     <RootLayout article={articleNode} lang={lang}>
       <div>
         <Helmet
-          title={`${title} - VicBlog`}
+          title={`${title} | daacheen.me`}
           meta={[
             { name: "og:title", content: title },
             { name: "og:description", content: excerpt },
@@ -124,7 +124,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
                 name: "og:locale:alternate",
                 content: getLanguage(x).metadata.detailedId,
               })),
-            { name: "og:site_name", content: "VicBlog" },
+            { name: "og:site_name", content: "daacheen.me" },
             { name: "og:article:published_time", content: date },
             ...(tags || []).map((x) => ({
               name: "og:article:tag",

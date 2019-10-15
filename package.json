@@ -1,9 +1,9 @@
 {
-  "name": "vicblog-gatsby",
-  "description": "Gatsby powered static VicBlog",
+  "name": "daacheen.me",
+  "description": "daacheen.me personal website",
   "version": "1.0.0",
   "private": true,
-  "author": "Chen Junda <smallda@outlook.com>",
+  "author": "Chen Junda <daacheen@outlook.com>",
   "keywords": [
     "gatsby"
   ],

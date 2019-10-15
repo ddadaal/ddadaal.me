@@ -5,13 +5,13 @@ const path = require("path");
 
 module.exports = {
   siteMetadata: {
-    title: 'VicBlog',
-    description: 'A personal blog',
+    title: 'daacheen.me',
+    description: 'A personal website',
     siteUrl: 'https://daacheen.me',
     author: {
       name: 'Chen Junda',
       url: 'https://daacheen.me',
-      email: 'smallda@outlook.com'
+      email: 'daacheen@outlook.com'
     },
     lastUpdated: DateTime.utc().toString(),
   },
@@ -145,7 +145,7 @@ module.exports = {
               });
             },
             output: "/rss.xml",
-            title: "VicBlog RSS",
+            title: "daacheen.me RSS",
           },
         ],
       },
@@ -225,8 +225,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "VicBlog",
-        short_name: "VicBlog",
+        name: "daacheen.me",
+        short_name: "daacheen",
         start_url: "/",
         background_color: "#FFFFFF",
         theme_color: "#3498DB",

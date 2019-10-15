@@ -1,6 +1,6 @@
 #!/bin/bash
 CO_REF="git.coding.net/viccrubs/viccrubs.coding.me.git"
-GITHUB_REF="github.com/vicblog/vicblog.github.io"
+GITHUB_REF="github.com/daacheen/daacheen.me.github.io"
 FQDN="daacheen.me"
 
 cd ./public

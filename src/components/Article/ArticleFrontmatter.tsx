@@ -93,13 +93,13 @@ const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: st
   langPathMap.delete(currentArticleLanguage);
 
   return (
-      <>
-        <DisabledLangLink>
-          {getLanguage(currentArticleLanguage).metadata.name}
-        </DisabledLangLink>
-        {Array.from(langPathMap.entries()).map(([lang, path]) => (
-          <LangLink key={lang} to={path}>{getLanguage(lang).metadata.name}</LangLink>
-        ))}
-      </>
+    <>
+      <DisabledLangLink>
+        {getLanguage(currentArticleLanguage).metadata.name}
+      </DisabledLangLink>
+      {Array.from(langPathMap.entries()).map(([lang, path]) => (
+        <LangLink key={lang} to={path}>{getLanguage(lang).metadata.name}</LangLink>
+      ))}
+    </>
   );
 };

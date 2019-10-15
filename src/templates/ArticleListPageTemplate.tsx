@@ -31,11 +31,11 @@ const ArticleListPageTemplate: React.FC<Props> = ({ pageContext }) => {
   return (
     <ArticleListLayout>
       <Helmet
-        title={`${language.definitions.articlePage.title} - VicBlog`}
+        title={`${language.definitions.articlePage.title} | daacheen.me`}
         meta={[
-          { name: "og:title", content: `${language.definitions.articlePage.title} - VicBlog` },
+          { name: "og:title", content: `${language.definitions.articlePage.title} | daacheen.me` },
           { name: "og:url", content: metadataStore.baseUrl },
-          { name: "og:site_name", content: "VicBlog" },
+          { name: "og:site_name", content: "daacheen.me" },
           { name: "og:locale", content: language.metadata.detailedId },
           ...allLanguages
             .filter((x) => x !== language)
