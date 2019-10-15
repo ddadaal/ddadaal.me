@@ -7,7 +7,7 @@
 
 daacheen.me (previously VicBlog) is the personal website of [daacheen](https://daacheen.me).
 
-Currently it is a static personal blog built with Gatsby.
+Currently it is built with [Gatsby](https://gatsbyjs.com).
 
 [Check it out now!](https://daacheen.me)
 
@@ -37,7 +37,7 @@ Currently it is a static personal blog built with Gatsby.
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
 - [CNZZ](https://www.cnzz.com): simple and free website analysis for mainland China
 - [GitHub Pages](https://pages.github.com): free and popular static website host
-- [Github Actions](https://github.com/features/actions): CI/CD built directly into the repo!
+- [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 
 ## Development
 
