@@ -13,8 +13,8 @@ git commit -m "Update By GitHub Actions to commit $(echo $GITHUB_SHA | head -c 6
 
 # Coding Pages
 echo "[deploy bot] Deploying to Coding.NET..."
-git push --force --quiet "https://viccrubs:${CODINGNET_TOKEN}@${CO_REF}" master:master
+git push --force --quiet "https://dt_LaxAU3:${CODINGNET_TOKEN}@${CO_REF}" master:master
 
 # GitHub Pages
 echo "[deploy bot] Deploying to GitHub Pages..."
-git push --force --quiet "https://daacheen:${GITHUB_DEPLOY_TOKEN}@${GITHUB_REF}" master:master
+git push --force --quiet "https://daacheen:${ACTIONS_TOKEN}@${GITHUB_REF}" master:master
