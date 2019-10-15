@@ -61,7 +61,7 @@ const CommentPanel: React.FC<Props> = (props) => {
               clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
               repo: "vicblog.github.io",
               owner: "vicblog",
-              admin: ["viccrubs"],
+              admin: ["daacheen"],
               language: props.language,
               title: `${props.articleTitle} - VicBlog`,
               id: props.articleId.substring(0, 50),

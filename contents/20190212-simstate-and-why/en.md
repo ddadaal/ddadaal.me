@@ -15,16 +15,16 @@ tags:
 
 [![npm](https://img.shields.io/npm/v/simstate.svg?style=flat-square)](https://www.npmjs.com/package/simstate)
 [![types](https://img.shields.io/npm/types/simstate.svg?style=flat-square)](https://www.npmjs.com/package/simstate)
-[![Build Status](https://img.shields.io/travis/viccrubs/simstate.svg?style=flat-square)](https://travis-ci.org/viccrubs/simstate)
-[![Coverage Status](https://img.shields.io/coveralls/github/viccrubs/simstate.svg?style=flat-square)](https://coveralls.io/github/viccrubs/simstate?branch=master)
+[![Build Status](https://img.shields.io/travis/daacheen/simstate.svg?style=flat-square)](https://travis-ci.org/daacheen/simstate)
+[![Coverage Status](https://img.shields.io/coveralls/github/daacheen/simstate.svg?style=flat-square)](https://coveralls.io/github/daacheen/simstate?branch=master)
 
 As the title indicates, this is yet another React state management library favoring [React Hooks](https://reactjs.org/docs/hooks-intro.html) and [TypeScript](https://www.typescriptlang.org/).
 
-GitHub：<https://github.com/viccrubs/simstate>
+GitHub：<https://github.com/daacheen/simstate>
 
 # Why use it?
 
-Please read [repo's README](https://github.com/viccrubs/simstate) for why and how to use and integrate `simstate` into your projects, which covers all the APIs, features as well as future roadmap for this library.
+Please read [repo's README](https://github.com/daacheen/simstate) for why and how to use and integrate `simstate` into your projects, which covers all the APIs, features as well as future roadmap for this library.
 
 # Why write it?
 
@@ -108,7 +108,7 @@ Apart from hating to wait, there are some other reasons that made me build this 
 
 So, with the eagerness in addition to the simplicity of the implementation of `unstated`, I built my own library based on it and started deriving some new features that I think would be useful, like the Hooks integration. Implementing the initial version of `simstate` took me just one day, and it has always taken the place of `unstated` in my blog project.
 
-Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and [partial observer](https://github.com/viccrubs/simstate/blob/partial-observer/partial-observer-proposal.md). You may see the [roadmap](https://github.com/viccrubs/simstate#roadmap) in README to see what to expect in the future.
+Of course, I have more expectations and plans to do with this library than just a copycat to `unstated`, like more support for server-side rendering and [partial observer](https://github.com/daacheen/simstate/blob/partial-observer/partial-observer-proposal.md). You may see the [roadmap](https://github.com/daacheen/simstate#roadmap) in README to see what to expect in the future.
 
 ## Learning the run an open source project
 

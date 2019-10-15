@@ -47,7 +47,7 @@ const BlogIntroCard: React.FC<Props> = () => {
           <LocalizedString id={root.description2} />
         </CardText>
         <BlockContainer>
-          <a href="https://github.com/viccrubs/VicBlog-Gatsby" target="__blank">
+          <a href="https://github.com/vicblog/VicBlog-Gatsby" target="__blank">
             <FaCode />
             <LocalizedString id={root.sourceCode} />
           </a>

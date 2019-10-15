@@ -7,10 +7,10 @@ module.exports = {
   siteMetadata: {
     title: 'VicBlog',
     description: 'A personal blog',
-    siteUrl: 'https://viccrubs.me',
+    siteUrl: 'https://daacheen.me',
     author: {
       name: 'Chen Junda',
-      url: 'https://viccrubs.me',
+      url: 'https://daacheen.me',
       email: 'smallda@outlook.com'
     },
     lastUpdated: DateTime.utc().toString(),
@@ -36,7 +36,7 @@ module.exports = {
         typePrefix: '',
 
         // The url, this should be the endpoint you are attempting to pull data from
-        url: `https://api.github.com/repos/viccrubs/Slides/contents/`,
+        url: `https://api.github.com/repos/daacheen/Slides/contents/`,
 
         method: 'get',
 
@@ -203,7 +203,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://viccrubs.me'
+        siteUrl: 'https://daacheen.me'
       }
     },
     {

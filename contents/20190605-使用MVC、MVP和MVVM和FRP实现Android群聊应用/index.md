@@ -24,7 +24,7 @@ tags:
 
 # 2. 项目说明
 
-项目地址：https://github.com/viccrubs/android-chat-in-4-patterns
+项目地址：https://github.com/daacheen/android-chat-in-4-patterns
 
 项目可直接使用Android Studio打开，需注意Android Studio应安装有lombok插件（[安装教程](https://projectlombok.org/setup/android#android-studio)）。本项目分为3个模块 ：app, server, shared。三个模块的说明如下表：
 

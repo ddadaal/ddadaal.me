@@ -10,7 +10,7 @@ tags:
 
 # Introduction
 
-If you are new to my blog, and are wondering what is [simstate](https://github.com/viccrubs/simstate), you should probably check out [simstate and why](/articles/simstate-and-why) first before continuing reading this article. This article will focus on the implementation details of this library, explain how all of the components work and why they are designed this way, and also some thoughts raised during the development.
+If you are new to my blog, and are wondering what is [simstate](https://github.com/daacheen/simstate), you should probably check out [simstate and why](/articles/simstate-and-why) first before continuing reading this article. This article will focus on the implementation details of this library, explain how all of the components work and why they are designed this way, and also some thoughts raised during the development.
 
 # Basic Mechanism
 

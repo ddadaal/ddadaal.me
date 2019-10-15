@@ -62,7 +62,7 @@ const RootLayout: React.FC<Props> = ({ location, lastUpdated, articles, siteMeta
             title={siteMetadata.title}
             meta={[
               { name: "description", content: siteMetadata.description },
-              { name: "keywords", content: "gatsbyjs, gatsby, react, viccrubs, vicblog, blog" },
+              { name: "keywords", content: "gatsbyjs, gatsby, react, daacheen, vicblog, blog" },
               { name: "og:description", content: siteMetadata.description },
             ]}
             link={[
