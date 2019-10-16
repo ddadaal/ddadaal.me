@@ -3,6 +3,8 @@ import { Language } from "@/i18n/definition";
 import { ArticleNode } from "@/models/ArticleNode";
 import { groupBy } from "@/utils/groupBy";
 import { useMemo, useCallback } from "react";
+import { SiteMetadata } from "@/models/SiteMetadata";
+import { DateTime } from "luxon";
 
 export type LangPathMap = Map<string, string>;
 
@@ -14,7 +16,7 @@ function noSuchArticle(articleId: string): string {
   return `No such article with id ${articleId}!`
 }
 
-export default function MetadataStore(lastUpdated: string, articleNodes: ArticleNode[], baseUrl: string, tagMap: TagMap) {
+export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: ArticleNode[], tagMap: TagMap) {
 
   const articleIdMap: ArticleIdMap = useMemo(() => {
     const map = groupBy(articleNodes.map((article) => {
@@ -112,9 +114,12 @@ export default function MetadataStore(lastUpdated: string, articleNodes: Article
     return info ? info.count : 0;
   }, []);
 
+  const formattedLastUpdate = useMemo(() => {
+    return DateTime.fromISO(siteMetadata.lastUpdated).toFormat("yyyy-MM-dd HH:mm:ss 'UTC'Z");
+  }, []);
+
   return {
-    lastUpdated,
-    baseUrl,
+    siteMetadata: { ...siteMetadata, formattedLastUpdate },
     tagMap,
     articleCount,
     articleIdMap,

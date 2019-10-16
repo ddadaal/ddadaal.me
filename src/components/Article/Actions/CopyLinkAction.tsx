@@ -18,7 +18,7 @@ const CopyLinkAction: React.FC<Props> = ({ articleId }) => {
 
   const metadataStore = useStore(MetadataStore);
 
-  const [ copied, setCopied ] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const ref = useRef<HTMLLIElement>(null);
 
@@ -28,13 +28,13 @@ const CopyLinkAction: React.FC<Props> = ({ articleId }) => {
   });
 
   const actionOnClick = useCallback(async () => {
-    await navigator.clipboard.writeText(`${metadataStore.baseUrl}/articles/${articleId}`)
+    await navigator.clipboard.writeText(`${metadataStore.siteMetadata.siteUrl}/articles/${articleId}`)
     setCopied(true);
   }, [articleId]);
 
   return (
     <Action ref={ref} Icon={FaLink} onClick={actionOnClick}>
-      <LocalizedString id={copied ? root.copied : root.copyLink}/>
+      <LocalizedString id={copied ? root.copied : root.copyLink} />
     </Action>
   );
 }

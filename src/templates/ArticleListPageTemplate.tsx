@@ -1,13 +1,15 @@
 import React from "react";
 
 import I18nStore from "@/stores/I18nStore";
-import MetadataStore from "@/stores/MetadataStore";
-import { Helmet } from "react-helmet";
 import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
 import { useStore } from "simstate";
 import { allLanguages } from "@/i18n/definition";
+import lang from "@/i18n/lang";
+import { PageMetadata } from "@/components/PageMetadata";
+
+const root = lang.pageMedatadata;
 
 interface Props {
   pageContext: {
@@ -26,24 +28,18 @@ function toPage(pageNum: number): () => void {
 const ArticleListPageTemplate: React.FC<Props> = ({ pageContext }) => {
   const { pageCount, pageIndex, ids } = pageContext;
   const { language } = useStore(I18nStore);
-  const metadataStore = useStore(MetadataStore);
 
   return (
     <ArticleListLayout>
-      <Helmet
-        title={`${language.definitions.articlePage.title} | daacheen.me`}
-        meta={[
-          { name: "og:title", content: `${language.definitions.articlePage.title} | daacheen.me` },
-          { name: "og:url", content: metadataStore.baseUrl },
-          { name: "og:site_name", content: "daacheen.me" },
-          { name: "og:locale", content: language.metadata.detailedId },
-          ...allLanguages
-            .filter((x) => x !== language)
-            .map((x) => ({
-              name: "og:locale:alternate",
-              content: x.metadata.detailedId,
-            })),
-        ]} />
+      <PageMetadata
+        titleId={root.articleList}
+        meta={allLanguages
+          .filter((x) => x !== language)
+          .map((x) => ({
+            name: "og:locale:alternate",
+            content: x.metadata.detailedId,
+          }))}
+      />
       <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
     </ArticleListLayout>
   );

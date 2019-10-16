@@ -7,6 +7,7 @@ import { navigate } from "gatsby";
 import ArticleItemList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
 import { useStore } from "simstate";
+import { PageMetadata } from "@/components/PageMetadata";
 
 const root = lang.search;
 
@@ -63,6 +64,9 @@ const SearchPage: React.FC = () => {
 
   return (
     <ArticleListLayout>
+      <PageMetadata
+        titleId={root.title}
+      />
       <h3>
         <LocalizedString id={root.title} replacements={[
           <strong key={"query"}>{query}</strong>,

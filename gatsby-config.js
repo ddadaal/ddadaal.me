@@ -5,7 +5,7 @@ const path = require("path");
 
 module.exports = {
   siteMetadata: {
-    title: 'daacheen.me',
+    name: "daacheen.me",
     description: 'A personal website',
     siteUrl: 'https://daacheen.me',
     author: {
@@ -101,7 +101,6 @@ module.exports = {
                 title
                 description
                 siteUrl
-                site_url: siteUrl
               }
             }
           }

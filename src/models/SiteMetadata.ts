@@ -1,5 +1,5 @@
 export interface SiteMetadata {
-  title: string;
+  name: string;
   description: string;
   siteUrl: string;
   author: {

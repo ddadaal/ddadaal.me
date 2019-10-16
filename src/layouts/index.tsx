@@ -1,10 +1,8 @@
 import React from "react";
-
 import { graphql, useStaticQuery } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import { ArticleNode } from "@/models/ArticleNode";
-import { DateTime } from "luxon";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
@@ -21,7 +19,7 @@ const query = graphql`
   query IndexLayoutQuery {
     site {
       siteMetadata {
-        title
+        name
         description
         lastUpdated
         siteUrl
@@ -89,7 +87,6 @@ const IndexLayout: React.FC<Props> = (props) => {
     <RootLayout
       location={props.location}
       siteMetadata={data.site.siteMetadata}
-      lastUpdated={DateTime.fromISO(data.site.siteMetadata.lastUpdated).toFormat("yyyy-MM-dd HH:mm:ss 'UTC'Z")}
       articles={data.allMarkdownRemark.nodes}
       tagMap={tagMap}
     >

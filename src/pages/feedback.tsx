@@ -6,6 +6,7 @@ import LocalizedString from "@/i18n/LocalizedString";
 import Contacts from "@/components/Contacts";
 import { CommentPanelWithCurrentLanguage } from "@/components/Article/CommentPanel";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import { PageMetadata } from "@/components/PageMetadata";
 
 const root = lang.feedback;
 
@@ -13,6 +14,9 @@ const FeedbackPage: React.FC = () => {
 
   return (
     <HeaderFooterLayout transparentHeader={false}>
+      <PageMetadata
+        titleId={root.title}
+      />
       <Page>
         <BannerLayoutTitle><LocalizedString id={root.title} /></BannerLayoutTitle>
         <p><LocalizedString id={root.paragraph1} /></p>

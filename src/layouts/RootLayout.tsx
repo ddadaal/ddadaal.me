@@ -5,7 +5,6 @@ import { SiteMetadata } from "@/models/SiteMetadata";
 import MetadataStore from "@/stores/MetadataStore";
 import { IconContext } from "react-icons";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 import icon512 from "~/assets/icon.png";
 import UpdatePop from "@/components/UpdatePop";
 import { StoreProvider, createStore } from "simstate";
@@ -14,6 +13,7 @@ import ToTop from "@/components/ToTop";
 import "@/styles/index.scss";
 import { ArticleNode } from "@/models/ArticleNode";
 import useConstant from "@/utils/useConstant";
+import { PageMetadata } from "@/components/PageMetadata";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -26,23 +26,21 @@ interface Props {
   location: Location;
   articles: ArticleNode[];
   siteMetadata: SiteMetadata;
-  lastUpdated: string;
   children?: React.ReactNode;
   tagMap: TagMap;
 }
 
 const iconContext = { className: "icons" };
 
-const RootLayout: React.FC<Props> = ({ location, lastUpdated, articles, siteMetadata, tagMap, children }) => {
+const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tagMap, children }) => {
 
   const i18nStore = useConstant(() => createStore(I18nStore));
 
   const locationStore = useConstant(() => createStore(LocationStore, location));
 
   const metadataStore = useConstant(() => createStore(MetadataStore,
-    lastUpdated,
+    siteMetadata,
     articles,
-    siteMetadata.siteUrl,
     tagMap,
   ));
 
@@ -58,12 +56,9 @@ const RootLayout: React.FC<Props> = ({ location, lastUpdated, articles, siteMeta
       ]}>
         <LocationProvider location={location} />
         <LayoutRoot>
-          <Helmet
-            title={siteMetadata.title}
+          <PageMetadata
             meta={[
-              { name: "description", content: siteMetadata.description },
               { name: "keywords", content: "gatsbyjs, gatsby, react, daacheen, blog" },
-              { name: "og:description", content: siteMetadata.description },
             ]}
             link={[
               { rel: "icon", type: "image/png", href: icon512 },

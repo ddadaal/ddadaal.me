@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
 import isServer from "@/utils/isServer";
+import { PageMetadata } from "@/components/PageMetadata";
 
 const Bg = styled(RootContainer)`
   height: 100vh;
@@ -89,6 +90,9 @@ const HomePage: React.FunctionComponent = () => {
 
   return (
     <HeaderFooterLayout transparentHeader={true}>
+      <PageMetadata
+        titleId={lang.pageMedatadata.homepage}
+      />
       <Bg>
         <TextContent>
           <TitleText>{isServer() ? "" : <LocalizedString id={selectDate()} />}</TitleText>
@@ -129,7 +133,7 @@ const HomePage: React.FunctionComponent = () => {
           <p>
             <FaClock />
             <LocalizedString id={lang.statistics.lastUpdated} />：
-            <strong> {metadataStore.lastUpdated}</strong>
+            <strong> {metadataStore.siteMetadata.formattedLastUpdate}</strong>
           </p>
         </TextContent>
 

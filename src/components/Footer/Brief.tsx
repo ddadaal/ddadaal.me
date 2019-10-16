@@ -32,7 +32,7 @@ const Brief: React.FC = () => {
 
       </p>
       <p>
-        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.lastUpdated}</strong>
+        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
 
       </p>
       <div>

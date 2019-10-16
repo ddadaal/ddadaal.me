@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
-
 import Page from "@/layouts/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
@@ -20,6 +18,7 @@ import RelatedArticles from "@/components/Article/RelatedArticles";
 import { heights } from "@/styles/variables";
 import BannerLayout from "@/layouts/BannerLayout";
 import { getLanguage } from "@/i18n/definition";
+import { PageMetadata } from "@/components/PageMetadata";
 
 interface Props {
   pageContext: {
@@ -110,26 +109,24 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
   return (
     <RootLayout article={articleNode} lang={lang}>
       <div>
-        <Helmet
-          title={`${title} | daacheen.me`}
+        <PageMetadata
+          title={title}
+          description={excerpt}
+          url={path}
+          locale={language.metadata.detailedId}
           meta={[
-            { name: "og:title", content: title },
-            { name: "og:description", content: excerpt },
             { name: "og:type", content: "article" },
-            { name: "og:url", content: `${metadataStore.baseUrl}${path}` },
-            { name: "og:locale", content: language.metadata.detailedId },
+            { name: "og:article:published_time", content: date },
+            ...(tags || []).map((x) => ({
+              name: "og:article:tag",
+              content: x,
+            })),
             ...Object.keys(langPathMap)
               .filter((x) => x !== lang)
               .map((x) => ({
                 name: "og:locale:alternate",
                 content: getLanguage(x).metadata.detailedId,
               })),
-            { name: "og:site_name", content: "daacheen.me" },
-            { name: "og:article:published_time", content: date },
-            ...(tags || []).map((x) => ({
-              name: "og:article:tag",
-              content: x,
-            })),
           ]}
         />
         <PageComponent hasHeader={!hide_heading}>
