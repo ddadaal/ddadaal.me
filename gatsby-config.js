@@ -42,9 +42,9 @@ module.exports = {
 
         headers: {
           'Content-Type': 'application/json',
-          // Set the token if GITHUB_TOKEN environment token exists
-          ...process.env.GITHUB_TOKEN ? {
-            'Authorization': `token ${process.env.GITHUB_TOKEN}`
+          // Set the token if ACTIONS_TOKEN environment token exists
+          ...process.env.ACTIONS_TOKEN ? {
+            'Authorization': `token ${process.env.ACTIONS_TOKEN}`
           } : null
         },
 
@@ -98,8 +98,6 @@ module.exports = {
           {
             site {
               siteMetadata {
-                title
-                description
                 siteUrl
               }
             }
@@ -135,7 +133,6 @@ module.exports = {
                 return {
                   title: node.frontmatter.title,
                   date: DateTime.fromSQL(node.frontmatter.date, { zone: "Asia/Shanghai" }).toString(),
-                  description: node.excerpt,
                   url: site.siteMetadata.siteUrl + path,
                   categories: node.frontmatter.tags || [],
                   guid: path,
