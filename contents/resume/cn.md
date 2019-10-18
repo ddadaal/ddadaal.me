@@ -36,7 +36,7 @@ no_toc: true
 ### Software Engineer Intern
 
 - Office 365 Deployment组，负责内部部署监控网站的前端和后端开发
-- 完成了3个功能，均已上线；优化了多个功能的性能和代码设计
+- 合并了27个PR，完成了3个功能，优化了多个功能的性能和代码设计
 
 ## <span class="highlight">南京大学微软学生俱乐部</span> <span class="right">2016年9月-2019年6月</span>
 ### 主席（2018-2019学年），技术部副部长（2017-2018学年），部员（2016-2017学年）

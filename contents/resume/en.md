@@ -35,7 +35,7 @@ Chen Junda
 ### Software Engineer Intern
 
 - Develop deployment monitor website at Office 365 Deployment Team
-- Implemented and published 3 new features, and optimized performance and code design of several features
+- Merged 27 PRs, implemented and published 3 new features, and optimized performance and code design of several features
 
 ## <span class="highlight">Nanjing University Microsoft Student Club</span><span class="right">September 2016-Present</span>
 ### President (2018-2019), Undersecretary of Technology Department (2017-2018), Member (2016-2017)
