@@ -12,13 +12,13 @@ interface Props {
 
 const contacts = [
   [FaQq, "http://wpa.qq.com/msgrd?v=3&uin=540232834&site=qq&menu=yes", "QQ: 540232834"],
-  [FaMailBulk, "mailto://daacheen.me@outlook.com", "E-mail: daacheen@outlook.com"],
+  [FaMailBulk, "mailto://ddadaal.me@outlook.com", "E-mail: ddadaal@outlook.com"],
   [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "LinkedIn: 陈俊达"],
-  [FaGithub, "https://github.com/daacheen", "GitHub: daacheen"],
+  [FaGithub, "https://github.com/ddadaal", "GitHub: ddadaal"],
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
   [FaQuora, "https://www.quora.com/profile/Chen-Junda-3", "Quora: Chen Junda"],
-  [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: daacheen"],
+  [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
   [FaStackOverflow, "https://stackoverflow.com/users/2725415/chen-junda", "Stack Overflow: Chen Junda"],
 ] as Array<[React.ComponentType, string, string]>;
 

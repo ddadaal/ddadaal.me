@@ -3,7 +3,7 @@
 id: about-project
 absolute_path: /about/project
 date: 2019-03-10 15:01
-title: About Project daacheen.me
+title: About Project ddadaal.me
 ignored_in_list: true
 lang: en
 
@@ -11,24 +11,24 @@ lang: en
 
 # Website Information
 
-[![Build Status](https://travis-ci.org/daacheen/daacheen.me.svg?branch=master)](https://travis-ci.org/daacheen/daacheen.me)
+[![Build Status](https://travis-ci.org/ddadaal/ddadaal.me.svg?branch=master)](https://travis-ci.org/ddadaal/ddadaal.me)
 
-daacheen.me is a website designed and coded based on gatsby, without the use of existing website solutions like Wordpress, Typecho, Hexoetc. Any discussions and contributions to the repository are welcomed.
+ddadaal.me is a website designed and coded based on gatsby, without the use of existing website solutions like Wordpress, Typecho, Hexoetc. Any discussions and contributions to the repository are welcomed.
 
 
-GitHub: https://github.com/daacheen/daacheen.me
+GitHub: https://github.com/ddadaal/ddadaal.me
 
 # A Personal Blog Odyssey
 
-It has been a long way for daacheen.me to be the one you are looking at right now. To see the epic journey that daacheen.me, its predecessor VicBlog and I have been through since 2010, please check out [A Personal Blog Odyssey](/about/odyssey/en).
+It has been a long way for ddadaal.me to be the one you are looking at right now. To see the epic journey that ddadaal.me, its predecessor VicBlog and I have been through since 2010, please check out [A Personal Blog Odyssey](/about/odyssey/en).
 
 # Implementations
 
-Since 2016, daacheen.me has been implemented several times with differences in technologies used and mostly the abilities I had during its implementation and maintenance.
+Since 2016, ddadaal.me has been implemented several times with differences in technologies used and mostly the abilities I had during its implementation and maintenance.
 
 ## Current Implementation
 
-[daacheen.me](https://github.com/daacheen/daacheen.me)
+[ddadaal.me](https://github.com/ddadaal/ddadaal.me)
 
 Started in **August 2018** and written with `Gatsby` framework, the blog itself is now a **static** website.
 
@@ -48,11 +48,11 @@ To implement comments, my choice is [`gitalk`](https://github.com/gitalk/gitalk)
 
 ### React + ASP.NET Core SPA Second Version (Started in March, 2017)
 
-[VicBlog-Frontend](https://github.com/daacheen/VicBlog-Frontend)
+[VicBlog-Frontend](https://github.com/ddadaal/VicBlog-Frontend)
 
-[VicBlog-Backend](https://github.com/daacheen/VicBlog-Backend)
+[VicBlog-Backend](https://github.com/ddadaal/VicBlog-Backend)
 
-It is a full-fledged SPA using `React` + `MobX` + `TypeScript` in frontend and `ASP.NET Core` + `Entity Framework Core` in Backend communicating with RESTful API and deployed on `GitHub Pages` and `Microsoft Azure` respectively. It contained all functions that I ever wanted in a personal blog before its EOL. It has learned from previous SPA version and been refactored for better readability, performance, maintainability etc. In the end, it has been discontinued for the efforts required to maintain both codebases and underwhelming performance. The aforementioned Gatsby-based static VicBlog and its successor daacheen.me takes its place since August 2018.
+It is a full-fledged SPA using `React` + `MobX` + `TypeScript` in frontend and `ASP.NET Core` + `Entity Framework Core` in Backend communicating with RESTful API and deployed on `GitHub Pages` and `Microsoft Azure` respectively. It contained all functions that I ever wanted in a personal blog before its EOL. It has learned from previous SPA version and been refactored for better readability, performance, maintainability etc. In the end, it has been discontinued for the efforts required to maintain both codebases and underwhelming performance. The aforementioned Gatsby-based static VicBlog and its successor ddadaal.me takes its place since August 2018.
 
 ### React + ASP.NET Core SPA First Version (Started in Dec 2016)
 
@@ -62,7 +62,7 @@ It was the first time I started to write a frontend-backend-separated website us
 
 ### Flask (Started in Oct 2016)
 
-[VicBlog-Flask](https://github.com/daacheen/VicBlog-Flask)
+[VicBlog-Flask](https://github.com/ddadaal/VicBlog-Flask)
 
 It was the first time I started to write a full website on my own with only little understanding on web development. It used a easy-to-learn technology stack, Flask + MongoDb in backend and jQuery + Bootstrap in frontend, to achieve fast development. It went to live for months after development and dropped since SPA started to become mainstream.
 

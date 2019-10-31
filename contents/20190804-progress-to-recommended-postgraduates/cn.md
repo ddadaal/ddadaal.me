@@ -188,7 +188,7 @@ related:
 | 事项       | 值                                                                                                                                                          |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 时间       | 见日程部分                                                                                                                                                  |
-| 机考和结果 | [题目看这里](https://github.com/daacheen/Homework/tree/master/Recommended%20Postgraduate%20%26%20Summer%20Camp/SJTU%20SE/CodingTest/question)，成绩还不知道 |
+| 机考和结果 | [题目看这里](https://github.com/ddadaal/Homework/tree/master/Recommended%20Postgraduate%20%26%20Summer%20Camp/SJTU%20SE/CodingTest/question)，成绩还不知道 |
 | 面试情况   | 智慧应用-1，选题是边缘计算/微服务，共7人面试，录取人数可能是2-3人                                                                                           |
 | 结果       | 专硕，拒了                                                                                                                                                  |
 
@@ -212,7 +212,7 @@ related:
 
 ## 机考
 
-[题目和我的代码看这里](https://github.com/daacheen/Homework/tree/master/Recommended%20Postgraduate%20%26%20Summer%20Camp/SJTU%20SE/CodingTest/question)
+[题目和我的代码看这里](https://github.com/ddadaal/Homework/tree/master/Recommended%20Postgraduate%20%26%20Summer%20Camp/SJTU%20SE/CodingTest/question)
 
 机考是另外一个槽点。上交的机考是15日晚上6点到9点，之后立刻现场检查给分，最后到晚上11点多才完全结束。
 
@@ -241,7 +241,7 @@ related:
 
 ![面试准备的要求](./sjtu-selection.png)
 
-问题在7月5日就通过邮件发给大家了，学校也给予了在听完讲座或者考完机考后换方向的机会，但是这样的话就只能在参观实验室的两天中做准备（可能那两天就是用来做这个的吧……），可能会比较辛苦。准备的时候倒是比较麻烦，因为很多内容（尤其是IPADS实验室这种偏向底层的实验室的题目，或者人机交互VR相关的文章）本科完全没有接触过，要想读懂论文的内容需要看很多相关材料（例如人机交互的需要几天内速成计算机图形学的基础知识），所以看上去准备时间比较长，但是还是非常紧张的（当然了，也可以像我一样选一个简单的一点的方向（微服务/边缘计算的理解），这样就可以轻松一点）。我的PPT可以在[这里]找到(https://github.com/daacheen/Slides/tree/master/20190718-%E4%B8%8A%E4%BA%A4%E8%BD%AF%E9%99%A2%E4%BF%9D%E7%A0%94%E7%AD%94%E8%BE%A9%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97)。
+问题在7月5日就通过邮件发给大家了，学校也给予了在听完讲座或者考完机考后换方向的机会，但是这样的话就只能在参观实验室的两天中做准备（可能那两天就是用来做这个的吧……），可能会比较辛苦。准备的时候倒是比较麻烦，因为很多内容（尤其是IPADS实验室这种偏向底层的实验室的题目，或者人机交互VR相关的文章）本科完全没有接触过，要想读懂论文的内容需要看很多相关材料（例如人机交互的需要几天内速成计算机图形学的基础知识），所以看上去准备时间比较长，但是还是非常紧张的（当然了，也可以像我一样选一个简单的一点的方向（微服务/边缘计算的理解），这样就可以轻松一点）。我的PPT可以在[这里]找到(https://github.com/ddadaal/Slides/tree/master/20190718-%E4%B8%8A%E4%BA%A4%E8%BD%AF%E9%99%A2%E4%BF%9D%E7%A0%94%E7%AD%94%E8%BE%A9%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%92%8C%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97)。
 
 面试是在18日开始的，同样是每个人20分钟，内容除了PPT，老师们同样会根据简历来问问题。当时共有5-6个老师，应该就是这个方向相关的实验室的所有老师了。我的流程如下：
 

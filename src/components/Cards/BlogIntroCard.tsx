@@ -29,7 +29,7 @@ const BlogIntroCard: React.FC<Props> = () => {
   return (
     <BaseCard>
       <BaseCardHeader>
-        <span>💻 daacheen.me | <LocalizedString id={root.subtitle} /></span>
+        <span>💻 ddadaal.me | <LocalizedString id={root.subtitle} /></span>
 
         <Link
           className="card-link"
@@ -47,7 +47,7 @@ const BlogIntroCard: React.FC<Props> = () => {
           <LocalizedString id={root.description2} />
         </CardText>
         <BlockContainer>
-          <a href="https://github.com/daacheen/daacheen.me" target="__blank">
+          <a href="https://github.com/ddadaal/ddadaal.me" target="__blank">
             <FaCode />
             <LocalizedString id={root.sourceCode} />
           </a>

@@ -5,13 +5,13 @@ const path = require("path");
 
 module.exports = {
   siteMetadata: {
-    name: "daacheen.me",
+    name: "ddadaal.me",
     description: 'A personal website',
-    siteUrl: 'https://daacheen.me',
+    siteUrl: 'https://ddadaal.me',
     author: {
       name: 'Chen Junda',
-      url: 'https://daacheen.me',
-      email: 'daacheen@outlook.com'
+      url: 'https://ddadaal.me',
+      email: 'ddadaal@outlook.com'
     },
     lastUpdated: DateTime.utc().toString(),
   },
@@ -36,7 +36,7 @@ module.exports = {
         typePrefix: '',
 
         // The url, this should be the endpoint you are attempting to pull data from
-        url: `https://api.github.com/repos/daacheen/Slides/contents/`,
+        url: `https://api.github.com/repos/ddadaal/Slides/contents/`,
 
         method: 'get',
 
@@ -141,7 +141,7 @@ module.exports = {
               });
             },
             output: "/rss.xml",
-            title: "daacheen.me RSS",
+            title: "ddadaal.me RSS",
           },
         ],
       },
@@ -199,7 +199,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://daacheen.me'
+        siteUrl: 'https://ddadaal.me'
       }
     },
     {
@@ -221,8 +221,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "daacheen.me",
-        short_name: "daacheen",
+        name: "ddadaal.me",
+        short_name: "ddadaal",
         start_url: "/",
         background_color: "#FFFFFF",
         theme_color: "#3498DB",

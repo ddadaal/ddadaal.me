@@ -58,8 +58,8 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tagMap,
         <LayoutRoot>
           <PageMetadata
             meta={[
-              { name: "keywords", content: "gatsbyjs, gatsby, react, daacheen, blog" },
-              { name: "author", content: "daacheen" },
+              { name: "keywords", content: "gatsbyjs, gatsby, react, ddadaal, blog" },
+              { name: "author", content: "ddadaal" },
             ]}
             link={[
               { rel: "icon", type: "image/png", href: icon512 },

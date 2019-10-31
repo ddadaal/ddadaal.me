@@ -10,7 +10,7 @@ tags:
 
 仓库Private了，但是文章不删，如果你们厉害可以按照下面的提示自己试试呗）
 
-请进入[这个Github仓库](https://github.com/daacheen/CppTestCaseViewer)clone代码或者查看用法。
+请进入[这个Github仓库](https://github.com/ddadaal/CppTestCaseViewer)clone代码或者查看用法。
 
 ## 原理
 

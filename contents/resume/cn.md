@@ -17,7 +17,7 @@ no_toc: true
 陈俊达
 </h1>
 
-<h3 class="contact">18523206096 | daacheen@outlook.com | QQ 540232834 | 微信 h_smallda | https://daacheen.me
+<h3 class="contact">18523206096 | ddadaal@outlook.com | QQ 540232834 | 微信 h_smallda | https://ddadaal.me
 
 </h3>
 </div>
@@ -49,7 +49,7 @@ no_toc: true
 - 2018年7月到2019年5月在SAP VT实习项目
 - 2019年1月获得了**微软亚洲研究院DKI（数据、知识、智能方向）组前端开发**实习Offer，但是由于时间冲突没有前往
 
-# 部分项目经历（GitHub: daacheen）
+# 部分项目经历（GitHub: ddadaal）
 
 ## <span class="highlight">A+Quant</span>，基于人工智能的大类资产配置系统 <span class="right">2018年6月-2018年11月</span>
 ### Web前端；后端架构设计；决赛软件部分演讲和答辩
@@ -65,9 +65,9 @@ no_toc: true
 
 ## <span class="highlight">VicBlog</span>，个人博客 <span class="right">2016年10月-至今</span>
 ### 单人项目
-- 网站：https://daacheen.me；相关代码：https://github.com/vicblog
+- 网站：https://ddadaal.me；相关代码：https://github.com/vicblog
 - 目前是使用`TypeScript`语言，使用`Gatsby`开发的静态博客，部署于`GitHub Pages`；前期版本使用过`Flask`和`ASP.NET Core + React`部署于`Microsoft Azure`
-- 使用了自己开发的状态管理库`simstate`进行状态管理（GitHub: daacheen/simstate）
+- 使用了自己开发的状态管理库`simstate`进行状态管理（GitHub: ddadaal/simstate）
 
 ## <span class="highlight">ChainPaper</span>，基于区块链的论文分享和社交平台 <span class="right">2019年5月</span>
 ### 前端设计实现；演讲和答辩

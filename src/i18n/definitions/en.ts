@@ -119,7 +119,7 @@ export default {
       author: "Author",
       university: "Undergraduate in Nanjing University Software Engineering since 2016",
       resume: "Resume",
-      mailToMe: "daacheen@outlook.com",
+      mailToMe: "ddadaal@outlook.com",
       more: "More about me",
       moreLink: "More",
     },

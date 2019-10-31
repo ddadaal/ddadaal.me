@@ -18,7 +18,7 @@ no_toc: true
 Chen Junda
 </h1>
 
-<h3 class="contact">陈俊达 | 18523206096 | daacheen@outlook.com | QQ 540232834 | WeChat h_smallda | https://daacheen.me
+<h3 class="contact">陈俊达 | 18523206096 | ddadaal@outlook.com | QQ 540232834 | WeChat h_smallda | https://ddadaal.me
 
 </h3>
 
@@ -48,7 +48,7 @@ Chen Junda
 - Participated in SAP VT Internship Program from 2018/7 to 2019/5
 - Got internship offer from **Microsoft Research Asia DKI (Data, Knowledge and Intelligence) group** in Jan 2019 but refused due to time conflict
 
-# Part of Recent Project Experiences (GitHub: daacheen)
+# Part of Recent Project Experiences (GitHub: ddadaal)
 
 ## <span class="highlight">A+Quant</span>, an Asset Allocation System Based on Artificial Intelligence <span class="right">June-November, 2018</span>
 ### Lead web frontend team; Backend architecture design; Final presentation for software part
@@ -64,9 +64,9 @@ Chen Junda
 
 ## <span class="highlight">VicBlog</span>, Personal Blog <span class="right">October 2016-Present</span>
 ### Personal project
-- Website: https://daacheen.me; Related repos: https://github.com/vicblog
+- Website: https://ddadaal.me; Related repos: https://github.com/vicblog
 - Based on `Gatsby` static site generator, self-designed code and content structure, written in `TypeScript` and deployed on `GitHub Pages`. Previous versions used `Flask` and `ASP.NET Core + React` on `Microsoft Azure`
-- Use `simstate`, a state management library developed by myself, for state management (GitHub: daacheen/simstate)
+- Use `simstate`, a state management library developed by myself, for state management (GitHub: ddadaal/simstate)
 
 ## <span class="highlight">ChainPaper</span>, a Paper Sharing & Social Network Platform based on ChainStore <span class="right">May 2019</span>
 ### Frontend design and implementation; Final presentation

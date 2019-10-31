@@ -173,7 +173,7 @@ const Branding: React.FC = () => {
   return (
     <Link to={"/"} className={"navbar-brand"}>
       <StyledLogo />
-      daacheen.me
+      ddadaal.me
     </Link>
   );
 }

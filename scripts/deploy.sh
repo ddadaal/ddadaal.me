@@ -1,13 +1,13 @@
 #!/bin/sh
 CO_REF="git.coding.net/viccrubs/viccrubs.coding.me.git"
-GITHUB_REF="github.com/daacheen/daacheen.me.github.io"
-FQDN="daacheen.me"
+GITHUB_REF="github.com/ddadaal/ddadaal.me.github.io"
+FQDN="ddadaal.me"
 
 cd ./public
 echo "pages.$FQDN" > CNAME
 git init
-git config user.name "daacheen-deploy-bot"
-git config user.email "daacheen@outlook.com"
+git config user.name "ddadaal-deploy-bot"
+git config user.email "ddadaal@outlook.com"
 git add .
 git commit -m "Update By GitHub Actions to commit $(echo $GITHUB_SHA | head -c 6)"
 
@@ -17,4 +17,4 @@ git push --force --quiet "https://dt_LaxAU3:${CODINGNET_TOKEN}@${CO_REF}" master
 
 # GitHub Pages
 echo "[deploy bot] Deploying to GitHub Pages..."
-git push --force --quiet "https://daacheen:${ACTIONS_TOKEN}@${GITHUB_REF}" master:master
+git push --force --quiet "https://ddadaal:${ACTIONS_TOKEN}@${GITHUB_REF}" master:master

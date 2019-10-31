@@ -3,7 +3,7 @@
 id: about-project
 absolute_path: /about/project
 date: 2018-12-19 23:45
-title: 关于daacheen.me
+title: 关于ddadaal.me
 ignored_in_list: true
 lang: cn
 
@@ -11,23 +11,23 @@ lang: cn
 
 # 项目信息
 
-[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdaacheen%2Fdaacheen.me%2Fbadge&style=flat-square)](https://actions-badge.atrox.dev/daacheen/daacheen.me/goto)
+[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fddadaal%2Fddadaal.me%2Fbadge&style=flat-square)](https://actions-badge.atrox.dev/ddadaal/ddadaal.me/goto)
 
-daacheen.me是一个基于Gatsby开发的网站，并未使用现成网站/博客框架（例如WordPress, Typecho、Hexo等），欢迎讨论和贡献本项目。
+ddadaal.me是一个基于Gatsby开发的网站，并未使用现成网站/博客框架（例如WordPress, Typecho、Hexo等），欢迎讨论和贡献本项目。
 
-项目地址：https://github.com/daacheen/daacheen.me
+项目地址：https://github.com/ddadaal/ddadaal.me
 
 # 一个个人博客的史诗
 
-daacheen.me经历了很多，才变成你现在看到这个网站。想知道daacheen.me、其前身VicBlog和我在这个从2010年开始的史诗中的经历，请看[一个个人博客的史诗](/en/about/odyssey).
+ddadaal.me经历了很多，才变成你现在看到这个网站。想知道ddadaal.me、其前身VicBlog和我在这个从2010年开始的史诗中的经历，请看[一个个人博客的史诗](/en/about/odyssey).
 
 # 历史实现
 
-自从2016年开始，daacheen.me已经用多种技术栈实现过。
+自从2016年开始，ddadaal.me已经用多种技术栈实现过。
 
 ## 目前的实现
 
-[daacheen.me](https://github.com/daacheen/daacheen.me)
+[ddadaal.me](https://github.com/ddadaal/ddadaal.me)
 
 **自从2018年8月起**，网站转为使用`Gatsby`框架实现，成为了一个**静态**网站。
 
@@ -47,9 +47,9 @@ daacheen.me经历了很多，才变成你现在看到这个网站。想知道daa
 
 ### React + ASP.NET Core SPA 第二版（从2017年3月）
 
-[VicBlog-Frontend](https://github.com/daacheen/VicBlog-Frontend)
+[VicBlog-Frontend](https://github.com/ddadaal/VicBlog-Frontend)
 
-[VicBlog-Backend](https://github.com/daacheen/VicBlog-Backend)
+[VicBlog-Backend](https://github.com/ddadaal/VicBlog-Backend)
 
 这是一个前端采用`React` + `MobX` + `TypeScript`，后端采用`ASP.NET Core` + `Entity Framework Core`的完整的单页应用（SPA）。前后端采用RESTful API进行通信，前端部署于`GitHub Pages`，后端部署于`Microsoft Azure`。在这个版本结束生命周期之前，这个版本实现了我对一个个人博客所需要的所有功能。它基于前一个SPA版本，并且进行了全面的重构，获得了更好的代码可读性、性能和可维护性。但是最终，因为同时维护前后端太过麻烦以及低于预期的性能，它还是被放弃了。
 
@@ -61,6 +61,6 @@ daacheen.me经历了很多，才变成你现在看到这个网站。想知道daa
 
 ### Flask（从2016年10月）
 
-[VicBlog-Flask](https://github.com/daacheen/VicBlog-Flask)
+[VicBlog-Flask](https://github.com/ddadaal/VicBlog-Flask)
 
 这是我第一次完整地写一个网站。因为当时什么都不懂，我就选择了当时最火地、宣称简单易学的Flask技术栈。后端采用了Flask作为Web框架、MongoDB作为数据库，在前端采用了jQuery和Bootstrap。它的开发和上线应该只用了几周。上线一两个月后，由于SPA和前后端分离的开发方式成为了主流，它很快就被下线了。

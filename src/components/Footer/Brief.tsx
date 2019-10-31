@@ -20,7 +20,7 @@ const Brief: React.FC = () => {
 
       <p>
         👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
-          <Link key={"me"} to={aboutMeLink}>daacheen</Link>,
+          <Link key={"me"} to={aboutMeLink}>ddadaal</Link>,
         ]} />
       </p>
       <p>

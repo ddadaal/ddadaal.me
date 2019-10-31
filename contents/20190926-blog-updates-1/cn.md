@@ -18,7 +18,7 @@ related:
 
 ## RSS恢复支持
 
-博客的RSS源地址是：[https://daacheen.me/rss.xml](https://daacheen.me/rss.xml)。欢迎订阅！
+博客的RSS源地址是：[https://ddadaal.me/rss.xml](https://ddadaal.me/rss.xml)。欢迎订阅！
 
 其实博客从很早开始（具体来说，从去年10月的[e2e469](https://github.com/vicblog/VicBlog-Gatsby/commit/e2e469ae05646590c0a05755e4e23f384102120d#diff-b9e136416b90437fa1dac910280b45fc)开始）就已经加入了RSS支持，但是那时候的代码就是随便从网上抄了一段，没有对博客比较特殊的地方（例如说多语言的支持，存在不能显示在列表中的文章等）进行定制，后面对博客一些更新的时候也都直接放弃了RSS。这几天，我针对博客的RSS的功能进行了一些修复，包括：**修复文章中不合法的日期串**、**RSS项中的原文链接变成绝对地址而不是相对地址**，**重新修改序列化方法**等，使得博客的RSS功能基本上可以正常使用了。博客的RSS源地址也在[W3C的Feed Validation Service](https://validator.w3.org/feed/)中成功认证，对于大多数RSS阅读器来说已经可以正常使用了。
 
@@ -55,12 +55,12 @@ related:
 - 修改[CI脚本](https://github.com/vicblog/VicBlog-Gatsby/blob/master/.travis.yml)，构建后向GitHub和CODING.NET的repo都推送一次
 
 经过测试，CODING.NET的体验还是非常良好的，在国内的速度也非常不错，于是：
-- 修改DNS，将根记录（daacheen.me）指向了CODING.NET，二级域名（pages.daacheen.me）指向原有GitHub Pages repo
+- 修改DNS，将根记录（ddadaal.me）指向了CODING.NET，二级域名（pages.ddadaal.me）指向原有GitHub Pages repo
 - 在GitHub和CODING.NET平台上修改域名设置
 
 这样，我的根域名就被解析到CODING.NET提供的Pages服务上。经过测试，网站的速度提高了非常多，国内用户的体验得到了很大的提高。
 
-![[站长工具](http://tool.chinaz.com/speedcom/daacheen.me-pages.daacheen.me)](speed-comparison.png)
+![[站长工具](http://tool.chinaz.com/speedcom/ddadaal.me-pages.ddadaal.me)](speed-comparison.png)
 
 ## 多语言环境下文章地址改进
 
@@ -98,7 +98,7 @@ related:
 | 子页面 | 每个语言采用类似`https://domain.com/{zh-CN, en-US}/path/to/page`的方法，通过路径的第一个部分区分不同语言 | 微软官网（[切换语言的页面](https://www.microsoft.com/en-us/locale.aspx?absoluteReturnUrl=https%3a%2f%2fwww.microsoft.com%2fzh-cn)） | 处理路径时（例如导航栏高亮），需要单独切分掉`pathname`的第一部分；当一种语言的页面不存在时，需要做跳转 |
 
 
-## 使用自己开发的[simstate](https://github.com/daacheen/simstate)进行状态管理
+## 使用自己开发的[simstate](https://github.com/ddadaal/simstate)进行状态管理
 
 博客一开始是使用[unstated](https://github.com/jamiebuilds/unstated)进行状态管理的。这个库非常的简单易用，很符合react的理念，于是当时我非常喜爱这个库。但是随着后来hooks的推广和unstated迟迟没有跟进hooks等原因（其实已经跟进了只是当时我的不知道……），我认为是时候写一个自己的状态管理库了。这之后故事可以查看[Simstate and Why](/articles/simstate-and-why)文章，这里就不说了。
 
@@ -112,7 +112,7 @@ related:
 - 如何写一个专门的Store（例如博客项目的[LocationStore](https://github.com/vicblog/VicBlog-Gatsby/blob/master/src/stores/LocationStore.tsx)）来管理浏览器history
 - 在把Store和自己的hook（例如`useCallback`等）进行组合的时候，需要把Store实例加为hook的一个依赖，因为Store实例是**不可变的**
 
-这些常见问题也写到了[simstate项目的README](https://github.com/daacheen/simstate)中，也是给未来自己（和其他人，如果有人在用的话）带来方便，帮助解决这种常见问题。
+这些常见问题也写到了[simstate项目的README](https://github.com/ddadaal/simstate)中，也是给未来自己（和其他人，如果有人在用的话）带来方便，帮助解决这种常见问题。
 
 ## 其他值得提到的近期的修正（太远的我也记不住了……）
 
@@ -149,7 +149,7 @@ related:
         - 这个[`ListGroupHeader`](https://github.com/vicblog/VicBlog-Gatsby/blob/master/src/components/UI/ListGroup/ListGroupHeader.tsx)组件就是强行使用组件化的方式重用CSS的样式，这种模板代码非常的浪费时间和不灵活。
 - bootstrap看厌了，想看点新鲜的 ::smile::
 
-5月份的时候，我尝试在[`styled-system`](https://styled-system.com/)的支持下写自己的UI库[vicui](https://github.com/daacheen/vicui)。组件基本都完成了，但是在使用的时候遇到了[很奇怪的问题](https://github.com/daacheen/vicui/issues/1)，造成我完全无法在其他项目中使用。
+5月份的时候，我尝试在[`styled-system`](https://styled-system.com/)的支持下写自己的UI库[vicui](https://github.com/ddadaal/vicui)。组件基本都完成了，但是在使用的时候遇到了[很奇怪的问题](https://github.com/ddadaal/vicui/issues/1)，造成我完全无法在其他项目中使用。
 
 同时，我在项目中采用了将[Rebass](https://rebassjs.org/theming/)这样的`primitive UI components`和`CSS`混用的方式，使得不仅在保证在React中使用方便和可扩展性，同时在以后迁移到React生态圈之外时，已有的CSS的可以重用，但是在`无法避免全局样式类名`、`对用户公开多大自定义样式的能力`等问题上也存在一些问题。
 

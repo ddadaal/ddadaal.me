@@ -118,7 +118,7 @@ export default {
       author: "作者",
       university: "南京大学软件工程2016级本科生",
       resume: "简历",
-      mailToMe: "daacheen@outlook.com",
+      mailToMe: "ddadaal@outlook.com",
       more: "更多我的信息",
       moreLink: "更多",
     },

@@ -12,7 +12,7 @@ tags:
 
 这是一个编译原理课的大作业，我自己实现了一个正则语法分析器（从输入字符流到Token序列）和LALR(1)语法分析器（Token序列到规约产生式序列）。以下是说明文档。
 
-项目是放在一个repo的子文件夹里的，目录是：https://github.com/daacheen/Homework/tree/master/Compiler/CompilerLab
+项目是放在一个repo的子文件夹里的，目录是：https://github.com/ddadaal/Homework/tree/master/Compiler/CompilerLab
 
 # 编译原理实验报告
 
