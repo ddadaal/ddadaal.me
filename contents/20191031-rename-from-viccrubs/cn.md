@@ -1,7 +1,7 @@
 ---
-id: rename-from-viccrubs-to-daacheen
-date: 2019-10-15 10:01
-title: 从viccrubs改名为daacheen
+id: rename-from-viccrubs
+date: 2019-10-31 14:28
+title: 从viccrubs改名为ddadaal
 lang: cn
 tags:
   - life
@@ -11,7 +11,7 @@ tags:
 
 标题越短，事情越大！
 
-我决定将我在网络上的用户名从`viccrubs`这个至少用了5年的名称，改到`daacheen`。
+我决定将我在网络上的用户名从`viccrubs`这个至少用了5年的名称，以及`daacheen`这个用了半个月的名称（捂脸），改到`ddadaal`。
 
 # 原因
 
@@ -35,7 +35,7 @@ tags:
 - 其和我的现实中的名字完全没有关系
 - 词本身长得很奇怪，不是嘛？
 
-那为什么选`daacheen`而不是其他名字呢？
+10月15日开始，我正式启用`daacheen`。为什么当时选`daacheen`而不是其他名字呢？
 
 - 取名很难啊！！能想出来一个都不错了 :sob:
 - 好记，这个名字就是从真名造过来的
@@ -47,9 +47,17 @@ tags:
 - 这个名字比较得体，尤其是以后上研究生和工作后，可能和外面的接触就会更多，有个这样的名字给别人介绍起来也不会有羞耻的感觉（~~smallda~~）
 - 这个名字不像拼音不像英文，有种不明觉厉的感觉（？）
 
+但是呢，经过这半个月的使用，我发现这个名称有几个问题，最终促使我使用`ddadaal`来代替：
+
+- 读音不合我意。`cheen`这个词所有人第一反应是读`chin`而不是`chen`
+- 太长。`daacheen`有8个字节，而`ddadaal`是7个（其实我理想中的是`daddal`的，但是这个名字已经被人使用了，所以只好再加一个字符）
+- `daacheen`确实不像拼音不像英文，看上去确实挺奇怪的
+
+而`ddadaal`这个词呢，是`达达`的魔改，正好我更喜欢用达来表示自己（以及初中高中的时候大家都是这么叫我的）；同时这个词具有上面所说的所有特征，所以感觉用`ddadaal`可能更加合适。
+
 # 改名遇到的问题
 
-就像在现实中改名一样，在网络空间更改一个使用多年的名字是比较麻烦的事情，但是反正要改，早改的影响总比晚改好。
+就像在现实中改名一样，在网络空间更改一个使用多年的名字是比较麻烦的事情，但是反正要改，**早改的影响总比晚改好**。
 
 - 很多网站不支持更改用户名
 
@@ -69,15 +77,15 @@ tags:
 
 改名将包括以下方面：
 
-- [x] 邮箱从`smallda@outlook.com`改为`daacheen@outlook.com`
+- [x] 邮箱从`smallda@outlook.com`改为`ddadaal@outlook.com`
     - 原有的邮箱继续生效
-- [x] GitHub用户名从`viccrubs`改为[`daacheen`](https://github.com/daacheen)
+- [x] GitHub用户名从`viccrubs`改为[`ddadaal`](https://github.com/ddadaal)
     - GitHub能改用户名简直要感动哭了
-- [x] QQ、微信昵称从`VicCrubs`改为`daacheen`
-- [x] 注册并使用域名`daacheen.me`。原域名直接跳转到新域名。
-- [ ] 修改博客名称~~到`DaBlog`或者`DaaBlog`~~`daacheen.me`
-- [ ] 其他所有使用`viccrubs`作为标识的账号（Steam, Origin, Epic, Uplay, 知乎，Quora，Facebook，Instagram，Twitter，StackOverflow，豆瓣等）均尽力改名为`daacheen`
+- [x] QQ、微信昵称从`VicCrubs`改为`ddadaal`
+- [x] 注册并使用域名`ddadaal.me`。原域名直接跳转到新域名。
+- [x] 修改博客名称~~到`DaBlog`或者`DaaBlog`~~`daadaal.me`
+- [x] 其他所有使用`viccrubs`作为标识的账号（Steam, Origin, Epic, Uplay, 知乎，Quora，Facebook，Instagram，Twitter，StackOverflow，豆瓣等）均尽力改名为`ddadaal`
 
 # 最后
 
-如果没有什么大的特殊情况，这个名字应该会用一辈子了。希望大家能早点适应我的新名字 :smile:
+如果没有什么大的特殊情况（10月31日：特殊情况），这个名字应该会用一辈子了。希望大家能早点适应我的新名字 :smile:
