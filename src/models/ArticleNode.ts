@@ -7,9 +7,7 @@ export interface Heading {
 export interface ArticleNode {
   path: string;
   excerpt: string;
-  wordCount: {
-    words: number;
-  };
+  wordCount: number;
   frontmatter: {
     absolute_path?: string;
     date: string;

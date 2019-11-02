@@ -54,7 +54,7 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string }> = ({ article,
   const {
     frontmatter: {
       id, title, date, tags, hide_heading,
-    }, wordCount: { words: wordCount },
+    }, wordCount,
   } = article;
 
   if (hide_heading) {

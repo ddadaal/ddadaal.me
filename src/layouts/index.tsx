@@ -37,9 +37,7 @@ const query = graphql`
     ) {
       nodes {
         excerpt(pruneLength: 250, truncate: true)
-        wordCount {
-          words
-        }
+        wordCount
         frontmatter {
           no_create_page
           date

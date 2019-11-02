@@ -158,7 +158,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-transformer-remark-fixed',
       options: {
         plugins: [
           {
