@@ -15,6 +15,7 @@
     "preserveConstEnums": true,
     "downlevelIteration": true,
     "strictNullChecks": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
