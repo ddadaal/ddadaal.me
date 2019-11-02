@@ -1,23 +1,24 @@
-import { Definitions } from "./definition";
+import { baselineLanguage, Definitions } from "@/i18n/definition";
 
-export const GET_VALUE = "__get";
+const lang = {};
 
-export class Lang {
-  constructor(public paths: PropertyKey[]) { }
+function makeLangObj(obj: {}, baselineLangSection: {}, baseKey: string) {
+  for (const key in baselineLangSection) {
+    const newKey = baseKey + key;
+    switch (typeof baselineLangSection[key]) {
+      case "string":
+        obj[key] = newKey;
+        break;
+      case "object":
+        obj[key] = {};
+        makeLangObj(obj[key], baselineLangSection[key], newKey + ".");
+        break;
+      default:
+        throw `Unexpected value in ${newKey}. string/object only`;
+    }
+  }
 }
 
-function factory(langObj: Lang): Definitions {
-  const obj = new Proxy(langObj, {
-    get: (t, k) => {
-      if (k === GET_VALUE) {
-        return langObj.paths.join(".");
-      }
-      return factory(new Lang([...t.paths, k]));
-    },
-  }) as unknown;
-  return obj as Definitions;
-}
-
-const lang = factory(new Lang([]));
+makeLangObj(lang, baselineLanguage.definitions, "");
 
 export default lang as Definitions;

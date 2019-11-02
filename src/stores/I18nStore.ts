@@ -1,6 +1,5 @@
 import { getLanguage } from "@/i18n/definition";
 import isServer from "@/utils/isServer";
-import { GET_VALUE } from "@/i18n/lang";
 import { useState, useCallback } from "react";
 
 function getInitialLanguage(): string {
@@ -53,9 +52,7 @@ export default function I18nStore() {
 
   const translate = useCallback((id: string, replacements?: React.ReactNode[]): React.ReactNode | string => {
 
-    const trueId = id[GET_VALUE] as string;
-
-    const def = getDefinition(trueId);
+    const def = getDefinition(id);
     if (!replacements || replacements.length === 0) {
       return def;
     }

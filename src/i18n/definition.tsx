@@ -3,7 +3,9 @@ import en from "@/i18n/definitions/en";
 
 export const allLanguages = [cn, en];
 
-export type Language = typeof cn;
+export const baselineLanguage = cn;
+
+export type Language = typeof baselineLanguage;
 
 export function getLanguage(langString: string): Language {
   const language = allLanguages.find((x) => x.metadata.langStrings.includes(langString));
