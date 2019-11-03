@@ -105,8 +105,7 @@ export default {
       },
     },
     articleFrontmatter: {
-      timeToRead: "{} mins to read",
-      wordCount: "{} Words",
+      timeToRead: "~{} mins to read",
       tagLinkTitle: "Search articles tagged with {}",
     },
     articleItem: {

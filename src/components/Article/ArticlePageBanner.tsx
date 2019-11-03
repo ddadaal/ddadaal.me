@@ -7,7 +7,7 @@ interface Props {
   id: string;
   tags: string[] | null;
   date: string;
-  wordCount: number;
+  timeToRead: number;
   currentArticleLanguage: string;
 }
 
@@ -28,7 +28,7 @@ interface Props {
 //   z-index: 1;
 // `;
 
-const ArticlePageBanner: React.FC<Props> = ({ title, id, tags, date, wordCount, currentArticleLanguage }) => {
+const ArticlePageBanner: React.FC<Props> = ({ title, id, tags, date, timeToRead, currentArticleLanguage }) => {
   return (
     <>
       <BannerLayoutTitle>{title}</BannerLayoutTitle>
@@ -37,7 +37,7 @@ const ArticlePageBanner: React.FC<Props> = ({ title, id, tags, date, wordCount, 
         articleId={id}
         tags={tags}
         date={date}
-        wordCount={wordCount}
+        timeToRead={timeToRead}
       />
     </>
   );

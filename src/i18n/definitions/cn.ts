@@ -81,8 +81,7 @@ export default {
       select: "选择语言",
     },
     articleFrontmatter: {
-      timeToRead: "阅读时间：{}分钟",
-      wordCount: "{}词",
+      timeToRead: "约需{}分钟读完",
       tagLinkTitle: "搜索带有{}标签的文章",
     },
     comments: {

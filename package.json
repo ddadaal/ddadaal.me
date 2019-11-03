@@ -10,7 +10,6 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "install": "cd plugins/gatsby-transformer-remark-fixed && yarn",
     "build": "gatsby clean && gatsby build",
     "dev": "gatsby develop",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",

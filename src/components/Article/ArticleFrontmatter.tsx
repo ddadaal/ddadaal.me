@@ -2,7 +2,7 @@ import React from "react";
 import langRoot from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
 import styled from "styled-components";
-import { FaCalendarAlt, FaFileWord, FaTags, FaGlobe } from "react-icons/fa";
+import { FaCalendarAlt, FaTags, FaGlobe, FaUserClock } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
@@ -14,7 +14,7 @@ import { DateTime } from "luxon";
 interface Props {
   articleId: string;
   date: string;
-  wordCount: number;
+  timeToRead: number;
   tags: string[] | null;
   currentArticleLanguage: string;
 }
@@ -46,7 +46,7 @@ const ContainerRow = styled.div`
 `;
 
 const ArticleFrontmatter: React.FC<Props> = (props) => {
-  const { date, wordCount, tags, articleId, currentArticleLanguage } = props;
+  const { date, timeToRead, tags, articleId, currentArticleLanguage } = props;
 
   const dateObject = DateTime.fromSQL(date);
 
@@ -60,8 +60,8 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
       </Span>
       {/* <Span><FaClock /><LocalizedString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
       <Span>
-        <FaFileWord />
-        <LocalizedString id={root.wordCount} replacements={[wordCount]} />
+        <FaUserClock />
+        <LocalizedString id={root.timeToRead} replacements={[timeToRead]} />
       </Span>
       <Span>
         <FaGlobe />
