@@ -161,7 +161,7 @@ i3虽说比较灵活，配置起来也比较简单，但是很多事情也是需
 
 # Arch Linux
 
-大家都说Arch Linux装一次要几个小时，甚至认为Arch Linux不提供图形安装界面就是为了筛选用户……在折腾i3的过程中，我也尝试过直接安装Arch Linux，并且我在虚拟机上成功了。确实Arch Linux的ISO不提供图形安装界面，一进去就是命令行，分区、引导啥的都得自给自足（`fdisk`和`grep`），确实有点劝退，但是跟着archwiki上的[官方的Arch Linux安装教程](https://wiki.archlinux.org/index.php/Installation_Guide)走，基本可以走完安装全过程，再配上[比如这个教程](https://itsfoss.com/install-arch-linux/)查漏补缺，走完安装，进入系统其实问题也不是很大。但是后面的各种折腾就因人而异了……Manjaro装完起码提供了X11，Arch装完连X11都没有，什么都得自己弄，遇到问题也得全网搜（比如我的这个系统，X11性能特别差，鼠标移动都有延迟，我也最终没有找到能用的解决方案）。Arch确实很适合一些什么都要自己操作的用户！
+大家都说Arch Linux装一次要几个小时，甚至认为Arch Linux不提供图形安装界面就是为了筛选用户……在折腾i3的过程中，我也尝试过直接安装Arch Linux，并且我在虚拟机上成功了。确实Arch Linux的ISO不提供图形安装界面，一进去就是命令行，分区、引导啥的都得自给自足（`fdisk`和`grub`），确实有点劝退，但是跟着archwiki上的[官方的Arch Linux安装教程](https://wiki.archlinux.org/index.php/Installation_Guide)走，基本可以走完安装全过程，再配上[比如这个教程](https://itsfoss.com/install-arch-linux/)查漏补缺，走完安装，进入系统其实问题也不是很大。但是后面的各种折腾就因人而异了……Manjaro装完起码提供了X11，Arch装完连X11都没有，什么都得自己弄，遇到问题也得全网搜（比如我的这个系统，X11性能特别差，鼠标移动都有延迟，我也最终没有找到能用的解决方案）。Arch确实很适合一些什么都要自己操作的用户！
 
 ![Arch Linux + i3 + urxvt](arch.png)
 

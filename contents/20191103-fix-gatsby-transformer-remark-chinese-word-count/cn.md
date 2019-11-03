@@ -74,7 +74,7 @@ wordCountChinese: {
 
 这个方法的问题就是：你需要跟随上游`gatsby-transformer-remark`的更新而更新本地的插件。这个更新是比较麻烦的，而且随以fork也是社区的分裂的根源之一，所以不建议。
 
-# 参考项目：`gatsby-transformer-remark-chinese-word-count`
+# 参考项目：gatsby-transformer-remark-chinese-word-count
 
 如果你非要获得一个较为真实的词数，但是又不想向上面一样的自己做（伸手党？），那么根据之上同样的方法，我也提出了一个[gatsby-transformer-remark-chinese-word-count](https://github.com/ddadaal/gatsby-transformer-remark-chinese-word-count)项目，用来简化自己从`node_modules`中提取和修改插件这个流程。使用方法可以参考此项目的GitHub链接。
 
