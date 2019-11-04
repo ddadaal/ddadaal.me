@@ -160,13 +160,7 @@ const DropdownMenu = styled(BSDropdownMenu)`
   .dropdown-item {
     padding-top: 0;
     padding-bottom: 0;
-
-    a.nav-link {
-      color: black;
-
-    }
   }
-
 `;
 
 const Branding: React.FC = () => {

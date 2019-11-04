@@ -3,39 +3,14 @@ import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import I18nStore from "@/stores/I18nStore";
 import lang from "@/i18n/lang";
-import styled from "styled-components";
 import { Link } from "gatsby";
 import { Badge } from "reactstrap";
-import { colors } from "@/styles/variables";
+import "./article-tag.scss";
 
 interface Props {
   onClick?(tags: string): void;
   tag: string;
 }
-
-const Item = styled(Link)`
-  margin: 0 4px 4px 0;
-  display: inline-block;
-
-  padding: 2px;
-
-  background-color: ${colors.extremelyLightGray};
-
-  &:hover {
-    background-color: ${colors.lightGray};
-    text-decoration: none;
-  }
-
-  transition: background-color 0.2s linear;
-
-`;
-
-const Text = styled.span`
-    color: black;
-    padding: 4px;
-    font-size: 14px;
-
-`;
 
 const CountedArticleTag: React.FC<Props> = ({ tag, onClick }) => {
   const metadataStore = useStore(MetadataStore);
@@ -54,10 +29,10 @@ const CountedArticleTag: React.FC<Props> = ({ tag, onClick }) => {
   }, [onClick, tag]);
 
   return (
-    <Item title={title} to={toLink} onClick={clickHandler}>
-      <Text>{tagOfLang}</Text>
+    <Link className="counted-article-tag" title={title} to={toLink} onClick={clickHandler}>
+      <span className="counted-article-tag__name">{tagOfLang}</span>
       <Badge color={"info"}>{count}</Badge>
-    </Item>
+    </Link>
   );
 
 }

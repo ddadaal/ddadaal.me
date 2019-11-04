@@ -5,13 +5,10 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import lang from "@/i18n/lang";
 import I18nStore from "@/stores/I18nStore";
+import "./article-tag.scss";
 
 const Tag = styled(Link)`
   margin-right: 4px;
-
-  a {
-    color: white;
-  }
 `;
 
 interface Props {
@@ -28,7 +25,7 @@ const ArticleTag: React.FC<Props> = ({ tag }) => {
   const toLink = `/articles/search?query=${tagOfLang}`;
 
   return (
-    <Tag className="badge badge-info" to={toLink} title={title}>
+    <Tag className="badge badge-info article-tag" to={toLink} title={title}>
       {tagOfLang}
     </Tag>
   );

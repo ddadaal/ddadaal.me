@@ -1,0 +1,17 @@
+@import "../../../styles/variables.scss";
+
+.article-item {
+
+  margin-bottom: 24px;
+
+  &__header {
+
+    color: $body-color;
+    font-size: 32px;
+    padding: 4px 0;
+  }
+
+  &__excerpt {
+    color: $light;
+  }
+}
