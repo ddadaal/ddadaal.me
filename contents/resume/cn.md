@@ -17,7 +17,7 @@ no_toc: true
 陈俊达
 </h1>
 
-<h3 class="contact">18523206096 | ddadaal@outlook.com | QQ 540232834 | 微信 h_smallda | https://ddadaal.me
+<h3 class="contact">ddadaal@outlook.com | QQ 540232834 | 微信 h_smallda | https://ddadaal.me
 
 </h3>
 </div>
@@ -42,7 +42,7 @@ no_toc: true
 ### 主席（2018-2019学年），技术部副部长（2017-2018学年），部员（2016-2017学年）
 - 主管和协调俱乐部内部和外部事务，参与活动策划和执行
 - 带领俱乐部在2017-2018，2018-2019学年分别获得**技术贡献奖**(2/34)和**品牌活动奖**(2/34)
-- 参加**2017年微软学生俱乐部实践空间站**项目，南京大学队伍"黑洞"负责人，成功完赛
+- 俱乐部经历和贡献被MSRA官方微信公众号介绍：http://1t.click/bgTF
 - 参加**2017年微软学生夏令营**
 
 ## <span class="highlight">其他</span>

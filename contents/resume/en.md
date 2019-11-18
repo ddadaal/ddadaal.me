@@ -18,7 +18,7 @@ no_toc: true
 Chen Junda
 </h1>
 
-<h3 class="contact">陈俊达 | 18523206096 | ddadaal@outlook.com | QQ 540232834 | WeChat h_smallda | https://ddadaal.me
+<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | WeChat h_smallda | https://ddadaal.me
 
 </h3>
 
@@ -41,7 +41,7 @@ Chen Junda
 ### President (2018-2019), Undersecretary of Technology Department (2017-2018), Member (2016-2017)
 - Coordinate internal and external affairs and participate in planning and execution of activities
 - Club has been awarded **Technology Contribution Award** (2/34) and **Branding Activity Award** (2/34) in 2017-2018, 2018-2019 respectively
-- Participate in and completed **Practice Space** program by MSRA, leader of NJU team
+- Experiences and contributions are introduced by MSRA WeChat Official Account: http://1t.click/bgTF
 - Participated in 2017 Microsoft Student Summer Camp
 
 ## <span class="highlight">Others</span>
