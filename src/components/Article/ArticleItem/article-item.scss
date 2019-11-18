@@ -6,12 +6,12 @@
 
   &__header {
 
-    color: $body-color;
+    color: $gray-200;
     font-size: 32px;
     padding: 4px 0;
   }
 
   &__excerpt {
-    color: $light;
+    color: $body-color;
   }
 }

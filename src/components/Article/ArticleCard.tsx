@@ -60,6 +60,10 @@ const Title = styled.p`
   margin-bottom: 2px;
   font-weight: bold;
   font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 `;
 
 const Date = styled.p`
