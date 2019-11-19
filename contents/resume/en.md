@@ -2,7 +2,7 @@
 
 id: resume
 absolute_path: /resume
-date: 2019-10-15 13:42
+date: 2019-11-19 10:18
 title: Resume
 lang: en
 ignored_in_list: true
@@ -41,7 +41,7 @@ Chen Junda
 ### President (2018-2019), Undersecretary of Technology Department (2017-2018), Member (2016-2017)
 - Coordinate internal and external affairs and participate in planning and execution of activities
 - Club has been awarded **Technology Contribution Award** (2/34) and **Branding Activity Award** (2/34) in 2017-2018, 2018-2019 respectively
-- Experiences and contributions are introduced by MSRA WeChat Official Account: http://1t.click/bgTF
+- Experiences and contributions are credited by MSRA WeChat Official Account: http://1t.click/bgTF
 - Participated in 2017 Microsoft Student Summer Camp
 
 ## <span class="highlight">Others</span>
