@@ -17,7 +17,7 @@ no_toc: true
 陈俊达
 </h1>
 
-<h3 class="contact">ddadaal@outlook.com | QQ 540232834 | 微信 h_smallda | https://ddadaal.me
+<h3 class="contact">ddadaal@outlook.com | QQ 540232834 | https://ddadaal.me
 
 </h3>
 </div>
@@ -63,9 +63,9 @@ no_toc: true
 - 支持多节点网络和被篡改数据监测和恢复
 - 获得“链谷杯”全国高校区块链应用链应用大赛**三等奖**，以及第三届全国高校区块链大赛**华东赛区一等奖**，**全国二等奖**
 
-## <span class="highlight">VicBlog</span>，个人博客 <span class="right">2016年10月-至今</span>
+## <span class="highlight">ddadaal.me</span>，个人博客 <span class="right">2016年10月-至今</span>
 ### 单人项目
-- 网站：https://ddadaal.me；相关代码：https://github.com/vicblog
+- 网站：https://ddadaal.me
 - 目前是使用`TypeScript`语言，使用`Gatsby`开发的静态博客，部署于`GitHub Pages`；前期版本使用过`Flask`和`ASP.NET Core + React`部署于`Microsoft Azure`
 - 使用了自己开发的状态管理库`simstate`进行状态管理（GitHub: ddadaal/simstate）
 

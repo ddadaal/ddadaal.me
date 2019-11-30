@@ -18,7 +18,7 @@ no_toc: true
 Chen Junda
 </h1>
 
-<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | WeChat h_smallda | https://ddadaal.me
+<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | https://ddadaal.me
 
 </h3>
 
@@ -62,9 +62,9 @@ Chen Junda
 - Supports multi-node network and detection/recovery on data corruption
 - **Third Prize** in *Chain Valley（链谷杯）National Blockchain Application Competition*; **National Second Prize** and **Eastern China Regional First Prize** in *The Third National College Blockchain Competition*
 
-## <span class="highlight">VicBlog</span>, Personal Blog <span class="right">October 2016-Present</span>
+## <span class="highlight">ddadaal.me</span>, Personal Blog <span class="right">October 2016-Present</span>
 ### Personal project
-- Website: https://ddadaal.me; Related repos: https://github.com/vicblog
+- Website: https://ddadaal.me
 - Based on `Gatsby` static site generator, self-designed code and content structure, written in `TypeScript` and deployed on `GitHub Pages`. Previous versions used `Flask` and `ASP.NET Core + React` on `Microsoft Azure`
 - Use `simstate`, a state management library developed by myself, for state management (GitHub: ddadaal/simstate)
 
