@@ -27,12 +27,12 @@ interface Props {
   articles: ArticleNode[];
   siteMetadata: SiteMetadata;
   children?: React.ReactNode;
-  tagMap: TagMap;
+  tags: Tag[];
 }
 
 const iconContext = { className: "icons" };
 
-const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tagMap, children }) => {
+const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, children }) => {
 
   const i18nStore = useConstant(() => createStore(I18nStore));
 
@@ -41,7 +41,7 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tagMap,
   const metadataStore = useConstant(() => createStore(MetadataStore,
     siteMetadata,
     articles,
-    tagMap,
+    tags,
   ));
 
   const articleStore = useConstant(() => createStore(ArticleStore, null));

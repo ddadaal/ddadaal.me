@@ -60,33 +60,12 @@ const IndexLayout: React.FC<Props> = (props) => {
 
   const data: InitialData = useStaticQuery(query);
 
-  // create tag map
-  const tagMap = new Map() as TagMap;
-
-  data.allTagsJson.nodes.forEach(({ tag, ...variations }) => {
-    tagMap.set(tag, { count: 0, variations });
-  });
-
-  // for each tags
-  data.allMarkdownRemark.nodes.forEach((node) => {
-    if (node.frontmatter.tags) {
-      node.frontmatter.tags.forEach((tag) => {
-        if (!tagMap.has(tag)) {
-          tagMap.set(tag, { count: 1, variations: tag });
-        } else {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          tagMap.get(tag)!!.count++;
-        }
-      });
-    }
-  });
-
   return (
     <RootLayout
       location={props.location}
       siteMetadata={data.site.siteMetadata}
       articles={data.allMarkdownRemark.nodes}
-      tagMap={tagMap}
+      tags={data.allTagsJson.nodes}
     >
       {props.children}
     </RootLayout>

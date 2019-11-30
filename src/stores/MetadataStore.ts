@@ -16,7 +16,30 @@ function noSuchArticle(articleId: string): string {
   return `No such article with id ${articleId}!`
 }
 
-export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: ArticleNode[], tagMap: TagMap) {
+export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: ArticleNode[], tags: Tag[]) {
+
+  const tagMap = useMemo(() => {
+    // calculate tag map with article nodes and tags
+    const tagMap = new Map() as TagMap;
+    tags.forEach(({ tag, ...variations }) => {
+      tagMap.set(tag, { count: 0, variations });
+    });
+
+    // for each tags
+    articleNodes.forEach((node) => {
+      if (node.frontmatter.tags) {
+        node.frontmatter.tags.forEach((tag) => {
+          if (!tagMap.has(tag)) {
+            tagMap.set(tag, { count: 1, variations: tag });
+          } else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            tagMap.get(tag)!!.count++;
+          }
+        });
+      }
+    });
+    return tagMap;
+  }, [articleNodes, tags]);
 
   const articleIdMap: ArticleIdMap = useMemo(() => {
     const map = groupBy(articleNodes.map((article) => {
@@ -25,7 +48,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
       return article;
     }), (article) => article.frontmatter.id);
 
-    // replicate login from page creation (the cn or first version of article has no lang postfix)
+    // replicate the logic from page creation (the cn or first version of article has no lang postfix)
     Array.from(map.values()).forEach((values) => {
       // sort the articles by lang
       values.sort((a, b) => a.frontmatter.lang.localeCompare(b.frontmatter.lang, "en"));
@@ -36,7 +59,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
         if (article === exception) { return; }
         article.path += `/${article.frontmatter.lang}`;
       });
-    })
+    });
 
     return map;
   }, [articleNodes]);
@@ -55,7 +78,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
 
     const node = group.find((x) => matchLangStringWithCurrentLanguage(x.frontmatter.lang, language)) || group[0];
     return node;
-  }, []);
+  }, [articleIdMap]);
 
   const getLangPathMap = useCallback((id: string): LangPathMap => {
     const group = articleIdMap.get(id);
@@ -71,7 +94,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
     });
 
     return map;
-  }, []);
+  }, [articleIdMap]);
 
   const getTagOfLang = useCallback((tag: string, language: Language): string | null => {
     const info = tagMap.get(tag);
@@ -82,7 +105,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
       return variations;
     }
     return variations[language.metadata.id] || variations[0];
-  }, []);
+  }, [tagMap]);
 
   const getAllVariationsOfTag = useCallback((tag: string): string[] => {
     const variations = [tag];
@@ -94,7 +117,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
       });
     }
     return variations;
-  }, []);
+  }, [tagMap]);
 
   const getAllTagsOfLang = useCallback((language: Language): string[] => {
     const tags = [] as string[];
@@ -107,16 +130,16 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
     });
 
     return tags;
-  }, []);
+  }, [tagMap]);
 
   const getCountOfTag = useCallback((tag: string): number => {
     const info = tagMap.get(tag);
     return info ? info.count : 0;
-  }, []);
+  }, [tagMap]);
 
   const formattedLastUpdate = useMemo(() => {
     return DateTime.fromISO(siteMetadata.lastUpdated).toFormat("yyyy-MM-dd HH:mm:ss 'UTC'Z");
-  }, []);
+  }, [siteMetadata.lastUpdated]);
 
   return {
     siteMetadata: { ...siteMetadata, formattedLastUpdate },
