@@ -51,7 +51,7 @@ hide_heading: false
 | --------------------------------- | ----------------------------------------- | ---------- |
 | ThinkPad X1 Carbon 2018           | i7 8550U/16G/512G/2K HDR                  | Apr, 2018  |
 | MSI GT72VR 6RD                    | i7 6700HQ/16G/GTX 1060/512G+1T/1080P75Hz  | Sept, 2016 |
-| ThinkVision X24q                  | 24' 2560*1440 60Hz                        | Nov, 2016  |
+| LG 27UL550                        | 27'/3840*2160/60Hz                        | Dec, 2019  |
 | Mi 9 SE                           | Snapdragon 712/6G/128G/5.99' 1080P AMOLED | May, 2019  |
 | Amazfit Watch GTS                 | N/A                                       | Sept, 2019 |
 | Sennheiser Momentum True Wireless | N/A                                       | Feb, 2019  |

@@ -51,7 +51,7 @@ hide_heading: false
 | --------------------------------- | ---------------------------------------- | ---------- |
 | ThinkPad X1 Carbon 2018           | i7 8550U/16G/512G/2K HDR                 | 2018年4月  |
 | MSI GT72VR 6RD                    | i7 6700HQ/16G/GTX 1060/512G+1T/1080P75Hz | 2016年9月  |
-| ThinkVision X24q                  | 24寸2560*1440 60Hz                       | 2016年11月 |
+| LG 27UL550                        | 27寸/3840*2160/60Hz                      | 2019年12月 |
 | Mi 9 SE                           | 高通骁龙712/6G/128G/5.99寸1080P AMOLED   | 2019年5月  |
 | Amazfit Watch GTS                 | N/A                                      | 2019年9月  |
 | Sennheiser Momentum True Wireless | N/A                                      | 2019年2月  |
