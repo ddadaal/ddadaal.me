@@ -28,6 +28,8 @@ https://github.com/gatsbyjs/gatsby/blob/3aa41fb8dbf7fe294f35a706424c6b2b11345881
 
 另外，根据这个公式，也可以通过`timeToRead`**估算词数**，即是`timeToRead * avgWPM (265)`就可以了。但是由于插件返回的`timeToRead`是 `javascript±Math.round`过的整数，直接乘265的结果的误差在±265左右。其实这个误差不算大，但是由于265是5的倍数，这样估算出来的得出的结果有点太假（全是5的倍数，好巧），所以请看情况使用这个方法。
 
+这里需要注意一下，`265`字/秒这个速度对英文来说可能比较合适，但是对中文来说是比较慢的。但是对于不同种类的文章来说，WPM是不一样的，比如读小说和读专业书的速度肯定是相差几倍，所以WPM取多少没有一个固定值。根据网上查到的资料（其实知乎上的某相关问题……）和自己的体验，在我的网站中对中文文章平均WPM取的值为`500`。
+
 # 替代方法：移植timeToRead统计算法
 
 `wordCount.words`和`timeToRead`中词数的算法是不一样的：
@@ -76,12 +78,12 @@ wordCountChinese: {
 
 # 参考项目：gatsby-transformer-remark-chinese-word-count
 
-如果你非要获得一个较为真实的词数，但是又不想向上面一样的自己做（伸手党？），那么根据之上同样的方法，我也提出了一个[gatsby-transformer-remark-chinese-word-count](https://github.com/ddadaal/gatsby-transformer-remark-chinese-word-count)项目，用来简化自己从`node_modules`中提取和修改插件这个流程。使用方法可以参考此项目的GitHub链接。
+如果你非要获得一个较为真实的词数，但是又不想向上面一样的自己做（伸手党？），那么根据之上同样的方法，我弄了一个[gatsby-transformer-remark-chinese-word-count](https://github.com/ddadaal/gatsby-transformer-remark-chinese-word-count)项目，用来简化自己从`node_modules`中提取和修改插件这个流程。使用方法可以参考此项目的GitHub链接。
 
 但是这个项目**仅供使用替代方法1时的参考**，个人**不推荐使用**在项目中这个插件，我也没有把插件发布到npm上去，理由如下：
 
-1. 我大概率不会将这个项目随着上游的更新而更新，所以很可能这个插件会是过时的
-2. 使用这个插件会造成社区的分裂
+1. 这个项目不会随着上游的更新而更新，所以很可能这个插件会是过时的
+2. 使用这种插件会造成社区的分裂
 
 而这种计算方法由于太过简单，并且也只覆盖了中文这一种情况（对于其他语言情况太过复杂，我也不甚了解，所以也没有能力去支持其他语言），gatsby团队应该也不会接受把这个算法合并进主项目。
 
