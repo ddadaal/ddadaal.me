@@ -24,7 +24,7 @@ const Sidebar = styled.div`
 `;
 
 const SearchBarContainer = styled.div`
-  margin: 4px 0 8px 0;
+  margin: 4px 0 0px 0;
 `;
 
 
@@ -37,6 +37,7 @@ const ArticleListLayout: React.FC<Props> = (props: Props) => {
             <MediaQuery maxWidth={breakpoints.md}>
               <SearchBarContainer>
                 <ArticleSearchBar />
+                <hr />
               </SearchBarContainer>
             </MediaQuery>
             {props.children}
