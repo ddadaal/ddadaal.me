@@ -153,7 +153,7 @@ export default {
       evening: "Good Evening",
       from: "From a Student | Programmer | Dreamer",
       links: {
-        articles: "Articles",
+        articles: "Articles ({})",
         rss: "RSS",
         resume: "Resume",
         slides: "Slides",

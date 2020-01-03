@@ -152,7 +152,7 @@ export default {
       evening: "晚上好",
       from: "来自一个学生 | 程序员 | 有梦想的咸鱼",
       links: {
-        articles: "文章",
+        articles: "文章 ({})",
         rss: "RSS",
         resume: "简历",
         slides: "幻灯片",

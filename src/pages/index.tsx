@@ -64,8 +64,36 @@ const LinkContainer = styled.div`
 
 const root = lang.homepage;
 
+const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({ to, mode = "to", children }) => {
+
+  const metadataStore = useStore(MetadataStore);
+  const i18nStore = useStore(I18nStore);
+
+  const commonProps = {
+    className: "btn btn-info",
+    key: to,
+  };
+
+  if (mode === "to") {
+    return (
+      <Link {...commonProps} to={to.startsWith("/")
+        ? to
+        : metadataStore.getArticleOfLang(to, i18nStore.language).path
+      }>
+        {children}
+      </Link>
+    )
+  } else {
+    return (
+      <a {...commonProps} href={to}>
+        {children}
+      </a>
+    );
+  }
+};
+
+
 const links = [
-  ["/articles", FaBookOpen, root.links.articles],
   ["/rss.xml", FaRss, root.links.rss, "href"],
   ["resume", FaFile, root.links.resume],
   ["/slides", FaSlideshare, root.links.slides],
@@ -86,7 +114,6 @@ function selectDate(): string {
 const HomePage: React.FunctionComponent = () => {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useStore(I18nStore);
 
   return (
     <HeaderFooterLayout transparentHeader={true}>
@@ -98,36 +125,16 @@ const HomePage: React.FunctionComponent = () => {
           <TitleText>{isServer() ? "" : <LocalizedString id={selectDate()} />}</TitleText>
           <Slogan><LocalizedString id={root.from} /></Slogan>
           <LinkContainer>
-            {links.map(([to, Icon, id, mode = "to"]) => {
-              const commonProps = {
-                className: "btn btn-info",
-                key: to,
-              };
-
-              const children = (
-                <>
-                  <Icon />
-                  <LocalizedString id={id} />
-                </>
-              );
-
-              if (mode === "to") {
-                return (
-                  <Link {...commonProps} to={to.startsWith("/")
-                    ? to
-                    : metadataStore.getArticleOfLang(to, i18nStore.language).path
-                  }>
-                    {children}
-                  </Link>
-                )
-              } else {
-                return (
-                  <a {...commonProps} href={to}>
-                    {children}
-                  </a>
-                );
-              }
-            })}
+            <Button to="/articles">
+              <FaBookOpen />
+              <LocalizedString id={root.links.articles} replacements={[metadataStore.articleCount]} />
+            </Button>
+            {links.map(([to, Icon, id, mode = "to"]) => (
+              <Button key={to} to={to} mode={mode as "href" | "to"}>
+                <Icon />
+                <LocalizedString id={id} />
+              </Button>
+            ))}
           </LinkContainer>
           <Contacts size={1.6} color={"white"} />
           <p>
