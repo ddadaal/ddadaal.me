@@ -73,7 +73,7 @@ export default {
       codeBy: "由{}自豪地编写",
       themedWith: "描绘主题",
       poweredBy: "强力驱动",
-      license: "除非特别注明，本站文章在{}协议下授权",
+      license: "本站文章在{}协议下授权",
       contacts: "联系我",
       madeWithLove: "用 ❤ 制作",
       friendLinkhire: "如果您希望您的链接加入本站友情链接，请联系我！",
@@ -82,7 +82,7 @@ export default {
       select: "选择语言",
     },
     articleFrontmatter: {
-      timeToRead: "约需 {} 分钟读完",
+      timeToRead: "{} 分钟阅读",
       tagLinkTitle: "搜索带有{}标签的文章",
     },
     comments: {

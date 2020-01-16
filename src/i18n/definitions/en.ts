@@ -73,7 +73,7 @@ export default {
       codeBy: "Coded proudly by {}",
       themedWith: "Themed with",
       poweredBy: "Powered by",
-      license: "Unless otherwise stated, articles are licensed under {}",
+      license: "Articles are licensed under {}",
       contacts: "Contact me",
       madeWithLove: "Made with ❤",
       friends: "Friends",
@@ -106,7 +106,7 @@ export default {
       },
     },
     articleFrontmatter: {
-      timeToRead: "~{} mins to read",
+      timeToRead: "{} mins read",
       tagLinkTitle: "Search articles tagged with {}",
     },
     articleItem: {
