@@ -41,28 +41,28 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 
 ## Development
 
-[Yarn](https://yarnpkg.com/) is required.
+npm instead of yarn is preferred, because integrity check in yarn usually requires more information than provided by taobao npm mirror.
 
 Notice: If an environment variable is named `ACTION_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
 
 ``` bash
 # install dependencies
-yarn
+npm
 
 # Install dependencies From TaoBao
-yarn iftb
+npm run iftb
 
 # serve with hot reload at localhost:8000
-yarn dev
+npm run dev
 
 # run production build
-yarn build
+npm run build
 
 # **After build**, serve the production build locally
-yarn serve
+npm run serve
 
 # Update dependencies with npm-check-updates and update the package.json
-yarn upddep
+npm run upddep
 ```
 
 ## Firewall Notice
