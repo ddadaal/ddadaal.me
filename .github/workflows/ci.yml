@@ -24,5 +24,6 @@ jobs:
       - name: deploy
         run: sh scripts/deploy.sh
         env:
+          CODINGNET_USERNAME: ${{ secrets.CODINGNET_USERNAME }}
           CODINGNET_TOKEN: ${{ secrets.CODINGNET_TOKEN }}
           ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
