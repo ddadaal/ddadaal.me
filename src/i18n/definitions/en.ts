@@ -78,6 +78,7 @@ export default {
       madeWithLove: "Made with ❤",
       friends: "Friends",
       friendLinkhire: "Contact me if you'd like your website added to this list :D",
+      runningTime: "Blog's been running for {} d {} h {} m {} s",
     },
     languageSelector: {
       select: "Select a language",

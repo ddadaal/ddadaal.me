@@ -6,6 +6,7 @@ import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
 import Contacts from "@/components/Contacts";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
+import { RunningTime } from "@/components/Footer/RunningTime";
 
 const root = lang.footer;
 
@@ -35,6 +36,7 @@ const Brief: React.FC = () => {
         ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
 
       </p>
+      <RunningTime />
       <div>
         <span id="contacts">📲 <LocalizedString id={root.contacts} /></span>
         <Contacts color="white" size={1.6} />

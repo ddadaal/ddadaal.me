@@ -77,6 +77,7 @@ export default {
       contacts: "联系我",
       madeWithLove: "用 ❤ 制作",
       friendLinkhire: "如果您希望您的链接加入本站友情链接，请联系我！",
+      runningTime: "博客已经运行 {} 天 {} 时 {} 分 {} 秒",
     },
     languageSelector: {
       select: "选择语言",
