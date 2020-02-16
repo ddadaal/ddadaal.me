@@ -22,7 +22,6 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 - Articles written on markdown; Source code and contents separated
     - Supports inline react components
 - Auto generated [slide directory](https://ddadaal.me/slides) using GitHub API v3 on every build
-- Analytics via [CNZZ](https://www.cnzz.com)
 
 ## Tools and Frameworks Used
 
@@ -46,11 +45,11 @@ npm instead of yarn is preferred, because integrity check in yarn usually requir
 Notice: If an environment variable is named `ACTION_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
 
 ``` bash
-# For Windows users, install windows-bool-tools
+# For Windows users, install windows-build-tools
 npm install --global windows-build-tools --python_mirror=https://npm.taobao.org/mirrors/python/
 
 # install dependencies
-npm
+npm install
 
 # Install dependencies From TaoBao
 npm run iftb
