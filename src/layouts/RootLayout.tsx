@@ -1,19 +1,19 @@
 import React from "react";
 import I18nStore from "@/stores/I18nStore";
-import LocationStore, { LocationProvider } from "@/stores/LocationStore";
-import { SiteMetadata } from "@/models/SiteMetadata";
+import LocationStore, {LocationProvider} from "@/stores/LocationStore";
+import {SiteMetadata} from "@/models/SiteMetadata";
 import MetadataStore from "@/stores/MetadataStore";
-import { IconContext } from "react-icons";
+import {IconContext} from "react-icons";
 import styled from "styled-components";
 import icon512 from "~/assets/icon.png";
 import UpdatePop from "@/components/UpdatePop";
-import { StoreProvider, createStore } from "simstate";
+import {StoreProvider, createStore} from "simstate";
 import ArticleStore from "@/stores/ArticleStore";
 import ToTop from "@/components/ToTop";
 import "@/styles/index.scss";
-import { ArticleNode } from "@/models/ArticleNode";
+import {ArticleNode} from "@/models/ArticleNode";
 import useConstant from "@/utils/useConstant";
-import { PageMetadata } from "@/components/PageMetadata";
+import {PageMetadata} from "@/components/PageMetadata";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -30,9 +30,9 @@ interface Props {
   tags: Tag[];
 }
 
-const iconContext = { className: "icons" };
+const iconContext = {className: "icons"};
 
-const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, children }) => {
+const RootLayout: React.FC<Props> = ({location, articles, siteMetadata, tags, children}) => {
 
   const i18nStore = useConstant(() => createStore(I18nStore));
 
@@ -58,20 +58,20 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, c
         <LayoutRoot>
           <PageMetadata
             meta={[
-              { name: "keywords", content: "gatsbyjs, gatsby, react, ddadaal, blog" },
-              { name: "author", content: "ddadaal" },
+              {name: "keywords", content: "gatsbyjs, gatsby, react, ddadaal, blog"},
+              {name: "author", content: "ddadaal"},
             ]}
             link={[
-              { rel: "icon", type: "image/png", href: icon512 },
-              { rel: "shortcut icon", type: "image/png", href: icon512 },
+              {rel: "icon", type: "image/png", href: icon512},
+              {rel: "shortcut icon", type: "image/png", href: icon512},
             ]}
-            script={[
-              {
-                type: "text/javascript",
-                src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
-                async: true,
-              },
-            ]}
+          //script={[
+          //{
+          //type: "text/javascript",
+          //src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
+          //async: true,
+          //},
+          //]}
           />
           <UpdatePop />
           <ToTop />

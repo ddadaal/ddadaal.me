@@ -35,7 +35,7 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
 - [ESLint](https://eslint.org/): [tslint is being deprecated](https://medium.com/palantir/tslint-in-2019-1a144c2317a9)! This project is a pioneer in fully leveraging ESLint in a React+TypeScript project!
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
-- [CNZZ](https://www.cnzz.com): simple and free website analysis for mainland China
+- [Google Analytics](https://analytics.google.com/analytics/web/): for web analytics
 - [GitHub Pages](https://pages.github.com): free and popular static website host
 - [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 

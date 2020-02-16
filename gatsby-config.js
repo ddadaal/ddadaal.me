@@ -1,6 +1,6 @@
 "use strict"
 
-const { DateTime } = require("luxon");
+const {DateTime} = require("luxon");
 const path = require("path");
 
 module.exports = {
@@ -127,16 +127,16 @@ module.exports = {
               }
             }
           `,
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(({ node }) => {
+            serialize: ({query: {site, allMarkdownRemark}}) => {
+              return allMarkdownRemark.edges.map(({node}) => {
                 const path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
                 return {
                   title: node.frontmatter.title,
-                  date: DateTime.fromSQL(node.frontmatter.date, { zone: "Asia/Shanghai" }).toString(),
+                  date: DateTime.fromSQL(node.frontmatter.date, {zone: "Asia/Shanghai"}).toString(),
                   url: site.siteMetadata.siteUrl + path,
                   categories: node.frontmatter.tags || [],
                   guid: path,
-                  custom_elements: [{ "content:encoded": node.html }]
+                  custom_elements: [{"content:encoded": node.html}]
                 };
               });
             },
@@ -201,6 +201,13 @@ module.exports = {
       options: {
         siteUrl: 'https://ddadaal.me'
       }
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: "UA-158630977-1",
+        respectDNT: true,
+      },
     },
     {
       resolve: 'gatsby-plugin-react-svg',

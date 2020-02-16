@@ -37,6 +37,7 @@ const powerBys = [
   ["React", "https://reactjs.org/"],
   ["Gatsby", "https://www.gatsbyjs.org/"],
   ["GitHub Pages", "https://pages.github.com/"],
+  ["Coding.NET Pages", "https://coding.net"],
   ["TypeScript", "https://www.typescriptlang.org/"],
 ].map(([name, link]) => ({ name, link }));
 
