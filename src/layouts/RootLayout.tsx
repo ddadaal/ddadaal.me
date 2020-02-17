@@ -65,13 +65,13 @@ const RootLayout: React.FC<Props> = ({location, articles, siteMetadata, tags, ch
               {rel: "icon", type: "image/png", href: icon512},
               {rel: "shortcut icon", type: "image/png", href: icon512},
             ]}
-          //script={[
-          //{
-          //type: "text/javascript",
-          //src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
-          //async: true,
-          //},
-          //]}
+            script={[
+              {
+                type: "text/javascript",
+                src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
+                async: true,
+              },
+            ]}
           />
           <UpdatePop />
           <ToTop />
