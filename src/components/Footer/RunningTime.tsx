@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from "react";
-import {DateTime} from "luxon";
+import React, { useState, useEffect } from "react";
+import { DateTime } from "luxon";
 import lang from "@/i18n/lang";
 import LocalizedString from "@/i18n/LocalizedString";
+import { UncontrolledTooltip } from "reactstrap";
+import { formatDateTime } from '@/utils/datetime';
 
-// 2018-11-17 14:51
-const startTime = DateTime.utc(2018, 11, 17, 6, 51);
+// 2018-11-17 14:51 UTC+8
+const startTime = DateTime.utc(2018, 11, 17, 6, 51).toLocal();
 
 const root = lang.footer;
 
@@ -22,13 +24,17 @@ export function RunningTime() {
     }
   }, []);
 
+  const replacements = [diff.days, diff.hours, diff.minutes, Math.floor(diff.seconds)]
+    .map((data, i) => <strong key={i}>{data}</strong>);
+
   return (
     <p>
-      📅 <LocalizedString id={root.runningTime} replacements={[
-        diff.days,
-        diff.hours,
-        diff.minutes,
-        Math.floor(diff.seconds)]} />
+      <UncontrolledTooltip placement="auto-end" target="time">
+        <span>{formatDateTime(startTime)}</span>
+      </UncontrolledTooltip>
+      <span id="time">
+        📅 <LocalizedString id={root.runningTime} replacements={replacements} />
+      </span>
     </p>
   );
 }

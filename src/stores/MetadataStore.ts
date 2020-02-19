@@ -5,6 +5,7 @@ import { groupBy } from "@/utils/groupBy";
 import { useMemo, useCallback } from "react";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import { DateTime } from "luxon";
+import { formatDateTime } from '@/utils/datetime';
 
 export type LangPathMap = Map<string, string>;
 
@@ -138,7 +139,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
   }, [tagMap]);
 
   const formattedLastUpdate = useMemo(() => {
-    return DateTime.fromISO(siteMetadata.lastUpdated).toFormat("yyyy-MM-dd HH:mm:ss 'UTC'Z");
+    return formatDateTime(DateTime.fromISO(siteMetadata.lastUpdated));
   }, [siteMetadata.lastUpdated]);
 
   return {
