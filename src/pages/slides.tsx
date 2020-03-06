@@ -15,7 +15,7 @@ import { PageMetadata } from "@/components/PageMetadata";
 
 interface Props {
   data: {
-    allSlides: {
+    allSlide: {
       nodes: { name: string; html_url: string }[];
     };
   };
@@ -24,7 +24,7 @@ interface Props {
 const root = lang.resources.slides;
 
 const Slides: React.FC<Props> = (props) => {
-  const { data: { allSlides: { nodes } } } = props;
+  const { data: { allSlide: { nodes } } } = props;
 
   const i18nStore = useStore(I18nStore);
 
@@ -116,7 +116,7 @@ const PreNodeName = styled.a`
 
 export const query = graphql`
   query Slides {
-    allSlides(filter: {type: { eq: "dir" }}) {
+    allSlide(filter: {type: { eq: "dir" }}) {
       nodes {
         name
         html_url

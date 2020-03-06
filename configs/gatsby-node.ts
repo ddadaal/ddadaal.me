@@ -2,8 +2,9 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 import path from "path";
-import { CreatePagesArgs } from "gatsby";
+import { CreatePagesArgs, SourceNodesArgs } from "gatsby";
 import GitHubSlugger from "github-slugger";
+import fetch from "node-fetch";
 
 const indexTemplate = path.resolve("src/templates/ArticleListPageTemplate.tsx");
 const articleTemplate = path.resolve("src/templates/ArticlePageTemplate.tsx");
@@ -199,3 +200,30 @@ function createArticlePages(createPage: CreatePageFn, redirect: CreateRedirectFn
 }
 
 
+// Create slides nodes
+export const sourceNodes = async ({
+  actions: { createNode },
+  createContentDigest
+}: SourceNodesArgs) => {
+  const slidesUrl= `https://api.github.com/repos/ddadaal/Slides/contents/`;
+  const result = await (await fetch(slidesUrl, {
+    headers: {
+      'Content-Type': 'application/json',
+      // Set the token if ACTIONS_TOKEN environment token exists
+      ...process.env.ACTIONS_TOKEN ? {
+        'Authorization': `token ${process.env.ACTIONS_TOKEN}`
+      } : null
+    },
+  })).json();
+
+  result.forEach((x) => {
+    createNode({
+      ...x,
+      id: x.sha,
+      internal: {
+        type: "Slide",
+        contentDigest: createContentDigest(x),
+      }
+    });
+  });
+}

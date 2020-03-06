@@ -1,5 +1,6 @@
 require("ts-node").register();
 
-const { createPages } = require("./configs/gatsby-node");
+const { createPages, sourceNodes } = require("./configs/gatsby-node");
 
 exports.createPages = createPages;
+exports.sourceNodes = sourceNodes;
