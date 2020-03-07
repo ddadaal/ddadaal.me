@@ -70,7 +70,7 @@ export default {
       info: "Number of results: {}",
     },
     footer: {
-      codeBy: "Coded proudly by {}",
+      codeBy: "Website coded proudly by {}",
       themedWith: "Themed with",
       poweredBy: "Powered by",
       license: "Articles are licensed under {}",

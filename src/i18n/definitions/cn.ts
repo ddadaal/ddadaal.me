@@ -70,7 +70,7 @@ export default {
       info: "结果数：{}",
     },
     footer: {
-      codeBy: "由{}自豪地编写",
+      codeBy: "本网站由{}自豪地编写",
       themedWith: "描绘主题",
       poweredBy: "强力驱动",
       license: "本站文章在{}协议下授权",
