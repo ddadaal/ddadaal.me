@@ -22,7 +22,7 @@ const FeedbackPage: React.FC = () => {
         <p><LocalizedString id={root.paragraph1} /></p>
         <p><LocalizedString id={root.paragraph2} /></p>
         <p><LocalizedString id={root.paragraph3} /></p>
-        <Contacts color={"black"} size={1.4} />
+        <Contacts color={"white"} size={1.4} />
         <CommentPanelWithCurrentLanguage articleId="feedback" articleTitle="反馈" />
       </Page>
     </HeaderFooterLayout>
