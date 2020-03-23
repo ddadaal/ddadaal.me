@@ -19,6 +19,7 @@ import { heights } from "@/styles/variables";
 import BannerLayout from "@/layouts/BannerLayout";
 import { getLanguage } from "@/i18n/definition";
 import { PageMetadata } from "@/components/PageMetadata";
+import { DateTime } from "luxon";
 
 interface Props {
   pageContext: {
@@ -115,7 +116,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           locale={language.metadata.detailedId}
           meta={[
             { name: "og:type", content: "article" },
-            { name: "og:article:published_time", content: date },
+            { name: "og:article:published_time", content: DateTime.fromSQL(date, { zone: "Asia/Shanghai" }).toISO() },
             ...(tags || []).map((x) => ({
               name: "og:article:tag",
               content: x,

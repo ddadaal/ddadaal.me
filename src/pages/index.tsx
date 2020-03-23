@@ -100,6 +100,14 @@ const links = [
   ["about-me", FaMale, root.links.aboutMe],
 ] as const;
 
+const key = {
+  a: ["b", "c"],
+  c: ["d", "c"],
+} as const;
+
+type Keys = { [k in keyof typeof key]: k[0] };
+
+
 function selectDate(): string {
   const hour = new Date().getHours();
   if (hour >= 6 && hour <= 11) {
