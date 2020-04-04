@@ -63,5 +63,10 @@
     "tag": "life",
     "cn": "生活",
     "en": "Life"
+  },
+  {
+    "tag": "editor",
+    "cn": "编辑器",
+    "en": "Editor"
   }
 ]
