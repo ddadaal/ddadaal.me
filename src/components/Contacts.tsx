@@ -17,9 +17,7 @@ const contacts = [
   [FaGithub, "https://github.com/ddadaal", "GitHub: ddadaal"],
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
-  [FaQuora, "https://www.quora.com/profile/Chen-Junda-3", "Quora: Chen Junda"],
   [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
-  [FaStackOverflow, "https://stackoverflow.com/users/2725415/chen-junda", "Stack Overflow: Chen Junda"],
 ] as Array<[React.ComponentType, string, string]>;
 
 const Contact = styled.span<{ color: string; size: number }>`
