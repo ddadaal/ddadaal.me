@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Heading } from "@/models/ArticleNode";
 import "@/styles/prism/vscode.css";
@@ -7,6 +7,7 @@ import rehypeReact from "rehype-react";
 import { HtmlAst } from "@/models/HtmlAst";
 import addSlug from "@/components/Article/ContentDisplay/astManipulators/addSlug";
 import addCodeHeader from "@/components/Article/ContentDisplay/astManipulators/addCodeHeader";
+import useConstant from "@/utils/useConstant";
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -22,8 +23,10 @@ const MarkdownDisplay = styled.article`
 `;
 
 const ArticleContentDisplay: React.FC<Props> = ({ htmlAst, headings }) => {
-  addSlug(headings.map((x) => x.slug))(htmlAst);
-  addCodeHeader(htmlAst);
+  useConstant(() => {
+    addSlug(headings.map((x) => x.slug))(htmlAst);
+    addCodeHeader(htmlAst);
+  });
 
   return (
     <MarkdownDisplay className="markdown">
