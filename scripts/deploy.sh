@@ -1,5 +1,5 @@
 #!/bin/sh
-CO_REF="e.coding.net/viccrubs/viccrubs.coding.me.git"
+CO_REF="e.coding.net/viccrubs/alternate-ddadaal-me-hosting/alternate-ddadaal-me-hosting.git"
 GITHUB_REF="github.com/ddadaal/ddadaal.me.github.io"
 FQDN="ddadaal.me"
 
