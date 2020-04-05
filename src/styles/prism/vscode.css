@@ -56,6 +56,11 @@ pre[class*="language-"] {
 	padding: 1.25em 1em;
 }
 
+@media (max-width: 992px) {
+  pre[class*="language-"] {
+    padding: 2em 1.25em 1em;
+  }
+}
 .token.comment,
 .token.block-comment,
 .token.prolog,
