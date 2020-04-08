@@ -205,18 +205,8 @@ export const sourceNodes = async ({
   actions: { createNode },
   createContentDigest
 }: SourceNodesArgs) => {
-  const slidesUrl= `https://api.github.com/repos/ddadaal/Slides/contents/`;
-  const result = await (await fetch(slidesUrl, {
-    headers: {
-      'Content-Type': 'application/json',
-      // Set the token if ACTIONS_TOKEN environment token exists
-      ...process.env.ACTIONS_TOKEN ? {
-        'Authorization': `token ${process.env.ACTIONS_TOKEN}`
-      } : null
-    },
-  })).json();
 
-  result.forEach((x) => {
+  function createNodeFromSlide(x) {
     createNode({
       ...x,
       id: x.sha,
@@ -225,5 +215,44 @@ export const sourceNodes = async ({
         contentDigest: createContentDigest(x),
       }
     });
-  });
+  }
+
+  const slidesUrl= `https://api.github.com/repos/ddadaal/Slides/contents/`;
+
+  try {
+    const result = await (await fetch(slidesUrl, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Set the token if ACTIONS_TOKEN environment token exists
+        ...process.env.ACTIONS_TOKEN ? {
+          'Authorization': `token ${process.env.ACTIONS_TOKEN}`
+        } : null
+      },
+    })).json();
+
+    result.forEach(createNodeFromSlide);
+
+  } catch (e) {
+    console.warn("Error occurred when requesting to GitHub to fetch my slides list.");
+    console.warn("An sample Slide node is provided to Gatsby to make the website run without Slides page");
+    console.warn(`Error is ${e}`);
+
+    const dummy = {
+      "name": "20161218-2016年微软俱乐部hackathon",
+      "path": "20161218-2016年微软俱乐部hackathon",
+      "sha": "f4b5ed77d6dd8d493b869b1034403529668ac407",
+      "size": 0,
+      "url": "https://api.github.com/repos/ddadaal/Slides/contents/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon?ref=master",
+      "html_url": "https://github.com/ddadaal/Slides/tree/master/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon",
+      "git_url": "https://api.github.com/repos/ddadaal/Slides/git/trees/f4b5ed77d6dd8d493b869b1034403529668ac407",
+      "download_url": null,
+      "type": "dir",
+      "_links": {
+        "self": "https://api.github.com/repos/ddadaal/Slides/contents/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon?ref=master",
+        "git": "https://api.github.com/repos/ddadaal/Slides/git/trees/f4b5ed77d6dd8d493b869b1034403529668ac407",
+        "html": "https://github.com/ddadaal/Slides/tree/master/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon"
+      }
+    };
+    createNodeFromSlide(dummy);
+  }
 }

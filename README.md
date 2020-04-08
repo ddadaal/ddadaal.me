@@ -82,11 +82,13 @@ If you encountered download error mentioned above, follow the following steps to
 
 ### Weird Connection Reset when making request to GitHub API
 
-After using my own implementation to fetch Slides information from GitHub at [commit 0d2c82c](https://github.com/ddadaal/ddadaal.me/commit/0d2c82c3a4e9231a0f2023a6f247b40f028df2f5), I have got `ECONNRESET` when making request to GitHub API during build if no `ACTION_TOKEN` env is set. It would only affect the `Slides` page, so it could be ignored if you avoid accessing the `Slides` page.
+After using my own implementation to fetch Slides information from GitHub at [commit 0d2c82c](https://github.com/ddadaal/ddadaal.me/commit/0d2c82c3a4e9231a0f2023a6f247b40f028df2f5), I have got `ECONNRESET` when making request to GitHub API during build if no `ACTIONS_TOKEN` env is set. It would only affect the `Slides` page, so it could be ignored if you avoid accessing the `Slides` page.
 
-To fix this, you can set a `ACTION_TOKEN` env with a valid GitHub Personally Access Token (no scope needed) to enable the requst to GitHub. Don't worry, it is only used to access the content of [`ddadaal/Slides`](https://github.com/ddadaal/Slides) repository to generate the contents of my Slides pages.
+To fix this, you can set a `ACTIONS_TOKEN` env with a valid GitHub Personally Access Token (no scope needed) to enable the requst to GitHub. Don't worry, it is only used to access the content of [`ddadaal/Slides`](https://github.com/ddadaal/Slides) repository to generate the contents of my Slides pages.
 
-I have no idea why it would happen, because technically GitHub API v3 does allow for anonymous requests, and even though anonymous requests have rate limit, the error when the rate limit is exceeded is **403 Forbidden** rather than a connection request. It is also weird to be able to fix this problem with a simple token. It might just a result of my bad internet connection, and you might not encounter this problem at all, but if you do, try the `ACTION_TOKEN` env solution.
+I have no idea why it would happen, because technically GitHub API v3 does allow for anonymous requests, and even though anonymous requests have rate limit, the error when the rate limit is exceeded is **403 Forbidden** rather than a connection request. It is also weird to be able to fix this problem with a simple token. It might just a result of my bad internet connection, and you might not encounter this problem at all, but if you do, try the `ACTIONS_TOKEN` env solution.
+
+Update: Error handling for such error has been added. When the request to GitHub API fails, a warning is printed on the console, and a dummy Slide node is created, so that the whole application can still run.
 
 ## License
 
