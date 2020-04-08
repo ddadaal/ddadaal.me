@@ -2,7 +2,7 @@
 
 id: about-me
 absolute_path: /about/me
-date: 2019-11-30 09:23
+date: 2020-04-08 16:15
 title: About Me
 ignored_in_list: true
 lang: en
@@ -24,6 +24,8 @@ hide_heading: false
 - Huge fan of Battlefield, FPS and all games
 - **Badminton**
 - Prefer **pure music** (symphony, classic, piano, epic/trailer music...). Interested in **choir** recently
+- Like **movies** and **musicals**. Want to see a musical on live on theaters.
+  - The movies and musicals I have seen are on my [douban](https://www.douban.com/people/183064260/) profile.
 - Started playing **electronic piano** at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recently
 - Consider **solving problems and contributing to the world** as the core value of everything in the world, and respect and love whoever and whatever does it.
 - Hope my work can help others work and live better
