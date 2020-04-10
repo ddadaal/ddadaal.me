@@ -253,6 +253,25 @@ Onivim 2开发时间挺长的，到现在还在Alpha阶段，但是可以下载�
 
 对于这个项目我个人来说感觉是比较有特色的：原生技术栈和VSCode扩展支持，性能和扩展性都有了，确实很吸引人。但是项目本身并非完全免费的，非商业和教育使用免费，商业使用是收费的（[README.md](https://github.com/onivim/oni2#license)），这可能会影响其生态的建设。另外，这个技术栈极为小众（你听说过Reason语言吗？），不太清楚开发团队是否实际能否驾驭，按时完全项目的开发。
 
+## JetBrains IDE LightEdit模式（2020-4-10更新）
+
+JetBrains系的IDE在2020.1更新后加入了一个LightEdit模式（[官方博文](https://blog.jetbrains.com/idea/2020/04/lightedit-mode)）。就像名字所说，这是个轻量（Light）的编辑（Edit）模式，就像简单的文本编辑器一样，只提供一些简单的功能，但是保证较快的速度。
+
+其实我一开始见到这个模式的时候不以为意，想我有VSCode、Vim，为什么要yet another editor呢？但是它更新后我尝试了一下，却非常惊讶。
+
+在**已经打开IDE**后，启动它太tmd的快了！
+
+![打开了IDE后启动LightEdit模式](lightedit-with-opened-ide.gif)
+
+速度和原生vim和神器记事本有一拼！
+
+而且还有代码高亮、Markdown预览（虽然idea的Markdown预览太垃圾了）等常用的功能，和原生的vim相比，它对鼠标操作的支持更好（简单的文本编辑时鼠标定位还是比vim用键盘更快）。
+
+但是这有个前提，就是需要先启动IDE，才能获得这么快的启动速度。如果不先启动IDE，则速度特别慢，感觉是得先启动IDE再启动LightEdit窗口。但是对于Java程序员来说，一般IDE都是一直打开的，所以缺点应该不太严重。
+
+![未打开IDE，直接启动LightEdit](lightedit-without-opened-ide.gif)
+
+
 # 总结：二者互补
 
 有的人认为，**应该在不同场景下选用最适合的工具**。最典型的例子就是苹果：iOS给手机用，iPadOS给iPad用，macOS给电脑用，互不侵犯。Unix哲学也体现了这个观点：Do one thing and do it well.
