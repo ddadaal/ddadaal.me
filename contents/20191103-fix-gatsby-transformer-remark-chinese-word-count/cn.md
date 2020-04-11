@@ -30,6 +30,8 @@ https://github.com/gatsbyjs/gatsby/blob/3aa41fb8dbf7fe294f35a706424c6b2b11345881
 
 这里需要注意一下，`265`字/秒这个速度对英文来说可能比较合适，但是对中文来说是比较慢的。但是对于不同种类的文章来说，WPM是不一样的，比如读小说和读专业书的速度肯定是相差几倍，所以WPM取多少没有一个固定值。根据网上查到的资料（其实知乎上的某相关问题……）和自己的体验，在我的网站中对中文文章平均WPM取的值为`500`。
 
+2020-4-11更新：gatsby的[PR #21312](https://github.com/gatsbyjs/gatsby/pull/21312)对中文字符和日文字符的timeToRead算法进行了一些改进，目前的结果较为正常，可以直接使用，不需要像上一段一样使用不一样的WPM重新计算timeToRead了。
+
 # 替代方法：移植timeToRead统计算法
 
 `wordCount.words`和`timeToRead`中词数的算法是不一样的：
