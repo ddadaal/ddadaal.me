@@ -5,7 +5,6 @@ export default {
     langStrings: ["cn", "zh-CN", "zh"],
     detailedId: "zh-CN",
     name: "简体中文",
-    averageWpm: 500,
   },
   definitions: {
     pageMedatadata: {

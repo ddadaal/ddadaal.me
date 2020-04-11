@@ -50,8 +50,6 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
 
   const dateObject = DateTime.fromSQL(date);
 
-  const calculatedTimeToRead = Math.floor(timeToRead * 265 / getLanguage(currentArticleLanguage).metadata.averageWpm);
-
   return (
     <ContainerRow>
 
@@ -63,7 +61,7 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
       {/* <Span><FaClock /><LocalizedString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
       <Span>
         <FaUserClock />
-        <LocalizedString id={root.timeToRead} replacements={[calculatedTimeToRead]} />
+        <LocalizedString id={root.timeToRead} replacements={[timeToRead]} />
       </Span>
       <Span>
         <FaGlobe />

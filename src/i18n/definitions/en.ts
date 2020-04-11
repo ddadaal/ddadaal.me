@@ -5,7 +5,6 @@ export default {
     langStrings: ["en", "en-US"],
     detailedId: "en-US",
     name: "English",
-    averageWpm: 265,
   },
   definitions: {
     pageMedatadata: {
