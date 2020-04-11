@@ -29,7 +29,7 @@
     "@types/react-responsive": "8.0.2",
     "bootstrap": "4.4.1",
     "classnames": "2.2.6",
-    "gatsby": "2.20.13",
+    "gatsby": "2.20.17",
     "gatsby-plugin-canonical-urls": "2.2.1",
     "gatsby-plugin-catch-links": "2.2.1",
     "gatsby-plugin-feed": "2.4.1",
@@ -38,7 +38,7 @@
     "gatsby-plugin-manifest": "2.3.3",
     "gatsby-plugin-nprogress": "2.2.1",
     "gatsby-plugin-offline": "3.1.2",
-    "gatsby-plugin-react-helmet": "3.2.1",
+    "gatsby-plugin-react-helmet": "3.2.2",
     "gatsby-plugin-sass": "2.2.1",
     "gatsby-plugin-sharp": "2.5.4",
     "gatsby-plugin-sitemap": "2.3.1",
@@ -62,7 +62,7 @@
     "prismjs": "1.20.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-helmet": "5.2.1",
+    "react-helmet": "6.0.0",
     "react-icons": "3.9.0",
     "react-responsive": "8.0.3",
     "reactstrap": "8.4.1",
@@ -77,8 +77,8 @@
     "@types/classnames": "2.2.10",
     "@types/history": "4.7.5",
     "@types/luxon": "^1.22.0",
-    "@types/node": "13.11.0",
-    "@types/react": "16.9.32",
+    "@types/node": "13.11.1",
+    "@types/react": "16.9.34",
     "@types/react-dom": "16.9.6",
     "@types/react-helmet": "5.0.15",
     "@types/reactstrap": "8.4.2",
@@ -95,6 +95,6 @@
     "ts-node": "8.8.2",
     "typescript-styled-plugin": "0.15.0",
     "node-fetch": "2.6.0",
-    "@types/node-fetch": "2.5.5"
+    "@types/node-fetch": "2.5.6"
   }
 }
