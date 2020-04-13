@@ -24,7 +24,4 @@
       "autoFix": true
     }
   ],
-  "[markdown]": {
-    "editor.quickSuggestions": true
-  },
 }
