@@ -1,11 +1,11 @@
 ---
-id: my-experiences-and-expectation-on-smartwatches
+id: my-experiences-and-expectations-on-smartwatches
 date: 2020-04-13 18:00
 title: 可靠性、辅助功能和多屏协同：我对智能手表的体验和看法
 lang: cn
 tags:
   - thoughts
-  - smartwatches
+  - wearables
   - hands-on
 ---
 
