@@ -1,12 +1,13 @@
 import React from "react";
 import ArticleFrontmatter from "./ArticleFrontmatter";
 import { BannerLayoutTitle } from "@/layouts/BannerLayout";
+import { DateTime } from "luxon";
 
 interface Props {
   title: string;
   id: string;
   tags: string[] | null;
-  date: string;
+  date: DateTime;
   timeToRead: number;
   currentArticleLanguage: string;
 }
@@ -38,6 +39,7 @@ const ArticlePageBanner: React.FC<Props> = ({ title, id, tags, date, timeToRead,
         tags={tags}
         date={date}
         timeToRead={timeToRead}
+        setItemProp={true}
       />
     </>
   );

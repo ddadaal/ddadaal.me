@@ -7,6 +7,8 @@ import { ArticleNode } from "@/models/ArticleNode";
 import { useStore } from "simstate";
 import containsChinese from "@/utils/containsChinese";
 import "./article-item.scss";
+import useConstant from "@/utils/useConstant";
+import { fromArticleTime } from "@/utils/datetime";
 
 interface Props {
   article: ArticleNode;
@@ -26,6 +28,8 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
 
   const langPaths = metadataStore.getLangPathMap(id);
 
+  const dateObject = useConstant(() => fromArticleTime(date));
+
   return (
     <div className="article-item">
       <Link className="article-item__header" to={langPaths.get(language.metadata.id) || langPaths.values().next().value}>
@@ -34,10 +38,11 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
 
       <ArticleFrontmatter
         currentArticleLanguage={currentArticleLanguage}
-        date={date}
+        date={dateObject}
         timeToRead={timeToRead}
         tags={tags}
         articleId={id}
+        setItemProp={false}
       />
 
       <p className="article-item__excerpt">{limitLength(excerpt)}</p>

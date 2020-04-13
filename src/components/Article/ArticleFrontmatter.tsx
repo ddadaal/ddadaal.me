@@ -10,13 +10,15 @@ import MetadataStore from "@/stores/MetadataStore";
 import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
 import { getLanguage } from "@/i18n/definition";
 import { DateTime } from "luxon";
+import useConstant from "@/utils/useConstant";
 
 interface Props {
   articleId: string;
-  date: string;
+  date: DateTime;
   timeToRead: number;
   tags: string[] | null;
   currentArticleLanguage: string;
+  setItemProp: boolean;
 }
 
 const root = langRoot.articleFrontmatter;
@@ -46,17 +48,20 @@ const ContainerRow = styled.div`
 `;
 
 const ArticleFrontmatter: React.FC<Props> = (props) => {
-  const { date, timeToRead, tags, articleId, currentArticleLanguage } = props;
+  const { date, timeToRead, tags, articleId, currentArticleLanguage, setItemProp } = props;
 
-  const dateObject = DateTime.fromSQL(date);
+  const dateString = useConstant(() => date.toFormat("yyyy-MM-dd HH:mm 'UTC'Z"));
 
   return (
     <ContainerRow>
 
       {tags && <Tags ><FaTags />{tags.map((tag) => <ArticleTag tag={tag} key={tag} />)}</Tags>}
-      <Span title={dateObject.toFormat("yyyy-MM-dd HH:mm 'UTC'Z")}>
+      <Span title={dateString} >
         <FaCalendarAlt />
-        {dateObject.toFormat("yyyy-MM-dd HH:mm")}
+        { setItemProp
+          ? <time itemProp="datePublished" dateTime={date.toISO()}>{dateString}</time>
+          : dateString
+        }
       </Span>
       {/* <Span><FaClock /><LocalizedString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
       <Span>
