@@ -29,7 +29,7 @@
     "@types/react-responsive": "8.0.2",
     "bootstrap": "4.4.1",
     "classnames": "2.2.6",
-    "gatsby": "2.20.17",
+    "gatsby": "2.20.18",
     "gatsby-plugin-canonical-urls": "2.2.1",
     "gatsby-plugin-catch-links": "2.2.1",
     "gatsby-plugin-feed": "2.4.1",
