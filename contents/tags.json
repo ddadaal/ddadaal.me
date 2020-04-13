@@ -68,5 +68,10 @@
     "tag": "editor",
     "cn": "编辑器",
     "en": "Editor"
+  },
+  {
+    "tag": "wearables",
+    "cn": "可穿戴设备",
+    "en": "Wearables"
   }
 ]
