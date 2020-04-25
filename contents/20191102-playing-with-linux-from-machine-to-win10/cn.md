@@ -6,6 +6,7 @@ lang: cn
 tags:
   - life
   - hands-on
+  - Linux
 ---
 
 # 从三年前Xubuntu开始

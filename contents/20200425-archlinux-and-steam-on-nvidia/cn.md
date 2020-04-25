@@ -4,7 +4,7 @@ date: 2020-04-25 13:01
 title: 安装Arch Linux并使用N卡玩Steam游戏
 lang: cn
 tags:
-  - linux
+  - Linux
 related:
   - playing-with-linux-from-machine-to-win10
 ---
