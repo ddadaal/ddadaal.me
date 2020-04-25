@@ -138,7 +138,7 @@ module.exports = {
             }
           },
           {
-            resolve: `gatsby-remark-images-zoom`,
+            resolve: `gatsby-remark-images-medium-zoom`,
             options: {
               background: "#222",
               zIndex: 1040,
