@@ -17,7 +17,7 @@
     "test": "echo \"no tests specified\"",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "upddep": "ncu -u --registry=https://registry.npm.taobao.org",
+    "upddep": "npx npm-check-updates -u --registry=https://registry.npm.taobao.org",
     "iftb": "npm install --registry=https://registry.npm.taobao.org",
     "tscheck": "tsc -p tsconfig.json --noEmit"
   },
