@@ -2,7 +2,7 @@
 
 id: about-me
 absolute_path: /about/me
-date: 2020-05-15 21:50
+date: 2020-06-01 17:28
 title: 关于我
 ignored_in_list: true
 lang: cn
@@ -54,6 +54,6 @@ hide_heading: false
 | ThinkPad X1 Carbon 2018           | i7 8550U/16G/512G/2K HDR                 | 2018年4月  |
 | MSI GT72VR 6RD                    | i7 6700HQ/16G/GTX 1060/512G+1T/1080P75Hz | 2016年9月  |
 | LG 27UL550                        | 27寸/3840*2160/60Hz                      | 2019年12月 |
-| Samsung Galaxy S20                | 高通骁龙865/12G/128G/1080P120            | 2020年5月  |
+| Mi 9 SE                           | 高通骁龙712/6G/128G/5.99寸1080P AMOLED   | 2019年5月  |
 | Amazfit Watch GTS                 | N/A                                      | 2019年9月  |
 | Sennheiser Momentum True Wireless | N/A                                      | 2019年2月  |
