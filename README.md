@@ -34,7 +34,7 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 - [SCSS](https://sass-lang.com/): bootstrap used SCSS so...trying to get rid of it in the future
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
-- [ESLint](https://eslint.org/): [tslint is being deprecated](https://medium.com/palantir/tslint-in-2019-1a144c2317a9)! This project is a pioneer in fully leveraging ESLint in a React+TypeScript project!
+- [ESLint](https://eslint.org/): Linter
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
 - [Google Analytics](https://analytics.google.com/analytics/web/): for web analytics
 - [GitHub Pages](https://pages.github.com): free and popular static website host
@@ -82,15 +82,9 @@ If you encountered download error mentioned above, follow the following steps to
 3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
 4. `npm install` and you are ready to go!
 
-### Weird Connection Reset when making request to GitHub API
+### Handling network errors when making request to GitHub API
 
-After using my own implementation to fetch Slides information from GitHub at [commit 0d2c82c](https://github.com/ddadaal/ddadaal.me/commit/0d2c82c3a4e9231a0f2023a6f247b40f028df2f5), I have got `ECONNRESET` when making request to GitHub API during build if no `ACTIONS_TOKEN` env is set. It would only affect the `Slides` page, so it could be ignored if you avoid accessing the `Slides` page.
-
-To fix this, you can set a `ACTIONS_TOKEN` env with a valid GitHub Personally Access Token (no scope needed) to enable the requst to GitHub. Don't worry, it is only used to access the content of [`ddadaal/Slides`](https://github.com/ddadaal/Slides) repository to generate the contents of my Slides pages.
-
-I have no idea why it would happen, because technically GitHub API v3 does allow for anonymous requests, and even though anonymous requests have rate limit, the error when the rate limit is exceeded is **403 Forbidden** rather than a connection request. It is also weird to be able to fix this problem with a simple token. It might just a result of my bad internet connection, and you might not encounter this problem at all, but if you do, try the `ACTIONS_TOKEN` env solution.
-
-Update: Error handling for such error has been added. When the request to GitHub API fails, a warning is printed on the console, and a dummy Slide node is created, so that the whole application can still run.
+A network request to GitHub will be started when running the application to retrieve my slides information from my repo, but such network might fail. Error handling for such errors has been added, so that when the request to GitHub API fails, a warning is printed on the console, and a dummy Slide node is created, so that the whole application can still run.
 
 ## License
 
