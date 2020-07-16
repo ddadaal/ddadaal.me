@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
+import { LocalizedString } from "simstate-i18n";
+import { lang } from "@/i18n";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import friendLinks from "@/configs/friendLinks";

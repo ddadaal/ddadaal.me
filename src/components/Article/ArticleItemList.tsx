@@ -1,9 +1,9 @@
 import React from "react";
 import MetadataStore from "@/stores/MetadataStore";
-import I18nStore from "@/stores/I18nStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
 import { useStore } from "simstate";
+import { useI18nStore } from "@/i18n";
 
 interface Props {
   ids: string[];
@@ -14,12 +14,12 @@ interface Props {
 
 const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => {
 
-  const i18nStore = useStore(I18nStore);
+  const i18nStore = useI18nStore();
   const metadataStore = useStore(MetadataStore);
 
   const items = ids.map((id) => {
     const item = metadataStore.articleIdMap.get(id);
-    if (!item) { throw `Invalid articleId ${id}` };
+    if (!item) { throw `Invalid articleId ${id}`; }
     return item;
   });
 
@@ -27,7 +27,7 @@ const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => 
     <div>
       {items
         .map((nodes) => {
-          const node = metadataStore.getArticleOfLang(nodes[0].frontmatter.id, i18nStore.language);
+          const node = metadataStore.getArticleOfLang(nodes[0].frontmatter.id, i18nStore.currentLanguage);
           return (
             <ArticleItem
               article={node}

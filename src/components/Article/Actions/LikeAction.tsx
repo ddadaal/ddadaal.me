@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { FaThumbsUp } from "react-icons/fa";
 import Action from "@/components/Article/Actions/Action";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
+import { LocalizedString } from "simstate-i18n";
+import { lang } from "@/i18n";
 
 interface Props {
   articleId: string;

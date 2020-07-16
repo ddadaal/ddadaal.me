@@ -1,5 +1,5 @@
 import { ArticleIdMap } from "@/models/ArticleIdMap";
-import { Language } from "@/i18n/definition";
+import { Language } from "@/i18n";
 import { ArticleNode } from "@/models/ArticleNode";
 import { groupBy } from "@/utils/groupBy";
 import { useMemo, useCallback } from "react";
@@ -10,7 +10,7 @@ import { formatDateTime } from '@/utils/datetime';
 export type LangPathMap = Map<string, string>;
 
 export function matchLangStringWithCurrentLanguage(langString: string, currentLanguage: Language): boolean {
-  return currentLanguage.metadata.langStrings.includes(langString);
+  return currentLanguage.langStrings.includes(langString);
 }
 
 function noSuchArticle(articleId: string): string {
@@ -34,7 +34,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
             tagMap.set(tag, { count: 1, variations: tag });
           } else {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            tagMap.get(tag)!!.count++;
+            tagMap.get(tag)!.count++;
           }
         });
       }
@@ -105,7 +105,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
     if (typeof variations === "string") {
       return variations;
     }
-    return variations[language.metadata.id] || variations[0];
+    return variations[language.id] || variations[0];
   }, [tagMap]);
 
   const getAllVariationsOfTag = useCallback((tag: string): string[] => {
@@ -126,7 +126,7 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
       if (typeof variations === "string") {
         tags.push(variations);
       } else {
-        tags.push(variations[language.metadata.id] || variations[0]);
+        tags.push(variations[language.id] || variations[0]);
       }
     });
 

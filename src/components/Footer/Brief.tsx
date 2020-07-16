@@ -1,7 +1,7 @@
 import React from "react";
-import LocalizedString from "@/i18n/LocalizedString";
+import { LocalizedString } from "simstate-i18n";
 import { Link } from "gatsby";
-import lang from "@/i18n/lang";
+import { lang } from "@/i18n";
 import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
 import Contacts from "@/components/Contacts";

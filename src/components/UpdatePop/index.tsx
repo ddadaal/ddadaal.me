@@ -1,6 +1,6 @@
 import React from "react";
-import lang from "@/i18n/lang";
-import LocalizedString from "@/i18n/LocalizedString";
+import { lang } from "@/i18n";
+import { LocalizedString } from "simstate-i18n";
 import styled, { keyframes } from "styled-components";
 import { heights } from "@/styles/variables";
 import "./style.scss";

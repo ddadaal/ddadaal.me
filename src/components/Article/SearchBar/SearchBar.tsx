@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
-import lang from "@/i18n/lang";
+import { lang } from "@/i18n";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
-import useLocalized from "@/i18n/useLocalize";
+import { useLocalized } from "simstate-i18n";
 
 interface Props {
   onSearch?(): void;

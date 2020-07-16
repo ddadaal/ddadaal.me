@@ -2,10 +2,8 @@ import React from "react";
 import { graphql } from "gatsby";
 import BannerLayout, { BannerLayoutTitle, BannerLayoutDescription } from "@/layouts/BannerLayout";
 import styled from "styled-components";
-import lang from "@/i18n/lang";
+import { lang, useI18nStore } from "@/i18n";
 import Page from "@/layouts/Page";
-import { useStore } from "simstate";
-import I18nStore from "@/stores/I18nStore";
 import { FaGithub } from "react-icons/fa";
 import { Slide } from "@/models/Slide";
 import { colors } from "@/styles/variables";
@@ -26,7 +24,7 @@ const root = lang.resources.slides;
 const Slides: React.FC<Props> = (props) => {
   const { data: { allSlide: { nodes } } } = props;
 
-  const i18nStore = useStore(I18nStore);
+  const i18nStore = useI18nStore();
 
   const title = i18nStore.translate(root.title) as string;
   const description = i18nStore.translate(root.description) as string;

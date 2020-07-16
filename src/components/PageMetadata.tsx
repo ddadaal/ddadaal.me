@@ -2,8 +2,7 @@ import React from "react";
 import { Helmet, HelmetProps } from "react-helmet";
 import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
-import I18nStore from "@/stores/I18nStore";
-import lang from "@/i18n/lang";
+import { lang, Language, useI18nStore } from "@/i18n";
 
 const root = lang.pageMedatadata;
 
@@ -18,7 +17,7 @@ interface Props extends HelmetProps {
 
 export const PageMetadata: React.FC<Props> = ({ title, titleId, description, descriptionId, meta, url, locale, ...rest }) => {
 
-  const i18nStore = useStore(I18nStore);
+  const i18nStore = useI18nStore();
   const { siteMetadata } = useStore(MetadataStore);
 
   const actualTitle = title ? title : titleId ? i18nStore.translate(titleId) : null;
@@ -27,7 +26,7 @@ export const PageMetadata: React.FC<Props> = ({ title, titleId, description, des
 
   const descriptionStr = description ? description : i18nStore.translate(descriptionId || root.description) as string;
 
-  const localeStr = locale || i18nStore.language.metadata.detailedId;
+  const localeStr = locale || i18nStore.currentLanguage.detailedId;
 
   return (
     <Helmet

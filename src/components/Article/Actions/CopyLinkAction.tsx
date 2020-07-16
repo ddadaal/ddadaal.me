@@ -2,10 +2,10 @@ import React, { useState, useRef, useCallback } from "react";
 
 import { FaLink } from "react-icons/fa";
 import Action from "@/components/Article/Actions/Action";
-import lang from "@/i18n/lang";
+import { lang } from "@/i18n";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
-import LocalizedString from "@/i18n/LocalizedString";
+import { LocalizedString } from "simstate-i18n";
 import { useEventListener } from "@/utils/useEventListener";
 
 const root = lang.articlePage.actions.copyLink;

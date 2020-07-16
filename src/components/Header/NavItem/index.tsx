@@ -1,5 +1,5 @@
 import React from "react";
-import LocalizedString from "@/i18n/LocalizedString";
+import { LocalizedString } from "simstate-i18n";
 import { useStore } from "simstate";
 import LocationStore from "@/stores/LocationStore";
 import NavLink from "@/components/Header/NavLink";

@@ -1,6 +1,6 @@
 import React from "react";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
+import { LocalizedString } from "simstate-i18n";
+import { lang } from "@/i18n";
 import { Badge, ListGroup, ListGroupItem } from "reactstrap";
 import ListGroupHeader from "@/components/UI/ListGroup/ListGroupHeader";
 import friendLinks from "@/configs/friendLinks";

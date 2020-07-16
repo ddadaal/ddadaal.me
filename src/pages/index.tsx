@@ -3,11 +3,10 @@ import React from "react";
 import Contacts from "@/components/Contacts";
 import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
-import lang from "@/i18n/lang";
-import LocalizedString from "@/i18n/LocalizedString";
+import { lang, useI18nStore } from "@/i18n";
+import { LocalizedString } from "simstate-i18n";
 import { FaFile, FaBookOpen, FaMale, FaClock, FaSlideshare, FaRss } from "react-icons/fa";
 import { Link } from "gatsby";
-import I18nStore from "@/stores/I18nStore";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
@@ -67,7 +66,7 @@ const root = lang.homepage;
 const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({ to, mode = "to", children }) => {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useStore(I18nStore);
+  const i18nStore = useI18nStore();
 
   const commonProps = {
     className: "btn btn-info",
@@ -78,7 +77,7 @@ const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({ to, mode = "to
     return (
       <Link {...commonProps} to={to.startsWith("/")
         ? to
-        : metadataStore.getArticleOfLang(to, i18nStore.language).path
+        : metadataStore.getArticleOfLang(to, i18nStore.currentLanguage).path
       }>
         {children}
       </Link>

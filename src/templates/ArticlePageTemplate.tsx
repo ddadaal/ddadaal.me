@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import Page from "@/layouts/Page";
 import CommentPanel from "@/components/Article/CommentPanel";
 import { ArticleNode, Heading } from "@/models/ArticleNode";
-
 import MetadataStore from "@/stores/MetadataStore";
-import I18nStore from "@/stores/I18nStore";
 import TocPanel from "@/components/Article/TocPanel";
 import { Row, Col } from "reactstrap";
 import ArticleContentDisplay from "@/components/Article/ContentDisplay";
@@ -17,7 +15,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
 import { heights } from "@/styles/variables";
 import BannerLayout from "@/layouts/BannerLayout";
-import { getLanguage } from "@/i18n/definition";
+import { getLanguage, useI18nStore } from "@/i18n";
 import { PageMetadata } from "@/components/PageMetadata";
 import { DateTime } from "luxon";
 import useConstant from "@/utils/useConstant";
@@ -85,13 +83,14 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime 
 
 const ArticlePageTemplate: React.FC<Props> = (props) => {
 
-  const i18nStore = useStore(I18nStore);
+  const i18nStore = useI18nStore();
   const metadataStore = useStore(MetadataStore);
   const articleStore = useStore(ArticleStore);
 
   const { id, lang, htmlAst, headings } = props.pageContext;
 
-  const language = getLanguage(lang);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const language = getLanguage(lang)!;
 
   const articleNode = metadataStore.getArticleOfLang(id, language);
 
@@ -117,7 +116,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           title={title}
           description={excerpt}
           url={path}
-          locale={language.metadata.detailedId}
+          locale={language.detailedId}
           meta={[
             { name: "og:type", content: "article" },
             { name: "og:article:published_time", content: publishedTime.toISO() },
@@ -129,7 +128,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
               .filter((x) => x !== lang)
               .map((x) => ({
                 name: "og:locale:alternate",
-                content: getLanguage(x).metadata.detailedId,
+                content: getLanguage(x)!.detailedId,
               })),
           ]}
         />
@@ -157,7 +156,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           {related ? <RelatedArticles ids={related} /> : null}
           <hr />
           <CommentPanel
-            language={i18nStore.language.metadata.gitalkLangId}
+            language={i18nStore.currentLanguage.gitalkLangId}
             articleId={id}
             articleTitle={title}
           />

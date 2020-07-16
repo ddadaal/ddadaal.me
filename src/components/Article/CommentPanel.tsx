@@ -4,12 +4,10 @@ import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
 
 import "gitalk/dist/gitalk.css";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
+import { LocalizedString } from "simstate-i18n";
+import { lang, en, useI18nStore } from "@/i18n";
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import isServer from "@/utils/isServer";
-import { useStore } from "simstate";
-import I18nStore from "@/stores/I18nStore";
 
 interface Props {
   articleId: string;
@@ -75,9 +73,9 @@ const CommentPanel: React.FC<Props> = (props) => {
 };
 
 const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (props) => {
-  const i18nStore = useStore(I18nStore);
+  const i18nStore = useI18nStore();
 
-  return <CommentPanel {...props} language={i18nStore.language.metadata.gitalkLangId} />;
+  return <CommentPanel {...props} language={i18nStore.currentLanguage.gitalkLangId ?? en.gitalkLangId} />;
 }
 
 export { CommentPanel as default, CommentPanelWithCurrentLanguage };

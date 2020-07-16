@@ -3,7 +3,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import Page from "@/layouts/Page";
 import { Row, Col, Nav as BSNav, NavItem } from "reactstrap";
 import { Link as GatsbyLink } from "gatsby";
-import LocalizedString from "@/i18n/LocalizedString";
+import { LocalizedString } from "simstate-i18n";
 import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import { BannerLayoutTitle } from "@/layouts/BannerLayout";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DateTime } from "luxon";
-import lang from "@/i18n/lang";
-import LocalizedString from "@/i18n/LocalizedString";
+import { lang } from "@/i18n";
+import { LocalizedString } from "simstate-i18n";
 import { UncontrolledTooltip } from "reactstrap";
 import { formatDateTime } from '@/utils/datetime';
 

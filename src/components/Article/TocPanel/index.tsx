@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Heading } from "@/models/ArticleNode";
 import { MdToc } from "react-icons/md";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
+import { LocalizedString } from "simstate-i18n";
+import { lang } from "@/i18n";
 import styled from "styled-components";
 import { heights, colors } from "@/styles/variables";
 import ScrollLinkToAnchor from "./ScrollLinkToAnchor";

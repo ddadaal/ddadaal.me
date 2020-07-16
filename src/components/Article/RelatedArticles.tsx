@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import lang from "@/i18n/lang";
-import LocalizedString from "@/i18n/LocalizedString";
+import { lang } from "@/i18n";
+import { LocalizedString } from "simstate-i18n";
 import ArticleCard from "@/components/Article/ArticleCard";
 import styled from "styled-components";
 

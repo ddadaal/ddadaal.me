@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import I18nStore from "@/stores/I18nStore";
 import MetadataStore from "@/stores/MetadataStore";
 import ArticleFrontmatter from "../ArticleFrontmatter";
 import { ArticleNode } from "@/models/ArticleNode";
@@ -9,6 +8,7 @@ import containsChinese from "@/utils/containsChinese";
 import "./article-item.scss";
 import useConstant from "@/utils/useConstant";
 import { fromArticleTime } from "@/utils/datetime";
+import { useI18nStore } from "@/i18n";
 
 interface Props {
   article: ArticleNode;
@@ -23,7 +23,7 @@ function limitLength(content: string): string {
 const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
   const { frontmatter: { id, title, tags, date }, timeToRead, excerpt } = article;
 
-  const { language } = useStore(I18nStore);
+  const { currentLanguage } = useI18nStore();
   const metadataStore = useStore(MetadataStore);
 
   const langPaths = metadataStore.getLangPathMap(id);
@@ -32,7 +32,7 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
 
   return (
     <div className="article-item">
-      <Link className="article-item__header" to={langPaths.get(language.metadata.id) || langPaths.values().next().value}>
+      <Link className="article-item__header" to={langPaths.get(currentLanguage.id) || langPaths.values().next().value}>
         {title}
       </Link>
 

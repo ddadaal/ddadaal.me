@@ -1,8 +1,8 @@
 import React from "react";
 import Page from "@/layouts/Page";
 import { BannerLayoutTitle } from "@/layouts/BannerLayout";
-import lang from "@/i18n/lang";
-import LocalizedString from "@/i18n/LocalizedString";
+import { lang } from "@/i18n";
+import { LocalizedString } from "simstate-i18n";
 import Contacts from "@/components/Contacts";
 import { CommentPanelWithCurrentLanguage } from "@/components/Article/CommentPanel";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";

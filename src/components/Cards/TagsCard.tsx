@@ -1,8 +1,8 @@
 import React from "react";
-import lang from "@/i18n/lang";
+import { lang } from "@/i18n";
 import { CardBody } from "reactstrap";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
-import LocalizedString from "@/i18n/LocalizedString";
+import { LocalizedString } from "simstate-i18n";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";

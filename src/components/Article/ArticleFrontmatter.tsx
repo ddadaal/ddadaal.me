@@ -1,6 +1,6 @@
 import React from "react";
-import langRoot from "@/i18n/lang";
-import LocalizedString from "@/i18n/LocalizedString";
+import { lang, getLanguage } from "@/i18n";
+import { LocalizedString } from "simstate-i18n";
 import styled from "styled-components";
 import { FaCalendarAlt, FaTags, FaGlobe, FaUserClock } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
@@ -8,7 +8,6 @@ import { Link } from "gatsby";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
-import { getLanguage } from "@/i18n/definition";
 import { DateTime } from "luxon";
 import useConstant from "@/utils/useConstant";
 
@@ -21,7 +20,7 @@ interface Props {
   setItemProp: boolean;
 }
 
-const root = langRoot.articleFrontmatter;
+const root = lang.articleFrontmatter;
 
 const Span = styled.span`
   margin-right: 8px;
@@ -100,10 +99,10 @@ const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: st
   return (
     <>
       <DisabledLangLink>
-        {getLanguage(currentArticleLanguage).metadata.name}
+        {getLanguage(currentArticleLanguage)!.name}
       </DisabledLangLink>
       {Array.from(langPathMap.entries()).map(([lang, path]) => (
-        <LangLink key={lang} to={path}>{getLanguage(lang).metadata.name}</LangLink>
+        <LangLink key={lang} to={path}>{getLanguage(lang)!.name}</LangLink>
       ))}
     </>
   );

@@ -2,12 +2,12 @@ import React from "react";
 import { CardBody, CardText } from "reactstrap";
 import { FaCode, FaRss, FaRegCommentDots } from "react-icons/fa";
 import { Link } from "gatsby";
-import LocalizedString from "@/i18n/LocalizedString";
-import lang from "@/i18n/lang";
+import { LocalizedString } from "simstate-i18n";
+import { lang } from "@/i18n";
 
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
-import useLocalized from "@/i18n/useLocalize";
+import { useLocalized } from "simstate-i18n";
 import styled from "styled-components";
 
 const BlockContainer = styled.div`
