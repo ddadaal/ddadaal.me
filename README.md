@@ -6,7 +6,6 @@
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 [![RSS Subscribes](https://img.shields.io/badge/dynamic/json?color=ffa500&label=RSS%20Subscribes&query=%24.data.totalSubs&url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dfeedly%257Cinoreader%26queryKey%3Dhttps%3A%2F%2Fddadaal.me%2Frss.xml&logo=rss&style=flat-square)](https://ddadaal.me/rss.xml)
 
-
 ddadaal.me (previously VicBlog) is the personal website of [ddadaal](https://ddadaal.me).
 
 Currently it is built with [Gatsby](https://gatsbyjs.com).
@@ -16,11 +15,11 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 ## Features
 
 - Static website with modern web technologies
+- Built without templates
 - Auto-generated RSS Feed at [/rss.xml](https://ddadaal.me/rss.xml)
 - Synchronous & Native **Search**
     - Native support for searching articles without any third-party services
-- Progressive Web Application
-- Support multiple languages (Chinese & English)
+- Support multiple languages (Chinese & English) and dynamically changing languages
 - Articles written on markdown; Source code and contents separated
     - Supports inline react components
 - Auto generated [slide directory](https://ddadaal.me/slides) using GitHub API v3 on every build
@@ -30,19 +29,20 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 - [Gatsby](https://www.gatsbyjs.org/): the blazing-fast and flexible static site generator with a big community for [React](https://facebook.github.io/react/)
 - [TypeScript](https://www.typescriptlang.org/): the new go-to for any JavaScript projects
 - [simstate](https://github.com/ddadaal/simstate): a self-made simple but enough strongly-typed hooks-based state management
+- [simstate-i18n](https://github.com/ddadaal/simstate-i18n): a self-made dynamic and strongly-typed i18n library based on simstate
 - [styled-components](https://github.com/styled-components/styled-components): component-ize your styles as well
 - [SCSS](https://sass-lang.com/): bootstrap used SCSS so...trying to get rid of it in the future
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
 - [ESLint](https://eslint.org/): Linter
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
-- [Google Analytics](https://analytics.google.com/analytics/web/): for web analytics
+- [Google Analytics](https://analytics.google.com/analytics/web/) and [Umeng](https://www.umeng.com/): for web analytics
 - [GitHub Pages](https://pages.github.com): free and popular static website host
 - [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 
 ## Development
 
-npm instead of yarn is preferred, because integrity check in yarn usually requires more information than provided by taobao npm mirror.
+npm instead of yarn is preferred, because integrity check in yarn sometimes needs more information than provided by taobao npm mirror.
 
 Notice: If an environment variable is named `ACTION_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
 
@@ -69,7 +69,9 @@ npm run serve
 npm run upddep
 ```
 
-## Firewall Notice
+## Notice of ***
+
+### sharp binaries
 
 A dependency **sharp** needs to pull [prebuilt binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. GitHub hosts release files on AWS, which is sometimes blocked in China. Failure to download these files will cause failure in installation and following steps.
 
@@ -82,9 +84,11 @@ If you encountered download error mentioned above, follow the following steps to
 3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
 4. `npm install` and you are ready to go!
 
-### Handling network errors when making request to GitHub API
+### handling network errors when making request to GitHub API
 
-A network request to GitHub will be started when running the application to retrieve my slides information from my repo, but such network might fail. Error handling for such errors has been added, so that when the request to GitHub API fails, a warning is printed on the console, and a dummy Slide node is created, so that the whole application can still run.
+A network request to GitHub will be started when running the application to retrieve my slides information from my repo, but such network might fail.
+
+Error handling for such errors has been added, so that when the request to GitHub API fails, a warning is printed on the console, and a dummy Slide node is created, so that the whole application can still run.
 
 ## License
 
