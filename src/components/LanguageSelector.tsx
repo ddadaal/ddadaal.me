@@ -2,25 +2,32 @@ import React from "react";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 
 interface Props {
-  allLanguages: { id: string; name: string }[];
-  changeLanguage(id: string): void;
+  languageNames: {[key: string]: string}
+  changeLanguage(id: string): Promise<void>;
   currentLanguage: string;
   prompt: React.ReactNode;
 }
 
-const LanguageSelector: React.FC<Props> = ({ allLanguages, changeLanguage, currentLanguage, prompt }) => {
+const LanguageSelector: React.FC<Props> = ({
+  languageNames,
+  changeLanguage,
+  currentLanguage,
+  prompt,
+}) => {
   return (
     <UncontrolledDropdown>
       <DropdownToggle caret={true}>
         {currentLanguage}
       </DropdownToggle>
       <DropdownMenu>
-        <DropdownItem header={true}>{prompt}</DropdownItem>
-        {allLanguages.map((lang) => (
+        <DropdownItem header={true}>
+          {prompt}
+        </DropdownItem>
+        {Object.keys(languageNames).map((id) => (
           <DropdownItem
-            key={lang.id}
-            onClick={() => changeLanguage(lang.id)}>
-            {lang.name}
+            key={id}
+            onClick={() => changeLanguage(id)}>
+            {languageNames[id]}
           </DropdownItem>
         ))}
       </DropdownMenu>

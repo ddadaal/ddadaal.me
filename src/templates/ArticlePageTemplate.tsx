@@ -15,7 +15,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
 import { heights } from "@/styles/variables";
 import BannerLayout from "@/layouts/BannerLayout";
-import { getLanguage, useI18nStore } from "@/i18n";
+import { useI18nStore, languageIds } from "@/i18n";
 import { PageMetadata } from "@/components/PageMetadata";
 import { DateTime } from "luxon";
 import useConstant from "@/utils/useConstant";
@@ -89,10 +89,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
 
   const { id, lang, htmlAst, headings } = props.pageContext;
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const language = getLanguage(lang)!;
-
-  const articleNode = metadataStore.getArticleOfLang(id, language);
+  const articleNode = metadataStore.getArticleOfLang(id, lang);
 
   useEffect(() => {
     articleStore.setArticle(articleNode);
@@ -116,7 +113,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           title={title}
           description={excerpt}
           url={path}
-          locale={language.detailedId}
+          locale={languageIds[lang]}
           meta={[
             { name: "og:type", content: "article" },
             { name: "og:article:published_time", content: publishedTime.toISO() },
@@ -128,7 +125,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
               .filter((x) => x !== lang)
               .map((x) => ({
                 name: "og:locale:alternate",
-                content: getLanguage(x)!.detailedId,
+                content: languageIds[x],
               })),
           ]}
         />

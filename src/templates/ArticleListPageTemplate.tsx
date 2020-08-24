@@ -3,7 +3,7 @@ import React from "react";
 import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { allLanguages, useI18nStore } from "@/i18n";
+import { languageIds, useI18nStore } from "@/i18n";
 import { lang } from "@/i18n";
 import { PageMetadata } from "@/components/PageMetadata";
 
@@ -31,11 +31,11 @@ const ArticleListPageTemplate: React.FC<Props> = ({ pageContext }) => {
     <ArticleListLayout>
       <PageMetadata
         titleId={root.articleList}
-        meta={allLanguages
-          .filter((x) => x !== currentLanguage)
+        meta={Object.keys(languageIds)
+          .filter((x) => x !== currentLanguage.id)
           .map((x) => ({
             name: "og:locale:alternate",
-            content: x.detailedId,
+            content: languageIds[x],
           }))}
       />
       <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />

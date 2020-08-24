@@ -18,7 +18,7 @@ const SelfIntroCard: React.FC<Props> = () => {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useI18nStore();
 
-  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.currentLanguage).path;
+  const aboutMePath = metadataStore.getArticleOfLang("about-me", i18nStore.currentLanguage.id).path;
 
   return (
     <BaseCard>

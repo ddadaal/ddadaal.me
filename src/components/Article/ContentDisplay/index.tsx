@@ -9,6 +9,7 @@ import addSlug from "@/components/Article/ContentDisplay/astManipulators/addSlug
 import addCodeHeader from "@/components/Article/ContentDisplay/astManipulators/addCodeHeader";
 import useConstant from "@/utils/useConstant";
 
+// @ts-ignore
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components,

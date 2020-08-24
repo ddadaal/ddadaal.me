@@ -37,6 +37,8 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, c
 
   const i18nStore = useConstant(() => createI18nStore(i18nContext));
 
+  console.log(i18nStore);
+
   const locationStore = useConstant(() => createStore(LocationStore, location));
 
   const metadataStore = useConstant(() => createStore(MetadataStore,

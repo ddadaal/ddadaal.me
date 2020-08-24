@@ -39,7 +39,7 @@ const ArticleCard: React.FC<Props> = ({ articleId, className }) => {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useI18nStore();
 
-  const localizedArticle = metadataStore.getArticleOfLang(articleId, i18nStore.currentLanguage);
+  const localizedArticle = metadataStore.getArticleOfLang(articleId, i18nStore.currentLanguage.id);
 
   return (
     <Card className={className} onClick={() => navigate(localizedArticle.path)}>

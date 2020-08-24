@@ -7,5 +7,5 @@ export function useArticleOfCurrentLang(articleId: string): ArticleNode {
   const i18nStore = useI18nStore();
   const metadataStore = useStore(MetadataStore);
 
-  return metadataStore.getArticleOfLang(articleId, i18nStore.currentLanguage);
+  return metadataStore.getArticleOfLang(articleId, i18nStore.currentLanguage.id);
 }

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Resume = styled.div`

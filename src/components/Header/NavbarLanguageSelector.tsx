@@ -4,7 +4,7 @@ import MetadataStore from "@/stores/MetadataStore";
 import LanguageSelector from "@/components/LanguageSelector";
 import { navigate } from "gatsby";
 import ArticleStore from "@/stores/ArticleStore";
-import { allLanguages, getLanguage, useI18nStore } from "@/i18n";
+import { useI18nStore, languageNames } from "@/i18n";
 
 const NavbarLanguageSelector: React.FC = () => {
 
@@ -12,14 +12,14 @@ const NavbarLanguageSelector: React.FC = () => {
   const i18nStore = useI18nStore();
   const articleStore = useStore(ArticleStore);
 
-  const { currentLanguage, changeLanguage } = i18nStore;
+  const { currentLanguage, changeLanguage, switchingToId } = i18nStore;
 
-  const change = useCallback((lang: string) => {
-    changeLanguage(lang);
+  const change = useCallback(async (id: string) => {
+    await changeLanguage(id);
     const article = articleStore.article;
     if (article) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const targetNode = metadataStore.getArticleOfLang(article.frontmatter.id, getLanguage(lang)!);
+      const targetNode = metadataStore.getArticleOfLang(article.frontmatter.id, id);
       if (targetNode) {
         navigate(targetNode.path);
       }
@@ -28,10 +28,12 @@ const NavbarLanguageSelector: React.FC = () => {
 
   return (
     <LanguageSelector
-      allLanguages={allLanguages}
+      languageNames={languageNames}
       currentLanguage={currentLanguage.name}
       changeLanguage={change}
-      prompt={currentLanguage.definitions.languageSelector.select}
+      prompt={
+        currentLanguage.definitions.languageSelector.select
+      }
     />
   );
 };

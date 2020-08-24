@@ -9,10 +9,6 @@ import { formatDateTime } from '@/utils/datetime';
 
 export type LangPathMap = Map<string, string>;
 
-export function matchLangStringWithCurrentLanguage(langString: string, currentLanguage: Language): boolean {
-  return currentLanguage.langStrings.includes(langString);
-}
-
 function noSuchArticle(articleId: string): string {
   return `No such article with id ${articleId}!`
 }
@@ -70,14 +66,14 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
       .filter((group) => !group[0].frontmatter.ignored_in_list)
       .length, [articleIdMap]);
 
-  const getArticleOfLang = useCallback((id: string, language: Language): ArticleNode => {
+  const getArticleOfLang = useCallback((id: string, languageId: string): ArticleNode => {
     const group = articleIdMap.get(id);
 
     if (!group) {
       throw noSuchArticle(id);
     }
 
-    const node = group.find((x) => matchLangStringWithCurrentLanguage(x.frontmatter.lang, language)) || group[0];
+    const node = group.find((x) => x.frontmatter.lang === languageId) || group[0];
     return node;
   }, [articleIdMap]);
 
