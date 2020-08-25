@@ -1,5 +1,6 @@
 import React from "react";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
+import { languageIds } from "@/i18n";
 
 interface Props {
   languageNames: {[key: string]: string}

@@ -1,5 +1,5 @@
 import React from "react";
-import { lang, getLanguage } from "@/i18n";
+import { lang, getLanguage, languageNames } from "@/i18n";
 import { LocalizedString } from "simstate-i18n";
 import styled from "styled-components";
 import { FaCalendarAlt, FaTags, FaGlobe, FaUserClock } from "react-icons/fa";
@@ -58,7 +58,7 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
       <Span title={dateString} >
         <FaCalendarAlt />
         { setItemProp
-          ? <time itemProp="datePublished" dateTime={date.toISO()}>{dateString}</time>
+          ? <time itemProp="datePublished" dateTime={date.toISO() ?? undefined}>{dateString}</time>
           : dateString
         }
       </Span>
@@ -99,10 +99,10 @@ const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: st
   return (
     <>
       <DisabledLangLink>
-        {getLanguage(currentArticleLanguage)!.name}
+        {languageNames[currentArticleLanguage]}
       </DisabledLangLink>
       {Array.from(langPathMap.entries()).map(([lang, path]) => (
-        <LangLink key={lang} to={path}>{getLanguage(lang)!.name}</LangLink>
+        <LangLink key={lang} to={path}>{languageNames[lang]}</LangLink>
       ))}
     </>
   );
