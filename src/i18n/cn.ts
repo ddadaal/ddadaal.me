@@ -78,6 +78,7 @@ export default {
     },
     languageSelector: {
       select: "选择语言",
+      switchingTo: "正在切换至: {}",
     },
     articleFrontmatter: {
       timeToRead: "{} 分钟阅读",

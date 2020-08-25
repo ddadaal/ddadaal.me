@@ -79,6 +79,7 @@ export default {
     },
     languageSelector: {
       select: "Select a language",
+      switchingTo: "Switching to {}",
     },
     articlePage: {
       title: "Articles",
