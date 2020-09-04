@@ -4,24 +4,20 @@ import LocationStore, { LocationProvider } from "@/stores/LocationStore";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import MetadataStore from "@/stores/MetadataStore";
 import { IconContext } from "react-icons";
-import styled from "styled-components";
 import icon512 from "~/assets/icon.png";
 import UpdatePop from "@/components/UpdatePop";
-import { StoreProvider, createStore } from "simstate";
+import { StoreProvider, createStore, useStore } from "simstate";
 import ArticleStore from "@/stores/ArticleStore";
 import ToTop from "@/components/ToTop";
-import "@/styles/index.scss";
 import { ArticleNode } from "@/models/ArticleNode";
 import useConstant from "@/utils/useConstant";
 import { PageMetadata } from "@/components/PageMetadata";
 import { i18nContext } from "@/i18n";
+import { MediaContextProvider } from "@/styles/media";
+import { Grommet } from "grommet";
+import { ThemeStore } from "@/stores/ThemeStore";
+import siteTheme from "@/styles/theme";
 
-const LayoutRoot = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  word-wrap: break-word;
-`;
 
 interface Props {
   location: Location;
@@ -33,19 +29,37 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, children }) => {
+
+const UI: React.FC = ({ children }) => {
+  const themeStore = useStore(ThemeStore);
+
+  return (
+    <MediaContextProvider>
+      <Grommet theme={siteTheme} full={true} themeMode={themeStore.theme}>
+        {children}
+      </Grommet>
+    </MediaContextProvider>
+  );
+};
+
+
+export const RootLayout: React.FC<Props> = ({
+  location,
+  articles,
+  siteMetadata,
+  tags,
+  children,
+}) => {
 
   const i18nStore = useConstant(() => createI18nStore(i18nContext));
-
   const locationStore = useConstant(() => createStore(LocationStore, location));
-
   const metadataStore = useConstant(() => createStore(MetadataStore,
     siteMetadata,
     articles,
     tags,
   ));
-
   const articleStore = useConstant(() => createStore(ArticleStore, null));
+  const themeStore = useConstant(() => createStore(ThemeStore));
 
   return (
     <IconContext.Provider value={iconContext}>
@@ -54,9 +68,11 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, c
         i18nStore,
         metadataStore,
         articleStore,
-      ]}>
+        themeStore,
+      ]}
+      >
         <LocationProvider location={location} />
-        <LayoutRoot>
+        <UI>
           <PageMetadata
             meta={[
               { name: "keywords", content: "gatsbyjs, gatsby, react, ddadaal, blog" },
@@ -77,10 +93,8 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, c
           <UpdatePop />
           <ToTop />
           {children}
-        </LayoutRoot>
+        </UI>
       </StoreProvider>
     </IconContext.Provider>
   );
-}
-
-export default RootLayout;
+};

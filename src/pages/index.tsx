@@ -78,10 +78,11 @@ const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({ to, mode = "to
       <Link {...commonProps} to={to.startsWith("/")
         ? to
         : metadataStore.getArticleOfLang(to, i18nStore.currentLanguage.id).path
-      }>
+      }
+      >
         {children}
       </Link>
-    )
+    );
   } else {
     return (
       <a {...commonProps} href={to}>
@@ -154,6 +155,6 @@ const HomePage: React.FunctionComponent = () => {
       </Bg>
     </HeaderFooterLayout >
   );
-}
+};
 
 export default HomePage;

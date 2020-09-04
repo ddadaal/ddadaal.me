@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+// import Footer from "@/components/Footer";
 import styled from "styled-components";
 
 interface Props {
@@ -16,11 +16,11 @@ const LayoutMain = styled.main`
 const HeaderFooterLayout: React.FC<Props> = ({ transparentHeader, children }) => {
   return (
     <>
-      <Header transparentHeader={transparentHeader} />
+      <Header />
       <LayoutMain>{children}</LayoutMain>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
-}
+};
 
 export default HeaderFooterLayout;

@@ -41,6 +41,6 @@ const ArticleListPageTemplate: React.FC<Props> = ({ pageContext }) => {
       <ArticleList ids={ids} pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
     </ArticleListLayout>
   );
-}
+};
 
 export default ArticleListPageTemplate;

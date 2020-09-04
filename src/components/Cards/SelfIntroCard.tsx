@@ -40,6 +40,6 @@ const SelfIntroCard: React.FC<Props> = () => {
       </CardBody>
     </BaseCard>
   );
-}
+};
 
 export default SelfIntroCard;

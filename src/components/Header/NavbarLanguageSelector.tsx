@@ -34,7 +34,6 @@ const NavbarLanguageSelector: React.FC = () => {
           : currentLanguage.name
       }
       changeLanguage={change}
-      prompt={currentLanguage.definitions.languageSelector.select}
     />
   );
 };

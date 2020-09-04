@@ -59,6 +59,6 @@ const Contacts: React.FC<Props> = (props) => {
       })}
     </Container>
   );
-}
+};
 
 export default Contacts;

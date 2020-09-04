@@ -20,9 +20,11 @@ const Brief: React.FC = () => {
     <div className="footer-brief">
 
       <p>
-        👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
+        👨🏼‍💻
+        <LocalizedString id={root.codeBy} replacements={[
           <Link key={"me"} to={aboutMeLink}>ddadaal</Link>,
-        ]} />
+        ]}
+        />
       </p>
       <p>
         📝 <LocalizedString id={root.license} replacements={[
@@ -33,7 +35,8 @@ const Brief: React.FC = () => {
 
       </p>
       <p>
-        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
+        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />:
+        <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
 
       </p>
       <RunningTime />
@@ -44,6 +47,6 @@ const Brief: React.FC = () => {
 
     </div>
   );
-}
+};
 
 export default Brief;

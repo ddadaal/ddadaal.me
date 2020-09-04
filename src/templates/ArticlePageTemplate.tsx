@@ -52,10 +52,7 @@ const PageComponent: React.FC<{ hasHeader: boolean; children: React.ReactNode }>
 
 const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime }> = ({ article, children, lang, date }) => {
 
-  const {
-    frontmatter: {
-      id, title, tags, hide_heading,
-    }, timeToRead } = article;
+  const { frontmatter: { id, title, tags, hide_heading }, timeToRead } = article;
 
   if (hide_heading) {
     return (
@@ -74,12 +71,13 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime 
           timeToRead={timeToRead}
           currentArticleLanguage={lang}
         />
-      }>
+      }
+      >
         {children}
       </BannerLayout>
     );
   }
-}
+};
 
 const ArticlePageTemplate: React.FC<Props> = (props) => {
 
@@ -98,9 +96,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
     };
   }, [articleNode]);
 
-  const { path, excerpt, frontmatter: {
-    title, date, tags, hide_heading, no_toc, related,
-  } } = articleNode;
+  const { path, excerpt, frontmatter: { title, date, tags, hide_heading, no_toc, related } } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 
@@ -161,7 +157,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
       </div>
     </RootLayout>
   );
-}
+};
 
 export default ArticlePageTemplate;
 

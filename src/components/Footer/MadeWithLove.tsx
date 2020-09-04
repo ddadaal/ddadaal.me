@@ -15,6 +15,6 @@ const MadeWithLove: React.FC = () => {
       © {new Date().getFullYear()} | <LocalizedString id={root.footer.madeWithLove} />
     </Container>
   );
-}
+};
 
 export default MadeWithLove;

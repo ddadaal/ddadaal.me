@@ -5,12 +5,12 @@ import { groupBy } from "@/utils/groupBy";
 import { useMemo, useCallback } from "react";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import { DateTime } from "luxon";
-import { formatDateTime } from '@/utils/datetime';
+import { formatDateTime } from "@/utils/datetime";
 
 export type LangPathMap = Map<string, string>;
 
 function noSuchArticle(articleId: string): string {
-  return `No such article with id ${articleId}!`
+  return `No such article with id ${articleId}!`;
 }
 
 export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: ArticleNode[], tags: Tag[]) {

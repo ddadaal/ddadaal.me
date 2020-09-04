@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Box } from "grommet";
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-const Resume = styled.div`
+const Resume = styled(Box)`
 
   && {
     line-height: 26px;
@@ -59,12 +56,12 @@ const Resume = styled.div`
 
 `;
 
-const ResumeLayout: React.FC<Props> = (props: Props) => {
+const ResumeLayout: React.FC = ({ children }) => {
   return (
     <Resume>
-      {props.children}
+      {children}
     </Resume>
   );
-}
+};
 
 export default ResumeLayout;

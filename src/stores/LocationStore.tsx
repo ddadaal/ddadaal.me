@@ -23,7 +23,7 @@ export default function LocationStore(initialLocation: Location) {
     setLocation,
     pathname: location.pathname,
     query: location.search ? parseQuery(location.search) : {},
-  }
+  };
 }
 
 export const LocationProvider: React.FC<{ location: Location }> = ({ location }) => {
@@ -32,4 +32,6 @@ export const LocationProvider: React.FC<{ location: Location }> = ({ location })
   useEffect(() => locationStore.setLocation(location), [location]);
 
   return null;
-}
+};
+
+export type ILocationStore = ReturnType<typeof LocationStore>;
