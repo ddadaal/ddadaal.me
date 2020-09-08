@@ -36,7 +36,8 @@ const Item = styled(ScrollLinkToAnchor)`
   }
   display: block;
   padding-bottom: 4px;
-
+  color: #fff;
+  text-decoration: none;
 
   &.active {
     border-left: 4px solid ${colors.tocLinkActiveColor};
@@ -46,6 +47,7 @@ const Item = styled(ScrollLinkToAnchor)`
 
   :hover {
     color: ${colors.tocLinkActiveColor} !important;
+    text-decoration: none;
   }
 `;
 
