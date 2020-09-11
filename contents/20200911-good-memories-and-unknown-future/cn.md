@@ -1,5 +1,5 @@
 ---
-id: good-memories-and-unknown-future-before-going-to-graduate-school
+id: good-memories-and-unknown-future
 date: 2020-09-11 18:42
 title: 美好的回忆和未知的未来：写在研究生开学前
 lang: cn
