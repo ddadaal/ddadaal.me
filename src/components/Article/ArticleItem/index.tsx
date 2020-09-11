@@ -21,7 +21,7 @@ function limitLength(content: string): string {
 }
 
 const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
-  const { frontmatter: { id, title, tags, date }, timeToRead, excerpt } = article;
+  const { frontmatter: { id, title, tags, date }, timeToRead, wordCountChinese, excerpt } = article;
 
   const { currentLanguage } = useI18nStore();
   const metadataStore = useStore(MetadataStore);
@@ -42,6 +42,7 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
         timeToRead={timeToRead}
         tags={tags}
         articleId={id}
+        wordCount={wordCountChinese}
         setItemProp={false}
       />
 

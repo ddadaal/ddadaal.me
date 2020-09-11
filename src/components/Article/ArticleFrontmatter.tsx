@@ -2,7 +2,7 @@ import React from "react";
 import { lang, getLanguage, languageNames } from "@/i18n";
 import { LocalizedString } from "simstate-i18n";
 import styled from "styled-components";
-import { FaCalendarAlt, FaTags, FaGlobe, FaUserClock } from "react-icons/fa";
+import { FaCalendarAlt, FaTags, FaGlobe, FaUserClock, FaFileWord } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
@@ -15,6 +15,7 @@ interface Props {
   articleId: string;
   date: DateTime;
   timeToRead: number;
+  wordCount: number;
   tags: string[] | null;
   currentArticleLanguage: string;
   setItemProp: boolean;
@@ -47,7 +48,7 @@ const ContainerRow = styled.div`
 `;
 
 const ArticleFrontmatter: React.FC<Props> = (props) => {
-  const { date, timeToRead, tags, articleId, currentArticleLanguage, setItemProp } = props;
+  const { date, timeToRead, tags, articleId, currentArticleLanguage, setItemProp, wordCount } = props;
 
   const dateString = useConstant(() => date.toFormat("yyyy-MM-dd HH:mm 'UTC'Z"));
 
@@ -62,14 +63,16 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
           : dateString
         }
       </Span>
-      {/* <Span><FaClock /><LocalizedString id={root.timeToRead} replacements={[timeToRead]} /></Span>  */}
+      <Span>
+        <FaFileWord />
+        <LocalizedString id={root.wordCount} replacements={[wordCount]} />
+      </Span>
       <Span>
         <FaUserClock />
         <LocalizedString id={root.timeToRead} replacements={[timeToRead]} />
       </Span>
       <Span>
         <FaGlobe />
-        {/* <LocalizedString id={root.allLanguages} /> */}
         <LanguageSwitcher articleId={articleId} currentArticleLanguage={currentArticleLanguage} />
       </Span>
     </ContainerRow>

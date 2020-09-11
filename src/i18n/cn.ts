@@ -81,6 +81,7 @@ export default {
       switchingTo: "正在切换至: {}",
     },
     articleFrontmatter: {
+      wordCount: "{} 字",
       timeToRead: "{} 分钟阅读",
       tagLinkTitle: "搜索带有{}标签的文章",
     },

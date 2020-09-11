@@ -38,6 +38,7 @@ const query = graphql`
       nodes {
         excerpt(pruneLength: 250, truncate: true)
         timeToRead
+        wordCountChinese
         frontmatter {
           no_create_page
           date

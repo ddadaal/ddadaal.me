@@ -8,6 +8,7 @@ export interface ArticleNode {
   path: string;
   excerpt: string;
   timeToRead: number;
+  wordCountChinese: number;
   frontmatter: {
     absolute_path?: string;
     date: string;

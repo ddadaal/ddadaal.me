@@ -55,7 +55,7 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime 
   const {
     frontmatter: {
       id, title, tags, hide_heading,
-    }, timeToRead } = article;
+    }, timeToRead, wordCountChinese } = article;
 
   if (hide_heading) {
     return (
@@ -73,6 +73,7 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime 
           date={date}
           timeToRead={timeToRead}
           currentArticleLanguage={lang}
+          wordCount={wordCountChinese}
         />
       }>
         {children}
