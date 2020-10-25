@@ -2,7 +2,7 @@
 
 id: resume
 absolute_path: /resume
-date: 2019-11-19 10:18
+date: 2020-10-25 16:20
 title: Resume
 lang: en
 ignored_in_list: true
@@ -18,15 +18,21 @@ no_toc: true
 Chen Junda
 </h1>
 
-<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | https://ddadaal.me
+<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | https://ddadaal.me | LinkedIn in/chenjunda
 
 </h3>
 
 # Education
 
-## <span class="highlight">Nanjing University, Software Engineering</span> <span class="right">September 2016-Present</span>
+## <span class="highlight">Peking University, EECS</span> <span class="right">September 2020-Present</span>
 
-### Undergraduate; Will Graduate in 2020；GPA 4.62/5.0; Rank 1/220
+### Computer Application Technologies; Master; Expect to Graduate in 2023
+
+<br/>
+
+## <span class="highlight">Nanjing University, Software Institude</span> <span class="right">September 2016-July 2020</span>
+
+### Software Engineering; Undergraduate; Will Graduate in 2020；GPA 4.62/5.0; Rank 1/220
 - **National Scholarship** (2016-2017), **Tung OOCL Scholarship** and **Outstanding Student of School** (2017-2018), <span style="display: inline-block">**SZSE Scholarship** (2018-2019)</span>
 
 # Internship and Organization Experiences
@@ -35,14 +41,13 @@ Chen Junda
 ### Software Engineer Intern
 
 - Develop deployment monitor website at Office 365 Deployment Team
-- Merged 27 PRs, implemented and published 3 new features, and optimized performance and code design of several features
+- Implemented and published 3 new features, and optimized performance and code design of several features
 
 ## <span class="highlight">Nanjing University Microsoft Student Club</span><span class="right">September 2016-Present</span>
 ### President (2018-2019), Undersecretary of Technology Department (2017-2018), Member (2016-2017)
 - Coordinate internal and external affairs and participate in planning and execution of activities
 - Club has been awarded **Technology Contribution Award** (2/34) and **Branding Activity Award** (2/34) in 2017-2018, 2018-2019 respectively
 - Experiences and contributions are credited by MSRA WeChat Official Account: http://1t.click/bgTF
-- Participated in 2017 Microsoft Student Summer Camp
 
 ## <span class="highlight">Others</span>
 - Participated in SAP VT Internship Program from 2018/7 to 2019/5
@@ -62,11 +67,11 @@ Chen Junda
 - Supports multi-node network and detection/recovery on data corruption
 - **Third Prize** in *Chain Valley（链谷杯）National Blockchain Application Competition*; **National Second Prize** and **Eastern China Regional First Prize** in *The Third National College Blockchain Competition*
 
-## <span class="highlight">ddadaal.me</span>, Personal Blog <span class="right">October 2016-Present</span>
+## <span class="highlight">ddadaal.me</span>, Personal Website<span class="right">October 2016-Present</span>
 ### Personal project
 - Website: https://ddadaal.me
 - Based on `Gatsby` static site generator, self-designed code and content structure, written in `TypeScript` and deployed on `GitHub Pages`. Previous versions used `Flask` and `ASP.NET Core + React` on `Microsoft Azure`
-- Use `simstate`, a state management library developed by myself, for state management (GitHub: ddadaal/simstate)
+- Developed state management library `simstate` (GitHub: ddadaal/simstate) and i18n library `simstate` (GitHub: ddadaal/simstate-i18n) by myself
 
 ## <span class="highlight">ChainPaper</span>, a Paper Sharing & Social Network Platform based on ChainStore <span class="right">May 2019</span>
 ### Frontend design and implementation; Final presentation
