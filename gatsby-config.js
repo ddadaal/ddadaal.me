@@ -114,9 +114,16 @@ module.exports = {
             }
           },
           {
-            resolve: 'gatsby-remark-prismjs',
+            resolve: 'gatsby-remark-vscode',
             options: {
-              inlineCodeMarker: "±",
+              theme: "Dark+ (default dark)",
+              marker: "±",
+              extensions: [
+                "Kotlin"
+              ],
+              languageAliases: {
+                kotlin: "Kotlin"
+              }
             }
           },
           `gatsby-remark-emoji`,

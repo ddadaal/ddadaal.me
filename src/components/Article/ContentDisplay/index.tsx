@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Heading } from "@/models/ArticleNode";
-import "@/styles/prism/vscode.css";
 import components from "@/configs/article/InlineComponentConfig";
 import rehypeReact from "rehype-react";
 import { HtmlAst } from "@/models/HtmlAst";
