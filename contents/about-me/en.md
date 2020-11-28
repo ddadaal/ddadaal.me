@@ -2,7 +2,7 @@
 
 id: about-me
 absolute_path: /about/me
-date: 2020-06-01 17:28
+date: 2020-11-28 17:28
 title: About Me
 ignored_in_list: true
 lang: en
@@ -24,7 +24,7 @@ hide_heading: false
 - Huge fan of Battlefield, FPS and all games
 - **Badminton**
 - Prefer **pure music** (symphony, classic, piano, epic/trailer music...). Interested in **choir** recently
-- Like **movies** and **musicals**. Want to see a musical on live on theaters.
+- Like **movies** and **musicals**
   - The movies and musicals I have seen are on my [douban](https://www.douban.com/people/183064260/) profile.
 - Started playing **electronic piano** at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recently
 - Consider **solving problems and contributing to the world** as the core value of everything in the world, and respect and love whoever and whatever does it.
@@ -49,11 +49,11 @@ hide_heading: false
 
 # Personal Devices
 
-| Device                            | Specifications                            | Since      |
-| --------------------------------- | ----------------------------------------- | ---------- |
-| Lenovo Xiaoxin Pro 13             | R7 4800U/16G/512G/2560*1600               | Jun, 2020  |
-| MSI GT72VR 6RD                    | i7 6700HQ/16G/GTX 1060/512G+1T/1080P75Hz  | Sept, 2016 |
-| LG 27UL550                        | 27'/3840*2160/60Hz                        | Dec, 2019  |
-| Mi 9 SE                           | Snapdragon 712/6G/128G/5.99' 1080P AMOLED | May, 2019  |
-| Amazfit Watch GTS                 | N/A                                       | Sept, 2019 |
-| Sennheiser Momentum True Wireless | N/A                                       | Feb, 2019  |
+| Device                            | Specifications                                  | Since      |
+| --------------------------------- | ----------------------------------------------- | ---------- |
+| Lenovo Yoga Pro 13s               | i5 1135G7/16G/512G PM9A1/2560*1600/966g         | Nov, 2020  |
+| Custom Desktop PC                 | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000 Pro | Dec, 2020  |
+| LG 27UL550                        | 27'/3840*2160/60Hz                              | Dec, 2019  |
+| Mi 9 SE                           | Snapdragon 712/6G/128G/5.99' 1080P AMOLED       | May, 2019  |
+| Amazfit Watch GTS                 | N/A                                             | Sept, 2019 |
+| Sennheiser Momentum True Wireless | N/A                                             | Feb, 2019  |
