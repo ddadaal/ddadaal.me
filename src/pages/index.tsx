@@ -13,7 +13,6 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import moveInAnimation from "@/styles/moveInAnimation";
-import isServer from "@/utils/isServer";
 import { PageMetadata } from "@/components/PageMetadata";
 
 const Bg = styled(RootContainer)`
@@ -104,20 +103,6 @@ const key = {
   c: ["d", "c"],
 } as const;
 
-type Keys = { [k in keyof typeof key]: k[0] };
-
-
-function selectDate(): string {
-  const hour = new Date().getHours();
-  if (hour >= 6 && hour <= 11) {
-    return root.morning;
-  } else if (hour >= 12 && hour <= 17) {
-    return root.afternoon;
-  } else {
-    return root.evening;
-  }
-}
-
 const HomePage: React.FunctionComponent = () => {
 
   const metadataStore = useStore(MetadataStore);
@@ -129,7 +114,9 @@ const HomePage: React.FunctionComponent = () => {
       />
       <Bg>
         <TextContent>
-          <TitleText>{isServer() ? "" : <LocalizedString id={selectDate()} />}</TitleText>
+          <TitleText>
+            <LocalizedString id={root.hello} />
+          </TitleText>
           <Slogan><LocalizedString id={root.from} /></Slogan>
           <LinkContainer>
             <Button to="/articles">

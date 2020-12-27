@@ -148,9 +148,7 @@ export default {
       title: "Friends",
     },
     homepage: {
-      morning: "Good Morning",
-      afternoon: "Good Afternoon",
-      evening: "Good Evening",
+      hello: "Hello",
       from: "From a Student | Programmer | Dreamer",
       links: {
         articles: "Articles ({})",
