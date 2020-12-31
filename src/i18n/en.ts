@@ -137,7 +137,7 @@ export default {
       title: "Statistics",
       key: "Key",
       value: "Value",
-      articleCount: "Number of articles",
+      articleCount: "Articles：{}; Words: {}",
       lastUpdated: "Last updated",
     },
     tagsCard: {

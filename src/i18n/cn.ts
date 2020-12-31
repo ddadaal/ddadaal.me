@@ -136,8 +136,9 @@ export default {
       title: "统计信息",
       key: "统计项",
       value: "统计值",
-      articleCount: "总文章数",
+      articleCount: "文章数：{}，总字数：{}",
       lastUpdated: "最后更新",
+
     },
     tagsCard: {
       title: "标签",

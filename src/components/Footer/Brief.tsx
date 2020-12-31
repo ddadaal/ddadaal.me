@@ -7,6 +7,7 @@ import { useStore } from "simstate";
 import Contacts from "@/components/Contacts";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import { RunningTime } from "@/components/Footer/RunningTime";
+import useConstant from "@/utils/useConstant";
 
 const root = lang.footer;
 
@@ -15,6 +16,11 @@ const Brief: React.FC = () => {
   const metadataStore = useStore(MetadataStore);
 
   const aboutMeLink = useArticleOfCurrentLang("about-me").path;
+
+  // const allArticles = useConstant(() => Array.from(metadataStore.articleIdMap.values()));
+
+  // const totalWordsCount = useConstant(() => allArticles.reduce((prev, curr) =>
+  //   prev + curr.reduce((p, c) => p + c.wordCountChinese, 0), 0));
 
   return (
     <div className="footer-brief">
@@ -33,9 +39,15 @@ const Brief: React.FC = () => {
 
       </p>
       <p>
-        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />: <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
-
+        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />:
+        <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
       </p>
+      {/* <p>
+        📔 <LocalizedString id={lang.statistics.articleCount} replacements={[
+          <strong key="articles">{allArticles.length}</strong>,
+          <strong key="words">{totalWordsCount}</strong>,
+        ]} />
+      </p> */}
       <RunningTime />
       <div>
         <span id="contacts">📲 <LocalizedString id={root.contacts} /></span>
