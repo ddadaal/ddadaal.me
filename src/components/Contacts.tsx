@@ -4,6 +4,7 @@ import { FaQq, FaMailBulk, FaLinkedin, FaGithub, FaSteam, FaZhihu, FaQuora, FaSt
 import styled from "styled-components";
 
 import DoubanIcon from "~/assets/icons/douban.svg";
+import TapeIcon from "~/assets/icons/tape.svg";
 
 interface Props {
   color: string;
@@ -18,6 +19,7 @@ const contacts = [
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
   [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
+  [TapeIcon, "https://www.tapechat.net/u/2JJ1Y7/4YSQBV0A", "Tape小纸条: ddadaal98"]
 ] as Array<[React.ComponentType, string, string]>;
 
 const Contact = styled.span<{ color: string; size: number }>`
