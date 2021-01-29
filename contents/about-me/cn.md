@@ -54,6 +54,6 @@ hide_heading: false
 | 联想Yoga Pro 13s                  | i5 1135G7/16G/512G PM9A1/2560*1600/966g        | 2020年11月 |
 | 台式机                            | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000Pro | 2020年12月 |
 | LG 27UL550                        | 27寸/3840*2160/60Hz                            | 2019年12月 |
-| Mi 9 SE                           | 高通骁龙712/6G/128G/5.99寸1080P AMOLED         | 2019年5月  |
+| 三星Galaxy S20                    | 高通骁龙865/12G/128G/6.2' 1080P120             | 2021年1月  |
 | 华米手表GTS                       | N/A                                            | 2019年9月  |
 | Sennheiser Momentum True Wireless | N/A                                            | 2019年2月  |
