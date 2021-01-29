@@ -42,6 +42,7 @@ const query = graphql`
         frontmatter {
           no_create_page
           date
+          last_updated
           id
           absolute_path
           title

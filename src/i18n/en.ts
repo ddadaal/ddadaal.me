@@ -105,6 +105,8 @@ export default {
       },
     },
     articleFrontmatter: {
+      date: "Publish Time",
+      lastUpdated: "Last Updated Time",
       wordCount: "{} words",
       timeToRead: "{} mins read",
       tagLinkTitle: "Search articles tagged with {}",

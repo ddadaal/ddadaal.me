@@ -8,13 +8,20 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended"
   ],
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
   "rules": {
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "indent": "off",
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
     "react/display-name": "off",
     "react/prop-types": "off"
   }

@@ -14,7 +14,7 @@ function getDiff() {
   return startTime.diffNow().negate().shiftTo('days', 'hours', 'minutes', 'seconds').normalize();
 }
 
-export function RunningTime() {
+export const RunningTime: React.FC = () => {
   const [diff, setDiff] = useState(getDiff);
 
   useEffect(() => {
@@ -29,10 +29,10 @@ export function RunningTime() {
 
   return (
     <p>
-      <UncontrolledTooltip placement="auto-end" target="time">
+      <UncontrolledTooltip placement="auto-end" target="running-time">
         <span>{formatDateTime(startTime)}</span>
       </UncontrolledTooltip>
-      <span id="time">
+      <span id="running-time">
         📅 <LocalizedString id={root.runningTime} replacements={replacements} />
       </span>
     </p>

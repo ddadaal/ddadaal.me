@@ -1,8 +1,8 @@
 import React from "react";
-import { lang, getLanguage, languageNames } from "@/i18n";
-import { LocalizedString } from "simstate-i18n";
+import { lang, languageNames } from "@/i18n";
+import { LocalizedString, useLocalized } from "simstate-i18n";
 import styled from "styled-components";
-import { FaCalendarAlt, FaTags, FaGlobe, FaUserClock, FaFileWord } from "react-icons/fa";
+import { FaCalendarPlus, FaTags, FaGlobe, FaUserClock, FaFileWord, FaCalendar } from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
@@ -14,6 +14,7 @@ import useConstant from "@/utils/useConstant";
 interface Props {
   articleId: string;
   date: DateTime;
+  lastUpdated?: DateTime;
   timeToRead: number;
   wordCount: number;
   tags: string[] | null;
@@ -47,22 +48,40 @@ const ContainerRow = styled.div`
   vertical-align: center;
 `;
 
-const ArticleFrontmatter: React.FC<Props> = (props) => {
-  const { date, timeToRead, tags, articleId, currentArticleLanguage, setItemProp, wordCount } = props;
+const DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
-  const dateString = useConstant(() => date.toFormat("yyyy-MM-dd HH:mm 'UTC'Z"));
+const ArticleFrontmatter: React.FC<Props> = (props) => {
+  const { date, timeToRead, tags, articleId, lastUpdated, currentArticleLanguage, setItemProp, wordCount } = props;
+
+  const dateString = useConstant(() => date.toFormat(DATE_FORMAT));
+  const lastUpdatedString = useConstant(() => lastUpdated?.toFormat(DATE_FORMAT));
+
+  const createTimeTitle = useLocalized(root.date) as string;
+  const lastUpdatedTimeTitle = useLocalized(root.lastUpdated) as string;
 
   return (
     <ContainerRow>
 
       {tags && <Tags ><FaTags />{tags.map((tag) => <ArticleTag tag={tag} key={tag} />)}</Tags>}
-      <Span title={dateString} >
-        <FaCalendarAlt />
+      <Span title={createTimeTitle} >
+        <FaCalendar />
         { setItemProp
-          ? <time itemProp="datePublished" dateTime={date.toISO() ?? undefined}>{dateString}</time>
+          ? <time itemProp="datePublished" dateTime={date.toISO()}>{dateString}</time>
           : dateString
         }
       </Span>
+      {
+        lastUpdatedString
+          ? (
+            <Span title={lastUpdatedTimeTitle}>
+              <FaCalendarPlus />
+              { setItemProp
+                ? <time itemProp="dateModified" dateTime={lastUpdated!.toISO()}>{lastUpdatedString}</time>
+                : lastUpdatedString
+              }
+            </Span>
+          ) : undefined
+      }
       <Span>
         <FaFileWord />
         <LocalizedString id={root.wordCount} replacements={[wordCount]} />

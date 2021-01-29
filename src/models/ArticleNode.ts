@@ -12,6 +12,7 @@ export interface ArticleNode {
   frontmatter: {
     absolute_path?: string;
     date: string;
+    last_updated?: string;
     id: string;
     ignored_in_list?: boolean;
     tags: string[] | null;

@@ -50,7 +50,7 @@ const PageComponent: React.FC<{ hasHeader: boolean; children: React.ReactNode }>
   return hasHeader ? <PageWithHeader>{children}</PageWithHeader> : <Page>{children}</Page>;
 };
 
-const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime }> = ({ article, children, lang, date }) => {
+const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime; lastUpdated?: DateTime }> = ({ article, children, lang, date, lastUpdated }) => {
 
   const {
     frontmatter: {
@@ -71,6 +71,7 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime 
           id={id}
           tags={tags}
           date={date}
+          lastUpdated={lastUpdated}
           timeToRead={timeToRead}
           currentArticleLanguage={lang}
           wordCount={wordCountChinese}
@@ -100,15 +101,16 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
   }, [articleNode]);
 
   const { path, excerpt, frontmatter: {
-    title, date, tags, hide_heading, no_toc, related,
+    title, date, tags, hide_heading, no_toc, related, last_updated,
   } } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 
   const publishedTime = useConstant(() => fromArticleTime(date));
+  const lastUpdatedTime = useConstant(() => last_updated ? fromArticleTime(last_updated) : undefined);
 
   return (
-    <RootLayout article={articleNode} lang={lang} date={publishedTime}>
+    <RootLayout article={articleNode} lang={lang} date={publishedTime} lastUpdated={lastUpdatedTime}>
       <div>
         <PageMetadata
           title={title}

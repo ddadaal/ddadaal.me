@@ -21,7 +21,7 @@ function limitLength(content: string): string {
 }
 
 const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
-  const { frontmatter: { id, title, tags, date }, timeToRead, wordCountChinese, excerpt } = article;
+  const { frontmatter: { id, title, tags, date, last_updated }, timeToRead, wordCountChinese, excerpt } = article;
 
   const { currentLanguage } = useI18nStore();
   const metadataStore = useStore(MetadataStore);
@@ -29,16 +29,17 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
   const langPaths = metadataStore.getLangPathMap(id);
 
   const dateObject = useConstant(() => fromArticleTime(date));
+  const lastUpdatedObject = useConstant(() => last_updated ? fromArticleTime(last_updated) : undefined);
 
   return (
     <div className="article-item">
       <Link className="article-item__header" to={langPaths.get(currentLanguage.id) || langPaths.values().next().value}>
         {title}
       </Link>
-
       <ArticleFrontmatter
         currentArticleLanguage={currentArticleLanguage}
         date={dateObject}
+        lastUpdated={lastUpdatedObject}
         timeToRead={timeToRead}
         tags={tags}
         articleId={id}

@@ -21,6 +21,7 @@ interface ArticleNode {
     lang: string;
     ignored_in_list?: boolean;
     date: string;
+    last_updated?: string;
     no_create_page?: boolean;
     absolute_path?: string;
     related?: string[];
@@ -56,6 +57,7 @@ export const createPages = async ({ actions, graphql }: CreatePagesArgs) => {
             id
             lang
             ignored_in_list
+            last_updated
             date
             no_create_page
             absolute_path
