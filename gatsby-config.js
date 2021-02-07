@@ -20,7 +20,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        includePaths: [path.join(__dirname, "src/styles")],
+        sassOptions: {
+          includePaths: [path.join(__dirname, "src/styles")],
+        }
       },
     },
     {
