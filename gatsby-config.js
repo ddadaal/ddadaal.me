@@ -157,10 +157,10 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: `gatsby-plugin-baidu-analytics`,
       options: {
-        trackingId: "UA-158630977-1",
-        respectDNT: true,
+        siteId: "af77eb4861784c5af85b2cfe05250ff1",
+        head: false,
       },
     },
     {

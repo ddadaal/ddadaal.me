@@ -36,7 +36,8 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
 - [ESLint](https://eslint.org/): Linter
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
-- [Google Analytics](https://analytics.google.com/analytics/web/) and [Umeng](https://www.umeng.com/): for web analytics
+- [Baidu Analytics](https://tongji.baidu.com): Baidu Analytics
+- [CNZZ](https://www.umeng.com/web): CNZZ Analytics
 - [GitHub Pages](https://pages.github.com): free and popular static website host
 - [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 
