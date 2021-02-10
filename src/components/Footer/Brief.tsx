@@ -7,7 +7,6 @@ import { useStore } from "simstate";
 import Contacts from "@/components/Contacts";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import { RunningTime } from "@/components/Footer/RunningTime";
-import useConstant from "@/utils/useConstant";
 
 const root = lang.footer;
 
@@ -17,22 +16,23 @@ const Brief: React.FC = () => {
 
   const aboutMeLink = useArticleOfCurrentLang("about-me").path;
 
-  // const allArticles = useConstant(() => Array.from(metadataStore.articleIdMap.values()));
-
-  // const totalWordsCount = useConstant(() => allArticles.reduce((prev, curr) =>
-  //   prev + curr.reduce((p, c) => p + c.wordCountChinese, 0), 0));
-
   return (
     <div className="footer-brief">
 
       <p>
-        👨🏼‍💻 <LocalizedString id={root.codeBy} replacements={[
-          <Link key={"me"} to={aboutMeLink}>ddadaal</Link>,
-        ]} />
+        👨🏼‍💻 (
+        <LocalizedString
+          id={root.codeBy}
+          replacements={[
+            <Link key={"me"} to={aboutMeLink}>ddadaal</Link>,
+          ]}
+        />)
       </p>
       <p>
         📝 <LocalizedString id={root.license} replacements={[
-          <a key="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+          <a key="license" rel="licene"
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+          >
             CC BY-SA 4.0
           </a>,
         ]} />
@@ -56,6 +56,6 @@ const Brief: React.FC = () => {
 
     </div>
   );
-}
+};
 
 export default Brief;

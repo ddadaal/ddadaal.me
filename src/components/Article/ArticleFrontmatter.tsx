@@ -2,7 +2,10 @@ import React from "react";
 import { lang, languageNames } from "@/i18n";
 import { LocalizedString, useLocalized } from "simstate-i18n";
 import styled from "styled-components";
-import { FaCalendarPlus, FaTags, FaGlobe, FaUserClock, FaFileWord, FaCalendar } from "react-icons/fa";
+import {
+  FaCalendarPlus, FaTags, FaGlobe,
+  FaUserClock, FaFileWord, FaCalendar,
+} from "react-icons/fa";
 import { breakpoints } from "@/styles/variables";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
@@ -51,7 +54,10 @@ const ContainerRow = styled.div`
 const DATE_FORMAT = "yyyy-MM-dd HH:mm";
 
 const ArticleFrontmatter: React.FC<Props> = (props) => {
-  const { date, timeToRead, tags, articleId, lastUpdated, currentArticleLanguage, setItemProp, wordCount } = props;
+  const {
+    date, timeToRead, tags, articleId,
+    lastUpdated, currentArticleLanguage, setItemProp, wordCount,
+  } = props;
 
   const dateString = useConstant(() => date.toFormat(DATE_FORMAT));
   const lastUpdatedString = useConstant(() => lastUpdated?.toFormat(DATE_FORMAT));
@@ -61,8 +67,12 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
 
   return (
     <ContainerRow>
-
-      {tags && <Tags ><FaTags />{tags.map((tag) => <ArticleTag tag={tag} key={tag} />)}</Tags>}
+      {tags && (
+        <Tags>
+          <FaTags />
+          {tags.map((tag) => <ArticleTag tag={tag} key={tag} />)}
+        </Tags>
+      )}
       <Span title={createTimeTitle} >
         <FaCalendar />
         { setItemProp
@@ -76,8 +86,11 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
             <Span title={lastUpdatedTimeTitle}>
               <FaCalendarPlus />
               { setItemProp
-                ? <time itemProp="dateModified" dateTime={lastUpdated!.toISO()}>{lastUpdatedString}</time>
-                : lastUpdatedString
+                ? (
+                  <time itemProp="dateModified" dateTime={lastUpdated!.toISO()}>
+                    {lastUpdatedString}
+                  </time>
+                ) : lastUpdatedString
               }
             </Span>
           ) : undefined
@@ -92,11 +105,14 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
       </Span>
       <Span>
         <FaGlobe />
-        <LanguageSwitcher articleId={articleId} currentArticleLanguage={currentArticleLanguage} />
+        <LanguageSwitcher
+          articleId={articleId}
+          currentArticleLanguage={currentArticleLanguage}
+        />
       </Span>
     </ContainerRow>
   );
-}
+};
 
 export default ArticleFrontmatter;
 
@@ -110,22 +126,23 @@ const DisabledLangLink = styled.span`
 
 `;
 
-const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: string }> = (props) => {
-  const { articleId, currentArticleLanguage } = props;
-  const metadataStore = useStore(MetadataStore);
+const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: string }> =
+  (props) => {
+    const { articleId, currentArticleLanguage } = props;
+    const metadataStore = useStore(MetadataStore);
 
-  const langPathMap = metadataStore.getLangPathMap(articleId);
+    const langPathMap = metadataStore.getLangPathMap(articleId);
 
-  langPathMap.delete(currentArticleLanguage);
+    langPathMap.delete(currentArticleLanguage);
 
-  return (
-    <>
-      <DisabledLangLink>
-        {languageNames[currentArticleLanguage]}
-      </DisabledLangLink>
-      {Array.from(langPathMap.entries()).map(([lang, path]) => (
-        <LangLink key={lang} to={path}>{languageNames[lang]}</LangLink>
-      ))}
-    </>
-  );
-};
+    return (
+      <>
+        <DisabledLangLink>
+          {languageNames[currentArticleLanguage]}
+        </DisabledLangLink>
+        {Array.from(langPathMap.entries()).map(([lang, path]) => (
+          <LangLink key={lang} to={path}>{languageNames[lang]}</LangLink>
+        ))}
+      </>
+    );
+  };

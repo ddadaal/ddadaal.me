@@ -1,4 +1,4 @@
-interface Tag {
+export interface Tag {
   tag: string;
 
   [lang: string]: string;
@@ -9,4 +9,4 @@ interface TagInfo {
   variations: { [lang: string]: string } | string;
 }
 
-type TagMap = Map<string, TagInfo>;
+export type TagMap = Map<string, TagInfo>;

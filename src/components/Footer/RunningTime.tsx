@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 import { lang } from "@/i18n";
 import { LocalizedString } from "simstate-i18n";
 import { UncontrolledTooltip } from "reactstrap";
-import { formatDateTime } from '@/utils/datetime';
+import { formatDateTime } from "@/utils/datetime";
 
 // 2018-11-17 14:51 UTC+8
 const startTime = DateTime.utc(2018, 11, 17, 6, 51).toLocal();
@@ -11,7 +11,8 @@ const startTime = DateTime.utc(2018, 11, 17, 6, 51).toLocal();
 const root = lang.footer;
 
 function getDiff() {
-  return startTime.diffNow().negate().shiftTo('days', 'hours', 'minutes', 'seconds').normalize();
+  return startTime.diffNow().negate()
+    .shiftTo("days", "hours", "minutes", "seconds").normalize();
 }
 
 export const RunningTime: React.FC = () => {
@@ -21,7 +22,7 @@ export const RunningTime: React.FC = () => {
     const timer = setInterval(() => setDiff(getDiff()), 1000);
     return () => {
       clearInterval(timer);
-    }
+    };
   }, []);
 
   const replacements = [diff.days, diff.hours, diff.minutes, Math.floor(diff.seconds)]
@@ -37,4 +38,4 @@ export const RunningTime: React.FC = () => {
       </span>
     </p>
   );
-}
+};

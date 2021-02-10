@@ -63,6 +63,6 @@ const BlogIntroCard: React.FC<Props> = () => {
       </CardBody>
     </BaseCard >
   );
-}
+};
 
 export default BlogIntroCard;

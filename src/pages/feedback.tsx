@@ -28,6 +28,6 @@ const FeedbackPage: React.FC = () => {
     </HeaderFooterLayout>
 
   );
-}
+};
 
 export default FeedbackPage;

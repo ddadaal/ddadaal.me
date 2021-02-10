@@ -30,7 +30,8 @@ const NavbarLanguageSelector: React.FC = () => {
       languageNames={languageNames}
       currentLanguage={
         switchingToId
-          ? i18nStore.translate(lang.languageSelector.switchingTo, [languageNames[switchingToId]]) as string
+          ? i18nStore.translate(
+            lang.languageSelector.switchingTo, [languageNames[switchingToId]]) as string
           : currentLanguage.name
       }
       changeLanguage={change}

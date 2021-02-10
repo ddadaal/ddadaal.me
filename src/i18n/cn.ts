@@ -87,20 +87,14 @@ export default {
       timeToRead: "{} 分钟阅读",
       tagLinkTitle: "搜索带有{}标签的文章",
     },
-    comments: {
-      title: " 评论",
-    },
+    comments: { title: " 评论" },
     articlePage: {
       title: "文章",
       backToHome: "回到主页",
       selectLang: "选择一个文章语言",
       toc: "目录",
-      share: {
-        title: "分享",
-      },
-      relatedArticles: {
-        text: "相关文章",
-      },
+      share: { title: "分享" },
+      relatedArticles: { text: "相关文章" },
       actions: {
         like: {
           like: "赞！",
@@ -113,9 +107,7 @@ export default {
         },
       },
     },
-    articleItem: {
-      availableLanguages: "可用语言：",
-    },
+    articleItem: { availableLanguages: "可用语言：" },
     selfIntro: {
       author: "作者",
       university: "南京大学软件工程2016级本科生",
@@ -142,12 +134,8 @@ export default {
       lastUpdated: "最后更新",
 
     },
-    tagsCard: {
-      title: "标签",
-    },
-    friends: {
-      title: "朋友们",
-    },
+    tagsCard: { title: "标签" },
+    friends: { title: "朋友们" },
 
     homepage: {
       hello: "你好",

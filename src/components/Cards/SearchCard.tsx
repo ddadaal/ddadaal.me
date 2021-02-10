@@ -18,6 +18,6 @@ const SearchCard: React.FC = () => {
       </CardBody>
     </BaseCard>
   );
-}
+};
 
 export default SearchCard;

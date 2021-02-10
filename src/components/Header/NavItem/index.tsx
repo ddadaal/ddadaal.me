@@ -36,6 +36,6 @@ const NavItem: React.FC<Props> = ({ Icon, textId, onClick, wrapper, match, to })
       ),
     )
   );
-}
+};
 
 export default NavItem;

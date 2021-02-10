@@ -32,7 +32,8 @@ const SearchPage: React.FC = () => {
   if (query) {
     searchResult = searchResult.filter((articles) => {
       // filter according to title
-      if (articles.some((article) => article.frontmatter.title.toUpperCase().includes(query.toUpperCase()))) {
+      if (articles.some((article) =>
+        article.frontmatter.title.toUpperCase().includes(query.toUpperCase()))) {
         return true;
       }
 
@@ -53,14 +54,19 @@ const SearchPage: React.FC = () => {
     });
   }
 
-  searchResult.sort((a, b) => new Date(b[0].frontmatter.date).getTime() - new Date(a[0].frontmatter.date).getTime());
+  searchResult.sort((a, b) =>
+    new Date(b[0].frontmatter.date).getTime() -
+     new Date(a[0].frontmatter.date).getTime());
 
   const totalCount = searchResult.length;
 
   const pageCount = Math.ceil(totalCount / pageSize);
 
   // pagination
-  searchResult = searchResult.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
+  searchResult = searchResult.slice(
+    pageIndex * pageSize,
+    pageIndex * pageSize + pageSize
+  );
 
   return (
     <ArticleListLayout>
@@ -70,12 +76,14 @@ const SearchPage: React.FC = () => {
       <h3>
         <LocalizedString id={root.title} replacements={[
           <strong key={"query"}>{query}</strong>,
-        ]} />
+        ]}
+        />
       </h3>
       <small>
         <LocalizedString id={root.info} replacements={[
           totalCount,
-        ]} />
+        ]}
+        />
       </small>
       <hr />
       <ArticleItemList
@@ -83,12 +91,14 @@ const SearchPage: React.FC = () => {
         pageCount={pageCount}
         pageIndex={page - 1}
         toPage={(pageNum) => {
-          const path = `/articles/search?query=${encodeURIComponent(query || "")}&page=${pageNum + 1}`;
+          const queryEncoded = encodeURIComponent(query || "");
+          const querystring = `query=${queryEncoded}&page=${pageNum + 1}`;
+          const path = `/articles/search?${querystring}`;
           return () => navigate(path);
         }}
       />
     </ArticleListLayout>
   );
-}
+};
 
 export default SearchPage;

@@ -40,7 +40,10 @@ const SubmenuLayout: React.FC<Props> = (props) => {
             <Nav vertical={true}>
               {/* <MenuTitle><LocalizedString id={props.menuTextId} /></MenuTitle> */}
               {props.navPoints.map((link) => (
-                <NavItem key={link.to} active={pathname.startsWith(props.baseUrl + link.to)}>
+                <NavItem
+                  key={link.to}
+                  active={pathname.startsWith(props.baseUrl + link.to)}
+                >
                   <Link className="nav-link" to={props.baseUrl + link.to}>
                     <link.Icon />
                     <LocalizedString id={link.textId} />
@@ -54,7 +57,7 @@ const SubmenuLayout: React.FC<Props> = (props) => {
     </HeaderFooterLayout>
   );
 
-}
+};
 
 const SubmenuLayoutTitle = styled(BannerLayoutTitle)`
   font-size: 40px;

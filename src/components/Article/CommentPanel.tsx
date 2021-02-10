@@ -64,7 +64,8 @@ const CommentPanel: React.FC<Props> = (props) => {
               title: `[COMMENT] ${props.articleTitle}`,
               id: props.articleId.substring(0, 50),
               distractionFreeMode: false,
-            }} />
+            }}
+            />
           )
           : undefined
       }
@@ -75,7 +76,12 @@ const CommentPanel: React.FC<Props> = (props) => {
 const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (props) => {
   const i18nStore = useI18nStore();
 
-  return <CommentPanel {...props} language={i18nStore.currentLanguage.gitalkLangId ?? cn.gitalkLangId} />;
-}
+  return (
+    <CommentPanel
+      {...props}
+      language={i18nStore.currentLanguage.gitalkLangId ?? cn.gitalkLangId}
+    />
+  );
+};
 
 export { CommentPanel as default, CommentPanelWithCurrentLanguage };

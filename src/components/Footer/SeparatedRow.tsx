@@ -27,6 +27,6 @@ const SeparatedRow: React.FC<Props> = ({ children, separator }) => {
       {separatedArray}
     </Container>
   );
-}
+};
 
 export default SeparatedRow;

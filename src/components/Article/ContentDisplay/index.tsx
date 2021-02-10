@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Heading } from "@/models/ArticleNode";
 import "@/styles/prism/vscode.css";
 import components from "@/configs/article/InlineComponentConfig";
 import rehypeReact from "rehype-react";
 import { HtmlAst } from "@/models/HtmlAst";
-import addSlug from "@/components/Article/ContentDisplay/astManipulators/addSlug";
-import addCodeHeader from "@/components/Article/ContentDisplay/astManipulators/addCodeHeader";
+import addSlug from "./astManipulators/addSlug";
+import addCodeHeader from "./astManipulators/addCodeHeader";
 import useConstant from "@/utils/useConstant";
 
 // @ts-ignore
@@ -34,6 +34,6 @@ const ArticleContentDisplay: React.FC<Props> = ({ htmlAst, headings }) => {
       {renderAst(htmlAst)}
     </MarkdownDisplay>
   );
-}
+};
 
 export default ArticleContentDisplay;

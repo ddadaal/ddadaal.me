@@ -27,7 +27,8 @@ const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => 
     <div>
       {items
         .map((nodes) => {
-          const node = metadataStore.getArticleOfLang(nodes[0].frontmatter.id, i18nStore.currentLanguage.id);
+          const node = metadataStore.getArticleOfLang(
+            nodes[0].frontmatter.id, i18nStore.currentLanguage.id);
           return (
             <ArticleItem
               article={node}
@@ -41,6 +42,6 @@ const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => 
       <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
     </div>
   );
-}
+};
 
 export default ArticleList;

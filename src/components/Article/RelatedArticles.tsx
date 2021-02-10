@@ -46,6 +46,6 @@ const RelatedArticles: React.FC<Props> = ({ ids }) => {
     </Container>
   );
 
-}
+};
 
 export default RelatedArticles;

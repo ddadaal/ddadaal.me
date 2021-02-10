@@ -1,7 +1,9 @@
 import React, { useCallback } from "react";
 import { heights } from "@/styles/variables";
 
-interface Props extends React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+interface Props extends React.DetailedHTMLProps<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement> {
   targetAnchor: string;
 }
 
@@ -28,11 +30,11 @@ const ScrollLinkToAnchor: React.FC<Props> = ({ targetAnchor, onClick, ...rest })
     if (onClick) {
       onClick(e);
     }
-  }, [targetAnchor, onClick])
+  }, [targetAnchor, onClick]);
 
   return (
     <a {...rest} onClick={aOnClick} />
   );
-}
+};
 
 export default ScrollLinkToAnchor;

@@ -62,7 +62,10 @@ const LinkContainer = styled.div`
 
 const root = lang.homepage;
 
-const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({ to, mode = "to", children }) => {
+const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
+  to,
+  mode = "to", children,
+}) => {
 
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useI18nStore();
@@ -77,10 +80,11 @@ const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({ to, mode = "to
       <Link {...commonProps} to={to.startsWith("/")
         ? to
         : metadataStore.getArticleOfLang(to, i18nStore.currentLanguage.id).path
-      }>
+      }
+      >
         {children}
       </Link>
-    )
+    );
   } else {
     return (
       <a {...commonProps} href={to}>
@@ -97,11 +101,6 @@ const links = [
   ["/slides", FaSlideshare, root.links.slides],
   ["about-me", FaMale, root.links.aboutMe],
 ] as const;
-
-const key = {
-  a: ["b", "c"],
-  c: ["d", "c"],
-} as const;
 
 const HomePage: React.FunctionComponent = () => {
 
@@ -121,7 +120,10 @@ const HomePage: React.FunctionComponent = () => {
           <LinkContainer>
             <Button to="/articles">
               <FaBookOpen />
-              <LocalizedString id={root.links.articles} replacements={[metadataStore.articleCount]} />
+              <LocalizedString
+                id={root.links.articles}
+                replacements={[metadataStore.articleCount]}
+              />
             </Button>
             {links.map(([to, Icon, id, mode = "to"]) => (
               <Button key={to} to={to} mode={mode as "href" | "to"}>
@@ -141,6 +143,6 @@ const HomePage: React.FunctionComponent = () => {
       </Bg>
     </HeaderFooterLayout >
   );
-}
+};
 
 export default HomePage;

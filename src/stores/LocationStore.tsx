@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import { useStore } from "simstate";
 import React from "react";
 
+const decode = decodeURIComponent;
+
 function parseQuery(queryString: string): { [query: string]: string } {
   const query = {};
   const pairs = (queryString[0] === "?" ? queryString.substr(1) : queryString).split("&");
 
   pairs.forEach((pair) => {
     const splittedPair = pair.split("=");
-    query[decodeURIComponent(splittedPair[0])] = decodeURIComponent(splittedPair[1] || "");
+    query[decode(splittedPair[0])] = decode(splittedPair[1] || "");
 
   });
 
@@ -23,7 +25,7 @@ export default function LocationStore(initialLocation: Location) {
     setLocation,
     pathname: location.pathname,
     query: location.search ? parseQuery(location.search) : {},
-  }
+  };
 }
 
 export const LocationProvider: React.FC<{ location: Location }> = ({ location }) => {
@@ -32,4 +34,4 @@ export const LocationProvider: React.FC<{ location: Location }> = ({ location })
   useEffect(() => locationStore.setLocation(location), [location]);
 
   return null;
-}
+};

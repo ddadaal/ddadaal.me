@@ -57,6 +57,6 @@ const ToTop: React.FC = () => {
       <FaArrowUp />
     </Div>
   );
-}
+};
 
 export default ToTop;

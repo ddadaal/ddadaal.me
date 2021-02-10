@@ -23,7 +23,6 @@ const LikeAction: React.FC<Props> = () => {
       <LocalizedString id={liked ? root.liked : root.like}/>
     </Action>
   );
-
-}
+};
 
 export default LikeAction;

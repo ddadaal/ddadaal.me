@@ -20,7 +20,8 @@ const ArticleTag: React.FC<Props> = ({ tag }) => {
 
   const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.currentLanguage) || tag;
 
-  const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
+  const title = i18nStore.translate(
+    lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
   const toLink = `/articles/search?query=${tagOfLang}`;
 
   return (
@@ -28,6 +29,6 @@ const ArticleTag: React.FC<Props> = ({ tag }) => {
       {tagOfLang}
     </Tag>
   );
-}
+};
 
 export default ArticleTag;

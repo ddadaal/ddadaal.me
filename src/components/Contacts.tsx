@@ -1,6 +1,9 @@
 import React from "react";
 
-import { FaQq, FaMailBulk, FaLinkedin, FaGithub, FaSteam, FaZhihu, FaQuora, FaStackOverflow } from "react-icons/fa";
+import {
+  FaQq, FaMailBulk, FaLinkedin,
+  FaGithub, FaSteam, FaZhihu,
+} from "react-icons/fa";
 import styled from "styled-components";
 
 import DoubanIcon from "~/assets/icons/douban.svg";
@@ -16,10 +19,11 @@ const contacts = [
   [FaMailBulk, "mailto://ddadaal.me@outlook.com", "E-mail: ddadaal@outlook.com"],
   [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "LinkedIn: 陈俊达"],
   [FaGithub, "https://github.com/ddadaal", "GitHub: ddadaal"],
-  [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],
+  [FaSteam, "https://steamcommunity.com/profiles/76561198104889782",
+    "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
   [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
-  [TapeIcon, "https://www.tapechat.net/u/2JJ1Y7/4YSQBV0A", "Tape小纸条: ddadaal98"]
+  [TapeIcon, "https://www.tapechat.net/u/2JJ1Y7/4YSQBV0A", "Tape小纸条: ddadaal98"],
 ] as Array<[React.ComponentType, string, string]>;
 
 const Contact = styled.span<{ color: string; size: number }>`
@@ -61,6 +65,6 @@ const Contacts: React.FC<Props> = (props) => {
       })}
     </Container>
   );
-}
+};
 
 export default Contacts;

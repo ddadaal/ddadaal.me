@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export default {
   id: "en",
   gitalkLangId: "en",
@@ -86,12 +87,8 @@ export default {
       backToHome: "Back to home",
       selectLang: "Select a language",
       toc: "Table of Contents",
-      share: {
-        title: "Share",
-      },
-      relatedArticles: {
-        text: "Related Articles",
-      },
+      share: { title: "Share" },
+      relatedArticles: { text: "Related Articles" },
       actions: {
         like: {
           like: "Like",
@@ -111,12 +108,8 @@ export default {
       timeToRead: "{} mins read",
       tagLinkTitle: "Search articles tagged with {}",
     },
-    articleItem: {
-      availableLanguages: "Available in ",
-    },
-    comments: {
-      title: " Comments",
-    },
+    articleItem: { availableLanguages: "Available in " },
+    comments: { title: " Comments" },
     selfIntro: {
       author: "Author",
       university: "Undergraduate in Nanjing University Software Engineering since 2016",
@@ -142,13 +135,8 @@ export default {
       articleCount: "Articles：{}; Words: {}",
       lastUpdated: "Last updated",
     },
-    tagsCard: {
-      title: "Tags",
-
-    },
-    friends: {
-      title: "Friends",
-    },
+    tagsCard: { title: "Tags" },
+    friends: { title: "Friends" },
     homepage: {
       hello: "Hello",
       from: "From a Student | Programmer | Dreamer",

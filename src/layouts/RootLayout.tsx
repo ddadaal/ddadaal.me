@@ -15,6 +15,7 @@ import { ArticleNode } from "@/models/ArticleNode";
 import useConstant from "@/utils/useConstant";
 import { PageMetadata } from "@/components/PageMetadata";
 import { i18nContext } from "@/i18n";
+import { Tag } from "@/models/Tag";
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -33,7 +34,10 @@ interface Props {
 
 const iconContext = { className: "icons" };
 
-const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, children }) => {
+const RootLayout: React.FC<Props> = ({
+  location, articles,
+  siteMetadata, tags, children,
+}) => {
 
   const i18nStore = useConstant(() => createI18nStore(i18nContext));
 
@@ -54,7 +58,8 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, c
         i18nStore,
         metadataStore,
         articleStore,
-      ]}>
+      ]}
+      >
         <LocationProvider location={location} />
         <LayoutRoot>
           <PageMetadata
@@ -81,6 +86,6 @@ const RootLayout: React.FC<Props> = ({ location, articles, siteMetadata, tags, c
       </StoreProvider>
     </IconContext.Provider>
   );
-}
+};
 
 export default RootLayout;

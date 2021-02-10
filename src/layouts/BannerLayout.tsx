@@ -26,7 +26,7 @@ const BannerLayout: React.FC<Props> = ({ transparentHeader, banner, children }) 
       {children}
     </HeaderFooterLayout>
   );
-}
+};
 
 const RootContainer = styled(BaseRootContainer)`
   height: ${heights.banner}px;

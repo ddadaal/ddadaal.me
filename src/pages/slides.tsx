@@ -1,6 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
-import BannerLayout, { BannerLayoutTitle, BannerLayoutDescription } from "@/layouts/BannerLayout";
+import BannerLayout, {
+  BannerLayoutTitle,
+  BannerLayoutDescription,
+} from "@/layouts/BannerLayout";
 import styled from "styled-components";
 import { lang, useI18nStore } from "@/i18n";
 import Page from "@/layouts/Page";
@@ -47,7 +50,8 @@ const Slides: React.FC<Props> = (props) => {
         <BannerLayoutTitle>{title}</BannerLayoutTitle>
         <BannerLayoutDescription>{description}</BannerLayoutDescription>
       </>
-    }>
+    }
+    >
       <PageMetadata
         title={title}
         description={description}
@@ -65,7 +69,9 @@ const Slides: React.FC<Props> = (props) => {
                 <YearNode>{year}</YearNode>
                 {pres.sort((a, b) => b.date.localeCompare(a.date)).map((pre) => (
                   <PreNode key={pre.date}>
-                    <PreNodeName href={pre.githubUrl} target={"__blank"}>{pre.name}</PreNodeName>
+                    <PreNodeName href={pre.githubUrl} target={"__blank"}>
+                      {pre.name}
+                    </PreNodeName>
                     <PreNodeDate>{pre.date}</PreNodeDate>
                   </PreNode>
                 ))}
@@ -76,7 +82,7 @@ const Slides: React.FC<Props> = (props) => {
       </Page>
     </BannerLayout>
   );
-}
+};
 
 export default Slides;
 

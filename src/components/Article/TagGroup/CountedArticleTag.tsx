@@ -17,7 +17,8 @@ const CountedArticleTag: React.FC<Props> = ({ tag, onClick }) => {
 
   const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.currentLanguage) || tag;
 
-  const title = i18nStore.translate(lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
+  const title = i18nStore.translate(
+    lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
   const toLink = `/articles/search?query=${tagOfLang}`;
   const count = metadataStore.getCountOfTag(tag);
 
@@ -28,12 +29,14 @@ const CountedArticleTag: React.FC<Props> = ({ tag, onClick }) => {
   }, [onClick, tag]);
 
   return (
-    <Link className="counted-article-tag" title={title} to={toLink} onClick={clickHandler}>
+    <Link className="counted-article-tag"
+      title={title} to={toLink} onClick={clickHandler}
+    >
       <span className="counted-article-tag__name">{tagOfLang}</span>
       <Badge color={"info"}>{count}</Badge>
     </Link>
   );
 
-}
+};
 
 export default CountedArticleTag;

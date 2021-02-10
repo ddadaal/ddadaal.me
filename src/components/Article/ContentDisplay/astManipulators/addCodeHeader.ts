@@ -1,6 +1,6 @@
 import { HtmlAstElement } from "@/models/HtmlAst";
 import { HtmlAst } from "@/models/HtmlAst";
-import { createElement, createText } from "@/components/Article/ContentDisplay/astManipulators/AstManipulator";
+import { createElement, createText } from "./AstManipulator";
 import languageTexts from "@/configs/article/LanguageTexts";
 import "./code-header.scss";
 
@@ -14,7 +14,7 @@ function visit(el: HtmlAstElement): void {
       if (pre.type === "element") {
         pre.children.unshift(
           createElement("div", { className: "code-header" }, [
-            createElement("div", { className: "code-header-inner"}, [
+            createElement("div", { className: "code-header-inner" }, [
               createText(languageTexts[language] || language),
             ]),
           ]),

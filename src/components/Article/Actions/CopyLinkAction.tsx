@@ -28,7 +28,8 @@ const CopyLinkAction: React.FC<Props> = ({ articleId }) => {
   });
 
   const actionOnClick = useCallback(async () => {
-    await navigator.clipboard.writeText(`${metadataStore.siteMetadata.siteUrl}/articles/${articleId}`)
+    const url = `${metadataStore.siteMetadata.siteUrl}/articles/${articleId}`;
+    await navigator.clipboard.writeText(url);
     setCopied(true);
   }, [articleId]);
 
@@ -37,6 +38,6 @@ const CopyLinkAction: React.FC<Props> = ({ articleId }) => {
       <LocalizedString id={copied ? root.copied : root.copyLink} />
     </Action>
   );
-}
+};
 
 export default CopyLinkAction;

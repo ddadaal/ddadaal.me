@@ -33,6 +33,6 @@ const TagsCard: React.FC<Props> = ({ className }) => {
       </CardBody>
     </BaseCard>
   );
-}
+};
 
 export default TagsCard;

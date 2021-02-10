@@ -21,7 +21,7 @@ const languageNames = {
 const languageIds = {
   cn: "zh_CN",
   en: "en_US",
-}
+};
 
 type Language = typeof cn;
 

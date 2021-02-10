@@ -21,6 +21,6 @@ const HeaderFooterLayout: React.FC<Props> = ({ transparentHeader, children }) =>
       <Footer />
     </>
   );
-}
+};
 
 export default HeaderFooterLayout;

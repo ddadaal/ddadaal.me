@@ -19,7 +19,9 @@ const SearchBar: React.FC<Props> = (props: Props) => {
   const metadataStore = useStore(MetadataStore);
   const [input, setInput] = useState("");
 
-  const placeholder = useLocalized(lang.search.inputPlaceholder, [metadataStore.articleCount]) as string;
+  const placeholder = useLocalized(
+    lang.search.inputPlaceholder,
+    [metadataStore.articleCount]) as string;
 
   const onSearch = (): void => {
     navigate(`/articles/search?query=${encodeURIComponent(input)}`);
@@ -48,6 +50,6 @@ const SearchBar: React.FC<Props> = (props: Props) => {
     </InputGroup>
   );
 
-}
+};
 
 export default SearchBar;

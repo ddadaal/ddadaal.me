@@ -26,6 +26,6 @@ const List: React.FC<Props> = ({ links }) => {
       ))}
     </Ul>
   );
-}
+};
 
 export default List;

@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+import { DateTime } from "luxon";
 
 const dateTimeFormat = "yyyy-MM-dd HH:mm:ss 'UTC'Z";
 

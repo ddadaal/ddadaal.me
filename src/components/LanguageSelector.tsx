@@ -1,6 +1,8 @@
 import React from "react";
-import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
-import { languageIds } from "@/i18n";
+import {
+  DropdownItem, DropdownMenu,
+  DropdownToggle, UncontrolledDropdown,
+} from "reactstrap";
 
 interface Props {
   languageNames: {[key: string]: string}
@@ -27,13 +29,14 @@ const LanguageSelector: React.FC<Props> = ({
         {Object.keys(languageNames).map((id) => (
           <DropdownItem
             key={id}
-            onClick={() => changeLanguage(id)}>
+            onClick={() => changeLanguage(id)}
+          >
             {languageNames[id]}
           </DropdownItem>
         ))}
       </DropdownMenu>
     </UncontrolledDropdown>
   );
-}
+};
 
 export default LanguageSelector;

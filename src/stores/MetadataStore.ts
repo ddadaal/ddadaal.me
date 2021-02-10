@@ -5,15 +5,17 @@ import { groupBy } from "@/utils/groupBy";
 import { useMemo, useCallback } from "react";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import { DateTime } from "luxon";
-import { formatDateTime } from '@/utils/datetime';
+import { formatDateTime } from "@/utils/datetime";
+import { Tag, TagMap } from "@/models/Tag";
 
 export type LangPathMap = Map<string, string>;
 
 function noSuchArticle(articleId: string): string {
-  return `No such article with id ${articleId}!`
+  return `No such article with id ${articleId}!`;
 }
 
-export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: ArticleNode[], tags: Tag[]) {
+export default function MetadataStore(
+  siteMetadata: SiteMetadata, articleNodes: ArticleNode[], tags: Tag[]) {
 
   const tagMap = useMemo(() => {
     // calculate tag map with article nodes and tags
@@ -45,7 +47,8 @@ export default function MetadataStore(siteMetadata: SiteMetadata, articleNodes: 
       return article;
     }), (article) => article.frontmatter.id);
 
-    // replicate the logic from page creation (the cn or first version of article has no lang postfix)
+    // replicate the logic from page creation
+    // (the cn or first version of article has no lang postfix)
     Array.from(map.values()).forEach((values) => {
       // sort the articles by lang
       values.sort((a, b) => a.frontmatter.lang.localeCompare(b.frontmatter.lang, "en"));

@@ -68,7 +68,7 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
       tocItemElements[currentIndex].classList.remove("active");
       currentIndex = index;
       tocItemElements[index].classList.add("active");
-    }
+    };
 
     const onScroll = (): void => {
 
@@ -79,7 +79,7 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
         }
       }
       setActive(headings.length - 1);
-    }
+    };
 
     if (headings.length === 0) { return; }
 
@@ -98,7 +98,7 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-    }
+    };
   }, [headings]);
 
   return (
@@ -118,6 +118,6 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
       })}
     </Container>
   );
-}
+};
 
 export default TocPanel;

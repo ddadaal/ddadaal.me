@@ -58,6 +58,6 @@ const ArticleListLayout: React.FC<Props> = (props: Props) => {
       </Page>
     </HeaderFooterLayout>
   );
-}
+};
 
 export default ArticleListLayout;

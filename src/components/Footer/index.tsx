@@ -79,6 +79,6 @@ const Footer: React.FC<Props> = (props) => {
       <MadeWithLove/>
     </Container>
   );
-}
+};
 
 export default Footer;

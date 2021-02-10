@@ -2,7 +2,6 @@ import React from "react";
 import { BaseCard } from "@/components/Cards/components";
 import { useStore } from "~/node_modules/simstate";
 import MetadataStore from "@/stores/MetadataStore";
-import { I18nStore } from "simstate-i18n";
 import styled from "styled-components";
 import { CardBody } from "reactstrap";
 import { navigate } from "gatsby";
@@ -39,7 +38,8 @@ const ArticleCard: React.FC<Props> = ({ articleId, className }) => {
   const metadataStore = useStore(MetadataStore);
   const i18nStore = useI18nStore();
 
-  const localizedArticle = metadataStore.getArticleOfLang(articleId, i18nStore.currentLanguage.id);
+  const localizedArticle = metadataStore.getArticleOfLang(
+    articleId, i18nStore.currentLanguage.id);
 
   return (
     <Card className={className} onClick={() => navigate(localizedArticle.path)}>
@@ -53,7 +53,7 @@ const ArticleCard: React.FC<Props> = ({ articleId, className }) => {
 
     </Card>
   );
-}
+};
 
 export default ArticleCard;
 

@@ -17,7 +17,7 @@ const ArticleActions: React.FC<Props> = ({ article }) => {
       </ActionList>
     </div>
   );
-}
+};
 
 const ActionList = styled.ul`
   list-style: none;

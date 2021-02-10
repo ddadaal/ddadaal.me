@@ -65,6 +65,6 @@ const ResumeLayout: React.FC<Props> = (props: Props) => {
       {props.children}
     </Resume>
   );
-}
+};
 
 export default ResumeLayout;

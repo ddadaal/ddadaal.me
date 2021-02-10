@@ -14,6 +14,6 @@ const NavLink: React.FC<Props> = ({ to, children, onClick }) => {
       {children}
     </Link>
   );
-}
+};
 
 export default NavLink;

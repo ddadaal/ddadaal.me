@@ -45,6 +45,6 @@ const NewContentPop: React.FC<Props> = () => {
       <LocalizedString id={root.other} />
     </NewContentPopContainer>
   );
-}
+};
 
 export default NewContentPop;

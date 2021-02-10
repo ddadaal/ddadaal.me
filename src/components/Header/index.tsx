@@ -13,7 +13,10 @@ import React, { useState, useCallback } from "react";
 import Icon from "~/assets/logo.svg";
 import styled from "styled-components";
 import { widths, colors } from "@/styles/variables";
-import { FaHome, FaMale, FaGlobe, FaFile, FaInfo, FaBookOpen, FaSlideshare } from "react-icons/fa";
+import {
+  FaHome, FaMale, FaGlobe, FaFile,
+  FaInfo, FaBookOpen, FaSlideshare,
+} from "react-icons/fa";
 import { LocalizedString } from "simstate-i18n";
 import { lang } from "@/i18n";
 import LocationStore from "@/stores/LocationStore";
@@ -146,7 +149,7 @@ const Header: React.FC<Props> = ({ transparentHeader }) => {
       </NavbarContainer>
     </Container>
   );
-}
+};
 
 export default Header;
 
@@ -170,7 +173,7 @@ const Branding: React.FC = () => {
       ddadaal.me
     </Link>
   );
-}
+};
 
 const DropdownToggle: React.FC<DropdownToggleProps> = (props) => {
   const { pathname } = useStore(LocationStore);
@@ -182,6 +185,7 @@ const DropdownToggle: React.FC<DropdownToggleProps> = (props) => {
       [className, pathname.startsWith("/about") ? "active" : undefined].
         filter((x) => !!x)
         .join(" ")
-    } />
+    }
+    />
   );
 };

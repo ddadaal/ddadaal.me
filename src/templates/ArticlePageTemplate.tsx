@@ -46,16 +46,31 @@ const PageWithHeader = styled(Page)`
    animation: ${enterAnimation} 0.2s ease-in-out;
 `;
 
-const PageComponent: React.FC<{ hasHeader: boolean; children: React.ReactNode }> = ({ hasHeader, children }) => {
-  return hasHeader ? <PageWithHeader>{children}</PageWithHeader> : <Page>{children}</Page>;
+const PageComponent: React.FC<{ hasHeader: boolean; children: React.ReactNode }> =
+({ hasHeader, children }) => {
+  return (
+    hasHeader
+      ? <PageWithHeader>{children}</PageWithHeader>
+      : <Page>{children}</Page>
+  );
 };
 
-const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime; lastUpdated?: DateTime }> = ({ article, children, lang, date, lastUpdated }) => {
+interface RootLayoutProps {
+  article: ArticleNode;
+  lang: string;
+  date: DateTime;
+  lastUpdated?: DateTime;
+}
+
+const RootLayout: React.FC<RootLayoutProps> = ({
+  article, children,
+  lang, date, lastUpdated,
+}) => {
 
   const {
-    frontmatter: {
-      id, title, tags, hide_heading,
-    }, timeToRead, wordCountChinese } = article;
+    frontmatter: { id, title, tags, hide_heading },
+    timeToRead, wordCountChinese,
+  } = article;
 
   if (hide_heading) {
     return (
@@ -76,12 +91,13 @@ const RootLayout: React.FC<{ article: ArticleNode; lang: string; date: DateTime;
           currentArticleLanguage={lang}
           wordCount={wordCountChinese}
         />
-      }>
+      }
+      >
         {children}
       </BannerLayout>
     );
   }
-}
+};
 
 const ArticlePageTemplate: React.FC<Props> = (props) => {
 
@@ -100,17 +116,23 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
     };
   }, [articleNode]);
 
-  const { path, excerpt, frontmatter: {
-    title, date, tags, hide_heading, no_toc, related, last_updated,
-  } } = articleNode;
+  const {
+    path, excerpt,
+    frontmatter: { title, date, tags, hide_heading, no_toc, related, last_updated },
+  } = articleNode;
 
   const langPathMap = metadataStore.getLangPathMap(props.pageContext.id);
 
   const publishedTime = useConstant(() => fromArticleTime(date));
-  const lastUpdatedTime = useConstant(() => last_updated ? fromArticleTime(last_updated) : undefined);
+  const lastUpdatedTime = useConstant(() => last_updated
+    ? fromArticleTime(last_updated)
+    : undefined);
 
   return (
-    <RootLayout article={articleNode} lang={lang} date={publishedTime} lastUpdated={lastUpdatedTime}>
+    <RootLayout
+      article={articleNode} lang={lang}
+      date={publishedTime} lastUpdated={lastUpdatedTime}
+    >
       <div>
         <PageMetadata
           title={title}
@@ -164,7 +186,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
       </div>
     </RootLayout>
   );
-}
+};
 
 export default ArticlePageTemplate;
 

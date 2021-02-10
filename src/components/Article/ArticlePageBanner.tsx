@@ -31,7 +31,10 @@ interface Props {
 //   z-index: 1;
 // `;
 
-const ArticlePageBanner: React.FC<Props> = ({ title, id, tags, date, lastUpdated, timeToRead, currentArticleLanguage, wordCount }) => {
+const ArticlePageBanner: React.FC<Props> = ({
+  title, id, tags, date, lastUpdated,
+  timeToRead, currentArticleLanguage, wordCount,
+}) => {
   return (
     <>
       <BannerLayoutTitle>{title}</BannerLayoutTitle>
@@ -47,6 +50,6 @@ const ArticlePageBanner: React.FC<Props> = ({ title, id, tags, date, lastUpdated
       />
     </>
   );
-}
+};
 
 export default ArticlePageBanner;

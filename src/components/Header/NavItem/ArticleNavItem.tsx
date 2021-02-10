@@ -10,7 +10,10 @@ interface Props {
   textId: string;
 }
 
-const ArticleNavItem: React.FC<Props> = ({ Icon, articleId, onClick, wrapper, textId }) => {
+const ArticleNavItem: React.FC<Props> = ({
+  Icon, articleId,
+  onClick, wrapper, textId,
+}) => {
 
   const path = useArticleOfCurrentLang(articleId).path;
 
@@ -24,6 +27,6 @@ const ArticleNavItem: React.FC<Props> = ({ Icon, articleId, onClick, wrapper, te
       textId={textId}
     />
   );
-}
+};
 
 export default ArticleNavItem;

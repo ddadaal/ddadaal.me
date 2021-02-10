@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import RootLayout from "./RootLayout";
 import { ArticleNode } from "@/models/ArticleNode";
+import { Tag } from "@/models/Tag";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };
@@ -73,6 +74,6 @@ const IndexLayout: React.FC<Props> = (props) => {
     </RootLayout>
   );
 
-}
+};
 
 export default IndexLayout;

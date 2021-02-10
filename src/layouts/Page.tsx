@@ -39,7 +39,10 @@ const StyledContainer = styled.div<{ maxWidth: number }>`
   animation: ${moveInAnimation} 0.2s ease-out;
 `;
 
-const Page: React.FC<Props> = ({ className, children, maxWidth = widths.mainContent }) => {
+const Page: React.FC<Props> = ({
+  className, children,
+  maxWidth = widths.mainContent,
+}) => {
   return (
     <StyledPage>
       <StyledContainer maxWidth={maxWidth} className={className}>
@@ -47,6 +50,6 @@ const Page: React.FC<Props> = ({ className, children, maxWidth = widths.mainCont
       </StyledContainer>
     </StyledPage>
   );
-}
+};
 
 export default Page;
