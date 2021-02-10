@@ -121,7 +121,8 @@ export const createPages = async ({ actions, graphql }: CreatePagesArgs) => {
 
 };
 
-function createPaginatedHomepages(createPage: CreatePageFn, articleGroups: ArticleGroups) {
+function createPaginatedHomepages(
+  createPage: CreatePageFn, articleGroups: ArticleGroups) {
 
   const generatePath = (index: number) => {
     return `/articles${index === 0 ? "" : `/${index + 1}`}`;
@@ -136,7 +137,8 @@ function createPaginatedHomepages(createPage: CreatePageFn, articleGroups: Artic
     }
   }
 
-  notIgnoredGroups.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+  notIgnoredGroups.sort((a, b) =>
+    new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 
   const pageSize = 5;
 
@@ -151,14 +153,17 @@ function createPaginatedHomepages(createPage: CreatePageFn, articleGroups: Artic
         skip: pageIndex * pageSize,
         pageCount,
         pageIndex: pageIndex,
-        ids: notIgnoredGroups.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize).map((x) => x.frontmatter.id),
+        ids: notIgnoredGroups
+          .slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)
+          .map((x) => x.frontmatter.id),
       },
-    })
+    });
   });
 
 }
 
-function createArticlePages(createPage: CreatePageFn, redirect: CreateRedirectFn, articleGroups: ArticleGroups) {
+function createArticlePages(
+  createPage: CreatePageFn, redirect: CreateRedirectFn, articleGroups: ArticleGroups) {
   const slugger = new GitHubSlugger();
 
   const createPageWithPath = (node: ArticleNode, path: string) => {
@@ -173,9 +178,9 @@ function createArticlePages(createPage: CreatePageFn, redirect: CreateRedirectFn
           ...x,
           slug: slugger.slug(x.value, false),
         })),
-      }
+      },
     });
-  }
+  };
 
   Object.entries(articleGroups).forEach(([key, nodes]) => {
     if (nodes.length === 0) { throw new Error(`${key} has no article!`); }
@@ -191,12 +196,13 @@ function createArticlePages(createPage: CreatePageFn, redirect: CreateRedirectFn
     // 2. Create a redirect from path url with lang to path without lang
     redirect(`${firstNode.path}/${firstNode.frontmatter.lang}`, firstNode.path);
 
-    // 3. Create each page for remaining languages by appending lang id on the back of path
+    // 3. Create each page for remaining languages
+    //    by appending lang id on the back of path
     nodes.forEach((node) => {
       if (node === firstNode) { return; }
       slugger.reset();
 
-      createPageWithPath(node, `${node.path}/${node.frontmatter.lang}`)
+      createPageWithPath(node, `${node.path}/${node.frontmatter.lang}`);
     });
   });
 }
@@ -205,7 +211,7 @@ function createArticlePages(createPage: CreatePageFn, redirect: CreateRedirectFn
 // Create slides nodes
 export const sourceNodes = async ({
   actions: { createNode },
-  createContentDigest
+  createContentDigest,
 }: SourceNodesArgs) => {
 
   function createNodeFromSlide(x) {
@@ -215,20 +221,20 @@ export const sourceNodes = async ({
       internal: {
         type: "Slide",
         contentDigest: createContentDigest(x),
-      }
+      },
     });
   }
 
-  const slidesUrl= `https://api.github.com/repos/ddadaal/Slides/contents/`;
+  const slidesUrl= "https://api.github.com/repos/ddadaal/Slides/contents/";
 
   try {
     const result = await (await fetch(slidesUrl, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         // Set the token if ACTIONS_TOKEN environment token exists
-        ...process.env.ACTIONS_TOKEN ? {
-          'Authorization': `token ${process.env.ACTIONS_TOKEN}`
-        } : null
+        ...process.env.ACTIONS_TOKEN
+          ? { "Authorization": `token ${process.env.ACTIONS_TOKEN}` }
+          : null,
       },
     })).json();
 
@@ -236,7 +242,8 @@ export const sourceNodes = async ({
 
   } catch (e) {
     console.warn("Error occurred when requesting to GitHub to fetch my slides list.");
-    console.warn("An sample Slide node is provided to Gatsby to make the website run without Slides page");
+    console.warn(`An sample Slide node is provided to Gatsby to \
+    make the website run without Slides page`);
     console.warn(`Error is ${e}`);
 
     const dummy = {
@@ -252,9 +259,9 @@ export const sourceNodes = async ({
       "_links": {
         "self": "https://api.github.com/repos/ddadaal/Slides/contents/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon?ref=master",
         "git": "https://api.github.com/repos/ddadaal/Slides/git/trees/f4b5ed77d6dd8d493b869b1034403529668ac407",
-        "html": "https://github.com/ddadaal/Slides/tree/master/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon"
-      }
+        "html": "https://github.com/ddadaal/Slides/tree/master/20161218-2016%E5%B9%B4%E5%BE%AE%E8%BD%AF%E4%BF%B1%E4%B9%90%E9%83%A8hackathon",
+      },
     };
     createNodeFromSlide(dummy);
   }
-}
+};
