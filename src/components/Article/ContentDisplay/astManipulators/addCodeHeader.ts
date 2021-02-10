@@ -6,7 +6,7 @@ import "./code-header.scss";
 
 function visit(el: HtmlAstElement): void {
   if (el.type === "element") {
-    if (el.tagName === "div" && el.properties.dataLanguage) {
+    if (el.tagName === "pre" && el.properties.dataLanguage) {
       const language = el.properties.dataLanguage;
 
       const pre = el.children[0];
