@@ -44,7 +44,7 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 
 npm instead of yarn is preferred, because integrity check in yarn sometimes needs more information than provided by taobao npm mirror.
 
-Notice: If an environment variable is named `ACTION_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
+Notice: If an environment variable is named `ACTIONS_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
 
 ``` bash
 # For Windows users, install windows-build-tools
