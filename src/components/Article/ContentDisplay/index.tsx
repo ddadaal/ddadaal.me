@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Heading } from "@/models/ArticleNode";
-import "@/styles/prism/vscode.css";
 import rehypeReact from "rehype-react";
 import { HtmlAst } from "@/models/HtmlAst";
 import addSlug from "./astManipulators/addSlug";
