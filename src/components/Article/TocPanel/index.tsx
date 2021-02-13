@@ -22,14 +22,24 @@ const Container = styled.div`
   &> p {
     margin-left: 4px;
   }
-
 `;
 
 interface ItemProps {
   depth: number;
 }
 
-const Item = styled(ScrollLinkToAnchor)`
+const List = styled.ol`
+  list-style: none;
+  padding-left: 0;
+  overflow: hidden;
+  max-height: 50vh;
+
+  &:hover {
+    overflow: auto;
+  }
+`;
+
+const Item = styled.li`
   padding-left: ${(props: ItemProps) => props.depth * 16}px;
   :hover {
     cursor: pointer;
@@ -104,18 +114,21 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
   return (
     <Container className={className}>
       <p><MdToc /><LocalizedString id={root.toc} /></p>
-      {headings.map((heading) => {
-        return (
-          <Item
-            id={`tocitem-${heading.slug}`}
-            key={heading.slug}
-            targetAnchor={heading.slug}
-            depth={heading.depth}
-          >
-            {heading.value}
-          </Item>
-        );
-      })}
+      <List>
+        {headings.map((heading) => {
+          return (
+            <Item
+              id={`tocitem-${heading.slug}`}
+              key={heading.slug}
+              depth={heading.depth}
+            >
+              <ScrollLinkToAnchor targetAnchor={heading.slug}>
+                {heading.value}
+              </ScrollLinkToAnchor>
+            </Item>
+          );
+        })}
+      </List>
     </Container>
   );
 };
