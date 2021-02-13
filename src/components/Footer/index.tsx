@@ -4,7 +4,6 @@ import { LocalizedString } from "simstate-i18n";
 import { lang } from "@/i18n";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
-import friendLinks from "@/configs/friendLinks";
 import Brief from "@/components/Footer/Brief";
 import List from "@/components/Footer/List";
 import MadeWithLove from "@/components/Footer/MadeWithLove";
@@ -48,7 +47,14 @@ const themedWiths = [
   ["SASS", "https://sass-lang.com/"],
 ].map(([name, link]) => ({ name, link }));
 
-const friends = friendLinks.map(({ name, link, description }) => ({
+
+const friends = [
+  { name: "idealclover", description: "翠翠酱的个人网站", link: "https://idealclover.top" },
+  { name: "Sephidator", description: "Sephidator的个人博客", link: "https://sephidator.xyz" },
+  { name: "iznauy", description: "个人博客", link: "https://iznauy.github.io/" },
+  { name: "Aironoria", description: "陈俊宇的个人博客", link: "https://aironoria.github.io" },
+  { name: "forewing", description: "个人主页", link: "https://jbesu.com/" },
+].map(({ name, link, description }) => ({
   name: `${name} - ${description}`,
   link,
 }));
