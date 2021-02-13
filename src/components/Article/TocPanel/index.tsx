@@ -5,7 +5,7 @@ import { LocalizedString } from "simstate-i18n";
 import { lang } from "@/i18n";
 import styled from "styled-components";
 import { heights, colors } from "@/styles/variables";
-import ScrollLinkToAnchor from "./ScrollLinkToAnchor";
+import { scrollToAnchor } from "@/components/Article/TocPanel/scrollToAnchor";
 
 interface Props {
   headings: Heading[];
@@ -121,10 +121,9 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
               id={`tocitem-${heading.slug}`}
               key={heading.slug}
               depth={heading.depth}
+              onClick={scrollToAnchor(heading.slug)}
             >
-              <ScrollLinkToAnchor targetAnchor={heading.slug}>
-                {heading.value}
-              </ScrollLinkToAnchor>
+              {heading.value}
             </Item>
           );
         })}
