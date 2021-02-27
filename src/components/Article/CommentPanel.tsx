@@ -64,6 +64,8 @@ const CommentPanel: React.FC<Props> = (props) => {
               title: `[COMMENT] ${props.articleTitle}`,
               id: props.articleId.substring(0, 50),
               distractionFreeMode: false,
+              // eslint-disable-next-line max-len
+              proxy: "https://sweet-field-5ae0.ddadaal.workers.dev/https://github.com/login/oauth/access_token",
             }}
             />
           )
