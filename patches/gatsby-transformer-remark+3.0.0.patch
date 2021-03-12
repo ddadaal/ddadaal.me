@@ -1,8 +1,8 @@
 diff --git a/node_modules/gatsby-transformer-remark/extend-node-type.js b/node_modules/gatsby-transformer-remark/extend-node-type.js
-index 7bdcdd8..1db72e1 100644
+index 099c6cd..8928a53 100644
 --- a/node_modules/gatsby-transformer-remark/extend-node-type.js
 +++ b/node_modules/gatsby-transformer-remark/extend-node-type.js
-@@ -662,6 +662,19 @@ module.exports = function remarkExtendNodeType({
+@@ -644,6 +644,19 @@ module.exports = function remarkExtendNodeType({
            }
          }
  
