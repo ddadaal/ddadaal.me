@@ -12,7 +12,7 @@ const PageIndicator: React.FC<Props> = (props) => {
   const { pageCount, pageIndex, toPage } = props;
 
   return (
-    <Pagination aria-label="Page">
+    <Pagination>
       <PaginationItem>
         <PaginationLink
           disabled={pageCount === 0 || pageIndex === 0}

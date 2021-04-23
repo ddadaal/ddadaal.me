@@ -4,6 +4,7 @@ import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
 import { useStore } from "simstate";
 import { useI18nStore } from "@/i18n";
+import styled from "styled-components";
 
 interface Props {
   ids: string[];
@@ -11,6 +12,11 @@ interface Props {
   pageIndex: number;
   toPage(pageIndex: number): () => void;
 }
+
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => {
 
@@ -39,7 +45,9 @@ const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => 
 
         })
       }
-      <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
+      <PaginationContainer>
+        <PageIndicator pageCount={pageCount} pageIndex={pageIndex} toPage={toPage} />
+      </PaginationContainer>
     </div>
   );
 };
