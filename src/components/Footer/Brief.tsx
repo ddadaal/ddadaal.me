@@ -20,13 +20,13 @@ const Brief: React.FC = () => {
     <div className="footer-brief">
 
       <p>
-        👨🏼‍💻 (
+        👨🏼‍💻&nbsp;
         <LocalizedString
           id={root.codeBy}
           replacements={[
             <Link key={"me"} to={aboutMeLink}>ddadaal</Link>,
           ]}
-        />)
+        />
       </p>
       <p>
         📝 <LocalizedString id={root.license} replacements={[
