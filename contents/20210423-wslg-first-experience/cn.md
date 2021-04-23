@@ -1,7 +1,8 @@
 ---
 id: wslg-first-experience
 date: 2021-04-23 12:02
-title: wslg初体验：Windows成为最佳Linux发行版
+last_updated: 2021-04-23 19:48
+title: wslg初体验：最佳Linux发行版？
 lang: cn
 tags:
   - Linux
@@ -13,7 +14,7 @@ related:
 
 # wslg
 
-Build 2020上微软给大家画了个饼，说官方正在做WSL2的GUI和GPU支持，这让我激动得不行。
+Build 2020上微软给大家画了个饼，说官方正在做WSL2的GUI和GPU支持。
 
 ![Build 2020上WSL 2的GUI支持图片（来源：https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-build-2020-summary/#wsl-gui）](build-2020-wsl-2-gui.png)
 
@@ -94,7 +95,7 @@ ohhhhhhh！无缝体验，不需要再去折腾什么`DISPLAY`环境变量，Win
 
 我在文章中提到IME支持的问题。Linux下配置输入法也是一件比较麻烦的事情，如果能够直接使用Windows这边的输入法在Linux程序中输入程序，就会极大提高用户体验。
 
-很遗憾的是看到当前版本的`wslg`仍然不支持直接使用Windows的输入法在Linux下进行输入。不知道微软有没有发现非英语国家的开发者确实有这个需求，如果以后可以做就更好了。
+很遗憾的是看到当前版本的`wslg`仍然不支持直接使用Windows的输入法在Linux下进行输入。不知道微软有没有发现非英语国家的开发者确实有这个需求，也可能技术上有一些困难，如果以后可以做就更好了。
 
 ![不能直接使用Windows输入法](ime.png)
 
@@ -122,4 +123,8 @@ ohhhhhhh！无缝体验，不需要再去折腾什么`DISPLAY`环境变量，Win
 
 # 总结
 
-可以发现，有了wslg，Windows朝着最佳Linux发行版又跨了一大步。虽然现在的wslg还有很多bug，实际效果可能和普通的Windows的X Server相差不大（甚至目前还不如，比如HiDPI支持），但是由于wslg有官方背书，可以预见到wslg正式推出后，Windows将会越来越像Linux。无缝的GUI体验，开始菜单的集成，GPU计算……通过WSL2和wslg，Windows完全兼容了Linux生态，Linux能做的Windows都能做，而反过来现在不行，可能以后也永远不行。
+可以发现，现在的wslg的功能和普通的X Server差不多，甚至目前有的方案还不如（比如HiDPI支持）。
+
+从GitHub的README上可以看到，这个项目并不是通过X11 Forwarding实现的，而是借用了Wayland的Compositor以及RDP协议，看起来架构复杂不少，带来的优势其实我暂时并没有发现，希望有大佬科普科普。
+
+但是即使这样，由于wslg有官方背书，用户体验比自己折腾X Server和DISPLAY变量的X11 Forwarding方案好一些。再加上开始菜单的集成、GPU计算等等功能，可以说有了wslg，Windows朝着最佳Linux发行版又跨了一大步。通过WSL2和wslg，Windows完全兼容了Linux生态，Linux能做的Windows都能做，而反过来现在不行，由于Windows闭源的特性，可能以后也永远不行。
