@@ -41,7 +41,11 @@ const TextContent = styled(InnerContainer)`
   & > * {
      padding: 12px 0;
   }
-    animation: ${moveInAnimation} 0.2s ease-in-out;
+
+  animation: ${moveInAnimation} 0.2s ease-in-out;
+
+  margin: 0 8px;
+
 
 `;
 
@@ -51,6 +55,7 @@ const TitleText = styled.h1`
 `;
 
 const Slogan = styled.h4`
+  font-size: 20px;
 `;
 
 const LinkContainer = styled.div`
