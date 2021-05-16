@@ -147,13 +147,13 @@ module.exports = {
               linkImagesToOriginal: false
             }
           },
-          // {
-          //   resolve: `gatsby-remark-images-medium-zoom`,
-          //   options: {
-          //     background: "#222",
-          //     zIndex: 1040,
-          //   }
-          // }
+          {
+            resolve: `gatsby-remark-images-medium-zoom`,
+            options: {
+              background: "#222",
+              zIndex: 1040,
+            }
+          }
         ]
       }
     },
