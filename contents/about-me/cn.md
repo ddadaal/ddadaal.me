@@ -10,11 +10,17 @@ hide_heading: false
 
 ---
 
+<style>
+.r { color: red; }
+.g { color: green; }
+.b { color: blue; }
+</style>
+
 # 我...
 
 - 生于并长于中国**重庆市**
 - 2016到2020年在**南京大学**读软件工程专业本科
-- 2020年入学**北京大学信息科学技术学院**读**硕士**
+- 2020年入学**北京大学**读**硕士**，算[信科计算机系](https://eecs.pku.edu.cn)的学籍，但是实验室在[计算中心](https://cc.pku.edu.cn)
 - 希望我的工作能在实践中起到作用，能帮助大家提高生产力
 
 # 我的爱好
@@ -32,15 +38,24 @@ hide_heading: false
 
 # 编程技能
 
-- **Web前端**：比较熟悉，只熟悉`React`全家桶，`TypeScript`无脑吹
-- **Web后端**：能用`ASP.NET Core`和`Spring Boot`调库写CRUD
+- **Web前端**：
+  - 写了不少项目了，比较熟悉
+  - 只熟悉`React`全家桶，`TypeScript`无脑吹
+- **Web后端**：
+  - 2020年下半年起新项目主要使用的是`NodeJS`下的`fastify`
+  - 还能用`ASP.NET Core`和`Spring Boot`调库简单写写
+- **DevOps**：
+  - 可以在单机环境使用`docker-compose`进行网站部署和维护工作
+  - 可以部署和维护CI/CD流水线
+  - 在用和在学`prometheus`和`grafana`和`loki`
 - **移动端**
+  - **微信小程序**：在一个48小时hackathon中写了简单的[校园版大众点评](https://github.com/ddadaal/mycanteen-wxmp)
   - **Android**：写过Hello World
   - **Windows Phone**：写过Hello World
 - **GUI**
   - `JavaFX`：能写
   - `WinForm/WPF`：写过Hello World
-- **算法数据结构**：垃圾水平，LeetCode Medium不一定能做出来
+- **算法/数据结构**：垃圾水平，LeetCode Medium不一定能做出来
 - **语言**
   - 比较熟悉：`TypeScript`/`JavaScript`, `Java`, `C#`
   - 能写：`Python`, `Kotlin`
@@ -49,10 +64,10 @@ hide_heading: false
 
 # 装备
 
-| 设备                              | 配置                                           | 服役日期   |
+| 设备                              | 配置                                           | 服役开始日期   |
 | --------------------------------- | ---------------------------------------------- | ---------- |
 | 联想Yoga Pro 13s                  | i5 1135G7/16G/512G PM9A1/2560*1600/966g        | 2020年11月 |
-| 台式机                            | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000Pro | 2020年12月 |
+| 台式机                            | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | 2020年12月 |
 | LG 27UL550                        | 27寸/3840*2160/60Hz                            | 2019年12月 |
 | 三星Galaxy S20                    | 高通骁龙865/12G/128G/6.2' 1080P120             | 2021年1月  |
 | 华米手表GTS                       | N/A                                            | 2019年9月  |
