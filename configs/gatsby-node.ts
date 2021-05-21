@@ -276,7 +276,7 @@ interface RedirectsQueryResult {
 
 const CLIENT_REDIRECT = true;
 const redirectsTemplate = path.resolve("src/templates/RedirectPageTemplate.tsx");
-const redirectPrefix = "/redirects/";
+const redirectPrefix = "/r/";
 
 async function createRedirects(
   redirect: CreateRedirectFn,
