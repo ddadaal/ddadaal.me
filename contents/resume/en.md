@@ -47,7 +47,7 @@ Chen Junda
 ### President (2018-2019), Undersecretary of Technology Department (2017-2018), Member (2016-2017)
 - Coordinate internal and external affairs and participate in planning and execution of activities
 - Club has been awarded **Technology Contribution Award** (2/34) and **Branding Activity Award** (2/34) in 2017-2018, 2018-2019 respectively
-- Experiences and contributions are credited by MSRA WeChat Official Account: http://1t.click/bgTF
+- Experiences and contributions are credited by MSRA WeChat Official Account: https://ddadaal.me/redirects/msc
 
 ## <span class="highlight">Others</span>
 - Participated in SAP VT Internship Program from 2018/7 to 2019/5
