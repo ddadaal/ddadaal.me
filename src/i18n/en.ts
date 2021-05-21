@@ -150,5 +150,9 @@ export default {
         feedback: "Feedback",
       },
     },
+    redirects: {
+      title: "Redirecting",
+      description: "Please wait a moment. Redirecting to external URL: ",
+    },
   },
 };

@@ -150,5 +150,10 @@ export default {
         feedback: "反馈",
       },
     },
+
+    redirects: {
+      title: "重定向中",
+      description: "请稍等，正在重定向到外部网址：",
+    },
   },
 };

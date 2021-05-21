@@ -118,6 +118,8 @@ export const createPages = async ({ actions, graphql }: CreatePagesArgs) => {
     articleGroups,
   );
 
+  createRedirects(redirect, createPage, graphql);
+
 
 };
 
@@ -265,3 +267,44 @@ export const sourceNodes = async ({
     createNodeFromSlide(dummy);
   }
 };
+
+interface RedirectsQueryResult {
+  allRedirectsJson: {
+    nodes: { id: string; to: string }[];
+  }
+}
+
+const CLIENT_REDIRECT = true;
+const redirectsTemplate = path.resolve("src/templates/RedirectPageTemplate.tsx");
+const redirectPrefix = "/redirects/";
+
+async function createRedirects(
+  redirect: CreateRedirectFn,
+  createPage: CreatePageFn,
+  graphql: CreatePagesArgs["graphql"],
+) {
+  const result = await graphql<RedirectsQueryResult>(`{
+    allRedirectsJson {
+      nodes {
+        id
+        to
+      }
+    }
+  }`);
+
+  if (result.errors || !result.data) {
+    throw result.errors;
+  }
+
+  result.data.allRedirectsJson.nodes.forEach(({ id, to }) => {
+
+    const path = redirectPrefix + id;
+
+    if (CLIENT_REDIRECT) {
+      createPage({ path: path, component: redirectsTemplate, context: { id, to } });
+    } else {
+      redirect(path, to);
+    }
+  });
+
+}
