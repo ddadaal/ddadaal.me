@@ -3,8 +3,8 @@ import React from "react";
 import Contacts from "@/components/Contacts";
 import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
-import { lang, useI18nStore } from "@/i18n";
-import { LocalizedString } from "simstate-i18n";
+import { p, useI18n } from "@/i18n";
+import { Localized } from "@/i18n";
 import { FaFile, FaBookOpen, FaMale, FaClock, FaSlideshare, FaRss } from "react-icons/fa";
 import { Link } from "gatsby";
 import { useStore } from "simstate";
@@ -65,7 +65,7 @@ const LinkContainer = styled.div`
   }
 `;
 
-const root = lang.homepage;
+const root = p("homepage.");
 
 const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
   to,
@@ -73,7 +73,7 @@ const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
 }) => {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
 
   const commonProps = {
     className: "btn btn-info",
@@ -84,7 +84,7 @@ const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
     return (
       <Link {...commonProps} to={to.startsWith("/")
         ? to
-        : metadataStore.getArticleOfLang(to, i18nStore.currentLanguage.id).path
+        : metadataStore.getArticleOfLang(to, i18n.currentLanguage.id).path
       }
       >
         {children}
@@ -101,10 +101,10 @@ const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
 
 
 const links = [
-  ["/rss.xml", FaRss, root.links.rss, "href"],
-  ["resume", FaFile, root.links.resume],
-  ["/slides", FaSlideshare, root.links.slides],
-  ["about-me", FaMale, root.links.aboutMe],
+  ["/rss.xml", FaRss, root("links.rss"), "href"],
+  ["resume", FaFile, root("links.resume")],
+  ["/slides", FaSlideshare, root("links.slides")],
+  ["about-me", FaMale, root("links.aboutMe")],
 ] as const;
 
 const HomePage: React.FunctionComponent = () => {
@@ -114,33 +114,33 @@ const HomePage: React.FunctionComponent = () => {
   return (
     <HeaderFooterLayout transparentHeader={true}>
       <PageMetadata
-        titleId={lang.pageMedatadata.homepage}
+        titleId={"pageMedatadata.homepage"}
       />
       <Bg>
         <TextContent>
           <TitleText>
-            <LocalizedString id={root.hello} />
+            <Localized id={root("hello")} />
           </TitleText>
-          <Slogan><LocalizedString id={root.from} /></Slogan>
+          <Slogan><Localized id={root("from")} /></Slogan>
           <LinkContainer>
             <Button to="/articles">
               <FaBookOpen />
-              <LocalizedString
-                id={root.links.articles}
-                replacements={[metadataStore.articleCount]}
+              <Localized
+                id={root("links.articles")}
+                args={[metadataStore.articleCount]}
               />
             </Button>
             {links.map(([to, Icon, id, mode = "to"]) => (
               <Button key={to} to={to} mode={mode as "href" | "to"}>
                 <Icon />
-                <LocalizedString id={id} />
+                <Localized id={id} />
               </Button>
             ))}
           </LinkContainer>
           <Contacts size={1.6} color={"white"} />
           <p>
             <FaClock />
-            <LocalizedString id={lang.statistics.lastUpdated} />：
+            <Localized id={"statistics.lastUpdated"} />：
             <strong> {metadataStore.siteMetadata.formattedLastUpdate}</strong>
           </p>
         </TextContent>

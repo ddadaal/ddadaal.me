@@ -1,21 +1,33 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import LanguageSelector from "@/components/LanguageSelector";
 import { navigate } from "gatsby";
 import ArticleStore from "@/stores/ArticleStore";
-import { useI18nStore, languageNames, lang } from "@/i18n";
+import { languageInfo, TextId, useI18n } from "@/i18n";
+
+const languageNames = Object.entries(languageInfo)
+  .reduce((prev, [id, info]) => {
+    prev[id] = info.name;
+    return prev;
+  }, {});
 
 const NavbarLanguageSelector: React.FC = () => {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
   const articleStore = useStore(ArticleStore);
 
-  const { currentLanguage, changeLanguage, switchingToId } = i18nStore;
+  const [switchingTo, setSwitchingTo] = useState<TextId | undefined>(undefined);
 
-  const change = useCallback(async (id: string) => {
-    await changeLanguage(id);
+  const { currentLanguage, setLanguageById } = i18n;
+
+  const change = useCallback(async (id: TextId) => {
+    setSwitchingTo(id);
+    await setLanguageById(id).finally(() => {
+      setSwitchingTo(undefined);
+    });
+
     const article = articleStore.article;
     if (article) {
       const targetNode = metadataStore.getArticleOfLang(article.frontmatter.id, id);
@@ -29,13 +41,13 @@ const NavbarLanguageSelector: React.FC = () => {
     <LanguageSelector
       languageNames={languageNames}
       currentLanguage={
-        switchingToId
-          ? i18nStore.translate(
-            lang.languageSelector.switchingTo, [languageNames[switchingToId]]) as string
-          : currentLanguage.name
+        switchingTo
+          ? i18n.translate(
+            "languageSelector.switchingTo", [languageNames[switchingTo]]) as string
+          : languageNames[currentLanguage.id]
       }
       changeLanguage={change}
-      prompt={currentLanguage.definitions.languageSelector.select}
+      prompt={i18n.translate("languageSelector.select")}
     />
   );
 };

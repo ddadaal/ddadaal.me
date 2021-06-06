@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { CardBody } from "reactstrap";
 import { navigate } from "gatsby";
 import { colors } from "@/styles/variables";
-import { useI18nStore } from "@/i18n";
+import { useI18n } from "@/i18n";
 
 interface Props {
   articleId: string;
@@ -36,10 +36,10 @@ const Card = styled(BaseCard)`
 const ArticleCard: React.FC<Props> = ({ articleId, className }) => {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
 
   const localizedArticle = metadataStore.getArticleOfLang(
-    articleId, i18nStore.currentLanguage.id);
+    articleId, i18n.currentLanguage.id);
 
   return (
     <Card className={className} onClick={() => navigate(localizedArticle.path)}>

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { LocalizedString } from "simstate-i18n";
-import { lang } from "@/i18n";
+import { Localized, p } from "@/i18n";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import Brief from "@/components/Footer/Brief";
@@ -59,7 +58,7 @@ const friends = [
   link,
 }));
 
-const root = lang.footer;
+const root = p("footer.");
 
 const Footer: React.FC<Props> = (props) => {
   return (
@@ -69,15 +68,15 @@ const Footer: React.FC<Props> = (props) => {
           <Brief/>
         </Col>
         <Col className={"d-none d-sm-none d-md-block"} md={{ size: 2 }}>
-          <h6>🚀 <LocalizedString id={root.poweredBy}/></h6>
+          <h6>🚀 <Localized id={root("poweredBy")}/></h6>
           <List links={powerBys}/>
         </Col>
         <Col className={"d-none d-sm-none d-md-block"} md={{ size: 2 }}>
-          <h6>🎨 <LocalizedString id={root.themedWith}/></h6>
+          <h6>🎨 <Localized id={root("themedWith")}/></h6>
           <List links={themedWiths}/>
         </Col>
         <Col md={{ size: 4 }}>
-          <h6>👨‍🎓 <LocalizedString id={lang.friends.title}/></h6>
+          <h6>👨‍🎓 <Localized id="friends.title" /></h6>
           <List links={friends}/>
         </Col>
       </Row>

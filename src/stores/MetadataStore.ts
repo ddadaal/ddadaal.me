@@ -1,5 +1,4 @@
 import { ArticleIdMap } from "@/models/ArticleIdMap";
-import { Language } from "@/i18n";
 import { ArticleNode } from "@/models/ArticleNode";
 import { groupBy } from "@/utils/groupBy";
 import { useMemo, useCallback } from "react";
@@ -7,6 +6,7 @@ import { SiteMetadata } from "@/models/SiteMetadata";
 import { DateTime } from "luxon";
 import { formatDateTime } from "@/utils/datetime";
 import { Tag, TagMap } from "@/models/Tag";
+import { LanguageId } from "@/i18n";
 
 export type LangPathMap = Map<string, string>;
 
@@ -96,16 +96,17 @@ export default function MetadataStore(
     return map;
   }, [articleIdMap]);
 
-  const getTagOfLang = useCallback((tag: string, language: Language): string | null => {
-    const info = tagMap.get(tag);
-    if (!info) { return null; }
+  const getTagOfLang = useCallback(
+    (tag: string, languageId: LanguageId): string | null => {
+      const info = tagMap.get(tag);
+      if (!info) { return null; }
 
-    const { variations } = info;
-    if (typeof variations === "string") {
-      return variations;
-    }
-    return variations[language.id] || variations[0];
-  }, [tagMap]);
+      const { variations } = info;
+      if (typeof variations === "string") {
+        return variations;
+      }
+      return variations[languageId] || variations[0];
+    }, [tagMap]);
 
   const getAllVariationsOfTag = useCallback((tag: string): string[] => {
     const variations = [tag];
@@ -119,13 +120,13 @@ export default function MetadataStore(
     return variations;
   }, [tagMap]);
 
-  const getAllTagsOfLang = useCallback((language: Language): string[] => {
+  const getAllTagsOfLang = useCallback((languageId: LanguageId): string[] => {
     const tags = [] as string[];
     tagMap.forEach(({ variations }) => {
       if (typeof variations === "string") {
         tags.push(variations);
       } else {
-        tags.push(variations[language.id] || variations[0]);
+        tags.push(variations[languageId] || variations[0]);
       }
     });
 

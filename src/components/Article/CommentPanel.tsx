@@ -4,8 +4,7 @@ import styled from "styled-components";
 import { FaComments } from "react-icons/fa";
 
 import "gitalk/dist/gitalk.css";
-import { LocalizedString } from "simstate-i18n";
-import { lang, cn, useI18nStore } from "@/i18n";
+import { useI18n, Localized, languageInfo } from "@/i18n";
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import isServer from "@/utils/isServer";
 
@@ -22,8 +21,6 @@ const CommentDiv = styled.div`
     color: #6190e8;;
   }
 `;
-
-const root = lang.comments;
 
 const CommentPanel: React.FC<Props> = (props) => {
 
@@ -49,7 +46,7 @@ const CommentPanel: React.FC<Props> = (props) => {
     <CommentDiv>
       <h3>
         <FaComments />
-        <LocalizedString id={root.title} />
+        <Localized id="comments.title" />
       </h3>
       {
         mount
@@ -76,12 +73,13 @@ const CommentPanel: React.FC<Props> = (props) => {
 };
 
 const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (props) => {
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
 
   return (
     <CommentPanel
       {...props}
-      language={i18nStore.currentLanguage.gitalkLangId ?? cn.gitalkLangId}
+      language={languageInfo[i18n.currentLanguage.id].gitalkLangId
+        ?? languageInfo.cn.gitalkLangId}
     />
   );
 };

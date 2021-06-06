@@ -2,13 +2,11 @@ import React from "react";
 import { CardBody, CardText } from "reactstrap";
 import { FaCode, FaRss, FaRegCommentDots } from "react-icons/fa";
 import { Link } from "gatsby";
-import { LocalizedString } from "simstate-i18n";
-import { lang } from "@/i18n";
 
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
-import { useLocalized } from "simstate-i18n";
 import styled from "styled-components";
+import { Localized, p, useI18n } from "@/i18n";
 
 const BlockContainer = styled.div`
   a {
@@ -20,36 +18,39 @@ interface Props {
 
 }
 
-const root = lang.blogIntro;
+const root = p("blogIntro.");
 
 const BlogIntroCard: React.FC<Props> = () => {
   const aboutProjectPath = useArticleOfCurrentLang("about-project").path;
-  const moreText = useLocalized(root.more) as string;
+
+  const { translate } = useI18n();
+
+  const moreText = translate(root("more")) as string;
 
   return (
     <BaseCard>
       <BaseCardHeader>
-        <span>💻 ddadaal.me | <LocalizedString id={root.subtitle} /></span>
+        <span>💻 ddadaal.me | <Localized id={root("subtitle")} /></span>
 
         <Link
           className="card-link"
           to={aboutProjectPath}
           title={moreText}
         >
-          <LocalizedString id={root.moreLink} />
+          <Localized id={root("moreLink")} />
         </Link>
       </BaseCardHeader>
       <CardBody>
         <CardText>
-          <LocalizedString id={root.description1} />
+          <Localized id={root("description1")} />
         </CardText>
         <CardText>
-          <LocalizedString id={root.description2} />
+          <Localized id={root("description2")} />
         </CardText>
         <BlockContainer>
           <a href="https://github.com/ddadaal/ddadaal.me" target="__blank">
             <FaCode />
-            <LocalizedString id={root.sourceCode} />
+            <Localized id={root("sourceCode")} />
           </a>
           <a href="/rss.xml" target="__blank">
             <FaRss />
@@ -57,7 +58,7 @@ const BlogIntroCard: React.FC<Props> = () => {
           </a>
           <Link to="/feedback">
             <FaRegCommentDots />
-            <LocalizedString id={root.feedback} />
+            <Localized id={root("feedback")} />
           </Link>
         </BlockContainer>
       </CardBody>

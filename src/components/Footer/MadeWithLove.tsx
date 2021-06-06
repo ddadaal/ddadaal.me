@@ -1,9 +1,6 @@
 import React from "react";
-import { LocalizedString } from "simstate-i18n";
-import { lang } from "@/i18n";
+import { Localized } from "@/i18n";
 import styled from "styled-components";
-
-const root = lang;
 
 const Container = styled.p`
     text-align: center;
@@ -12,7 +9,7 @@ const Container = styled.p`
 const MadeWithLove: React.FC = () => {
   return (
     <Container>
-      © {new Date().getFullYear()} | <LocalizedString id={root.footer.madeWithLove} />
+      © {new Date().getFullYear()} | <Localized id="footer.madeWithLove" />
     </Container>
   );
 };

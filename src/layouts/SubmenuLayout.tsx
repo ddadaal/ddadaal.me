@@ -3,7 +3,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import Page from "@/layouts/Page";
 import { Row, Col, Nav as BSNav, NavItem } from "reactstrap";
 import { Link as GatsbyLink } from "gatsby";
-import { LocalizedString } from "simstate-i18n";
+import { Localized, TextId } from "@/i18n";
 import styled from "styled-components";
 import { colors } from "@/styles/variables";
 import { BannerLayoutTitle } from "@/layouts/BannerLayout";
@@ -11,7 +11,7 @@ import { useStore } from "simstate";
 import LocationStore from "@/stores/LocationStore";
 
 interface NavPoint {
-  textId: string;
+  textId: TextId;
   Icon: React.ComponentType;
   to: string;
 
@@ -38,7 +38,7 @@ const SubmenuLayout: React.FC<Props> = (props) => {
           </Col>
           <Col md={3}>
             <Nav vertical={true}>
-              {/* <MenuTitle><LocalizedString id={props.menuTextId} /></MenuTitle> */}
+              {/* <MenuTitle><Localized id={props.menuTextId} /></MenuTitle> */}
               {props.navPoints.map((link) => (
                 <NavItem
                   key={link.to}
@@ -46,7 +46,7 @@ const SubmenuLayout: React.FC<Props> = (props) => {
                 >
                   <Link className="nav-link" to={props.baseUrl + link.to}>
                     <link.Icon />
-                    <LocalizedString id={link.textId} />
+                    <Localized id={link.textId} />
                   </Link>
                 </NavItem>
               ))}

@@ -1,6 +1,5 @@
 import React from "react";
-import { LocalizedString } from "simstate-i18n";
-import { lang } from "@/i18n";
+import { Localized, p, useI18n } from "@/i18n";
 import LocationStore from "@/stores/LocationStore";
 import MetadataStore from "@/stores/MetadataStore";
 import { navigate } from "gatsby";
@@ -9,7 +8,7 @@ import ArticleListLayout from "@/layouts/ArticleListLayout";
 import { useStore } from "simstate";
 import { PageMetadata } from "@/components/PageMetadata";
 
-const root = lang.search;
+const root = p("search.");
 
 interface Query {
   query?: string;
@@ -22,6 +21,7 @@ const SearchPage: React.FC = () => {
 
   const locationStore = useStore(LocationStore);
   const metadataStore = useStore(MetadataStore);
+  const i18n = useI18n();
 
   const { query, page = 1 } = locationStore.query as Query;
 
@@ -71,16 +71,16 @@ const SearchPage: React.FC = () => {
   return (
     <ArticleListLayout>
       <PageMetadata
-        titleId={root.title}
+        title={i18n.translate(root("title"), [query]) as string}
       />
       <h3>
-        <LocalizedString id={root.title} replacements={[
+        <Localized id={root("title")} args={[
           <strong key={"query"}>{query}</strong>,
         ]}
         />
       </h3>
       <small>
-        <LocalizedString id={root.info} replacements={[
+        <Localized id={root("info")} args={[
           totalCount,
         ]}
         />

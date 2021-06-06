@@ -1,33 +1,27 @@
-import cn from "./cn";
+import { createI18n, languageDictionary, TextIdFromLangDict } from "react-typed-i18n";
 
-const en = () => import("./en").then((x) => x.default);
+export const languages = languageDictionary({
+  cn: () => import("./cn").then((x) => x.default),
+  en: () => import("./en").then((x) => x.default),
+});
 
-// Import the factory function
-import { createI18nContext, I18nStore, I18nStoreDef } from "simstate-i18n";
-import { useStore } from "simstate";
-
-// Create the I18nContext with all the languages
-const i18nContext = createI18nContext(cn, { en });
-
-// Destruct the members for easier usage
-// Recommendation: rename the idAccessor to lang for shorter typing
-const { getLanguage, idAccessor: lang } = i18nContext;
-
-const languageNames = {
-  cn: "简体中文",
-  en: "English",
+export const languageInfo = {
+  cn: {
+    gitalkLangId: "zh-CN",
+    langStrings: ["cn", "zh-CN", "zh"],
+    detailedId: "zh-CN",
+    name: "简体中文",
+  },
+  en: {
+    gitalkLangId: "en",
+    langStrings: ["en", "en-US"],
+    detailedId: "en-US",
+    name: "English",
+  },
 };
 
-const languageIds = {
-  cn: "zh_CN",
-  en: "en_US",
-};
+export const { Localized, Provider, i, p, useI18n } = createI18n(languages);
 
-type Language = typeof cn;
+export type TextId = TextIdFromLangDict<typeof languages>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function useI18nStore() {
-  return useStore(I18nStore) as I18nStoreDef<Language["definitions"], Language>;
-}
-
-export { i18nContext, getLanguage, languageNames, languageIds, lang, cn, Language };
+export type LanguageId = keyof typeof languages;

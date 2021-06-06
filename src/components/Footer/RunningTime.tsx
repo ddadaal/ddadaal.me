@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { DateTime } from "luxon";
-import { lang } from "@/i18n";
-import { LocalizedString } from "simstate-i18n";
+import { Localized } from "@/i18n";
 import { UncontrolledTooltip } from "reactstrap";
 import { formatDateTime } from "@/utils/datetime";
 
 // 2018-11-17 14:51 UTC+8
 const startTime = DateTime.utc(2018, 11, 17, 6, 51).toLocal();
-
-const root = lang.footer;
 
 function getDiff() {
   return startTime.diffNow().negate()
@@ -34,7 +31,7 @@ export const RunningTime: React.FC = () => {
         <span>{formatDateTime(startTime)}</span>
       </UncontrolledTooltip>
       <span id="running-time">
-        📅 <LocalizedString id={root.runningTime} replacements={replacements} />
+        📅 <Localized id="footer.runningTime" args={replacements} />
       </span>
     </p>
   );

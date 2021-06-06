@@ -1,6 +1,5 @@
 import React from "react";
-import { lang } from "@/i18n";
-import { LocalizedString } from "simstate-i18n";
+import { Localized, p } from "@/i18n";
 import styled, { keyframes } from "styled-components";
 import { heights } from "@/styles/variables";
 import "./style.scss";
@@ -34,15 +33,15 @@ const NewContentPopContainer = styled.div`
   display: none;
 `;
 
-const root = lang.newContentPop;
+const root = p("newContentPop.");
 
 const NewContentPop: React.FC<Props> = () => {
   return (
     <NewContentPopContainer id={"new-content-pop"}>
       <a href="" onClick={() => location.reload()}>
-        <LocalizedString id={root.refresh} />
+        <Localized id={root("refresh")} />
       </a>
-      <LocalizedString id={root.other} />
+      <Localized id={root("other")} />
     </NewContentPopContainer>
   );
 };

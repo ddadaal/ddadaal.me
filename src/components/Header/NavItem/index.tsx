@@ -1,5 +1,5 @@
 import React from "react";
-import { LocalizedString } from "simstate-i18n";
+import { Localized, TextId } from "@/i18n";
 import { useStore } from "simstate";
 import LocationStore from "@/stores/LocationStore";
 import NavLink from "@/components/Header/NavLink";
@@ -7,7 +7,7 @@ import { NavItem as BSNavItem, DropdownItem as BSDropdownItem } from "reactstrap
 
 interface Props {
   Icon: React.ComponentType;
-  textId: string;
+  textId: TextId;
   onClick?(): void;
   wrapper: "navItem" | "dropdownItem";
   match: "exact" | "startsWith" | ((pathname: string) => boolean);
@@ -31,7 +31,7 @@ const NavItem: React.FC<Props> = ({ Icon, textId, onClick, wrapper, match, to })
       (
         <NavLink to={to} onClick={onClick}>
           <Icon />
-          <LocalizedString id={textId} />
+          <Localized id={textId} />
         </NavLink>
       ),
     )

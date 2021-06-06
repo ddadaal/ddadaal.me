@@ -1,14 +1,13 @@
 import React from "react";
-import { LocalizedString } from "simstate-i18n";
+import { Localized, p } from "@/i18n";
 import { Link } from "gatsby";
-import { lang } from "@/i18n";
 import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
 import Contacts from "@/components/Contacts";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import { RunningTime } from "@/components/Footer/RunningTime";
 
-const root = lang.footer;
+const root = p("footer.");
 
 const Brief: React.FC = () => {
 
@@ -21,15 +20,15 @@ const Brief: React.FC = () => {
 
       <p>
         👨🏼‍💻&nbsp;
-        <LocalizedString
-          id={root.codeBy}
-          replacements={[
+        <Localized
+          id={root("codeBy")}
+          args={[
             <Link key={"me"} to={aboutMeLink}>ddadaal</Link>,
           ]}
         />
       </p>
       <p>
-        📝 <LocalizedString id={root.license} replacements={[
+        📝 <Localized id={root("license")} args={[
           <a key="license" rel="licene"
             href="https://creativecommons.org/licenses/by-sa/4.0/"
           >
@@ -39,18 +38,18 @@ const Brief: React.FC = () => {
 
       </p>
       <p>
-        ⏲️ <LocalizedString id={lang.statistics.lastUpdated} />:
+        ⏲️ <Localized id="statistics.lastUpdated" />:
         <strong>{metadataStore.siteMetadata.formattedLastUpdate}</strong>
       </p>
       {/* <p>
-        📔 <LocalizedString id={lang.statistics.articleCount} replacements={[
+        📔 <Localized id={lang.statistics.articleCount} replacements={[
           <strong key="articles">{allArticles.length}</strong>,
           <strong key="words">{totalWordsCount}</strong>,
         ]} />
       </p> */}
       <RunningTime />
       <div>
-        <span id="contacts">📲 <LocalizedString id={root.contacts} /></span>
+        <span id="contacts">📲 <Localized id={root("contacts")} /></span>
         <Contacts color="white" size={1.6} />
       </div>
 

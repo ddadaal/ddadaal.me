@@ -1,6 +1,5 @@
 import React from "react";
-import { lang, languageNames } from "@/i18n";
-import { LocalizedString, useLocalized } from "simstate-i18n";
+import { languageInfo, Localized, p, useI18n } from "@/i18n";
 import styled from "styled-components";
 import {
   FaCalendarPlus, FaTags, FaGlobe,
@@ -25,7 +24,7 @@ interface Props {
   setItemProp: boolean;
 }
 
-const root = lang.articleFrontmatter;
+const prefix = p("articleFrontmatter.");
 
 const Span = styled.span`
   margin-right: 8px;
@@ -59,11 +58,13 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
     lastUpdated, currentArticleLanguage, setItemProp, wordCount,
   } = props;
 
+  const { translate } = useI18n();
+
   const dateString = useConstant(() => date.toFormat(DATE_FORMAT));
   const lastUpdatedString = useConstant(() => lastUpdated?.toFormat(DATE_FORMAT));
 
-  const createTimeTitle = useLocalized(root.date) as string;
-  const lastUpdatedTimeTitle = useLocalized(root.lastUpdated) as string;
+  const createTimeTitle = translate(prefix("date")) as string;
+  const lastUpdatedTimeTitle = translate(prefix("lastUpdated")) as string;
 
   return (
     <ContainerRow>
@@ -97,11 +98,11 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
       }
       <Span>
         <FaFileWord />
-        <LocalizedString id={root.wordCount} replacements={[wordCount]} />
+        <Localized id={prefix("wordCount")} args={[wordCount]} />
       </Span>
       <Span>
         <FaUserClock />
-        <LocalizedString id={root.timeToRead} replacements={[timeToRead]} />
+        <Localized id={prefix("timeToRead")} args={[timeToRead]} />
       </Span>
       <Span>
         <FaGlobe />
@@ -138,10 +139,10 @@ const LanguageSwitcher: React.FC<{ currentArticleLanguage: string; articleId: st
     return (
       <>
         <DisabledLangLink>
-          {languageNames[currentArticleLanguage]}
+          {languageInfo[currentArticleLanguage].name}
         </DisabledLangLink>
         {Array.from(langPathMap.entries()).map(([lang, path]) => (
-          <LangLink key={lang} to={path}>{languageNames[lang]}</LangLink>
+          <LangLink key={lang} to={path}>{languageInfo[lang].name}</LangLink>
         ))}
       </>
     );

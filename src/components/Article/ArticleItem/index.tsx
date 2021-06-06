@@ -8,7 +8,7 @@ import containsChinese from "@/utils/containsChinese";
 import "./article-item.scss";
 import useConstant from "@/utils/useConstant";
 import { fromArticleTime } from "@/utils/datetime";
-import { useI18nStore } from "@/i18n";
+import { useI18n } from "@/i18n";
 
 interface Props {
   article: ArticleNode;
@@ -26,7 +26,7 @@ const ArticleItem: React.FC<Props> = ({ article, currentArticleLanguage }) => {
     timeToRead, wordCountChinese, excerpt,
   } = article;
 
-  const { currentLanguage } = useI18nStore();
+  const { currentLanguage } = useI18n();
   const metadataStore = useStore(MetadataStore);
 
   const langPaths = metadataStore.getLangPathMap(id);

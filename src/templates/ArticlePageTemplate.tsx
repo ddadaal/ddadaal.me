@@ -15,7 +15,7 @@ import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import RelatedArticles from "@/components/Article/RelatedArticles";
 import { heights } from "@/styles/variables";
 import BannerLayout from "@/layouts/BannerLayout";
-import { useI18nStore, languageIds } from "@/i18n";
+import { languageInfo, useI18n } from "@/i18n";
 import { PageMetadata } from "@/components/PageMetadata";
 import { DateTime } from "luxon";
 import useConstant from "@/utils/useConstant";
@@ -101,7 +101,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({
 
 const ArticlePageTemplate: React.FC<Props> = (props) => {
 
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
   const metadataStore = useStore(MetadataStore);
   const articleStore = useStore(ArticleStore);
 
@@ -138,7 +138,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           title={title}
           description={excerpt}
           url={path}
-          locale={languageIds[lang]}
+          locale={languageInfo[lang].detailedId}
           meta={[
             { name: "og:type", content: "article" },
             { name: "og:article:published_time", content: publishedTime.toISO() },
@@ -150,7 +150,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
               .filter((x) => x !== lang)
               .map((x) => ({
                 name: "og:locale:alternate",
-                content: languageIds[x],
+                content: languageInfo[x].detailedId,
               })),
           ]}
         />
@@ -178,7 +178,7 @@ const ArticlePageTemplate: React.FC<Props> = (props) => {
           {related ? <RelatedArticles ids={related} /> : null}
           <hr />
           <CommentPanel
-            language={i18nStore.currentLanguage.gitalkLangId}
+            language={languageInfo[i18n.currentLanguage.id].gitalkLangId}
             articleId={id}
             articleTitle={title}
           />

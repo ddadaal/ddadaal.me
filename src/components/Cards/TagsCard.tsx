@@ -1,17 +1,14 @@
 import React from "react";
-import { lang } from "@/i18n";
 import { CardBody } from "reactstrap";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
-import { LocalizedString } from "simstate-i18n";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
 import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
+import { Localized } from "@/i18n";
 
 interface Props {
   className?: string;
 }
-
-const root = lang.tagsCard;
 
 const TagsCard: React.FC<Props> = ({ className }) => {
 
@@ -24,7 +21,7 @@ const TagsCard: React.FC<Props> = ({ className }) => {
   return (
     <BaseCard className={className}>
       <BaseCardHeader>
-        <span>🏷️ <LocalizedString id={root.title}/></span>
+        <span>🏷️ <Localized id={"tagsCard.title"}/></span>
       </BaseCardHeader>
       <CardBody>
         {tags.map((tag) => (

@@ -3,7 +3,7 @@ import MetadataStore from "@/stores/MetadataStore";
 import ArticleItem from "./ArticleItem";
 import PageIndicator from "../PageIndicator";
 import { useStore } from "simstate";
-import { useI18nStore } from "@/i18n";
+import { useI18n } from "@/i18n";
 import styled from "styled-components";
 
 interface Props {
@@ -20,7 +20,7 @@ const PaginationContainer = styled.div`
 
 const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => {
 
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
   const metadataStore = useStore(MetadataStore);
 
   const items = ids.map((id) => {
@@ -34,7 +34,7 @@ const ArticleList: React.FC<Props> = ({ ids, pageCount, pageIndex, toPage }) => 
       {items
         .map((nodes) => {
           const node = metadataStore.getArticleOfLang(
-            nodes[0].frontmatter.id, i18nStore.currentLanguage.id);
+            nodes[0].frontmatter.id, i18n.currentLanguage.id);
           return (
             <ArticleItem
               article={node}

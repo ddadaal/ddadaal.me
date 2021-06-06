@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { Heading } from "@/models/ArticleNode";
 import { MdToc } from "react-icons/md";
-import { LocalizedString } from "simstate-i18n";
-import { lang } from "@/i18n";
 import styled from "styled-components";
 import { heights, colors } from "@/styles/variables";
 import { scrollToAnchor } from "@/components/Article/TocPanel/scrollToAnchor";
+import { Localized, p } from "@/i18n";
 
 interface Props {
   headings: Heading[];
   className?: string;
 }
-
-const root = lang.articlePage;
 
 const Container = styled.div`
   border-left: 1px solid lightgray;
@@ -113,7 +110,7 @@ const TocPanel: React.FC<Props> = ({ headings, className }) => {
 
   return (
     <Container className={className}>
-      <p><MdToc /><LocalizedString id={root.toc} /></p>
+      <p><MdToc /><Localized id="articlePage.toc" /></p>
       <List>
         {headings.map((heading) => {
           return (

@@ -17,8 +17,7 @@ import {
   FaHome, FaMale, FaGlobe, FaFile,
   FaInfo, FaBookOpen, FaSlideshare,
 } from "react-icons/fa";
-import { LocalizedString } from "simstate-i18n";
-import { lang } from "@/i18n";
+import { Localized, p } from "@/i18n";
 import LocationStore from "@/stores/LocationStore";
 import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
@@ -32,7 +31,7 @@ interface Props {
   transparentHeader: boolean;
 }
 
-const root = lang.headers;
+const root = p("headers.");
 
 const StyledNavbar = styled(Navbar)`
   && {
@@ -86,7 +85,7 @@ const Header: React.FC<Props> = ({ transparentHeader }) => {
                 onClick={close}
                 match={"exact"}
                 Icon={FaHome}
-                textId={root.home}
+                textId={root("home")}
               />
               <NavItem
                 wrapper="navItem"
@@ -94,14 +93,14 @@ const Header: React.FC<Props> = ({ transparentHeader }) => {
                 onClick={close}
                 match={"startsWith"}
                 Icon={FaBookOpen}
-                textId={root.articles}
+                textId={root("articles")}
               />
               <ArticleNavItem
                 wrapper="navItem"
                 articleId="resume"
                 onClick={close}
                 Icon={FaFile}
-                textId={root.resume}
+                textId={root("resume")}
               />
               <NavItem
                 wrapper="navItem"
@@ -109,12 +108,12 @@ const Header: React.FC<Props> = ({ transparentHeader }) => {
                 onClick={close}
                 match={"startsWith"}
                 Icon={FaSlideshare}
-                textId={root.slides}
+                textId={root("slides")}
               />
               <UncontrolledDropdown nav={true} inNavbar={true} >
                 <DropdownToggle nav={true} caret={true}>
                   <FaInfo />
-                  <LocalizedString id={root.about.title} />
+                  <Localized id={root("about.title")} />
                 </DropdownToggle>
                 <DropdownMenu right={true}>
                   <ArticleNavItem
@@ -122,21 +121,21 @@ const Header: React.FC<Props> = ({ transparentHeader }) => {
                     articleId="odyssey"
                     onClick={close}
                     Icon={FaBookOpen}
-                    textId={root.about.odyssey}
+                    textId={root("about.odyssey")}
                   />
                   <ArticleNavItem
                     wrapper="dropdownItem"
                     articleId="about-project"
                     onClick={close}
                     Icon={FaGlobe}
-                    textId={root.about.project}
+                    textId={root("about.project")}
                   />
                   <ArticleNavItem
                     wrapper="dropdownItem"
                     articleId="about-me"
                     onClick={close}
                     Icon={FaMale}
-                    textId={root.about.me}
+                    textId={root("about.me")}
                   />
                 </DropdownMenu>
               </UncontrolledDropdown>

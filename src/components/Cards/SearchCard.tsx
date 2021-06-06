@@ -1,17 +1,14 @@
 import React from "react";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
-import { LocalizedString } from "simstate-i18n";
 import { CardBody } from "reactstrap";
-import { lang } from "@/i18n";
 import SearchBar from "@/components/Article/SearchBar/SearchBar";
-
-const root = lang.search;
+import { Localized } from "@/i18n";
 
 const SearchCard: React.FC = () => {
   return (
     <BaseCard>
       <BaseCardHeader>
-        <span>🔎 <LocalizedString id={root.cardTitle} /></span>
+        <span>🔎 <Localized id="search.cardTitle" /></span>
       </BaseCardHeader>
       <CardBody>
         <SearchBar />

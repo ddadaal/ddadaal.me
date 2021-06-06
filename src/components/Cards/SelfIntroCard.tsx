@@ -1,8 +1,7 @@
 import React from "react";
 import { CardBody, CardText } from "reactstrap";
 import { Link } from "gatsby";
-import { LocalizedString } from "simstate-i18n";
-import { lang, useI18nStore } from "@/i18n";
+import { Localized, p, useI18n } from "@/i18n";
 import MetadataStore from "@/stores/MetadataStore";
 import Contacts from "../Contacts";
 import { useStore } from "simstate";
@@ -11,32 +10,32 @@ import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 interface Props {
 }
 
-const root = lang.selfIntro;
+const prefix = p("selfIntro.");
 
 const SelfIntroCard: React.FC<Props> = () => {
 
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
 
   const aboutMePath = metadataStore
-    .getArticleOfLang("about-me", i18nStore.currentLanguage.id)
+    .getArticleOfLang("about-me", i18n.currentLanguage.id)
     .path;
 
   return (
     <BaseCard>
       <BaseCardHeader>
-        <span>👦 <LocalizedString id={root.author} /></span>
+        <span>👦 <Localized id={prefix("author")} /></span>
         <Link
           className="card-link"
           to={aboutMePath}
-          title={i18nStore.currentLanguage.definitions.selfIntro.more}
+          title={i18n.translate(prefix("more")) as string}
         >
-          <LocalizedString id={root.moreLink} />
+          <Localized id={prefix("moreLink")} />
         </Link>
       </BaseCardHeader>
       <CardBody>
         <CardText>
-          <LocalizedString id={root.university} />
+          <Localized id={prefix("university")} />
         </CardText>
         <Contacts color="black" size={1.4}/>
       </CardBody>

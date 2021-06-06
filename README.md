@@ -28,7 +28,7 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 - [Gatsby](https://www.gatsbyjs.org/): the blazing-fast and flexible static site generator with a big community for [React](https://facebook.github.io/react/)
 - [TypeScript](https://www.typescriptlang.org/): the new go-to for any JavaScript projects
 - [simstate](https://github.com/ddadaal/simstate): a self-made simple but enough strongly-typed hooks-based state management
-- [simstate-i18n](https://github.com/ddadaal/simstate-i18n): a self-made dynamic and strongly-typed i18n library based on simstate
+- [react-typed-i18n](https://github.com/ddadaal/react-typed-i18n): a self-made dynamic and strongly-typed i18n library utilizing TypeScript's [Template Literal Types](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
 - [styled-components](https://github.com/styled-components/styled-components): component-ize your styles as well
 - [SCSS](https://sass-lang.com/): bootstrap used SCSS so...trying to get rid of it in the future
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box

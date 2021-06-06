@@ -1,13 +1,14 @@
 import React from "react";
 import NavItem from "@/components/Header/NavItem";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
+import { TextId } from "@/i18n";
 
 interface Props {
   Icon: React.ComponentType;
   articleId: string;
   onClick?(): void;
   wrapper: "navItem" | "dropdownItem";
-  textId: string;
+  textId: TextId;
 }
 
 const ArticleNavItem: React.FC<Props> = ({

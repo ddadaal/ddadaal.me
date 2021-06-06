@@ -1,5 +1,4 @@
 import React from "react";
-import { createI18nStore } from "simstate-i18n";
 import LocationStore, { LocationProvider } from "@/stores/LocationStore";
 import { SiteMetadata } from "@/models/SiteMetadata";
 import MetadataStore from "@/stores/MetadataStore";
@@ -14,8 +13,14 @@ import "@/styles/index.scss";
 import { ArticleNode } from "@/models/ArticleNode";
 import useConstant from "@/utils/useConstant";
 import { PageMetadata } from "@/components/PageMetadata";
-import { i18nContext } from "@/i18n";
 import { Tag } from "@/models/Tag";
+import { Provider } from "@/i18n";
+import cn from "@/i18n/cn";
+
+const initialLanguage = {
+  id: "cn",
+  definitions: cn,
+};
 
 const LayoutRoot = styled.div`
   display: flex;
@@ -39,8 +44,6 @@ const RootLayout: React.FC<Props> = ({
   siteMetadata, tags, children,
 }) => {
 
-  const i18nStore = useConstant(() => createI18nStore(i18nContext));
-
   const locationStore = useConstant(() => createStore(LocationStore, location));
 
   const metadataStore = useConstant(() => createStore(MetadataStore,
@@ -52,39 +55,40 @@ const RootLayout: React.FC<Props> = ({
   const articleStore = useConstant(() => createStore(ArticleStore, null));
 
   return (
-    <IconContext.Provider value={iconContext}>
-      <StoreProvider stores={[
-        locationStore,
-        i18nStore,
-        metadataStore,
-        articleStore,
-      ]}
-      >
-        <LocationProvider location={location} />
-        <LayoutRoot>
-          <PageMetadata
-            meta={[
-              { name: "keywords", content: "gatsbyjs, gatsby, react, ddadaal, blog" },
-              { name: "author", content: "ddadaal" },
-            ]}
-            link={[
-              { rel: "icon", type: "image/png", href: icon512 },
-              { rel: "shortcut icon", type: "image/png", href: icon512 },
-            ]}
-            script={[
-              {
-                type: "text/javascript",
-                src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
-                async: true,
-              },
-            ]}
-          />
-          <UpdatePop />
-          <ToTop />
-          {children}
-        </LayoutRoot>
-      </StoreProvider>
-    </IconContext.Provider>
+    <Provider initialLanguage={initialLanguage}>
+      <IconContext.Provider value={iconContext}>
+        <StoreProvider stores={[
+          locationStore,
+          metadataStore,
+          articleStore,
+        ]}
+        >
+          <LocationProvider location={location} />
+          <LayoutRoot>
+            <PageMetadata
+              meta={[
+                { name: "keywords", content: "gatsbyjs, gatsby, react, ddadaal, blog" },
+                { name: "author", content: "ddadaal" },
+              ]}
+              link={[
+                { rel: "icon", type: "image/png", href: icon512 },
+                { rel: "shortcut icon", type: "image/png", href: icon512 },
+              ]}
+              script={[
+                {
+                  type: "text/javascript",
+                  src: "https://s5.cnzz.com/z_stat.php?id=1276500124&web_id=1276500124",
+                  async: true,
+                },
+              ]}
+            />
+            <UpdatePop />
+            <ToTop />
+            {children}
+          </LayoutRoot>
+        </StoreProvider>
+      </IconContext.Provider>
+    </Provider>
   );
 };
 

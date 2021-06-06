@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Input, InputGroup, InputGroupAddon, Button } from "reactstrap";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
-import { lang } from "@/i18n";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
-import { useLocalized } from "simstate-i18n";
+import { useI18n } from "@/i18n";
 
 interface Props {
   onSearch?(): void;
@@ -19,8 +18,10 @@ const SearchBar: React.FC<Props> = (props: Props) => {
   const metadataStore = useStore(MetadataStore);
   const [input, setInput] = useState("");
 
-  const placeholder = useLocalized(
-    lang.search.inputPlaceholder,
+  const { translate } = useI18n();
+
+  const placeholder = translate(
+    "search.inputPlaceholder",
     [metadataStore.articleCount]) as string;
 
   const onSearch = (): void => {

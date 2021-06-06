@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useStore } from "simstate";
 import MetadataStore from "@/stores/MetadataStore";
-import { lang, useI18nStore } from "@/i18n";
+import { LanguageId, useI18n } from "@/i18n";
 import { Link } from "gatsby";
 import { Badge } from "reactstrap";
 import "./article-tag.scss";
@@ -13,12 +13,13 @@ interface Props {
 
 const CountedArticleTag: React.FC<Props> = ({ tag, onClick }) => {
   const metadataStore = useStore(MetadataStore);
-  const i18nStore = useI18nStore();
+  const i18n = useI18n();
 
-  const tagOfLang = metadataStore.getTagOfLang(tag, i18nStore.currentLanguage) || tag;
+  const tagOfLang = metadataStore.getTagOfLang(tag, i18n.currentLanguage.id as LanguageId)
+   || tag;
 
-  const title = i18nStore.translate(
-    lang.articleFrontmatter.tagLinkTitle, [` ${tagOfLang} `]) as string;
+  const title = i18n.translate(
+    "articleFrontmatter.tagLinkTitle", [` ${tagOfLang} `]) as string;
   const toLink = `/articles/search?query=${tagOfLang}`;
   const count = metadataStore.getCountOfTag(tag);
 

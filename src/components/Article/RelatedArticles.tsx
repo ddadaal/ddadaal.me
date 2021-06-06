@@ -1,9 +1,8 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { lang } from "@/i18n";
-import { LocalizedString } from "simstate-i18n";
 import ArticleCard from "@/components/Article/ArticleCard";
 import styled from "styled-components";
+import { Localized } from "@/i18n";
 
 interface Props {
   ids: string[];
@@ -29,14 +28,12 @@ const Container = styled.div`
   margin: 32px 0;
 `;
 
-const root = lang.articlePage.relatedArticles;
-
 const RelatedArticles: React.FC<Props> = ({ ids }) => {
   return (
     <Container>
       <h3>
         <FaArrowRight />{" "}
-        <LocalizedString id={root.text} />
+        <Localized id={"articlePage.relatedArticles.text"} />
       </h3>
       <HorizontalList>
         {ids.map((id) => (
