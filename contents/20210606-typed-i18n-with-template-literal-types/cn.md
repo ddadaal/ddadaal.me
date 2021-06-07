@@ -1,6 +1,7 @@
 ---
 id: typed-i18n-with-template-literal-types
 date: 2021-06-06 15:27
+last_updated: 2021-06-07 10:30
 title: "react-typed-i18n: 使用Template Literal Types实现强类型的i18n"
 lang: cn
 tags:
@@ -207,7 +208,7 @@ type A = Lang<{ a: "2", b: { c: "4" } }>; // type A = "a" | "b.c"
 
 - 去掉最后的点（RemoveTrailingDot）
 
-类型系统中没有`.endWith`方法，也没有`.substr`方法，但是可以借助`inferred type`，看看原类型能不能推断(infer)出一个类型`U`，这个`U`类型加上一个`.`，就等于原来的类型`T`。如果可以，那么U就是删掉最后的点后的类型。
+类型系统中没有`.endsWith`方法，也没有`.substr`方法，但是可以借助`inferred type`，看看原类型能不能推断(infer)出一个类型`U`，这个`U`类型加上一个`.`，就等于原来的类型`T`。如果可以，那么U就是删掉最后的点后的类型。
 
 通过这个Lang类型和语言对象的字面量类型，我们就可以直接获得所有可能的ID，将它用在ID的类型上，我们就实现了强类型的文本ID。借助TS提供的类型信息，VSCode等编辑器可以给出自动完成，极大地提高编程体验。
 
@@ -227,6 +228,83 @@ function LocalizedString({ id }: { id: TextId }) {
 ```
 
 ![自动完成体验](demo.gif)
+
+# ID前缀
+
+随着代码量的增长，UI树越来越复杂，对应的ID的结构也越来越复杂，深度越来越大，这就会使得ID越来越长，但是在同一个UI里用到的各个ID都具有相同的前缀，例如下面这个真实项目中的例子：
+
+```
+app.header.userIndicator.loggedIn.dropdown.login.button.text
+app.header.userIndicator.loggedIn.dropdown.username.button.text
+app.header.userIndicator.loggedIn.dropdown.logout.button.text
+```
+
+所以，我们可以将前缀提取出来，然后在真正使用的地，就可以直接输入后面不同的部分就可以了。
+
+当然了这个过程也需要有类型检查。本库提供了`prefix`这个helper function，在运行`createI18n`时可以获得。对于上面三个例子，使用`prefix`函数可以写出如下代码。
+
+```ts
+
+const p = prefix("app.header.userIndicator.loggedIn.dropdown.");
+
+p("login.button.text"); // app.header.userIndicator.loggedIn.dropdown.login.button.text
+p("username.button.text") // app.header.userIndicator.loggedIn.dropdown.login.button.text
+p("logout.button.text") // app.header.userIndicator.loggedIn.dropdown.logout.button.tex
+```
+
+这是怎么实现的呢？
+
+```ts
+type FullLang<D extends string | Definitions> = D extends string
+  ? ""
+  : `${ValueOf<{[k in keyof D]: `${(StringOnly<k>)}.` | Concat<k, FullLang<D[k]>>}>}`
+
+type PartialLangFromFull
+  <D extends Definitions, FL extends FullLang<D>, L extends Lang<D>> =
+  FL extends `${L}.` ? never : FL;
+
+export type PartialLang<D extends Definitions> =
+  PartialLangFromFull<D, FullLang<D>, Lang<D>>;
+
+export type RestLang
+<D extends Definitions, L extends Lang<D>, Partial extends PartialLang<D>> =
+  L extends `${Partial}${infer Rest}` ? Rest : never;
+
+const p: <TPartial extends PartialLang<D>, TRest extends RestLang<D, Lang<D>, TPartial>>
+  (t: TPartial) => (rest: TRest) => `${TPartial}${TRest}` = (t) => (s) => t+s;
+```
+
+这看着比上面的获得所有ID要复杂不少，但是简单来说可以分为这几步：
+
+1. `FullLang`类型取得DFS过程中所有中间节点的ID
+    - `Lang`只会取得到叶节点的ID，而`FullLang`会把途径的中间结果的ID也获得
+    - 另外还有一个区别是这个得到的所有ID最终的`.`是没有去掉的
+
+
+```tsx
+const language = { login: { button: { text: "Login" } } };
+
+type D = typeof language;
+
+type FL = FullLang<D>; // "login." | "login.button." | "login.button.text.";
+```
+
+2. `PartialLangFromFull`类型把到叶节点的ID去掉
+    - 对于`FullLang`的每个取值，如果它是某个`Lang`的取值后面加个`.`，那么这个其实是到叶节点的ID，不是前缀，是不应该取的(`never`)
+    - 到这里已经获得前缀了
+
+```tsx
+type PLFF = PartialLangFromFull<D, FullLang<D>, PartialLang<D>>; // "login." | "login.button."
+```
+
+3. `RestLang`是通过前缀来获取可以接受的后缀
+    - 这个也是通过`infer`的方式来实现的，看看是否某个`Lang`的取值可以是传入的前缀和后缀拼起来`${Partial}${infer Rest}`，如果可以，就把后缀`Rest`返回
+
+```ts
+type RestLang = RestLang<D, Lang<D>, "login."> // "button.text"
+```
+
+4. 最后，`p`函数的实现其实就是一个`ts±(t) => (s) => t+s`，非常简单，运行时几乎没有什么开销。
 
 # 总结
 
