@@ -1,13 +1,13 @@
 import React from "react";
 import Page from "@/layouts/Page";
 import { BannerLayoutTitle } from "@/layouts/BannerLayout";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 import Contacts from "@/components/Contacts";
 import { CommentPanelWithCurrentLanguage } from "@/components/Article/CommentPanel";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import { PageMetadata } from "@/components/PageMetadata";
 
-const root = p("feedback.");
+const root = prefix("feedback.");
 
 const FeedbackPage: React.FC = () => {
 

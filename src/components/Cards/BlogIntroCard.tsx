@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import styled from "styled-components";
-import { Localized, p, useI18n } from "@/i18n";
+import { Localized, prefix, useI18n } from "@/i18n";
 
 const BlockContainer = styled.div`
   a {
@@ -18,7 +18,7 @@ interface Props {
 
 }
 
-const root = p("blogIntro.");
+const root = prefix("blogIntro.");
 
 const BlogIntroCard: React.FC<Props> = () => {
   const aboutProjectPath = useArticleOfCurrentLang("about-project").path;

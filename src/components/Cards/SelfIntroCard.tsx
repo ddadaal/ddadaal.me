@@ -1,7 +1,7 @@
 import React from "react";
 import { CardBody, CardText } from "reactstrap";
 import { Link } from "gatsby";
-import { Localized, p, useI18n } from "@/i18n";
+import { Localized, prefix, useI18n } from "@/i18n";
 import MetadataStore from "@/stores/MetadataStore";
 import Contacts from "../Contacts";
 import { useStore } from "simstate";
@@ -10,7 +10,7 @@ import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 interface Props {
 }
 
-const prefix = p("selfIntro.");
+const p = prefix("selfIntro.");
 
 const SelfIntroCard: React.FC<Props> = () => {
 
@@ -24,18 +24,18 @@ const SelfIntroCard: React.FC<Props> = () => {
   return (
     <BaseCard>
       <BaseCardHeader>
-        <span>👦 <Localized id={prefix("author")} /></span>
+        <span>👦 <Localized id={p("author")} /></span>
         <Link
           className="card-link"
           to={aboutMePath}
-          title={i18n.translate(prefix("more")) as string}
+          title={i18n.translate(p("more")) as string}
         >
-          <Localized id={prefix("moreLink")} />
+          <Localized id={p("moreLink")} />
         </Link>
       </BaseCardHeader>
       <CardBody>
         <CardText>
-          <Localized id={prefix("university")} />
+          <Localized id={p("university")} />
         </CardText>
         <Contacts color="black" size={1.4}/>
       </CardBody>

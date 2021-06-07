@@ -17,7 +17,7 @@ import {
   FaHome, FaMale, FaGlobe, FaFile,
   FaInfo, FaBookOpen, FaSlideshare,
 } from "react-icons/fa";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 import LocationStore from "@/stores/LocationStore";
 import { useStore } from "simstate";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
@@ -31,7 +31,7 @@ interface Props {
   transparentHeader: boolean;
 }
 
-const root = p("headers.");
+const root = prefix("headers.");
 
 const StyledNavbar = styled(Navbar)`
   && {

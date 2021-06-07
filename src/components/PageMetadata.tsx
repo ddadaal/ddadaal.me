@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet, HelmetProps } from "react-helmet";
 import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
-import { languageInfo, p, TextId, useI18n } from "@/i18n";
+import { languageInfo, prefix, TextId, useI18n } from "@/i18n";
 
-const root = p("pageMedatadata.");
+const root = prefix("pageMedatadata.");
 
 interface Props extends HelmetProps {
   title?: string;

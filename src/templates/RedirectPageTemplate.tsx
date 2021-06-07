@@ -4,9 +4,9 @@ import { PageMetadata } from "@/components/PageMetadata";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import Page from "@/layouts/Page";
 import { Helmet } from "react-helmet";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 
-const root = p("redirects.");
+const root = prefix("redirects.");
 
 interface Props {
   pageContext: {

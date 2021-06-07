@@ -3,10 +3,10 @@ import React from "react";
 import { navigate } from "gatsby";
 import ArticleList from "@/components/Article/ArticleItemList";
 import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { languageInfo, p, useI18n } from "@/i18n";
+import { languageInfo, prefix, useI18n } from "@/i18n";
 import { PageMetadata } from "@/components/PageMetadata";
 
-const root = p("pageMedatadata.");
+const root = prefix("pageMedatadata.");
 
 interface Props {
   pageContext: {

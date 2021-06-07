@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 import { colors, widths } from "@/styles/variables";
 import { Row, Col } from "reactstrap";
 import Brief from "@/components/Footer/Brief";
@@ -58,7 +58,7 @@ const friends = [
   link,
 }));
 
-const root = p("footer.");
+const root = prefix("footer.");
 
 const Footer: React.FC<Props> = (props) => {
   return (

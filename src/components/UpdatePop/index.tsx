@@ -1,5 +1,5 @@
 import React from "react";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 import styled, { keyframes } from "styled-components";
 import { heights } from "@/styles/variables";
 import "./style.scss";
@@ -33,7 +33,7 @@ const NewContentPopContainer = styled.div`
   display: none;
 `;
 
-const root = p("newContentPop.");
+const root = prefix("newContentPop.");
 
 const NewContentPop: React.FC<Props> = () => {
   return (

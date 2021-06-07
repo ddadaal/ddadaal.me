@@ -1,5 +1,5 @@
 import React from "react";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 import { Link } from "gatsby";
 import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
@@ -7,7 +7,7 @@ import Contacts from "@/components/Contacts";
 import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import { RunningTime } from "@/components/Footer/RunningTime";
 
-const root = p("footer.");
+const root = prefix("footer.");
 
 const Brief: React.FC = () => {
 

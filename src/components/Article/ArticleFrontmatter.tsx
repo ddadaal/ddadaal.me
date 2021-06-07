@@ -1,5 +1,5 @@
 import React from "react";
-import { languageInfo, Localized, p, useI18n } from "@/i18n";
+import { languageInfo, Localized, prefix, useI18n } from "@/i18n";
 import styled from "styled-components";
 import {
   FaCalendarPlus, FaTags, FaGlobe,
@@ -24,7 +24,7 @@ interface Props {
   setItemProp: boolean;
 }
 
-const prefix = p("articleFrontmatter.");
+const p = prefix("articleFrontmatter.");
 
 const Span = styled.span`
   margin-right: 8px;
@@ -63,8 +63,8 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
   const dateString = useConstant(() => date.toFormat(DATE_FORMAT));
   const lastUpdatedString = useConstant(() => lastUpdated?.toFormat(DATE_FORMAT));
 
-  const createTimeTitle = translate(prefix("date")) as string;
-  const lastUpdatedTimeTitle = translate(prefix("lastUpdated")) as string;
+  const createTimeTitle = translate(p("date")) as string;
+  const lastUpdatedTimeTitle = translate(p("lastUpdated")) as string;
 
   return (
     <ContainerRow>
@@ -98,11 +98,11 @@ const ArticleFrontmatter: React.FC<Props> = (props) => {
       }
       <Span>
         <FaFileWord />
-        <Localized id={prefix("wordCount")} args={[wordCount]} />
+        <Localized id={p("wordCount")} args={[wordCount]} />
       </Span>
       <Span>
         <FaUserClock />
-        <Localized id={prefix("timeToRead")} args={[timeToRead]} />
+        <Localized id={p("timeToRead")} args={[timeToRead]} />
       </Span>
       <Span>
         <FaGlobe />

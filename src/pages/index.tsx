@@ -3,7 +3,7 @@ import React from "react";
 import Contacts from "@/components/Contacts";
 import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
 import bgImg from "~/assets/mainbg.jpg";
-import { p, useI18n } from "@/i18n";
+import { prefix, useI18n } from "@/i18n";
 import { Localized } from "@/i18n";
 import { FaFile, FaBookOpen, FaMale, FaClock, FaSlideshare, FaRss } from "react-icons/fa";
 import { Link } from "gatsby";
@@ -65,7 +65,7 @@ const LinkContainer = styled.div`
   }
 `;
 
-const root = p("homepage.");
+const root = prefix("homepage.");
 
 const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
   to,

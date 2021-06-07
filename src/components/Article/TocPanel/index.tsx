@@ -4,7 +4,7 @@ import { MdToc } from "react-icons/md";
 import styled from "styled-components";
 import { heights, colors } from "@/styles/variables";
 import { scrollToAnchor } from "@/components/Article/TocPanel/scrollToAnchor";
-import { Localized, p } from "@/i18n";
+import { Localized, prefix } from "@/i18n";
 
 interface Props {
   headings: Heading[];

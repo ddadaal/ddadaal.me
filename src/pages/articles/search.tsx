@@ -1,5 +1,5 @@
 import React from "react";
-import { Localized, p, useI18n } from "@/i18n";
+import { Localized, prefix, useI18n } from "@/i18n";
 import LocationStore from "@/stores/LocationStore";
 import MetadataStore from "@/stores/MetadataStore";
 import { navigate } from "gatsby";
@@ -8,7 +8,7 @@ import ArticleListLayout from "@/layouts/ArticleListLayout";
 import { useStore } from "simstate";
 import { PageMetadata } from "@/components/PageMetadata";
 
-const root = p("search.");
+const root = prefix("search.");
 
 interface Query {
   query?: string;
