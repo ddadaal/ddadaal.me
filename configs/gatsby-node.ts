@@ -118,7 +118,7 @@ export const createPages = async ({ actions, graphql }: CreatePagesArgs) => {
     articleGroups,
   );
 
-  createRedirects(redirect, createPage, graphql);
+  await createRedirects(redirect, createPage, graphql);
 
 
 };
