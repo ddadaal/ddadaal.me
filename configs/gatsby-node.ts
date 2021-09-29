@@ -230,7 +230,7 @@ export const sourceNodes = async ({
   const slidesUrl= "https://api.github.com/repos/ddadaal/Slides/contents/";
 
   try {
-    const result = await (await fetch(slidesUrl, {
+    const result: any = await (await fetch(slidesUrl, {
       headers: {
         "Content-Type": "application/json",
         // Set the token if ACTIONS_TOKEN environment token exists
