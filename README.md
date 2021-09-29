@@ -51,9 +51,9 @@ Notice: If an environment variable is named `ACTIONS_TOKEN`, it will be used to 
 npm install --global windows-build-tools --python_mirror=https://npm.taobao.org/mirrors/python/
 
 # install dependencies
-npm install
+# npm install
 
-# Install dependencies From TaoBao
+# Recommended. Install dependencies From TaoBao
 npm run iftb
 
 # serve with hot reload at localhost:8000
@@ -73,9 +73,9 @@ npm run upddep
 
 ### sharp binaries
 
-A dependency **sharp** needs to pull [prebuilt binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. GitHub hosts release files on AWS, which is sometimes blocked in China. Failure to download these files will cause failure in installation and following steps.
+A dependency **sharp** needs to pull [prebuilt libvips binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. GitHub hosts release files on AWS, which is sometimes blocked in China. Failure to download these files will cause failure in installation and following steps. Setting proxy using `HTTP_PROXY` and `HTTPS_PROXY` before installing dependencies is recommended.
 
-Thankfully, according to [the official docs](http://sharp.pixelplumbing.com/en/stable/install/#pre-compiled-libvips-binaries), we can change the base url for this file. With the help of python 3's `http.server` module, we can start a local http server and serve the file from local.
+If proxy is not available, according to [the official docs](http://sharp.pixelplumbing.com/en/stable/install/#pre-compiled-libvips-binaries), we can change the base url for this file. With the help of python 3's `http.server` module, we can start a local http server and serve the file from local.
 
 If you encountered download error mentioned above, follow the following steps to complete installation:
 
