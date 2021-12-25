@@ -5,7 +5,7 @@ import BannerLayout, {
   BannerLayoutDescription,
 } from "@/layouts/BannerLayout";
 import styled from "styled-components";
-import { prefix, useI18n } from "@/i18n";
+import { useI18n } from "@/i18n";
 import Page from "@/layouts/Page";
 import { FaGithub } from "react-icons/fa";
 import { Slide } from "@/models/Slide";

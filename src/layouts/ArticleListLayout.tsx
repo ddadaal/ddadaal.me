@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 import React from "react";
 import { Row, Col } from "reactstrap";
 import styled from "styled-components";

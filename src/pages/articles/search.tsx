@@ -65,7 +65,7 @@ const SearchPage: React.FC = () => {
   // pagination
   searchResult = searchResult.slice(
     pageIndex * pageSize,
-    pageIndex * pageSize + pageSize
+    pageIndex * pageSize + pageSize,
   );
 
   return (
