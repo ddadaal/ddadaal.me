@@ -4,7 +4,7 @@
 import path from "path";
 import { CreatePagesArgs, SourceNodesArgs } from "gatsby";
 import GitHubSlugger from "github-slugger";
-import fetch from "node-fetch";
+import needle from "needle";
 
 const indexTemplate = path.resolve("src/templates/ArticleListPageTemplate.tsx");
 const articleTemplate = path.resolve("src/templates/ArticlePageTemplate.tsx");
@@ -230,7 +230,7 @@ export const sourceNodes = async ({
   const slidesUrl= "https://api.github.com/repos/ddadaal/Slides/contents/";
 
   try {
-    const result: any = await (await fetch(slidesUrl, {
+    const result = await needle("get", slidesUrl, {
       headers: {
         "Content-Type": "application/json",
         // Set the token if ACTIONS_TOKEN environment token exists
@@ -238,9 +238,9 @@ export const sourceNodes = async ({
           ? { "Authorization": `token ${process.env.ACTIONS_TOKEN}` }
           : null,
       },
-    })).json();
+    }, { json: true });
 
-    result.forEach(createNodeFromSlide);
+    result.body.forEach(createNodeFromSlide);
 
   } catch (e) {
     console.warn("Error occurred when requesting to GitHub to fetch my slides list.");
