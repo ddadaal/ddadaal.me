@@ -22,14 +22,14 @@ hide_heading: false
 - am born and raised in **Chongqing, China**
 - got bachelor degree in **Software Engineering** at **Nanjing University** at 2020 (from 2016)
 - am a master student from 2020 in **Peking University**. My institution is **School of EECS**, but my lab is at [**Computer Center**](https://cc.pku.edu.cn)
-- look forward to becoming a software engineer whose work is useful in practice and can make others more productive.
+- look forward to becoming a software engineer whose work is useful in practice and can improve productivity.
 
 # Likings
 
 - Extreme passion to **computers** starting at the age of 4 and counting
 - Microsoft fan because it is Microsoft's products that bring me to this field
 - Huge fan of Battlefield, FPS and all games
-- **Badminton**
+- **Badminton**, Self ranked 3+ ([badmintoncn standard](https://bbs.badmintoncn.com/thread-428421-1-1.html))
 - Prefer **pure music** (symphony, classic, piano, epic/trailer music...). Interested in **choir** recently
 - Like **movies** and **musicals**
   - The movies and musicals I have seen are on my [douban](https://www.douban.com/people/183064260/) profile.
@@ -64,11 +64,11 @@ hide_heading: false
 
 # Personal Devices
 
-| Device                            | Specifications                                 | Since      |
-| --------------------------------- | ---------------------------------------------- | ---------- |
-| Lenovo Yoga Pro 13s               | i5 1135G7/16G/512G PM9A1/2560*1600/966g        | Nov, 2020  |
-| Custom Desktop PC                 | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | Dec, 2020  |
-| LG 27UL550                        | 27'/3840*2160/60Hz                             | Dec, 2019  |
-| Samsung Galaxy S20                | Snapdragon 865/12G/128G/6.2' 1080P120 AMOLED   | Jan, 2021  |
-| Amazfit Watch GTS                 | N/A                                            | Sept, 2019 |
-| Sennheiser Momentum True Wireless | N/A                                            | Feb, 2019  |
+| Device                            | Specifications                                                                                                          | Since     |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------- |
+| Lenovo Yoga Pro 13s Carbon        | i5 1135G7/16G/512G PM9A1/2560*1600/966g                                                                                 | Nov, 2020 |
+| Custom Desktop PC                 | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | Dec, 2020 |
+| LG 27UL550                        | 27'/3840*2160/60Hz                                                                                                      | Dec, 2019 |
+| Samsung Galaxy S20                | Snapdragon 865/12G/128G/6.2' 1080P120 AMOLED                                                                            | Jan, 2021 |
+| Amazfit Watch GTR 3 Pro           | N/A                                                                                                                     | Oct, 2021 |
+| Sennheiser Momentum True Wireless | N/A                                                                                                                     | Feb, 2019 |
