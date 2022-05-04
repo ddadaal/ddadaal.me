@@ -1,9 +1,9 @@
-import React from "react";
 import { Link } from "gatsby";
+import React from "react";
 
-import Page from "@/layouts/Page";
-import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import { PageMetadata } from "@/components/PageMetadata";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import Page from "@/layouts/Page";
 
 const NotFoundPage = (): React.ReactNode => (
   <HeaderFooterLayout transparentHeader={false}>

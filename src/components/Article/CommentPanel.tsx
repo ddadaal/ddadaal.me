@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-
-import styled from "styled-components";
-import { FaComments } from "react-icons/fa";
-
 import "gitalk/dist/gitalk.css";
-import { useI18n, Localized, languageInfo } from "@/i18n";
+
 import GitalkComponent from "gitalk/dist/gitalk-component";
+import React, { useEffect } from "react";
+import { FaComments } from "react-icons/fa";
+import styled from "styled-components";
+
+import { languageInfo,Localized, useI18n } from "@/i18n";
 import isServer from "@/utils/isServer";
 
 interface Props {
@@ -84,4 +84,4 @@ const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (prop
   );
 };
 
-export { CommentPanel as default, CommentPanelWithCurrentLanguage };
+export { CommentPanelWithCurrentLanguage,CommentPanel as default };

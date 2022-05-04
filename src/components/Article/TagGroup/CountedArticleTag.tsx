@@ -1,10 +1,12 @@
-import React, { useCallback } from "react";
-import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import { LanguageId, useI18n } from "@/i18n";
-import { Link } from "gatsby";
-import { Badge } from "reactstrap";
 import "./article-tag.scss";
+
+import { Link } from "gatsby";
+import React, { useCallback } from "react";
+import { Badge } from "reactstrap";
+import { useStore } from "simstate";
+
+import { LanguageId, useI18n } from "@/i18n";
+import MetadataStore from "@/stores/MetadataStore";
 
 interface Props {
   onClick?(tags: string): void;

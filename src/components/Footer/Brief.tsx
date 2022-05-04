@@ -1,11 +1,12 @@
-import React from "react";
-import { Localized, prefix } from "@/i18n";
 import { Link } from "gatsby";
-import MetadataStore from "@/stores/MetadataStore";
+import React from "react";
 import { useStore } from "simstate";
+
 import Contacts from "@/components/Contacts";
-import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import { RunningTime } from "@/components/Footer/RunningTime";
+import { Localized, prefix } from "@/i18n";
+import MetadataStore from "@/stores/MetadataStore";
+import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 
 const root = prefix("footer.");
 

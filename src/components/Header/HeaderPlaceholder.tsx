@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { colors, breakpoints, heights } from "@/styles/variables";
+
+import { breakpoints, colors, heights } from "@/styles/variables";
 
 const Placeholder = styled.div<{ isOpen: boolean; transparent: boolean }>`
 

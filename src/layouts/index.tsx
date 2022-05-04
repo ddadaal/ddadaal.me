@@ -1,9 +1,11 @@
-import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { SiteMetadata } from "@/models/SiteMetadata";
-import RootLayout from "./RootLayout";
+import React from "react";
+
 import { ArticleNode } from "@/models/ArticleNode";
+import { SiteMetadata } from "@/models/SiteMetadata";
 import { Tag } from "@/models/Tag";
+
+import RootLayout from "./RootLayout";
 
 interface InitialData {
   site: { siteMetadata: SiteMetadata };

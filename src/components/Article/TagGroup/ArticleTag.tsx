@@ -1,10 +1,12 @@
+import "./article-tag.scss";
+
+import { Link } from "gatsby";
 import React from "react";
 import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import { Link } from "gatsby";
 import styled from "styled-components";
+
 import { LanguageId, useI18n } from "@/i18n";
-import "./article-tag.scss";
+import MetadataStore from "@/stores/MetadataStore";
 
 const Tag = styled(Link)`
   margin-right: 4px;

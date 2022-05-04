@@ -1,7 +1,8 @@
 import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import { ArticleNode } from "@/models/ArticleNode";
+
 import { useI18n } from "@/i18n";
+import { ArticleNode } from "@/models/ArticleNode";
+import MetadataStore from "@/stores/MetadataStore";
 
 export function useArticleOfCurrentLang(articleId: string): ArticleNode {
   const i18n = useI18n();

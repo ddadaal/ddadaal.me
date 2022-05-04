@@ -1,11 +1,13 @@
+import { Link } from "gatsby";
 import React from "react";
 import { CardBody, CardText } from "reactstrap";
-import { Link } from "gatsby";
+import { useStore } from "simstate";
+
+import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import { Localized, prefix, useI18n } from "@/i18n";
 import MetadataStore from "@/stores/MetadataStore";
+
 import Contacts from "../Contacts";
-import { useStore } from "simstate";
-import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 
 interface Props {
 }

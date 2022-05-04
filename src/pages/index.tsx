@@ -1,19 +1,18 @@
+import { Link } from "gatsby";
 import React from "react";
+import { FaBookOpen, FaClock, FaFile, FaMale, FaRss,FaSlideshare } from "react-icons/fa";
+import { useStore } from "simstate";
+import styled from "styled-components";
 
 import Contacts from "@/components/Contacts";
-import { RootContainer, InnerContainer } from "@/layouts/LayeredLayout";
-import bgImg from "~/assets/mainbg.jpg";
-import { prefix, useI18n } from "@/i18n";
-import { Localized } from "@/i18n";
-import { FaFile, FaBookOpen, FaMale, FaClock, FaSlideshare, FaRss } from "react-icons/fa";
-import { Link } from "gatsby";
-import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
-import styled from "styled-components";
-import { colors } from "@/styles/variables";
-import moveInAnimation from "@/styles/moveInAnimation";
 import { PageMetadata } from "@/components/PageMetadata";
+import { Localized,prefix, useI18n  } from "@/i18n";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import { InnerContainer,RootContainer } from "@/layouts/LayeredLayout";
+import MetadataStore from "@/stores/MetadataStore";
+import moveInAnimation from "@/styles/moveInAnimation";
+import { colors } from "@/styles/variables";
+import bgImg from "~/assets/mainbg.jpg";
 
 const Bg = styled(RootContainer)`
   height: 100vh;

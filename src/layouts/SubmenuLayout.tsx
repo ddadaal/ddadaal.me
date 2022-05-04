@@ -1,14 +1,15 @@
+import { Link as GatsbyLink } from "gatsby";
 import React from "react";
+import { Col, Nav as BSNav, NavItem,Row } from "reactstrap";
+import { useStore } from "simstate";
+import styled from "styled-components";
+
+import { Localized, TextId } from "@/i18n";
+import { BannerLayoutTitle } from "@/layouts/BannerLayout";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import Page from "@/layouts/Page";
-import { Row, Col, Nav as BSNav, NavItem } from "reactstrap";
-import { Link as GatsbyLink } from "gatsby";
-import { Localized, TextId } from "@/i18n";
-import styled from "styled-components";
-import { colors } from "@/styles/variables";
-import { BannerLayoutTitle } from "@/layouts/BannerLayout";
-import { useStore } from "simstate";
 import LocationStore from "@/stores/LocationStore";
+import { colors } from "@/styles/variables";
 
 interface NavPoint {
   textId: TextId;

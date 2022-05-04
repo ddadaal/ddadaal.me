@@ -2,10 +2,10 @@
 // for better code readability
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
-import path from "path";
 import { CreatePagesArgs, SourceNodesArgs } from "gatsby";
 import GitHubSlugger from "github-slugger";
 import needle from "needle";
+import path from "path";
 
 const indexTemplate = path.resolve("src/templates/ArticleListPageTemplate.tsx");
 const articleTemplate = path.resolve("src/templates/ArticlePageTemplate.tsx");

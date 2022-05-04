@@ -1,7 +1,8 @@
-import { HtmlAstElement } from "@/models/HtmlAst";
-import { HtmlAst } from "@/models/HtmlAst";
-import { createElement, createText } from "./AstManipulator";
 import "./code-header.scss";
+
+import { HtmlAst,HtmlAstElement  } from "@/models/HtmlAst";
+
+import { createElement, createText } from "./AstManipulator";
 
 const languageTexts = {
   python: "Python",

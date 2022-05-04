@@ -1,22 +1,24 @@
 import React from "react";
-import styled from "styled-components";
-import { Heading } from "@/models/ArticleNode";
 import rehypeReact from "rehype-react";
-import { HtmlAst } from "@/models/HtmlAst";
-import addSlug from "./astManipulators/addSlug";
-import addCodeHeader from "./astManipulators/addCodeHeader";
-import useConstant from "@/utils/useConstant";
+import styled from "styled-components";
+
 import Contacts from "@/components/Contacts";
 import ResumeLayout from "@/layouts/ResumeLayout";
+import { Heading } from "@/models/ArticleNode";
+import { HtmlAst } from "@/models/HtmlAst";
+import useConstant from "@/utils/useConstant";
+
+import addCodeHeader from "./astManipulators/addCodeHeader";
+import addSlug from "./astManipulators/addSlug";
 
 const components = {
   "resume": ResumeLayout,
   "feedback-contacts": () => <Contacts color={"black"} size={1.4} />,
 };
 
-// @ts-ignore
 const renderAst = new rehypeReact({
   createElement: React.createElement,
+  // @ts-ignore
   components,
 }).Compiler;
 

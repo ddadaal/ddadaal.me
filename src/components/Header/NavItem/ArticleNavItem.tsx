@@ -1,7 +1,8 @@
 import React from "react";
+
 import NavItem from "@/components/Header/NavItem";
-import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 import { TextId } from "@/i18n";
+import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 
 interface Props {
   Icon: React.ComponentType;

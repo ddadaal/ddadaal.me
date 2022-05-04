@@ -1,7 +1,8 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import ArticleCard from "@/components/Article/ArticleCard";
 import styled from "styled-components";
+
+import ArticleCard from "@/components/Article/ArticleCard";
 import { Localized } from "@/i18n";
 
 interface Props {

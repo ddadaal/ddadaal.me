@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { widths } from "@/styles/variables";
+
 import moveInAnimation from "@/styles/moveInAnimation";
+import { widths } from "@/styles/variables";
 
 const StyledPage = styled.div`
   display: block;

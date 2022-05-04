@@ -1,11 +1,12 @@
 import React from "react";
-import Page from "@/layouts/Page";
-import { BannerLayoutTitle } from "@/layouts/BannerLayout";
-import { Localized, prefix } from "@/i18n";
-import Contacts from "@/components/Contacts";
+
 import { CommentPanelWithCurrentLanguage } from "@/components/Article/CommentPanel";
-import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import Contacts from "@/components/Contacts";
 import { PageMetadata } from "@/components/PageMetadata";
+import { Localized, prefix } from "@/i18n";
+import { BannerLayoutTitle } from "@/layouts/BannerLayout";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import Page from "@/layouts/Page";
 
 const root = prefix("feedback.");
 

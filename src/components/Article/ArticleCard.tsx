@@ -1,12 +1,13 @@
-import React from "react";
-import { BaseCard } from "@/components/Cards/components";
-import { useStore } from "~/node_modules/simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import styled from "styled-components";
-import { CardBody } from "reactstrap";
 import { navigate } from "gatsby";
-import { colors } from "@/styles/variables";
+import React from "react";
+import { CardBody } from "reactstrap";
+import styled from "styled-components";
+
+import { BaseCard } from "@/components/Cards/components";
 import { useI18n } from "@/i18n";
+import MetadataStore from "@/stores/MetadataStore";
+import { colors } from "@/styles/variables";
+import { useStore } from "~/node_modules/simstate";
 
 interface Props {
   articleId: string;

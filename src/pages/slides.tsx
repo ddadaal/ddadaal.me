@@ -1,18 +1,19 @@
-import React from "react";
 import { graphql } from "gatsby";
-import BannerLayout, {
-  BannerLayoutTitle,
-  BannerLayoutDescription,
-} from "@/layouts/BannerLayout";
-import styled from "styled-components";
-import { useI18n } from "@/i18n";
-import Page from "@/layouts/Page";
+import React from "react";
 import { FaGithub } from "react-icons/fa";
+import styled from "styled-components";
+
+import { PageMetadata } from "@/components/PageMetadata";
+import { useI18n } from "@/i18n";
+import BannerLayout, {
+  BannerLayoutDescription,
+  BannerLayoutTitle,
+} from "@/layouts/BannerLayout";
+import Page from "@/layouts/Page";
 import { Slide } from "@/models/Slide";
 import { colors } from "@/styles/variables";
 import { groupBy } from "@/utils/groupBy";
 import useConstant from "@/utils/useConstant";
-import { PageMetadata } from "@/components/PageMetadata";
 
 interface Props {
   data: {

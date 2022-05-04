@@ -1,5 +1,6 @@
-import { AstManipulator } from "./AstManipulator";
 import { HtmlAst, HtmlAstChild } from "@/models/HtmlAst";
+
+import { AstManipulator } from "./AstManipulator";
 
 const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
 

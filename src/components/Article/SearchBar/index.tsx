@@ -1,9 +1,10 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useCallback,useRef, useState } from "react";
 import styled from "styled-components";
+
 import SearchBar from "@/components/Article/SearchBar/SearchBar";
-import { useEventListener } from "@/utils/useEventListener";
 import TagDropdown from "@/components/Article/SearchBar/TagDropdown";
 import isServer from "@/utils/isServer";
+import { useEventListener } from "@/utils/useEventListener";
 
 interface Props {
 

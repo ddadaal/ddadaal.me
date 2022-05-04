@@ -1,8 +1,9 @@
 import React from "react";
 import { Helmet, HelmetProps } from "react-helmet";
-import MetadataStore from "@/stores/MetadataStore";
 import { useStore } from "simstate";
+
 import { languageInfo, prefix, TextId, useI18n } from "@/i18n";
+import MetadataStore from "@/stores/MetadataStore";
 
 const root = prefix("pageMedatadata.");
 

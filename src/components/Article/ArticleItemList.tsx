@@ -1,10 +1,12 @@
 import React from "react";
-import MetadataStore from "@/stores/MetadataStore";
-import ArticleItem from "./ArticleItem";
-import PageIndicator from "../PageIndicator";
 import { useStore } from "simstate";
-import { useI18n } from "@/i18n";
 import styled from "styled-components";
+
+import { useI18n } from "@/i18n";
+import MetadataStore from "@/stores/MetadataStore";
+
+import PageIndicator from "../PageIndicator";
+import ArticleItem from "./ArticleItem";
 
 interface Props {
   ids: string[];

@@ -1,10 +1,10 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 import { PageMetadata } from "@/components/PageMetadata";
+import { Localized, prefix } from "@/i18n";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
 import Page from "@/layouts/Page";
-import { Helmet } from "react-helmet";
-import { Localized, prefix } from "@/i18n";
 
 const root = prefix("redirects.");
 

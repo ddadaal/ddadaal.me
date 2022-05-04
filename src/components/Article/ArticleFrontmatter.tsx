@@ -1,16 +1,17 @@
-import React from "react";
-import { languageInfo, Localized, prefix, useI18n } from "@/i18n";
-import styled from "styled-components";
-import {
-  FaCalendarPlus, FaTags, FaGlobe,
-  FaUserClock, FaFileWord, FaCalendar,
-} from "react-icons/fa";
-import { breakpoints } from "@/styles/variables";
 import { Link } from "gatsby";
-import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
 import { DateTime } from "luxon";
+import React from "react";
+import {
+  FaCalendar,
+  FaCalendarPlus, FaFileWord, FaGlobe,
+  FaTags,   FaUserClock } from "react-icons/fa";
+import { useStore } from "simstate";
+import styled from "styled-components";
+
+import ArticleTag from "@/components/Article/TagGroup/ArticleTag";
+import { languageInfo, Localized, prefix, useI18n } from "@/i18n";
+import MetadataStore from "@/stores/MetadataStore";
+import { breakpoints } from "@/styles/variables";
 import useConstant from "@/utils/useConstant";
 
 interface Props {

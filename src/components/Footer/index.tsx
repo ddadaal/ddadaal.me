@@ -1,11 +1,12 @@
 import React from "react";
+import { Col,Row } from "reactstrap";
 import styled from "styled-components";
-import { Localized, prefix } from "@/i18n";
-import { colors, widths } from "@/styles/variables";
-import { Row, Col } from "reactstrap";
+
 import Brief from "@/components/Footer/Brief";
 import List from "@/components/Footer/List";
 import MadeWithLove from "@/components/Footer/MadeWithLove";
+import { Localized, prefix } from "@/i18n";
+import { colors, widths } from "@/styles/variables";
 
 interface Props {
   className?: string;

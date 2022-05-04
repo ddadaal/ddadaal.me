@@ -1,12 +1,12 @@
-import React from "react";
-import { CardBody, CardText } from "reactstrap";
-import { FaCode, FaRss, FaRegCommentDots } from "react-icons/fa";
 import { Link } from "gatsby";
+import React from "react";
+import { FaCode, FaRegCommentDots,FaRss } from "react-icons/fa";
+import { CardBody, CardText } from "reactstrap";
+import styled from "styled-components";
 
 import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
-import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
-import styled from "styled-components";
 import { Localized, prefix, useI18n } from "@/i18n";
+import { useArticleOfCurrentLang } from "@/stores/useArticleOfCurrentLang";
 
 const BlockContainer = styled.div`
   a {

@@ -1,8 +1,10 @@
-import React from "react";
-import { Localized, prefix } from "@/i18n";
-import styled, { keyframes } from "styled-components";
-import { heights } from "@/styles/variables";
 import "./style.scss";
+
+import React from "react";
+import styled, { keyframes } from "styled-components";
+
+import { Localized, prefix } from "@/i18n";
+import { heights } from "@/styles/variables";
 
 interface Props {
 

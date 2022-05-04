@@ -1,8 +1,7 @@
 import React from "react";
-
 import {
-  FaQq, FaMailBulk, FaLinkedin,
-  FaGithub, FaSteam, FaZhihu,
+  FaGithub, FaLinkedin,
+  FaMailBulk,   FaQq, FaSteam, FaZhihu,
 } from "react-icons/fa";
 import styled from "styled-components";
 

@@ -1,12 +1,14 @@
 import React from "react";
-import HeaderFooterLayout from "./HeaderFooterLayout";
 import styled from "styled-components";
-import { heights, colors } from "@/styles/variables";
+
 import {
-  RootContainer as BaseRootContainer,
   InnerContainer as BaseInnerContainer,
+  RootContainer as BaseRootContainer,
 } from "@/layouts/LayeredLayout";
 import moveInAnimation from "@/styles/moveInAnimation";
+import { colors,heights } from "@/styles/variables";
+
+import HeaderFooterLayout from "./HeaderFooterLayout";
 
 interface Props {
   transparentHeader: boolean;
@@ -60,4 +62,4 @@ const BannerLayoutDescription = styled.h2`
   padding: 4px 0;
 `;
 
-export { BannerLayout as default, BannerLayoutTitle, BannerLayoutDescription };
+export { BannerLayoutDescription,BannerLayoutTitle, BannerLayout as default };

@@ -1,31 +1,32 @@
+import { Link } from "gatsby";
+import React, { useCallback,useState } from "react";
+import {
+  FaBookOpen, FaFile,
+  FaGlobe,   FaHome,   FaInfo, FaMale, FaSlideshare,
+} from "react-icons/fa";
 import {
   Collapse, DropdownMenu as BSDropdownMenu,
   DropdownToggle as BSDropdownToggle,
+  DropdownToggleProps,
   Nav,
   Navbar,
-  NavItem as BSNavItem,
   NavbarToggler,
+  NavItem as BSNavItem,
   UncontrolledDropdown,
-  DropdownToggleProps,
 } from "reactstrap";
-import { Link } from "gatsby";
-import React, { useState, useCallback } from "react";
-import Icon from "~/assets/logo.svg";
-import styled from "styled-components";
-import { widths, colors } from "@/styles/variables";
-import {
-  FaHome, FaMale, FaGlobe, FaFile,
-  FaInfo, FaBookOpen, FaSlideshare,
-} from "react-icons/fa";
-import { Localized, prefix } from "@/i18n";
-import LocationStore from "@/stores/LocationStore";
 import { useStore } from "simstate";
+import styled from "styled-components";
+
+import Placeholder from "@/components/Header/HeaderPlaceholder";
 import NavbarLanguageSelector from "@/components/Header/NavbarLanguageSelector";
 import NavItem from "@/components/Header/NavItem";
-import { useEventListener } from "@/utils/useEventListener";
-import Placeholder from "@/components/Header/HeaderPlaceholder";
-import isServer from "@/utils/isServer";
 import ArticleNavItem from "@/components/Header/NavItem/ArticleNavItem";
+import { Localized, prefix } from "@/i18n";
+import LocationStore from "@/stores/LocationStore";
+import { colors,widths } from "@/styles/variables";
+import isServer from "@/utils/isServer";
+import { useEventListener } from "@/utils/useEventListener";
+import Icon from "~/assets/logo.svg";
 
 interface Props {
   transparentHeader: boolean;

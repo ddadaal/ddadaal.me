@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react";
-import styled from "styled-components";
+import React, { useCallback,useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import styled from "styled-components";
 
 interface DivProps {
   visible: boolean;

@@ -1,7 +1,9 @@
-import React from "react";
-import ArticleFrontmatter from "./ArticleFrontmatter";
-import { BannerLayoutTitle } from "@/layouts/BannerLayout";
 import { DateTime } from "luxon";
+import React from "react";
+
+import { BannerLayoutTitle } from "@/layouts/BannerLayout";
+
+import ArticleFrontmatter from "./ArticleFrontmatter";
 
 interface Props {
   title: string;

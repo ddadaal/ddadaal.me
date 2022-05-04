@@ -1,10 +1,11 @@
+import { navigate } from "gatsby";
 import React, { useCallback, useState } from "react";
 import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
+
 import LanguageSelector from "@/components/LanguageSelector";
-import { navigate } from "gatsby";
-import ArticleStore from "@/stores/ArticleStore";
 import { languageInfo, TextId, useI18n } from "@/i18n";
+import ArticleStore from "@/stores/ArticleStore";
+import MetadataStore from "@/stores/MetadataStore";
 
 const languageNames = Object.entries(languageInfo)
   .reduce((prev, [id, info]) => {

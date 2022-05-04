@@ -1,12 +1,13 @@
+import { navigate } from "gatsby";
 import React from "react";
+import { useStore } from "simstate";
+
+import ArticleItemList from "@/components/Article/ArticleItemList";
+import { PageMetadata } from "@/components/PageMetadata";
 import { Localized, prefix, useI18n } from "@/i18n";
+import ArticleListLayout from "@/layouts/ArticleListLayout";
 import LocationStore from "@/stores/LocationStore";
 import MetadataStore from "@/stores/MetadataStore";
-import { navigate } from "gatsby";
-import ArticleItemList from "@/components/Article/ArticleItemList";
-import ArticleListLayout from "@/layouts/ArticleListLayout";
-import { useStore } from "simstate";
-import { PageMetadata } from "@/components/PageMetadata";
 
 const root = prefix("search.");
 

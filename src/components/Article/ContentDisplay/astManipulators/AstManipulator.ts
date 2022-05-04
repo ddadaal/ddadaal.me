@@ -1,5 +1,4 @@
-import { HtmlAstElement, HtmlAstText, HtmlAstChild } from "@/models/HtmlAst";
-import { HtmlAst } from "@/models/HtmlAst";
+import { HtmlAst,HtmlAstChild,HtmlAstElement, HtmlAstText  } from "@/models/HtmlAst";
 
 export type AstManipulator = (htmlAst: HtmlAst) => void;
 

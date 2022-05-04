@@ -1,9 +1,10 @@
 import React from "react";
-import { Localized, TextId } from "@/i18n";
+import { DropdownItem as BSDropdownItem,NavItem as BSNavItem } from "reactstrap";
 import { useStore } from "simstate";
-import LocationStore from "@/stores/LocationStore";
+
 import NavLink from "@/components/Header/NavLink";
-import { NavItem as BSNavItem, DropdownItem as BSDropdownItem } from "reactstrap";
+import { Localized, TextId } from "@/i18n";
+import LocationStore from "@/stores/LocationStore";
 
 interface Props {
   Icon: React.ComponentType;

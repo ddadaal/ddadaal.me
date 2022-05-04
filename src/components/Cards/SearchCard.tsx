@@ -1,7 +1,8 @@
 import React from "react";
-import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import { CardBody } from "reactstrap";
+
 import SearchBar from "@/components/Article/SearchBar/SearchBar";
+import { BaseCard, BaseCardHeader } from "@/components/Cards/components";
 import { Localized } from "@/i18n";
 
 const SearchCard: React.FC = () => {

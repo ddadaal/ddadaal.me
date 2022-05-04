@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardProps, CardHeader, CardHeaderProps } from "reactstrap";
+import { Card, CardHeader, CardHeaderProps,CardProps } from "reactstrap";
 
 export const BaseCard: React.FC<CardProps> = ({ className, ...props }) => {
   return (

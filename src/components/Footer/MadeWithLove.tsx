@@ -1,6 +1,7 @@
 import React from "react";
-import { Localized } from "@/i18n";
 import styled from "styled-components";
+
+import { Localized } from "@/i18n";
 
 const Container = styled.p`
     text-align: center;

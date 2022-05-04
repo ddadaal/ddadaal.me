@@ -1,14 +1,15 @@
 import React from "react";
-import { Row, Col } from "reactstrap";
-import styled from "styled-components";
-import TagsCard from "@/components/Cards/TagsCard";
-import Page from "@/layouts/Page";
-import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
-import SearchCard from "@/components/Cards/SearchCard";
-import ArticleSearchBar from "@/components/Article/SearchBar";
 import MediaQuery from "react-responsive";
-import { breakpoints } from "@/styles/variables";
+import { Col,Row } from "reactstrap";
+import styled from "styled-components";
+
+import ArticleSearchBar from "@/components/Article/SearchBar";
 import BlogIntroCard from "@/components/Cards/BlogIntroCard";
+import SearchCard from "@/components/Cards/SearchCard";
+import TagsCard from "@/components/Cards/TagsCard";
+import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
+import Page from "@/layouts/Page";
+import { breakpoints } from "@/styles/variables";
 // import SearchBar from "@/components/SearchBar";
 
 interface Props {

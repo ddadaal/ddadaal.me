@@ -1,10 +1,11 @@
 import React from "react";
-import useConstant from "@/utils/useConstant";
 import { useStore } from "simstate";
-import MetadataStore from "@/stores/MetadataStore";
-import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
 import styled from "styled-components";
+
+import CountedArticleTag from "@/components/Article/TagGroup/CountedArticleTag";
+import MetadataStore from "@/stores/MetadataStore";
 import { colors } from "@/styles/variables";
+import useConstant from "@/utils/useConstant";
 
 interface Props {
   show: boolean;
