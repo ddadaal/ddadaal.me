@@ -105,6 +105,7 @@ module.exports = {
     `gatsby-transformer-json`,
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-pnpm',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

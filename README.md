@@ -42,49 +42,31 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 
 ## Development
 
-npm instead of yarn is preferred, because integrity check in yarn sometimes needs more information than provided by taobao npm mirror.
+We are using [pnpm](https://pnpm.io) for package management.
 
 Notice: If an environment variable is named `ACTIONS_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
 
 ``` bash
 # For Windows users, install windows-build-tools
-npm install --global windows-build-tools --python_mirror=https://npm.taobao.org/mirrors/python/
+pnpm install --global windows-build-tools --python_mirror=https://npm.taobao.org/mirrors/python/
 
 # install dependencies
-# npm install
-
-# Recommended. Install dependencies From TaoBao
-npm run iftb
+pnpm install
 
 # serve with hot reload at localhost:8000
-npm run dev
+nppm run dev
 
 # run production build
-npm run build
+pnpm run build
 
 # **After build**, serve the production build locally
-npm run serve
+pnpm run serve
 
 # Update dependencies with npm-check-updates and update the package.json
-npm run upddep
+pnpm run upddep
 ```
 
-## Network Issues
-
-### sharp binaries
-
-A dependency **sharp** needs to pull [prebuilt libvips binaries from GitHub releases](https://github.com/lovell/sharp-libvips/releases) during installation. GitHub hosts release files on AWS, which is sometimes blocked in China. Failure to download these files will cause failure in installation and following steps. Setting proxy using `HTTP_PROXY` and `HTTPS_PROXY` before installing dependencies is recommended.
-
-If proxy is not available, according to [the official docs](http://sharp.pixelplumbing.com/en/stable/install/#pre-compiled-libvips-binaries), we can change the base url for this file. With the help of python 3's `http.server` module, we can start a local http server and serve the file from local.
-
-If you encountered download error mentioned above, follow the following steps to complete installation:
-
-1. Download the file yourself and place the file into a directory
-2. Run `python -m http.server {port} --bind {url}` and keep it running until the installation completes.
-3. Set the environment variable `SHARP_DIST_BASE_URL` to `http://{url}:{port}`
-4. `npm install` and you are ready to go!
-
-### handling network errors when making request to GitHub API
+### Handling network errors when making request to GitHub API
 
 A network request to GitHub will be started when running the application to retrieve my slides information from my repo, but such network might fail.
 
