@@ -54,7 +54,7 @@ const friends = [
   { name: "iznauy", description: "个人博客", link: "https://iznauy.github.io/" },
   { name: "Aironoria", description: "陈俊宇的个人博客", link: "https://aironoria.github.io" },
   { name: "forewing", description: "个人主页", link: "https://jbesu.com/" },
-  { name: "Weizer", description: "个人主页", link: "https://weiser.fun" },
+  { name: "Weiser", description: "个人主页", link: "https://weiser.fun" },
 ].map(({ name, link, description }) => ({
   name: `${name} - ${description}`,
   link,
