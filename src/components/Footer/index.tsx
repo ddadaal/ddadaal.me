@@ -1,5 +1,5 @@
 import React from "react";
-import { Col,Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import styled from "styled-components";
 
 import Brief from "@/components/Footer/Brief";

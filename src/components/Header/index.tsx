@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
-import React, { useCallback,useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   FaBookOpen, FaFile,
-  FaGlobe,   FaHome,   FaInfo, FaMale, FaSlideshare,
+  FaGlobe, FaHome, FaInfo, FaMale, FaSlideshare,
 } from "react-icons/fa";
 import {
   Collapse, DropdownMenu as BSDropdownMenu,
@@ -23,7 +23,7 @@ import NavItem from "@/components/Header/NavItem";
 import ArticleNavItem from "@/components/Header/NavItem/ArticleNavItem";
 import { Localized, prefix } from "@/i18n";
 import LocationStore from "@/stores/LocationStore";
-import { colors,widths } from "@/styles/variables";
+import { colors, widths } from "@/styles/variables";
 import isServer from "@/utils/isServer";
 import { useEventListener } from "@/utils/useEventListener";
 import Icon from "~/assets/logo.svg";

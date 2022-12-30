@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { scrollToAnchor } from "@/components/Article/TocPanel/scrollToAnchor";
 import { Localized } from "@/i18n";
 import { Heading } from "@/models/ArticleNode";
-import { colors,heights } from "@/styles/variables";
+import { colors, heights } from "@/styles/variables";
 
 interface Props {
   headings: Heading[];

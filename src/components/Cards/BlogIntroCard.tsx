@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
-import { FaCode, FaRegCommentDots,FaRss } from "react-icons/fa";
+import { FaCode, FaRegCommentDots, FaRss } from "react-icons/fa";
 import { CardBody, CardText } from "reactstrap";
 import styled from "styled-components";
 

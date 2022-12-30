@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
+    "module": "esnext",
+    "target": "esnext",
     "jsx": "react",
     "lib": [
       "dom",
-      "es2015",
-      "es2017"
+      "esnext"
     ],
+    "moduleResolution": "node",
     "outDir": "./dist/",
     "sourceMap": true,
     "esModuleInterop": true,
@@ -38,6 +38,7 @@
   "include": [
     "./configs/**/*",
     "./src/**/*",
-    "__tests__/enzyme.js"
+    "__tests__/enzyme.js",
+    "*.ts"
   ]
 }

@@ -1,14 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
-import { FaBookOpen, FaClock, FaFile, FaMale, FaRss,FaSlideshare } from "react-icons/fa";
+import { FaBookOpen, FaClock, FaFile, FaMale, FaRss, FaSlideshare } from "react-icons/fa";
 import { useStore } from "simstate";
 import styled from "styled-components";
 
 import Contacts from "@/components/Contacts";
 import { PageMetadata } from "@/components/PageMetadata";
-import { Localized,prefix, useI18n  } from "@/i18n";
+import { Localized, prefix, useI18n } from "@/i18n";
 import HeaderFooterLayout from "@/layouts/HeaderFooterLayout";
-import { InnerContainer,RootContainer } from "@/layouts/LayeredLayout";
+import { InnerContainer, RootContainer } from "@/layouts/LayeredLayout";
 import MetadataStore from "@/stores/MetadataStore";
 import moveInAnimation from "@/styles/moveInAnimation";
 import { colors } from "@/styles/variables";
@@ -66,7 +66,7 @@ const LinkContainer = styled.div`
 
 const root = prefix("homepage.");
 
-const Button: React.FC<{ to: string; mode?: "to" | "href" }> = ({
+const Button: React.FC<React.PropsWithChildren<{ to: string; mode?: "to" | "href" }>> = ({
   to,
   mode = "to", children,
 }) => {

@@ -1,46 +1,49 @@
-"use strict"
+"use strict";
 
-const { DateTime } = require("luxon");
-const path = require("path");
+import { DateTime } from "luxon";
+import path from "path";
 
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
   siteMetadata: {
     name: "ddadaal.me",
-    description: 'A personal website',
-    siteUrl: 'https://ddadaal.me',
+    description: "A personal website",
+    siteUrl: "https://ddadaal.me",
     author: {
-      name: 'Chen Junda',
-      url: 'https://ddadaal.me',
-      email: 'ddadaal@outlook.com'
+      name: "Chen Junda",
+      url: "https://ddadaal.me",
+      email: "ddadaal@outlook.com",
     },
     lastUpdated: DateTime.utc().toString(),
   },
   plugins: [
-    'gatsby-plugin-typescript',
+    "gatsby-plugin-typescript",
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: "gatsby-plugin-sass",
       options: {
         sassOptions: {
           includePaths: [path.join(__dirname, "src/styles")],
-        }
+        },
       },
     },
     {
-      resolve: 'gatsby-plugin-styled-components',
+      resolve: "gatsby-plugin-styled-components",
       options: {
         minify: true,
       },
     },
     "gatsby-plugin-layout",
     {
-      resolve: 'gatsby-plugin-root-import',
+      resolve: "gatsby-plugin-root-import",
       options: {
-        "@": path.join(__dirname, 'src'),
-        "~": path.join(__dirname)
-      }
+        "@": path.join(__dirname, "src"),
+        "~": path.join(__dirname),
+      },
     },
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: "gatsby-plugin-feed",
       options: {
         query: `
           {
@@ -77,14 +80,15 @@ module.exports = {
           `,
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(({ node }) => {
-                const path = `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
+                const path =
+                  `${node.frontmatter.absolute_path || `/articles/${node.frontmatter.id}`}/${node.frontmatter.lang}`;
                 return {
                   title: node.frontmatter.title,
                   date: DateTime.fromSQL(node.frontmatter.date, { zone: "Asia/Shanghai" }).toString(),
                   url: site.siteMetadata.siteUrl + path,
                   categories: node.frontmatter.tags || [],
                   guid: path,
-                  custom_elements: [{ "content:encoded": node.html }]
+                  custom_elements: [{ "content:encoded": node.html }],
                 };
               });
             },
@@ -94,102 +98,102 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-catch-links',
+    "gatsby-plugin-catch-links",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'contents',
-        path: `${__dirname}/contents`
-      }
+        name: "contents",
+        path: `${__dirname}/contents`,
+      },
     },
-    `gatsby-transformer-json`,
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-pnpm',
+    "gatsby-transformer-json",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-pnpm",
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-responsive-iframe',
+            resolve: "gatsby-remark-responsive-iframe",
             options: {
-              wrapperStyle: 'margin-bottom: 1rem'
-            }
+              wrapperStyle: "margin-bottom: 1rem",
+            },
           },
           {
-            resolve: 'gatsby-remark-vscode',
+            resolve: "gatsby-remark-vscode",
             options: {
               inlineCode: {
                 marker: "±",
               },
               theme: "Dark+ (default dark)",
-              extensions: ['Kotlin', "viml"],
+              extensions: ["Kotlin", "viml"],
               languageAliases: {
                 "kotlin": "kts",
                 "vimscript": "viml",
-              }
-            }
+              },
+            },
           },
-          `gatsby-remark-emoji`,
+          "gatsby-remark-emoji",
           {
-            resolve: 'gatsby-remark-copy-linked-files',
+            resolve: "gatsby-remark-copy-linked-files",
             options: {
               destinationDir: "static",
               // ignoreFileExtensions: [],
-            }
+            },
           },
-          'gatsby-remark-smartypants',
+          "gatsby-remark-smartypants",
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 1140,
               quality: 90,
               showCaptions: true,
-              linkImagesToOriginal: false
-            }
+              linkImagesToOriginal: false,
+            },
           },
           {
-            resolve: `gatsby-remark-images-medium-zoom`,
+            resolve: "gatsby-remark-images-medium-zoom",
             options: {
               background: "#222",
               zIndex: 1040,
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     },
-    'gatsby-transformer-json',
+    "gatsby-transformer-json",
     {
-      resolve: 'gatsby-plugin-canonical-urls',
+      resolve: "gatsby-plugin-canonical-urls",
       options: {
-        siteUrl: 'https://ddadaal.me'
-      }
+        siteUrl: "https://ddadaal.me",
+      },
     },
     {
-      resolve: `gatsby-plugin-baidu-analytics`,
+      resolve: "gatsby-plugin-baidu-analytics",
       options: {
         siteId: "af77eb4861784c5af85b2cfe05250ff1",
         head: false,
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
-        include: /assets/
-      }
+        include: /assets/,
+      },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
+      resolve: "gatsby-plugin-nprogress",
       options: {
         // Setting a color is optional.
-        color: `#3498DB`,
+        color: "#3498DB",
         // Disable the loading spinner.
         showSpinner: false,
-      }
+      },
     },
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-react-helmet",
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: "ddadaal.me",
         short_name: "ddadaal",
@@ -200,7 +204,7 @@ module.exports = {
         icon: "assets/icon.png", // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-remove-serviceworker`,
-    'gatsby-plugin-sitemap'
-  ]
-}
+    "gatsby-plugin-remove-serviceworker",
+    "gatsby-plugin-sitemap",
+  ],
+};

@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UncontrolledTooltip } from "reactstrap";
 
 import { Localized } from "@/i18n";

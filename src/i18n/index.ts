@@ -1,3 +1,4 @@
+import React from "react";
 import { createI18n, languageDictionary, TextIdFromLangDict } from "react-typed-i18n";
 
 export const languages = languageDictionary({
@@ -25,3 +26,6 @@ export const { Localized, Provider, id, prefix, useI18n } = createI18n(languages
 export type TextId = TextIdFromLangDict<typeof languages>;
 
 export type LanguageId = keyof typeof languages;
+
+export const ProviderWithChildren =
+  Provider as React.FC<React.PropsWithChildren<React.ComponentProps<typeof Provider>>>;

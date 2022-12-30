@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { FaComments } from "react-icons/fa";
 import styled from "styled-components";
 
-import { languageInfo,Localized, useI18n } from "@/i18n";
+import { languageInfo, Localized, useI18n } from "@/i18n";
 import isServer from "@/utils/isServer";
 
 interface Props {
@@ -84,4 +84,4 @@ const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> = (prop
   );
 };
 
-export { CommentPanelWithCurrentLanguage,CommentPanel as default };
+export { CommentPanelWithCurrentLanguage, CommentPanel as default };

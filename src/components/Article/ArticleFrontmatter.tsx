@@ -4,7 +4,7 @@ import React from "react";
 import {
   FaCalendar,
   FaCalendarPlus, FaFileWord, FaGlobe,
-  FaTags,   FaUserClock } from "react-icons/fa";
+  FaTags, FaUserClock } from "react-icons/fa";
 import { useStore } from "simstate";
 import styled from "styled-components";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { DropdownItem as BSDropdownItem,NavItem as BSNavItem } from "reactstrap";
+import { DropdownItem as BSDropdownItem, NavItem as BSNavItem } from "reactstrap";
 import { useStore } from "simstate";
 
 import NavLink from "@/components/Header/NavLink";

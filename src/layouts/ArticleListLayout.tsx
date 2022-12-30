@@ -1,6 +1,6 @@
 import React from "react";
 import MediaQuery from "react-responsive";
-import { Col,Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import styled from "styled-components";
 
 import ArticleSearchBar from "@/components/Article/SearchBar";
@@ -50,7 +50,7 @@ const ArticleListLayout: React.FC<Props> = (props: Props) => {
                 <BlogIntroCard />
                 <SearchCard />
                 <TagsCard />
-                {/*<SelfIntroCard/>*/}
+                {/* <SelfIntroCard/>*/}
               </Sidebar>
             </MediaQuery>
           </Col>

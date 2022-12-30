@@ -1,5 +1,5 @@
 import React from "react";
-import { ListGroupItem,ListGroupItemProps } from "reactstrap";
+import { ListGroupItem, ListGroupItemProps } from "reactstrap";
 
 interface Props extends ListGroupItemProps {
 }

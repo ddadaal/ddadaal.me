@@ -2,13 +2,13 @@ import "@/styles/index.scss";
 
 import React from "react";
 import { IconContext } from "react-icons";
-import { createStore,StoreProvider } from "simstate";
+import { createStore, StoreProvider } from "simstate";
 import styled from "styled-components";
 
 import { PageMetadata } from "@/components/PageMetadata";
 import ToTop from "@/components/ToTop";
 import UpdatePop from "@/components/UpdatePop";
-import { Provider } from "@/i18n";
+import { ProviderWithChildren } from "@/i18n";
 import cn from "@/i18n/cn";
 import { ArticleNode } from "@/models/ArticleNode";
 import { SiteMetadata } from "@/models/SiteMetadata";
@@ -57,7 +57,7 @@ const RootLayout: React.FC<Props> = ({
   const articleStore = useConstant(() => createStore(ArticleStore, null));
 
   return (
-    <Provider initialLanguage={initialLanguage}>
+    <ProviderWithChildren initialLanguage={initialLanguage}>
       <IconContext.Provider value={iconContext}>
         <StoreProvider stores={[
           locationStore,
@@ -90,7 +90,7 @@ const RootLayout: React.FC<Props> = ({
           </LayoutRoot>
         </StoreProvider>
       </IconContext.Provider>
-    </Provider>
+    </ProviderWithChildren>
   );
 };
 

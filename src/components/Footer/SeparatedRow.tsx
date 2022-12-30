@@ -9,7 +9,7 @@ const Container = styled.p`
    text-align: center;
 `;
 
-const SeparatedRow: React.FC<Props> = ({ children, separator }) => {
+const SeparatedRow: React.FC<React.PropsWithChildren<Props>> = ({ children, separator }) => {
 
   const childrenArray = Children.toArray(children);
 

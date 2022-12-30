@@ -14,7 +14,7 @@ const LayoutMain = styled.main`
   flex: 1;
 `;
 
-const HeaderFooterLayout: React.FC<Props> = ({ transparentHeader, children }) => {
+const HeaderFooterLayout: React.FC<React.PropsWithChildren<Props>> = ({ transparentHeader, children }) => {
   return (
     <>
       <Header transparentHeader={transparentHeader} />

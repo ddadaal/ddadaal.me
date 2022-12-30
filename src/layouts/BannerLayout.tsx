@@ -6,7 +6,7 @@ import {
   RootContainer as BaseRootContainer,
 } from "@/layouts/LayeredLayout";
 import moveInAnimation from "@/styles/moveInAnimation";
-import { colors,heights } from "@/styles/variables";
+import { colors, heights } from "@/styles/variables";
 
 import HeaderFooterLayout from "./HeaderFooterLayout";
 
@@ -15,7 +15,7 @@ interface Props {
   banner: React.ReactNode;
 }
 
-const BannerLayout: React.FC<Props> = ({ transparentHeader, banner, children }) => {
+const BannerLayout: React.FC<React.PropsWithChildren<Props>> = ({ transparentHeader, banner, children }) => {
   return (
     <HeaderFooterLayout transparentHeader={transparentHeader}>
       <RootContainer>
@@ -62,4 +62,4 @@ const BannerLayoutDescription = styled.h2`
   padding: 4px 0;
 `;
 
-export { BannerLayoutDescription,BannerLayoutTitle, BannerLayout as default };
+export { BannerLayoutDescription, BannerLayoutTitle, BannerLayout as default };

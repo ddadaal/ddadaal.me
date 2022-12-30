@@ -1,7 +1,7 @@
 import { navigate } from "gatsby";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Button,Input, InputGroup, InputGroupAddon } from "reactstrap";
+import { Button, Input, InputGroup, InputGroupAddon } from "reactstrap";
 import { useStore } from "simstate";
 
 import { useI18n } from "@/i18n";

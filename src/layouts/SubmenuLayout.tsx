@@ -1,6 +1,6 @@
 import { Link as GatsbyLink } from "gatsby";
 import React from "react";
-import { Col, Nav as BSNav, NavItem,Row } from "reactstrap";
+import { Col, Nav as BSNav, NavItem, Row } from "reactstrap";
 import { useStore } from "simstate";
 import styled from "styled-components";
 

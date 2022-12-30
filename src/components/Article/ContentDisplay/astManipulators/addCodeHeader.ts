@@ -1,6 +1,6 @@
 import "./code-header.scss";
 
-import { HtmlAst,HtmlAstElement  } from "@/models/HtmlAst";
+import { HtmlAst, HtmlAstElement } from "@/models/HtmlAst";
 
 import { createElement, createText } from "./AstManipulator";
 

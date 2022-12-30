@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import React, { useEffect } from "react";
-import { Col,Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import { useStore } from "simstate";
 import styled, { keyframes } from "styled-components";
 
@@ -63,7 +63,7 @@ interface RootLayoutProps {
   lastUpdated?: DateTime;
 }
 
-const RootLayout: React.FC<RootLayoutProps> = ({
+const RootLayout: React.FC<React.PropsWithChildren<RootLayoutProps>> = ({
   article, children,
   lang, date, lastUpdated,
 }) => {
