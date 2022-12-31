@@ -62,7 +62,7 @@ const CommentPanel: React.FC<Props> = (props) => {
               id: props.articleId.substring(0, 50),
               distractionFreeMode: false,
               // eslint-disable-next-line max-len
-              proxy: "https://fierce-chamber-01587.herokuapp.com/https://github.com/login/oauth/access_token",
+              proxy: "https://ddadaal-me-cors.ddadaal.workers.dev/https://github.com/login/oauth/access_token",
             }}
             />
           )
