@@ -55,7 +55,7 @@
     "gatsby-transformer-json": "4.13.0",
     "gatsby-transformer-remark": "5.13.0",
     "gatsby-transformer-sharp": "4.13.0",
-    "gitalk": "1.7.2",
+    "gitalk": "1.8.0",
     "Kotlin": "github:mathiasfrohlich/vscode-kotlin",
     "luxon": "2.3.2",
     "node-sass": "^6.0.1",
