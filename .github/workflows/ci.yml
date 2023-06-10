@@ -30,3 +30,4 @@ jobs:
           repository-name: ddadaal/ddadaal.me.github.io
           folder: out
           token: ${{ secrets.ACTIONS_TOKEN }}
+          branch: master
