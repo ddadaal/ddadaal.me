@@ -15,7 +15,7 @@ export const ArticleListPageLayout = ({
   return (
     <div className="max-w-7xl mx-auto px-4 animate-slide-up">
       <div className="flex flex-row gap-2">
-        <div className="lg:basis-2/3 py-4">
+        <div className="lg:basis-2/3 py-4 max-w-full">
           {children}
         </div>
         <div className="hidden lg:block lg:basis-1/3 space-y-4 py-4">

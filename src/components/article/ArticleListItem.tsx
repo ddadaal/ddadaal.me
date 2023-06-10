@@ -19,7 +19,10 @@ export const ArticleListItem = ({ article }: ArticleListItemProps) => {
 
   return (
     <div>
-      <Link className="text-3xl my-2 link link-hover block" href={`/articles/${article.id}`}>
+      <Link
+        className="text-3xl my-2 link link-hover block break-words"
+        href={`/articles/${article.id}`}
+      >
         {articleOfLang.title}
       </Link>
       <ArticleFrontmatter
@@ -27,7 +30,7 @@ export const ArticleListItem = ({ article }: ArticleListItemProps) => {
         info={articleOfLang}
         langVersions={article.langVersions.map((x) => x.lang)}
       />
-      <div>
+      <div className="break-words">
         {articleOfLang.excerpt}
       </div>
     </div>

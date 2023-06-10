@@ -29,7 +29,7 @@ export const ArticleList = ({ articles, pageNum, totalPages, tagCounts, articleC
         ))}
       </div>
       <div className="flex justify-center w-full my-4">
-        <div className="join">
+        <div className="join flex-wrap">
           {
             Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
               <Link key={x} href={`/articles/${x}`}>

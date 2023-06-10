@@ -116,7 +116,7 @@ export const ArticleSearchPage = ({ index, articleListInfos }: Props) => {
         }
       </div>
       <div className="flex justify-center w-full my-2">
-        <div className="join">
+        <div className="join flex-wrap">
           {
             Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
               <Link key={x} href={{ pathname, query: { ...search, page: x } }}>
