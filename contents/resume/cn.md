@@ -11,8 +11,6 @@ no_toc: true
 
 ---
 
-<resume>
-
 <h1 class="name">
 陈俊达
 </h1>

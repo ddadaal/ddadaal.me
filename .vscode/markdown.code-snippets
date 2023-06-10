@@ -33,7 +33,7 @@
   "inline-code": {
     "scope": "markdown",
     "prefix": "ic",
-    "body": "`$1±$2`$0",
+    "body": "`$2:{:$1}`$0",
     "description": "Insert a inline code snippet with prefix pre-added"
   }
 }

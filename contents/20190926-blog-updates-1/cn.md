@@ -108,7 +108,7 @@ related:
 
 在使用新版本的时候，我也积累了一些在项目中正确使用此项目的经验，例如说：
 
-- Store取名最好是**大写字母**开头，因为在使用的时候经常出现`ts±const aStore = useStore(AStore);`的代码，若使用小写字母开头，这代码会编译失败。这也可以帮助同时使用多个Store的情况时，区分不同的Store实例；
+- Store取名最好是**大写字母**开头，因为在使用的时候经常出现`const aStore = useStore(AStore);{:ts}`的代码，若使用小写字母开头，这代码会编译失败。这也可以帮助同时使用多个Store的情况时，区分不同的Store实例；
 - 如何写一个专门的Store（例如博客项目的[LocationStore](https://github.com/vicblog/VicBlog-Gatsby/blob/master/src/stores/LocationStore.tsx)）来管理浏览器history
 - 在把Store和自己的hook（例如`useCallback`等）进行组合的时候，需要把Store实例加为hook的一个依赖，因为Store实例是**不可变的**
 

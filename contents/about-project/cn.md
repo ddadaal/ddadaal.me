@@ -19,7 +19,7 @@ ddadaal.me是一个基于Gatsby开发的网站，并未使用现成网站/博客
 
 # 一个个人博客的史诗
 
-ddadaal.me经历了很多，才变成你现在看到这个网站。想知道ddadaal.me、其前身VicBlog和我在这个从2010年开始的史诗中的经历，请看[一个个人博客的史诗](/en/about/odyssey).
+ddadaal.me经历了很多，才变成你现在看到这个网站。想知道ddadaal.me、其前身VicBlog和我在这个从2010年开始的史诗中的经历，请看[一个个人博客的史诗](/about/odyssey/cn).
 
 # 历史实现
 

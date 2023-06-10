@@ -1,27 +1,3 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "LineCount.excludes": [
-    "**/.vscode/**",
-    "**/node_modules/**",
-    "**/.cache/**",
-    "**/contents/**",
-    "**/public/**",
-    "**/yarn.lock"
-  ],
-  "javascript.preferences.quoteStyle": "double",
-  "typescript.preferences.quoteStyle": "double",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "jest.autoEnable": false,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
-  ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }

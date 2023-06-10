@@ -6,23 +6,29 @@ on:
     branches:
       - master
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.2
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'pnpm'
-      - name: pnpm install
+          node-version: 18.x
+          cache: pnpm
+
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          version: "1.11.0"
+          github_token: ${{ github.token }}
+
+      - name: Install dependencies
         run: pnpm i --frozen-lockfile
+
       - name: build
-        run: npm run build
+        run: pnpm build
+
       - name: deploy
         run: sh scripts/deploy.sh
         env:

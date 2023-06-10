@@ -7,36 +7,34 @@
 
 ddadaal.me (previously VicBlog) is the personal website of [ddadaal](https://ddadaal.me).
 
-Currently it is built with [Gatsby](https://gatsbyjs.com).
+Currently it is built with [Next.js](https://nextjs.org/) and statically exported.
 
 [Check it out now!](https://ddadaal.me)
 
 ## Features
 
 - Static website with modern web technologies
-- Built without templates
-- Auto-generated RSS Feed at [/rss.xml](https://ddadaal.me/rss.xml)
-- Synchronous & Native **Search**
-    - Native support for searching articles without any third-party services
+- Styled using plain HTML and CSS to style with **12** themes to choose
+- Layout and data logic built from scratch
+- Synchronous & Native **Search** using [minisearch](https://lucaong.github.io/minisearch/)
+- Custom and fully-controlled markdown to HTML processing using [remark](https://github.com/remarkjs/remark) and [rehype](https://github.com/rehypejs/rehype)
+- Code Syntax Highlight using [rehype-pretty-code](https://rehype-pretty-code.netlify.app/)
+- Auto generated RSS Feed at [/rss](https://ddadaal.me/rss) or [/rss.xml](https://ddadaal.me/rss.xml)
 - Support multiple languages (Chinese & English) and dynamically changing languages
 - Articles written on markdown; Source code and contents separated
-    - Supports inline react components
-- Auto generated [slide directory](https://ddadaal.me/slides) using GitHub API v3 on every build
+- Auto generated [slide directory](https://ddadaal.me/slides) using GitHub API on every build
 
 ## Tools and Frameworks Used
 
-- [Gatsby](https://www.gatsbyjs.org/): the blazing-fast and flexible static site generator with a big community for [React](https://facebook.github.io/react/)
+- [Next.js](https://nextjs.org/): The React framework
 - [TypeScript](https://www.typescriptlang.org/): the new go-to for any JavaScript projects
-- [simstate](https://github.com/ddadaal/simstate): a self-made simple but enough strongly-typed hooks-based state management
+- [Tailwind](https://tailwindcss.com/): Build beautiful website using just HTML
+- [daisyui](https://daisyui.com/): Simple Tailwind based UI component library without any JS
 - [react-typed-i18n](https://github.com/ddadaal/react-typed-i18n): a self-made dynamic and strongly-typed i18n library utilizing TypeScript's [Template Literal Types](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
-- [styled-components](https://github.com/styled-components/styled-components): component-ize your styles as well
-- [SCSS](https://sass-lang.com/): bootstrap used SCSS so...trying to get rid of it in the future
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
 - [ESLint](https://eslint.org/): Linter
 - [editorconfig](https://editorconfig.org/): unify code editor preferences
-- [Baidu Analytics](https://tongji.baidu.com): Baidu Analytics
-- [CNZZ](https://www.umeng.com/web): CNZZ Analytics
 - [GitHub Pages](https://pages.github.com): free and popular static website host
 - [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 
@@ -44,33 +42,21 @@ Currently it is built with [Gatsby](https://gatsbyjs.com).
 
 We are using [pnpm](https://pnpm.io) for package management.
 
-Notice: If an environment variable is named `ACTIONS_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
+Notice: If an environment variable is named `GITHUB_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
 
 ``` bash
-# For Windows users, install windows-build-tools
-pnpm install --global windows-build-tools --python_mirror=https://npm.taobao.org/mirrors/python/
-
 # install dependencies
 pnpm install
 
 # serve with hot reload at localhost:8000
-nppm run dev
+pnpm dev
 
 # run production build
-pnpm run build
+pnpm build
 
 # **After build**, serve the production build locally
-pnpm run serve
-
-# Update dependencies with npm-check-updates and update the package.json
-pnpm run upddep
+pnpm serve
 ```
-
-### Handling network errors when making request to GitHub API
-
-A network request to GitHub will be started when running the application to retrieve my slides information from my repo, but such network might fail.
-
-Error handling for such errors has been added, so that when the request to GitHub API fails, a warning is printed on the console, and a dummy Slide node is created, so that the whole application can still run.
 
 ## License
 

@@ -29,7 +29,7 @@ related:
 
 国际化的核心是将网站中的所有文本元素都拿出去单独定义，然后在原本应该硬编码文本的地方，使用对所有语言都一致的元素进行代替。在编译时或者运行时，这种元素将会被替换为实际显示的语言的对应的文本元素。
 
-例如说，对于这个p元素`html±<p>Hello World</p>`如果我想将它支持多语言显示，那么应该做以下的工作：
+例如说，对于这个p元素`<p>Hello World</p>{:html}`如果我想将它支持多语言显示，那么应该做以下的工作：
 
 1. 不能直接硬编码文本，而是应该用一个ID之类的东西（例如`helloWorld`）替代硬编码的文本
 2. 在其他地方，用不同的语言定义ID和文本的对应关系。例如，定义`helloWorld`对应`你好，世界！`（中文）或者`Hello World`（英文）
@@ -111,7 +111,7 @@ function LocalizedString({ id }: { id: string }) {
 
 TypeScript支持**字面量类型(literal type)**和**联合类型(union type)**。
 
-- 借助字面量类型，TS可以将对象和字符串字面量推断出非常精确的类型：例如，TS可以推断出上面的对象的类型为`typescript±{ login: { button: { text: string }}}`。而字符串字面量的类型也可以推断地非常精确，例如`typescript±"123"`的类型就是`typescript±"123"`。
+- 借助字面量类型，TS可以将对象和字符串字面量推断出非常精确的类型：例如，TS可以推断出上面的对象的类型为`{ login: { button: { text: string }}}{:typescript}`。而字符串字面量的类型也可以推断地非常精确，例如`"123"{:typescript}`的类型就是`"123"{:typescript}`。
 - 通过联合类型，具有多种但是有限种可能取值的值的类型也可以限制地非常精确：例如如果一个变量可能取值`"1"`或者`"2"`，那么这个变量的类型就是`"1" | "2"`
 
 而新支持的`Template Literal Type`简单来说，支持了字符串字面量类型的拼接。并且，在拼接的时候，如果有一个操作数是联合类型，将会运用分配律将字符串展开：
@@ -196,15 +196,15 @@ type A = Lang<{ a: "2", b: { c: "4" } }>; // type A = "a" | "b.c"
 
 - Mapped type
 
-`typescript±ValueOf<{[k in keyof D]: Concat<k, LangRec<D[k]>>}>`处运用了mapped type，将D的每个key（`typescript±k in typeof D`）映射成一个新的类型`typescript±Concat<k, LangRec<D[k]>>`。
+`ValueOf<{[k in keyof D]: Concat<k, LangRec<D[k]>>}>{:typescript}`处运用了mapped type，将D的每个key（`k in typeof D{:typescript}`）映射成一个新的类型`Concat<k, LangRec<D[k]>>{:typescript}`。
 
-本来mapped type只支持映射把对象映射到对象（如`typescript±{a: string; b: string}`到`typescript±{ a: number; b: number; }`），但是我们只关系值的类型（映射后的类型），不关心原来的key的类型，那么可以使用`ValueOf`取得所有值的类型。
+本来mapped type只支持映射把对象映射到对象（如`{a: string; b: string}{:typescript}`到`{ a: number; b: number; }{:typescript}`），但是我们只关系值的类型（映射后的类型），不关心原来的key的类型，那么可以使用`ValueOf`取得所有值的类型。
 
 - 分配律
 
 在原来的JS代码中，下一级生成的key是一个`string[]`，而本级的key是一个`string`，要将本级的key加到所有下一级key的前面，就需要使用`map`方法，并在最后使用`flatten`方法，把`string[][]`打平成`string[]`。
 
-对应到在我们的类型代码中，下一级生成的key是一个联合类型（`typescript±"a" | "b"`），本级的key是一个字符串字面量`typescript±"a"`。但是，借助分配律，我们可以直接得到拼接后的联合类型`typescript±"a.a" | "a.b"`。
+对应到在我们的类型代码中，下一级生成的key是一个联合类型（`"a" | "b"{:typescript}`），本级的key是一个字符串字面量`"a"{:typescript}`。但是，借助分配律，我们可以直接得到拼接后的联合类型`"a.a" | "a.b"{:typescript}`。
 
 - 去掉最后的点（RemoveTrailingDot）
 
@@ -304,7 +304,7 @@ type PLFF = PartialLangFromFull<D, FullLang<D>, PartialLang<D>>; // "login." | "
 type RestLang = RestLang<D, Lang<D>, "login."> // "button.text"
 ```
 
-4. 最后，`p`函数的实现其实就是一个`ts±(t) => (s) => t+s`，非常简单，运行时几乎没有什么开销。
+4. 最后，`p`函数的实现其实就是一个`(t) => (s) => t+s{:ts}`，非常简单，运行时几乎没有什么开销。
 
 # 总结
 

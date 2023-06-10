@@ -20,13 +20,13 @@ tags:
 
 [Gatsby的PR #18303](https://github.com/gatsbyjs/gatsby/pull/18303)已经修复了`timeToRead`无法统计中文字数的问题。虽然有人在下面说这个PR没有合并进去，但是实际上是可以用了的。
 
-这个修复是在原来的数据上，再将文本使用`javascript±/[\p{sc=Katakana}\p{sc=Hiragana}\p{sc=Han}]/gu`这个正则表达式作为模式，统计文本中符合这个正则的元素的数量，把中文的数量加到原来的数据上。而对于中文，这个正则表达式简单来说就是把每个中文字符统计一个单独的元素。通过这样，用来计算`timeToRead`的字数数据就基本完善了。
+这个修复是在原来的数据上，再将文本使用`/[\p{sc=Katakana}\p{sc=Hiragana}\p{sc=Han}]/gu{:javascript}`这个正则表达式作为模式，统计文本中符合这个正则的元素的数量，把中文的数量加到原来的数据上。而对于中文，这个正则表达式简单来说就是把每个中文字符统计一个单独的元素。通过这样，用来计算`timeToRead`的字数数据就基本完善了。
 
 而`timeToRead`的计算方法就是`词数/平均WPM(average word per minutes, avgWPM)`，平均WPM在代码中硬编码为`265`，所以这样得出的`timeToRead`也是基本准确的。相关代码可以参考下面的链接：
 
 https://github.com/gatsbyjs/gatsby/blob/3aa41fb8dbf7fe294f35a706424c6b2b11345881/packages/gatsby-transformer-remark/src/extend-node-type.js#L586
 
-另外，根据这个公式，也可以通过`timeToRead`**估算词数**，即是`timeToRead * avgWPM (265)`就可以了。但是由于插件返回的`timeToRead`是 `javascript±Math.round`过的整数，直接乘265的结果的误差在±265左右。其实这个误差不算大，但是由于265是5的倍数，这样估算出来的得出的结果有点太假（全是5的倍数，好巧），所以请看情况使用这个方法。
+另外，根据这个公式，也可以通过`timeToRead`**估算词数**，即是`timeToRead * avgWPM (265)`就可以了。但是由于插件返回的`timeToRead`是 `Math.round{:javascript}`过的整数，直接乘265的结果的误差在±265左右。其实这个误差不算大，但是由于265是5的倍数，这样估算出来的得出的结果有点太假（全是5的倍数，好巧），所以请看情况使用这个方法。
 
 这里需要注意一下，`265`字/秒这个速度对英文来说可能比较合适，但是对中文来说是比较慢的。但是对于不同种类的文章来说，WPM是不一样的，比如读小说和读专业书的速度肯定是相差几倍，所以WPM取多少没有一个固定值。根据网上查到的资料（其实知乎上的某相关问题……）和自己的体验，在我的网站中对中文文章平均WPM取的值为`500`。
 

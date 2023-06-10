@@ -7,7 +7,7 @@ FQDN="ddadaal.me"
 git clone --depth=1 "https://$GITHUB_REF" existing
 
 # Copy the new built files into the existing repo and let git figure out the diffs
-cp -r public/* existing/
+cp -r dist/* existing/
 
 cd ./existing
 # echo "pages.$FQDN" > CNAME

@@ -12,8 +12,6 @@ no_toc: true
 
 ---
 
-<resume>
-
 <h1 class="name">
 Chen Junda
 </h1>
@@ -87,5 +85,3 @@ Chen Junda
 - Familiar with `TypeScript/JavaScript`, `C#`. Have project experiences in `Java`, `Python`, `Go`, `Rust` etc.
 - Implemented **Compiler lexer, parser, IR optimization**, **Android Auto Testing**, **Some graph related algorithms**, **Raft in Go and Rust** as course assignments
 - President of NJU Microsoft Student Club in 2018-2019. Experiences and contributions are credited by MSRA WeChat Official Account: https://ddadaal.me/r/msc
-
-</resume>

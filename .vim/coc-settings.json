@@ -1,6 +1,0 @@
-{
-  "javascript.preferences.quoteStyle": "double",
-  "typescript.preferences.quoteStyle": "double",
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-}

@@ -1,0 +1,6 @@
+.search-bar {
+  input:focus ~ #search_bar_tags {
+    background-color: white;
+    display: block;
+  }
+}

@@ -1,17 +1,19 @@
+import classNames from "classnames";
+import Image from "next/image";
 import React from "react";
+import { IconType } from "react-icons";
 import {
   FaGithub, FaLinkedin,
-  FaMailBulk,   FaQq, FaSteam, FaZhihu,
+  FaMailBulk, FaQq, FaSteam, FaZhihu,
 } from "react-icons/fa";
-import styled from "styled-components";
-
-import DoubanIcon from "~/assets/icons/douban.svg";
-import TapeIcon from "~/assets/icons/tape.svg";
+import { Douban } from "src/icons/douban";
 
 interface Props {
-  color: string;
   size: number;
+  className?: string;
 }
+
+type IconSrc = IconType | React.ComponentProps<typeof Image>["src"];
 
 const contacts = [
   [FaQq, "http://wpa.qq.com/msgrd?v=3&uin=540232834&site=qq&menu=yes", "QQ: 540232834"],
@@ -21,49 +23,43 @@ const contacts = [
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782",
     "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
-  [DoubanIcon, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
-  [TapeIcon, "https://www.tapechat.net/u/2JJ1Y7/4YSQBV0A", "Tape小纸条: ddadaal98"],
-] as Array<[React.ComponentType, string, string]>;
+  [Douban, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
+] as Array<[IconSrc, string, string]>;
 
-const Contact = styled.span<{ color: string; size: number }>`
-  svg {
-    transition: transform 0.2s linear;
+const Icon = ({ Src, link, text, size }: { Src: IconSrc, link: string, text: string; size: number }) => {
 
-    height: ${(props) => props.size}em;
-    width: ${(props) => props.size}em;
-    margin: 12px 12px 12px 0;
-    color: ${(props) => props.color};
-    fill: ${(props) => props.color};
-
-    &:hover {
-      transform: scale(1.4);
-    }
-
-
-  }
-
-`;
-
-const Container = styled.div`
-  margin: 4px 0;
-`;
-
-const Contacts: React.FC<Props> = (props) => {
+  const sizeInPx = size * 14;
 
   return (
-    <Container>
-      {contacts.map((contact) => {
-        const [Icon, link, title] = contact;
-        return (
-          <Contact key={link} color={props.color} size={props.size}>
-            <a href={link} title={title} target="__blank">
-              <Icon />
-            </a>
-          </Contact>
-        );
-      })}
-    </Container>
+    <a
+      href={link}
+      title={text}
+      target="_blank"
+      className="block transition hover:scale-125"
+      rel="noreferrer"
+    >
+      {typeof Src === "object"
+        ? <Image src={Src} alt={text} height={sizeInPx} width={sizeInPx} />
+        : <Src size={sizeInPx} />
+      }
+    </a>
   );
 };
 
-export default Contacts;
+
+export const Contacts: React.FC<Props> = ({ size, className }) => {
+
+  return (
+    <div className={classNames("flex py-2 gap-2", className)}>
+      {contacts.map((contact) => {
+        const [src, link, title] = contact;
+        return (
+          <span key={link}>
+            <Icon Src={src} link={link} text={title} size={size} />
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+

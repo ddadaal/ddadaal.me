@@ -78,7 +78,7 @@ It looks promising. By using id, the followings can be easily achieved, which ar
     - and also make it observable
 - **String interpolation**
     - insert string or React component into localized text content
-    - like `c±printf("Content %d", anInt);`
+    - like `printf("Content %d", anInt);{:c}`
 - **Fallback**
     - when current language doesn't define value for a key, use fallback language to provide the text
 - **Generate separate pages** for **each languages** in **complie-time**
@@ -112,10 +112,10 @@ By making the call strongly typed, we can avoid raw string in our code and enabl
 
 | Solution | Explanation | Weaknesses |
 | -- | -- | -- |
-| Callback | `tsx±<LocalizedString id={(ref) => ref.login.bottom.text} />` | - Affecting performance<br/>- Verbose, especially multiple LocalizedString components |
-| Accessing the object directly | `tsx±<Button>{lang.login.bottom.text}<Button/>` | - Losing the abilities to **fallback**, **observable**, **string interpolation**... |
-| Accessing object with component wrapper | `tsx±<LocalizedString id={lang.login.bottom.text} />` | - Losing the abilities to **fallback** |
-| Accessing the store (or context) containing language object in the component | `tsx±context.language.login.bottom.text` | - Verbose<br/>- Unnecessarily coupled |
+| Callback | `<LocalizedString id={(ref) => ref.login.bottom.text} />{:tsx}` | - Affecting performance<br/>- Verbose, especially multiple LocalizedString components |
+| Accessing the object directly | `<Button>{lang.login.bottom.text}<Button/>{:tsx}` | - Losing the abilities to **fallback**, **observable**, **string interpolation**... |
+| Accessing object with component wrapper | `<LocalizedString id={lang.login.bottom.text} />{:tsx}` | - Losing the abilities to **fallback** |
+| Accessing the store (or context) containing language object in the component | `context.language.login.bottom.text{:tsx}` | - Verbose<br/>- Unnecessarily coupled |
 
 The third solution is best of all, but since **it accesses object directly**, it is impossible to *intercept* the chaining call to enable fallback. Besides, designing such a **global variable**(`lang`) that satisfy the need is not an easy work.
 
