@@ -20,7 +20,7 @@ export default async function Page() {
       <div
         className={classNames("absolute", "text-primary-content",
           "h-full w-full", "flex flex-col items-center justify-center", "space-y-4", "animate-slide-up",
-          "-translate-y-14",
+          "-translate-y-12",
         )}
       >
         <h1 className="text-5xl">

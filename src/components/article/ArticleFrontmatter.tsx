@@ -30,7 +30,7 @@ export const ArticleFrontmatter = ({ articleId, info, langVersions }: Props) => 
     <div className="flex flex-wrap gap-3 my-2 text-sm">
       {
         info.tags ? (
-          <div className="flex items-center">
+          <div className="flex flex-wrap gap-1 items-center">
             <FaTag />
             {info.tags.map((x) => (
               <div key={x} className="badge badge-accent mx-0.5 text-accent-content">

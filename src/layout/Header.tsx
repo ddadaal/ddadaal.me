@@ -54,7 +54,7 @@ export const Header = ({ resumeLangs }: Props) => {
   return (
     <div className={classNames(
       "items-center sticky top-0 z-50 w-full",
-      "h-14",
+      "h-13",
       "transition",
       bgColor,
     )}
