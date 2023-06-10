@@ -38,7 +38,7 @@ export const RunningTime = ({ serverStartTime }: Props) => {
     ));
 
   return (
-    <div className="tooltip tooltip-right" data-tip={formatDateTime(blogStartTime)}>
+    <div className="tooltip" data-tip={formatDateTime(blogStartTime)}>
       <p>
         📅 <Localized id="footer.runningTime" args={args} />
       </p>
