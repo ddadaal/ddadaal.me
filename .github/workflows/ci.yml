@@ -29,9 +29,9 @@ jobs:
       - name: build
         run: pnpm build
 
-      - name: deploy
-        run: sh scripts/deploy.sh
-        env:
-          CODINGNET_USERNAME: ${{ secrets.CODINGNET_USERNAME }}
-          CODINGNET_TOKEN: ${{ secrets.CODINGNET_TOKEN }}
-          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          repository-name: ddadaal/ddadaal.me.github.io
+          folder: out
+          token: ${{ secrets.ACTIONS_TOKEN }}
