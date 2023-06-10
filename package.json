@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "build": "rimraf out && next build && next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "serve": "serve out"
@@ -62,7 +62,8 @@
   },
   "devDependencies": {
     "@types/mime-types": "2.1.1",
-    "@types/rss": "0.0.30"
+    "@types/rss": "0.0.30",
+    "rimraf": "5.0.1"
   },
   "packageManager": "pnpm@8.6.1"
 }
