@@ -56,7 +56,12 @@ export default async function() {
 
   return (
     <ArticleListPageLayout articleCount={articleCount} tagCounts={tagCounts}>
-      <ArticleSearchPage index={index} articleListInfos={articleListInfos} />
+      <ArticleSearchPage
+        index={index}
+        articleListInfos={articleListInfos}
+        articleCount={articleCount}
+        tagCounts={tagCounts}
+      />
     </ArticleListPageLayout>
   );
 }

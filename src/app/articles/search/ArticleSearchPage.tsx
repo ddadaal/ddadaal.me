@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaSort } from "react-icons/fa";
+import { SearchBar, TagCounts } from "src/app/articles/cards";
 import { IndexedArticleInfo } from "src/app/articles/search/page";
 import { ArticleListItem } from "src/components/article/ArticleListItem";
 import { ArticleListInfo } from "src/data/articles";
@@ -15,6 +16,8 @@ import { fromArticleTime } from "src/utils/datetime";
 interface Props {
   index: string;
   articleListInfos: ArticleListInfo[];
+  tagCounts: TagCounts;
+  articleCount: number;
 }
 
 const intParse = (str: string, defaultValue = 1) => {
@@ -30,7 +33,7 @@ const PAGE_SIZE = 5;
 
 const orderPrefix = prefix("search.order.");
 
-export const ArticleSearchPage = ({ index, articleListInfos }: Props) => {
+export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCounts }: Props) => {
 
   const i18n = useI18n();
 
@@ -74,12 +77,15 @@ export const ArticleSearchPage = ({ index, articleListInfos }: Props) => {
 
   return (
     <div className="p-2">
+      <div className="lg:hidden max-w-full my-4">
+        <SearchBar showTags tagCounts={tagCounts} articleCount={articleCount} />
+      </div>
       <div className="flex justify-between py-2">
         <h1 className="text-3xl flex items-center">
           <Localized
             id={"search.title"}
             args={[
-              <strong key={"query"}>{query}</strong>,
+              <span className="pr-2 font-bold" key={"query"}>{query}</span>,
             ]}
           />
          ({searchResult.length})

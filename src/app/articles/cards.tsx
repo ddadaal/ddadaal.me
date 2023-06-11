@@ -2,7 +2,7 @@
 
 import classNames from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { HTMLAttributeAnchorTarget } from "react";
 import { FaCode, FaGlobe, FaRegCommentDots, FaRss, FaSearch, FaTags } from "react-icons/fa";
 import { getLocaleTag } from "src/data/tags";
@@ -114,6 +114,9 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
 
   const router = useRouter();
 
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
+
   return (
     <div className={classNames("form-control my-2", { [styles["search-bar"]]: showTags })}>
       <form
@@ -130,6 +133,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
           placeholder={i18n.translateToString("search.inputPlaceholder", [articleCount])}
           className={"input input-bordered w-full"}
           name="query"
+          defaultValue={query ?? undefined}
         />
         <button type="submit" className="btn btn-square">
           <FaSearch />
