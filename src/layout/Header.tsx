@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaBookOpen, FaEllipsisH, FaFile, FaGlobe, FaHome, FaInfo, FaMale, FaSlideshare } from "react-icons/fa";
 import { languages, Localized, TextId } from "src/i18n";
 import logo from "src/icons/logo.svg";
@@ -46,18 +46,50 @@ export const Header = ({ resumeLangs }: Props) => {
     ]},
   ];
 
-  const homePage = pathname === "/";
+  const neverBlendIn = pathname !== "/";
 
-  const bgColor = homePage ? "bg-primary text-primary-content" : "bg-base-200 text-base-content";
-  const btnClassName = homePage ? "btn-primary" : undefined;
+  const [blendIn, setBlendIn] = useState(true);
+
+  const bgColor = (blendIn && !neverBlendIn) ? "bg-primary text-primary-content" : "bg-base-200 text-base-content";
+  const btnClassName = (blendIn && !neverBlendIn) ? "btn-primary" : undefined;
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+
+    if (ref.current && !neverBlendIn) {
+      // judge for the first time
+      setBlendIn(
+        ref.current.getBoundingClientRect().top === 0,
+      );
+
+      const observer = new IntersectionObserver(
+        ([e]) => {
+          const isSticky = e.intersectionRatio < 1;
+          setBlendIn(!isSticky);
+        },
+        { threshold: [1]},
+      );
+      observer.observe(ref.current);
+
+      return () => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      };
+    }
+  }, [ref.current, neverBlendIn]);
 
   return (
-    <div className={classNames(
-      "items-center sticky top-0 z-50 w-full",
-      "h-13",
-      "transition",
-      bgColor,
-    )}
+    <div
+      ref={ref}
+      className={classNames(
+        "items-center sticky z-50 w-full",
+        "h-13",
+        "transition",
+        "-top-[1px]",
+        bgColor,
+      )}
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
         <Link className="flex items-center justify-center space-x-1" href="/">
