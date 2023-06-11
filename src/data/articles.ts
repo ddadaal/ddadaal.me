@@ -12,6 +12,7 @@ export interface Article {
   id: string;
   title: string;
   date: string;
+  last_updated?: string;
   lang: string;
   tags?: string[];
   related?: string[];
@@ -74,6 +75,7 @@ export const readArticleFromDir = async (dir: string) => {
       hide_heading: data.hide_heading,
       no_toc: data.no_toc,
       absolute_path: data.absolute_path,
+      last_updated: data.last_updated,
 
       wordCount: words,
       readingTime: minutes,

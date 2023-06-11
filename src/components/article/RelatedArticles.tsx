@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { LocalizedArticleLink } from "src/components/article/LocalizedArticleLink";
+import { getArticleBasePath } from "src/data/articleBasePath";
 import { getLanguage, Localized, useI18n } from "src/i18n";
 
 export interface RelatedArticle {
@@ -10,6 +11,7 @@ export interface RelatedArticle {
     lang: string;
     title: string;
     time: string;
+    last_updated?: string;
     excerpt: string;
     absolute_path?: string;
   }[];
@@ -45,11 +47,11 @@ export const RelatedArticles = ({ relatedArticles }: Props) => {
                 <span className="text-sm">
                   {langVersion.time}
                 </span>
-                <Link href={`/articles/${x.id}/${langVersion.lang}`}>
+                <LocalizedArticleLink basePath={getArticleBasePath(x)}>
                   <h2 className="card-title">
                     {langVersion.title}
                   </h2>
-                </Link>
+                </LocalizedArticleLink>
                 <p>
                   {langVersion.excerpt}
                 </p>

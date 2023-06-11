@@ -27,6 +27,8 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
       lang: x.lang,
       time: formatDateTime(fromArticleTime(x.date)),
       title: x.title,
+      last_updated: x.last_updated ? formatDateTime(fromArticleTime(x.last_updated)) : undefined,
+      absolute_path: x.absolute_path,
     })),
   }) satisfies RelatedArticle);
 

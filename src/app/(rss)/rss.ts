@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import RSS from "rss";
+import { getArticleBasePath } from "src/data/articleBasePath";
 import { readArticlesCached } from "src/data/articles";
 import { tags } from "src/data/tags";
 import { WEBSITE_BASE_URL } from "src/utils/constants";
@@ -63,6 +64,9 @@ export const generateRss = async () => {
     image_url: WEBSITE_BASE_URL + "/favicon.ico",
     description: "ddadaal's personal website",
     pubDate: serverTime.toJSDate(),
+    webMaster: "ddadaal@outlook.com",
+    copyright: "CC BY-SA 4.0",
+    categories: ["Life", "Technology", "Programming", "Software"],
   });
 
   for (const articleItem of articles) {
@@ -73,7 +77,7 @@ export const generateRss = async () => {
         date: fromArticleTime(article.date).toJSDate(),
         description: await renderContent(article.content, article.filePath),
         title: article.title,
-        url: WEBSITE_BASE_URL + join((article.absolute_path ?? `/articles/${articleItem.id}`), article.lang),
+        url: WEBSITE_BASE_URL + join(getArticleBasePath(article), article.lang),
         categories: article.tags?.map((x) => getTagNameFromArticleLang(article.lang, x)),
       });
     }

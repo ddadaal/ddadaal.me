@@ -1,4 +1,4 @@
-import { ArticleLink } from "src/components/article/LocalizedArticleLink";
+import { LocalizedArticleLink } from "src/components/article/LocalizedArticleLink";
 import { Contacts } from "src/components/Contacts";
 import { Localized } from "src/i18n";
 import { LastUpdateTime } from "src/layout/LastUpdateTime";
@@ -43,7 +43,13 @@ export const Footer = () => {
         👨🏼‍💻&nbsp;
             <Localized
               id={"footer.codeBy"}
-              args={[<ArticleLink className="link link-hover" key="about/me" baseUrl="/about/me">ddadaal</ArticleLink>]}
+              args={[(
+                <LocalizedArticleLink
+                  className="link link-hover"
+                  key="about/me"
+                  basePath="/about/me"
+                >ddadaal</LocalizedArticleLink>
+              )]}
             />
           </p>
           <p>

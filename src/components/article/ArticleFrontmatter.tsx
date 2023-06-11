@@ -3,7 +3,8 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { join } from "path";
-import { FaCalendar, FaClock, FaFileWord, FaGlobe, FaTag } from "react-icons/fa";
+import { FaCalendar, FaCalendarPlus, FaClock, FaFileWord, FaGlobe, FaTag } from "react-icons/fa";
+import { getArticleBasePath } from "src/data/articleBasePath";
 import { getLocaleTag } from "src/data/tags";
 import { languages, Localized, useI18n } from "src/i18n";
 import { formatDateTime, fromArticleTime } from "src/utils/datetime";
@@ -11,6 +12,7 @@ import { formatDateTime, fromArticleTime } from "src/utils/datetime";
 export interface ArticleFrontmatterInfo {
   tags?: string[];
   date: string;
+  last_updated?: string;
   wordCount: number;
   readingTime: number;
   absolute_path?: string;
@@ -46,6 +48,14 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions }:
         <FaCalendar />
         <span className="mx-0.5">{formatDateTime(fromArticleTime(info.date))}</span>
       </div>
+      {
+        info.last_updated ? (
+          <div className="flex items-center">
+            <FaCalendarPlus />
+            <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
+          </div>
+        ) : undefined
+      }
       <div className="flex items-center">
         <FaFileWord />
         <span className="mx-0.5">
@@ -62,7 +72,11 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions }:
         <FaGlobe />
         <span className="mx-0.5 space-x-1">
           {langVersions.map((x) => (
-            <Link key={x} className="link link-hover" href={join(info.absolute_path ?? `/articles/${articleId}`, x)}>
+            <Link
+              key={x}
+              className="link link-hover"
+              href={join(getArticleBasePath({ id: articleId, absolute_path: info.absolute_path }), x)}
+            >
               {Object.values(languages).find((y) => y.simplified === x)?.name ?? x}
             </Link>
           ))}

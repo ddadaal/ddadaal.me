@@ -2,7 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { FaBookOpen, FaFile, FaMale, FaRss, FaSlideshare } from "react-icons/fa";
 import { Background } from "src/app/Background";
-import { ArticleLink } from "src/components/article/LocalizedArticleLink";
+import { LocalizedArticleLink } from "src/components/article/LocalizedArticleLink";
 import { Contacts } from "src/components/Contacts";
 import { readArticlesCached } from "src/data/articles";
 import { Localized } from "src/i18n";
@@ -37,10 +37,10 @@ export default async function Page() {
             <FaRss />
             <Localized id="homepage.links.rss" />
           </Link>
-          <ArticleLink className="btn btn-sm btn-accent" baseUrl="/resume">
+          <LocalizedArticleLink className="btn btn-sm btn-accent" basePath="/resume">
             <FaFile />
             <Localized id="homepage.links.resume" />
-          </ArticleLink>
+          </LocalizedArticleLink>
           <Link className="btn btn-sm btn-accent" href="/slides">
             <FaSlideshare />
             <Localized id="homepage.links.slides" />
