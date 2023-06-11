@@ -138,6 +138,7 @@ export interface ArticleListInfo {
   langVersions: {
     title: string;
     date: string;
+    last_updated?: string;
     excerpt: string;
     lang: string;
     tags?: string[];
@@ -158,6 +159,7 @@ export function convertToListInfo(x: ArticleItem): ArticleListInfo {
     langVersions: x.langVersions.map((y) => ({
       excerpt: generateExcerpt(y.content),
       date: y.date,
+      last_updated: y.last_updated,
       lang: y.lang,
       readingTime: y.readingTime,
       title: y.title,
