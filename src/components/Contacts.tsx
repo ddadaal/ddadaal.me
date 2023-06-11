@@ -6,7 +6,7 @@ import {
   FaGithub, FaLinkedin,
   FaMailBulk, FaQq, FaSteam, FaZhihu,
 } from "react-icons/fa";
-import { Douban } from "src/icons/douban";
+import { SiDouban } from "react-icons/si";
 
 interface Props {
   size: number;
@@ -23,7 +23,7 @@ const contacts = [
   [FaSteam, "https://steamcommunity.com/profiles/76561198104889782",
     "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
-  [Douban, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
+  [SiDouban, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
 ] as Array<[IconSrc, string, string]>;
 
 const Icon = ({ Src, link, text, size }: { Src: IconSrc, link: string, text: string; size: number }) => {
