@@ -7,7 +7,6 @@ import { Contacts } from "src/components/Contacts";
 import { readArticlesCached } from "src/data/articles";
 import { Localized } from "src/i18n";
 import { LastUpdateTime } from "src/layout/LastUpdateTime";
-import { formatDateTime } from "src/utils/datetime";
 import { serverTime } from "src/utils/serverTime";
 
 export default async function Page() {
@@ -55,7 +54,7 @@ export default async function Page() {
           <Contacts size={2} />
         </div>
         <div>
-          <LastUpdateTime time={formatDateTime(serverTime)} />
+          <LastUpdateTime time={serverTime.toISO()!} />
         </div>
       </div>
     </main>

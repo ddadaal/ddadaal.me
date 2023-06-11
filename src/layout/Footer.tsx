@@ -3,7 +3,6 @@ import { Contacts } from "src/components/Contacts";
 import { Localized } from "src/i18n";
 import { LastUpdateTime } from "src/layout/LastUpdateTime";
 import { RunningTime } from "src/layout/RunningTime";
-import { formatDateTime } from "src/utils/datetime";
 import { serverTime } from "src/utils/serverTime";
 
 const powerBys = [
@@ -65,7 +64,7 @@ export const Footer = () => {
             />
           </p>
           <RunningTime serverStartTime={serverTime.toISO()!} />
-          <LastUpdateTime time={formatDateTime(serverTime)} />
+          <LastUpdateTime time={serverTime.toISO()!} />
           <div>
             <p>
               📲 <Localized id="footer.contacts" />
