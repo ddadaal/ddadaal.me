@@ -1,3 +1,5 @@
+"use client";
+
 import { DateTime } from "luxon";
 import { Localized } from "src/i18n";
 import { formatDateTime } from "src/utils/datetime";

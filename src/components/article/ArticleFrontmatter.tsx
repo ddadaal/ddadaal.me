@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import Link from "next/link";
 import { join } from "path";
 import { FaCalendar, FaClock, FaFileWord, FaGlobe, FaTag } from "react-icons/fa";
@@ -19,15 +20,16 @@ interface Props {
   articleId: string;
   info: ArticleFrontmatterInfo;
   langVersions: string[];
+  className?: string;
 }
 
-export const ArticleFrontmatter = ({ articleId, info, langVersions }: Props) => {
+export const ArticleFrontmatter = ({ articleId, info, className, langVersions }: Props) => {
 
   const i18n = useI18n();
 
   return (
 
-    <div className="flex flex-wrap gap-3 my-2 text-sm">
+    <div className={classNames("flex flex-wrap gap-3 my-2 text-sm", className)}>
       {
         info.tags ? (
           <div className="flex flex-wrap gap-1 items-center">

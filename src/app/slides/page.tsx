@@ -64,7 +64,7 @@ export default function() {
           <Localized id="resources.slides.description" />
         </p>
       </Heading>
-      <div className="max-w-7xl mx-auto flex flex-wrap p-4 justify-center">
+      <div className="max-w-7xl mx-auto flex flex-wrap p-4 justify-center animate-slide-up">
         <div>
           <div>
             <p className="flex flex-wrap">

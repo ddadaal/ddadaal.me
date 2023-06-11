@@ -35,12 +35,15 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
       {
         article.hide_heading ? undefined : (
           <Heading>
-            <div className="my-2">
-              <h1 className="text-4xl">
-                {article.title}
-              </h1>
-            </div>
-            <ArticleFrontmatter articleId={article.id} info={article} langVersions={langs} />
+            <h1 className="text-4xl my-2">
+              {article.title}
+            </h1>
+            <ArticleFrontmatter
+              className="justify-center"
+              articleId={article.id}
+              info={article}
+              langVersions={langs}
+            />
           </Heading>
         )
       }
