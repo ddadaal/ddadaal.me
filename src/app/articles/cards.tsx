@@ -2,6 +2,7 @@
 
 import classNames from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { HTMLAttributeAnchorTarget } from "react";
 import { FaCode, FaGlobe, FaRegCommentDots, FaRss, FaSearch, FaTags } from "react-icons/fa";
 import { getLocaleTag } from "src/data/tags";
@@ -111,12 +112,18 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
 
   const i18n = useI18n();
 
+  const router = useRouter();
+
   return (
     <div className={classNames("form-control my-2", { [styles["search-bar"]]: showTags })}>
       <form
         className={"input-group"}
         action="/articles/search"
         method="GET"
+        onSubmit={(e) => {
+          e.preventDefault();
+          router.push("/articles/search?query=" + e.currentTarget.query.value);
+        }}
       >
         <input
           type="text"
