@@ -15,7 +15,7 @@ export const themes = Object.keys(themeConfig) as Theme[];
 
 export const ThemeStore = () => {
 
-  const [theme, setThemeInner] = useState<Theme>("dark");
+  const [theme, setThemeInner] = useState<Theme>("auto");
 
   useEffect(() => {
     const themeInStorage = localStorage.getItem(THEME_COOKIE_KEY) as Theme;

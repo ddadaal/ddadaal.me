@@ -162,6 +162,7 @@
   },
   "themes": {
     "text": "主题",
+    "auto": "自动",
     "light": "明亮",
     "dark": "暗色",
     "cupcake": "杯子蛋糕",

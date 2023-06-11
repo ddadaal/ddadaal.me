@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const themesJson = require("./src/utils/themes.json");
 
-const themes = Object.keys(themesJson);
+const themes = Object.keys(themesJson).filter((x) => x !== "auto");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

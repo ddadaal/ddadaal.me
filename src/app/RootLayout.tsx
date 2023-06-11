@@ -16,7 +16,7 @@ const RootLayoutInner = ({ children }: { children: React.ReactNode }) => {
   return (
     <html
       lang={getLanguage(i18n.currentLanguage.id).htmlLang}
-      data-theme={themeStore.theme}
+      data-theme={themeStore.theme === "auto" ? undefined : themeStore.theme}
       className="scroll-smooth"
     >
       <body className="w-full">
