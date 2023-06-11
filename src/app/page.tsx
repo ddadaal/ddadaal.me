@@ -33,7 +33,7 @@ export default async function Page() {
             <FaBookOpen />
             <Localized id="homepage.links.articles" args={[articles.length]} />
           </Link>
-          <Link className="btn btn-sm btn-accent" href="/rss">
+          <Link className="btn btn-sm btn-accent" href="/rss.xml">
             <FaRss />
             <Localized id="homepage.links.rss" />
           </Link>

@@ -59,7 +59,7 @@ export const generateRss = async () => {
 
   const feed = new RSS({
     site_url: WEBSITE_BASE_URL,
-    feed_url: WEBSITE_BASE_URL + "/rss",
+    feed_url: WEBSITE_BASE_URL + "/rss.xml",
     title: "ddadaal.me",
     image_url: WEBSITE_BASE_URL + "/favicon.ico",
     description: "ddadaal's personal website",

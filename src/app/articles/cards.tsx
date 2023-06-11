@@ -40,7 +40,7 @@ export const WebsiteCard = () => {
             <FaCode />
             <span><Localized id={"blogIntro.sourceCode"} /></span>
           </IconLink>
-          <IconLink href="/rss" target="_blank">
+          <IconLink href="/rss.xml" target="_blank">
             <FaRss /> <span>RSS</span>
           </IconLink>
           <IconLink href="/feedback">

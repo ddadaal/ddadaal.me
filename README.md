@@ -19,7 +19,7 @@ Currently it is built with [Next.js](https://nextjs.org/) and statically exporte
 - Synchronous & Native **Search** using [minisearch](https://lucaong.github.io/minisearch/)
 - Custom and fully-controlled markdown to HTML processing using [remark](https://github.com/remarkjs/remark) and [rehype](https://github.com/rehypejs/rehype)
 - Code Syntax Highlight using [rehype-pretty-code](https://rehype-pretty-code.netlify.app/)
-- Auto generated RSS Feed at [/rss](https://ddadaal.me/rss) or [/rss.xml](https://ddadaal.me/rss.xml)
+- Auto generated RSS Feed at [/rss.xml](https://ddadaal.me/rss.xml)
 - Support multiple languages (Chinese & English) and dynamically changing languages
 - Articles written on markdown; Source code and contents separated
 - Auto generated [slide directory](https://ddadaal.me/slides) using GitHub API on every build
