@@ -3,7 +3,7 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { HTMLAttributeAnchorTarget } from "react";
+import { HTMLAttributeAnchorTarget, InputHTMLAttributes, Suspense, useEffect, useState } from "react";
 import { FaCode, FaGlobe, FaRegCommentDots, FaRss, FaSearch, FaTags } from "react-icons/fa";
 import { getLocaleTag } from "src/data/tags";
 import { Localized, useI18n } from "src/i18n";
@@ -108,14 +108,47 @@ interface SearchCardProps {
   showTags: boolean;
 }
 
+const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
+
+  return (
+    <input
+      type="text"
+      className={"input input-bordered w-full"}
+      name="query"
+      {...props}
+    />
+  );
+};
+
+
+const QuerySyncedSearchBarInput = ({ placeholder }: { placeholder: string }) => {
+  const searchParams = useSearchParams();
+
+  const query = searchParams.get("query") ?? undefined;
+
+  const [input, setInput] = useState(query);
+  useEffect(() => {
+    setInput(query);
+  }, [query]);
+
+  return (
+    <SearchBarInput
+      placeholder={placeholder}
+      value={input}
+      onChange={(e) => {
+        setInput(e.target.value);
+      }}
+    />
+  );
+};
+
 export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps) => {
 
   const i18n = useI18n();
 
   const router = useRouter();
 
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query");
+  const inputPlaceholder = i18n.translateToString("search.inputPlaceholder", [articleCount]);
 
   return (
     <div className={classNames("form-control my-2", { [styles["search-bar"]]: showTags })}>
@@ -125,16 +158,13 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
         method="GET"
         onSubmit={(e) => {
           e.preventDefault();
-          router.push("/articles/search?query=" + e.currentTarget.query.value);
+          router.push("/articles/search?query=" + encodeURIComponent(e.currentTarget.query.value));
         }}
       >
-        <input
-          type="text"
-          placeholder={i18n.translateToString("search.inputPlaceholder", [articleCount])}
-          className={"input input-bordered w-full"}
-          name="query"
-          defaultValue={query ?? undefined}
-        />
+        {/* https://nextjs.org/docs/messages/deopted-into-client-rendering */}
+        <Suspense fallback={<SearchBarInput placeholder={inputPlaceholder} />}>
+          <QuerySyncedSearchBarInput placeholder={inputPlaceholder} />
+        </Suspense>
         <button type="submit" className="btn btn-square">
           <FaSearch />
         </button>
