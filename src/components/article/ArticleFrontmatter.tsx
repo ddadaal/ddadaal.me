@@ -37,9 +37,13 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions }:
           <div className="flex flex-wrap gap-1 items-center">
             <FaTag />
             {info.tags.map((x) => (
-              <div key={x} className="badge badge-accent mx-0.5 text-accent-content">
+              <Link
+                href={{ pathname: "/articles/search", query: { query: x } }}
+                key={x}
+                className="badge badge-accent mx-0.5 text-accent-content"
+              >
                 {getLocaleTag(i18n.currentLanguage.id, x)}
-              </div>
+              </Link>
             ))}
           </div>
         ) : undefined
