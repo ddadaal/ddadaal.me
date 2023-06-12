@@ -42,12 +42,12 @@ Chen Junda
 
 # Project Experiences (GitHub: ddadaal; Personal Website: https://ddadaal.me)
 
-## **PKU HPC Management System** <span class="right">Sept 2021-Present</span>
+## **SCOW** https://github.com/PKUHPC/SCOW <span class="right">Sept 2021-Present</span>
 
-- Serves my team's core business. Independently develop and maintain the project. Already deployed on one cluster.
-- Implemented: multi tenancy, multi clusters, user management, job query and billing, charging. Supports slurm scheduler
-- Implmenting: User-facing functionalities like terminal, file management, job submission, interactive jobs
-- Technologies: gRPC, Next.js, TypeScript, Docker, MySQL
+- A Web based HPC Portal and Management Information System, including Account Management, Job Management, Billing, Terminal, File Management, Interactive Tasks
+- Deployed on multiple clusters nationwide
+- Initially responsible for development and maintenance. Currently leading a team of 10+ as the chief technical officer. Participate in project requirements and development discussions.
+- Submitted paper `SCOW: An Open Source HPC Web Portal and Management System` on HPC China 2022. Received the only full marks review at SOP track and awarded as an excellent article。
 
 ## **Official Website of 3th Data Driven Innovation Competition** data-competition.pku.edu.cn <span class="right">March-July, 2021</span>
 
@@ -56,13 +56,9 @@ Chen Junda
 - 1000 users, 200 teams, 73000 PVs till now
 - Technologies: gRPC, Next.js, TypeScript, Docker, MySQL
 
-## **Personal Website** ddadaal.me <span class="right">Sept 2016-Present</span>
-
-- Based on Gatsby static site generator. Layout designed by myself.
-- Supports responsive design, internationalizaton, markdown content separated from code
-
 ## Awards from Projects
 
+- **First Prize** of 2023 HackPKU Hackathon (WebGPU and Running AI models from Browser. Worked on WebGPU and application)
 - **Second Prize** of 2021 HackPKU Hackathon (A Canteen Rating Mini Program. Worked on mini program.)
 - **First Prize** of 2020 Blockchain Network Security Application Innovation Competition  (Education Information Validation System based on Blockchain. Worked on project rewrite and web frontend redesign)
 - **First Prize** of 2019 NJU & Vivo Hackathon (Academic Paper Sharing and Social Platform. Worked on web frontend)
