@@ -151,7 +151,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
   const inputPlaceholder = i18n.translateToString("search.inputPlaceholder", [articleCount]);
 
   return (
-    <div className={classNames("form-control my-2", { [styles["search-bar"]]: showTags })}>
+    <div className={classNames("form-control my-2", { [styles.search_bar]: showTags })}>
       <form
         className={"input-group"}
         action="/articles/search"
@@ -171,7 +171,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
       </form>
       {
         showTags ? (
-          <div id="search_bar_tags" className="hidden">
+          <div className={classNames("hidden p-4 border border-neutral", styles.search_bar_tags)}>
             <TagsPanel tagCounts={tagCounts} />
           </div>
         ) : undefined

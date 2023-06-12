@@ -1,6 +1,3 @@
-.search-bar {
-  input:focus ~ #search_bar_tags {
-    background-color: white;
-    display: block;
-  }
+.search_bar:focus-within .search_bar_tags {
+  display: block;
 }
