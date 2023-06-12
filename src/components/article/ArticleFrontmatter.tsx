@@ -34,7 +34,9 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions }:
     <div className={classNames("flex flex-wrap gap-3 my-2 text-sm", className)}>
       {
         info.tags ? (
-          <div className="flex flex-wrap gap-1 items-center">
+          <div
+            className="flex flex-wrap gap-1 items-center"
+          >
             <FaTag />
             {info.tags.map((x) => (
               <Link
@@ -48,13 +50,13 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions }:
           </div>
         ) : undefined
       }
-      <div className="flex items-center">
+      <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.date")}>
         <FaCalendar />
         <span className="mx-0.5">{formatDateTime(fromArticleTime(info.date))}</span>
       </div>
       {
         info.last_updated ? (
-          <div className="flex items-center">
+          <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.lastUpdated")}>
             <FaCalendarPlus />
             <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
           </div>
