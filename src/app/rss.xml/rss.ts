@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { dirname, join } from "path";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
@@ -85,10 +84,6 @@ export const generateRss = async () => {
 
   const xml = feed.xml({ indent: true });
 
-  return new NextResponse(xml, {
-    headers: {
-      "Content-Type": "application/rss+xml",
-    },
-  });
+  return xml;
 
 };
