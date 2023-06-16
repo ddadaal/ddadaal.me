@@ -115,6 +115,7 @@ const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
       type="text"
       className={"input input-bordered w-full"}
       name="query"
+      autoComplete="off"
       {...props}
     />
   );
