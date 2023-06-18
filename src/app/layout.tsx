@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { Metadata } from "next";
 import { RootLayout } from "src/app/RootLayout";
+import { ToTop } from "src/components/ToTop";
 import { getResume } from "src/data/resume";
 import { Footer } from "src/layout/Footer";
 import { Header } from "src/layout/Header";
@@ -23,6 +24,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
         {children}
       </div>
       <Footer />
+      <ToTop />
     </RootLayout>
   );
 }
