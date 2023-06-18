@@ -15,12 +15,16 @@ const MAX_DEPTH = 3;
 const TocMenuEntry = ({ entry: { depth, value, children, id } }: { entry: TocEntry }) => {
 
   return (
-    <li>
-      <a data-tocid={id} href={"#" + id}>
+    <li className="w-full text-sm">
+      <a
+        className="transition hover:bg-base-300 rounded w-full flex p-1"
+        data-tocid={id}
+        href={"#" + id}
+      >
         {value}
       </a>
       {(depth <= MAX_DEPTH && children && children.length > 0) ? (
-        <ul>
+        <ul className="pl-2 border-l border-neutral">
           {children.map((x) => <TocMenuEntry key={x.id} entry={x} />)}
         </ul>
       ) : undefined}
@@ -72,21 +76,17 @@ export const ArticleToc = ({ toc }: Props) => {
 
   // TODO make overflow menu item break line
   return (
-    <div className="px-1 sticky top-24">
-      <ul className="menu max-w-full overflow-auto">
-        <li>
-          <div className="menu-title flex space-x-1 items-center py-2">
-            <MdToc />
-            <span>
-              <Localized id="articlePage.toc" />
-            </span>
-          </div>
-          <ul className="menu">
-            {
-              toc.map((x) => <TocMenuEntry key={x.id} entry={x} />)
-            }
-          </ul>
-        </li>
+    <div className="px-1 sticky top-24 max-h-[60vh] overflow-auto">
+      <div className="flex space-x-1 items-center py-2">
+        <MdToc />
+        <span>
+          <Localized id="articlePage.toc" />
+        </span>
+      </div>
+      <ul className="pl-2 border-l border-neutral">
+        {
+          toc.map((x) => <TocMenuEntry key={x.id} entry={x} />)
+        }
       </ul>
     </div>
   );
