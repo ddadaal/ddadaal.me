@@ -372,7 +372,7 @@ daisyui首先定义了一些固定的[颜色变量](https://daisyui.com/docs/col
 
 于是我在网上找到了一个[绝妙的网站](https://alvarotrigo.com/blog/animated-backgrounds-css)，这个页面中提供了数十种纯用CSS实现的背景动画。我选中了其中的第三个Floating Squares。这个动画的背景色、以及各个方块的颜色都是由CSS的定义的，我需要做的，就是把其中的基础颜色替换为当前所使用的主题的CSS变量，这样，新的背景就能自动和当前所使用的主题相匹配了。
 
-```css {2,12}
+```css {3,14}
 .area {
   /* 使用daisyui的颜色变量 */
   background: linear-gradient(to bottom, hsl(var(--p)), hsl(var(--pf)));

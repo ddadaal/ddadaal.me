@@ -106,6 +106,24 @@ export const ArticleContent = async ({ article }: Props) => {
     })
     .use(rehypePrettyCode, {
       theme: "one-dark-pro",
+
+      // TODO the following doesn't work.
+      filterMetaString: (string) => string.replace(/filename="[^"]*"/, ""),
+      onVisitLine(element) {
+        // Prevent lines from collapsing in `display: grid` mode, and
+        // allow empty lines to be copy/pasted
+        if (element.children.length === 0) {
+          element.children = [{ type: "text", value: " " }];
+        }
+      },
+      onVisitHighlightedLine(element) {
+        // Each line element by default has `class="line"`.
+        element.properties.className?.push("highlighted");
+      },
+      onVisitHighlightedWord(element) {
+        // Each word element has no className by default.
+        element.properties.className = ["word"];
+      },
     })
     .process(article.content);
 

@@ -45,7 +45,7 @@
     "rehype-raw": "6.1.1",
     "@stefanprobst/rehype-extract-toc": "2.2.0",
     "classnames": "2.3.2",
-    "rehype-pretty-code": "0.9.6",
+    "rehype-pretty-code": "0.9.9",
     "shiki": "0.14.2",
     "gitalk": "1.8.0",
     "postcss-nested": "6.0.1",
