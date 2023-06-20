@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@ddadaal/eslint-config':
     specifier: 1.9.0
@@ -70,6 +74,9 @@ dependencies:
   octokit:
     specifier: 2.0.19
     version: 2.0.19
+  photoswipe:
+    specifier: 5.3.7
+    version: 5.3.7
   postcss:
     specifier: 8.4.24
     version: 8.4.24
@@ -85,9 +92,9 @@ dependencies:
   react-icons:
     specifier: 4.9.0
     version: 4.9.0(react@18.2.0)
-  react-medium-image-zoom:
-    specifier: 5.1.6
-    version: 5.1.6(react-dom@18.2.0)(react@18.2.0)
+  react-photoswipe-gallery:
+    specifier: 2.2.7
+    version: 2.2.7(photoswipe@5.3.7)(prop-types@15.8.1)(react@18.2.0)
   react-typed-i18n:
     specifier: 2.3.0
     version: 2.3.0(react@18.2.0)
@@ -4102,6 +4109,11 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /photoswipe@5.3.7:
+    resolution: {integrity: sha512-zsyLsTTLFrj0XR1m4/hO7qNooboFKUrDy+Zt5i2d6qjFPAtBjzaj/Xtydso4uxzcXpcqbTmyxDibb3BcSISseg==}
+    engines: {node: '>= 0.12.0'}
+    dev: false
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: false
@@ -4329,14 +4341,16 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
-  /react-medium-image-zoom@5.1.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-0QolPce1vNJsF5HKrGkU1UT6kLNvY9EOnLBqz++LlVnBQduaHLkJlY73ayj3SxY09XWRrnxKDMTHPDkrQYdREw==}
+  /react-photoswipe-gallery@2.2.7(photoswipe@5.3.7)(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-AEYNoL4/IIRosIUonn4haaFQNn1ui4vdVgAY9LHd/imVamNCkqUcyWeT6317UILp/yJI2gohsd3lWmcJEbjCag==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      photoswipe: '>= 5.2.2'
+      prop-types: '>= 15.7.0'
+      react: '>= 16.8.0'
     dependencies:
+      photoswipe: 5.3.7
+      prop-types: 15.8.1
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-typed-i18n@2.3.0(react@18.2.0):

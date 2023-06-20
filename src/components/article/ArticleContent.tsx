@@ -1,4 +1,5 @@
 import "./styles.css";
+import "photoswipe/dist/photoswipe.css";
 
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import classNames from "classnames";
@@ -13,6 +14,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import { Gallery } from "src/components/article/Gallery";
 import { Article } from "src/data/articles";
 import { unified } from "unified";
 import { promisify } from "util";
@@ -40,10 +42,12 @@ export const ArticleImageServer = async ({ article, props }: Props & {
 
   const size = await imageSizeAsync(imagePath);
 
+  const fullUrl = join("/articles/asset", imagePath);
+
   return (
     <figure>
       <ArticleImage
-        filePath={imagePath}
+        src={fullUrl}
         imageSize={{
           height: size?.height ?? 100,
           width: size?.width ?? 100,
@@ -110,7 +114,9 @@ export const ArticleContent = async ({ article }: Props) => {
   return (
     <div className="flex flex-row space-x-4">
       <div className={classNames("prose", "max-w-full", { "lg:w-[75%]": showToc })}>
-        {file.result}
+        <Gallery withCaption id={article.id}>
+          {file.result}
+        </Gallery>
       </div>
       {
         showToc ? (
