@@ -32,7 +32,7 @@ export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) 
           src={src}
           width={imageSize.width}
           height={imageSize.height}
-          className="cursor-zoom-in"
+          className="cursor-zoom-in mx-auto"
         />
       )}
     </Item>
