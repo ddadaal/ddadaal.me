@@ -3,7 +3,7 @@
 {
     "name": "ddadaal.me Dev",
     "dockerFile": "Dockerfile",
-    "workspaceFolder": "/workspace/ddadaal.me",
+    "workspaceFolder": "/workspaces/ddadaal.me",
     "customizations": {
       // Configure properties specific to VS Code.
       "vscode": {
