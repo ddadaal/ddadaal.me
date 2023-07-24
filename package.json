@@ -3,8 +3,14 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "rimraf out && next build && next-sitemap",
+    "changemark": "ts-node --esm --transpile-only --project tsconfig.json --files data/changemark.mts",
+    "dev:next": "next dev",
+    "dev:data": "pnpm changemark watch",
+    "dev": "concurrently \"npm:dev:*\"",
+    "build:data": "pnpm changemark build",
+    "build:next": "next build",
+    "build:sitemap": "next-sitemap",
+    "build": "rimraf out && pnpm build:data && pnpm build:next && next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "serve": "serve out"
@@ -59,12 +65,15 @@
     "hastscript": "7.2.0",
     "next-sitemap": "4.1.3",
     "photoswipe": "5.3.7",
-    "react-photoswipe-gallery": "2.2.7"
+    "react-photoswipe-gallery": "2.2.7",
+    "chokidar": "3.5.3"
   },
   "devDependencies": {
     "@types/mime-types": "2.1.1",
     "@types/rss": "0.0.30",
-    "rimraf": "5.0.1"
+    "rimraf": "5.0.1",
+    "ts-node": "10.9.1",
+    "concurrently": "8.2.0"
   },
   "packageManager": "pnpm@8.6.1"
 }
