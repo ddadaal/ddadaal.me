@@ -3,6 +3,7 @@
 id: about-me
 absolute_path: /about/me
 date: 2020-12-27 15:28
+last_updated: 2023-09-23 21:20
 title: About Me
 ignored_in_list: true
 lang: en
@@ -21,13 +22,12 @@ hide_heading: false
 
 - am born and raised in **Chongqing, China**
 - got bachelor degree in **Software Engineering** at **Nanjing University** at 2020 (from 2016)
-- am a master student from 2020 in **Peking University**. My institution is **School of EECS**, but my lab is at [**Computer Center**](https://cc.pku.edu.cn)
-- look forward to becoming a software engineer whose work is useful in practice and can improve productivity.
+- got master degree in **Computer Application Technology** in **Peking University** [School of Computer Science](https://cs.pku.edu.cn) . My lab is at [**Computer Center**](https://cc.pku.edu.cn)
 
 # Likings
 
 - Extreme passion to **computers** starting at the age of 4 and counting
-- Microsoft fan because it is Microsoft's products that bring me to this field
+- Microsoft fan because Microsoft products bring me to the computer field
 - Huge fan of Battlefield, FPS and all games
 - **Badminton**, Self ranked 3+ ([badmintoncn standard](https://bbs.badmintoncn.com/thread-428421-1-1.html))
 - Prefer **pure music** (symphony, classic, piano, epic/trailer music...). Interested in **choir** recently
@@ -40,13 +40,16 @@ hide_heading: false
 # Programming Skills
 
 - **Web Frontend**:
-  - Productive with **React** stack using **TypeScript**
+  - Productive with **React** and **Next.js** stack using **TypeScript**
   - Rich project experiences
 - **Web Backend**:
   - Currently working on `fastify` and `NodeJS`
-  - Had experiences on `ASP.NET Core` and `Spring Boot`
+  - Using `ASP.NET Core` and `Go` at work
+  - Had few project experiences on `Spring Boot`
 - **DevOps**:
-  - Can deploy and maintain a single-node environment using `docker-compose` and a CI/CD pipeline
+  - Can deploy and maintain web environment using `docker-compose` and `Kubernetes`
+  - Have experiences on development on `Kubernetes` like CRD, CSI
+  - Project management experiences, including pipeline automation using `GitHub Actions`
   - Using and learning `prometheus`, `grafana` and `loki`
 - **Mobile**
   - **Wechat MiniProgram**: Wrote an [Campus Yelp](https://github.com/ddadaal/mycanteen-wxmp) in a 48h hackathon
@@ -57,18 +60,18 @@ hide_heading: false
   - `WinForm/WPF`: Hello World level
 - **Algorithm**: 50% possible to solve a LeetCode medium problem
 - **Languages**
-  - Productive: `TypeScript`/`JavaScript`, `Java`, `C#`
-  - Familiar: `Python`, `Kotlin`
+  - Productive: `TypeScript`/`JavaScript`, `C#`, `Go`
+  - Familiar: `Python`, `Kotlin`, `Java`
   - Learning: `Rust`
   - May learn later: `F#`, `C++`
 
 # Personal Devices
 
-| Device                            | Specifications                                                                                                          | Since     |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------- |
-| Lenovo Yoga Pro 13s Carbon        | i5 1135G7/16G/512G PM9A1/2560*1600/966g                                                                                 | Nov, 2020 |
-| Custom Desktop PC                 | R9 5900X/RTX 3070/32G/512G PM9A1 + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | Dec, 2020 |
-| LG 27UL550                        | 27'/3840*2160/60Hz                                                                                                      | Dec, 2019 |
-| Samsung Galaxy S20                | Snapdragon 865/12G/128G/6.2' 1080P120 AMOLED                                                                            | Jan, 2021 |
-| Amazfit Watch GTR 3 Pro           | N/A                                                                                                                     | Oct, 2021 |
-| Sennheiser Momentum True Wireless | N/A                                                                                                                     | Feb, 2019 |
+| Device                                                  | Specifications                                                                                                                                                     | Since      |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| Lenovo Yoga Pro 13s Carbon                              | i5 1135G7/16G/512G PM9A1/2560*1600/966g                                                                                                                            | Nov, 2020  |
+| Custom Desktop PC                                       | R9 5900X/RTX 3070/64G//[4T J.ZAO KP](https://item.jd.com/100065604047.html) + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | Dec, 2020  |
+| [MSI MAG 274UPF](https://item.jd.com/100058317468.html) | 27'/3840*2160/144Hz/HDR400                                                                                                                                         | Sept, 2023 |
+| Samsung Galaxy S20                                      | Snapdragon 865/12G/128G/6.2' 1080P120 AMOLED                                                                                                                       | Jan, 2021  |
+| Amazfit Watch GTR 3 Pro                                 | N/A                                                                                                                                                                | Oct, 2021  |
+| Samsung Galaxy Buds 2 Pro                               | N/A                                                                                                                                                                | Jun, 2023  |
