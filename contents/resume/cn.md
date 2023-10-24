@@ -2,7 +2,7 @@
 
 id: resume
 absolute_path: /resume
-date: 2020-10-25 16:20
+date: 2023-10-24 16:36
 title: 简历
 lang: cn
 ignored_in_list: true
@@ -21,18 +21,23 @@ no_toc: true
 
 # 教育经历
 
-## <span class="highlight">北京大学 计算机学院</span> <span class="right">2020年9月-现在</span>
+## <span class="highlight">北京大学 计算机学院 硕士</span> <span class="right">2020年9月-2023年7月</span>
 
-### 攻读计算机应用技术专业硕士；预计2023年7月毕业；GPA 3.76/4.0, 所有专业课成绩均在A-或以上
+### 计算机应用技术专业；2023年7月毕业；GPA 3.76/4.0
 
 - 属于北大计算中心高性能平台组，负责设计、实现和运维超算相关信息系统
 
-## <span class="highlight">南京大学 软件学院</span> <span class="right">2016年9月-2020年7月</span>
+## <span class="highlight">南京大学 软件学院 学士</span> <span class="right">2016年9月-2020年7月</span>
 
-### 软件工程专业学士；2020年毕业；学位课程GPA 4.62/5.0；排名 1/220
+### 软件工程专业；2020年毕业；学位课程GPA 4.62/5.0；排名 1/220
 - **国家奖学金**(2016-2017学年)， **董氏东方奖学金**和**校级优秀学生**(2017-2018学年)，**深交所奖学金**(2018-2019学年)，**校级优秀毕业生**
 
-# 实习经历
+# 工作和实习经历
+
+## <span class="highlight">微软亚太科技有限公司</span> <span class="right">2023年8月-现在</span>
+### Software Engineer at C+AI Azure Edge+ Platform
+
+- 负责Azure Arc相关功能的开发
 
 ## <span class="highlight">微软亚太研发集团（上海）</span> <span class="right">2022年7月-9月</span>
 ### Software Engineer Intern at C+AI Azure Edge+ Platform
@@ -59,12 +64,6 @@ no_toc: true
 - 初期独立负责开发和运维，当前团队十余人，项目技术方面总负责人，参与项目需求和发展讨论
 - 于HPC China 2022发表论文**SCOW：一个开源的超算Web门户和管理系统**，获SOP track唯一满分评价和会议最佳论文提名
 
-## **第三届全国高校数据驱动创新研究大赛官方网站** https://data-competition.pku.edu.cn  <span class="right">2021年3月-7月</span>
-
-- 北大信管等院系和部门主办的社科类比赛，网站具有信息展示，团队注册、报名、管理，提交成果等功能
-- 主办单位提出需求，我独立负责需求细化、设计、前后端开发和运维
-- 1000注册用户，200注册团队，至今总PV 73000
-
 ## 项目相关奖项
 
 - 2023年HackPKU Hackathon比赛**一等奖**（WebGPU和浏览器上运行AI模型相关，4人团队，负责WebGPU部分和应用部分）
@@ -84,9 +83,6 @@ no_toc: true
 
 # 技能/其他
 
-- 了解Web项目前端（`React`技术栈）、后端（主要为`Node.js`）的实现和设计，熟悉简单的容器化架构，能独立负责小型项目的需求、设计、开发、运维和项目管理工作
+- 了解Web项目前端（`React`技术栈）、后端（主要为`Node.js`）的实现和设计，熟悉Kubernetes以及容器化架构，能独立负责小型项目的需求、设计、开发、运维和项目管理工作
 - 熟悉`TypeScript/JavaScript`, `C#`语言，编写过`Java`, `Python`, `Go`, `Rust`等语言的项目
 - 课程中实现了**编译器Lexer, Parser, IR优化**、**Android自动化测试**、**一些图计算算法**、**Go和Rust版本的Raft算法**等
-- 南京大学微软学生俱乐部2018-2019年度主席，经历和贡献被MSRA官方微信公众号介绍：https://ddadaal.me/r/msc
-
-</resume>
