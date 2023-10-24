@@ -5,7 +5,8 @@ import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import classNames from "classnames";
 import imageSize from "image-size";
 import { dirname, join } from "path";
-import { ComponentType, createElement, Fragment } from "react";
+import { ComponentType, createElement } from "react";
+import * as prod from "react/jsx-runtime";
 import { FaLink } from "react-icons/fa";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
@@ -65,6 +66,9 @@ export const ArticleImageServer = async ({ article, props }: Props & {
   );
 };
 
+// @ts-expect-error: the react types are missing.
+const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
+
 interface HeadingWithLinkProps {
   element: "h1" | "h2" | "h3";
   props: JSX.IntrinsicElements["h1"] | JSX.IntrinsicElements["h2"] | JSX.IntrinsicElements["h3"];
@@ -86,13 +90,15 @@ export const ArticleContent = async ({ article }: Props) => {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    // .use(rehypeAutolinkHeadings)
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeExtractToc)
-    // .use(rehypeAutolinkHeadings)
+    .use(rehypePrettyCode, {
+      theme: "one-dark-pro",
+    })
     .use(rehypeReact, {
-      createElement,
-      Fragment,
+      ...production,
       components: {
         img: ((props) => <ArticleImageServer article={article} props={props} />) satisfies
           ComponentType<JSX.IntrinsicElements["img"]>,
@@ -102,27 +108,6 @@ export const ArticleContent = async ({ article }: Props) => {
           ComponentType<JSX.IntrinsicElements["h2"]>,
         h3: ((props) => <HeadingWithLink element="h3" props={props} />) satisfies
           ComponentType<JSX.IntrinsicElements["h3"]>,
-      },
-    })
-    .use(rehypePrettyCode, {
-      theme: "one-dark-pro",
-
-      // TODO the following doesn't work.
-      filterMetaString: (string) => string.replace(/filename="[^"]*"/, ""),
-      onVisitLine(element) {
-        // Prevent lines from collapsing in `display: grid` mode, and
-        // allow empty lines to be copy/pasted
-        if (element.children.length === 0) {
-          element.children = [{ type: "text", value: " " }];
-        }
-      },
-      onVisitHighlightedLine(element) {
-        // Each line element by default has `class="line"`.
-        element.properties.className?.push("highlighted");
-      },
-      onVisitHighlightedWord(element) {
-        // Each word element has no className by default.
-        element.properties.className = ["word"];
       },
     })
     .process(article.content);
