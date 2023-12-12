@@ -23,7 +23,7 @@ export const LanguageSwitcher = ({ btnClassName }: Props) => {
           {language.name}
         </span>
       </label>
-      <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52 text-base-content">
+      <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-box min-w-max text-base-content">
         {
           Object.entries(languages).map(([id, info]) => (
             <li key={id}>

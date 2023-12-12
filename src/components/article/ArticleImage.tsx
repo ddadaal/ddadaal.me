@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { DetailedHTMLProps, ImgHTMLAttributes, MutableRefObject } from "react";
+import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
 import { Item } from "react-photoswipe-gallery";
 
 export interface ArticleImageProps {
@@ -25,7 +25,7 @@ export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) 
     >
       {({ ref, open }) => (
         <Image
-          ref={ref as MutableRefObject<HTMLImageElement>}
+          ref={ref}
           loader={loader}
           onClick={open}
           alt={imageProps.alt ?? ""}

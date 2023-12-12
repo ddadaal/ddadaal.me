@@ -110,9 +110,8 @@ export const Header = ({ resumeLangs }: Props) => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content
-              mt-3 p-2 shadow rounded-box bg-base-200 text-base-content
-              "
+              className={classNames("menu menu-compact dropdown-content",
+                "min-w-max mt-3 p-2 shadow rounded-box bg-base-200 text-base-content")}
             >
               {
                 links.map((link, i) => {

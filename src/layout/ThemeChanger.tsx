@@ -26,7 +26,7 @@ export const ThemeChanger = ({ btnClassName }: Props) => {
       </label>
       <ul
         tabIndex={0}
-        className="dropdown-content menu p-2 bg-base-200 text-base-content shadow rounded-box w-52"
+        className="dropdown-content menu p-2 bg-base-200 text-base-content shadow rounded-box min-w-max"
       >
         {
           themes.map((id) => (

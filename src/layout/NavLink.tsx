@@ -44,7 +44,7 @@ export const NavDropdown = ({ link }: { link: NavLink }) => {
             {link.icon}
             {"label" in link ? link.label : <Localized id={link.labelId} />}
           </summary>
-          <ul className="shadow bg-base-200 text-base-content">
+          <ul className="shadow bg-base-200 text-base-content min-w-max">
             {link.children.map((child, i) => (
               <NavLinkElement key={i} link={child} />
             ))}
