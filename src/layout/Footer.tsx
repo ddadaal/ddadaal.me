@@ -7,14 +7,14 @@ import { serverTime } from "src/utils/serverTime";
 
 const powerBys = [
   ["React", "https://reactjs.org/"],
-  ["Next.js", "https://www.gatsbyjs.org/"],
+  ["Next.js", "https://nextjs.org/"],
   ["GitHub Pages", "https://pages.github.com/"],
   ["TypeScript", "https://www.typescriptlang.org/"],
 ].map(([name, link]) => ({ name, link }));
 
 const themedWiths = [
-  ["daisyui", "https://reactstrap.github.io/"],
-  ["tailwind", "https://bootswatch.com/flatly/"],
+  ["daisyui", "https://daisyui.com/"],
+  ["tailwind", "https://tailwindcss.com/"],
 ].map(([name, link]) => ({ name, link }));
 
 
