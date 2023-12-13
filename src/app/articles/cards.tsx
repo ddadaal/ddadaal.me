@@ -154,7 +154,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
   return (
     <div className={classNames("form-control my-2", { [styles.search_bar]: showTags })}>
       <form
-        className={"input-group"}
+        className={"form-control flex-row"}
         action="/articles/search"
         method="GET"
         onSubmit={(e) => {
@@ -166,7 +166,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
         <Suspense fallback={<SearchBarInput placeholder={inputPlaceholder} />}>
           <QuerySyncedSearchBarInput placeholder={inputPlaceholder} />
         </Suspense>
-        <button type="submit" className="btn btn-square">
+        <button type="submit" className="btn btn-square ">
           <FaSearch />
         </button>
       </form>
