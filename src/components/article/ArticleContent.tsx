@@ -77,8 +77,8 @@ interface HeadingWithLinkProps {
 export const HeadingWithLink = (props: HeadingWithLinkProps) => {
 
   return createElement(props.element, props.props, [
-    <a href={"#" + props.props.id} className="mr-2" key={props.props.id}>
-      <FaLink className="inline-block" size={16} />
+    <a href={"#" + props.props.id} className="mr-1" key={props.props.id}>
+      <FaLink className="inline-block opacity-20 hover:opacity-60" size={16} />
     </a>,
     props.props.children,
   ]);
