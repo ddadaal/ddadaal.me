@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:16:37.060Z",
   "summaries": [
     "WSL 2开始使用真正的Linux内核,理论上可以运行几乎所有的Linux程序,包括带有GUI的Linux程序。 微软在Build 2020上宣称开始做WSL 2的GUI支持。 借助X11 Forwarding,我们现在已经可以做到类似的效果了。 X11s Forwarded是X11系统中,显示GUI的程序和用于真正负责显示、以及捕捉键盘、鼠标等输入的服务器。 X 11s forwarded的原理很简单,配置其实也很简单。 其分为两个大部分:Windows端(Server端)和WSL端(Client端)。 WSL Forwards可以使用SSH和X11 S Forwarder进行连接,解决很多远程桌面相关的问题。"
-  ]
+  ],
+  "hash": "38d9475ccc54d2587efcee3c221858513e3fe9659c8af683b92d03bfd6330c8b"
 }

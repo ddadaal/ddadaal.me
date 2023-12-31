@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:12:36.909Z",
   "summaries": [
     "The author encountered a problem during the development of the 2.0 version of [simstate], where an infinite loop occurred during the iteration of a set of ' observers' stored in a ES6 Map. The problem was initially confused due to the Map having only one element and remaining unchanged between and inside loops. However, after investigation, the author discovered that the root of the problem was the call to observer, which alters the Map itself during iteration. This led to the infinite loop, even when deleting and re-adding an entry during iteration."
-  ]
+  ],
+  "hash": "e79ef8687b5ba5291871116771ecd622d0e734075bd69714cda200405486decf"
 }

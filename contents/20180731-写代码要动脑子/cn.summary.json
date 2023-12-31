@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:11:21.077Z",
   "summaries": [
     "错误示范带来的问题包括重复 switch, 逻辑几乎相同的多个方法, 无脑 try catch, 和 无脳转发BL层。 优化实例中,我们正在做一个RESTful接口,其中一些路径在执行前需要验证是否登录。 我们可以通过提取公共方法、使用高级代码特性和使用decorator来提高代码质量。"
-  ]
+  ],
+  "hash": "55d28f7e3a44d7a3e82c2acdb111f18256f3e6606745c4c755f5a038ee17d9cd"
 }

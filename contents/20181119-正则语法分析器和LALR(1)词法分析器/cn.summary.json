@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:11:43.142Z",
   "summaries": [
     "这是一个编译原理课的大作业,作者实现了一个正则语法分析器和LALR(1)语法研究器。 项目放在一个 repo的子文件夹里,目录是https://github.com/ddadaal/Homework/tree/master/Compiler/Compilers/Lab。 作者定义了一个能够解析正则表达式和扩展语法的通用词法分析者和使用LALR(2)进行语法的研究者。 本实验提供了一个Intellij IDEA格式的Java项目,包含了目标中提到的词法和语法 분석器,以及对应分析器的一些测例。 作者还提供了一个C语言子集的输入文件、输出文件、词法定义文件和语성定义文件。"
-  ]
+  ],
+  "hash": "1f65cf5cb3d77c86afd65382d0cb4659a7a2ea26d1cf56330a1618aa1e0affc9"
 }

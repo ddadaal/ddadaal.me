@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:23:04.986Z",
   "summaries": [
     "本文讨论了如何让需要访问内网资源的程序走VPN,不需要访问的程序不走VPN。 我们可以在本机中起一个虚拟机或docker容器,连接到VPN,并起一个代理服务器。 作者编写了一套使用Docker容器来实现这个解决方案的脚本,可以使用一条`docker-compose up`命令简单地启动这样一个代理 server。"
-  ]
+  ],
+  "hash": "39836e374573e8b339ab4c804c048475300afe8a5683aa48c36fbe79741cf2f2"
 }

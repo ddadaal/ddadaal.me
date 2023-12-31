@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:16:14.644Z",
   "summaries": [
     "微软自带了一个工具`CheckNetIsolation.exe`,可以允许选定的UWP应用解除网络隔离,使用localhost的系统代理。 但是,微软的很多应用,例如自带的Windows商店、邮件、照片等,都是UWP的应用,禁止了将网络流量发送到本机(localhost),所以UWP application是不能直接使用这种 system proxy 的。 为了解决这个问题,作者和作者的同事在网上找到了一个Python脚本,然后在GitHub中找到了一份PowerShell脚本,但遇到了一些问题。"
-  ]
+  ],
+  "hash": "c0e7b34cbe677d04f80a60678163b96d9b9ce636f7185ef59b6c4d696e339b86"
 }

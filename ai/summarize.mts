@@ -1,4 +1,6 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
+import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 
@@ -60,8 +62,12 @@ export interface ArticleSummary {
   lastUpdateStartTime: string;
   lastUpdateEndTime: string;
   summaries: string[];
+  hash: string;
 }
 
+function hashContent(content: string): string {
+  return createHash("sha256").update(content).digest("hex");
+}
 
 async function summarizeArticle(articleDir: string) {
   // get md files under the articleDir
@@ -69,6 +75,8 @@ async function summarizeArticle(articleDir: string) {
 
   // parse each md files
   for (const mdFile of mdFiles) {
+
+
     // read md file
     const mdFilePath = join(articleDir, mdFile);
     const mdContent = await readFile(mdFilePath, "utf-8");
@@ -76,7 +84,25 @@ async function summarizeArticle(articleDir: string) {
     // extract title and content
     const { data: frontMatter, content } = matter(mdContent);
 
-    console.log("Summarize %s of lang %s", frontMatter.id, frontMatter.lang);
+    const log = (level: "log" | "error", msg: string, ...args: unknown[]) =>
+      console[level]("[%s %s] " + msg, frontMatter.id, frontMatter.lang, ...args);
+
+    const contentHash = hashContent(content);
+
+    const summaryJsonFilePath = join(articleDir, `${frontMatter.lang}.summary.json`);
+
+    if (existsSync(summaryJsonFilePath) && (await stat(summaryJsonFilePath)).isFile()) {
+      const existingSummaryJson: ArticleSummary = JSON.parse(await readFile(summaryJsonFilePath, "utf-8"));
+
+      existingSummaryJson.hash = contentHash;
+
+      if (contentHash === existingSummaryJson.hash) {
+        log("log", "Content is not changed after the last summarization. Skip summarization.");
+        continue;
+      }
+    }
+
+    log("log", "Summarize %s of lang %s", frontMatter.id, frontMatter.lang);
 
     const startTime = new Date().toISOString();
 
@@ -85,7 +111,7 @@ async function summarizeArticle(articleDir: string) {
       azureLanguageCodeMap[frontMatter.lang as keyof typeof azureLanguageCodeMap]);
 
     if (summary instanceof Error) {
-      console.error("Error on summarizing %s of lang %s: %s", frontMatter.id, frontMatter.lang, summary.message);
+      log("error", "Error on summarizing %s of lang %s: %s", frontMatter.id, frontMatter.lang, summary.message);
       continue;
     }
 
@@ -95,12 +121,10 @@ async function summarizeArticle(articleDir: string) {
       lastUpdateStartTime: startTime,
       lastUpdateEndTime: new Date().toISOString(),
       summaries: summary,
+      hash: contentHash,
     };
 
-    // write summary to json file
-    const summaryJsonFilePath = join(articleDir, `${frontMatter.lang}.summary.json`);
-
-    console.log("Write summary of %s of lang %s to %s", frontMatter.id, frontMatter.lang, summaryJsonFilePath);
+    log("log", "Write summary of %s of lang %s to %s", frontMatter.id, frontMatter.lang, summaryJsonFilePath);
 
     await writeFile(summaryJsonFilePath, JSON.stringify(summaryJson, null, 2));
   }

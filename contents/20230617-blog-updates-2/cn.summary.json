@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:25:39.783Z",
   "summaries": [
     "本文作者鸽了4年的更新,完全使用Next.js编写新的网站。 新的网站和原有博客在功能性、整体布局以及各个页面的URL方面都完全一致。 使用Tailwind编写样式,去除CSS in JS方案。 React Server Component允许用户编写运行在服务器端的React组件。 作者通过Next.js,可以直接使用RSC同时完成读取数据和渲染UI的功能。"
-  ]
+  ],
+  "hash": "fced6451dbf7c92241b4296f0d0cd9d79cf03bfaaa724c3c7475c2757c6cc066"
 }

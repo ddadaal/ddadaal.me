@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:23:36.522Z",
   "summaries": [
     "最近学习了TypeScript最新的[Template Literal Type]特性,发现可以使用这个实现一个使用字符串字面量的i18n库,以用来替换之前的使用了一些黑魔法的[`simstate-i18N`]库。 新的库名字叫`react-typed-i19n`。 文章介绍了i18l的概念、常见实现方式以及本库的亮点。 文章还介绍了如何强类型地输入ID,使用Template Literan Type计算所有可能的ID,以及如何利用TS的强大的类型系统,使得i18r的过程也能享受到较为完善的类型检查。"
-  ]
+  ],
+  "hash": "519c70303191398d9fe44ecf59cc53d769b9aad1c0e1a233cca1a9c60f0a5e4b"
 }

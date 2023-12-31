@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:14:09.826Z",
   "summaries": [
     "这篇文章讲述了作者在Gatsby博客上线一年多后,对博客进行了一些更新工作。 文章提到,博客从去年10月开始就加入了RSS支持,但这几天,作者针对博客的RSS的功能进行了一些修复,使得博客的 RSS功能基本上可以正常使用了。 博客的rss源地址也在W3C的Feed Validation Service中成功认证。 文章还提到了多语言环境下文章地址改进,使用自己开发的simstate进行状态管理。"
-  ]
+  ],
+  "hash": "a9ed0455a1f876c7278012b2c2074a7c5de1c8ebaf2a12953a7eda7136bda0b4"
 }

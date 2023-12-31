@@ -5,5 +5,6 @@
   "lastUpdateEndTime": "2023-12-31T13:11:28.762Z",
   "summaries": [
     "本文讲述了作者在寒假期间用React+ASP.NET Core完成了一套博客网站,但由于漏洞百出、维护成本高、性能不好、加功能成本极大等问题,日常维护非常难受。 作者在GitHub上发现了Gatsby,花了两天时间撸了一个博客出来。 Gatsb的高性能、灵活和无处不在的特点使他能够用上React和整个npm前端生态圈。 最终,新博客正式上线了,它的特性包括静态网页、支持Progressive Web Application、文章写作、i18n、设计、源码和内容分离、评论系统和Icons。"
-  ]
+  ],
+  "hash": "099709643d5d69c7fb4c094dc674ba1f5b8138df08c6ac0826917e7efe2709b7"
 }
