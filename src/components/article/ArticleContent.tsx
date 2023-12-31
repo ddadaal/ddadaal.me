@@ -74,12 +74,13 @@ const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 interface HeadingWithLinkProps {
   element: "h1" | "h2" | "h3";
   props: JSX.IntrinsicElements["h1"] | JSX.IntrinsicElements["h2"] | JSX.IntrinsicElements["h3"];
+  anchorLinkClassName?: string;
 }
 
 export const HeadingWithLink = (props: HeadingWithLinkProps) => {
 
   return createElement(props.element, props.props, [
-    <a href={"#" + props.props.id} className="mr-1" key={props.props.id}>
+    <a href={"#" + props.props.id} className={classNames("mr-1", props.anchorLinkClassName)} key={props.props.id}>
       <FaLink className="inline-block opacity-20 hover:opacity-60" size={16} />
     </a>,
     props.props.children,

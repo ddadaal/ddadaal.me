@@ -18,8 +18,10 @@ export const ArticleSummarization = ({ summary }: Props) => {
     <div className="p-4 my-4 bg-neutral rounded shadow">
       <HeadingWithLink
         element="h1"
+        anchorLinkClassName="text-neutral-content"
         props={{
           id: "summary",
+          className: "text-neutral-content",
           children: (
             <Localized id="articlePage.summary.title" />
           ),
@@ -30,11 +32,16 @@ export const ArticleSummarization = ({ summary }: Props) => {
           {x}
         </p>
       ))}
-      <p className="text-sm justify-end flex">
+      <p className="text-sm justify-end flex text-neutral-content">
         <Localized
           id="articlePage.summary.poweredBy"
           args={[
-            <Link target="_blank" key="docUrl" href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}>
+            <Link
+              target="_blank"
+              key="docUrl"
+              className="text-neutral-content"
+              href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
+            >
               Azure AI Language Service
             </Link>,
           ]}
