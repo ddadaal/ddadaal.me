@@ -49,6 +49,7 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
           </Heading>
         )
       }
+
       <div className="animate-slide-up">
         <div className="max-w-7xl mx-auto p-4">
           <ArticleContent article={article} />

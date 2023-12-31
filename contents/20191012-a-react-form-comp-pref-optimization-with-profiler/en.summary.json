@@ -1,0 +1,9 @@
+{
+  "articleId": "a-react-form-comp-pref-optimization-with-profiler",
+  "lang": "en",
+  "lastUpdateStartTime": "2023-12-31T13:14:09.827Z",
+  "lastUpdateEndTime": "2023-12-31T13:14:19.187Z",
+  "summaries": [
+    "The article discusses a performance issue with a form in a React application. The form responded slowly to key strokes, and the component and website became unresponsive when several keys were typed sequentially. The author suspects that the problem might be due to the validation process, the re-render of the whole form at every input, and the complicated form with dozens of fields, multiple validations, dynamic placeholders, and unnecessary duplicate calculations. The issue was identified through profiling, and the problem was traced back to a large quantity of options in the dropdown component. The author resolved the issue by extracting the dropdown into a separate component and making it a ' PureComponent', which only re-rendered itself when the props had changed."
+  ]
+}

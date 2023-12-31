@@ -1,0 +1,9 @@
+{
+  "articleId": "cpp-testcase-viewer",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:10:35.436Z",
+  "lastUpdateEndTime": "2023-12-31T13:10:43.211Z",
+  "summaries": [
+    "本文介绍了CppTestCaseViewer的原理和使用。 它可以查看C++作业的测例,并提供了一个小工具,可以clone代码或查看用法。 使用Cpp Test Case Viewer需要下载题目,装有.NET Framework 4.5,并运行Cpp test case viewer.exe。"
+  ]
+}

@@ -1,10 +1,11 @@
 "use client";
 
-import { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
-import { useEffect } from "react";
+import { TocEntry as LibTocEntry } from "@stefanprobst/rehype-extract-toc";
+import React, { useEffect } from "react";
 import { MdToc } from "react-icons/md";
 import { Localized } from "src/i18n";
 
+export type TocEntry = Omit<LibTocEntry, "value"> & { value: string | React.ReactNode };
 
 function isWindowBetween(element: HTMLElement | null): boolean {
   return !!element && element.getBoundingClientRect().top >= 2;
@@ -33,10 +34,11 @@ const TocMenuEntry = ({ entry: { depth, value, children, id } }: { entry: TocEnt
 };
 
 interface Props {
-  toc: Toc
+  toc: TocEntry[];
+  hasSummary: boolean;
 }
 
-export const ArticleToc = ({ toc }: Props) => {
+export const ArticleToc = ({ toc, hasSummary }: Props) => {
 
   useEffect(() => {
 
@@ -73,6 +75,16 @@ export const ArticleToc = ({ toc }: Props) => {
     };
   }, []);
 
+  if (hasSummary) {
+    toc = [
+      { depth: 0, value: (
+        <span className="font-bold">
+          <Localized id="articlePage.toc.summary" />
+        </span>
+      ), id: "summary" },
+      ...toc,
+    ];
+  }
 
   // TODO make overflow menu item break line
   return (
@@ -80,7 +92,7 @@ export const ArticleToc = ({ toc }: Props) => {
       <div className="flex space-x-1 items-center py-2">
         <MdToc />
         <span>
-          <Localized id="articlePage.toc" />
+          <Localized id="articlePage.toc.title" />
         </span>
       </div>
       <ul className="pl-2 border-l border-neutral">

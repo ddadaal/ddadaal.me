@@ -1,0 +1,9 @@
+{
+  "articleId": "department-gitlab-ci-configuration",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:10:43.213Z",
+  "lastUpdateEndTime": "2023-12-31T13:10:51.125Z",
+  "summaries": [
+    "本文作者想尝试持续集成的效果,但由于很多开源CI平台不支持自建平台,所以只能手动配置Runner。 首先,作者发现院的GitLab版本过老,需要使用老版本的runner。 其次,作者在配置过程中发现Ubuntu官方源Node版本太低,只能自己设置apt源了。 作者认为Gitlab CI非常好用,能和Git Lab无缝集成,而且非常的简单易用。"
+  ]
+}

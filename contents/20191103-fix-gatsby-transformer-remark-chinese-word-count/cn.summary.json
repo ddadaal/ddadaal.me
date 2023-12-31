@@ -1,0 +1,9 @@
+{
+  "articleId": "fix-gatsby-transformer-remark-chinese-word-count",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:14:41.204Z",
+  "lastUpdateEndTime": "2023-12-31T13:14:52.265Z",
+  "summaries": [
+    "本博客使用gatsby搭建的插件可以将markdown转换成html,提供词数统计和阅读时间功能。 作者提供几个可以修复此插件在中文环境下失效的问题的方法,包括使用timeToRead统计算法,或者移植timeTo读统计算法。 作者建议使用time To Read,但由于这个方法得出的数据比较偏大,需要跟随上游的更新而更新本地的插件中。 作者还提供了一个gatsby-transformer-remark-chinese-word-count项目,用来简化自己从node_modules中提取和修改插件这个流程。"
+  ]
+}

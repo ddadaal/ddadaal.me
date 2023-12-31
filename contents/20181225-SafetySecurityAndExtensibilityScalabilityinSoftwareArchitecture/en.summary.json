@@ -1,0 +1,9 @@
+{
+  "articleId": "security-safety-extensibility-scalability",
+  "lang": "en",
+  "lastUpdateStartTime": "2023-12-31T13:11:50.945Z",
+  "lastUpdateEndTime": "2023-12-31T13:11:59.009Z",
+  "summaries": [
+    "The article discusses the importance of security/safety and extensibility/scalability in software architecture. It explains the definitions, comparisons, and scenarios related to these quality attributes, as well as strategies and tactics to improve each attribute. The article also provides examples of how these attributes can be affected by various events and attacks. It concludes by discussing strategies and tactics to enhance each attribute, their benefits and penalties, and the challenges they may face."
+  ]
+}

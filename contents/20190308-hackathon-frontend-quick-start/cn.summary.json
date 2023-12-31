@@ -1,0 +1,9 @@
+{
+  "articleId": "hackathon-frontend-quick-start",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:12:36.910Z",
+  "lastUpdateEndTime": "2023-12-31T13:12:47.979Z",
+  "summaries": [
+    "本文主要介绍了前端技术中最重要的三件:HTML/CSS和JS。 作者希望通过提供现有的框架、工具和教程,帮助读者在7天的时间里拼装出一个好看又有用的网站前端。 常见框架包括React、Vue、Angular和jQuery。 作者建议在学习React时,先尝试使用react自己提供的功能实现,再尝试使用第三方库解决。 学习原生或jQuery库时,可以考虑直接使用原生或者jQuery库进行开发。 作者还给出了一些进阶的资料,包括类型系统和Mock服务器。"
+  ]
+}

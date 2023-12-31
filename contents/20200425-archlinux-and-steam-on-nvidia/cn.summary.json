@@ -1,0 +1,9 @@
+{
+  "articleId": "archlinux-and-steam-on-nvidia",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:15:51.489Z",
+  "lastUpdateEndTime": "2023-12-31T13:16:06.626Z",
+  "summaries": [
+    "作者选择在家里的一台2013年的老电脑上安装Linux。 作者发现,已经有一些开源项目在尝试在Windows下的应用和程序运行在Linux下,并在Steam的努力下,Linux已经可以玩一些Steam游戏了。 作者安装了Arch Linux和配置,选用了一些重要软件包,包括GNOME和 Rime输入法。 作者测试了Linux上的闭源N卡驱动,发现在Arch Linux上问题不是很大。 作者还尝试了Steam和Proton工具,发现Proton是一个针对游戏的、Linux下的Windows的兼容层。 作者认为,总体来说Linux的运行速度比Windows快,打开IDEA、VSCode、Emacs等应用比在Windows上快了不知道多少,资源占用也更少。"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "articleId": "fixed-length-decimal-random-generator-satisfying-benfords-law-in-python",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:10:51.126Z",
+  "lastUpdateEndTime": "2023-12-31T13:11:02.208Z",
+  "summaries": [
+    "运行需要Python 3,不需要其他库依赖。 代码分为6个部分,分别为以n开头的数字的频率、本位的分布表、本位に搜索表、生成第n位、生成一个数和生成多个数。"
+  ]
+}

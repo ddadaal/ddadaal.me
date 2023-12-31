@@ -82,12 +82,19 @@
     "title": "Articles",
     "backToHome": "Back to home",
     "selectLang": "Select a language",
-    "toc": "Table of Contents",
+    "toc": {
+      "title": "Table of Contents",
+      "summary": "✨AI Summary"
+    },
     "share": {
       "title": "Share"
     },
     "relatedArticles": {
       "text": "Related Articles"
+    },
+    "summary": {
+      "title": "✨AI Summary",
+      "poweredBy": "Powered by {}"
     },
     "actions": {
       "like": {

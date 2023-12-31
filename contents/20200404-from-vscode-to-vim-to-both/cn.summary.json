@@ -1,0 +1,9 @@
+{
+  "articleId": "from-vscode-to-vim-to-both",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:15:22.673Z",
+  "lastUpdateEndTime": "2023-12-31T13:15:36.968Z",
+  "summaries": [
+    "最近3个月博客都没更新,因为一直在忙着搞毕设。 根据我的体验,Windows下的VSCode的性能问题体现在两个地方:启动速度和编辑延迟。 我学vim也尝试了三次,最后一次是在微软实习时,使用VSCodeのVim插件,耗时1个多月,才最终能够较为熟练地使用vim。 在做毕设期间,由于被VSCode의性能问题折腾的有点疯,以及用了vim后对效率和速度越来越敏感,所以我开始尝试配置vim,想把vim打造成一个IDE。 我用的是[Neovim],一个vim的fork,据说比原版Vim更精简、有更多的功能,但是使用体验和原版 Vim并无二致。 JetBrains系的IDE在2020.1更新后加入了一个LightEdit模式。 就像名字所说,这是个轻量(Light)的编辑(Edit)模式,就像简单的文本编辑器一样,只提供一些简单的功能,但保证较快的速度。"
+  ]
+}

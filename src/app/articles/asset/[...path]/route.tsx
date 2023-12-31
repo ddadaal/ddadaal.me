@@ -7,7 +7,7 @@ import { Readable } from "stream";
 export async function GET(request: NextRequest, { params }: { params: { path: string[] }}) {
   const fullPath = params.path.join("/");
 
-  const fileStat = await stat(fullPath);
+  const fileStat = await stat(decodeURIComponent(fullPath));
 
   const stream = createReadStream(fullPath);
 
@@ -35,6 +35,11 @@ export async function generateStaticParams() {
     for (const dirent of dirents) {
       if (dirent.isDirectory()) {
         await rec(dir.concat(dirent.name));
+        continue;
+      }
+
+      // ignore md and summary json files
+      if (dirent.name.endsWith(".md") || dirent.name.endsWith(".summary.json")) {
         continue;
       }
 

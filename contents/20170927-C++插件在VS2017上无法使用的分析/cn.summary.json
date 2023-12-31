@@ -1,0 +1,9 @@
+{
+  "articleId": "analysis-on-cpp-plugin-not-running-at-vs2017",
+  "lang": "cn",
+  "lastUpdateStartTime": "2023-12-31T13:10:27.489Z",
+  "lastUpdateEndTime": "2023-12-31T13:10:35.434Z",
+  "summaries": [
+    "由于VS2017是作者刚需,他直接解包修改了插件的配置文件从而在VS2017上运行。 在VS2016上运行插件时,会弹出错误提示。 作者使用JetBrains的dotPeek工具对CppPlugin工具解包出的Cpp plugin.dll文件进行反编译并导出成解决方案到VS里查看。 通过查找报错的字符串,发现相关代码路径是`Controller/imp/TestControllerImp.cs`的`CallResult RunTest(string)`方法。 作者新建了一个全新的VSIX扩展程序项目,并在点击事件响应中加入了这个方法。 微软的相关文档中并没有提到任何相关API在VS2018中的变化。"
+  ]
+}

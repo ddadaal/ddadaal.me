@@ -1,0 +1,9 @@
+{
+  "articleId": "simstate-and-why",
+  "lang": "en",
+  "lastUpdateStartTime": "2023-12-31T13:12:21.435Z",
+  "lastUpdateEndTime": "2023-12-31T13:12:29.356Z",
+  "summaries": [
+    "The document describes 'simstate', a React state management library that favors React Hooks and JavaScript. The author explains that the library was created to respect React's programming pattern and to address inconsistencies between the code styles in the Object-Oriented Programming (OOD) with Dependency Injection (DI) pattern and the functional pattern (React). The author also mentions that the library aims to implement functions and patterns they like, such as the 'HOC', 'render props' and 'Hooks'. The author also plans to develop the library further, including support for server-side rendering and partial observer."
+  ]
+}

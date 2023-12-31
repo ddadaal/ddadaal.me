@@ -91,12 +91,19 @@
     "title": "文章",
     "backToHome": "回到主页",
     "selectLang": "选择一个文章语言",
-    "toc": "目录",
+    "toc": {
+      "title": "目录",
+      "summary": "✨AI全文总结"
+    },
     "share": {
       "title": "分享"
     },
     "relatedArticles": {
       "text": "相关文章"
+    },
+    "summary": {
+      "title": "✨AI全文总结",
+      "poweredBy": "由{}驱动"
     },
     "actions": {
       "like": {

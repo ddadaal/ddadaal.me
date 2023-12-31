@@ -15,8 +15,10 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import { ArticleSummarization } from "src/components/article/ArticleSummarization";
 import { Gallery } from "src/components/article/Gallery";
 import { Article } from "src/data/articles";
+import { getArticleSummary } from "src/data/summaries";
 import { unified } from "unified";
 import { promisify } from "util";
 
@@ -114,9 +116,16 @@ export const ArticleContent = async ({ article }: Props) => {
 
   const showToc = !article.no_toc && file.data.toc && file.data.toc.length > 0;
 
+  const summary = await getArticleSummary(article);
+
   return (
     <div className="flex flex-row space-x-4">
       <div className={classNames("prose", "max-w-full", { "lg:w-[75%]": showToc })}>
+        {
+          summary ? (
+            <ArticleSummarization summary={summary} />
+          ) : undefined
+        }
         <Gallery withCaption id={article.id}>
           {file.result}
         </Gallery>
@@ -124,7 +133,7 @@ export const ArticleContent = async ({ article }: Props) => {
       {
         showToc ? (
           <div className="hidden lg:block lg:w-[25%]">
-            <ArticleToc toc={file.data.toc!} />
+            <ArticleToc toc={file.data.toc!} hasSummary={!!summary} />
           </div>
         ) : undefined
       }

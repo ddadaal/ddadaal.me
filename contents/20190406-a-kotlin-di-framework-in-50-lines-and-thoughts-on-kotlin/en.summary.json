@@ -1,0 +1,9 @@
+{
+  "articleId": "a-kotlin-di-framework-in-50-lines-and-thoughts-on-kotlin",
+  "lang": "en",
+  "lastUpdateStartTime": "2023-12-31T13:12:47.981Z",
+  "lastUpdateEndTime": "2023-12-31T13:12:55.816Z",
+  "summaries": [
+    "The document discusses the challenges and benefits of using a Dependency Injection (DI) framework in a Java project. It highlights the two main options for dependency management: introducing a full-blown DI framework or using traditional object instantiation or simple factory pattern, which can be time-consuming and cumbersome. The author uses the example of a simple Java project where the interface and implementation class pattern was used to decouple the interface and implementation, but it also introduced complexity. The document suggests using delegation and classpath scan capability to achieve minimal dependencies and extra code, and provides a code example to help understand the process."
+  ]
+}
