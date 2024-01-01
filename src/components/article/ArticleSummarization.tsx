@@ -21,7 +21,7 @@ export const ArticleSummarization = ({ summaries }: Props) => {
           id: "summary",
           className: "text-neutral-content",
           children: (
-            <Localized id="articlePage.summary.title" />
+            <Localized key="summaryTitle" id="articlePage.summary.title" />
           ),
         }}
       />
