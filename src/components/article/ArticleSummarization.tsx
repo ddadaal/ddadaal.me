@@ -2,16 +2,14 @@ import Link from "next/link";
 import { HeadingWithLink } from "src/components/article/ArticleContent";
 import { Localized } from "src/i18n";
 
-import { ArticleSummary } from "../../../ai/summarize.mjs";
-
 interface Props {
-  summary: ArticleSummary;
+  summaries: string[];
 }
 
 // eslint-disable-next-line max-len
 const AZURE_AI_LANGUAGE_SERVICE_DOC_URL = "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
 
-export const ArticleSummarization = ({ summary }: Props) => {
+export const ArticleSummarization = ({ summaries }: Props) => {
 
 
   return (
@@ -27,7 +25,7 @@ export const ArticleSummarization = ({ summary }: Props) => {
           ),
         }}
       />
-      {summary.summaries.map((x, i) => (
+      {summaries.map((x, i) => (
         <p className="text-neutral-content" key={i}>
           {x}
         </p>

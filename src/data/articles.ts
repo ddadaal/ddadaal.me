@@ -1,8 +1,11 @@
+import { existsSync } from "fs";
 import { readdir, readFile, stat } from "fs/promises";
 import matter from "gray-matter";
 import { basename, extname, join } from "path";
 import readingTime from "reading-time";
 import { createDataSource } from "src/data/data";
+
+import { ArticleSummary } from "../../ai/summarize.mjs";
 
 export const revalidate = false;
 
@@ -27,6 +30,8 @@ export interface Article {
   readingTime: number;
 
   filePath: string;
+
+  summaries?: string[];
 }
 
 export interface ArticleItem {
@@ -48,7 +53,9 @@ export const readArticleFromDir = async (dir: string) => {
       continue;
     }
 
-    const fileContent = await readFile(join(dir, file), "utf-8");
+    const filePath = join(dir, file);
+
+    const fileContent = await readFile(filePath, "utf-8");
     const { content, data } = matter(fileContent);
 
     const folderDate = basename(dir).match(/^(\d{4})(\d{2})(\d{2})/);
@@ -62,6 +69,16 @@ export const readArticleFromDir = async (dir: string) => {
     }
 
     const { words, minutes } = readingTime(content);
+
+    let summaries: string[] | undefined;
+
+    const summariesFilePath = join(dir, `${data.lang}.summary.json`);
+
+    if (existsSync(summariesFilePath)) {
+      const articleSummary = JSON.parse(await readFile(summariesFilePath, "utf-8")) as ArticleSummary;
+
+      summaries = articleSummary.summaries;
+    }
 
     item.langVersions.push({
       content,
@@ -80,13 +97,13 @@ export const readArticleFromDir = async (dir: string) => {
       wordCount: words,
       readingTime: minutes,
 
-      filePath: join(dir, file),
+      filePath,
 
+      summaries,
     });
   }
 
   if (item) {
-    // TODO sort langVersions by lang
     item.langVersions.sort((a, b) => a.lang.localeCompare(b.lang));
   }
 
