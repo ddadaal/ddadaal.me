@@ -21,9 +21,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
   return (
     <RootLayout>
       <Script
-        data-host="https://analytix.tk"
+        data-host="https://services.ddadaal.me"
         data-dnt="false"
-        src="https://analytix.linkspreed.com/js/script.js"
+        src="https://services.ddadaal.me/monitor/script.js"
         id="ZwSg9rf6GA"
         async
         defer
