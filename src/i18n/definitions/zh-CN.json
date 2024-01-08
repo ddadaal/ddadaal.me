@@ -93,7 +93,7 @@
     "selectLang": "选择一个文章语言",
     "toc": {
       "title": "目录",
-      "summary": "✨AI全文总结"
+      "summary": "✨AI全文摘要"
     },
     "share": {
       "title": "分享"
@@ -102,7 +102,7 @@
       "text": "相关文章"
     },
     "summary": {
-      "title": "✨AI全文总结",
+      "title": "✨AI全文摘要",
       "poweredBy": "由{}驱动"
     },
     "actions": {
