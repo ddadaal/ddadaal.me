@@ -8,7 +8,7 @@
   }
 
   /* rehype-pretty-code */
-  pre > code {
+  pre>code {
     display: grid;
   }
 
@@ -16,7 +16,7 @@
     counter-reset: line;
   }
 
-  code > .line::before {
+  code>.line::before {
     counter-increment: line;
     content: counter(line);
 
@@ -28,12 +28,24 @@
     color: gray;
   }
 
-  code[data-line-numbers-max-digits='2'] > .line::before {
+  code[data-line-numbers-max-digits='2']>.line::before {
     width: 2rem;
   }
 
-  code[data-line-numbers-max-digits='3'] > .line::before {
+  code[data-line-numbers-max-digits='3']>.line::before {
     width: 3rem;
   }
-}
 
+  [data-highlighted-line] {
+    background: #c8c8ff1a;
+    --tw-border-opacity: 1;
+    border-left-color: rgb(96 165 250/var(--tw-border-opacity))
+  }
+
+  [data-highlighted-chars] {
+    border-radius: .25rem;
+    background-color: #52525b80;
+    box-shadow: 0 0 0 4px #52525b80
+  }
+
+}

@@ -105,7 +105,7 @@ select users.id as user, max(time) as time from users;
 
 gorm使用`Dialector`接口作为ORM支持不同数据库系统的适配器的接口，所有gorm支持的数据库都有一个对应的实现了`Dialector`接口的`Dialector`。所以，第一步就是去看看gorm的`Dialector`里定义了哪些接口。
 
-```go {8}
+```go {9}
 // https://github.com/go-gorm/gorm/blob/0123dd45094295fade41e13550cd305eb5e3a848/interfaces.go#L12C1-L21C2
 type Dialector interface {
 	Name() string
@@ -201,7 +201,7 @@ mssql: A table can only have one timestamp. Because table 'users' already has on
 
 去代码中一看，`users`表对应的`User`struct确实有好几个字段都通过[gorm的field tag功能](https://gorm.io/docs/models.html#Fields-Tags)`type:timestamp`，确定了在数据库中这些列需要映射为`timestamp`类型。
 
-```go
+```go /timestamp/
 // https://github.com/muety/wakapi/blob/fc483cc35cb06313da8231424d1d85b291655881/models/user.go#L17
 type User struct {
   // ...
@@ -265,15 +265,15 @@ func (j CustomTime) GormDBDataType(db *gorm.DB, field *schema.Field) string {
 
 同时，我们将所有的`timestamp`都直接去掉，将`type:timestamp(n)`修改为了`timeScale:n`：
 
-```go
+```go /timeScale:3/
 // https://github.com/muety/wakapi/blob/1ea64f0397e5ee109777b367e9bd907cfdd59bdb/models/user.go#L17
 type User struct {
   // ...
   CreatedAt           CustomTime  `gorm:"default:CURRENT_TIMESTAMP" swaggertype:"string" format:"date" example:"2006-01-02 15:04:05.000"`
-	LastLoggedInAt      CustomTime  `gorm:"default:CURRENT_TIMESTAMP" swaggertype:"string" format:"date" example:"2006-01-02 15:04:05.000"`
+  LastLoggedInAt      CustomTime  `gorm:"default:CURRENT_TIMESTAMP" swaggertype:"string" format:"date" example:"2006-01-02 15:04:05.000"`
   // ...
   SubscribedUntil     *CustomTime `json:"-" swaggertype:"string" format:"date" example:"2006-01-02 15:04:05.000"`
-	SubscriptionRenewal *CustomTime `json:"-" swaggertype:"string" format:"date" example:"2006-01-02 15:04:05.000"`
+  SubscriptionRenewal *CustomTime `json:"-" swaggertype:"string" format:"date" example:"2006-01-02 15:04:05.000"`
 }
 
 // https://github.com/muety/wakapi/blob/1ea64f0397e5ee109777b367e9bd907cfdd59bdb/models/heartbeat.go#L12
@@ -306,7 +306,7 @@ panic: mssql: Could not create constraint or index. See previous errors.
 
 看起来，是因为`fk_summaries_operating_systems`这个级联的外键索引会造成级联递归（cycles）。和外键约束有关，而外键约束是通过gorm定义，所以我们先去看看代码里涉及这个外键约束的两个表的定义。
 
-```go
+```go /constraint:OnUpdate:CASCADE,OnDelete:CASCADE/
 // https://github.com/muety/wakapi/blob/fc483cc35cb06313da8231424d1d85b291655881/models/summary.go#L29
 type Summary struct {
   // ...
@@ -334,7 +334,7 @@ type SummaryItem struct {
 
 那如何解决这个问题呢？根据外键名和`Summary`中的属性的对应关系，我们可以推测，这五个外键是`Summary`中五个引用一一对应过来的。由于这五个外键实际上是一模一样的，只需要保留一个就可以了。所以，最终的解决方案是，只保留一个字段的外键tag，其他字段全部给一个`-`的tag，让gorm不要为这些字段生成外键。
 
-```go {3-6}
+```go {5-8}
 // https://github.com/muety/wakapi/blob/1ea64f0397e5ee109777b367e9bd907cfdd59bdb/models/summary.go#L30
 type Summary struct {
 	Projects SummaryItems `json:"projects" gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
@@ -350,7 +350,7 @@ type Summary struct {
 
 至此，系统终于能启动起来了，并且大多数功能已经可以正常使用了。而在代码审核过程中，作者还[发现了一个问题](https://github.com/muety/wakapi/pull/592#issuecomment-1892627154)：代码中有一个`Heartbeat`表，它就是wakatime的客户端插件定期给服务器端发送的数据，其中包含了正在工作的项目、使用的编程语言等信息。而这个表中有一个字段为`Hash`，这个字段的值根据其他信息算出来，并且有一个`unique index`，通过这个字段，就避免给`Heartbeat`表插入多个重复的数据。
 
-```go
+```go {4}
 // https://github.com/muety/wakapi/blob/1ea64f0397e5ee109777b367e9bd907cfdd59bdb/models/heartbeat.go#L13
 type Heartbeat struct {
   // ...
@@ -382,7 +382,7 @@ return nil
 
 但是，既然库都支持了，那为什么还会遇到这个错误呢？再次检查所实际执行的SQL，发现这一次`Create`实际上生成的SQL语句仍然是最普通的`INSERT INTO`，并没有不是正确的`MERGE INTO`，。
 
-```SQL {2}
+```SQL /INSERT INTO/
 024/01/19 20:10:23 /home/ddadaal/Code/wakapi/repositories/heartbeat.go:54 mssql: Cannot insert duplicate key row in object 'dbo.heartbeats' with unique index 'idx_heartbeats_hash'. The duplicate key value is (d926be93ebcc4b6f).
 
 [10.830ms] [rows:0] INSERT INTO "heartbeats" ("user_id","entity","type","category","project","branch","language","is_write","editor","operating_system","machine","user_agent","time","hash","origin","origin_id","created_at") OUTPUT INSERTED."id" VALUES ('ddadaal','/home/user1/dev/project1/main.go','file','','wakapi','','Go',1,'','','','curl/8.5.0','2024-01-16 02:16:18.954','d926be93ebcc4b6f','','','2024-01-19 20:10:23.378');

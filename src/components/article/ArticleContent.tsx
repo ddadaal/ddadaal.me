@@ -92,13 +92,12 @@ export const ArticleContent = async ({ article }: Props) => {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
-    // .use(rehypeAutolinkHeadings)
-    .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeExtractToc)
     .use(rehypePrettyCode, {
       theme: "one-dark-pro",
     })
+    .use(rehypeRaw)
     .use(rehypeReact, {
       ...production,
       components: {

@@ -23,7 +23,6 @@ const renderContent = async (content: string, articleFilePath: string) => {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
     .use(rehypeRewrite, {
       rewrite: (node) => {
 
@@ -40,10 +39,11 @@ const renderContent = async (content: string, articleFilePath: string) => {
         }
       },
     })
-    .use(rehypeStringify)
     .use(rehypePrettyCode, {
       theme: "one-dark-pro",
     })
+    .use(rehypeRaw)
+    .use(rehypeStringify)
     .process(content);
 
   return result.toString();
