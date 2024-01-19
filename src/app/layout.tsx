@@ -18,12 +18,16 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
   const resume = await getResume();
 
+  const monitorHost = process.env.NODE_ENV === "development"
+    ? "http://localhost:5000"
+    : "https://services.ddadaal.me";
+
   return (
     <RootLayout>
       <Script
-        data-host="https://services.ddadaal.me"
+        data-host={monitorHost}
         data-dnt="false"
-        src="https://services.ddadaal.me/monitor/script.js"
+        src={`${monitorHost}/monitor/script.js`}
         id="ZwSg9rf6GA"
         async
         defer
