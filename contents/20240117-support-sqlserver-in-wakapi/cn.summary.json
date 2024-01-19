@@ -1,0 +1,10 @@
+{
+  "articleId": "support-sqlserver-in-wakapi",
+  "lang": "cn",
+  "lastUpdateStartTime": "2024-01-19T12:47:43.833Z",
+  "lastUpdateEndTime": "2024-01-19T12:47:58.053Z",
+  "summaries": [
+    "本文作者在上一篇文章中提到了如何为博客增加点击量监测,并部署到Azure。 后来,同学推荐了wakapi项目,重新实现了wakatime的后端API。 作者发现wakapi并没有原生支持SQL Server,但使用了gorm作为数据库访问框架。 作者通过重用Dialector的逻辑,为关键词加上引号,把同一个go类型在不同的数据库中映射为不同的列类型,以及使用`merge into`语句来模拟upsert的行为。 他认为go非常explicit,虽然他不喜欢它,但它非常简单。 解决这些问题后,PR顺利合并进了主分支。"
+  ],
+  "hash": "bef9b329347fce9ed5d243b406f650984ddc7fb8accf7b04699b7665c6892322"
+}

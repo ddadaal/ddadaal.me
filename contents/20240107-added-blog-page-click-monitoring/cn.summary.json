@@ -1,0 +1,10 @@
+{
+  "articleId": "added-blog-page-click-monitoring",
+  "lang": "cn",
+  "lastUpdateStartTime": "2024-01-19T12:47:33.139Z",
+  "lastUpdateEndTime": "2024-01-19T12:47:43.831Z",
+  "summaries": [
+    "他曾使用过Google Analytics、友盟和百度统计,但均未能使用。 分析访问者的信息的方法是通过加一个HTML标签,加到被统计的网站上,然后下载一段javascript脚本,将一些访问者信息发送到平台上。 Analytix所收集的信息只有三个:当前页面地址、来源地址和屏幕分辨率。 作者认为这可能与GDPR有关。 项目采用了Node.js,使用Fastify HTTP库编写代码,Azure App Service使用的是最便宜的版本。 采集到的信息保存在Azure SQL Database上。 作者使用了Prisma框架,支持MSSQL数据。 作者计划开发一个简单的dashboard用来查看统计数据。"
+  ],
+  "hash": "b3f91c71b7f90d4a6bf3d22a00a4433f6b7243ecb0174d2f3dcc22e9163da8be"
+}
