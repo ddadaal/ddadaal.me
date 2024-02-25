@@ -32,26 +32,25 @@ no_toc: true
 ### 软件工程专业；2020年毕业；学位课程GPA 4.62/5.0；排名 1/220
 - **国家奖学金**(2016-2017学年)， **董氏东方奖学金**和**校级优秀学生**(2017-2018学年)，**深交所奖学金**(2018-2019学年)，**校级优秀毕业生**
 
-# 工作和实习经历
+# 工作经历
 
-## <span class="highlight">微软亚太科技有限公司</span> <span class="right">2023年8月-现在</span>
+## <span class="highlight">微软亚太科技有限公司 上海</span> <span class="right">2023年8月-现在</span>
 ### Software Engineer at C+AI Azure Edge+ Platform
 
-- 负责Azure Arc相关功能的开发
+- 负责Azure Arc中Kubernetes相关功能的开发
 
-## <span class="highlight">微软亚太研发集团（上海）</span> <span class="right">2022年7月-9月</span>
-### Software Engineer Intern at C+AI Azure Edge+ Platform
+# 实习经历
 
-- 编写了k8s CSI Driver，通过NFS动态在RWO的storage class上分配RWX的volume，通过OpenEBS Jiva实现磁盘高可用
+### **微软亚太研发集团（上海）** <span class="right">2022年7月-9月</span>
 
-## <span class="highlight">Alluxio</span> <span class="right">2021年12月-2022年3月</span>
-### Software Engineer Intern
+- 编写了一个Kubernetes CSI Driver，在任何storage class上支持ReadWriteMany
 
-- Alluxio是一个创业公司，产品是一个开源的大规模数据编排工具，在最近一轮融资中融到了5千万美元
-- 给alluxio增加了libfuse3的支持，此功能在2.8版本中发布；参与给一个客户的POC验证和集群自动化部署和测试的内部工具的开发
+### **Alluxio** 北京 <span class="right">2021年12月-2022年3月</span>
 
-## <span class="highlight">微软亚太研发集团（苏州）</span> <span class="right">2019年7月-10月</span>
-### Software Engineer Intern at STCA Office 365 Deployment
+- Alluxio是一个分布式文件系统，可以将多种存储整合到一个命名空间中并提供缓存功能
+- 使alluxio的FUSE功能支持libfuse3，此功能在2.8版本中发布
+
+### **微软亚太研发集团（苏州）** <span class="right">2019年7月-10月</span>
 
 - 负责内部部署监控网站的前端和后端开发；实现并上线新功能和优化性能和代码设计
 
@@ -60,11 +59,19 @@ no_toc: true
 ## **SCOW** https://github.com/PKUHPC/SCOW <span class="right">2021年9月-现在</span>
 
 - 一个Web端的超算门户与运行管理系统。主要功能：账户用户管理、作业管理、计费收费、终端、文件管理、交互式任务
-- 已在校内外多个集群上部署并试用
-- 初期独立负责开发和运维，当前团队十余人，项目技术方面总负责人，参与项目需求和发展讨论
+- 截止至2023年12月，已在全国**13省市35所单位**中部署或者已达成部署意向
+- 初期独立开发和运维
+- 当前技术团队10人，负责代码审核、解决重难点问题、团队技术方向决策，参与项目需求和发展讨论
 - 于HPC China 2022发表论文**SCOW：一个开源的超算Web门户和管理系统**，获SOP track唯一满分评价和会议最佳论文提名
 
-## 项目相关奖项
+## 开源项目和经历
+
+- [`muety/wakapi`](https://github.com/muety/wakapi)：有2.1K star的Go Web项目，一个自部署的WakaTime后端。在PR [#592](https://github.com/muety/wakapi/pull/592)中支持了SQL Server
+- [`next-typed-api-routes`](https://github.com/ddadaal/next-typed-api-routes)：给Next.js API Route定义TS接口，自动实现参数验证、强类型API客户端和更快的JSON序列化
+- [`react-typed-i18n`](http://github.com/ddadaal/react-typed-i18n)：强类型的React i18n库。使用TS的类型系统提供对文本ID的类型检查和自动完成，运行时零开销
+- [`tsgrpc`](https://github.com/ddadaal/tsgrpc)：一个Node生态下的gRPC服务器端框架，并包装了一个protobuf生成器和一些帮助函数，用于SCOW项目
+
+## 项目竞赛奖项
 
 - 2023年HackPKU Hackathon比赛**一等奖**（WebGPU和浏览器上运行AI模型相关，4人团队，负责WebGPU部分和应用部分）
 - 2021年"悟道之巅"AI创新应用大赛**优胜奖**（从文本生成短视频，4人团队，负责前后端）
@@ -74,15 +81,9 @@ no_toc: true
 - 2018年第14届“花旗杯”金融创新应用大赛**一等奖**（基于人工智能的大类资产配置系统，技术9人，负责Web前端）
 - 2018年“链谷杯”全国高校区块链应用链应用大赛**三等奖**，第三届全国高校区块链大赛**全国二等奖**（类GitHub的区块链信息托管平台，4人团队，负责技术架构设计和平台的demo应用）
 
-## 开源项目和相关经历
-
-- [`next-typed-api-routes`](https://github.com/ddadaal/next-typed-api-routes)：给Next.js API Route定义TS接口，自动实现参数验证、强类型API客户端和更快的JSON序列化
-- [`react-typed-i18n`](http://github.com/ddadaal/react-typed-i18n)：强类型的React i18n库。使用TS的类型系统提供对文本ID的类型检查和自动完成，运行时零开销
-- [`tsgrpc`](https://github.com/ddadaal/tsgrpc)：一个Node生态下的gRPC服务器端框架，并包装了一个protobuf生成器和一些帮助函数，用于SCOW项目
-- 对`fastify-multipart`, `fastify`等开源项目有过贡献
-
 # 技能/其他
 
-- 了解Web项目前端（`React`技术栈）、后端（主要为`Node.js`）的实现和设计，熟悉Kubernetes以及容器化架构，能独立负责小型项目的需求、设计、开发、运维和项目管理工作
-- 熟悉`TypeScript/JavaScript`, `C#`语言，编写过`Java`, `Python`, `Go`, `Rust`等语言的项目
-- 课程中实现了**编译器Lexer, Parser, IR优化**、**Android自动化测试**、**一些图计算算法**、**Go和Rust版本的Raft算法**等
+- 熟悉Web项目前端（`React`技术栈）、后端（主要为`Node.js`）的实现和设计
+- 熟悉Kubernetes以及容器化架构，能独立负责小型项目的需求、设计、开发、运维和项目管理工作
+- 熟悉`TypeScript/JavaScript`, `C#`, `Go`, `Python`语言，编写过`Java`, `Rust`等语言的项目
+
