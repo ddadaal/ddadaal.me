@@ -61,7 +61,7 @@ Junda Chen
 
 - A Web based HPC Portal and Management Information System, including Account Management, Job Management, Billing, Terminal, File Management, Interactive Tasks
 - Until Dec 2023, SCOW has been deployed (or has been decided to be deployed) on 35 companies in 13 provinces across China
-- Completed development and maintenance independently at the start of the project
+- **Independently completed core features**, determined **technology stack** and **architecture**, established **development standards and processes**. All have been **continuously used to today**
 - Current responsibilities include code review, solving problems and making decisions in technology
 - Published a paper `SCOW: An Open Source HPC Web Portal and Management System` on HPC China 2022. Received the only full marks review at SOP track and nominated excellent article
 
