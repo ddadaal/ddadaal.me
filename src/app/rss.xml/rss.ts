@@ -1,5 +1,5 @@
 import { dirname, join } from "path";
-import rehypePrettyCode from "rehype-pretty-code";
+import { rehypePrettyCode } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
 import rehypeRewrite from "rehype-rewrite";
 import rehypeStringify from "rehype-stringify";

@@ -8,9 +8,9 @@ import { dirname, join } from "path";
 import { ComponentType, createElement } from "react";
 import * as prod from "react/jsx-runtime";
 import { FaLink } from "react-icons/fa";
-import rehypePrettyCode from "rehype-pretty-code";
+import { rehypePrettyCode } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
-import rehypeReact from "rehype-react";
+import rehypeReact, { Options as RehypeReactOptions } from "rehype-react";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
@@ -67,7 +67,6 @@ export const ArticleImageServer = async ({ article, props }: Props & {
   );
 };
 
-// @ts-expect-error: the react types are missing.
 const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 
 interface HeadingWithLinkProps {
@@ -110,7 +109,7 @@ export const ArticleContent = async ({ article }: Props) => {
         h3: ((props) => <HeadingWithLink element="h3" props={props} />) satisfies
           ComponentType<JSX.IntrinsicElements["h3"]>,
       },
-    })
+    } as RehypeReactOptions)
     .process(article.content);
 
   const showToc = !article.no_toc && file.data.toc && file.data.toc.length > 0;

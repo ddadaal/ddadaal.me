@@ -1,6 +1,6 @@
 import { cut } from "@node-rs/jieba";
 import MiniSearch from "minisearch";
-import { cache } from "react";
+import { cache, Suspense } from "react";
 import { ArticleListPageLayout } from "src/app/articles/ArticleListPageLayout";
 import { ArticleSearchPage } from "src/app/articles/search/ArticleSearchPage";
 import { countTags } from "src/app/articles/tags";
@@ -56,12 +56,14 @@ export default async function() {
 
   return (
     <ArticleListPageLayout articleCount={articleCount} tagCounts={tagCounts}>
-      <ArticleSearchPage
-        index={index}
-        articleListInfos={articleListInfos}
-        articleCount={articleCount}
-        tagCounts={tagCounts}
-      />
+      <Suspense>
+        <ArticleSearchPage
+          index={index}
+          articleListInfos={articleListInfos}
+          articleCount={articleCount}
+          tagCounts={tagCounts}
+        />
+      </Suspense>
     </ArticleListPageLayout>
   );
 }
