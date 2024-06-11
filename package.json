@@ -39,7 +39,7 @@
     "minisearch": "6.3.0",
     "next": "14.2.3",
     "next-sitemap": "4.2.3",
-    "octokit": "3.1.2",
+    "@octokit/rest": "20.1.1",
     "photoswipe": "5.4.4",
     "postcss": "8.4.38",
     "postcss-nested": "6.0.1",
