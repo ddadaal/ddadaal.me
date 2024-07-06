@@ -42,7 +42,9 @@ const CommentPanel: React.FC<Props> = (props) => {
     <div>
       <h2 className="text-2xl font-bold mb-2 flex items-center">
         <FaComments />
-        <span className="mx-2">
+        <span
+          className="mx-2"
+        >
           <Localized id="comments.title" />
         </span>
       </h2>
@@ -59,7 +61,7 @@ const CommentPanel: React.FC<Props> = (props) => {
               title: `[COMMENT] ${props.articleTitle}`,
               id: props.articleId.substring(0, 50),
               distractionFreeMode: false,
-              // eslint-disable-next-line max-len
+
               // proxy: "https://ddadaal-me-cors.ddadaal.workers.dev/https://github.com/login/oauth/access_token",
             }}
             />

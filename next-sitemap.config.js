@@ -1,3 +1,4 @@
+/* eslint-env node */
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {

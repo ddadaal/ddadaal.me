@@ -5,7 +5,7 @@ import { SearchCard, TagsCard, WebsiteCard } from "./cards";
 interface Props {
   articleCount: number;
 
-  tagCounts: { tag: string; count: number}[];
+  tagCounts: { tag: string; count: number }[];
 }
 
 export const ArticleListPageLayout = ({

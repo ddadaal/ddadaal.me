@@ -34,6 +34,6 @@ export default function RedirectPage({
   }
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return redirects.map((x) => ({ id: x.id }));
 }

@@ -8,7 +8,7 @@ import { Localized } from "src/i18n";
 import { NavLink } from "src/layout/Header";
 
 const LinkOrA = (props: PropsWithChildren<
-  AnchorHTMLAttributes<HTMLAnchorElement> & Omit<LinkProps, "href"> & { href: string | undefined}
+  AnchorHTMLAttributes<HTMLAnchorElement> & Omit<LinkProps, "href"> & { href: string | undefined }
 >) => {
   // @ts-ignore
   return createElement(props.href ? Link : "a", props, props.children);

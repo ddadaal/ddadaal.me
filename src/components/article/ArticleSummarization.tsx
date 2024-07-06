@@ -6,7 +6,8 @@ interface Props {
   summaries: string[];
 }
 
-// eslint-disable-next-line max-len
+
+// eslint-disable-next-line @stylistic/max-len
 const AZURE_AI_LANGUAGE_SERVICE_DOC_URL = "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
 
 export const ArticleSummarization = ({ summaries }: Props) => {

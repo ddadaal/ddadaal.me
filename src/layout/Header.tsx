@@ -93,7 +93,7 @@ export const Header = ({ resumeLangs }: Props) => {
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
         <Link className="flex items-center justify-center space-x-1" href="/">
-          <Image src={logo} alt="logo" width={42} height={42} />
+          <Image src={logo as string} alt="logo" width={42} height={42} />
           <h1 className="text-sm font-bold">ddadaal.me</h1>
         </Link>
         <div className="flex items-center gap-1">

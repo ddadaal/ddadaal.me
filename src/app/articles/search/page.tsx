@@ -7,9 +7,9 @@ import { countTags } from "src/app/articles/tags";
 import { convertToListInfo, readArticlesCached } from "src/data/articles";
 import { generateTitle } from "src/utils/metadata";
 
-export type IndexedArticleInfo = {
+export interface IndexedArticleInfo {
   id: string;
-};
+}
 
 export const generateMetadata = () => {
   return {

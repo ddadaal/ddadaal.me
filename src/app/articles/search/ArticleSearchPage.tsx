@@ -88,7 +88,7 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
               <span className="pr-2 font-bold" key={"query"}>{query}</span>,
             ]}
           />
-         ({searchResult.length})
+          ({searchResult.length})
         </h1>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn m-1">

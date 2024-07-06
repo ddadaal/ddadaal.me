@@ -40,7 +40,7 @@ export const Footer = () => {
       <div className="footer py-6 max-w-7xl mx-auto px-4">
         <div className="space-y-1">
           <p>
-        👨🏼‍💻&nbsp;
+            👨🏼‍💻&nbsp;
             <Localized
               id={"footer.codeBy"}
               args={[(
@@ -53,7 +53,7 @@ export const Footer = () => {
             />
           </p>
           <p>
-        📝
+            📝
             <Localized
               id={"footer.license"}
               args={[
@@ -64,13 +64,13 @@ export const Footer = () => {
                   className="link"
                   href="https://creativecommons.org/licenses/by-sa/4.0/"
                 >
-            CC BY-SA 4.0
+                  CC BY-SA 4.0
                 </a>,
               ]}
             />
           </p>
-          <RunningTime serverStartTime={serverTime.toISO()!} />
-          <LastUpdateTime time={serverTime.toISO()!} />
+          <RunningTime serverStartTime={serverTime.toISO()} />
+          <LastUpdateTime time={serverTime.toISO()} />
           <div>
             <p>
               📲 <Localized id="footer.contacts" />
@@ -83,19 +83,19 @@ export const Footer = () => {
         </div>
         <div>
           <span className="footer-title">
-          🚀 <Localized id="footer.poweredBy" />
+            🚀 <Localized id="footer.poweredBy" />
           </span>
           {powerBys.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />)}
         </div>
         <div>
           <span className="footer-title">
-        🎨 <Localized id="footer.themedWith" />
+            🎨 <Localized id="footer.themedWith" />
           </span>
           { themedWiths.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />) }
         </div>
         <div>
           <span className="footer-title">
-        🎓 <Localized id="footer.contacts" />
+            🎓 <Localized id="footer.contacts" />
           </span>
           {friends.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />)}
         </div>

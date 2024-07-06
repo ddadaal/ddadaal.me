@@ -24,7 +24,7 @@ const contacts = [
     "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
   [SiDouban, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
-] as Array<[IconSrc, string, string]>;
+] as const;
 
 const Icon = ({ Src, link, text, size }: { Src: IconSrc, link: string, text: string; size: number }) => {
 

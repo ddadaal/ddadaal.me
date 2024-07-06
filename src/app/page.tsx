@@ -54,7 +54,7 @@ export default async function Page() {
           <Contacts size={2} />
         </div>
         <div>
-          <LastUpdateTime time={serverTime.toISO()!} />
+          <LastUpdateTime time={serverTime.toISO()} />
         </div>
       </div>
     </main>

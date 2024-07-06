@@ -40,7 +40,7 @@ export const ArticleImageServer = async ({ article, props }: Props & {
     return <img {...props} />;
   }
 
-  const imagePath = join(dirname(article.filePath), props.src!);
+  const imagePath = join(dirname(article.filePath), src);
 
   const size = await imageSizeAsync(imagePath);
 
@@ -71,7 +71,7 @@ const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 
 interface HeadingWithLinkProps {
   element: "h1" | "h2" | "h3";
-  props: JSX.IntrinsicElements["h1"] | JSX.IntrinsicElements["h2"] | JSX.IntrinsicElements["h3"];
+  props: JSX.IntrinsicElements["h1"] ;
   anchorLinkClassName?: string;
 }
 

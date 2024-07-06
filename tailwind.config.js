@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-env node */
+
 const themesJson = require("./src/utils/themes.json");
 
 const themes = Object.keys(themesJson).filter((x) => x !== "auto");

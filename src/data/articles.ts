@@ -40,6 +40,19 @@ export interface ArticleItem {
   langVersions: Article[];
 }
 
+interface ArticleFrontmatterData {
+  id: string;
+  title: string;
+  date: string;
+  lang: string;
+  tags?: string[];
+  related?: string[];
+  ignored_in_list?: boolean;
+  no_toc?: boolean;
+  hide_heading?: boolean;
+  absolute_path?: string;
+  last_updated?: string;
+}
 
 const acceptedFileTypes = [".md", ".mdx"];
 
@@ -58,11 +71,13 @@ export const readArticleFromDir = async (dir: string) => {
     const fileContent = await readFile(filePath, "utf-8");
     const { content, data } = matter(fileContent);
 
-    const folderDate = basename(dir).match(/^(\d{4})(\d{2})(\d{2})/);
+    const typedData = data as ArticleFrontmatterData;
+
+    const folderDate = /^(\d{4})(\d{2})(\d{2})/.exec(basename(dir));
 
     if (!item) {
       item = {
-        id: data.id,
+        id: typedData.id,
         folderDate: folderDate ? { year: +folderDate[1], month: +folderDate[2], day: +folderDate[3] } : undefined,
         langVersions: [],
       };
@@ -72,7 +87,7 @@ export const readArticleFromDir = async (dir: string) => {
 
     let summaries: string[] | undefined;
 
-    const summariesFilePath = join(dir, `${data.lang}.summary.json`);
+    const summariesFilePath = join(dir, `${typedData.lang}.summary.json`);
 
     if (existsSync(summariesFilePath)) {
       const articleSummary = JSON.parse(await readFile(summariesFilePath, "utf-8")) as ArticleSummary;
@@ -82,17 +97,17 @@ export const readArticleFromDir = async (dir: string) => {
 
     item.langVersions.push({
       content,
-      title: data.title,
-      date: data.date,
-      id: data.id,
-      lang: data.lang,
-      tags: data.tags,
-      related: data.related,
-      ignored_in_list: data.ignored_in_list,
-      hide_heading: data.hide_heading,
-      no_toc: data.no_toc,
-      absolute_path: data.absolute_path,
-      last_updated: data.last_updated,
+      title: typedData.title,
+      date: typedData.date,
+      id: typedData.id,
+      lang: typedData.lang,
+      tags: typedData.tags,
+      related: typedData.related,
+      ignored_in_list: typedData.ignored_in_list,
+      hide_heading: typedData.hide_heading,
+      no_toc: typedData.no_toc,
+      absolute_path: typedData.absolute_path,
+      last_updated: typedData.last_updated,
 
       wordCount: words,
       readingTime: minutes,
@@ -126,7 +141,7 @@ export const readArticles = async () => {
 
     const item = await readArticleFromDir(path);
 
-    if (item && item.folderDate && item.langVersions.every((x) => !x.ignored_in_list)) {
+    if (item?.folderDate && item.langVersions.every((x) => !x.ignored_in_list)) {
       articles.push(item);
     }
   }

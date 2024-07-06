@@ -11,7 +11,7 @@ export const I18nStore = () => {
 
   const setLanguageById = (lang: Locale) => {
     localStorage.setItem(LANGUAGE_KEY, lang);
-    i18n.setLanguageById(lang);
+    void i18n.setLanguageById(lang);
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const I18nStore = () => {
         localStorage.removeItem(LANGUAGE_KEY);
         return;
       }
-      i18n.setLanguageById(lang);
+      void i18n.setLanguageById(lang);
     }
   }, []);
 

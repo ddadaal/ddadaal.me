@@ -114,7 +114,6 @@ const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
     <input
       type="text"
       className={"input input-bordered w-full"}
-      name="query"
       autoComplete="off"
       {...props}
     />
@@ -122,7 +121,7 @@ const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
 };
 
 
-const QuerySyncedSearchBarInput = ({ placeholder }: { placeholder: string }) => {
+const QuerySyncedSearchBarInput = ({ placeholder, name }: { placeholder: string, name: string }) => {
   const searchParams = useSearchParams();
 
   const query = searchParams.get("query") ?? undefined;
@@ -136,6 +135,7 @@ const QuerySyncedSearchBarInput = ({ placeholder }: { placeholder: string }) => 
     <SearchBarInput
       placeholder={placeholder}
       value={input}
+      name={name}
       onChange={(e) => {
         setInput(e.target.value);
       }}
@@ -159,12 +159,13 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
         method="GET"
         onSubmit={(e) => {
           e.preventDefault();
-          router.push("/articles/search?query=" + encodeURIComponent(e.currentTarget.query.value));
+          const formData = e.currentTarget as unknown as { query: { value: string } };
+          router.push("/articles/search?query=" + encodeURIComponent(formData.query.value));
         }}
       >
         {/* https://nextjs.org/docs/messages/deopted-into-client-rendering */}
         <Suspense fallback={<SearchBarInput placeholder={inputPlaceholder} />}>
-          <QuerySyncedSearchBarInput placeholder={inputPlaceholder} />
+          <QuerySyncedSearchBarInput placeholder={inputPlaceholder} name="query" />
         </Suspense>
         <button type="submit" className="btn btn-square ">
           <FaSearch />
