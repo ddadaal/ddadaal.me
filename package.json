@@ -12,11 +12,11 @@
     "build:sitemap": "next-sitemap",
     "build": "rimraf out && pnpm build:data && pnpm build:next && next-sitemap",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "serve": "serve out"
   },
   "dependencies": {
-    "@ddadaal/eslint-config": "2.0.0",
+    "@ddadaal/eslint-config": "2.1.0",
     "@node-rs/jieba": "1.10.3",
     "@stefanprobst/rehype-extract-toc": "2.2.0",
     "@tailwindcss/typography": "0.5.13",
