@@ -38,7 +38,7 @@
     "luxon": "3.4.4",
     "mime-types": "2.1.35",
     "minisearch": "6.3.0",
-    "next": "14.2.3",
+    "next": "14.2.10",
     "next-sitemap": "4.2.3",
     "@octokit/rest": "20.1.1",
     "photoswipe": "5.4.4",
