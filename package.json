@@ -73,7 +73,7 @@
     "@azure/ai-language-text": "1.1.0",
     "@types/mime-types": "2.1.4",
     "@types/rss": "0.0.32",
-    "concurrently": "8.2.2",
+    "concurrently": "9.1.0",
     "dotenv": "16.4.5",
     "envalid": "8.0.0",
     "rimraf": "5.0.7",
