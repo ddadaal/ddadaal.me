@@ -30,7 +30,7 @@
     "daisyui": "4.12.2",
     "eslint": "9.6.0",
     "eslint-plugin-react": "7.34.3",
-    "eslint-config-next": "14.2.3",
+    "eslint-config-next": "15.1.0",
     "gitalk": "1.8.0",
     "gray-matter": "4.0.3",
     "hastscript": "9.0.0",
