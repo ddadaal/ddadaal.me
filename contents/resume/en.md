@@ -57,17 +57,18 @@ Junda Chen
 
 # Recent Project Experiences (https://github.com/ddadaal; Personal Website: https://ddadaal.me)
 
-## **SCOW** https://github.com/PKUHPC/SCOW <span class="right">Sept 2021-Present</span>
+## SCOW, Creator and Technical Advisor https://github.com/PKUHPC/OpenSCOW <span class="right">Sept 2021-Present</span>
 
-- A Web based HPC Portal and Management Information System, including Account Management, Job Management, Billing, Terminal, File Management, Interactive Tasks
-- Until Dec 2023, SCOW has been deployed (or has been decided to be deployed) on 35 companies in 13 provinces across China
-- **Independently completed core features**, determined **technology stack** and **architecture**, established **development standards and processes**. All have been **continuously used to today**
-- Current responsibilities include code review, solving problems and making decisions in technology
-- Published a paper `SCOW: An Open Source HPC Web Portal and Management System` on HPC China 2022. Received the only full marks review at SOP track and nominated excellent article
+- SCOW: Using and managing HPC from Web; Open source version donated to OpenAtom Foundation
+- Technologies: Node.js full stack; gRPC API; WebSocket; HTTP Proxy; mTLS; Highly extensible design
+- Until Dec 2024, SCOW has been deployed on 70 companies in 16 provinces across China
+- **Creator and Independently completed core features**, determined **technology stack** and **architecture**, established **development standards and processes**. All have been **continuously in use even since**
+- Current **Technical Advisor**: code review, solving problems and making technical decisions
+- Published a paper *SCOW: An Open Source HPC Web Portal and Management System* on HPC China 2022. Received the only full marks review at SOP track and nominated excellent article
 
 ## Notable Open Source Experiences
 
-- [`muety/wakapi](https://github.com/muety/wakapi): A Go Web Project with 2.1K star, a self-deployable WakaTime backend. Support Microsoft SQL Server in PR [#592](https://github.com/muety/wakapi/pull/592)
+- [`muety/wakapi`](https://github.com/muety/wakapi): A Go Project with 2.1K star, a self-deployable WakaTime backend. Support Microsoft SQL Server in PR [#592](https://github.com/muety/wakapi/pull/592)
 - [`next-typed-api-routes`](https://github.com/ddadaal/next-typed-api-routes): Use A TS interface to generate parameter validation, server and client type completion, and faster serialization
 - [`react-typed-i18n`](https://github.com/ddadaal/react-typed-i18n): A Strongly typed i18n library providing text ID type check and zero runtime cost
 - [`tsgrpc`](https://github.com/ddadaal/tsgrpc): A gRPC server framework in TypeScript, a wrapper to generate protobuf files and utility functions. Used in SCOW

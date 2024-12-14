@@ -54,19 +54,20 @@ no_toc: true
 
 - 负责内部部署监控网站的前端和后端开发；实现并上线新功能和优化性能和代码设计
 
-# 近期项目经历（https://github.com/ddadaal ，个人网站 https://ddadaal.me）
+# 近期项目经历 ( https://github.com/ddadaal )
 
-## **SCOW** https://github.com/PKUHPC/SCOW <span class="right">2021年9月-现在</span>
+## **SCOW** 创始人、技术顾问 https://github.com/PKUHPC/OpenSCOW <span class="right">2021年9月-现在</span>
 
-- 一个Web端的超算门户与运行管理系统。主要功能：账户用户管理、作业管理、计费收费、终端、文件管理、交互式任务
-- 截止至2023年12月，已在全国**13省市35所单位**中部署或者已达成部署意向
-- **独自完成了项目的主要功能**，完成和确定了项目的**技术选型、架构、开发规范和流程**并**沿用至今**
-- 当前技术团队10人，负责代码审核、解决重难点问题、团队技术方向决策，参与项目需求和发展讨论
-- 于HPC China 2022发表论文**SCOW：一个开源的超算Web门户和管理系统**，获SOP track唯一满分评价和会议最佳论文提名
+- 超算平台软件，从Web上使用和管理超算集群; 开源版OpenSCOW捐赠给开放原子基金会
+- 主要技术点：Node.js全栈; gRPC API; WebSocket; HTTP代理; mTLS; 可扩展性设计
+- 截止至2024年12月，已在全国**16省市70个单位**中部署并投入使用
+- **创始人，独自完成了项目的主要功能**，完成和确定了项目的**技术选型、架构、开发规范和流程**并**沿用至今**
+- 现担任**技术顾问**，负责代码审核、解决重难点问题、团队技术方向决策，参与项目需求和发展讨论
+- HPC China 2022发表论文*SCOW：一个开源的超算Web门户和管理系统*，获SOP track唯一满分评价和会议最佳论文提名
 
 ## 开源项目和经历
 
-- [`muety/wakapi`](https://github.com/muety/wakapi)：有2.1K star的Go Web项目，一个自部署的WakaTime后端。在PR [#592](https://github.com/muety/wakapi/pull/592)中支持了SQL Server
+- [`muety/wakapi`](https://github.com/muety/wakapi)：有2.1K star的Go项目，一个自部署的WakaTime后端。在PR [#592](https://github.com/muety/wakapi/pull/592)中支持了SQL Server
 - [`next-typed-api-routes`](https://github.com/ddadaal/next-typed-api-routes)：给Next.js API Route定义TS接口，自动实现参数验证、强类型API客户端和更快的JSON序列化
 - [`react-typed-i18n`](http://github.com/ddadaal/react-typed-i18n)：强类型的React i18n库。使用TS的类型系统提供对文本ID的类型检查和自动完成，运行时零开销
 - [`tsgrpc`](https://github.com/ddadaal/tsgrpc)：一个Node生态下的gRPC服务器端框架，并包装了一个protobuf生成器和一些帮助函数，用于SCOW项目
@@ -83,7 +84,8 @@ no_toc: true
 
 # 技能/其他
 
-- 熟悉Web项目前端（`React`技术栈）、后端（主要为`Node.js`）的实现和设计
-- 熟悉Kubernetes以及容器化架构，能独立负责小型项目的需求、设计、开发、运维和项目管理工作
-- 熟悉`TypeScript/JavaScript`, `C#`, `Go`, `Python`语言，编写过`Java`, `Rust`等语言的项目
+- 熟悉Kubernetes以及容器技术，有二次开发经验
+- 熟悉Web项目全栈开发（主要是`React`和`Node.js`）
+- 有能力独立负责小型项目的需求、设计、开发、监控、运维和项目管理等全流程工作
+- 熟悉`TypeScript/JavaScript`, `Go`, `C#`, `Python`等语言，
 
