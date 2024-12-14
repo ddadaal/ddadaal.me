@@ -30,6 +30,7 @@ export const WebsiteCard = () => {
           <FaGlobe />
           {" "}
           ddadaal.me |
+          {" "}
           <Localized id="blogIntro.subtitle" />
         </h2>
         <p>
@@ -150,7 +151,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
 
   const router = useRouter();
 
-  const inputPlaceholder = i18n.translateToString("search.inputPlaceholder", [articleCount]);
+  const inputPlaceholder = i18n.translateToString("search.inputPlaceholder", [articleCount.toString()]);
 
   return (
     <div className={classNames("form-control my-2", { [styles.search_bar]: showTags })}>
