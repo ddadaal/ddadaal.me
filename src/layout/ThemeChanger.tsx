@@ -13,11 +13,10 @@ interface Props {
 }
 
 export const ThemeChanger = ({ btnClassName }: Props) => {
-
   const themeStore = useStore(ThemeStore);
 
   return (
-    <div className={"dropdown dropdown-end"}>
+    <div className="dropdown dropdown-end">
       <label tabIndex={0} className={classNames("btn", btnClassName)}>
         <FaAdjust />
         <span className="hidden sm:block">
@@ -46,5 +45,4 @@ export const ThemeChanger = ({ btnClassName }: Props) => {
       </ul>
     </div>
   );
-
 };

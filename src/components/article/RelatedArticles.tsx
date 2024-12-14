@@ -22,7 +22,6 @@ interface Props {
 }
 
 export const RelatedArticles = ({ relatedArticles }: Props) => {
-
   const i18n = useI18n();
 
   if (relatedArticles.length === 0) {
@@ -62,5 +61,4 @@ export const RelatedArticles = ({ relatedArticles }: Props) => {
       </div>
     </div>
   );
-
 };

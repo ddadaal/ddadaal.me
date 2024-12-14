@@ -12,7 +12,7 @@ if (!existsSync(CHANGEMARK_JSON_FILE)) {
 }
 
 const updateChangemark = (watchDir: string) => {
-  const currentChangemark = JSON.parse(readFileSync(CHANGEMARK_JSON_FILE, "utf-8"));
+  const currentChangemark = JSON.parse(readFileSync(CHANGEMARK_JSON_FILE, "utf-8")) as Record<string, number>;
 
   currentChangemark[watchDir] = Date.now();
 

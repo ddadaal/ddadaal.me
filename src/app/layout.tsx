@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-
   const resume = await getResume();
 
   const monitorHost = process.env.NODE_ENV === "development"

@@ -17,7 +17,6 @@ const themedWiths = [
   ["tailwind", "https://tailwindcss.com/"],
 ].map(([name, link]) => ({ name, link }));
 
-
 const friends = [
   { name: "idealclover", description: "翠翠酱的个人网站", link: "https://idealclover.top" },
   { name: "Sephidator", description: "Sephidator的个人博客", link: "https://sephidator.xyz" },
@@ -30,7 +29,7 @@ const friends = [
   link,
 }));
 
-const FooterLink = ({ name, link }: { name: string, link: string }) => (
+const FooterLink = ({ name, link }: { name: string; link: string }) => (
   <a className="link link-hover" target="_blank" href={link} rel="noreferrer">{name}</a>
 );
 
@@ -42,20 +41,22 @@ export const Footer = () => {
           <p>
             👨🏼‍💻&nbsp;
             <Localized
-              id={"footer.codeBy"}
+              id="footer.codeBy"
               args={[(
                 <LocalizedArticleLink
                   className="link link-hover"
                   key="about/me"
                   basePath="/about/me"
-                >ddadaal</LocalizedArticleLink>
+                >
+                  ddadaal
+                </LocalizedArticleLink>
               )]}
             />
           </p>
           <p>
             📝
             <Localized
-              id={"footer.license"}
+              id="footer.license"
               args={[
                 <a
                   key="license"
@@ -73,29 +74,43 @@ export const Footer = () => {
           <LastUpdateTime time={serverTime.toISO()} />
           <div>
             <p>
-              📲 <Localized id="footer.contacts" />
+              📲
+              {" "}
+              <Localized id="footer.contacts" />
             </p>
             <Contacts size={1.6} />
           </div>
           <p className="text-center">
-            © {new Date().getFullYear()} | <Localized id="footer.madeWithLove" />
+            ©
+            {" "}
+            {new Date().getFullYear()}
+            {" "}
+            |
+            {" "}
+            <Localized id="footer.madeWithLove" />
           </p>
         </div>
         <div>
           <span className="footer-title">
-            🚀 <Localized id="footer.poweredBy" />
+            🚀
+            {" "}
+            <Localized id="footer.poweredBy" />
           </span>
           {powerBys.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />)}
         </div>
         <div>
           <span className="footer-title">
-            🎨 <Localized id="footer.themedWith" />
+            🎨
+            {" "}
+            <Localized id="footer.themedWith" />
           </span>
           { themedWiths.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />) }
         </div>
         <div>
           <span className="footer-title">
-            🎓 <Localized id="footer.contacts" />
+            🎓
+            {" "}
+            <Localized id="footer.contacts" />
           </span>
           {friends.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />)}
         </div>

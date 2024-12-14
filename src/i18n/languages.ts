@@ -26,7 +26,6 @@ export const languages = {
   },
 };
 
-
 export type Locale = keyof typeof languages;
 
 export const getLanguage = (locale: string) => languages[locale as Locale];

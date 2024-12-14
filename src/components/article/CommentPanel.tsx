@@ -2,7 +2,7 @@
 
 import "gitalk/dist/gitalk.css";
 
-// @ts-ignore
+// @ts-expect-error --no types
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import React, { useEffect } from "react";
 import { FaComments } from "react-icons/fa";
@@ -19,7 +19,6 @@ function isServer() {
 }
 
 const CommentPanel: React.FC<Props> = (props) => {
-
   const [mount, setMount] = React.useState(!isServer());
 
   const firstUpdate = React.useRef(true);
@@ -51,21 +50,21 @@ const CommentPanel: React.FC<Props> = (props) => {
       {
         mount
           ? (
-            <GitalkComponent options={{
-              clientID: "5640259688bc3d72b807",
-              clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
-              repo: "ddadaal.me.github.io",
-              owner: "ddadaal",
-              admin: ["ddadaal"],
-              language: props.language,
-              title: `[COMMENT] ${props.articleTitle}`,
-              id: props.articleId.substring(0, 50),
-              distractionFreeMode: false,
+              <GitalkComponent options={{
+                clientID: "5640259688bc3d72b807",
+                clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
+                repo: "ddadaal.me.github.io",
+                owner: "ddadaal",
+                admin: ["ddadaal"],
+                language: props.language,
+                title: `[COMMENT] ${props.articleTitle}`,
+                id: props.articleId.substring(0, 50),
+                distractionFreeMode: false,
 
               // proxy: "https://ddadaal-me-cors.ddadaal.workers.dev/https://github.com/login/oauth/access_token",
-            }}
-            />
-          )
+              }}
+              />
+            )
           : undefined
       }
     </div>

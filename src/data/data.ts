@@ -9,32 +9,30 @@ interface DbConfig<TData> {
 }
 
 export const createDataSource = <TData>(config: DbConfig<TData>) => {
-
-
-  let loaded: { data: TData, time: number } | null = null;
+  let loaded: { data: TData; time: number } | null = null;
 
   const reload = async (now: number) => {
     console.log("[%s] Load data", config.watchPath);
-    loaded = {
+    return loaded = {
       data: await config.loader(),
       time: now,
     };
   };
 
   return async () => {
-
     const now = Date.now();
 
     if (!loaded) {
       console.log("[%s] No data loaded. Load data", config.watchPath);
-      await reload(now);
-    } else {
+      loaded = await reload(now);
+    }
+    else {
       if (changemarkData[config.watchPath] && changemarkData[config.watchPath] > now) {
         console.log("[%s] Change detected. Reload data", config.watchPath);
-        await reload(now);
-
+        loaded = await reload(now);
       }
     }
-    return loaded!.data;
+
+    return loaded.data;
   };
 };

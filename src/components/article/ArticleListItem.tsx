@@ -5,14 +5,11 @@ import { ArticleFrontmatter } from "src/components/article/ArticleFrontmatter";
 import { ArticleListInfo } from "src/data/articles";
 import { useI18n } from "src/i18n";
 
-
-
 export interface ArticleListItemProps {
   article: ArticleListInfo;
 }
 
 export const ArticleListItem = ({ article }: ArticleListItemProps) => {
-
   const i18n = useI18n();
 
   const articleOfLang = article.langVersions.find((x) => x.lang === i18n.currentLanguage.id) ?? article.langVersions[0];
@@ -36,4 +33,3 @@ export const ArticleListItem = ({ article }: ArticleListItemProps) => {
     </div>
   );
 };
-

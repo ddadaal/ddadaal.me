@@ -10,7 +10,6 @@ import { LastUpdateTime } from "src/layout/LastUpdateTime";
 import { serverTime } from "src/utils/serverTime";
 
 export default async function Page() {
-
   const articles = await readArticlesCached();
 
   return (
@@ -60,4 +59,3 @@ export default async function Page() {
     </main>
   );
 }
-

@@ -34,7 +34,6 @@ const PAGE_SIZE = 5;
 const orderPrefix = prefix("search.order.");
 
 export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCounts }: Props) => {
-
   const i18n = useI18n();
 
   const [miniSearch] = useState(() =>
@@ -45,8 +44,8 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
   const search = Object.fromEntries(useSearchParams().entries());
   const pathname = usePathname();
 
-  const query = search.query ?? "";
-  const page = intParse(search.page ?? "1", 1);
+  const query = search.query;
+  const page = intParse(search.page, 1);
   let order = search.order as Order | undefined;
   if (!order || !(ORDERS as readonly string[]).includes(order)) {
     order = ORDERS[0];
@@ -60,7 +59,10 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
     }
 
     const findArticle = (s: SearchResult) => {
-      const info = articleListInfos.find((x) => x.id === s.id)!;
+      const info = articleListInfos.find((x) => x.id === s.id);
+      if (!info) {
+        throw new Error(`Article not found: ${s.id as string}`);
+      }
       return info.langVersions.find((x) => x.lang === i18n.currentLanguage.id) ?? info.langVersions[0];
     };
 
@@ -70,7 +72,6 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
     const aToBDiff = fromArticleTime(aInfo.date).toMillis() - fromArticleTime(bInfo.date).toMillis();
 
     return order === "time" ? aToBDiff : -aToBDiff;
-
   });
 
   const totalPages = Math.ceil(searchResult.length / PAGE_SIZE);
@@ -83,12 +84,14 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
       <div className="flex justify-between py-2">
         <h1 className="text-3xl flex items-center">
           <Localized
-            id={"search.title"}
+            id="search.title"
             args={[
-              <span className="pr-2 font-bold" key={"query"}>{query}</span>,
+              <span className="pr-2 font-bold" key="query">{query}</span>,
             ]}
           />
-          ({searchResult.length})
+          (
+          {searchResult.length}
+          )
         </h1>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn m-1">
@@ -113,7 +116,11 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
           searchResult
             .slice(PAGE_SIZE * (page - 1), PAGE_SIZE * page)
             .map((r) => {
-              const info = articleListInfos.find((x) => x.id === r.id)!;
+              const info = articleListInfos.find((x) => x.id === r.id);
+
+              if (!info) {
+                throw new Error(`Article not found: ${r.id as string}`);
+              }
 
               return (
                 <ArticleListItem key={info.id} article={info} />
@@ -136,5 +143,4 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
       </div>
     </div>
   );
-
 };

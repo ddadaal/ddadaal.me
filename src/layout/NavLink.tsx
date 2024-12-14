@@ -10,17 +10,18 @@ import { NavLink } from "src/layout/Header";
 const LinkOrA = (props: PropsWithChildren<
   AnchorHTMLAttributes<HTMLAnchorElement> & Omit<LinkProps, "href"> & { href: string | undefined }
 >) => {
-  // @ts-ignore
+  // @ts-expect-error type is not correct
   return createElement(props.href ? Link : "a", props, props.children);
 };
 
 const isActive = (href: string, pathname: string) => {
-  if (href === "/") { return pathname === "/"; }
+  if (href === "/") {
+    return pathname === "/";
+  }
   return pathname.startsWith(href);
 };
 
 export const NavLinkElement = ({ link }: { link: NavLink }) => {
-
   const pathname = usePathname();
 
   return (
@@ -52,10 +53,10 @@ export const NavDropdown = ({ link }: { link: NavLink }) => {
         </details>
       </li>
     );
-  } else {
+  }
+  else {
     return (
       <NavLinkElement link={link} />
     );
   }
-
 };

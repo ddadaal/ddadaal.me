@@ -5,7 +5,7 @@ import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import classNames from "classnames";
 import imageSize from "image-size";
 import { dirname, join } from "path";
-import { ComponentType, createElement } from "react";
+import React, { ComponentType, createElement } from "react";
 import * as prod from "react/jsx-runtime";
 import { FaLink } from "react-icons/fa";
 import { rehypePrettyCode } from "rehype-pretty-code";
@@ -30,14 +30,17 @@ interface Props {
 
 const imageSizeAsync = promisify(imageSize);
 
-export const ArticleImageServer = async ({ article, props }: Props & {
-  props: ArticleImageProps["imageProps"]
+export const ArticleImageServer = async ({ article, imageProps }: Props & {
+  imageProps: ArticleImageProps["imageProps"];
 }) => {
+  const src = imageProps.src;
 
-  const src = props.src!;
+  if (!src) {
+    return null;
+  }
 
   if (src.startsWith("http://") || src.startsWith("https://")) {
-    return <img {...props} />;
+    return <img {...imageProps} />;
   }
 
   const imagePath = join(dirname(article.filePath), src);
@@ -54,14 +57,16 @@ export const ArticleImageServer = async ({ article, props }: Props & {
           height: size?.height ?? 100,
           width: size?.width ?? 100,
         }}
-        imageProps={props}
+        imageProps={imageProps}
       />
       {
-        props.alt ? (
-          <figcaption className="text-center">
-            {props.alt}
-          </figcaption>
-        ) : null
+        imageProps.alt
+          ? (
+              <figcaption className="text-center">
+                {imageProps.alt}
+              </figcaption>
+            )
+          : null
       }
     </figure>
   );
@@ -71,14 +76,13 @@ const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 
 interface HeadingWithLinkProps {
   element: "h1" | "h2" | "h3";
-  props: JSX.IntrinsicElements["h1"] ;
+  props: React.JSX.IntrinsicElements["h1"] ;
   anchorLinkClassName?: string;
 }
 
 export const HeadingWithLink = (props: HeadingWithLinkProps) => {
-
   return createElement(props.element, props.props, [
-    <a href={"#" + props.props.id} className={classNames("mr-1", props.anchorLinkClassName)} key={props.props.id}>
+    <a href={"#" + (props.props.id ?? "")} className={classNames("mr-1", props.anchorLinkClassName)} key={props.props.id}>
       <FaLink className="inline-block opacity-20 hover:opacity-60" size={16} />
     </a>,
     props.props.children,
@@ -86,7 +90,6 @@ export const HeadingWithLink = (props: HeadingWithLinkProps) => {
 };
 
 export const ArticleContent = async ({ article }: Props) => {
-
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -100,14 +103,14 @@ export const ArticleContent = async ({ article }: Props) => {
     .use(rehypeReact, {
       ...production,
       components: {
-        img: ((props) => <ArticleImageServer article={article} props={props} />) satisfies
-          ComponentType<JSX.IntrinsicElements["img"]>,
+        img: ((props) => <ArticleImageServer article={article} imageProps={props} />) satisfies
+          ComponentType<React.JSX.IntrinsicElements["img"]>,
         h1: ((props) => <HeadingWithLink element="h1" props={props} />) satisfies
-          ComponentType<JSX.IntrinsicElements["h1"]>,
+          ComponentType<React.JSX.IntrinsicElements["h1"]>,
         h2: ((props) => <HeadingWithLink element="h2" props={props} />) satisfies
-          ComponentType<JSX.IntrinsicElements["h2"]>,
+          ComponentType<React.JSX.IntrinsicElements["h2"]>,
         h3: ((props) => <HeadingWithLink element="h3" props={props} />) satisfies
-          ComponentType<JSX.IntrinsicElements["h3"]>,
+          ComponentType<React.JSX.IntrinsicElements["h3"]>,
       },
     } as RehypeReactOptions)
     .process(article.content);
@@ -118,20 +121,24 @@ export const ArticleContent = async ({ article }: Props) => {
     <div className="flex flex-row space-x-4">
       <div className={classNames("prose", "max-w-full", { "lg:w-[75%]": showToc })}>
         {
-          article.summaries ? (
-            <ArticleSummarization summaries={article.summaries} />
-          ) : undefined
+          article.summaries
+            ? (
+                <ArticleSummarization summaries={article.summaries} />
+              )
+            : undefined
         }
         <Gallery withCaption id={article.id}>
           {file.result}
         </Gallery>
       </div>
       {
-        showToc ? (
-          <div className="hidden lg:block lg:w-[25%]">
-            <ArticleToc toc={file.data.toc!} hasSummary={!!article.summaries} />
-          </div>
-        ) : undefined
+        showToc && file.data.toc
+          ? (
+              <div className="hidden lg:block lg:w-[25%]">
+                <ArticleToc toc={file.data.toc} hasSummary={!!article.summaries} />
+              </div>
+            )
+          : undefined
       }
     </div>
   );

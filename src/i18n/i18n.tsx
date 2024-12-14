@@ -9,5 +9,3 @@ export const Localized = i18n.Localized;
 export const Provider = i18n.Provider;
 export const useI18n = i18n.useI18n;
 export const prefix = i18n.prefix;
-
-

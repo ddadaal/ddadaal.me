@@ -8,20 +8,19 @@ import themeConfig from "./themes.json";
 
 export { themeConfig };
 
-
 export type Theme = keyof typeof themeConfig;
 
 export const themes = Object.keys(themeConfig) as Theme[];
 
 export const ThemeStore = () => {
-
   const [theme, setThemeInner] = useState<Theme>("auto");
 
   useEffect(() => {
     const themeInStorage = localStorage.getItem(THEME_COOKIE_KEY) as Theme;
     if (!themes.includes(themeInStorage)) {
       setThemeInner("dark");
-    } else {
+    }
+    else {
       setThemeInner(themeInStorage);
     }
   }, []);
@@ -33,4 +32,3 @@ export const ThemeStore = () => {
 
   return { theme, setTheme };
 };
-

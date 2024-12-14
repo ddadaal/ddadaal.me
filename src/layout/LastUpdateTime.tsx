@@ -11,7 +11,10 @@ interface Props {
 export const LastUpdateTime = ({ time }: Props) => {
   return (
     <p>
-      ⏲️ <Localized id="statistics.lastUpdated" />: &nbsp;
+      ⏲️
+      {" "}
+      <Localized id="statistics.lastUpdated" />
+      : &nbsp;
       {formatDateTime(DateTime.fromISO(time))}
     </p>
   );

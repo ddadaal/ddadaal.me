@@ -14,21 +14,22 @@ function isWindowBetween(element: HTMLElement | null): boolean {
 const MAX_DEPTH = 3;
 
 const TocMenuEntry = ({ entry: { depth, value, children, id } }: { entry: TocEntry }) => {
-
   return (
     <li className="w-full text-sm">
       <a
         className="transition hover:bg-base-300 rounded w-full flex p-1"
         data-tocid={id}
-        href={"#" + id}
+        href={"#" + (id ?? "").toString()}
       >
         {value}
       </a>
-      {(depth <= MAX_DEPTH && children && children.length > 0) ? (
-        <ul className="pl-2 border-l border-neutral">
-          {children.map((x) => <TocMenuEntry key={x.id} entry={x} />)}
-        </ul>
-      ) : undefined}
+      {(depth <= MAX_DEPTH && children && children.length > 0)
+        ? (
+            <ul className="pl-2 border-l border-neutral">
+              {children.map((x) => <TocMenuEntry key={x.id} entry={x} />)}
+            </ul>
+          )
+        : undefined}
     </li>
   );
 };
@@ -39,17 +40,19 @@ interface Props {
 }
 
 export const ArticleToc = ({ toc, hasSummary }: Props) => {
-
   useEffect(() => {
-
     const tocItemElements = Array.from(document.querySelectorAll("[data-tocid]"));
 
-    if (tocItemElements.length === 0) { return; }
+    if (tocItemElements.length === 0) {
+      return;
+    }
 
     let currentIndex = 0;
 
     const setActive = (index: number): void => {
-      if (currentIndex === index) { return; }
+      if (currentIndex === index) {
+        return;
+      }
       tocItemElements[currentIndex].classList.remove("active");
       currentIndex = index;
       tocItemElements[index].classList.add("active");
@@ -57,14 +60,17 @@ export const ArticleToc = ({ toc, hasSummary }: Props) => {
 
     const onScroll = (): void => {
       for (let i = 0; i < tocItemElements.length - 1; i++) {
-        if (isWindowBetween(document.getElementById(tocItemElements[i + 1].getAttribute("data-tocid")!))) {
+        const dataTocId = tocItemElements[i].getAttribute("data-tocid");
+        if (!dataTocId) {
+          continue;
+        }
+        if (isWindowBetween(document.getElementById(dataTocId))) {
           setActive(i);
           return;
         }
       }
       setActive(tocItemElements.length - 1);
     };
-
 
     tocItemElements[0].classList.add("active");
 

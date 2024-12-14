@@ -32,7 +32,7 @@ export const ArticleList = ({ articles, pageNum, totalPages, tagCounts, articleC
         <div className="join flex-wrap">
           {
             Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
-              <Link key={x} href={`/articles/${x}`}>
+              <Link key={x} href={`/articles/${x.toString()}`}>
                 <button className={classNames("join-item", "btn", { "btn-active": x === pageNum })}>
                   {x}
                 </button>

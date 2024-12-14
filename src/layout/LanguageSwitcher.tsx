@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const LanguageSwitcher = ({ btnClassName }: Props) => {
-
   const i18n = useStore(I18nStore);
 
   const language = getLanguage(i18n.i18n.currentLanguage.id);

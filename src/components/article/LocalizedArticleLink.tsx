@@ -10,7 +10,6 @@ export interface Props {
 }
 
 export const LocalizedArticleLink = ({ basePath, className, children }: Props) => {
-
   const i18n = useI18n();
 
   const language = getLanguage(i18n.currentLanguage.id);
@@ -20,7 +19,4 @@ export const LocalizedArticleLink = ({ basePath, className, children }: Props) =
       {children}
     </Link>
   );
-
 };
-
-

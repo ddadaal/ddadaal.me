@@ -13,4 +13,3 @@ const resumeData = createDataSource({
 export const getResume = async () => {
   return await resumeData();
 };
-

@@ -57,11 +57,9 @@ interface ArticleFrontmatterData {
 const acceptedFileTypes = [".md", ".mdx"];
 
 export const readArticleFromDir = async (dir: string) => {
-
   let item: ArticleItem | undefined = undefined;
 
   for (const file of await readdir(dir)) {
-
     if (!acceptedFileTypes.includes(extname(file))) {
       continue;
     }
@@ -126,13 +124,11 @@ export const readArticleFromDir = async (dir: string) => {
 };
 
 export const readArticles = async () => {
-
   const articleDirs = await readdir(CONTENT_DIR);
 
   const articles: ArticleItem[] = [];
 
   for (const dir of articleDirs) {
-
     const path = join(CONTENT_DIR, dir);
 
     if ((await stat(path)).isFile()) {

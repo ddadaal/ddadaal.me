@@ -26,41 +26,44 @@ interface Props {
 }
 
 export const ArticleFrontmatter = ({ articleId, info, className, langVersions }: Props) => {
-
   const i18n = useI18n();
 
   return (
 
     <div className={classNames("flex flex-wrap gap-3 my-2 text-sm", className)}>
       {
-        info.tags ? (
-          <div
-            className="flex flex-wrap gap-1 items-center"
-          >
-            <FaTag />
-            {info.tags.map((x) => (
-              <Link
-                href={{ pathname: "/articles/search", query: { query: x } }}
-                key={x}
-                className="badge badge-accent mx-0.5 text-accent-content"
+        info.tags
+          ? (
+              <div
+                className="flex flex-wrap gap-1 items-center"
               >
-                {getLocaleTag(i18n.currentLanguage.id, x)}
-              </Link>
-            ))}
-          </div>
-        ) : undefined
+                <FaTag />
+                {info.tags.map((x) => (
+                  <Link
+                    href={{ pathname: "/articles/search", query: { query: x } }}
+                    key={x}
+                    className="badge badge-accent mx-0.5 text-accent-content"
+                  >
+                    {getLocaleTag(i18n.currentLanguage.id, x)}
+                  </Link>
+                ))}
+              </div>
+            )
+          : undefined
       }
       <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.date")}>
         <FaCalendar />
         <span className="mx-0.5">{formatDateTime(fromArticleTime(info.date))}</span>
       </div>
       {
-        info.last_updated ? (
-          <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.lastUpdated")}>
-            <FaCalendarPlus />
-            <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
-          </div>
-        ) : undefined
+        info.last_updated
+          ? (
+              <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.lastUpdated")}>
+                <FaCalendarPlus />
+                <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
+              </div>
+            )
+          : undefined
       }
       <div className="flex items-center">
         <FaFileWord />

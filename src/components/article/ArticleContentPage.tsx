@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const ArticleContentPage = async ({ article, langs }: Props) => {
-
   const articles = await readArticlesCached();
 
   // find related article items from article
@@ -35,19 +34,21 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
   return (
     <article>
       {
-        article.hide_heading ? undefined : (
-          <Heading>
-            <h1 className="text-4xl my-2">
-              {article.title}
-            </h1>
-            <ArticleFrontmatter
-              className="justify-center"
-              articleId={article.id}
-              info={article}
-              langVersions={langs}
-            />
-          </Heading>
-        )
+        article.hide_heading
+          ? undefined
+          : (
+              <Heading>
+                <h1 className="text-4xl my-2">
+                  {article.title}
+                </h1>
+                <ArticleFrontmatter
+                  className="justify-center"
+                  articleId={article.id}
+                  info={article}
+                  langVersions={langs}
+                />
+              </Heading>
+            )
       }
 
       <div className="animate-slide-up">

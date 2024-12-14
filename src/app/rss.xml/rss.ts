@@ -16,7 +16,6 @@ import { serverTime } from "src/utils/serverTime";
 import { unified } from "unified";
 
 const renderContent = async (content: string, articleFilePath: string) => {
-
   const articleDirPath = dirname(articleFilePath);
 
   const result = await unified()
@@ -25,8 +24,7 @@ const renderContent = async (content: string, articleFilePath: string) => {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRewrite, {
       rewrite: (node) => {
-
-        if (node.type === "element" && node.tagName === "img" && node.properties) {
+        if (node.type === "element" && node.tagName === "img") {
           const src = node.properties.src as string;
 
           if (src.startsWith("http://") || src.startsWith("https://")) {
@@ -69,9 +67,7 @@ export const generateRss = async () => {
   });
 
   for (const articleItem of articles) {
-
     for (const article of articleItem.langVersions) {
-
       feed.item({
         date: fromArticleTime(article.date).toJSDate(),
         description: await renderContent(article.content, article.filePath),
@@ -85,5 +81,4 @@ export const generateRss = async () => {
   const xml = feed.xml({ indent: true });
 
   return xml;
-
 };

@@ -11,11 +11,10 @@ export interface ArticleImageProps {
 }
 
 const loader = ({ src, width }: { src: string; width: number }) => {
-  return `${src}?width=${width}`;
+  return `${src}?width=${width.toString()}`;
 };
 
 export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) => {
-
   return (
     <Item
       alt={imageProps.alt ?? ""}
@@ -37,6 +36,4 @@ export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) 
       )}
     </Item>
   );
-
 };
-

@@ -6,7 +6,6 @@ import { fromArticleTime } from "src/utils/datetime";
 export const generateTitle = (title: string) => title ? `${title} - ddadaal.me` : "ddadaal.me";
 
 export const generateArticleMetadata = (article: Article, langs: string[]): Metadata => {
-
   return {
     metadataBase: new URL(WEBSITE_BASE_URL),
     title: generateTitle(article.title),

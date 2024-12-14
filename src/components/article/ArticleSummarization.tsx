@@ -6,13 +6,9 @@ interface Props {
   summaries: string[];
 }
 
-
-// eslint-disable-next-line @stylistic/max-len
 const AZURE_AI_LANGUAGE_SERVICE_DOC_URL = "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
 
 export const ArticleSummarization = ({ summaries }: Props) => {
-
-
   return (
     <div className="p-4 my-4 bg-neutral rounded shadow">
       <HeadingWithLink
@@ -48,6 +44,4 @@ export const ArticleSummarization = ({ summaries }: Props) => {
       </p>
     </div>
   );
-
-
 };

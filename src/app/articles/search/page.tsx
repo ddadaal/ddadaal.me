@@ -18,7 +18,6 @@ export const generateMetadata = () => {
 };
 
 const getSearchPageData = cache(async () => {
-
   const articles = await readArticlesCached();
 
   const tagCounts = countTags(articles);
@@ -47,11 +46,9 @@ const getSearchPageData = cache(async () => {
     index,
     articleListInfos,
   };
-
 });
 
-export default async function() {
-
+export default async function SearchPage() {
   const { articleCount, index, tagCounts, articleListInfos } = await getSearchPageData();
 
   return (

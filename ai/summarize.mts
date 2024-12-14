@@ -85,14 +85,14 @@ async function summarizeArticle(articleDir: string) {
     const { data: frontMatter, content } = matter(mdContent);
 
     const log = (level: "log" | "error", msg: string, ...args: unknown[]) =>
-      console[level]("[%s %s] " + msg, frontMatter.id, frontMatter.lang, ...args);
+      { console[level]("[%s %s] " + msg, frontMatter.id, frontMatter.lang, ...args); };
 
     const contentHash = hashContent(content);
 
-    const summaryJsonFilePath = join(articleDir, `${frontMatter.lang}.summary.json`);
+    const summaryJsonFilePath = join(articleDir, `${frontMatter.lang as string}.summary.json`);
 
     if (existsSync(summaryJsonFilePath) && (await stat(summaryJsonFilePath)).isFile()) {
-      const existingSummaryJson: ArticleSummary = JSON.parse(await readFile(summaryJsonFilePath, "utf-8"));
+      const existingSummaryJson = JSON.parse(await readFile(summaryJsonFilePath, "utf-8")) as ArticleSummary;
 
       existingSummaryJson.hash = contentHash;
 
@@ -116,8 +116,8 @@ async function summarizeArticle(articleDir: string) {
     }
 
     const summaryJson: ArticleSummary = {
-      articleId: frontMatter.id,
-      lang: frontMatter.lang,
+      articleId: frontMatter.id as string,
+      lang: frontMatter.lang as string,
       lastUpdateStartTime: startTime,
       lastUpdateEndTime: new Date().toISOString(),
       summaries: summary,
@@ -152,6 +152,6 @@ async function main() {
   }
 }
 
-main();
+void main();
 
 

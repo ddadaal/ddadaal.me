@@ -23,7 +23,9 @@ export const RunningTime = ({ serverStartTime }: Props) => {
   });
 
   useEffect(() => {
-    const timer = setInterval(() => setDiff(getDiff(DateTime.now())), 1000);
+    const timer = setInterval(() => {
+      setDiff(getDiff(DateTime.now()));
+    }, 1000);
     return () => {
       clearInterval(timer);
     };
@@ -32,7 +34,7 @@ export const RunningTime = ({ serverStartTime }: Props) => {
   const args = [diff.years, diff.months, diff.days, diff.hours, diff.minutes, Math.floor(diff.seconds)]
     .map((data, i) => (
       <span key={i} className="countdown">
-        {/* @ts-ignore */}
+        {/* @ts-expect-error --value is needed for daisyui */}
         <span style={{ "--value": data }} />
       </span>
     ));
@@ -40,7 +42,9 @@ export const RunningTime = ({ serverStartTime }: Props) => {
   return (
     <div className="tooltip" data-tip={formatDateTime(blogStartTime)}>
       <p>
-        📅 <Localized id="footer.runningTime" args={args} />
+        📅
+        {" "}
+        <Localized id="footer.runningTime" args={args} />
       </p>
     </div>
   );

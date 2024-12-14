@@ -10,30 +10,33 @@ interface Props {
 }
 
 const getResumeOfLang = async (lang: string | undefined) => {
-
   const resume = await getResume();
 
-  if (!resume) { return undefined; }
+  if (!resume) {
+    return undefined;
+  }
 
   const resumeOfLang = resume.langVersions.find((x) => x.lang === lang) ?? resume.langVersions[0];
 
   return { resume, resumeOfLang };
 };
 
-
 export const generateMetadata = async ({ params }: Props) => {
   const data = await getResumeOfLang(params.lang?.[0]);
 
-  if (!data) { return {}; }
+  if (!data) {
+    return {};
+  }
 
   return generateArticleMetadata(data.resumeOfLang, data.resume.langVersions.map((x) => x.lang));
 };
 
-export default async ({ params }: Props) => {
-
+export default async function ResumePage({ params }: Props) {
   const data = await getResumeOfLang(params.lang?.[0]);
 
-  if (!data) { notFound(); }
+  if (!data) {
+    notFound();
+  }
 
   return (
     <div className="resume">
@@ -50,9 +53,9 @@ export async function generateStaticParams() {
     return [];
   }
 
-  const params: { lang: string[] }[] = [{ lang: []}];
+  const params: { lang: string[] }[] = [{ lang: [] }];
 
-  params.push(...resume.langVersions.map((x) => ({ lang: [x.lang]})));
+  params.push(...resume.langVersions.map((x) => ({ lang: [x.lang] })));
 
   return params;
 }

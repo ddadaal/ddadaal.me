@@ -15,9 +15,9 @@ function articleData(dir: string) {
 }
 
 const dataSources = {
-  "me": articleData("contents/about-me"),
-  "project": articleData("contents/about-project"),
-  "odyssey": articleData("contents/odyssey"),
+  me: articleData("contents/about-me"),
+  project: articleData("contents/about-project"),
+  odyssey: articleData("contents/odyssey"),
 };
 
 type ArticleType = keyof typeof dataSources;
@@ -33,12 +33,15 @@ interface Props {
 }
 
 const getLangVersion = async ({ params }: Props) => {
-
-  if (!(params.id in dataSources)) { return undefined; }
+  if (!(params.id in dataSources)) {
+    return undefined;
+  }
 
   const articleItem = await getArticleItem(params.id as ArticleType);
 
-  if (!articleItem) { return undefined; }
+  if (!articleItem) {
+    return undefined;
+  }
 
   const lang = params.lang?.[0];
 
@@ -48,18 +51,21 @@ const getLangVersion = async ({ params }: Props) => {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-
   const data = await getLangVersion(props);
 
-  if (!data) { return notFound(); }
+  if (!data) {
+    notFound();
+  }
 
-  return generateArticleMetadata(data.langVersion, data.articleItem.langVersions.map((x) => x.lang)); }
+  return generateArticleMetadata(data.langVersion, data.articleItem.langVersions.map((x) => x.lang));
+}
 
-export default async ({ params }: Props) => {
-
+export default async function AboutPage({ params }: Props) {
   const data = await getLangVersion({ params });
 
-  if (!data) { notFound(); }
+  if (!data) {
+    notFound();
+  }
 
   return (
     <ArticleContentPage
@@ -77,8 +83,8 @@ export async function generateStaticParams() {
     if (!data) {
       throw new Error("Fail to fetch data " + type);
     }
-    params.push({ id: type, lang: []});
-    data.langVersions.forEach((x) => params.push({ id: type, lang: [x.lang]}));
+    params.push({ id: type, lang: [] });
+    data.langVersions.forEach((x) => params.push({ id: type, lang: [x.lang] }));
   }
 
   return params;

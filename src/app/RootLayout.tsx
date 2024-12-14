@@ -8,7 +8,6 @@ import { I18nStore } from "src/i18n/store";
 import { ThemeStore } from "src/utils/theme";
 
 const RootLayoutInner = ({ children }: { children: React.ReactNode }) => {
-
   const i18n = useI18n();
 
   const themeStore = useStore(ThemeStore);
@@ -27,7 +26,6 @@ const RootLayoutInner = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const RootLayout = ({ children }: { children: React.ReactNode }) => {
-
   const [themeStore] = useState(() => createStore(ThemeStore));
   const [i18nStore] = useState(() => createStore(I18nStore));
 

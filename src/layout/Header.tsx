@@ -23,7 +23,6 @@ interface Props {
 }
 
 export const Header = ({ resumeLangs }: Props) => {
-
   const pathname = usePathname();
 
   const links: NavLink[] = [
@@ -31,19 +30,25 @@ export const Header = ({ resumeLangs }: Props) => {
     { icon: <FaBookOpen />, labelId: "headers.articles", href: "/articles" },
     { icon: <FaFile />, labelId: "headers.resume", href: "/resume",
       children: resumeLangs.map((x) => {
-        const language = Object.values(languages).find((y) => y.simplified === x)!;
+        const language = Object.values(languages).find((y) => y.simplified === x);
+
+        if (!language) {
+          throw new Error(`Language ${x} not found`);
+        }
+
         return {
           icon: <language.icon />,
           label: language.name,
           href: `/resume/${x}`,
-        }; }),
+        };
+      }),
     },
     { icon: <FaSlideshare />, labelId: "headers.slides", href: "/slides" },
     { icon: <FaInfo />, labelId: "headers.about.title", href: "/about", children: [
       { icon: <FaBookOpen />, labelId: "headers.about.odyssey", href: "/about/odyssey" },
       { icon: <FaGlobe />, labelId: "headers.about.project", href: "/about/project" },
       { icon: <FaMale />, labelId: "headers.about.me", href: "/about/me" },
-    ]},
+    ] },
   ];
 
   const neverBlendIn = pathname !== "/";
@@ -56,7 +61,6 @@ export const Header = ({ resumeLangs }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     if (ref.current && !neverBlendIn) {
       // judge for the first time
       setBlendIn(
@@ -68,7 +72,7 @@ export const Header = ({ resumeLangs }: Props) => {
           const isSticky = e.intersectionRatio < 1;
           setBlendIn(!isSticky);
         },
-        { threshold: [1]},
+        { threshold: [1] },
       );
       observer.observe(ref.current);
 
@@ -127,7 +131,8 @@ export const Header = ({ resumeLangs }: Props) => {
                         </ul>
                       </li>
                     );
-                  } else {
+                  }
+                  else {
                     return (
                       <NavLinkElement key={i} link={link} />
                     );

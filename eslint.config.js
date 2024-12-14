@@ -5,6 +5,6 @@ module.exports = [
   ...base,
   ...react,
   {
-    ignores: [".next"]
+    ignores: [".next", "node_modules", "out"]
   }
 ];

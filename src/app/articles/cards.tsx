@@ -11,7 +11,7 @@ import { Localized, useI18n } from "src/i18n";
 import styles from "./search.module.css";
 
 const IconLink = ({ href, children, target }: {
-  href: string, children: React.ReactNode, target?: HTMLAttributeAnchorTarget
+  href: string; children: React.ReactNode; target?: HTMLAttributeAnchorTarget;
 }) => (
   <Link
     className="link link-hover flex items-center my-1 space-x-1"
@@ -27,7 +27,10 @@ export const WebsiteCard = () => {
     <div className="card card-bordered bg-base-100 shadow-xl">
       <div className="card-body">
         <h2 className="card-title">
-          <FaGlobe /> ddadaal.me | <Localized id="blogIntro.subtitle" />
+          <FaGlobe />
+          {" "}
+          ddadaal.me |
+          <Localized id="blogIntro.subtitle" />
         </h2>
         <p>
           <Localized id="blogIntro.description2" />
@@ -38,15 +41,17 @@ export const WebsiteCard = () => {
             target="_blank"
           >
             <FaCode />
-            <span><Localized id={"blogIntro.sourceCode"} /></span>
+            <span><Localized id="blogIntro.sourceCode" /></span>
           </IconLink>
           <IconLink href="/rss.xml" target="_blank">
-            <FaRss /> <span>RSS</span>
+            <FaRss />
+            {" "}
+            <span>RSS</span>
           </IconLink>
           <IconLink href="/feedback">
             <FaRegCommentDots />
             <span>
-              <Localized id={"blogIntro.feedback"} />
+              <Localized id="blogIntro.feedback" />
             </span>
           </IconLink>
         </div>
@@ -65,7 +70,6 @@ interface TagsCardProps {
 }
 
 const TagsPanel = ({ tagCounts }: TagsCardProps) => {
-
   const i18n = useI18n();
 
   return (
@@ -82,13 +86,13 @@ const TagsPanel = ({ tagCounts }: TagsCardProps) => {
               {count}
             </div>
           </Link>
-        ); })}
+        );
+      })}
     </div>
   );
 };
 
 export const TagsCard = ({ tagCounts }: TagsCardProps) => {
-
   return (
     <div className="card card-bordered bg-base-100 shadow-xl">
       <div className="card-body">
@@ -109,19 +113,17 @@ interface SearchCardProps {
 }
 
 const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
-
   return (
     <input
       type="text"
-      className={"input input-bordered w-full"}
+      className="input input-bordered w-full"
       autoComplete="off"
       {...props}
     />
   );
 };
 
-
-const QuerySyncedSearchBarInput = ({ placeholder, name }: { placeholder: string, name: string }) => {
+const QuerySyncedSearchBarInput = ({ placeholder, name }: { placeholder: string; name: string }) => {
   const searchParams = useSearchParams();
 
   const query = searchParams.get("query") ?? undefined;
@@ -144,7 +146,6 @@ const QuerySyncedSearchBarInput = ({ placeholder, name }: { placeholder: string,
 };
 
 export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps) => {
-
   const i18n = useI18n();
 
   const router = useRouter();
@@ -154,7 +155,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
   return (
     <div className={classNames("form-control my-2", { [styles.search_bar]: showTags })}>
       <form
-        className={"form-control flex-row"}
+        className="form-control flex-row"
         action="/articles/search"
         method="GET"
         onSubmit={(e) => {
@@ -172,20 +173,19 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
         </button>
       </form>
       {
-        showTags ? (
-          <div className={classNames("hidden p-4 border border-neutral", styles.search_bar_tags)}>
-            <TagsPanel tagCounts={tagCounts} />
-          </div>
-        ) : undefined
+        showTags
+          ? (
+              <div className={classNames("hidden p-4 border border-neutral", styles.search_bar_tags)}>
+                <TagsPanel tagCounts={tagCounts} />
+              </div>
+            )
+          : undefined
       }
     </div>
   );
-
 };
 
 export const SearchCard = ({ articleCount, tagCounts, showTags }: SearchCardProps) => {
-
-
   return (
     <div className="card card-bordered bg-base-100 shadow-xl">
       <div className="card-body">

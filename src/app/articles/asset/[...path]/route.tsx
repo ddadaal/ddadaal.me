@@ -11,17 +11,16 @@ export async function GET(request: NextRequest, { params }: { params: { path: st
 
   const stream = createReadStream(fullPath);
 
-  // @ts-ignore
+  // @ts-expect-error type is not correct
   return new NextResponse(Readable.toWeb(stream), {
     headers: {
-      "Content-Type": lookup(fullPath) ?? "application/octet-stream",
+      "Content-Type": lookup(fullPath) || "application/octet-stream",
       "Content-Length": fileStat.size,
     },
   });
 }
 
 export async function generateStaticParams() {
-
   // visit all files in contents directory
   // and return an array of paths
   // that will be used as static paths

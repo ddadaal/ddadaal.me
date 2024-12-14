@@ -16,7 +16,6 @@ interface Props {
 const PAGE_SIZE = 5;
 
 const switchParams = (params?: string[]) => {
-
   if (!params || (params.length === 1 && !isNaN(Number(params[0])))) {
     return { type: "list", pageNumber: !params ? 1 : Number(params[0]) } as const;
   }
@@ -33,9 +32,11 @@ const switchParams = (params?: string[]) => {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const result = switchParams(params?.params);
+  const result = switchParams(params.params);
 
-  if (result.type === "unknown") { return {}; }
+  if (result.type === "unknown") {
+    return {};
+  }
 
   if (result.type === "list") {
     return {
@@ -46,7 +47,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const articles = await readArticlesCached();
   const article = articles.find((x) => x.id === result.articleId);
 
-  if (!article) { return {}; }
+  if (!article) {
+    return {};
+  }
 
   if (result.type === "article") {
     return {
@@ -54,30 +57,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  if (result.type === "articleOfLang") {
+  const langVersion = article.langVersions.find((x) => x.lang === result.lang)
+    ?? article.langVersions[0];
 
-    const langVersion = article.langVersions.find((x) => x.lang === result.lang)
-      ?? article.langVersions[0];
-
-    return {
-      title: generateTitle(langVersion.title),
-    };
-  }
-
-  return {};
+  return {
+    title: generateTitle(langVersion.title),
+  };
 }
-
 export default async function ArticlePage({
   params: { params },
 }: Props) {
-
   const paramsResult = switchParams(params);
 
   const articles = await readArticlesCached();
 
   // if params is empty or of number, it's list page
   if (paramsResult.type === "list") {
-
     const { pageNumber } = paramsResult;
 
     const articlesOfPage = articles.slice(
@@ -141,9 +136,7 @@ export default async function ArticlePage({
   }
 
   notFound();
-
 }
-
 
 export async function generateStaticParams() {
   const articles = await readArticlesCached();
@@ -166,6 +159,4 @@ export async function generateStaticParams() {
   }
 
   return params.map((x) => ({ params: x }));
-
-
 }

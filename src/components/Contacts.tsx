@@ -26,8 +26,7 @@ const contacts = [
   [SiDouban, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
 ] as const;
 
-const Icon = ({ Src, link, text, size }: { Src: IconSrc, link: string, text: string; size: number }) => {
-
+const Icon = ({ Src, link, text, size }: { Src: IconSrc; link: string; text: string; size: number }) => {
   const sizeInPx = size * 14;
 
   return (
@@ -40,15 +39,12 @@ const Icon = ({ Src, link, text, size }: { Src: IconSrc, link: string, text: str
     >
       {typeof Src === "object"
         ? <Image src={Src} alt={text} height={sizeInPx} width={sizeInPx} />
-        : <Src size={sizeInPx} />
-      }
+        : <Src size={sizeInPx} />}
     </a>
   );
 };
 
-
 export const Contacts: React.FC<Props> = ({ size, className }) => {
-
   return (
     <div className={classNames("flex py-2 gap-2", className)}>
       {contacts.map((contact) => {
@@ -62,4 +58,3 @@ export const Contacts: React.FC<Props> = ({ size, className }) => {
     </div>
   );
 };
-
