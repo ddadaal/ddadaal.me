@@ -28,30 +28,33 @@ const getArticleItem = async (type: ArticleType) => {
 };
 
 interface Props {
-  params: { id: string; lang?: string[] };
+  params: Promise<{ id: string; lang?: string[] }>;
 
 }
 
-const getLangVersion = async ({ params }: Props) => {
-  if (!(params.id in dataSources)) {
+const getLangVersion = async ({ id, lang }: {
+  id: string; lang?: string[];
+}) => {
+  if (!(id in dataSources)) {
     return undefined;
   }
 
-  const articleItem = await getArticleItem(params.id as ArticleType);
+  const articleItem = await getArticleItem(id as ArticleType);
 
   if (!articleItem) {
     return undefined;
   }
 
-  const lang = params.lang?.[0];
+  const lang1 = lang?.[0];
 
-  const langVersion = articleItem.langVersions.find((x) => x.lang === lang) ?? articleItem.langVersions[0];
+  const langVersion = articleItem.langVersions.find((x) => x.lang === lang1) ?? articleItem.langVersions[0];
 
   return { langVersion, articleItem };
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const data = await getLangVersion(props);
+  const params = await props.params;
+  const data = await getLangVersion(params);
 
   if (!data) {
     notFound();
@@ -60,8 +63,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return generateArticleMetadata(data.langVersion, data.articleItem.langVersions.map((x) => x.lang));
 }
 
-export default async function AboutPage({ params }: Props) {
-  const data = await getLangVersion({ params });
+export default async function AboutPage(props: Props) {
+  const params = await props.params;
+  const data = await getLangVersion(params);
 
   if (!data) {
     notFound();

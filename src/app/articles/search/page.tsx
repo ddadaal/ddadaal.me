@@ -1,4 +1,5 @@
-import { cut } from "@node-rs/jieba";
+import { Jieba } from "@node-rs/jieba";
+import { dict } from "@node-rs/jieba/dict";
 import MiniSearch from "minisearch";
 import { cache, Suspense } from "react";
 import { ArticleListPageLayout } from "src/app/articles/ArticleListPageLayout";
@@ -6,6 +7,8 @@ import { ArticleSearchPage } from "src/app/articles/search/ArticleSearchPage";
 import { countTags } from "src/app/articles/tags";
 import { convertToListInfo, readArticlesCached } from "src/data/articles";
 import { generateTitle } from "src/utils/metadata";
+
+const jieba = Jieba.withDict(dict);
 
 export interface IndexedArticleInfo {
   id: string;
@@ -31,7 +34,7 @@ const getSearchPageData = cache(async () => {
   const miniSearch = new MiniSearch<IndexedArticleInfo>({
     fields: ["title", "content", "tags"],
     storeFields: ["id"],
-    tokenize: (text) => cut(text),
+    tokenize: (text) => jieba.cut(text),
   });
 
   const articleListInfos = articles.map(convertToListInfo);

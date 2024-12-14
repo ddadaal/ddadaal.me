@@ -50,25 +50,14 @@ export const ArticleImageServer = async ({ article, imageProps }: Props & {
   const fullUrl = join("/articles/asset", imagePath);
 
   return (
-    <figure>
-      <ArticleImage
-        src={fullUrl}
-        imageSize={{
-          height: size?.height ?? 100,
-          width: size?.width ?? 100,
-        }}
-        imageProps={imageProps}
-      />
-      {
-        imageProps.alt
-          ? (
-              <figcaption className="text-center">
-                {imageProps.alt}
-              </figcaption>
-            )
-          : null
-      }
-    </figure>
+    <ArticleImage
+      src={fullUrl}
+      imageSize={{
+        height: size?.height ?? 100,
+        width: size?.width ?? 100,
+      }}
+      imageProps={imageProps}
+    />
   );
 };
 
@@ -90,6 +79,9 @@ export const HeadingWithLink = (props: HeadingWithLinkProps) => {
 };
 
 export const ArticleContent = async ({ article }: Props) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  /* eslint-disable @typescript-eslint/no-unsafe-call */
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)

@@ -15,17 +15,20 @@ import { fromArticleTime } from "src/utils/datetime";
 import { serverTime } from "src/utils/serverTime";
 import { unified } from "unified";
 
-const renderContent = async (content: string, articleFilePath: string) => {
+const renderContent = async (content: string, articleFilePath: string): Promise<string> => {
   const articleDirPath = dirname(articleFilePath);
 
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  /* eslint-disable @typescript-eslint/no-unsafe-call */
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRewrite, {
-      rewrite: (node) => {
+      rewrite: (node: { type: string; tagName: string; properties: { src: string } }) => {
         if (node.type === "element" && node.tagName === "img") {
-          const src = node.properties.src as string;
+          const src = node.properties.src;
 
           if (src.startsWith("http://") || src.startsWith("https://")) {
             return;
@@ -44,7 +47,7 @@ const renderContent = async (content: string, articleFilePath: string) => {
     .use(rehypeStringify)
     .process(content);
 
-  return result.toString();
+  return result.toString() as string;
 };
 
 const getTagNameFromArticleLang = (lang: string, tag: string) => {

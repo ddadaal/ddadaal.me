@@ -4,7 +4,8 @@ import { lookup } from "mime-types";
 import { NextRequest, NextResponse } from "next/server";
 import { Readable } from "stream";
 
-export async function GET(request: NextRequest, { params }: { params: { path: string[] } }) {
+export async function GET(request: NextRequest, props: { params: Promise<{ path: string[] }> }) {
+  const params = await props.params;
   const fullPath = params.path.join("/");
 
   const fileStat = await stat(decodeURIComponent(fullPath));

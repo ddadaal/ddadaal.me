@@ -4,14 +4,20 @@ import { generateTitle } from "src/utils/metadata";
 import redirects from "../../../../contents/redirects.json";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const getTarget = (id: string) => {
   return redirects.find((x) => x.id === id);
 };
 
-export const generateMetadata = ({ params: { id } }: Props) => {
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
+
+  const {
+    id,
+  } = params;
+
   const target = getTarget(id);
 
   if (!target) {
@@ -23,9 +29,13 @@ export const generateMetadata = ({ params: { id } }: Props) => {
   };
 };
 
-export default function RedirectPage({
-  params: { id },
-}: Props) {
+export default async function RedirectPage(props: Props) {
+  const params = await props.params;
+
+  const {
+    id,
+  } = params;
+
   const target = getTarget(id);
 
   if (target) {

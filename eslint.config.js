@@ -6,5 +6,5 @@ module.exports = [
   ...react,
   {
     ignores: [".next", "node_modules", "out"]
-  }
+  },
 ];

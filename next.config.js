@@ -9,6 +9,7 @@ const nextConfig = {
       config.externals = [];
     }
     config.externals.push("@node-rs/jieba");
+    config.externals.push("@node-rs/jieba/dict");
 
     return config;
   },

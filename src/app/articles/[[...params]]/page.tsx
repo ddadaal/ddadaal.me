@@ -8,9 +8,9 @@ import { convertToListInfo, readArticlesCached } from "src/data/articles";
 import { generateTitle } from "src/utils/metadata";
 
 interface Props {
-  params: {
+  params: Promise<{
     params: string[] | undefined;
-  };
+  }>;
 }
 
 const PAGE_SIZE = 5;
@@ -32,7 +32,7 @@ const switchParams = (params?: string[]) => {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const result = switchParams(params.params);
+  const result = switchParams((await params).params);
 
   if (result.type === "unknown") {
     return {};
@@ -64,10 +64,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: generateTitle(langVersion.title),
   };
 }
-export default async function ArticlePage({
-  params: { params },
-}: Props) {
-  const paramsResult = switchParams(params);
+export default async function ArticlePage({ params }: Props) {
+  const paramsResult = switchParams((await params).params);
 
   const articles = await readArticlesCached();
 

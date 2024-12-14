@@ -6,7 +6,7 @@ import { getResume } from "src/data/resume";
 import { generateArticleMetadata } from "src/utils/metadata";
 
 interface Props {
-  params: { lang?: string[] };
+  params: Promise<{ lang?: string[] }>;
 }
 
 const getResumeOfLang = async (lang: string | undefined) => {
@@ -21,7 +21,8 @@ const getResumeOfLang = async (lang: string | undefined) => {
   return { resume, resumeOfLang };
 };
 
-export const generateMetadata = async ({ params }: Props) => {
+export const generateMetadata = async (props: Props) => {
+  const params = await props.params;
   const data = await getResumeOfLang(params.lang?.[0]);
 
   if (!data) {
@@ -31,7 +32,8 @@ export const generateMetadata = async ({ params }: Props) => {
   return generateArticleMetadata(data.resumeOfLang, data.resume.langVersions.map((x) => x.lang));
 };
 
-export default async function ResumePage({ params }: Props) {
+export default async function ResumePage(props: Props) {
+  const params = await props.params;
   const data = await getResumeOfLang(params.lang?.[0]);
 
   if (!data) {

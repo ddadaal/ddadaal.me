@@ -16,24 +16,36 @@ const loader = ({ src, width }: { src: string; width: number }) => {
 
 export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) => {
   return (
-    <Item
-      alt={imageProps.alt ?? ""}
-      original={src}
-      width={imageSize.width}
-      height={imageSize.height}
-    >
-      {({ ref, open }) => (
-        <Image
-          ref={ref}
-          loader={loader}
-          onClick={open}
-          alt={imageProps.alt ?? ""}
-          src={src}
-          width={imageSize.width}
-          height={imageSize.height}
-          className="cursor-zoom-in mx-auto"
-        />
-      )}
-    </Item>
+    <figure>
+
+      <Item
+        alt={imageProps.alt ?? ""}
+        original={src}
+        width={imageSize.width}
+        height={imageSize.height}
+      >
+        {({ ref, open }) => (
+          <Image
+            ref={ref}
+            loader={loader}
+            onClick={open}
+            alt={imageProps.alt ?? ""}
+            src={src}
+            width={imageSize.width}
+            height={imageSize.height}
+            className="cursor-zoom-in mx-auto"
+          />
+        )}
+      </Item>
+      {
+        imageProps.alt
+          ? (
+              <figcaption className="text-center">
+                {imageProps.alt}
+              </figcaption>
+            )
+          : null
+      }
+    </figure>
   );
 };

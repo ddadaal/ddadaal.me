@@ -1,0 +1,14 @@
+diff --git a/dist/gitalk-component.js b/dist/gitalk-component.js
+index a6fa0dc503f89070c6f5c4edeb367f8f9f610028..a02e08e0e11e93a2b2c7b0e165bc41d7d6a541b4 100644
+--- a/dist/gitalk-component.js
++++ b/dist/gitalk-component.js
+@@ -13473,7 +13473,8 @@ var getNativeNode = exports.getNativeNode = function getNativeNode(element) {
+   // While ReactDOM's `findDOMNode` is discouraged, it's the only
+   // publicly-exposed way to find the underlying DOM node for
+   // composite components.
+-  var foundNode = (0, _reactDom.findDOMNode)(element);
++  // var foundNode = (0, _reactDom.findDOMNode)(element);
++  var foundNode = null;
+ 
+   if (!(foundNode instanceof HTMLElement)) {
+     // Text nodes are not supported
