@@ -107,11 +107,11 @@ async function summarizeArticle(articleDir: string) {
     const startTime = new Date().toISOString();
 
     // summarize content
-    const summary = await summarize(content,
+    const summaries = await summarize(content,
       azureLanguageCodeMap[frontMatter.lang as keyof typeof azureLanguageCodeMap]);
 
-    if (summary instanceof Error) {
-      log("error", "Error on summarizing %s of lang %s: %s", frontMatter.id, frontMatter.lang, summary.message);
+    if (summaries instanceof Error) {
+      log("error", "Error on summarizing %s of lang %s: %s", frontMatter.id, frontMatter.lang, summaries.message);
       continue;
     }
 
@@ -120,7 +120,7 @@ async function summarizeArticle(articleDir: string) {
       lang: frontMatter.lang as string,
       lastUpdateStartTime: startTime,
       lastUpdateEndTime: new Date().toISOString(),
-      summaries: summary,
+      summaries: summaries,
       hash: contentHash,
     };
 
