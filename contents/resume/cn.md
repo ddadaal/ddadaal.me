@@ -56,12 +56,12 @@ no_toc: true
 
 # 近期项目经历 ( https://github.com/ddadaal )
 
-## **SCOW** 创始人、技术顾问 https://github.com/PKUHPC/OpenSCOW <span class="right">2021年9月-现在</span>
+## **SCOW** 联合创始人、技术顾问 https://github.com/PKUHPC/OpenSCOW <span class="right">2021年9月-现在</span>
 
 - 超算平台软件，从Web上使用和管理超算集群; 开源版OpenSCOW捐赠给开放原子基金会
 - 主要技术点：Node.js全栈; gRPC API; WebSocket; HTTP代理; mTLS; 可扩展性设计
 - 截止至2024年12月，已在全国**16省市70个单位**中部署并投入使用
-- **创始人，独自完成了项目的主要功能**，完成和确定了项目的**技术选型、架构、开发规范和流程**并**沿用至今**
+- **联合创始人，独自完成了项目的主要功能**，完成和确定了项目的**技术选型、架构、开发规范和流程**并**沿用至今**
 - 现担任**技术顾问**，负责代码审核、解决重难点问题、团队技术方向决策，参与项目需求和发展讨论
 - HPC China 2022发表论文*SCOW：一个开源的超算Web门户和管理系统*，获SOP track唯一满分评价和会议最佳论文提名
 

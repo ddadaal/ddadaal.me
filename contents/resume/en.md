@@ -57,12 +57,12 @@ Junda Chen
 
 # Recent Project Experiences (https://github.com/ddadaal; Personal Website: https://ddadaal.me)
 
-## SCOW, Creator and Technical Advisor https://github.com/PKUHPC/OpenSCOW <span class="right">Sept 2021-Present</span>
+## SCOW, Co-Founder and Technical Advisor https://github.com/PKUHPC/OpenSCOW <span class="right">Sept 2021-Present</span>
 
 - SCOW: Using and managing HPC from Web; Open source version donated to OpenAtom Foundation
 - Technologies: Node.js full stack; gRPC API; WebSocket; HTTP Proxy; mTLS; Highly extensible design
 - Until Dec 2024, SCOW has been deployed on 70 companies in 16 provinces across China
-- **Creator and Independently completed core features**, determined **technology stack** and **architecture**, established **development standards and processes**. All have been **continuously in use even since**
+- **Co-Founder and Independently completed core features**, decided **technology stack** and **architecture**, established **development standards and processes**. All have been **continuously in use even since**
 - Current **Technical Advisor**: code review, solving problems and making technical decisions
 - Published a paper *SCOW: An Open Source HPC Web Portal and Management System* on HPC China 2022. Received the only full marks review at SOP track and nominated excellent article
 
