@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   gitalk@1.8.0:
-    hash: agwwqh3jp3cufpogieaygtwgjm
+    hash: bc21387ac9c332fc1e9cde2f8b234440df1866abf175c284630b060e9af15ecf
     path: patches/gitalk@1.8.0.patch
 
 importers:
@@ -60,7 +60,7 @@ importers:
         version: 15.1.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
       gitalk:
         specifier: 1.8.0
-        version: 1.8.0(patch_hash=agwwqh3jp3cufpogieaygtwgjm)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 1.8.0(patch_hash=bc21387ac9c332fc1e9cde2f8b234440df1866abf175c284630b060e9af15ecf)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       gray-matter:
         specifier: 4.0.3
         version: 4.0.3
@@ -4682,7 +4682,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0)(eslint@9.17.0(jiti@2.4.1)))(eslint@9.17.0(jiti@2.4.1)):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.7.0)(eslint@9.17.0(jiti@2.4.1)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -4704,7 +4704,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.17.0(jiti@2.4.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0)(eslint@9.17.0(jiti@2.4.1)))(eslint@9.17.0(jiti@2.4.1))
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.7.0)(eslint@9.17.0(jiti@2.4.1))
       hasown: 2.0.2
       is-core-module: 2.16.0
       is-glob: 4.0.3
@@ -4973,7 +4973,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  gitalk@1.8.0(patch_hash=agwwqh3jp3cufpogieaygtwgjm)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  gitalk@1.8.0(patch_hash=bc21387ac9c332fc1e9cde2f8b234440df1866abf175c284630b060e9af15ecf)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       autosize: 3.0.21
       axios: 0.19.2
