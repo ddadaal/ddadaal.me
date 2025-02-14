@@ -26,7 +26,7 @@ export const createAzureAiSummarizer = () : Summarizer => {
   );
 
   return {
-    name: "azureAi",
+    name: "azure-ai",
 
     summarize: async (text: string, languageCode: string): Promise<SummaryData> => {
 
