@@ -1,14 +1,27 @@
 {
   "articleId": "analysis-on-cpp-plugin-not-running-at-vs2017",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:21:43.451Z",
-  "lastUpdateEndTime": "2025-02-14T13:22:06.500Z",
-  "summaries": [
-    "作者在VS2017中使用CppPlugin插件时出现“获取可执行文件路径出错”，反编译定位到TestControllerImp.cs中通过ConfigurationManager获取输出路径的代码存在异常。测试发现VS2017的Configuration.Properties返回null，导致API失效。微软未在文档提及该变动，社区反馈类似问题均未解决，确认为VS2017兼容性问题。结论为微软API变动导致插件无法适配，建议继续使用VS2013或虚拟机方案。"
-  ],
   "hash": "f2c967cfa0ea44e2ce3016bbab446149f257798fe60ba03fceb5ce972fecb82a",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者在VS2017中使用CppPlugin插件时出现“获取可执行文件路径出错”，反编译定位到TestControllerImp.cs中通过ConfigurationManager获取输出路径的代码存在异常。测试发现VS2017的Configuration.Properties返回null，导致API失效。微软未在文档提及该变动，社区反馈类似问题均未解决，确认为VS2017兼容性问题。结论为微软API变动导致插件无法适配，建议继续使用VS2013或虚拟机方案。"
+      ],
+      "startTime": "2025-02-14T13:21:43.451Z",
+      "endTime": "2025-02-14T13:22:06.500Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "插件开发者因直接修改VS2017插件配置文件而引发错误。通过反编译和调试发现问题出在`TestControllerImp.cs`中对`Solution`属性的调用方式不正确。微软官方未提供有效解决方案，建议用户升级Visual Studio或停止使用该插件。"
+      ]
+    }
+  ]
 }

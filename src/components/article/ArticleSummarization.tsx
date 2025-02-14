@@ -25,47 +25,88 @@ export const ArticleSummarization = ({ summary }: Props) => {
           ),
         }}
       />
-      {summary.summaries.map((x, i) => (
-        <p className="text-neutral-content" key={i}>
-          {x}
-        </p>
-      ))}
-      <p className="text-sm justify-end flex text-neutral-content">
-        {
-          summary.mode.mode === "azure-ai"
-            ? (
-                <Localized
-                  id="articlePage.summary.poweredBy.azureAi"
-                  args={[
-                    <Link
-                      target="_blank"
-                      key="azureAiUrl"
-                      className="text-neutral-content"
-                      href={AZURE_AI_URL}
-                    >
-                      Azure AI
-                    </Link>,
-                    summary.mode.model,
-                  ]}
-                />
-              )
-            : (
-                <Localized
-                  id="articlePage.summary.poweredBy.azureLanguage"
-                  args={[
-                    <Link
-                      target="_blank"
-                      key="docUrl"
-                      className="text-neutral-content"
-                      href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
-                    >
-                      Azure AI Language Service
-                    </Link>,
-                  ]}
-                />
-              )
-        }
-      </p>
+      <div>
+        <div role="tablist" className="tabs tabs-lifted">
+          {summary.summaries.map((x, i) => (
+            <>
+              <input
+                type="radio"
+                name="summaryTab"
+                role="tab"
+                className="tab"
+                aria-label={x.metadata.summarizer}
+                defaultChecked={i === 0}
+              />
+              <div
+                key={i}
+                role="tabpanel"
+                className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+              >
+                {
+                  x.summaries.map((c, i) => (
+                    <p className="text-neutral-content" key={i}>
+                      {c}
+                    </p>
+                  ))
+                }
+                <p className="text-sm justify-end flex text-neutral-content">
+                  {
+                    x.metadata.summarizer === "azure-ai"
+                      ? (
+                          <Localized
+                            id="articlePage.summary.poweredBy.azureAi"
+                            args={[
+                              <Link
+                                target="_blank"
+                                key="azureAiUrl"
+                                className="text-neutral-content"
+                                href={AZURE_AI_URL}
+                              >
+                                Azure AI
+                              </Link>,
+                              x.metadata.model,
+                            ]}
+                          />
+                        )
+                      : x.metadata.summarizer === "azure-language"
+                        ? (
+                            <Localized
+                              id="articlePage.summary.poweredBy.azureLanguage"
+                              args={[
+                                <Link
+                                  target="_blank"
+                                  key="docUrl"
+                                  className="text-neutral-content"
+                                  href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
+                                >
+                                  Azure AI Language Service
+                                </Link>,
+                              ]}
+                            />
+                          )
+                        : (
+                            <Localized
+                              id="articlePage.summary.poweredBy.ollama"
+                              args={[
+                                <Link
+                                  target="_blank"
+                                  key="ollamaUrl"
+                                  className="text-neutral-content"
+                                  href="https://ollama.com/"
+                                >
+                                  Ollama
+                                </Link>,
+                                x.metadata.model,
+                              ]}
+                            />
+                          )
+                  }
+                </p>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

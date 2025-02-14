@@ -95,8 +95,9 @@
     "summary": {
       "title": "✨AI Summary",
       "poweredBy": {
-        "azureAi": "Powered by {} of model {}",
-        "azureLanguage": "Extractively Summarized by {}"
+        "azureAi": "Inferred by {} model {}",
+        "azureLanguage": "Extractively Summarized by {}",
+        "ollama": "Inferred by local {} model {}"
       }
     },
     "actions": {

@@ -1,14 +1,27 @@
 {
   "articleId": "fix-gatsby-transformer-remark-chinese-word-count",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:32:44.786Z",
-  "lastUpdateEndTime": "2025-02-14T13:33:07.832Z",
-  "summaries": [
-    "该文章探讨了Gatsby的`gatsby-transformer-remark`插件对中文等非拉丁字符的词数统计（`wordCount`）和阅读时间（`timeToRead`）功能失效的问题。核心解决方法是利用已修复的`timeToRead`功能，其通过正则匹配中日文字符并基于265字/分钟计算，结果较为准确。若需词数统计，可通过`timeToRead*265`估算或自行修改插件代码添加中文字段，但需承担维护成本。作者还提供了参考项目但不推荐长期使用。最终建议优先使用`timeToRead`，若必要可定制插件，避免依赖第三方非官方解决方案。"
-  ],
   "hash": "a99987d239b31121f48820ef830ab0b3d247992ecd6dec58025cb5b774135182",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "该文章探讨了Gatsby的`gatsby-transformer-remark`插件对中文等非拉丁字符的词数统计（`wordCount`）和阅读时间（`timeToRead`）功能失效的问题。核心解决方法是利用已修复的`timeToRead`功能，其通过正则匹配中日文字符并基于265字/分钟计算，结果较为准确。若需词数统计，可通过`timeToRead*265`估算或自行修改插件代码添加中文字段，但需承担维护成本。作者还提供了参考项目但不推荐长期使用。最终建议优先使用`timeToRead`，若必要可定制插件，避免依赖第三方非官方解决方案。"
+      ],
+      "startTime": "2025-02-14T13:32:44.786Z",
+      "endTime": "2025-02-14T13:33:07.832Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "这篇文章讨论了在Gatsby中使用markdown转HTML时，在中文环境下修复`wordCount`和`timeToRead`功能的问题。以下是文章的主要内容的总结：\n\n1. **问题背景**：\n   - 使用`gatsby-transformer-remark`插件时，由于无法处理非拉丁字符（如中文），导致`wordCount`和`timeToRead`无法准确统计词数。\n\n2. **解决方法**：\n   - **替代方法1：修改本地插件**\n     - 在项目中创建一个本地的`plugins/gatsby-transformer-remark-fixed`目录，将`node_modules/gatsby-transformer-remark`中的内容复制到该目录。\n     - 修改`plugins/gatsby-transformer-remark-fixed/extend-node-type.js`文件，在`wordCount`字段之后新增`wordCountChinese`字段，使用`timeToRead`的统计算法来统计中文词数。\n     - 在gatsby-config.js中替换插件源为本地修改后的版本。\n   - **替代方法2：迁移功能到第三方项目**\n     - 使用第三个GitHub项目`gatsby-transformer-remark-chinese-word-count`作为参考，简化从上游插件提取和修改的过程。这个项目的插件并未发布到npm。\n\n3. **优缺点分析**：\n   - 替代方法1的优势是可以跟随上游插件的更新，但需要维护本地插件且可能导致社区分裂。\n   - 替代方法2的优势是不需要自己维护插件，但可能由于过时和依赖外部项目的问题而不建议长期使用。\n\n4. **总结建议**：\n   - 尽量优先使用`timeToRead`功能，因为它更准确。\n   - 如果需要较为准确的中文词数统计且不介意维护插件，可以参考第三个GitHub项目。"
+      ]
+    }
+  ]
 }

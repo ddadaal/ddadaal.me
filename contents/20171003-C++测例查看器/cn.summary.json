@@ -1,14 +1,27 @@
 {
   "articleId": "cpp-testcase-viewer",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:22:06.502Z",
-  "lastUpdateEndTime": "2025-02-14T13:22:15.823Z",
-  "summaries": [
-    "该工具用于解密C++作业加密的测试用例文件。加密测例以AES256加密、base64编码存储于系统目录，私钥硬编码在插件中。使用步骤：1. 复制加密文件至指定路径；2. 运行工具自动解密并解压；3. 在export文件夹查看明文测例（.in和.out文件）。需注意清理旧生成目录，且首次作业编号为36。需.NET Framework 4.5环境支持，通过反编译获取解密逻辑实现。"
-  ],
   "hash": "f1b7a68d8040013d3c8374a34d3db8f9b043fbd8e781a7593515b88c3fb06f50",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "该工具用于解密C++作业加密的测试用例文件。加密测例以AES256加密、base64编码存储于系统目录，私钥硬编码在插件中。使用步骤：1. 复制加密文件至指定路径；2. 运行工具自动解密并解压；3. 在export文件夹查看明文测例（.in和.out文件）。需注意清理旧生成目录，且首次作业编号为36。需.NET Framework 4.5环境支持，通过反编译获取解密逻辑实现。"
+      ],
+      "startTime": "2025-02-14T13:22:06.502Z",
+      "endTime": "2025-02-14T13:22:15.823Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "To use the CppTestCaseViewer tool, clone the GitHub repository at https://github.com/ddadaal/CppTestCaseViewer. The test cases are encrypted with AES256 and stored in a ZIP file under specific paths. Use an .NET Framework 4.5 environment. After running the plugin, delete temporary files (except .exe) to avoid errors."
+      ]
+    }
+  ]
 }

@@ -1,14 +1,27 @@
 {
   "articleId": "rename-from-viccrubs",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:31:59.425Z",
-  "lastUpdateEndTime": "2025-02-14T13:32:27.839Z",
-  "summaries": [
-    "作者决定将多年使用的网络用户名统一更改为“ddadaal”，以解决此前多个ID导致的身份割裂问题。旧名“viccrubs”发音复杂且与真名无关，短暂试用的“daacheen”也因读音偏差和长度被弃用。新名源于昵称“达达”，兼顾简洁性、易读性及与真名的关联性，同时避免文化差异导致的发音障碍。改名涉及邮箱、GitHub、社交平台及域名等全方位调整，尽管面临网站限制和影响力重置的挑战，作者仍认为尽早统一身份标识更利于长期使用。最终目标是建立稳定且专业的网络形象。"
-  ],
   "hash": "6e8cbead2f42551a2a0116ae4cf519336bd5ae1cd8eedef27f5d7ff07e05a756",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者决定将多年使用的网络用户名统一更改为“ddadaal”，以解决此前多个ID导致的身份割裂问题。旧名“viccrubs”发音复杂且与真名无关，短暂试用的“daacheen”也因读音偏差和长度被弃用。新名源于昵称“达达”，兼顾简洁性、易读性及与真名的关联性，同时避免文化差异导致的发音障碍。改名涉及邮箱、GitHub、社交平台及域名等全方位调整，尽管面临网站限制和影响力重置的挑战，作者仍认为尽早统一身份标识更利于长期使用。最终目标是建立稳定且专业的网络形象。"
+      ],
+      "startTime": "2025-02-14T13:31:59.425Z",
+      "endTime": "2025-02-14T13:32:27.839Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "作者因网络昵称viccrubs的不完美决定改名为ddadaal，目的是减少割裂感并统一身份。新名字更易读、好记且不会影响他人印象。已修改多个账号，并将域名改为ddadaal.me。改名对自身影响力的影响较小，强调早改的重要性。"
+      ]
+    }
+  ]
 }

@@ -1,14 +1,27 @@
 {
   "articleId": "department-gitlab-ci-configuration",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:22:15.824Z",
-  "lastUpdateEndTime": "2025-02-14T13:22:35.522Z",
-  "summaries": [
-    "作者因学院GitLab版本过旧（8.10），无法使用新版GitLab Runner，通过降级安装1.9.5版本Runner并注册解决API兼容性问题。配置过程中遭遇Ubuntu官方源Node.js版本过低，手动更新源解决；构建时内存不足导致进程崩溃，将内存扩容至2G并通过简化测试项目完成部署。最终成功搭建CI环境，实现自动化构建，并为项目添加构建状态徽章。文章总结了GitLab CI与传统开源平台的优势，强调其与GitLab生态的无缝衔接，为后续项目持续集成奠定基础。"
-  ],
   "hash": "e0e38c47f17de8752d630e0e96e3299462970aec6f586204750c4c7795fa2337",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者因学院GitLab版本过旧（8.10），无法使用新版GitLab Runner，通过降级安装1.9.5版本Runner并注册解决API兼容性问题。配置过程中遭遇Ubuntu官方源Node.js版本过低，手动更新源解决；构建时内存不足导致进程崩溃，将内存扩容至2G并通过简化测试项目完成部署。最终成功搭建CI环境，实现自动化构建，并为项目添加构建状态徽章。文章总结了GitLab CI与传统开源平台的优势，强调其与GitLab生态的无缝衔接，为后续项目持续集成奠定基础。"
+      ],
+      "startTime": "2025-02-14T13:22:15.824Z",
+      "endTime": "2025-02-14T13:22:35.522Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "文章介绍了用户在尝试在GitLab上搭建持续集成（CI）环境时遇到的问题与解决方案。由于GitLab版本过旧，导致无法正确安装和配置Runner，用户遇到了405错误，并将新版本的 runner 替换为老版本以解决问题。此外，Node.js版本不足和内存不足也影响了构建过程，但最终用户通过调整资源设置成功完成build。文章总结了搭建过程中遇到的坑以及解决方法。"
+      ]
+    }
+  ]
 }

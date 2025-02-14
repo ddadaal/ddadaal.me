@@ -2,10 +2,15 @@ import { AzureKeyCredential } from "@azure/ai-language-text";
 import createModelClient, { GetChatCompletions200Response } from "@azure-rest/ai-inference";
 import { cleanEnv, str } from "envalid";
 
-import { SummarizationResult, Summarizer } from "./index.mjs";
+import { Summarizer, SummaryData } from "./index.mjs";
 
 export const generatePrompt = (languageCode: string) =>
   `Summarize the article in the next message in language ${languageCode} in 100 words. Return the result in plain text format, without any other information.`
+
+export const removeThinkTags = (x: string | null) => {
+  // remove everything between <think> and </think>, including line breaks
+  return x ? x.replace(/<think>[\s\S]*?<\/think>/g, "").trim() : "";
+}
 
 export const createAzureAiSummarizer = () : Summarizer => {
 
@@ -21,7 +26,9 @@ export const createAzureAiSummarizer = () : Summarizer => {
   );
 
   return {
-    summarize: async (text: string, languageCode: string): Promise<SummarizationResult> => {
+    name: "azureAi",
+
+    summarize: async (text: string, languageCode: string): Promise<SummaryData> => {
 
       const messages = [
         { role: "user", content: generatePrompt(languageCode) },
@@ -39,15 +46,11 @@ export const createAzureAiSummarizer = () : Summarizer => {
         return res.status === "200";
       }
 
-      const postProcess = (x: string | null) => {
-        // remove everything between <think> and </think>, including line breaks
-        return x ? x.replace(/<think>[\s\S]*?<\/think>/g, "").trim() : "";
-      }
 
       if (responseOk(response)) {
         return {
-          summaries: response.body.choices.map((x) => postProcess(x.message.content)),
-          mode: { mode: "azure-ai", model: response.body.model },
+          summaries: response.body.choices.map((x) => removeThinkTags(x.message.content)),
+          metadata: { summarizer: "azure-ai", model: response.body.model },
         };
       } else {
         throw new Error(`Unexpected response: ${response.status}. message: ${JSON.stringify(response.body)}`);

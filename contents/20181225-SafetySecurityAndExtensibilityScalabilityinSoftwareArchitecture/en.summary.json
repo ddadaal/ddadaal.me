@@ -1,14 +1,27 @@
 {
   "articleId": "security-safety-extensibility-scalability",
   "lang": "en",
-  "lastUpdateStartTime": "2025-02-14T13:25:13.416Z",
-  "lastUpdateEndTime": "2025-02-14T13:25:51.930Z",
-  "summaries": [
-    "The article examines two pairs of software architecture quality attributes: security/safety and extensibility/scalability. Safety minimizes harm from unintentional accidents, while security protects against intentional attacks. Extensibility enables vertical system expansion (adding features), whereas scalability handles horizontal growth (increased workload). General and concrete scenarios illustrate each attribute’s application, with safety focusing on redundancy and monitoring, and security emphasizing vulnerability testing and isolation. Extensibility strategies include modular design and refactoring, while scalability employs partitioning and caching. Tactics for each attribute balance benefits (e.g., robustness, flexibility) against penalties (cost, complexity), providing a framework for architectural decision-making."
-  ],
   "hash": "19a93a646fd10f0a9b814b56854274d6a3eb15601b64e41fff52dc407ca527b1",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "The article examines two pairs of software architecture quality attributes: security/safety and extensibility/scalability. Safety minimizes harm from unintentional accidents, while security protects against intentional attacks. Extensibility enables vertical system expansion (adding features), whereas scalability handles horizontal growth (increased workload). General and concrete scenarios illustrate each attribute’s application, with safety focusing on redundancy and monitoring, and security emphasizing vulnerability testing and isolation. Extensibility strategies include modular design and refactoring, while scalability employs partitioning and caching. Tactics for each attribute balance benefits (e.g., robustness, flexibility) against penalties (cost, complexity), providing a framework for architectural decision-making."
+      ],
+      "startTime": "2025-02-14T13:25:13.416Z",
+      "endTime": "2025-02-14T13:25:51.930Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "To achieve scalability in web applications, several strategies are employed to ensure the system can handle increased traffic efficiently. Here's an organized summary of these strategies and their considerations:\n\n1. **Layered Architecture Design**: \n   - Split the system into layers based on responsibilities: data access (e.g., database), calculation, and viewing.\n   - Each layer is optimized individually, allowing independent scaling without affecting other parts.\n\n2. **Database Partitioning**:\n   - Distribute databases across multiple instances to handle high loads, reducing pressure on any single database.\n   - Consider the need for consistency and performance between partitions; ensure scalability horizontally if possible.\n\n3. **Content Caching with CDNs**:\n   - Serve static content from a CDN to reduce server load and improve speed.\n   - Be cautious about SEO implications and potential penalties from excessive caching, though modern tools can mitigate these issues.\n\n4. **In-Memory Databases as Caches**:\n   - Use lightweight databases like Redis for caching to enhance performance without relying solely on them for high availability or fault tolerance.\n\n5. **Horizontal Scaling Strategies**:\n   - Implement auto-scaling and load balancing to adjust resources dynamically based on demand.\n   - Consider using CDNs to distribute traffic globally, ensuring redundancy and reducing latency.\n\n6. **Combining Strategies for Optimal Performance**:\n   - Integrate caching with database partitioning to balance speed and load handling effectively.\n   - Monitor performance metrics to find the optimal balance between scalability strategies.\n\n7. **Considerations and Trade-offs**:\n   - Ensure consistency across distributed databases, especially when partitioned horizontally.\n   - Manage cache expiration to prevent staleness while adding complexity.\n   - Evaluate challenges like geographical distribution for CDNs and potential bandwidth limitations.\n\n8. **Additional Considerations**:\n   - Explore microservices architecture for independent scaling of services, requiring robust orchestration and monitoring tools.\n   - Address the need for efficient content delivery across regions to ensure global redundancy and performance.\n\nBy strategically applying these methods, web applications can be designed to scale effectively, handling increased traffic while maintaining performance and reliability."
+      ]
+    }
+  ]
 }

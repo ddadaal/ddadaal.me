@@ -2,7 +2,7 @@
 import { AzureKeyCredential, TextAnalysisClient } from "@azure/ai-language-text";
 import { cleanEnv, str } from "envalid";
 
-import { SummarizationResult, Summarizer } from "./index.mjs";
+import { Summarizer, SummaryData } from "./index.mjs";
 
 const azureLanguageCodeMap = {
   cn: "zh-Hans",
@@ -20,8 +20,9 @@ export const createAzureLanguageSummarier = () : Summarizer => {
       env.AZURE_LANGUAGE_ENDPOINT, new AzureKeyCredential(env.AZURE_LANGUAGE_KEY));
 
       return {
+        name: "azureLanguage",
 
-        summarize: async (text: string, languageCode: string): Promise<SummarizationResult> => {
+        summarize: async (text: string, languageCode: string): Promise<SummaryData> => {
 
           const mappedLanguageCode = azureLanguageCodeMap[languageCode as keyof typeof azureLanguageCodeMap];
 
@@ -47,7 +48,7 @@ export const createAzureLanguageSummarier = () : Summarizer => {
               }
 
               return {
-                mode: { mode: "azure-language" },
+                metadata: { summarizer: "azure-language" },
                 summaries: result.summaries.map((x) => x.text),
               };
             }

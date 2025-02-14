@@ -1,14 +1,27 @@
 {
   "articleId": "make-uwp-apps-use-loopback-system-proxy-using-powershell-script",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:36:06.391Z",
-  "lastUpdateEndTime": "2025-02-14T13:36:32.466Z",
-  "summaries": [
-    "国内微软服务连接问题严重，尤其UWP应用因禁止localhost流量无法使用系统代理。微软工具CheckNetIsolation.exe可解除限制，但需手动获取应用ID操作繁琐。原有PowerShell脚本存在过滤系统应用和接口失效问题。改进方案修复了注册表路径读取逻辑，新增名称筛选参数，支持快速定位邮件/商店/OneNote/照片等系统应用。用户运行脚本后选择序号即可自动注入应用ID到代理白名单，无需管理员权限。该方案通过简化注册表查询和参数化过滤，显著提升了UWP应用代理配置效率。"
-  ],
   "hash": "c0e7b34cbe677d04f80a60678163b96d9b9ce636f7185ef59b6c4d696e339b86",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "国内微软服务连接问题严重，尤其UWP应用因禁止localhost流量无法使用系统代理。微软工具CheckNetIsolation.exe可解除限制，但需手动获取应用ID操作繁琐。原有PowerShell脚本存在过滤系统应用和接口失效问题。改进方案修复了注册表路径读取逻辑，新增名称筛选参数，支持快速定位邮件/商店/OneNote/照片等系统应用。用户运行脚本后选择序号即可自动注入应用ID到代理白名单，无需管理员权限。该方案通过简化注册表查询和参数化过滤，显著提升了UWP应用代理配置效率。"
+      ],
+      "startTime": "2025-02-14T13:36:06.391Z",
+      "endTime": "2025-02-14T13:36:32.466Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "# 问题\n\n由于微软UWP应用被系统代理限制，无法访问网络服务，解决方案包括手动解除隔离或使用自动化脚本。此文章介绍了使用PowerShell脚本实现这一功能，并解决了脚本中遇到的过滤和API更改问题，用户可快速筛选并设置所需应用程序。"
+      ]
+    }
+  ]
 }

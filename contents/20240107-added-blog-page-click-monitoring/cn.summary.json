@@ -1,14 +1,27 @@
 {
   "articleId": "added-blog-page-click-monitoring",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:43:15.052Z",
-  "lastUpdateEndTime": "2025-02-14T13:43:38.669Z",
-  "summaries": [
-    "作者因不满第三方统计工具（如Google Analytics、友盟）的数据复杂性和隐私问题，决定自行开发博客统计系统。为避免触犯GDPR隐私法规，仅收集页面URL、来源地址及屏幕分辨率，避开敏感信息如IP地址。系统基于Node.js和Fastify搭建，使用Azure SQL数据库存储数据，利用Prisma ORM操作数据库，部署于Azure应用服务以减少成本。目前功能已上线，未来计划开发可视化面板分析访问数据，并扩展为博客后端服务的基础设施，确保数据自主可控且合规。"
-  ],
   "hash": "b3f91c71b7f90d4a6bf3d22a00a4433f6b7243ecb0174d2f3dcc22e9163da8be",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者因不满第三方统计工具（如Google Analytics、友盟）的数据复杂性和隐私问题，决定自行开发博客统计系统。为避免触犯GDPR隐私法规，仅收集页面URL、来源地址及屏幕分辨率，避开敏感信息如IP地址。系统基于Node.js和Fastify搭建，使用Azure SQL数据库存储数据，利用Prisma ORM操作数据库，部署于Azure应用服务以减少成本。目前功能已上线，未来计划开发可视化面板分析访问数据，并扩展为博客后端服务的基础设施，确保数据自主可控且合规。"
+      ],
+      "startTime": "2025-02-14T13:43:15.052Z",
+      "endTime": "2025-02-14T13:43:38.669Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "作为一名创作者，我希望获取网站访问数据以提升成就感，但过去因各种问题未能实现稳定统计。通过研究发现，Analytix仅收集页面地址、来源地址及屏幕分辨率等有限信息，并未涉及IP地址。考虑到GDPR规定，网站无正当理由不得收集用户个人数据，因此决定仅使用这些非个人信息。最终采用Node.js开发并部署统计脚本到Azure App Service，数据存储在免费的Azure SQL Database中，结合Prisma ORM框架实现高效管理。下一步计划开发数据分析Dashboard，提升对访问数据的理解和呈现效果。"
+      ]
+    }
+  ]
 }

@@ -1,14 +1,27 @@
 {
   "articleId": "wslg-first-experience",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:38:55.384Z",
-  "lastUpdateEndTime": "2025-02-14T13:39:18.764Z",
-  "summaries": [
-    "微软在Build 2020提出WSL2的GUI与GPU支持，一年后推出wslg预览版。通过最新Windows Insider版本测试，可直接运行Linux图形程序如xclock、VSCode和网易云音乐，支持剪贴板同步与音频输出，简化开发环境配置。但仍存在高DPI模糊、Windows输入法不兼容、QQ截图导致崩溃等问题。wslg采用Wayland和RDP协议架构，官方集成无需手动配置X Server。尽管功能尚不完善，其官方支持及GPU加速使Windows进一步融合Linux生态，成为更具竞争力的开发平台。"
-  ],
   "hash": "bb048aa7f42b4c9d00e7d8dca78de02a8193ce58f53bf57d5ff175fcacc7e306",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "微软在Build 2020提出WSL2的GUI与GPU支持，一年后推出wslg预览版。通过最新Windows Insider版本测试，可直接运行Linux图形程序如xclock、VSCode和网易云音乐，支持剪贴板同步与音频输出，简化开发环境配置。但仍存在高DPI模糊、Windows输入法不兼容、QQ截图导致崩溃等问题。wslg采用Wayland和RDP协议架构，官方集成无需手动配置X Server。尽管功能尚不完善，其官方支持及GPU加速使Windows进一步融合Linux生态，成为更具竞争力的开发平台。"
+      ],
+      "startTime": "2025-02-14T13:38:55.384Z",
+      "endTime": "2025-02-14T13:39:18.764Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "微软在Build 2020上增强了WSL2的支持，新增了图形界面（GUI）和GPU GPU计算功能，为开发者提供了更优的跨平台体验。然而，仍存在高DPI显示不流畅、输入法支持不足、截图导致系统崩溃等问题。总体来看，WSQL 1.0预览版在增强Windows兼容性方面迈出了重要一步，但仍需解决一些用户体验问题。"
+      ]
+    }
+  ]
 }

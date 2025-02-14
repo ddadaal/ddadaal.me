@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { stat, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
@@ -14,44 +14,53 @@ import { createOllamaSummarizer } from "./ollama.mjs";
 
 dotenv.config({ path: ".env" });
 
-const summarierMap = {
+const summarierMap: Record<string, (() => Summarizer) | undefined> = {
   "azure-language": createAzureLanguageSummarier,
   "azure-ai": createAzureAiSummarizer,
   "ollama": createOllamaSummarizer,
 }
 
 const env = cleanEnv(process.env, {
-  SUMMARIZER: str({ desc: "The summarizer to use", choices: Object.keys(summarierMap) }),
+  ENABLED_SUMMARIZERS: str({
+    desc: "The summarizers to use, separated by ,. Available values: " + Object.keys(summarierMap).join(",") }),
 })
 
-const summarier = summarierMap[env.SUMMARIZER as keyof typeof summarierMap]();
+const summarizers  = env.ENABLED_SUMMARIZERS.split(",")
+  .filter((x) => x.trim())
+  .map((x) => {
+    const constructor: (() => Summarizer) | undefined = summarierMap[x];
+
+    if (!constructor) {
+      throw new Error(`Unknown summarizer: ${x}. Available values: ${Object.keys(summarierMap).join(",")}`);
+    }
+
+    return constructor();
+  });
 
 export interface ArticleSummary {
   articleId: string;
   lang: string;
-  lastUpdateStartTime: string;
-  lastUpdateEndTime: string;
-  summaries: string[];
   hash: string;
-  mode: SummaryMode;
+  summaries: SummaryData[];
 }
 
-export type SummaryMode =
-    | { mode: "azure-language" }
-    | { mode: "azure-ai", model: string }
-    | { mode: "ollama", model: string }
-
-export interface SummarizationResult {
+export interface SummaryData {
+  metadata: SummarizerMetadata;
   summaries: string[];
-  mode: SummaryMode;
 }
+
+export type SummarizerMetadata =
+    | { summarizer: "azure-language" }
+    | { summarizer: "azure-ai", model: string }
+    | { summarizer: "ollama", model: string }
 
 export interface Summarizer {
-  summarize(text: string, languageCode: string): Promise<SummarizationResult>;
+  readonly name: string;
+  summarize(text: string, languageCode: string): Promise<SummaryData>;
 }
 
 const { positionals, values: { force } } = parseArgs({ allowPositionals: true, options: {
-  force: { type: "boolean", alias: "f", description: "Force to summarize", default: true },
+  force: { type: "boolean", alias: "f", description: "Force to summarize", default: false },
 } });
 
 
@@ -80,46 +89,56 @@ async function summarizeArticle(articleDir: string) {
 
     const summaryJsonFilePath = join(articleDir, `${frontMatter.lang as string}.summary.json`);
 
-    if (force) {
-      log("log", "Force to summarize %s of lang %s", frontMatter.id, frontMatter.lang);
-    } else if (await stat(summaryJsonFilePath).then((x) => x.isFile()).catch(() => false)) {
-      const existingSummaryJson = JSON.parse(await readFile(summaryJsonFilePath, "utf-8")) as ArticleSummary;
+    const existingFileContent = await readFile(summaryJsonFilePath, "utf-8").catch(() => null);
 
-      existingSummaryJson.hash = contentHash;
-
-      if (contentHash === existingSummaryJson.hash) {
-        log("log", "Content is not changed after the last summarization. Skip summarization.");
-        continue;
-      }
+    const summaryFile: ArticleSummary | null = existingFileContent ? JSON.parse(existingFileContent) as ArticleSummary : {
+      articleId: frontMatter.id as string,
+      lang: frontMatter.lang as string,
+      hash: contentHash,
+      summaries: [],
     }
 
-    log("log", "Summarize %s of lang %s", frontMatter.id, frontMatter.lang);
+    for (const summarizer of summarizers) {
 
+      const existingSummary = summaryFile.summaries.find((x) => x.metadata.summarizer === summarizer.name);
 
-    const startTime = new Date();
-    // summarize content
-    try {
+      if (existingSummary && !force && contentHash === summaryFile.hash) {
+        log("log", "Artile content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization of summarizer %s",
+          frontMatter.id, frontMatter.lang, summarizer.name, summarizer.name);
 
-      const summaries = await summarier.summarize(content, frontMatter.lang as string);
+        continue;
+      }
 
-      const endTime = new Date();
+      log("log", "Summarize %s of lang %s using %s", frontMatter.id, frontMatter.lang, summarizer.name);
 
-      const summaryJson: ArticleSummary = {
-        articleId: frontMatter.id as string,
-        lang: frontMatter.lang as string,
-        lastUpdateStartTime: startTime.toISOString(),
-        lastUpdateEndTime: endTime.toISOString(),
-        summaries: summaries.summaries,
-        hash: contentHash,
-        mode: summaries.mode,
-      };
+      const startTime = new Date();
+      // summarize content
+      try {
 
-      log("log", "Write summary of %s of lang %s to %s. Took %d seconds",
-        frontMatter.id, frontMatter.lang, summaryJsonFilePath, (endTime.getTime() - startTime.getTime()) / 1000);
+        const data = await summarizer.summarize(content, frontMatter.lang as string);
 
-      await writeFile(summaryJsonFilePath, JSON.stringify(summaryJson, null, 2));
-    } catch (e) {
-      log("error", "Failed to summarize %s of lang %s. %s", frontMatter.id, frontMatter.lang, e);
+        const endTime = new Date();
+
+        if (existingSummary) {
+          existingSummary.metadata = data.metadata;
+          existingSummary.summaries = data.summaries;
+        } else {
+          summaryFile.summaries.push({
+            metadata: data.metadata,
+            summaries: data.summaries,
+          });
+        };
+
+        log("log", "Summary of %s of lang %s using %s complete. Took %d seconds",
+          frontMatter.id, frontMatter.lang, summarizer.name, (endTime.getTime() - startTime.getTime()) / 1000);
+
+      } catch (e) {
+        log("error", "Failed to summarize %s of lang %s using %s. %s", frontMatter.id, frontMatter.lang, summarizer.name, e);
+        continue;
+      }
+
+      log("log", "Write summary json to %s", summaryJsonFilePath);
+      await writeFile(summaryJsonFilePath, JSON.stringify(summaryFile, null, 2));
     }
   }
 }
@@ -147,5 +166,3 @@ async function main() {
 }
 
 void main();
-
-

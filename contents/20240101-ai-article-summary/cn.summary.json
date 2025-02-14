@@ -1,14 +1,27 @@
 {
   "articleId": "ai-article-summary",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:42:49.901Z",
-  "lastUpdateEndTime": "2025-02-14T13:43:15.051Z",
-  "summaries": [
-    "作者受朋友圈启发，为博客添加AI自动总结功能。尝试OpenAI API受阻后，转向Azure AI Studio的Language服务，利用其抽象摘要功能。通过Node.js脚本读取文章内容并调用API生成总结，结果存储为静态文件。实现中英文文章总结，但英文效果更佳，部分中文总结存在标点及逻辑问题。尽管存在不足，整体效果尚可。项目耗时约6小时，集成过程约1小时，体现开发者主动拥抱AI提升效率的实践，强调利用工具优化生产力而非被动担忧替代风险。"
-  ],
   "hash": "24ec2c456dfd0a28786b26ffccdcda57a9dee3f582b931868fb2b235ec525ea1",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者受朋友圈启发，为博客添加AI自动总结功能。尝试OpenAI API受阻后，转向Azure AI Studio的Language服务，利用其抽象摘要功能。通过Node.js脚本读取文章内容并调用API生成总结，结果存储为静态文件。实现中英文文章总结，但英文效果更佳，部分中文总结存在标点及逻辑问题。尽管存在不足，整体效果尚可。项目耗时约6小时，集成过程约1小时，体现开发者主动拥抱AI提升效率的实践，强调利用工具优化生产力而非被动担忧替代风险。"
+      ],
+      "startTime": "2025-02-14T13:42:49.901Z",
+      "endTime": "2025-02-14T13:43:15.051Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "2023年，我完成了将 Azure Cognitive Search 集成到博客平台以生成文章AI总结的功能开发。通过使用 Node.js 和 Express 作为后端框架，并借助 Mongoose 进行文档存储与分析，我实现了对文章的自动摘要功能。这个过程耗时约6小时，其中集成功能仅需1小时。项目采用 Docker 容器化部署，确保在生产环境中稳定运行。\n\n该功能支持多语言摘要（如英文和中文），但效果因文章类型和内容质量而异。英文文章摘要通常更流畅且更具逻辑性，而中文文章摘要可能较为简洁但不够深入。我从失败案例中获得的经验表明，问题不仅在于技术实现，还包括对用户需求的深入理解。\n\n通过这个项目，我对AI在提升工作生活中的潜力有了深刻的认识，并计划将这些经验应用于更多实际场景中。"
+      ]
+    }
+  ]
 }

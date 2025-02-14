@@ -1,14 +1,27 @@
 {
   "articleId": "strongly-typed-i18n-with-typescript",
   "lang": "en",
-  "lastUpdateStartTime": "2025-02-14T13:28:49.222Z",
-  "lastUpdateEndTime": "2025-02-14T13:29:23.375Z",
-  "summaries": [
-    "The article discusses internationalization (i18n) challenges, focusing on the \"raw string\" problem when using placeholder IDs for localized content. It highlights risks like typos, lack of IDE support, and refactoring difficulties. A solution using JavaScript Proxies to generate strongly typed IDs is proposed: by recording key paths during object access, it enables type-safe, autocompleted IDs while preserving i18n benefits (fallback, interpolation). This approach avoids raw strings, improves maintainability, and leverages type inference for error checking. Drawbacks include Proxy performance costs, GC overhead, and potential frequent component updates. The author advocates typed solutions to enhance efficiency and reduce bugs in multilingual applications."
-  ],
   "hash": "7c96db19070360dec8673ffd5caf3cd34a972c7b50304d966e150ffdfe5863f1",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "The article discusses internationalization (i18n) challenges, focusing on the \"raw string\" problem when using placeholder IDs for localized content. It highlights risks like typos, lack of IDE support, and refactoring difficulties. A solution using JavaScript Proxies to generate strongly typed IDs is proposed: by recording key paths during object access, it enables type-safe, autocompleted IDs while preserving i18n benefits (fallback, interpolation). This approach avoids raw strings, improves maintainability, and leverages type inference for error checking. Drawbacks include Proxy performance costs, GC overhead, and potential frequent component updates. The author advocates typed solutions to enhance efficiency and reduce bugs in multilingual applications."
+      ],
+      "startTime": "2025-02-14T13:28:49.222Z",
+      "endTime": "2025-02-14T13:29:23.375Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "The document outlines an innovative solution to enhance language localization in TypeScript applications by utilizing Proxies to handle access to a `lang` object. Here's a concise summary:\n\n1. **Problem Identification**: The project initially used direct `ref` access for accessing properties of the `lang` object, leading to performance issues and coupling problems.\n\n2. **Solution with Proxies**: To address these issues, Proxies were introduced to intercept and manage accesses to language properties. This allows generating unique IDs by joining access paths (e.g., `app.header.userIndicator...`), creating a root Proxied `lang` object for efficiency.\n\n3. **Benefits**:\n   - **Type Safety**: Enhanced type inference in TypeScript.\n   - **Efficient Access**: Components can use generic accessors without knowing specific language IDs, reducing code redundancy.\n   - **Strong Autocompletion**: Improved type-based support for developers' tools.\n\n4. **Drawbacks**:\n   - **Performance Overhead**: Proxies introduce some lag due to additional lookups.\n   - **Immutability and Memory**: Each use creates a new object, increasing memory usage but manageable in typical scenarios.\n\n5. **Conclusion**: Despite drawbacks, the approach is highly beneficial for projects requiring language localization, offering significant improvements in type safety and maintainability."
+      ]
+    }
+  ]
 }

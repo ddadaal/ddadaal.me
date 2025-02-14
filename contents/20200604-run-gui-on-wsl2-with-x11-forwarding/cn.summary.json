@@ -1,14 +1,27 @@
 {
   "articleId": "run-gui-on-wsl2-with-x11-forwarding",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:37:03.254Z",
-  "lastUpdateEndTime": "2025-02-14T13:37:28.655Z",
-  "summaries": [
-    "微软在WSL 2中通过X11转发实现Linux GUI程序支持，用户需在Windows安装X Server（如vcxsrv），配置DISPLAY环境变量并设置字体。GUI应用窗口与Windows无缝集成，支持剪贴板同步和高DPI显示，但存在标题栏无法隐藏、输入法需独立配置等限制。微软已在Build 2020宣布将优化原生GUI支持，未来有望提升体验。当前方案适用于远程或虚拟机环境，通过X11转发及SSH实现高效跨平台操作，避免图形界面性能损耗。"
-  ],
   "hash": "38d9475ccc54d2587efcee3c221858513e3fe9659c8af683b92d03bfd6330c8b",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "微软在WSL 2中通过X11转发实现Linux GUI程序支持，用户需在Windows安装X Server（如vcxsrv），配置DISPLAY环境变量并设置字体。GUI应用窗口与Windows无缝集成，支持剪贴板同步和高DPI显示，但存在标题栏无法隐藏、输入法需独立配置等限制。微软已在Build 2020宣布将优化原生GUI支持，未来有望提升体验。当前方案适用于远程或虚拟机环境，通过X11转发及SSH实现高效跨平台操作，避免图形界面性能损耗。"
+      ],
+      "startTime": "2025-02-14T13:37:03.254Z",
+      "endTime": "2025-02-14T13:37:28.655Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "这篇文章介绍了如何在Windows环境中通过X11 Forwarding技术在WSL 2（Windows Subsystem for Linux）中获得图形界面。尽管WSL 2本身没有像传统Linux那样完整的图形环境，但通过这种方法可以在远程桌面或虚拟机中运行带有图形界面的应用程序。\n\n### 主要内容总结：\n1. **集成效果**：微软已经在Build 2020上展示了WSL 2与Windows的良好兼容性，未来可能会进一步完善这一集成。\n   \n2. **手动配置方法**：\n   - 设置`DISPLAY`环境变量：需要从目标操作系统获取X服务器的地址，并将其添加到`DISPLAY`环境中。\n   - 使用工具如xclock测试X11环境是否正常。\n   - 安装必要的字体以避免图形界面中的显示问题。\n\n3. **实用技巧**：\n   - 可以在VSCode等编辑器中设置标题栏样式，以提高使用体验。\n   - X11剪贴板与Windows同步，方便数据交互。\n\n4. **限制和注意事项**：\n   - 隐藏标题栏可能会影响窗口操作功能。\n   - 输入法仍然需要手动配置。\n   - 字体问题可能需要特定的安装才能解决。\n\n5. **后续支持**：这种方法不仅限于WSL 2，也可以应用于其他虚拟机或远端PC，并且可以通过SSH和X11 Forwarding扩展到更多场景。\n\n这篇文章为那些希望在Windows环境中使用带有图形界面的应用程序提供了实用的解决方案。"
+      ]
+    }
+  ]
 }

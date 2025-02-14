@@ -1,14 +1,27 @@
 {
   "articleId": "gatsby-powered-vicblog-online",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:23:50.250Z",
-  "lastUpdateEndTime": "2025-02-14T13:24:09.920Z",
-  "summaries": [
-    "作者最初用React+ASP.NET开发博客，但面临维护复杂、性能差等问题。后改用Gatsby框架，两天内搭建出静态博客：利用React生态实现高性能，支持PWA、Markdown写作、多语言、评论系统等功能。Gatsby的静态页面便于CDN部署，解决了Azure服务器延迟和GitHub Pages加载慢的痛点，虽存在文档不全等开源通病，但灵活性和现代化开发体验远超Hexo等传统工具。最终新博客在功能扩展性和用户体验上达到预期，进入优化维护阶段。"
-  ],
   "hash": "099709643d5d69c7fb4c094dc674ba1f5b8138df08c6ac0826917e7efe2709b7",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者最初用React+ASP.NET开发博客，但面临维护复杂、性能差等问题。后改用Gatsby框架，两天内搭建出静态博客：利用React生态实现高性能，支持PWA、Markdown写作、多语言、评论系统等功能。Gatsby的静态页面便于CDN部署，解决了Azure服务器延迟和GitHub Pages加载慢的痛点，虽存在文档不全等开源通病，但灵活性和现代化开发体验远超Hexo等传统工具。最终新博客在功能扩展性和用户体验上达到预期，进入优化维护阶段。"
+      ],
+      "startTime": "2025-02-14T13:23:50.250Z",
+      "endTime": "2025-02-14T13:24:09.920Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "这篇文章讲述了作者从前端后端维护成本高昂的博客系统转向使用Gatsby进行重构的经历。原系统的维护问题包括高异常率、缓慢性能及高成本。通过Gatsby，作者实现了高性能、灵活且易扩展的静态网页解决方案，并满足了包括文章编辑器、图片上传等多样化需求，解决了前文提到的所有痛点。目前新系统已基本完善，仅需做小幅优化即可使用。"
+      ]
+    }
+  ]
 }

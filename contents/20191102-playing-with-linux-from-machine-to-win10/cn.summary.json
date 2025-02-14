@@ -1,14 +1,27 @@
 {
   "articleId": "playing-with-linux-from-machine-to-win10",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:32:27.840Z",
-  "lastUpdateEndTime": "2025-02-14T13:32:44.784Z",
-  "summaries": [
-    "作者回顾了从大学使用Xubuntu到尝试Manjaro KDE/GNOME的Linux探索历程，因HiDPI适配、QQ兼容性等问题转向平铺式窗口管理器i3，虽提高效率但配置繁琐。最终回归Windows 10并利用WSL兼顾Linux环境，强调折腾中需掌握vim、善用archwiki、保持耐心，未来仍计划通过虚拟机继续体验不同系统，并开源个人配置供参考。"
-  ],
   "hash": "e7b9774cc42ed7b4db817f539aa6fcdf88c5ae471fc1811a1be2c69a80c409a2",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "作者回顾了从大学使用Xubuntu到尝试Manjaro KDE/GNOME的Linux探索历程，因HiDPI适配、QQ兼容性等问题转向平铺式窗口管理器i3，虽提高效率但配置繁琐。最终回归Windows 10并利用WSL兼顾Linux环境，强调折腾中需掌握vim、善用archwiki、保持耐心，未来仍计划通过虚拟机继续体验不同系统，并开源个人配置供参考。"
+      ],
+      "startTime": "2025-02-14T13:32:27.840Z",
+      "endTime": "2025-02-14T13:32:44.784Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "你的文章内容非常丰富且详细，涵盖了你长期在不同操作系统和软件平台之间折腾的经历、体验以及对各种系统的评价与反思。以下是对文章的总结和一些可能对你有帮助的建议：\n\n---\n\n### **总结：**\n1. **系统安装与自 sufficient 的追求**  \n   你对自 sufficient 的系统环境有很高的要求，尤其是 Arch Linux 和 Manjaro 系统，它们提供了高度可定制的体验，但同时也伴随着一定的挑战。例如，Manjaro 系统缺乏一些 X11 支持，而 Arch Linux 则完全依赖手动操作。\n\n2. **对 Windows 10 的偏爱**  \n   尽管你提到 Windows 10 在 WSU 上提供了接近Linux的命令行体验，但你最终还是选择了回到 Windows 10（特别是当其内核更新后），可能是因为它在某些场景下更符合你的需求。\n\n3. **对 i3 平铺式窗口管理器的反思**  \n   虽然 i3 的效率很高，但在需要灵活操作时（如平铺式窗口管理）会带来不便。你对这种工具的局限性有深刻的理解，并倾向于寻找更适合自己的工作流程和工具。\n\n4. **持续折腾与学习的重要性**  \n   你明确表示会继续折腾各种系统和平台（包括 BSD），但更倾向于使用虚拟机，以平衡性能和便利性。同时，你强调了学习新技术、利用社区资源以及自动化脚本的重要性。\n\n---\n\n### **建议：**\n1. **提升安装效率**  \n   - 对于 Arch Linux 和 Manjaro 系统，建议你参考官方文档（如 Arch 的 `Installation_Guide` 或 Manjaro 的文档）进行快速配置。此外，使用工具如 `lsusb`、`fdisk`、`du` 等可以帮助你更高效地完成安装。\n   - 在处理分区和引导时，尽量减少错误，避免长时间卡在引导阶段。\n\n2. **优化WSL体验**  \n   如果你在 Windows 10 上使用 WSU 配置 Linux，则可以参考以下方法：\n   - 使用 `WSL` 的内置工具（如 `wslsh`, `wdmem`) 来快速访问Linux功能。\n   - 将常用的 Linux 工具（如 `ls`, `cp`, `mv`, `grep`, `sed`, ` awk` 等）映射到Windows快捷方式，方便操作。\n\n3. **探索平铺式窗口管理器的替代方案**  \n   虽然 i3 平铺式窗口管理器效率高，但对其他平台（如 Windows 和 BSD）的支持不足。你可能可以尝试以下工具：\n   - **i2**: 支持在 Windows 上使用平铺式布局。\n   - **Cube**: 适用于 BSD 系统（Mac、Linux、Windows）的多任务窗口管理器。\n\n4. **自动化脚本与工具**  \n   对于需要重复操作的任务，编写自动化脚本可以节省大量时间。例如：\n   - 使用 `Automator` 或 `PowerShell` 来批量复制文件。\n   - 配置 `Airdrop` 或 ` scenic` 来快速生成常用项目（如文档、URL）。\n\n5. **探索更高效的桌面工具**  \n   如果你对 i3 的平铺式布局感到局限，可以尝试以下工具：\n   - **Atom**: 一个高度可配置的文本编辑器，支持自定义主题和插件。\n   - **Logitech C920 Pro**: 增强版键盘适合多任务处理。\n\n6. **社区资源与自动化**  \n   在面对技术问题时，不要犹豫使用在线社区（如 Stack Overflow）或 GitHub 上的工具和脚本。此外，工具如 `Ansible` 和 `Kubernetes` 可以帮助你快速配置和维护复杂系统。\n\n---\n\n### **总结：**\n你的文章反映了对技术创新、系统自 sufficient 性追求以及在不同平台之间的灵活切换的态度。这种态度不仅体现在你的系统选择上（如对 Arch Linux 的坚持），也体现在你对自动化、工具链管理和社区资源的重视。希望这些建议能帮助你在未来继续提升效率和优化系统体验！"
+      ]
+    }
+  ]
 }

@@ -1,14 +1,27 @@
 {
   "articleId": "fixed-length-decimal-random-generator-satisfying-benfords-law-in-python",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:22:35.524Z",
-  "lastUpdateEndTime": "2025-02-14T13:23:00.429Z",
-  "summaries": [
-    "本文介绍了一种基于本福特定律的十进制固定位数随机数生成器。本福特定律指出数字首位概率分布不均，公式为log10(1+1/n)。算法通过构建每位数字的分布表和搜索表，利用累加概率生成符合定律的随机数。代码实现了生成指定位数的单个数和批量数功能，并验证了生成数据与理论值的偏离程度α指标显著优于平均概率生成器。实验显示，生成10000个数时α值接近理论值，证明该方法能有效模拟本福特定律的统计特性。"
-  ],
   "hash": "05aa9d3df7884e394668d2dfac54aa668e9665ce692841b4fc6cfba7c2dc7eab",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "本文介绍了一种基于本福特定律的十进制固定位数随机数生成器。本福特定律指出数字首位概率分布不均，公式为log10(1+1/n)。算法通过构建每位数字的分布表和搜索表，利用累加概率生成符合定律的随机数。代码实现了生成指定位数的单个数和批量数功能，并验证了生成数据与理论值的偏离程度α指标显著优于平均概率生成器。实验显示，生成10000个数时α值接近理论值，证明该方法能有效模拟本福特定律的统计特性。"
+      ],
+      "startTime": "2025-02-14T13:22:35.524Z",
+      "endTime": "2025-02-14T13:23:00.429Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "The article presents a method to generate numbers following Benford's Law by calculating the probability distribution for each digit position and then using these probabilities to construct valid numbers. Here's a structured summary of the key points:\n\n1. **Understanding Benford's Law**: \n   - Numbers in naturally occurring datasets often follow a specific logarithmic distribution, where smaller leading digits are more common.\n   - The law is used in detecting fraud, as fabricated data may not adhere to this distribution.\n\n2. **Probability Calculation**:\n   - For each digit position (e.g., units, tens), the probability of a digit appearing is calculated based on its value and its position within the number.\n   - This involves considering all possible preceding digits that result in the current digit when truncated.\n\n3. **Generating Numbers Using Probabilities**:\n   - A function (`generate_number`) constructs numbers by selecting each digit independently according to the precomputed probabilities for each position.\n\n4. **Implementation Steps**:\n   - **Step 1**: Compute the probability distribution for each digit at every position.\n   - **Step 2**: Use these distributions to create a list of valid digits for each position.\n   - **Step 3**: Generate numbers by randomly selecting a digit from each position's distribution.\n\n5. **Validation**:\n   - After generating numbers, they should be checked against Benford's Law using statistical tests like the chi-square test to ensure compliance.\n\nThis method provides a systematic approach to generating numbers that follow Benford's Law, which can be useful in fields such as data analysis and fraud detection."
+      ]
+    }
+  ]
 }

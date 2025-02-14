@@ -105,7 +105,8 @@
       "title": "✨AI全文摘要",
       "poweredBy": {
         "azureAi": "由{}部署的{}模型推理",
-        "azureLanguage": "由{}总结"
+        "azureLanguage": "由{}总结",
+        "ollama": "由本地{}部署的{}模型推理"
       }
     },
     "actions": {

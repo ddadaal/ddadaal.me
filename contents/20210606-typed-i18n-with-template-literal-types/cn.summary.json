@@ -1,14 +1,27 @@
 {
   "articleId": "typed-i18n-with-template-literal-types",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:39:18.765Z",
-  "lastUpdateEndTime": "2025-02-14T13:39:43.772Z",
-  "summaries": [
-    "文章介绍作者利用TypeScript模板字面量类型开发了i18n库react-typed-i18n，通过类型推导生成强类型文本ID，解决传统方案字符串易错问题。该库以树形结构组织多语言文本，运用递归类型计算所有合法ID路径，实现编译时类型校验与编辑器自动补全。同时提供前缀函数优化长ID使用，相比前代Proxy方案无运行时开销。新库支持React Context和测试覆盖，已在个人博客中实践验证性能与开发体验的平衡。"
-  ],
   "hash": "519c70303191398d9fe44ecf59cc53d769b9aad1c0e1a233cca1a9c60f0a5e4b",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "文章介绍作者利用TypeScript模板字面量类型开发了i18n库react-typed-i18n，通过类型推导生成强类型文本ID，解决传统方案字符串易错问题。该库以树形结构组织多语言文本，运用递归类型计算所有合法ID路径，实现编译时类型校验与编辑器自动补全。同时提供前缀函数优化长ID使用，相比前代Proxy方案无运行时开销。新库支持React Context和测试覆盖，已在个人博客中实践验证性能与开发体验的平衡。"
+      ],
+      "startTime": "2025-02-14T13:39:18.765Z",
+      "endTime": "2025-02-14T13:39:43.772Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "### 步骤详解\n\n要实现基于类型的一致性翻译（Type-Safe Internationalization）以提取公共前缀，并拼接完整的路径，可以按照以下步骤进行：\n\n#### 1. 定义必要的类型\n\n- **Lang** 类型：用于表示语言的层次结构，通常为定义对象。\n  \n```typescript\ntype Lang = {\n  [key: keyof type D]: any;\n} where D extends Definitions;\n```\n\n不过，实际中我们可能需要更复杂的类型来处理DFS路径和ID生成。\n\n- **FullLang** 类型：获取所有中间节点的ID（包括去掉末尾`.`的部分）。\n  \n```typescript\ntype FullLang<D extends string | Definitions> = \n  D extends string ? \"\" : \n    ${ValueOf<{[k in keyof D]: `${(StringOnly<k>)}.` | Concat<k, FullLang<D[k]>>}>};\n```\n\n- **PartialLangFromFull** 类型：检查当前值是否是某个`Lang`后面加`.`。\n  \n```typescript\ntype PartialLangFromFull <D extends Definitions, FL extends FullLang[D], L extends Lang[D]> = \n  FL extends `${L}.` ? never : FL;\n```\n\n- **RestLang** 类型：通过前缀获取可以接受的后缀，并使用`infer`来实现。\n  \n```typescript\ntype RestLang <D extends Definitions, L extends Lang[D>, Partial extends PartialLang[D>>> = \n  L extends `${Partial}${infer Rest}` ? Rest : never;\n```\n\n#### 2. 实现`prefix`函数\n\n`prefix`函数用于提取公共前缀，并将前缀和后缀拼接成完整的路径。\n\n```typescript\nconst p: <TPartial extends PartialLang[D>, TRest extends RestLang[D>, Lang[D>, TPartial>>> = \n  (t: TPartial) => (rest: TRest) => `${TPartial}${TRest}`;\n```\n\n#### 3. 使用示例\n\n在组件中，可以使用`p`函数来获取完整的路径：\n\n```typescript\nconst MyComponent = ({ [key]: value }: { key: string; value: string }) => {\n  const path = p(\"login.button\")(\"text\");\n  // 表达式将被优化为path = \"login.button.text\";\n};\n```\n\n#### 4. 注意事项\n\n- **类型复杂性**：定义这些类型可能会增加编译时间，特别是在处理复杂的语言结构时。\n  \n- **性能影响**：对于较大的语言文件（如包含151行的定义），可能会影响应用的流畅度。\n\n通过以上步骤，可以实现基于类型的一致性翻译以提取公共前缀，并拼接完整的路径。"
+      ]
+    }
+  ]
 }

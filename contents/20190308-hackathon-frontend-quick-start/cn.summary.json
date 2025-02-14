@@ -1,14 +1,27 @@
 {
   "articleId": "hackathon-frontend-quick-start",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:28:00.339Z",
-  "lastUpdateEndTime": "2025-02-14T13:28:20.957Z",
-  "summaries": [
-    "本文针对新手如何在七天内快速搭建网站前端，建议优先学习HTML/CSS/JS基础，侧重JS及ES6特性，无需深究复杂细节。推荐使用React或Vue框架配合组件库（如Ant Design、Element UI）高效开发界面，简化布局与交互实现。文中强调框架生态与官方文档的重要性，并提及Mock数据、单元测试等进阶技巧，帮助快速产出可用原型。提醒前端技术需长期实践，短期目标为借助工具拼凑功能，后续需系统学习夯实基础。"
-  ],
   "hash": "77caa30646f19087a5372be3799bd50ca5e09172a037e087405aafc7f0e701b6",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "本文针对新手如何在七天内快速搭建网站前端，建议优先学习HTML/CSS/JS基础，侧重JS及ES6特性，无需深究复杂细节。推荐使用React或Vue框架配合组件库（如Ant Design、Element UI）高效开发界面，简化布局与交互实现。文中强调框架生态与官方文档的重要性，并提及Mock数据、单元测试等进阶技巧，帮助快速产出可用原型。提醒前端技术需长期实践，短期目标为借助工具拼凑功能，后续需系统学习夯实基础。"
+      ],
+      "startTime": "2025-02-14T13:28:00.339Z",
+      "endTime": "2025-02-14T13:28:20.957Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "为了帮助您有效学习前端开发，以下是分步骤的指南：\n\n### 1. 确定目标\n明确是想开发React、Vue还是两者皆学？根据您的兴趣和项目需求选择一个框架。比如，React适合复杂应用，而Vue适合单页应用。\n\n### 2. 学习基础知识\n- **安装依赖项**：在`package.json`或`node_modules`目录中找到所需的工具，如React、TypeScript等。\n- **基本语法**：学习React组件的创建和使用，例如`<div>`, `<Button />`等。\n- **状态管理**：掌握`useState`用于处理组件的状态。\n\n### 3. 实践项目\n- **搭建基础项目**：从空项目开始，逐步添加组件和功能。例如，创建一个Hello World应用。\n- **组件开发**：使用React的虚拟 DOM概念，编写并测试组件。\n\n### 4. 深入学习\n- **数据绑定**：利用`useEffect`和`useUpdate`进行状态和视图更新。\n- **库与插件**：探索如`react-dom`、`react-icons`等库的功能和使用方法。\n- **事件处理**：学习如何通过`on`和`setImmediate`绑定事件。\n\n### 5. 最终部署\n- **版本控制**：使用Git进行代码管理和分支操作。\n- **打包与发布**：使用Webpack或Vite生成打包后的文件，确保项目能够顺利发布。\n- **测试与调试**：通过浏览器开发者工具检查问题，并使用单元测试验证功能。\n\n### 6. 综合应用\n- **组件库**：探索如`Material-UI`、`Ant Design`等组件库的功能和集成方法。\n- **布局与样式**：利用Flexbox、Grid等布局管理器设计美观的界面。\n- **性能优化**：学习使用 profilers 等工具优化代码。\n\n### 7. 持续学习\n- **参与社区**：加入GitHub、Stack Overflow等平台，与开发者交流并获取最新信息。\n- **持续学习资源**：订阅博客如 medium.js、youtube.com/realworldcss 等以获取最新动态和教程。\n\n通过逐步完成这些步骤，您将能够系统地掌握前端开发技能，并能够构建出功能完善且高效的前端应用。"
+      ]
+    }
+  ]
 }

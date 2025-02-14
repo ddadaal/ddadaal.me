@@ -1,14 +1,27 @@
 {
   "articleId": "think-while-coding",
   "lang": "cn",
-  "lastUpdateStartTime": "2025-02-14T13:23:27.741Z",
-  "lastUpdateEndTime": "2025-02-14T13:23:50.248Z",
-  "summaries": [
-    "文章批评开发中无脑复制粘贴代码的现象，指出重复switch、冗余方法、无脑try-catch等问题导致维护困难，建议采用多态、策略模式、泛型及框架特性优化代码，并以登录验证为例展示装饰器与Spring Filter的解决方案，强调注重代码质量可提升可维护性，避免低效代码增加调试成本。"
-  ],
   "hash": "55d28f7e3a44d7a3e82c2acdb111f18256f3e6606745c4c755f5a038ee17d9cd",
-  "mode": {
-    "mode": "azure-ai",
-    "model": "DeepSeek-R1"
-  }
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "azure-ai",
+        "model": "DeepSeek-R1"
+      },
+      "summaries": [
+        "文章批评开发中无脑复制粘贴代码的现象，指出重复switch、冗余方法、无脑try-catch等问题导致维护困难，建议采用多态、策略模式、泛型及框架特性优化代码，并以登录验证为例展示装饰器与Spring Filter的解决方案，强调注重代码质量可提升可维护性，避免低效代码增加调试成本。"
+      ],
+      "startTime": "2025-02-14T13:23:27.741Z",
+      "endTime": "2025-02-14T13:23:50.248Z"
+    },
+    {
+      "metadata": {
+        "summarizer": "ollama",
+        "model": "deepseek-r1:7b"
+      },
+      "summaries": [
+        "这段内容讨论了如何使用Spring Boot的Filter组件来验证JWT（JSON Web Token）头中的信息。以下是对这段内容的总结：\n\n1. **背景**：\n   - 代码的目的是验证请求中的JWT头是否有效，并获取用户信息。\n   - 这种验证通常用于OAuth 2.0之类的情形，确保客户端请求只能由有权限的用户执行。\n\n2. **实现方法**：\n   - 使用Spring Boot的`@Filter`组件（`OncePerRequestFilter`）来实现验证逻辑。\n   - 在`doFilterInternal`方法中：\n     - 获取JWT头的内容，并检查其格式是否符合预期。\n     - 提取token并验证其有效性。\n     - 如果验证成功，加载用户信息并进行认证。\n\n3. **示例代码**：\n   ```java\n   @Component\n   public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {\n       // ...（注解部分）\n   \n   @Override\n   protected void doFilterInternal(\n           HttpServletRequest request,\n           HttpServletResponse response,\n           FilterChain chain) throws ServletException, IOException {\n       String authHeader = request.getHeader(this.tokenHeader);\n       if (authHeader != null && authHeader.startsWith(tokenHead)) {\n           final String authToken = authHeader.substring(tokenHead.length());\n           String username = jwtService.getUsernameFromToken(authToken);\n\n           if (authToken.length() > 0) {\n               try {\n                   UserDetails userDetails = userDetailsService.loadUserByUsername(username);\n                   if (jwtService.validateToken(authToken)) {\n                       UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(\n                           userDetails, null, userDetails.getAuthorities());\n                       authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(\n                           request));\n                       Security Mockito.getContext().setAuthentication(authentication);\n                   }\n               } catch (Exception e) {\n                   e.printStackTrace();\n               }\n           }\n       }\n\n       chain.doFilter(request, response);\n   }\n   ```\n\n4. **使用方法**：\n   - 在Spring Boot项目中添加上述滤镜。\n   - 在Controller层上标注`@PreAuthorize`，指定需要认证的权限。\n\n5. **优势**：\n   - 使用Filter组件可以简化验证逻辑，避免在Controller层重复实现相同的功能。\n   - 当过滤器失效时（如token无效或用户未授权），直接返回错误响应，而不影响其他请求。\n\n6. **注意事项**：\n   - 确保JWT的格式和头部字段与预期的一致。\n   - 使用合适的依赖包（如`com.sun.xml.wsstxt.jose`）来处理JWT解析。\n   - 在验证过程中添加适当的错误处理逻辑，避免服务因异常而崩溃。\n\n总结：这段代码通过Spring Boot的Filter组件实现了JWT认证功能，确保请求中的token有效，并加载用户信息。这种实现方式简洁高效，且易于维护和扩展。"
+      ]
+    }
+  ]
 }
