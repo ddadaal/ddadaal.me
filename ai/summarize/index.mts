@@ -49,10 +49,10 @@ export interface SummaryData {
   summaries: string[];
 }
 
-export type SummarizerMetadata =
-    | { summarizer: "azure-language" }
-    | { summarizer: "azure-ai", model: string }
-    | { summarizer: "ollama", model: string }
+export interface SummarizerMetadata {
+  summarizer: "azure-ai" | "azure-language" | "ollama";
+  model?: string;
+}
 
 export interface Summarizer {
   readonly name: string;

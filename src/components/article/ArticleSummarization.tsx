@@ -11,6 +11,12 @@ interface Props {
 const AZURE_AI_LANGUAGE_SERVICE_DOC_URL = "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
 const AZURE_AI_URL = "https://ai.azure.com";
 
+const modelNameMap: Record<string, string> = {
+  // Value cannot contain spaces, otherwise the tab text will be line breaked
+  "deepseek-r1:7b": "DeepSeek_R1_7B",
+  "DeepSeek-R1": "DeepSeek_R1",
+};
+
 export const ArticleSummarization = ({ summary }: Props) => {
   return (
     <div className="p-4 my-4 bg-neutral rounded shadow">
@@ -33,23 +39,23 @@ export const ArticleSummarization = ({ summary }: Props) => {
                 type="radio"
                 name="summaryTab"
                 role="tab"
-                className="tab"
-                aria-label={x.metadata.summarizer}
+                className="tab w-auto"
+                aria-label={x.metadata.model ? modelNameMap[x.metadata.model] ?? x.metadata.model : x.metadata.summarizer}
                 defaultChecked={i === 0}
               />
               <div
                 key={i}
                 role="tabpanel"
-                className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+                className="tab-content bg-base-100 border-base-300 rounded-box p-3"
               >
                 {
                   x.summaries.map((c, i) => (
-                    <p className="text-neutral-content" key={i}>
+                    <p className="text-neutral-content p-1" key={i}>
                       {c}
                     </p>
                   ))
                 }
-                <p className="text-sm justify-end flex text-neutral-content">
+                <p className="text-sm justify-end flex text-neutral-content p-1">
                   {
                     x.metadata.summarizer === "azure-ai"
                       ? (
