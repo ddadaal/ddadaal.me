@@ -1,10 +1,14 @@
 {
   "articleId": "vpn-as-http-proxy",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:22:57.122Z",
-  "lastUpdateEndTime": "2023-12-31T13:23:04.986Z",
+  "lastUpdateStartTime": "2025-02-14T13:38:20.434Z",
+  "lastUpdateEndTime": "2025-02-14T13:38:55.383Z",
   "summaries": [
-    "本文讨论了如何让需要访问内网资源的程序走VPN,不需要访问的程序不走VPN。 我们可以在本机中起一个虚拟机或docker容器,连接到VPN,并起一个代理服务器。 作者编写了一套使用Docker容器来实现这个解决方案的脚本,可以使用一条`docker-compose up`命令简单地启动这样一个代理 server。"
+    "学校内网资源需VPN访问，但全局VPN影响其他网络速度。文章建议通过代理服务器分离流量：在本地启动连接VPN的Docker容器或虚拟机作为代理，仅需内网访问的程序配置该代理。其他流量直连外网，避免带宽争用。具体可针对Git等工具设置代理，或通过环境变量配置。作者提供Docker脚本实现该方案，支持多系统，并开源代码库供自定义和扩展，方便不同VPN参数适配，从而优化网络访问效率。"
   ],
-  "hash": "39836e374573e8b339ab4c804c048475300afe8a5683aa48c36fbe79741cf2f2"
+  "hash": "39836e374573e8b339ab4c804c048475300afe8a5683aa48c36fbe79741cf2f2",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

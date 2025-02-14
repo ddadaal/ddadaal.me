@@ -1,10 +1,14 @@
 {
   "articleId": "fix-gatsby-transformer-remark-chinese-word-count",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:14:41.204Z",
-  "lastUpdateEndTime": "2023-12-31T13:14:52.265Z",
+  "lastUpdateStartTime": "2025-02-14T13:32:44.786Z",
+  "lastUpdateEndTime": "2025-02-14T13:33:07.832Z",
   "summaries": [
-    "本博客使用gatsby搭建的插件可以将markdown转换成html,提供词数统计和阅读时间功能。 作者提供几个可以修复此插件在中文环境下失效的问题的方法,包括使用timeToRead统计算法,或者移植timeTo读统计算法。 作者建议使用time To Read,但由于这个方法得出的数据比较偏大,需要跟随上游的更新而更新本地的插件中。 作者还提供了一个gatsby-transformer-remark-chinese-word-count项目,用来简化自己从node_modules中提取和修改插件这个流程。"
+    "该文章探讨了Gatsby的`gatsby-transformer-remark`插件对中文等非拉丁字符的词数统计（`wordCount`）和阅读时间（`timeToRead`）功能失效的问题。核心解决方法是利用已修复的`timeToRead`功能，其通过正则匹配中日文字符并基于265字/分钟计算，结果较为准确。若需词数统计，可通过`timeToRead*265`估算或自行修改插件代码添加中文字段，但需承担维护成本。作者还提供了参考项目但不推荐长期使用。最终建议优先使用`timeToRead`，若必要可定制插件，避免依赖第三方非官方解决方案。"
   ],
-  "hash": "a99987d239b31121f48820ef830ab0b3d247992ecd6dec58025cb5b774135182"
+  "hash": "a99987d239b31121f48820ef830ab0b3d247992ecd6dec58025cb5b774135182",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

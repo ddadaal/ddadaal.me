@@ -1,10 +1,14 @@
 {
   "articleId": "a-kotlin-di-framework-in-50-lines-and-thoughts-on-kotlin",
   "lang": "en",
-  "lastUpdateStartTime": "2023-12-31T13:12:47.981Z",
-  "lastUpdateEndTime": "2023-12-31T13:12:55.816Z",
+  "lastUpdateStartTime": "2025-02-14T13:28:20.958Z",
+  "lastUpdateEndTime": "2025-02-14T13:28:49.221Z",
   "summaries": [
-    "The document discusses the challenges and benefits of using a Dependency Injection (DI) framework in a Java project. It highlights the two main options for dependency management: introducing a full-blown DI framework or using traditional object instantiation or simple factory pattern, which can be time-consuming and cumbersome. The author uses the example of a simple Java project where the interface and implementation class pattern was used to decouple the interface and implementation, but it also introduced complexity. The document suggests using delegation and classpath scan capability to achieve minimal dependencies and extra code, and provides a code example to help understand the process."
+    "The article discusses choosing dependency injection (DI) for small projects, comparing full DI frameworks (verbose) versus factory patterns (clumsy). The author developed a lightweight DI solution using Kotlin’s delegation and classgraph for scanning. Annotations (@Service, @ServiceImpl) mark interfaces and implementations, while a `di()` function delegates dependency resolution, enabling singleton injection with minimal code. Benefits include simplicity, circular dependency support, and dynamic resolution, though limitations include no `init` block usage and lack of advanced features. The author praises Kotlin’s modern features (null checks, lambdas) and how diverse programming paradigms expand problem-solving approaches, emphasizing tools’ influence on design thinking."
   ],
-  "hash": "a2a93eea3931b29d4bf0f00093b574d737f7bfff4b6cf92e6db787a6f904f306"
+  "hash": "a2a93eea3931b29d4bf0f00093b574d737f7bfff4b6cf92e6db787a6f904f306",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

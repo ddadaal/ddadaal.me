@@ -1,10 +1,14 @@
 {
   "articleId": "blog-updates-2",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:25:25.316Z",
-  "lastUpdateEndTime": "2023-12-31T13:25:39.783Z",
+  "lastUpdateStartTime": "2025-02-14T13:41:49.363Z",
+  "lastUpdateEndTime": "2025-02-14T13:42:12.279Z",
   "summaries": [
-    "本文作者鸽了4年的更新,完全使用Next.js编写新的网站。 新的网站和原有博客在功能性、整体布局以及各个页面的URL方面都完全一致。 使用Tailwind编写样式,去除CSS in JS方案。 React Server Component允许用户编写运行在服务器端的React组件。 作者通过Next.js,可以直接使用RSC同时完成读取数据和渲染UI的功能。"
+    "作者在搁置四年后，用Next.js重构了个人博客以解决旧版Gatsby的技术债。新博客采用Tailwind CSS替代CSS-in-JS方案，彻底优化样式混乱问题；利用Next.js的App Router实现服务器端组件渲染，提升开发效率；通过静态生成保持SEO友好特性，兼容原有URL与功能；整合daisyui组件库实现12种动态主题切换，并重构Markdown渲染流程与图片处理机制。此次重构让代码更简洁、性能更优，解决了旧系统牵一发而动全身的维护难题，体现了技术栈迭代的必要性。"
   ],
-  "hash": "fced6451dbf7c92241b4296f0d0cd9d79cf03bfaaa724c3c7475c2757c6cc066"
+  "hash": "fced6451dbf7c92241b4296f0d0cd9d79cf03bfaaa724c3c7475c2757c6cc066",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

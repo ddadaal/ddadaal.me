@@ -113,9 +113,9 @@ export const ArticleContent = async ({ article }: Props) => {
     <div className="flex flex-row space-x-4">
       <div className={classNames("prose", "max-w-full", { "lg:w-[75%]": showToc })}>
         {
-          article.summaries
+          article.summary
             ? (
-                <ArticleSummarization summaries={article.summaries} />
+                <ArticleSummarization summary={article.summary} />
               )
             : undefined
         }
@@ -127,7 +127,7 @@ export const ArticleContent = async ({ article }: Props) => {
         showToc && file.data.toc
           ? (
               <div className="hidden lg:block lg:w-[25%]">
-                <ArticleToc toc={file.data.toc} hasSummary={!!article.summaries} />
+                <ArticleToc toc={file.data.toc} hasSummary={!!article.summary} />
               </div>
             )
           : undefined

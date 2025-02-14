@@ -1,10 +1,14 @@
 {
   "articleId": "blog-updates-1",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:13:58.437Z",
-  "lastUpdateEndTime": "2023-12-31T13:14:09.826Z",
+  "lastUpdateStartTime": "2025-02-14T13:31:18.517Z",
+  "lastUpdateEndTime": "2025-02-14T13:31:36.291Z",
   "summaries": [
-    "这篇文章讲述了作者在Gatsby博客上线一年多后,对博客进行了一些更新工作。 文章提到,博客从去年10月开始就加入了RSS支持,但这几天,作者针对博客的RSS的功能进行了一些修复,使得博客的 RSS功能基本上可以正常使用了。 博客的rss源地址也在W3C的Feed Validation Service中成功认证。 文章还提到了多语言环境下文章地址改进,使用自己开发的simstate进行状态管理。"
+    "作者总结了一年来对Gatsby博客的优化：修复RSS订阅功能，解决图片路径问题；迁移至国内CODING平台提升访问速度；重构多语言文章路径逻辑，精简单语种URL；改用自研状态库simstate提升代码质量；修正授权协议、时区显示等问题。未来计划聚焦内容创作、样式重构、访客统计等功能扩展，并解决中文字数统计等技术难题。博客将持续完善功能与用户体验，感谢读者支持。"
   ],
-  "hash": "a9ed0455a1f876c7278012b2c2074a7c5de1c8ebaf2a12953a7eda7136bda0b4"
+  "hash": "a9ed0455a1f876c7278012b2c2074a7c5de1c8ebaf2a12953a7eda7136bda0b4",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

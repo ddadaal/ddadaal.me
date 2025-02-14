@@ -1,10 +1,14 @@
 {
   "articleId": "progress-to-recommended-postgraduates",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:13:33.115Z",
-  "lastUpdateEndTime": "2023-12-31T13:13:47.540Z",
+  "lastUpdateStartTime": "2025-02-14T13:30:13.775Z",
+  "lastUpdateEndTime": "2025-02-14T13:30:49.966Z",
   "summaries": [
-    "由于个人无法接受996,外企几乎成为了唯一的选择。 北大信森的夏号是最后一个,因为7月4日本院有课考试,而夏令旅报名期间考试安排还没有出。 南大ソフト院夏令战对本院和外院是分开招的,本院GPA前50%都能去。 我所选择的是智慧应用-1方向,面试要求是首先在给予的面试题中选择一个题目,之后再进行面试。"
+    "作者原计划本科就业，因贸易战影响外企前景转向保研，目标为就业导向硕士。参加北大信科、上交软院和南大软院夏令营：北大机考AC3题，计算中心面试获优营，其三年制允许实习；南大两年制就业友好，机考简单但未定结果；上交机考实现复杂系统得分低，面试后拒专硕。最终倾向北大信科，兼顾实习与学历提升，避开就业低谷期。"
   ],
-  "hash": "2cf4c8ac97e45cceeffddf8cdb7d439078edb2efa312fe74b1028d8614b5befe"
+  "hash": "2cf4c8ac97e45cceeffddf8cdb7d439078edb2efa312fe74b1028d8614b5befe",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

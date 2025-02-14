@@ -1,10 +1,14 @@
 {
   "articleId": "good-memories-and-unknown-future",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:16:37.061Z",
-  "lastUpdateEndTime": "2023-12-31T13:16:48.364Z",
+  "lastUpdateStartTime": "2025-02-14T13:37:28.656Z",
+  "lastUpdateEndTime": "2025-02-14T13:37:57.697Z",
   "summaries": [
-    "昨天晚上,作者把重达100多斤的行李寄走了,标志着研究生生活的开始。"
+    "作者回顾本科四年充实自由的生活：疫情中完成毕设、毕业旅行、与朋友离别，满怀回忆。四年间参与社团、比赛、项目，体验丰富，享受自由选择的乐趣。然而面对研究生生涯，作者感到迷茫：读研出于防御性理由，对科研无兴趣，方向不明确，担忧未来职业发展。曾经热爱的计算机行业目标动摇，失去动力，陷入未知与困惑，质疑当前选择是否真正所需。"
   ],
-  "hash": "67cdd43db99514f5076764f4f396eccabbe7c4d9838a5460a19e65dea0d106c3"
+  "hash": "67cdd43db99514f5076764f4f396eccabbe7c4d9838a5460a19e65dea0d106c3",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

@@ -1,10 +1,14 @@
 {
   "articleId": "typed-i18n-with-template-literal-types",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:23:25.195Z",
-  "lastUpdateEndTime": "2023-12-31T13:23:36.522Z",
+  "lastUpdateStartTime": "2025-02-14T13:39:18.765Z",
+  "lastUpdateEndTime": "2025-02-14T13:39:43.772Z",
   "summaries": [
-    "最近学习了TypeScript最新的[Template Literal Type]特性,发现可以使用这个实现一个使用字符串字面量的i18n库,以用来替换之前的使用了一些黑魔法的[`simstate-i18N`]库。 新的库名字叫`react-typed-i19n`。 文章介绍了i18l的概念、常见实现方式以及本库的亮点。 文章还介绍了如何强类型地输入ID,使用Template Literan Type计算所有可能的ID,以及如何利用TS的强大的类型系统,使得i18r的过程也能享受到较为完善的类型检查。"
+    "文章介绍作者利用TypeScript模板字面量类型开发了i18n库react-typed-i18n，通过类型推导生成强类型文本ID，解决传统方案字符串易错问题。该库以树形结构组织多语言文本，运用递归类型计算所有合法ID路径，实现编译时类型校验与编辑器自动补全。同时提供前缀函数优化长ID使用，相比前代Proxy方案无运行时开销。新库支持React Context和测试覆盖，已在个人博客中实践验证性能与开发体验的平衡。"
   ],
-  "hash": "519c70303191398d9fe44ecf59cc53d769b9aad1c0e1a233cca1a9c60f0a5e4b"
+  "hash": "519c70303191398d9fe44ecf59cc53d769b9aad1c0e1a233cca1a9c60f0a5e4b",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

@@ -7,4 +7,7 @@ module.exports = [
   {
     ignores: [".next", "node_modules", "out"]
   },
+  {
+    files: ["ai/**/*.{js,jsx,ts,tsx}", "posts/**/*.{js,jsx,ts,tsx}"]
+  }
 ];

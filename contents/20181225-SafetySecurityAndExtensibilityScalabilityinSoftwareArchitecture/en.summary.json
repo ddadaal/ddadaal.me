@@ -1,10 +1,14 @@
 {
   "articleId": "security-safety-extensibility-scalability",
   "lang": "en",
-  "lastUpdateStartTime": "2023-12-31T13:11:50.945Z",
-  "lastUpdateEndTime": "2023-12-31T13:11:59.009Z",
+  "lastUpdateStartTime": "2025-02-14T13:25:13.416Z",
+  "lastUpdateEndTime": "2025-02-14T13:25:51.930Z",
   "summaries": [
-    "The article discusses the importance of security/safety and extensibility/scalability in software architecture. It explains the definitions, comparisons, and scenarios related to these quality attributes, as well as strategies and tactics to improve each attribute. The article also provides examples of how these attributes can be affected by various events and attacks. It concludes by discussing strategies and tactics to enhance each attribute, their benefits and penalties, and the challenges they may face."
+    "The article examines two pairs of software architecture quality attributes: security/safety and extensibility/scalability. Safety minimizes harm from unintentional accidents, while security protects against intentional attacks. Extensibility enables vertical system expansion (adding features), whereas scalability handles horizontal growth (increased workload). General and concrete scenarios illustrate each attribute’s application, with safety focusing on redundancy and monitoring, and security emphasizing vulnerability testing and isolation. Extensibility strategies include modular design and refactoring, while scalability employs partitioning and caching. Tactics for each attribute balance benefits (e.g., robustness, flexibility) against penalties (cost, complexity), providing a framework for architectural decision-making."
   ],
-  "hash": "19a93a646fd10f0a9b814b56854274d6a3eb15601b64e41fff52dc407ca527b1"
+  "hash": "19a93a646fd10f0a9b814b56854274d6a3eb15601b64e41fff52dc407ca527b1",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

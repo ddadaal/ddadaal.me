@@ -94,7 +94,10 @@
     },
     "summary": {
       "title": "✨AI Summary",
-      "poweredBy": "Powered by {}"
+      "poweredBy": {
+        "azureAi": "Powered by {} of model {}",
+        "azureLanguage": "Extractively Summarized by {}"
+      }
     },
     "actions": {
       "like": {

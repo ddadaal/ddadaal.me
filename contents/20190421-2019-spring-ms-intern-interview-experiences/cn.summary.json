@@ -1,10 +1,14 @@
 {
   "articleId": "2019-spring-ms-intern-interview-experiences",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:13:03.941Z",
-  "lastUpdateEndTime": "2023-12-31T13:13:15.274Z",
+  "lastUpdateStartTime": "2025-02-14T13:29:23.377Z",
+  "lastUpdateEndTime": "2025-02-14T13:29:45.539Z",
   "summaries": [
-    "经过几个月的准备、投简历、面试和等待,终于在4月16日拿到了微软苏州STCA SE的实习Offer。 在这次夏季实习之前的2018年底和2019年初,我还经历了一些和微软相关的面试经历。 这次夏季 Praktiker的投递简历的过程也是一波三折,最终还是选择了苏州。 在本次夏季 Praktikar的夏季实习中,我投了MSRA和上海Blockchain,但最终选择了上海Open Source的职位。"
+    "作者经历数月投递简历、刷题及多轮面试后，于4月16日获得微软苏州STCA实习Offer。面试前因算法薄弱投入大量时间刷题，经历冬季实习申请失败及MSRA面试未果，最终选择内推苏州岗位。面试包含三轮技术面，涵盖二叉树操作、正则匹配等算法题及项目经验讨论。通过后面临保研与工作的抉择，考虑行业学历趋势与个人职业偏好，同时纠结苏州与上海的发展前景及生活成本差异。计划先实习体验职场，再结合实际情况决定未来发展路径。"
   ],
-  "hash": "e20301d92913985af815825029f29795f460a7c36bc463feaddfbd2ab313efd4"
+  "hash": "e20301d92913985af815825029f29795f460a7c36bc463feaddfbd2ab313efd4",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

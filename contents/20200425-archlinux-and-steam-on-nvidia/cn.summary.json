@@ -1,10 +1,14 @@
 {
   "articleId": "archlinux-and-steam-on-nvidia",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:15:51.489Z",
-  "lastUpdateEndTime": "2023-12-31T13:16:06.626Z",
+  "lastUpdateStartTime": "2025-02-14T13:35:41.743Z",
+  "lastUpdateEndTime": "2025-02-14T13:36:06.390Z",
   "summaries": [
-    "作者选择在家里的一台2013年的老电脑上安装Linux。 作者发现,已经有一些开源项目在尝试在Windows下的应用和程序运行在Linux下,并在Steam的努力下,Linux已经可以玩一些Steam游戏了。 作者安装了Arch Linux和配置,选用了一些重要软件包,包括GNOME和 Rime输入法。 作者测试了Linux上的闭源N卡驱动,发现在Arch Linux上问题不是很大。 作者还尝试了Steam和Proton工具,发现Proton是一个针对游戏的、Linux下的Windows的兼容层。 作者认为,总体来说Linux的运行速度比Windows快,打开IDEA、VSCode、Emacs等应用比在Windows上快了不知道多少,资源占用也更少。"
+    "作者因Windows运行缓慢转向Linux，在旧电脑安装Arch Linux，记录分区、驱动、网络等配置过程，选用GNOME桌面及实用软件。安装NVIDIA闭源驱动后成功运行Steam游戏，测试多款游戏在Proton兼容层下的表现，部分完美运行，部分存在性能问题。Linux系统资源占用低，开发工具启动快，国内生态逐渐完善。开源社区的进步使Linux在游戏和生产领域成为Windows的替代选择，推动行业良性竞争。"
   ],
-  "hash": "2878311fae4b0c83c024674fe7abf8339b718ecea2de90601274b2f7242efb83"
+  "hash": "2878311fae4b0c83c024674fe7abf8339b718ecea2de90601274b2f7242efb83",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

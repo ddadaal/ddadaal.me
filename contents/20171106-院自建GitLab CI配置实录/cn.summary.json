@@ -1,10 +1,14 @@
 {
   "articleId": "department-gitlab-ci-configuration",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:10:43.213Z",
-  "lastUpdateEndTime": "2023-12-31T13:10:51.125Z",
+  "lastUpdateStartTime": "2025-02-14T13:22:15.824Z",
+  "lastUpdateEndTime": "2025-02-14T13:22:35.522Z",
   "summaries": [
-    "本文作者想尝试持续集成的效果,但由于很多开源CI平台不支持自建平台,所以只能手动配置Runner。 首先,作者发现院的GitLab版本过老,需要使用老版本的runner。 其次,作者在配置过程中发现Ubuntu官方源Node版本太低,只能自己设置apt源了。 作者认为Gitlab CI非常好用,能和Git Lab无缝集成,而且非常的简单易用。"
+    "作者因学院GitLab版本过旧（8.10），无法使用新版GitLab Runner，通过降级安装1.9.5版本Runner并注册解决API兼容性问题。配置过程中遭遇Ubuntu官方源Node.js版本过低，手动更新源解决；构建时内存不足导致进程崩溃，将内存扩容至2G并通过简化测试项目完成部署。最终成功搭建CI环境，实现自动化构建，并为项目添加构建状态徽章。文章总结了GitLab CI与传统开源平台的优势，强调其与GitLab生态的无缝衔接，为后续项目持续集成奠定基础。"
   ],
-  "hash": "e0e38c47f17de8752d630e0e96e3299462970aec6f586204750c4c7795fa2337"
+  "hash": "e0e38c47f17de8752d630e0e96e3299462970aec6f586204750c4c7795fa2337",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

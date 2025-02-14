@@ -1,10 +1,14 @@
 {
   "articleId": "fixed-length-decimal-random-generator-satisfying-benfords-law-in-python",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:10:51.126Z",
-  "lastUpdateEndTime": "2023-12-31T13:11:02.208Z",
+  "lastUpdateStartTime": "2025-02-14T13:22:35.524Z",
+  "lastUpdateEndTime": "2025-02-14T13:23:00.429Z",
   "summaries": [
-    "运行需要Python 3,不需要其他库依赖。 代码分为6个部分,分别为以n开头的数字的频率、本位的分布表、本位に搜索表、生成第n位、生成一个数和生成多个数。"
+    "本文介绍了一种基于本福特定律的十进制固定位数随机数生成器。本福特定律指出数字首位概率分布不均，公式为log10(1+1/n)。算法通过构建每位数字的分布表和搜索表，利用累加概率生成符合定律的随机数。代码实现了生成指定位数的单个数和批量数功能，并验证了生成数据与理论值的偏离程度α指标显著优于平均概率生成器。实验显示，生成10000个数时α值接近理论值，证明该方法能有效模拟本福特定律的统计特性。"
   ],
-  "hash": "05aa9d3df7884e394668d2dfac54aa668e9665ce692841b4fc6cfba7c2dc7eab"
+  "hash": "05aa9d3df7884e394668d2dfac54aa668e9665ce692841b4fc6cfba7c2dc7eab",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

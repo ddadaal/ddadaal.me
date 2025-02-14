@@ -1,10 +1,14 @@
 {
   "articleId": "added-blog-page-click-monitoring",
   "lang": "cn",
-  "lastUpdateStartTime": "2024-01-19T12:47:33.139Z",
-  "lastUpdateEndTime": "2024-01-19T12:47:43.831Z",
+  "lastUpdateStartTime": "2025-02-14T13:43:15.052Z",
+  "lastUpdateEndTime": "2025-02-14T13:43:38.669Z",
   "summaries": [
-    "他曾使用过Google Analytics、友盟和百度统计,但均未能使用。 分析访问者的信息的方法是通过加一个HTML标签,加到被统计的网站上,然后下载一段javascript脚本,将一些访问者信息发送到平台上。 Analytix所收集的信息只有三个:当前页面地址、来源地址和屏幕分辨率。 作者认为这可能与GDPR有关。 项目采用了Node.js,使用Fastify HTTP库编写代码,Azure App Service使用的是最便宜的版本。 采集到的信息保存在Azure SQL Database上。 作者使用了Prisma框架,支持MSSQL数据。 作者计划开发一个简单的dashboard用来查看统计数据。"
+    "作者因不满第三方统计工具（如Google Analytics、友盟）的数据复杂性和隐私问题，决定自行开发博客统计系统。为避免触犯GDPR隐私法规，仅收集页面URL、来源地址及屏幕分辨率，避开敏感信息如IP地址。系统基于Node.js和Fastify搭建，使用Azure SQL数据库存储数据，利用Prisma ORM操作数据库，部署于Azure应用服务以减少成本。目前功能已上线，未来计划开发可视化面板分析访问数据，并扩展为博客后端服务的基础设施，确保数据自主可控且合规。"
   ],
-  "hash": "b3f91c71b7f90d4a6bf3d22a00a4433f6b7243ecb0174d2f3dcc22e9163da8be"
+  "hash": "b3f91c71b7f90d4a6bf3d22a00a4433f6b7243ecb0174d2f3dcc22e9163da8be",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

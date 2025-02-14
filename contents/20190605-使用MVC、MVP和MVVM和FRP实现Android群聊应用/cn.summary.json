@@ -1,10 +1,14 @@
 {
   "articleId": "android-chat-in-mvc-mvp-mvvm-and-frp",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:13:15.275Z",
-  "lastUpdateEndTime": "2023-12-31T13:13:33.113Z",
+  "lastUpdateStartTime": "2025-02-14T13:29:45.541Z",
+  "lastUpdateEndTime": "2025-02-14T13:30:13.774Z",
   "summaries": [
-    "在本报告中,我们使用MVC、MVP、MVVM和FRP分别实现了一个Android局域网群聊应用,并通过分析每个架构所表现出的特点,来分析每个建构自身的优点和缺点。 MVC架构中,界面相关的代码和业务逻辑相关的代码被分开,分别放在View和Model中。 MVP架构中的Presenter取代并加强了原来Controller的地位,能够直接控制界面层进行界面的修改,还负责给View提供数据进行显示。"
+    "本文通过实现Android局域网群聊应用，对比MVC、MVP、MVVM和FRP四种架构特性。MVC界面控制僵化，异步响应延迟；MVP通过Presenter解耦但逻辑繁重；MVVM双向绑定简化界面同步，复杂业务处理受限；FRP以流处理提升扩展性，但学习成本高。案例分析显示：MVP灵活控制UI状态，MVVM自动更新减少冗余代码，FRP流式操作优雅实现节流过滤。总结指出架构选择需权衡解耦能力、维护成本与场景适配，MVVM适合数据驱动界面，FRP擅长复杂事件流处理。"
   ],
-  "hash": "bfe938fb587ed2f15aea4bf9b9ec2088b7c69513ede40aef201ec1804d390e51"
+  "hash": "bfe938fb587ed2f15aea4bf9b9ec2088b7c69513ede40aef201ec1804d390e51",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

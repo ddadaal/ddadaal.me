@@ -1,10 +1,14 @@
 {
   "articleId": "wslg-first-experience",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:23:11.210Z",
-  "lastUpdateEndTime": "2023-12-31T13:23:19.421Z",
+  "lastUpdateStartTime": "2025-02-14T13:38:55.384Z",
+  "lastUpdateEndTime": "2025-02-14T13:39:18.764Z",
   "summaries": [
-    "微软在Build 2020上发布了官方WSL2的GUI和GPU支持。 微软最近发布了官方的GUI解决方案wslg的预览版,可以在Insider build上公开测试。 安装WSL1很简单,只需要运行`wsl --install`即可安装W SL2的所有部件。 但是,我们发现了不少问题,如高DPI、Windows IME支持和QQ截图使wslG崩溃等。 总结来说,现在的wsl1的功能和普通的X Server差不多,但由于wsl2有官方背书,用户体验比X11 Forwarding方案好一些。 通过WSL 2和wsll,Windows完全兼容了Linux生态,Linux能做的Windows都能做。"
+    "微软在Build 2020提出WSL2的GUI与GPU支持，一年后推出wslg预览版。通过最新Windows Insider版本测试，可直接运行Linux图形程序如xclock、VSCode和网易云音乐，支持剪贴板同步与音频输出，简化开发环境配置。但仍存在高DPI模糊、Windows输入法不兼容、QQ截图导致崩溃等问题。wslg采用Wayland和RDP协议架构，官方集成无需手动配置X Server。尽管功能尚不完善，其官方支持及GPU加速使Windows进一步融合Linux生态，成为更具竞争力的开发平台。"
   ],
-  "hash": "bb048aa7f42b4c9d00e7d8dca78de02a8193ce58f53bf57d5ff175fcacc7e306"
+  "hash": "bb048aa7f42b4c9d00e7d8dca78de02a8193ce58f53bf57d5ff175fcacc7e306",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

@@ -5,7 +5,7 @@ import { basename, extname, join } from "path";
 import readingTime from "reading-time";
 import { createDataSource } from "src/data/data";
 
-import { ArticleSummary } from "../../ai/summarize.mjs";
+import { ArticleSummary } from "../../ai/summarize/index.mjs";
 
 export const revalidate = false;
 
@@ -31,7 +31,7 @@ export interface Article {
 
   filePath: string;
 
-  summaries?: string[];
+  summary?: ArticleSummary;
 }
 
 export interface ArticleItem {
@@ -83,14 +83,14 @@ export const readArticleFromDir = async (dir: string) => {
 
     const { words, minutes } = readingTime(content);
 
-    let summaries: string[] | undefined;
+    let summary: ArticleSummary | undefined = undefined;
 
     const summariesFilePath = join(dir, `${typedData.lang}.summary.json`);
 
     if (existsSync(summariesFilePath)) {
       const articleSummary = JSON.parse(await readFile(summariesFilePath, "utf-8")) as ArticleSummary;
 
-      summaries = articleSummary.summaries;
+      summary = articleSummary;
     }
 
     item.langVersions.push({
@@ -112,7 +112,7 @@ export const readArticleFromDir = async (dir: string) => {
 
       filePath,
 
-      summaries,
+      summary,
     });
   }
 

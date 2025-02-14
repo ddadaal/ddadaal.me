@@ -1,10 +1,14 @@
 {
   "articleId": "summary-of-my-first-real-project",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:24:33.996Z",
-  "lastUpdateEndTime": "2023-12-31T13:24:48.195Z",
+  "lastUpdateStartTime": "2025-02-14T13:40:08.231Z",
+  "lastUpdateEndTime": "2025-02-14T13:40:48.506Z",
   "summaries": [
-    "从3月15日开始,作者独立承担了一个完整的、真实的项目的开发和整个软件生命周期的维护工作:第三届全国高校数据驱动创新研究大赛的后台系统。 系统是一个做了SSR的前后端分离的TypeScript全栈项目。 每个部分都是使用容器运行,所有容器部署在一台2核2G内存的学校提供的虚拟机上。 为了减少接口层次的不一致,这次系统使用了作者在[yaarxiv]中采用**前后端共享API定义文件**的设计。 在项目中使用[mikro-orm]作为ORM库,也提供了内置的migration机制。 本项目写了不少后端的测试,行覆盖达到了94%,但是没有写前端测试。"
+    "作者独立开发并维护了第三届全国高校数据驱动创新研究大赛后台系统，采用TypeScript全栈技术，包含Next.js、fastify、MySQL等技术栈，通过Docker容器化部署。项目经历多次重构，如迁移至Next.js实现SSR、响应式改造及引入Prometheus/Loki/Grafana监控系统。创新设计前后端共享API定义机制，统一生成接口规范与验证逻辑。总结中强调记录日志与数据的重要性，并反思了生产环境文件丢失事故的教训。项目虽为常规CRUD系统，但完整实践了开发到运维的全流程，积累了真实项目经验。"
   ],
-  "hash": "b10102d93832aca54dda1cbcc97469c653e79d3f74dd3118e6b8f4e3dcc62095"
+  "hash": "b10102d93832aca54dda1cbcc97469c653e79d3f74dd3118e6b8f4e3dcc62095",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

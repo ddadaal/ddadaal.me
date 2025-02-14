@@ -1,10 +1,14 @@
 {
   "articleId": "an-infinite-loop-caused-by-updating-a-Map-during-iteration",
   "lang": "en",
-  "lastUpdateStartTime": "2023-12-31T13:12:29.357Z",
-  "lastUpdateEndTime": "2023-12-31T13:12:36.909Z",
+  "lastUpdateStartTime": "2025-02-14T13:27:35.546Z",
+  "lastUpdateEndTime": "2025-02-14T13:28:00.337Z",
   "summaries": [
-    "The author encountered a problem during the development of the 2.0 version of [simstate], where an infinite loop occurred during the iteration of a set of ' observers' stored in a ES6 Map. The problem was initially confused due to the Map having only one element and remaining unchanged between and inside loops. However, after investigation, the author discovered that the root of the problem was the call to observer, which alters the Map itself during iteration. This led to the infinite loop, even when deleting and re-adding an entry during iteration."
+    "The author encountered an infinite loop in a Map iteration during Simstate 2.0 development. The loop occurred when iterating a Map storing React component observers. The root cause was modifying the Map during iteration: calling an observer triggered component re-renders, which unsubscribed (deleted) and resubscribed (re-added) the same function key within the loop. Though the key (function) remained identical, reinsertion during iteration caused the Map to treat it as new, perpetuating the loop. This behavior, dangerous in most languages, arises in JavaScript when altering a Map mid-iteration. The solution involved recognizing indirection-induced complexity and avoiding such mutations during iteration."
   ],
-  "hash": "e79ef8687b5ba5291871116771ecd622d0e734075bd69714cda200405486decf"
+  "hash": "e79ef8687b5ba5291871116771ecd622d0e734075bd69714cda200405486decf",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

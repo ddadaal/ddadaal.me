@@ -103,7 +103,10 @@
     },
     "summary": {
       "title": "✨AI全文摘要",
-      "poweredBy": "由{}驱动"
+      "poweredBy": {
+        "azureAi": "由{}部署的{}模型推理",
+        "azureLanguage": "由{}总结"
+      }
     },
     "actions": {
       "like": {

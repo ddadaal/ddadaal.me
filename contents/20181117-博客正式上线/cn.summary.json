@@ -1,10 +1,14 @@
 {
   "articleId": "gatsby-powered-vicblog-online",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:11:21.078Z",
-  "lastUpdateEndTime": "2023-12-31T13:11:28.762Z",
+  "lastUpdateStartTime": "2025-02-14T13:23:50.250Z",
+  "lastUpdateEndTime": "2025-02-14T13:24:09.920Z",
   "summaries": [
-    "本文讲述了作者在寒假期间用React+ASP.NET Core完成了一套博客网站,但由于漏洞百出、维护成本高、性能不好、加功能成本极大等问题,日常维护非常难受。 作者在GitHub上发现了Gatsby,花了两天时间撸了一个博客出来。 Gatsb的高性能、灵活和无处不在的特点使他能够用上React和整个npm前端生态圈。 最终,新博客正式上线了,它的特性包括静态网页、支持Progressive Web Application、文章写作、i18n、设计、源码和内容分离、评论系统和Icons。"
+    "作者最初用React+ASP.NET开发博客，但面临维护复杂、性能差等问题。后改用Gatsby框架，两天内搭建出静态博客：利用React生态实现高性能，支持PWA、Markdown写作、多语言、评论系统等功能。Gatsby的静态页面便于CDN部署，解决了Azure服务器延迟和GitHub Pages加载慢的痛点，虽存在文档不全等开源通病，但灵活性和现代化开发体验远超Hexo等传统工具。最终新博客在功能扩展性和用户体验上达到预期，进入优化维护阶段。"
   ],
-  "hash": "099709643d5d69c7fb4c094dc674ba1f5b8138df08c6ac0826917e7efe2709b7"
+  "hash": "099709643d5d69c7fb4c094dc674ba1f5b8138df08c6ac0826917e7efe2709b7",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

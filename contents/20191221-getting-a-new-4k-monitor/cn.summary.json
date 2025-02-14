@@ -1,10 +1,14 @@
 {
   "articleId": "getting-a-new-4k-monitor",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:15:00.047Z",
-  "lastUpdateEndTime": "2023-12-31T13:15:10.900Z",
+  "lastUpdateStartTime": "2025-02-14T13:33:42.184Z",
+  "lastUpdateEndTime": "2025-02-14T13:34:09.506Z",
   "summaries": [
-    "最近,作者的朋友们配了新台式机,配置为3700X+1660Ti。 作者的显示器是ThinkVision X24q,用了3年多了,但现在用2K60太浪费配置。 4K144和4K60-4K60的显示器的分辨率和刷新率都很重要。 4k144+4K60=4K144,不管从性能还是价格上来说都没有毛病。 作者在游戏笔记本上自带了一个mini DisplayPort和HDMI,但发现开启HDR会造成鼠标卡顿和画面劣化。 NVIDIA在2016年左右推出的G- Sync可以解决画面裂裂,但是也浪費了显马的处理技术。"
+    "作者因同学装机计划出售旧显示器ThinkVision X24q，因新品降价低价转手后，纠结选择2K144Hz或4K60Hz。权衡高刷流畅性与4K清晰度后，选择LG 27UL550（4K60Hz），担忧习惯高刷后难以适应普通屏。测试中发现HDR效果不佳且兼容性问题，最终关闭HDR并使用10bit色彩。探索了接口版本、FreeSync功能及超频可能性，虽未成功但积累了经验，期待未来升级显卡后畅享4K游戏体验。"
   ],
-  "hash": "b48bc093db59f5379b1ae04015d2c1ac56de430f39b92e7dca85ad0145e6e5cc"
+  "hash": "b48bc093db59f5379b1ae04015d2c1ac56de430f39b92e7dca85ad0145e6e5cc",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

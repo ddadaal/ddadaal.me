@@ -1,10 +1,14 @@
 {
   "articleId": "ai-article-summary",
   "lang": "cn",
-  "lastUpdateStartTime": "2024-01-01T04:17:35.055Z",
-  "lastUpdateEndTime": "2024-01-01T04:17:46.387Z",
+  "lastUpdateStartTime": "2025-02-14T13:42:49.901Z",
+  "lastUpdateEndTime": "2025-02-14T13:43:15.051Z",
   "summaries": [
-    "他选择了OpenAI API,但由于验证手机号和支付方式问题,他选择了一个Azure OpenAI服务。 在Azure OpenAR服务中,他发现Azure AI Studio是一个集成平台,基于一些已经发布的Azure AI服务。 他创建了一个Azure Language资源,然后安装SDK来使用这个资源。 作者在项目中使用Node.js,直接在项目使用SDK即可。 这是作者第一次在实际项目中运用AI,整个过程花费了6个小时左右,最终的效果不能算非常完美,但是也是差强人意。"
+    "作者受朋友圈启发，为博客添加AI自动总结功能。尝试OpenAI API受阻后，转向Azure AI Studio的Language服务，利用其抽象摘要功能。通过Node.js脚本读取文章内容并调用API生成总结，结果存储为静态文件。实现中英文文章总结，但英文效果更佳，部分中文总结存在标点及逻辑问题。尽管存在不足，整体效果尚可。项目耗时约6小时，集成过程约1小时，体现开发者主动拥抱AI提升效率的实践，强调利用工具优化生产力而非被动担忧替代风险。"
   ],
-  "hash": "24ec2c456dfd0a28786b26ffccdcda57a9dee3f582b931868fb2b235ec525ea1"
+  "hash": "24ec2c456dfd0a28786b26ffccdcda57a9dee3f582b931868fb2b235ec525ea1",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

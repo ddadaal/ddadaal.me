@@ -1,10 +1,14 @@
 {
   "articleId": "ms-listen-to-docs-report",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:11:43.144Z",
-  "lastUpdateEndTime": "2023-12-31T13:11:50.944Z",
+  "lastUpdateStartTime": "2025-02-14T13:24:41.615Z",
+  "lastUpdateEndTime": "2025-02-14T13:25:13.414Z",
   "summaries": [
-    "微软听听文档是微软新出的一个制作带语音的文档或者幻灯片的工具。"
+    "微软听听文档是一款支持制作语音文档或幻灯片的工具，用户可将文档、图片与语音结合，提升边听边看的效率。操作简单直观，支持OneDrive导入，但存在云盘保存时重复提示、字体显示不佳等体验问题。适用场景包括快速分享PPT/图片、语音评论等，强调高效与声图文结合。改进建议包括增加视频/网页导入、添加字幕、进度条拖动、字体调整、音频保存，以及扩展PC端等多平台支持，优化保存提示逻辑，避免重复文件生成。"
   ],
-  "hash": "dfa601c869f15288ce377328980b2de5cc3560983bc8d80aaefcf88c6ac0a909"
+  "hash": "dfa601c869f15288ce377328980b2de5cc3560983bc8d80aaefcf88c6ac0a909",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

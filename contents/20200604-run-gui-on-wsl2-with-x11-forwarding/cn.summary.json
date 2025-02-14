@@ -1,10 +1,14 @@
 {
   "articleId": "run-gui-on-wsl2-with-x11-forwarding",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:16:25.893Z",
-  "lastUpdateEndTime": "2023-12-31T13:16:37.060Z",
+  "lastUpdateStartTime": "2025-02-14T13:37:03.254Z",
+  "lastUpdateEndTime": "2025-02-14T13:37:28.655Z",
   "summaries": [
-    "WSL 2开始使用真正的Linux内核,理论上可以运行几乎所有的Linux程序,包括带有GUI的Linux程序。 微软在Build 2020上宣称开始做WSL 2的GUI支持。 借助X11 Forwarding,我们现在已经可以做到类似的效果了。 X11s Forwarded是X11系统中,显示GUI的程序和用于真正负责显示、以及捕捉键盘、鼠标等输入的服务器。 X 11s forwarded的原理很简单,配置其实也很简单。 其分为两个大部分:Windows端(Server端)和WSL端(Client端)。 WSL Forwards可以使用SSH和X11 S Forwarder进行连接,解决很多远程桌面相关的问题。"
+    "微软在WSL 2中通过X11转发实现Linux GUI程序支持，用户需在Windows安装X Server（如vcxsrv），配置DISPLAY环境变量并设置字体。GUI应用窗口与Windows无缝集成，支持剪贴板同步和高DPI显示，但存在标题栏无法隐藏、输入法需独立配置等限制。微软已在Build 2020宣布将优化原生GUI支持，未来有望提升体验。当前方案适用于远程或虚拟机环境，通过X11转发及SSH实现高效跨平台操作，避免图形界面性能损耗。"
   ],
-  "hash": "38d9475ccc54d2587efcee3c221858513e3fe9659c8af683b92d03bfd6330c8b"
+  "hash": "38d9475ccc54d2587efcee3c221858513e3fe9659c8af683b92d03bfd6330c8b",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

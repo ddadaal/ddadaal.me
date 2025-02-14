@@ -1,10 +1,14 @@
 {
   "articleId": "dark-mode-online",
   "lang": "cn",
-  "lastUpdateStartTime": "2023-12-31T13:14:52.266Z",
-  "lastUpdateEndTime": "2023-12-31T13:15:00.046Z",
+  "lastUpdateStartTime": "2025-02-14T13:33:07.833Z",
+  "lastUpdateEndTime": "2025-02-14T13:33:42.183Z",
   "summaries": [
-    "作者成功地把暗色 mode应用到了网站上。 作者通过寻找找到了一个类似VSCode默认的暗色配色方案,并成功用到网站上了。"
+    "作者作为暗色模式爱好者，因最初前端技术不足，被迫为博客选用浅色主题。时隔一年技术提升后，通过修改SCSS变量成功实现暗色模式：背景采用柔和的#222降低对比度，文字使用#ced4da，代码高亮改用Prism.js并适配VSCode暗色主题。但因样式代码混杂SCSS与styled-components，变量同步困难，暂无法实现动态主题切换。未来计划重构代码体系，统一使用CSS变量或主题编译方案，解决维护性问题并支持多主题切换功能。"
   ],
-  "hash": "31d980cc0064246c50bfdf291a0ea4fac89a630133223a5414bc3e8ace0036ed"
+  "hash": "31d980cc0064246c50bfdf291a0ea4fac89a630133223a5414bc3e8ace0036ed",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

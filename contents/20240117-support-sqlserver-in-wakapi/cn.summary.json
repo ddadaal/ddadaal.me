@@ -1,10 +1,14 @@
 {
   "articleId": "support-sqlserver-in-wakapi",
   "lang": "cn",
-  "lastUpdateStartTime": "2024-01-19T12:47:43.833Z",
-  "lastUpdateEndTime": "2024-01-19T12:47:58.053Z",
+  "lastUpdateStartTime": "2025-02-14T13:43:38.671Z",
+  "lastUpdateEndTime": "2025-02-14T13:44:02.939Z",
   "summaries": [
-    "本文作者在上一篇文章中提到了如何为博客增加点击量监测,并部署到Azure。 后来,同学推荐了wakapi项目,重新实现了wakatime的后端API。 作者发现wakapi并没有原生支持SQL Server,但使用了gorm作为数据库访问框架。 作者通过重用Dialector的逻辑,为关键词加上引号,把同一个go类型在不同的数据库中映射为不同的列类型,以及使用`merge into`语句来模拟upsert的行为。 他认为go非常explicit,虽然他不喜欢它,但它非常简单。 解决这些问题后,PR顺利合并进了主分支。"
+    "作者在尝试将Wakapi项目迁移至SQL Server时，遇到一系列数据库适配问题。包括SQL语法差异、ORM框架配置、外键约束冲突及GORM库的Upsert功能缺陷。通过修改原生SQL语句、动态调整时间字段类型映射、重构外键关系、手动处理唯一索引冲突，最终解决兼容性问题并成功合并代码。此次实践深入了解了SQL Server特性与GORM内部机制，验证了通过实际项目攻坚学习技术的有效性。"
   ],
-  "hash": "bef9b329347fce9ed5d243b406f650984ddc7fb8accf7b04699b7665c6892322"
+  "hash": "2894ee61840e2353f94fdd29fb81283beca5354b54bd7435b9453fdffcf7c88e",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }

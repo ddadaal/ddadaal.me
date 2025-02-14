@@ -1,10 +1,14 @@
 {
   "articleId": "strongly-typed-i18n-with-typescript",
   "lang": "en",
-  "lastUpdateStartTime": "2023-12-31T13:12:55.817Z",
-  "lastUpdateEndTime": "2023-12-31T13:13:03.940Z",
+  "lastUpdateStartTime": "2025-02-14T13:28:49.222Z",
+  "lastUpdateEndTime": "2025-02-14T13:29:23.375Z",
   "summaries": [
-    "The document discusses the process of internationalization, also known as i18n, in product development. It explains how to deliver common content in different languages according to user preference. The document suggests using placeholders (IDs) in place of text content, which are replaced with localized strings during compilation or runtime. It also discusses different ways to define the mapping from ID to content, such as nested objects or plain key-value mapping. The document further discusses the benefits of using an ID, including automatic update when language changes, string interpolation, and fallback when current language doesn't define a value. However, it also highlights the issue of raw string IDs, which can be harmful without external support. The document concludes by suggesting the use of strongly typed IDs and the use of proxy objects."
+    "The article discusses internationalization (i18n) challenges, focusing on the \"raw string\" problem when using placeholder IDs for localized content. It highlights risks like typos, lack of IDE support, and refactoring difficulties. A solution using JavaScript Proxies to generate strongly typed IDs is proposed: by recording key paths during object access, it enables type-safe, autocompleted IDs while preserving i18n benefits (fallback, interpolation). This approach avoids raw strings, improves maintainability, and leverages type inference for error checking. Drawbacks include Proxy performance costs, GC overhead, and potential frequent component updates. The author advocates typed solutions to enhance efficiency and reduce bugs in multilingual applications."
   ],
-  "hash": "7c96db19070360dec8673ffd5caf3cd34a972c7b50304d966e150ffdfe5863f1"
+  "hash": "7c96db19070360dec8673ffd5caf3cd34a972c7b50304d966e150ffdfe5863f1",
+  "mode": {
+    "mode": "azure-ai",
+    "model": "DeepSeek-R1"
+  }
 }
