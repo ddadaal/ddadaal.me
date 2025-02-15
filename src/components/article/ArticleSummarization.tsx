@@ -2,7 +2,7 @@ import Link from "next/link";
 import { HeadingWithLink } from "src/components/article/ArticleContent";
 import { Localized } from "src/i18n";
 
-import { ArticleSummary } from "../../../ai/summarize/index.mjs";
+import { ArticleSummary } from "../../../tools/summarize/index.js";
 
 interface Props {
   summary: ArticleSummary;

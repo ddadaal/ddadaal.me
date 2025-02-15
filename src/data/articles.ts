@@ -5,7 +5,7 @@ import { basename, extname, join } from "path";
 import readingTime from "reading-time";
 import { createDataSource } from "src/data/data";
 
-import { ArticleSummary } from "../../ai/summarize/index.mjs";
+import { ArticleSummary } from "../../tools/summarize/index.js";
 
 export const revalidate = false;
 

@@ -38,4 +38,4 @@ next-env.d.ts
 
 data/.changemark.json
 
-ai/.env
+.env

@@ -8,9 +8,9 @@ import dotenv from "dotenv";
 import { cleanEnv, str } from "envalid";
 import matter from "gray-matter";
 
-import { createAzureAiSummarizer } from "./azureAi.mjs";
-import { createAzureLanguageSummarier } from "./azureLanguage.mjs";
-import { createOllamaSummarizer } from "./ollama.mjs";
+import { createAzureAiSummarizer } from "./azureAi.js";
+import { createAzureLanguageSummarier } from "./azureLanguage.js";
+import { createOllamaSummarizer } from "./ollama.js";
 
 dotenv.config({ path: ".env" });
 
@@ -18,14 +18,14 @@ const summarierMap: Record<string, (() => Summarizer) | undefined> = {
   "azure-language": createAzureLanguageSummarier,
   "azure-ai": createAzureAiSummarizer,
   "ollama": createOllamaSummarizer,
-}
+};
 
 const env = cleanEnv(process.env, {
   ENABLED_SUMMARIZERS: str({
     desc: "The summarizers to use, separated by ,. Available values: " + Object.keys(summarierMap).join(",") }),
-})
+});
 
-const summarizers  = env.ENABLED_SUMMARIZERS.split(",")
+const summarizers = env.ENABLED_SUMMARIZERS.split(",")
   .filter((x) => x.trim())
   .map((x) => {
     const constructor: (() => Summarizer) | undefined = summarierMap[x];
@@ -65,7 +65,6 @@ const { positionals, values: { force } } = parseArgs({ allowPositionals: true, o
   force: { type: "boolean", alias: "f", description: "Force to summarize", default: false },
 } });
 
-
 function hashContent(content: string): string {
   return createHash("sha256").update(content).digest("hex");
 }
@@ -76,7 +75,6 @@ async function summarizeArticle(articleDir: string) {
 
   // parse each md files
   for (const mdFile of mdFiles) {
-
     // read md file
     const mdFilePath = join(articleDir, mdFile);
     const mdContent = await readFile(mdFilePath, "utf-8");
@@ -84,8 +82,9 @@ async function summarizeArticle(articleDir: string) {
     // extract title and content
     const { data: frontMatter, content } = matter(mdContent);
 
-    const log = (level: "log" | "error", msg: string, ...args: unknown[]) =>
-      { console[level]("[%s %s] " + msg, frontMatter.id, frontMatter.lang, ...args); };
+    const log = (level: "log" | "error", msg: string, ...args: unknown[]) => {
+      console[level]("[%s %s] " + msg, frontMatter.id, frontMatter.lang, ...args);
+    };
 
     const contentHash = hashContent(content);
 
@@ -93,15 +92,16 @@ async function summarizeArticle(articleDir: string) {
 
     const existingFileContent = await readFile(summaryJsonFilePath, "utf-8").catch(() => null);
 
-    const summaryFile: ArticleSummary | null = existingFileContent ? JSON.parse(existingFileContent) as ArticleSummary : {
-      articleId: frontMatter.id as string,
-      lang: frontMatter.lang as string,
-      hash: contentHash,
-      summaries: [],
-    }
+    const summaryFile: ArticleSummary | null = existingFileContent
+      ? JSON.parse(existingFileContent) as ArticleSummary
+      : {
+          articleId: frontMatter.id as string,
+          lang: frontMatter.lang as string,
+          hash: contentHash,
+          summaries: [],
+        };
 
     for (const summarizer of summarizers) {
-
       const existingSummaries = summaryFile.summaries.filter((x) => x.metadata.summarizer === summarizer.name);
 
       if (existingSummaries.length !== 0 && !force && contentHash === summaryFile.hash) {
@@ -117,14 +117,13 @@ async function summarizeArticle(articleDir: string) {
 
       // summarize content
       try {
-
         const data = await summarizer.summarize(content, frontMatter.lang as string);
 
         summaryFile.summaries.push(...data);
 
         log("log", "Summary of %s of lang %s using %s complete", frontMatter.id, frontMatter.lang, summarizer.name);
-
-      } catch (e) {
+      }
+      catch (e) {
         log("error", "Failed to summarize %s of lang %s using %s. %s", frontMatter.id, frontMatter.lang, summarizer.name, e);
         continue;
       }
@@ -136,15 +135,14 @@ async function summarizeArticle(articleDir: string) {
     // order by summarizer name
     // get indexes of summarizers
     summaryFile.summaries.sort((a, b) =>
-        summarizers.findIndex((x) => x.name === a.metadata.summarizer)
-      - summarizers.findIndex((x) => x.name === b.metadata.summarizer)
+      summarizers.findIndex((x) => x.name === a.metadata.summarizer)
+      - summarizers.findIndex((x) => x.name === b.metadata.summarizer),
     );
   }
 }
 
 async function main() {
-
-  const CONTENT_DIR = "../contents";
+  const CONTENT_DIR = "contents";
 
   let dirs = positionals;
 

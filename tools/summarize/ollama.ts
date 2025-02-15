@@ -1,11 +1,11 @@
-import { cleanEnv, str } from "envalid"
+import { cleanEnv, str } from "envalid";
 import { Ollama } from "ollama";
 
-import { removeThinkTags } from "./azureAi.mjs";
-import { Summarizer, SummaryResult } from "./index.mjs";
+import { removeThinkTags } from "./azureAi.js";
+import { Summarizer, SummaryResult } from "./index.js";
 
 const generatePrompt = (languageCode: string, text: string) =>
-  `用100字以内的纯文本（不要包含markdown样式）总结下面这篇文章，用${languageCode}语言: \n\n${text}`
+  `用100字以内的纯文本（不要包含markdown样式）总结下面这篇文章，用${languageCode}语言: \n\n${text}`;
 
 export const createOllamaSummarizer = (): Summarizer => {
   const env = cleanEnv(process.env, {
@@ -13,11 +13,9 @@ export const createOllamaSummarizer = (): Summarizer => {
     OLLAMA_LOCAL_MODEL: str({ desc: "Local Ollama model" }),
   });
 
-
   return {
     name: "ollama",
     summarize: async (text: string, languageCode: string): Promise<SummaryResult[]> => {
-
       const prompt = generatePrompt(languageCode, text);
 
       const ollama = new Ollama({
@@ -43,9 +41,10 @@ export const createOllamaSummarizer = (): Summarizer => {
           endTime,
           startTime,
         }];
-      } else {
+      }
+      else {
         throw new Error("Unexpected response: " + response.message.content);
       }
-    }
-  }
-}
+    },
+  };
+};
