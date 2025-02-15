@@ -22,6 +22,7 @@ const modelNameMap: Record<string, string> = {
   // Value cannot contain spaces, otherwise the tab text will be line breaked
   "deepseek-r1:8b": "DeepSeek_R1_8B",
   "DeepSeek-R1": "DeepSeek_R1",
+  "llamafamily/llama3-chinese-8b-instruct": "Llama3_Chinese_8B_Instruct",
 };
 
 const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };

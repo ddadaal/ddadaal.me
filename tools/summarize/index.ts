@@ -107,7 +107,7 @@ async function summarizeArticle(articleDir: string) {
       const existingSummaries = summaryFile.summaries.filter((x) => x.metadata.summarizer === summarizer.name);
 
       if (existingSummaries.length !== 0 && !force && contentHash === summaryFile.hash) {
-        log("log", "Artile content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization of summarizer %s",
+        log("log", "Article content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization of summarizer %s",
           frontMatter.id, frontMatter.lang, summarizer.name, summarizer.name);
 
         continue;

@@ -75,7 +75,7 @@ Prompt我随便想了一个：
 | [从调库到翻源代码：给wakapi增加SQL Server支持](/articles/support-sqlserver-in-wakapi)                                          | 本文作者在上一篇文章中提到了如何为博客增加点击量监测,并部署到Azure。 后来,同学推荐了wakapi项目,重新实现了wakatime的后端API。 作者发现wakapi并没有原生支持SQL Server,但使用了gorm作为数据库访问框架。 作者通过重用Dialector的逻辑,为关键词加上引号,把同一个go类型在不同的数据库中映射为不同的列类型,以及使用`merge into`语句来模拟upsert的行为。 他认为go非常explicit,虽然他不喜欢它,但它非常简单。 解决这些问题后,PR顺利合并进了主分支。                                                                                                                                                                                                                                                                                       | 作者在尝试将Wakapi项目迁移至SQL Server时，遇到一系列数据库适配问题。包括SQL语法差异、ORM框架配置、外键约束冲突及GORM库的Upsert功能缺陷。通过修改原生SQL语句、动态调整时间字段类型映射、重构外键关系、手动处理唯一索引冲突，最终解决兼容性问题并成功合并代码。此次实践深入了解了SQL Server特性与GORM内部机制，验证了通过实际项目攻坚学习技术的有效性。                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [A Kotlin DI Framework in 50 Lines and Thoughts on Kotlin](/articles/a-kotlin-di-framework-in-50-lines-and-thoughts-on-kotlin) | The document discusses the challenges and benefits of using a Dependency Injection (DI) framework in a Java project. It highlights the two main options for dependency management: introducing a full-blown DI framework or using traditional object instantiation or simple factory pattern, which can be time-consuming and cumbersome. The author uses the example of a simple Java project where the interface and implementation class pattern was used to decouple the interface and implementation, but it also introduced complexity. The document suggests using delegation and classpath scan capability to achieve minimal dependencies and extra code, and provides a code example to help understand the process. | The article discusses choosing dependency injection (DI) for small projects, comparing full DI frameworks (verbose) versus factory patterns (clumsy). The author developed a lightweight DI solution using Kotlin’s delegation and classgraph for scanning. Annotations (@Service, @ServiceImpl) mark interfaces and implementations, while a `di()` function delegates dependency resolution, enabling singleton injection with minimal code. Benefits include simplicity, circular dependency support, and dynamic resolution, though limitations include no `init` block usage and lack of advanced features. The author praises Kotlin’s modern features (null checks, lambdas) and how diverse programming paradigms expand problem-solving approaches, emphasizing tools’ influence on design thinking. |
 
-# 用本地模型试试，上DeepSeek R1 8B！
+# 本地模型的效果比较玄学
 
 本来这篇文章到这里就该结束了，可是写到第一段的时候，突然想到：
 
@@ -99,9 +99,13 @@ Windows版本的Ollama会在本地`11434`端口启动Ollama的API（[定义](htt
 
 > Summarize the article in the next message in language ${languageCode} in 100 words. Return the result in plain text format, without any other information.
 
-我试了很多次prompt，仍然没找到什么方法能够让它同时满足这三个需求。同一个提示词，有时候能生成不含markdown的文本，有时候生成又包含；文字字数的限制也是不一定生效。
+我试了很多次prompt，仍然没找到什么方法能够让它同时满足这三个需求。同一个提示词，有时候能生成不含markdown的文本，有时候生成又包含；文字字数的限制也是不一定生效。试了多次也没获得好的结果。
 
-试了多次也没获得好的结果。小模型的效果确实和大模型没法比。听说即使到14B，效果都不是很好。
+除了DeepSeek R1 8B，同时还试了[llamafamily/llama3-chinese-8b-instruct](https://ollama.com/llamafamily/llama3-chinese-8b-instruct)，而这个模型的效果就好一些，但是生成多了也会出现不听话等问题。
+
+> 本文讲述了一名25岁男青年在他的第二十年代度过的时间，他在这段时期里，选择了深入体验现有的生活，在旅游和工作方面都有所变化。他认为这个阶段是他的成长期，是他开始独立生活、选择自己喜欢的事物，并且接受不确定性的阶段。在文章中，他对未来充满了想法和担忧，但最终还是无法预测。
+
+小模型的效果确实和大模型没法比，而不同小模型的精调不一致，效果也差别很大。
 
 推理过程中GPU计算量不大，主要是占了很多的显存。看来接下来换个16G显存的显卡，应该就可以跑更高级的模型了。
 

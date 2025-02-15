@@ -10,7 +10,7 @@ const generatePrompt = (languageCode: string) =>
 export const createOllamaSummarizer = (): Summarizer => {
   const env = cleanEnv(process.env, {
     OLLAMA_LOCAL_ENDPOINT: str({ desc: "Local Ollama service endpoint" }),
-    OLLAMA_LOCAL_MODEL: str({ desc: "Local Ollama model" }),
+    OLLAMA_LOCAL_MODELS: str({ desc: "Local Ollama models separated by ," }),
   });
 
   return {
@@ -24,28 +24,36 @@ export const createOllamaSummarizer = (): Summarizer => {
 
       const startTime = new Date().toISOString();
 
-      const response = await ollama.chat({
-        model: env.OLLAMA_LOCAL_MODEL,
-        stream: false,
-        messages: [
-          { role: "user", content: prompt },
-          { role: "user", content: text },
-        ],
-      });
+      const models = env.OLLAMA_LOCAL_MODELS.split(",");
 
-      const endTime = new Date().toISOString();
+      const results = [] as SummaryResult[];
 
-      if (response.done) {
-        return [{
-          summaries: [removeThinkTags(response.message.content)],
-          metadata: { summarizer: "ollama", model: response.model },
-          endTime,
-          startTime,
-        }];
+      for (const model of models) {
+        const response = await ollama.chat({
+          model,
+          stream: false,
+          messages: [
+            { role: "user", content: prompt },
+            { role: "user", content: text },
+          ],
+        });
+
+        const endTime = new Date().toISOString();
+
+        if (response.done) {
+          results.push({
+            summaries: [removeThinkTags(response.message.content)],
+            metadata: { summarizer: "ollama", model: response.model },
+            endTime,
+            startTime,
+          });
+        }
+        else {
+          throw new Error("Unexpected response: " + response.message.content);
+        }
       }
-      else {
-        throw new Error("Unexpected response: " + response.message.content);
-      }
+
+      return results;
     },
   };
 };
