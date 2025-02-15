@@ -20,6 +20,8 @@ const summarierMap: Record<string, (() => Summarizer) | undefined> = {
   "ollama": createOllamaSummarizer,
 };
 
+const summarizerOrder = ["azure-ai", "ollama", "azure-language"];
+
 const env = cleanEnv(process.env, {
   ENABLED_SUMMARIZERS: str({
     desc: "The summarizers to use, separated by ,. Available values: " + Object.keys(summarierMap).join(",") }),
@@ -135,8 +137,8 @@ async function summarizeArticle(articleDir: string) {
     // order by summarizer name
     // get indexes of summarizers
     summaryFile.summaries.sort((a, b) =>
-      summarizers.findIndex((x) => x.name === a.metadata.summarizer)
-      - summarizers.findIndex((x) => x.name === b.metadata.summarizer),
+      summarizerOrder.findIndex((x) => x === a.metadata.summarizer)
+      - summarizerOrder.findIndex((x) => x === b.metadata.summarizer),
     );
   }
 }
