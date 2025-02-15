@@ -2,7 +2,7 @@ import { AzureKeyCredential } from "@azure/ai-language-text";
 import createModelClient, { GetChatCompletions200Response } from "@azure-rest/ai-inference";
 import { cleanEnv, str } from "envalid";
 
-import { Summarizer, SummaryData } from "./index.mjs";
+import { Summarizer, SummaryResult } from "./index.mjs";
 
 export const generatePrompt = (languageCode: string) =>
   `Summarize the article in the next message in language ${languageCode} in 100 words. Return the result in plain text format, without any other information.`
@@ -28,12 +28,14 @@ export const createAzureAiSummarizer = () : Summarizer => {
   return {
     name: "azure-ai",
 
-    summarize: async (text: string, languageCode: string): Promise<SummaryData> => {
+    summarize: async (text: string, languageCode: string): Promise<SummaryResult[]> => {
 
       const messages = [
         { role: "user", content: generatePrompt(languageCode) },
         { role: "user", content: text },
       ];
+
+      const startTime = new Date().toISOString();
 
       const response = await client.path("/chat/completions").post({
           body: {
@@ -48,10 +50,13 @@ export const createAzureAiSummarizer = () : Summarizer => {
 
 
       if (responseOk(response)) {
-        return {
+        const endTime = new Date().toISOString();
+        return [{
           summaries: response.body.choices.map((x) => removeThinkTags(x.message.content)),
           metadata: { summarizer: "azure-ai", model: response.body.model },
-        };
+          endTime,
+          startTime,
+        }];
       } else {
         throw new Error(`Unexpected response: ${response.status}. message: ${JSON.stringify(response.body)}`);
       }

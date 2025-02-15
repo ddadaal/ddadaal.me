@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "用户面临内网资源访问问题，尝试通过VPN和代理服务器解决方案来优化流量管理。VPN无法单独控制所有流量，而代理服务器能够实现 selective proxying功能，仅将特定程序的流量转发到目标服务器。最终方案是将VPN连接作为代理服务器使用，结合Docker容器实现简便部署，并提供示例代码供用户参考。"
+        "这篇文章总结了一种方法，使用VPN作为HTTP代理来解决内网资源访问问题。主要内容包括：\n\n1. 当前直接连接VPN会导致所有流量走VPN，影响无需VPN的正常流量。\n2. 通过在本地启动一个虚拟机或容器连接VPN，并设置代理，使需要内网资源的程序通过该环境，而其他程序不使用 VPN。\n3. 使用Docker实现了一个简便的解决方案，仓库地址为https://github.com/ddadaal/vpn-as-http-proxy。"
       ]
     }
   ]

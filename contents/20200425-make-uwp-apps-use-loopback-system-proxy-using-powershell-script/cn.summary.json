@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "# 问题\n\n由于微软UWP应用被系统代理限制，无法访问网络服务，解决方案包括手动解除隔离或使用自动化脚本。此文章介绍了使用PowerShell脚本实现这一功能，并解决了脚本中遇到的过滤和API更改问题，用户可快速筛选并设置所需应用程序。"
+        "这篇文章讨论了国内微软服务网络连接性问题，特别是针对无法通过系统代理使用UWP应用的解决方案。手动可用`CheckNetIsolation.exe`工具，自动化则开发了一个PowerShell脚本来筛选和添加应用到排除列表，从而绕过网络隔离限制。"
       ]
     }
   ]

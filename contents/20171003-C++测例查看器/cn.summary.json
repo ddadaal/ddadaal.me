@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "To use the CppTestCaseViewer tool, clone the GitHub repository at https://github.com/ddadaal/CppTestCaseViewer. The test cases are encrypted with AES256 and stored in a ZIP file under specific paths. Use an .NET Framework 4.5 environment. After running the plugin, delete temporary files (except .exe) to avoid errors."
+        "该文章介绍了一个名为CppTestCaseViewer的工具，可用于查看C++测例。用户需从指定GitHub仓库下载并保存到空目录，运行后复制题目文件到特定文件夹，并按提示关闭程序。此外，注意事项提醒清理特定文件夹以避免错误。"
       ]
     }
   ]

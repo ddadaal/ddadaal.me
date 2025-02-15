@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "微软在Build 2020上增强了WSL2的支持，新增了图形界面（GUI）和GPU GPU计算功能，为开发者提供了更优的跨平台体验。然而，仍存在高DPI显示不流畅、输入法支持不足、截图导致系统崩溃等问题。总体来看，WSQL 1.0预览版在增强Windows兼容性方面迈出了重要一步，但仍需解决一些用户体验问题。"
+        "微软在Build 2020上展示了WSL2的GUI和GPU支持，极大提升了在Windows运行Linux应用的体验。通过wslg预览版，用户可以无缝运行如VSCode、网易云音乐等程序，同时支持剪贴板同步和GPU计算，但仍面临IME配置问题和部分崩溃情况。此工具使Windows与Linux生态高度兼容，但也需要进一步完善。"
       ]
     }
   ]

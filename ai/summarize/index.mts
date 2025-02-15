@@ -41,12 +41,14 @@ export interface ArticleSummary {
   articleId: string;
   lang: string;
   hash: string;
-  summaries: SummaryData[];
+  summaries: SummaryResult[];
 }
 
-export interface SummaryData {
+export interface SummaryResult {
   metadata: SummarizerMetadata;
   summaries: string[];
+  startTime: string;
+  endTime: string;
 }
 
 export interface SummarizerMetadata {
@@ -56,7 +58,7 @@ export interface SummarizerMetadata {
 
 export interface Summarizer {
   readonly name: string;
-  summarize(text: string, languageCode: string): Promise<SummaryData>;
+  summarize(text: string, languageCode: string): Promise<SummaryResult[]>;
 }
 
 const { positionals, values: { force } } = parseArgs({ allowPositionals: true, options: {
@@ -100,37 +102,27 @@ async function summarizeArticle(articleDir: string) {
 
     for (const summarizer of summarizers) {
 
-      const existingSummary = summaryFile.summaries.find((x) => x.metadata.summarizer === summarizer.name);
+      const existingSummaries = summaryFile.summaries.filter((x) => x.metadata.summarizer === summarizer.name);
 
-      if (existingSummary && !force && contentHash === summaryFile.hash) {
+      if (existingSummaries.length !== 0 && !force && contentHash === summaryFile.hash) {
         log("log", "Artile content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization of summarizer %s",
           frontMatter.id, frontMatter.lang, summarizer.name, summarizer.name);
 
         continue;
       }
 
+      summaryFile.summaries = summaryFile.summaries.filter((x) => x.metadata.summarizer !== summarizer.name);
+
       log("log", "Summarize %s of lang %s using %s", frontMatter.id, frontMatter.lang, summarizer.name);
 
-      const startTime = new Date();
       // summarize content
       try {
 
         const data = await summarizer.summarize(content, frontMatter.lang as string);
 
-        const endTime = new Date();
+        summaryFile.summaries.push(...data);
 
-        if (existingSummary) {
-          existingSummary.metadata = data.metadata;
-          existingSummary.summaries = data.summaries;
-        } else {
-          summaryFile.summaries.push({
-            metadata: data.metadata,
-            summaries: data.summaries,
-          });
-        };
-
-        log("log", "Summary of %s of lang %s using %s complete. Took %d seconds",
-          frontMatter.id, frontMatter.lang, summarizer.name, (endTime.getTime() - startTime.getTime()) / 1000);
+        log("log", "Summary of %s of lang %s using %s complete", frontMatter.id, frontMatter.lang, summarizer.name);
 
       } catch (e) {
         log("error", "Failed to summarize %s of lang %s using %s. %s", frontMatter.id, frontMatter.lang, summarizer.name, e);
@@ -140,6 +132,13 @@ async function summarizeArticle(articleDir: string) {
       log("log", "Write summary json to %s", summaryJsonFilePath);
       await writeFile(summaryJsonFilePath, JSON.stringify(summaryFile, null, 2));
     }
+
+    // order by summarizer name
+    // get indexes of summarizers
+    summaryFile.summaries.sort((a, b) =>
+        summarizers.findIndex((x) => x.name === a.metadata.summarizer)
+      - summarizers.findIndex((x) => x.name === b.metadata.summarizer)
+    );
   }
 }
 

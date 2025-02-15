@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "The bug occurs because the forEach loop on the `observers` Map in the Store consumer iterates while the Map is being modified by its own callbacks (during render). This leads to inconsistent states and an infinite loop. The solution is to create a separate array of observer functions before iteration, ensuring they are not modified during iteration.\n\nStep-by-step explanation:\n\n1. **Problem Identification**: Infinite loop occurs during Map iteration when observers are dynamically added and removed.\n2. **Root Cause**: Iterating over a Map while it's being modified by its own callbacks causes inconsistent states.\n3. **Solution**: Use an array of observer functions instead of iterating directly over the Map to prevent callback interference.\n\nHere's how to fix the code:\n\n- In `StoreConsumer`, create an array of observers before iteration and iterate over this array.\n\nFixed code example for Store.ts:\n```ts\n订阅函数时，避免在迭代期间修改Map：\nfunction a() { console.log(\"a\"); }\n\nmap.set(a, \"123\");\nconst observerList = Array.from(map); // 转换为数组以防止动态变化\n\nobserverList.forEach((value) => key());\n```\n\nBy creating an array copy of the Map's observers, we prevent dynamic modifications during iteration."
+        "In JavaScript, using a function as a key in a Map can lead to unexpected behavior. During iteration, if the observer modifies the Map (by deleting and re-adding itself), it creates an infinite loop even when only one element is present. This highlights the risks of modifying data structures during iteration."
       ]
     }
   ]

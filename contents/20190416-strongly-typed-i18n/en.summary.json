@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "The document outlines an innovative solution to enhance language localization in TypeScript applications by utilizing Proxies to handle access to a `lang` object. Here's a concise summary:\n\n1. **Problem Identification**: The project initially used direct `ref` access for accessing properties of the `lang` object, leading to performance issues and coupling problems.\n\n2. **Solution with Proxies**: To address these issues, Proxies were introduced to intercept and manage accesses to language properties. This allows generating unique IDs by joining access paths (e.g., `app.header.userIndicator...`), creating a root Proxied `lang` object for efficiency.\n\n3. **Benefits**:\n   - **Type Safety**: Enhanced type inference in TypeScript.\n   - **Efficient Access**: Components can use generic accessors without knowing specific language IDs, reducing code redundancy.\n   - **Strong Autocompletion**: Improved type-based support for developers' tools.\n\n4. **Drawbacks**:\n   - **Performance Overhead**: Proxies introduce some lag due to additional lookups.\n   - **Immutability and Memory**: Each use creates a new object, increasing memory usage but manageable in typical scenarios.\n\n5. **Conclusion**: Despite drawbacks, the approach is highly beneficial for projects requiring language localization, offering significant improvements in type safety and maintainability."
+        "这段文字详细阐述了如何利用JavaScript中的`Proxy`机制来实现强类型化的语言资源访问，解决了本地化字符串（LocalizedString）组件在维护和调试方面的难题。以下是对该技术的总结：\n\n1. **背景与问题**：\n   - 传统方法使用字符串直接访问资源，缺乏类型信息，导致代码难以维护和调试。\n   \n2. **解决方案**：\n   - 使用`Proxy`拦截对象访问，记录路径，并生成强类型化的提示。\n   - 创建一个`Lang`类来记录访问键，并使用`Proxy`在每次访问时处理。\n\n3. **实现细节**：\n   - `Lang`类初始化时保存路径，并通过`Proxy`拦截进一步的键访问。\n   - 当访问特定键（如`GET_VALUE`符号）时，返回路径字符串；否则，生成新`Lang`对象并添加当前键。\n\n4. **应用与优化**：\n   - 在`LocalizedString`组件中使用`Proxy`结构，使得路径分解更为简便。\n   - 创建嵌套的Root对象，以独立管理部分路径，提升灵活性和代码可读性。\n\n5. **权衡与结论**：\n   - 虽然存在性能和内存问题，但强类型化带来的好处（如减少错误、提高效率）使得该方法在大多数项目中得到广泛应用。\n\n通过这种方式，作者成功实现了在本地化字符串组件中的强类型化管理，不仅提升了代码质量，还简化了资源的引用和维护过程。"
       ]
     }
   ]

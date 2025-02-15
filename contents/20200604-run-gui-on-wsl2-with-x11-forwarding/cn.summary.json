@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "这篇文章介绍了如何在Windows环境中通过X11 Forwarding技术在WSL 2（Windows Subsystem for Linux）中获得图形界面。尽管WSL 2本身没有像传统Linux那样完整的图形环境，但通过这种方法可以在远程桌面或虚拟机中运行带有图形界面的应用程序。\n\n### 主要内容总结：\n1. **集成效果**：微软已经在Build 2020上展示了WSL 2与Windows的良好兼容性，未来可能会进一步完善这一集成。\n   \n2. **手动配置方法**：\n   - 设置`DISPLAY`环境变量：需要从目标操作系统获取X服务器的地址，并将其添加到`DISPLAY`环境中。\n   - 使用工具如xclock测试X11环境是否正常。\n   - 安装必要的字体以避免图形界面中的显示问题。\n\n3. **实用技巧**：\n   - 可以在VSCode等编辑器中设置标题栏样式，以提高使用体验。\n   - X11剪贴板与Windows同步，方便数据交互。\n\n4. **限制和注意事项**：\n   - 隐藏标题栏可能会影响窗口操作功能。\n   - 输入法仍然需要手动配置。\n   - 字体问题可能需要特定的安装才能解决。\n\n5. **后续支持**：这种方法不仅限于WSL 2，也可以应用于其他虚拟机或远端PC，并且可以通过SSH和X11 Forwarding扩展到更多场景。\n\n这篇文章为那些希望在Windows环境中使用带有图形界面的应用程序提供了实用的解决方案。"
+        "要在Windows上使用Linux程序并且避免进入图形界面，可以使用SSH和X11 Forwarding进行配置。\n\n1. **安装必要工具**：\n   - 在Windows上安装`cygwin`或`WSL`，这两种工具可以帮助你运行Linux命令。\n   \n2. **设置SSH和X11 Forwarding**：\n   - 打开你的终端，输入以下命令以启用X11转发：\n     ```bash\n     eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa\n     ```\n   - 保存一个临时的`~/.ssh/config`文件，以指示哪些主机可以进行X11转发：\n     ```bash\n     echo 'Host *' > ~/.ssh/config\n     echo '    ForwardX11 yes' >> ~/.ssh/config\n     echo '    X11Forwarding yes' >> ~/.ssh/config\n     ```\n\n3. **连接到Linux服务器**：\n   - 使用SSH命令连接到你的Linux服务器时，附加-X选项来启用图形界面转发：\n     ```bash\n     ssh -X yourusername@linux-server\n     ```\n   \n4. **运行Linux程序**：\n   - 在终端中使用`xdmesktop`启动桌面环境。\n   - 运行你想要的Linux程序，例如：\n     ```bash\n     /path/to/your/linux/program\n     ```\n\n5. **关闭X11转发**：\n   - 完成后按下`Ctrl + d`断开会话。\n   \n6. **确保安全性**：\n   - 确保你只允许特定的用户或IP进行X11转发，以防止未经授权的访问。\n\n通过以上步骤，你可以在Windows上运行Linux程序，而无需进入传统的图形界面环境。这种方法特别适合需要使用命令行工具或简单图形应用程序的情况。"
       ]
     }
   ]

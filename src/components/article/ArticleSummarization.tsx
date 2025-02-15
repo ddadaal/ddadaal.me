@@ -13,7 +13,7 @@ const AZURE_AI_URL = "https://ai.azure.com";
 
 const modelNameMap: Record<string, string> = {
   // Value cannot contain spaces, otherwise the tab text will be line breaked
-  "deepseek-r1:7b": "DeepSeek_R1_7B",
+  "deepseek-r1:8b": "DeepSeek_R1_8B",
   "DeepSeek-R1": "DeepSeek_R1",
 };
 
@@ -32,14 +32,15 @@ export const ArticleSummarization = ({ summary }: Props) => {
         }}
       />
       <div>
-        <div role="tablist" className="tabs tabs-lifted">
+        <div role="tablist" className="tabs tabs-boxed">
           {summary.summaries.map((x, i) => (
             <>
               <input
                 type="radio"
                 name="summaryTab"
                 role="tab"
-                className="tab w-auto"
+                className="tab text-base-content"
+                id={`summaryTab-${String(i)}`}
                 aria-label={x.metadata.model ? modelNameMap[x.metadata.model] ?? x.metadata.model : x.metadata.summarizer}
                 defaultChecked={i === 0}
               />
@@ -50,12 +51,12 @@ export const ArticleSummarization = ({ summary }: Props) => {
               >
                 {
                   x.summaries.map((c, i) => (
-                    <p className="text-neutral-content p-1" key={i}>
+                    <p className="p-1" key={i}>
                       {c}
                     </p>
                   ))
                 }
-                <p className="text-sm justify-end flex text-neutral-content p-1">
+                <p className="text-sm justify-end flex p-1">
                   {
                     x.metadata.summarizer === "azure-ai"
                       ? (
@@ -65,7 +66,6 @@ export const ArticleSummarization = ({ summary }: Props) => {
                               <Link
                                 target="_blank"
                                 key="azureAiUrl"
-                                className="text-neutral-content"
                                 href={AZURE_AI_URL}
                               >
                                 Azure AI
@@ -82,7 +82,6 @@ export const ArticleSummarization = ({ summary }: Props) => {
                                 <Link
                                   target="_blank"
                                   key="docUrl"
-                                  className="text-neutral-content"
                                   href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
                                 >
                                   Azure AI Language Service
@@ -97,7 +96,6 @@ export const ArticleSummarization = ({ summary }: Props) => {
                                 <Link
                                   target="_blank"
                                   key="ollamaUrl"
-                                  className="text-neutral-content"
                                   href="https://ollama.com/"
                                 >
                                   Ollama

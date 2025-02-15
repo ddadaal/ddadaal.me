@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "simstate is a React state management library using hooks and TypeScript, designed for functional components with Hooks. It balances MobX/Redux approaches by manually calling setState and inspired by unstated but not yet released. The author's first open-source project, aiming to contribute."
+        "simstate is a React state management library designed to work seamlessly with TypeScript and React Hooks. It aims to simplify state management by offering a clean API, inspired by unstated, while supporting modern React patterns like hooks. The library is open-source, modular, and focuses on simplicity and developer productivity."
       ]
     }
   ]

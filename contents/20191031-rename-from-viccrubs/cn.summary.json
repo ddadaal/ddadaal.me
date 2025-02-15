@@ -17,10 +17,10 @@
     {
       "metadata": {
         "summarizer": "ollama",
-        "model": "deepseek-r1:7b"
+        "model": "deepseek-r1:8b"
       },
       "summaries": [
-        "作者因网络昵称viccrubs的不完美决定改名为ddadaal，目的是减少割裂感并统一身份。新名字更易读、好记且不会影响他人印象。已修改多个账号，并将域名改为ddadaal.me。改名对自身影响力的影响较小，强调早改的重要性。"
+        "用户决定将网络用户名从`viccrubs`和`daacheen`改为`ddadaal`，主要原因是统一身份、解决割裂感以及不喜欢旧名字。新名字方便记忆且读音顺口，适合未来使用。已修改邮箱、GitHub及多个社交平台账号，强调早改的重要性以减少影响。"
       ]
     }
   ]

@@ -2,7 +2,7 @@
 import { AzureKeyCredential, TextAnalysisClient } from "@azure/ai-language-text";
 import { cleanEnv, str } from "envalid";
 
-import { Summarizer, SummaryData } from "./index.mjs";
+import { Summarizer, SummaryResult } from "./index.mjs";
 
 const azureLanguageCodeMap = {
   cn: "zh-Hans",
@@ -22,9 +22,11 @@ export const createAzureLanguageSummarier = () : Summarizer => {
       return {
         name: "azureLanguage",
 
-        summarize: async (text: string, languageCode: string): Promise<SummaryData> => {
+        summarize: async (text: string, languageCode: string): Promise<SummaryResult[]> => {
 
           const mappedLanguageCode = azureLanguageCodeMap[languageCode as keyof typeof azureLanguageCodeMap];
+
+          const startTime = new Date().toISOString();
 
           const lro = await client.beginAnalyzeBatch([
             { kind: "AbstractiveSummarization" },
@@ -47,10 +49,14 @@ export const createAzureLanguageSummarier = () : Summarizer => {
                 throw new Error(`Unexpected error (${code}): ${message}`);
               }
 
-              return {
+              const endTime = new Date().toISOString();
+
+              return [{
                 metadata: { summarizer: "azure-language" },
                 summaries: result.summaries.map((x) => x.text),
-              };
+                endTime,
+                startTime,
+              }];
             }
           }
 
