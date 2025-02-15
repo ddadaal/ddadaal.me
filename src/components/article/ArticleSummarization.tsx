@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { JSX } from "react";
+import * as prod from "react/jsx-runtime";
+import rehypeReact from "rehype-react";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
 import { HeadingWithLink } from "src/components/article/ArticleContent";
 import { Localized } from "src/i18n";
+import { unified } from "unified";
 
 import { ArticleSummary } from "../../../tools/summarize/index.js";
 
@@ -17,7 +24,29 @@ const modelNameMap: Record<string, string> = {
   "DeepSeek-R1": "DeepSeek_R1",
 };
 
-export const ArticleSummarization = ({ summary }: Props) => {
+const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
+
+async function parseMarkdown(content: string) {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  /* eslint-disable @typescript-eslint/no-unsafe-call */
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeReact, {
+      ...production,
+    })
+    .process(content);
+
+  return file.result as JSX.Element;
+
+  /* eslint-enable @typescript-eslint/no-unsafe-call */
+  /* eslint-enable @typescript-eslint/no-unsafe-member-access */
+  /* eslint-enabel @typescript-eslint/no-unsafe-assignment */
+}
+
+export const ArticleSummarization = async ({ summary }: Props) => {
   return (
     <div className="p-4 my-4 bg-neutral rounded shadow">
       <HeadingWithLink
@@ -33,7 +62,7 @@ export const ArticleSummarization = ({ summary }: Props) => {
       />
       <div>
         <div role="tablist" className="tabs tabs-boxed">
-          {summary.summaries.map((x, i) => (
+          {await Promise.all(summary.summaries.map(async (x, i) => (
             <>
               <input
                 type="radio"
@@ -49,13 +78,17 @@ export const ArticleSummarization = ({ summary }: Props) => {
                 role="tabpanel"
                 className="tab-content bg-base-100 border-base-300 rounded-box p-3"
               >
-                {
+                <div className="prose max-w-full prose-p:m-0 prose-li:m-0 prose-ul:m-0 prose-ol:m-0">
+                  {await parseMarkdown(x.summaries.join("\n\n"))}
+                </div>
+
+                {/* {
                   x.summaries.map((c, i) => (
                     <p className="p-1" key={i}>
                       {c}
                     </p>
                   ))
-                }
+                } */}
                 <p className="text-sm justify-end flex p-1">
                   {
                     x.metadata.summarizer === "azure-ai"
@@ -108,7 +141,7 @@ export const ArticleSummarization = ({ summary }: Props) => {
                 </p>
               </div>
             </>
-          ))}
+          )))}
         </div>
       </div>
     </div>
