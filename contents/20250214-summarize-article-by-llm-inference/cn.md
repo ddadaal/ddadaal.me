@@ -1,7 +1,7 @@
 ---
 id: summarize-article-by-llm-inference
 date: 2025-02-14 23:54
-title: 用大模型总结文章：玄学，但是效果很好
+title: 用大模型总结文章：效果很好，但是玄学
 lang: cn
 tags:
   - blog
