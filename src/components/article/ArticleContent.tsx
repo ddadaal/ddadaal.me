@@ -5,9 +5,8 @@ import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import classNames from "classnames";
 import imageSize from "image-size";
 import { dirname, join } from "path";
-import React, { ComponentType, createElement } from "react";
+import React, { ComponentType, JSX } from "react";
 import * as prod from "react/jsx-runtime";
-import { FaLink } from "react-icons/fa";
 import { rehypePrettyCode } from "rehype-pretty-code";
 import rehypeRaw from "rehype-raw";
 import rehypeReact, { Options as RehypeReactOptions } from "rehype-react";
@@ -16,6 +15,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { ArticleSummarization } from "src/components/article/ArticleSummarization";
+import { HeadingWithLink } from "src/components/article/Components";
 import { Gallery } from "src/components/article/Gallery";
 import { Article } from "src/data/articles";
 import { unified } from "unified";
@@ -63,22 +63,7 @@ export const ArticleImageServer = async ({ article, imageProps }: Props & {
 
 const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 
-interface HeadingWithLinkProps {
-  element: "h1" | "h2" | "h3";
-  props: React.JSX.IntrinsicElements["h1"] ;
-  anchorLinkClassName?: string;
-}
-
-export const HeadingWithLink = (props: HeadingWithLinkProps) => {
-  return createElement(props.element, props.props, [
-    <a href={"#" + (props.props.id ?? "")} className={classNames("mr-1", props.anchorLinkClassName)} key={props.props.id}>
-      <FaLink className="inline-block opacity-20 hover:opacity-60" size={16} />
-    </a>,
-    props.props.children,
-  ]);
-};
-
-export const ArticleContent = async ({ article }: Props) => {
+export const parseArticleContent = async (article: Article) => {
   /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   /* eslint-disable @typescript-eslint/no-unsafe-call */
   /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -107,15 +92,45 @@ export const ArticleContent = async ({ article }: Props) => {
     } as RehypeReactOptions)
     .process(article.content);
 
+  return file as unknown;
+};
+
+async function parseSummarization(content: string) {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeReact, {
+      ...production,
+    })
+    .process(content);
+
+  return file.result as JSX.Element;
+}
+
+export const ArticleContent = async ({ article }: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const file: any = await parseArticleContent(article);
+
+  const summaries = article.summary
+    ? await Promise.all(article.summary.summaries.map(async (x) => {
+      const children = await parseSummarization(x.summaries.join("\n\n"));
+      return {
+        metadata: x.metadata,
+        children,
+      };
+    }))
+    : undefined;
+
   const showToc = !article.no_toc && file.data.toc && file.data.toc.length > 0;
 
   return (
     <div className="flex flex-row space-x-4">
       <div className={classNames("prose", "max-w-full", { "lg:w-[75%]": showToc })}>
         {
-          article.summary
+          summaries
             ? (
-                <ArticleSummarization summary={article.summary} />
+                <ArticleSummarization summaries={summaries} />
               )
             : undefined
         }

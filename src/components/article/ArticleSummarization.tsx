@@ -1,18 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { JSX } from "react";
-import * as prod from "react/jsx-runtime";
-import rehypeReact from "rehype-react";
-import remarkGfm from "remark-gfm";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import { HeadingWithLink } from "src/components/article/ArticleContent";
+import { HeadingWithLink } from "src/components/article/Components";
 import { Localized } from "src/i18n";
-import { unified } from "unified";
 
-import { ArticleSummary } from "../../../tools/summarize/index.js";
+import { SummarizerMetadata } from "../../../tools/summarize/index.js";
+
+interface Summary {
+  metadata: SummarizerMetadata;
+  children: JSX.Element;
+}
 
 interface Props {
-  summary: ArticleSummary;
+  summaries: Summary[];
 }
 
 const AZURE_AI_LANGUAGE_SERVICE_DOC_URL = "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
@@ -25,29 +26,7 @@ const modelNameMap: Record<string, string> = {
   "llamafamily/llama3-chinese-8b-instruct": "Llama3_Chinese_8B_Instruct",
 };
 
-const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
-
-async function parseMarkdown(content: string) {
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-  /* eslint-disable @typescript-eslint/no-unsafe-call */
-  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeReact, {
-      ...production,
-    })
-    .process(content);
-
-  return file.result as JSX.Element;
-
-  /* eslint-enable @typescript-eslint/no-unsafe-call */
-  /* eslint-enable @typescript-eslint/no-unsafe-member-access */
-  /* eslint-enabel @typescript-eslint/no-unsafe-assignment */
-}
-
-export const ArticleSummarization = async ({ summary }: Props) => {
+export const ArticleSummarization = ({ summaries }: Props) => {
   return (
     <div className="p-4 my-4 bg-neutral rounded shadow">
       <HeadingWithLink
@@ -63,7 +42,7 @@ export const ArticleSummarization = async ({ summary }: Props) => {
       />
       <div>
         <div role="tablist" className="tabs tabs-boxed">
-          {await Promise.all(summary.summaries.map(async (x, i) => (
+          {summaries.map((x, i) => (
             <>
               <input
                 type="radio"
@@ -80,7 +59,7 @@ export const ArticleSummarization = async ({ summary }: Props) => {
                 className="tab-content bg-base-100 border-base-300 rounded-box p-3"
               >
                 <div className="prose max-w-full prose-p:m-0 prose-li:m-0 prose-ul:m-0 prose-ol:m-0">
-                  {await parseMarkdown(x.summaries.join("\n\n"))}
+                  {x.children}
                 </div>
 
                 {/* {
@@ -142,7 +121,7 @@ export const ArticleSummarization = async ({ summary }: Props) => {
                 </p>
               </div>
             </>
-          )))}
+          ))}
         </div>
       </div>
     </div>
