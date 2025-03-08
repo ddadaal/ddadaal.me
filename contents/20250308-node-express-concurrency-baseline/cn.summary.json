@@ -1,40 +1,40 @@
 {
   "articleId": "node-express-concurrency-baseline",
   "lang": "cn",
-  "hash": "c1b76b586dfb35dc93c6c29090d044a94b09df77a14bece0685ab0fffb5dae46",
+  "hash": "00ac3911168de9709867b3afc5496b3ec2da2ade496a8934b6d075e970d9868f",
   "summaries": [
     {
       "summaries": [
-        "作者在Node.js请求转发服务中发现高并发(2000+)时出现单核CPU瓶颈和错误率飙升问题。实验通过Express构建代理服务和模拟后端，使用wrk压力测试发现：1)代理服务性能仅为后端的1/3；2)单线程模型导致CPU利用率失衡；3)5000连接时错误率指数级增长。对比Go语言实现，错误率降低6倍且无超时。结论指出Node.js单线程模型是主要瓶颈，建议优化日志、简化逻辑或启用多进程负载均衡。测试数据开源在GitHub，强调AI辅助提升了实验效率。"
+        "作者在Node.js请求转发服务中发现高并发时出现性能瓶颈，6%请求出错且CPU单核满载。通过压力测试发现Express代理服务在2000并发时错误率上升，主因Node.js单线程模型无法利用多核资源。对比测试显示Go语言利用多核优势，错误率显著低于Node.js。解决方案建议优化代码逻辑、减少日志输出或采用多进程负载均衡。实验表明Node.js纯网络IO场景下单核性能受限，生产环境需考虑横向扩展或改用多线程语言。"
       ],
       "metadata": {
         "summarizer": "azure-ai",
         "model": "deepseek-r1"
       },
-      "endTime": "2025-03-08T06:56:20.879Z",
-      "startTime": "2025-03-08T06:56:03.056Z"
+      "endTime": "2025-03-08T08:38:51.053Z",
+      "startTime": "2025-03-08T08:38:34.091Z"
     },
     {
       "summaries": [
-        "# Node.js与Express在高并发下的性能测试分析\n\n在近期的实验中，我对Node.js和Express框架在高并发场景下的表现进行了深入测试。这次实验不仅验证了现有技术的边界，还揭示了一些潜在的问题，帮助我更好地理解这两个平台的优缺点。\n\n## 测试场景与目标\n\n为了评估Node.js和Express在高并发下的性能，我设计了一系列测试，涵盖以下关键指标：\n\n1. **平均延迟**：衡量请求处理速度。\n2. **最大延迟**：识别最慢的单个请求。\n3. **每秒请求数**：评估系统吞吐量。\n4. **总错误数**：计算请求失败次数。\n5. **超时率**：统计未能在规定时间内完成请求的情况。\n\n测试对象是两个服务器配置：\n\n- **5001端口**\n  - 连接数：5000、10000、20000\n  - 请求速率：约为7000到6500次/秒\n\n- **5000端口**\n  - 连接数：5000、10000、20000\n  - 请求速率：约为5400到4800次/秒\n\n每个配置下，我测量了10万次请求，确保数据的统计意义。\n\n## 测试结果分析\n\n### Node.js和Express表现概览\n\n在所有测试中，Node.js和Express表现出明显的性能瓶颈，尤其是在连接数超过2000之后：\n\n1. **超时率**：\n   - 在5001端口下，当连接数达到10000时，超时率飙升至1.2%，而在20000连接的情况下，这个比例进一步上升。\n   \n2. **错误率**：\n   - 错误率在10000连接时达到8.29%，在20000连接时跃升到24.26%。随着连接数的增加，错误率显著上升。\n\n3. **延迟表现**：\n   - 平均延迟从500多毫秒稳步增长，尤其是在高连接数下。\n   - 最大延迟也随之扩大，表明系统性能受到了瓶颈限制。\n\n### Go语言的优势\n\n为了与Node.js对比，我还测试了Go语言，使用标准库`net/http`编写相同功能的服务。结果显示：\n\n- **超时率**：始终为0%\n- **错误率**：在20000连接下约为24.26%，这与Node.js相近，但由于其单线程模型的效率，整体性能优于Node.js。\n  \nGo语言展现出的稳定性和更高的吞吐量，使其在高并发场景中表现优于Express。\n\n## 结论与建议\n\n### Node.js的局限性\n\n- **瓶颈问题**：Express框架基于单线程模型，随着连接数增加，其处理能力显著降低。这是由于JavaScript本身的单线程特性所导致。\n  \n- **优化空间**：\n  - **代码优化**：通过使用更高效的算法和减少IO操作，可以提高处理速度。\n  - **并发控制**：增加内存限制或采用队列管理策略，有助于优化资源分配。\n\n### Go语言的优势\n\n- **性能优势**：Go语言基于 goroutines 和协程，能够更高效地处理大量请求。\n  \n- **可扩展性**：其单线程模型使得代码容易管理，并且在多核环境下表现出色。\n\n## 最终建议\n\n如果您需要构建一个稳定、高性能的网络服务，我强烈推荐尝试Go语言。对于已经基于Node.js的项目，建议定期监控系统性能，优化代码逻辑，同时考虑使用更高级的框架如 Fastify，以提升处理效率。\n\n通过这些测试，我们可以清晰地看到当前技术栈的边界，并为未来的开发提供更多的思考方向。希望这份分析能为其他开发者带来一些启发和帮助！"
+        "这篇文章详细讨论了 Node.js 和 Express 在高并发场景下的性能表现，并通过与 Go 的对比展示了 Node.js 的潜在瓶颈。以下是文章的主要内容和结论：\n\n### 主要内容\n\n1. **测试背景**：\n   - 作者进行了一个高并发测试，使用 Node.js 和 Express 构建一个简单的 HTTP 服务器，并在后端引入 500ms 延迟模拟。测试目的是评估 Node.js 在不同连接数下的性能表现。\n   \n2. **测试结果**：\n   - **Node.js 的表现**：\n     - 在 2000 个连接时，超时率和错误率开始显著增加。\n     - 随着连接数的增加（如 5000 和 10000），超时率和错误率进一步升高，达到了 9.08% 左右的错误率。\n   - **Go 的表现**：\n     - Go 使用标准库 `net/http` 实现的服务器，在同样的测试条件下表现优于 Node.js。例如，在 5000 个连接时，Node.js 的错误率约为 1.51%，而 Go 的错误率更低。\n   \n3. **性能分析**：\n   - Node.js 由于其单线程模型，无法充分利用 CPU 资源，这在高并发场景下表现出明显的性能瓶颈。\n   - Express 在 2000 个连接以上时，超时率和错误率急剧增加，这可能与其单线程处理机制有关。\n\n4. **结论**：\n   - Node.js 在高并发下的性能不如 Go 好，这主要归因于 Node.js 的单线程模型。\n   - 如果需要在生产环境中实现更好的性能，可以考虑使用多个 Node.js 进程（如 `node cluster`）来分担负载，或者完全转向其他语言如 Go。\n\n### 总结\n\n这篇文章提出了一个重要的问题：Node.js 在高并发场景下的性能表现可能不如其他语言（如 Go），这在设计和优化网络应用时需要特别注意。对于希望构建高并发系统的开发者，了解这些性能差异是至关重要的。\n\n如果你对 Node.js 的性能瓶颈感兴趣，或者想了解如何优化你的 Node.js 应用，可以继续阅读相关的技术文档或文章。同时，对于需要处理大量连接的场景，Go 可能是一个更好的选择。"
       ],
       "metadata": {
         "summarizer": "ollama",
         "model": "deepseek-r1:8b"
       },
-      "endTime": "2025-03-08T06:57:42.753Z",
-      "startTime": "2025-03-08T06:56:20.880Z"
+      "endTime": "2025-03-08T08:40:00.694Z",
+      "startTime": "2025-03-08T08:38:51.055Z"
     },
     {
       "summaries": [
-        "# Reference\n- Copilot: https://github. com/copilot/claude/\n- Go: <https://golang.org/>\n- Node.js: <http://nodejs.org/>"
+        "# Conclusion\n* Node is single-threaded, so it may become performance bottleneck for large amount of connections even with pure network I/O tasks.\n* Express is a good framework but at 2000 connections becomes unstable. It will increase timeouts and errors rapidly if you have more than that connections on express.\n* The above conclusion is that with node you should consider using multiple workers, like the cluster, this will help performance issue with high number of connections."
       ],
       "metadata": {
         "summarizer": "ollama",
         "model": "llamafamily/llama3-chinese-8b-instruct"
       },
-      "endTime": "2025-03-08T06:57:48.934Z",
-      "startTime": "2025-03-08T06:56:20.880Z"
+      "endTime": "2025-03-08T08:40:08.458Z",
+      "startTime": "2025-03-08T08:38:51.055Z"
     }
   ]
 }
