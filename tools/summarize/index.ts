@@ -94,25 +94,29 @@ async function summarizeArticle(articleDir: string) {
 
     const existingFileContent = await readFile(summaryJsonFilePath, "utf-8").catch(() => null);
 
-    const summaryFile: ArticleSummary | null = existingFileContent
-      ? JSON.parse(existingFileContent) as ArticleSummary
-      : {
-          articleId: frontMatter.id as string,
-          lang: frontMatter.lang as string,
-          hash: contentHash,
-          summaries: [],
-        };
+    let summaryFile: ArticleSummary | null = null;
 
-    for (const summarizer of summarizers) {
-      const existingSummaries = summaryFile.summaries.filter((x) => x.metadata.summarizer === summarizer.name);
+    if (existingFileContent) {
+      summaryFile = JSON.parse(existingFileContent) as ArticleSummary;
 
-      if (existingSummaries.length !== 0 && !force && contentHash === summaryFile.hash) {
-        log("log", "Article content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization of summarizer %s",
-          frontMatter.id, frontMatter.lang, summarizer.name, summarizer.name);
+      if (!force && contentHash === summaryFile.hash) {
+        log("log", "Article content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization.",
+          frontMatter.id, frontMatter.lang);
 
         continue;
       }
+    }
+    else {
+      summaryFile = {
+        articleId: frontMatter.id as string,
+        lang: frontMatter.lang as string,
+        hash: contentHash,
+        summaries: [],
+      };
+    }
 
+    for (const summarizer of summarizers) {
+      summaryFile.hash = contentHash;
       summaryFile.summaries = summaryFile.summaries.filter((x) => x.metadata.summarizer !== summarizer.name);
 
       log("log", "Summarize %s of lang %s using %s", frontMatter.id, frontMatter.lang, summarizer.name);
