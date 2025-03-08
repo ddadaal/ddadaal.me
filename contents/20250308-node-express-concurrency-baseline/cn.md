@@ -1,7 +1,7 @@
 ---
-id: node-web-concurrency-performance-baseline
+id: node-express-concurrency-baseline
 date: 2025-03-08 08:47
-title: Node是并发性能的绊脚石吗？研究Node Web服务器的基准并发能力
+title: Node是并发性能的绊脚石吗？研究Express服务器的基准并发能力
 lang: cn
 tags:
   - web
@@ -182,13 +182,13 @@ tags:
 - 在这次实验中，**2000**连接数是个门槛，在此之上，超时率、错误率会迅速增加
   - 并且，我的测试机器是消费级CPU，而一般服务器CPU并不能达到如此的单核性能，所以在生产环境中的性能表现会更差
 
-要想解决这个问题，在代码中做出一定的优化，例如减少日志打印等，也会有一定的效果。如果优化代码的效果不佳，唯一的办法是运行多个node进程，可以考虑的方法主要是启动多个node服务并增加负载均衡，或者使用node cluster让node可以启动多个worker process。
+要想解决这个问题，在代码中做出一定的优化，例如减少日志打印、简化Node中的逻辑等，也会有一定的效果。如果优化代码的效果不佳，唯一的办法是运行多个node进程，可以考虑的方法主要是启动多个node服务并增加负载均衡，或者使用node cluster让node可以启动多个worker process。
 
-我们得出了2000这个数字，但是这个数字意味着什么呢？后续我可能还会和Go等其他语言做对比，看看Node和其他竞争对手的对比。
+我们得出了2000这个数字，但是这个数字意味着什么呢？后续我可能还会和Node的其他HTTP框架以及Go等其他语言做对比，看看Express和其他竞争对手的对比。
 
-本实验中的代码和结果均在 https://github.com/ddadaal/node-web-performance-baseline-test 中可用。
+本实验中的代码和结果均在 https://github.com/ddadaal/node-express-concurrency-baseline-test 中可用。
 
-# Bonus
+# Acknowledgements
 
 整个测试项目、测试脚本甚至本篇文章基本都是直接使用Copilot + Claude 3.7 Sonnet模型生成的，不得不说，让AI生成大框架、自己再来完善细节的做法确实能提高不少效率。这种实验的大多数工作实际上是框架代码，代码本身逻辑简单，但是需要使用大量API、编写繁琐的测试逻辑、数据分析以及做表，手写非常耗费精力，让AI来做这些繁琐的工作实在是再合适不过了。写文章也可以让AI帮忙做，我之前写篇文章至少需要花一整天，这一次居然一个上午就搞定了。
 
