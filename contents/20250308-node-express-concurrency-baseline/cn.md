@@ -1,7 +1,7 @@
 ---
 id: node-express-concurrency-baseline
 date: 2025-03-08 08:47
-title: Node是并发性能的绊脚石吗？研究Express服务器的基准并发能力
+title: Node是并发性能的绊脚石吗？测试Express服务器的基准并发能力
 lang: cn
 tags:
   - web
