@@ -28,7 +28,7 @@
     "autoprefixer": "10.4.20",
     "chokidar": "4.0.3",
     "classnames": "2.5.1",
-    "daisyui": "4.12.23",
+    "daisyui": "5.0.50",
     "eslint": "9.20.1",
     "eslint-config-next": "15.1.7",
     "gitalk": "1.8.0",
