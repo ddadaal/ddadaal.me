@@ -1,9 +1,8 @@
 import "./styles.css";
-import "photoswipe/dist/photoswipe.css";
 
 import rehypeExtractToc from "@stefanprobst/rehype-extract-toc";
 import classNames from "classnames";
-import imageSize from "image-size";
+import { imageSizeFromFile } from "image-size/fromFile";
 import { dirname, join } from "path";
 import React, { ComponentType, JSX } from "react";
 import * as prod from "react/jsx-runtime";
@@ -19,7 +18,6 @@ import { HeadingWithLink } from "src/components/article/Components";
 import { Gallery } from "src/components/article/Gallery";
 import { Article } from "src/data/articles";
 import { unified } from "unified";
-import { promisify } from "util";
 
 import { ArticleImage, ArticleImageProps } from "./ArticleImage";
 import { ArticleToc } from "./ArticleToc";
@@ -28,14 +26,12 @@ interface Props {
   article: Article;
 }
 
-const imageSizeAsync = promisify(imageSize);
-
 export const ArticleImageServer = async ({ article, imageProps }: Props & {
   imageProps: ArticleImageProps["imageProps"];
 }) => {
   const src = imageProps.src;
 
-  if (!src) {
+  if (!src || typeof src !== "string") {
     return null;
   }
 
@@ -45,7 +41,7 @@ export const ArticleImageServer = async ({ article, imageProps }: Props & {
 
   const imagePath = join(dirname(article.filePath), src);
 
-  const size = await imageSizeAsync(imagePath);
+  const size = await imageSizeFromFile(imagePath);
 
   const fullUrl = join("/articles/asset", imagePath);
 
@@ -53,8 +49,8 @@ export const ArticleImageServer = async ({ article, imageProps }: Props & {
     <ArticleImage
       src={fullUrl}
       imageSize={{
-        height: size?.height ?? 100,
-        width: size?.width ?? 100,
+        height: size.height,
+        width: size.width,
       }}
       imageProps={imageProps}
     />

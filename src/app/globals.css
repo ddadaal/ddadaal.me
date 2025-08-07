@@ -1,3 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+
+  .bg-gradient-conic {
+    background-image: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.2s ease-out;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+  themes: light --default, dark --preferdark, cupcake, bumblebee, corporate, business, luxury, lemonade, emerald, retro, valentine, cyberpunk;
+}

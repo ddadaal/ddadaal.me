@@ -36,7 +36,7 @@ const FooterLink = ({ name, link }: { name: string; link: string }) => (
 export const Footer = () => {
   return (
     <footer className="bg-base-200 text-base-content">
-      <div className="footer py-6 max-w-7xl mx-auto px-4">
+      <div className="footer sm:footer-horizontal py-6 max-w-7xl mx-auto px-4">
         <div className="space-y-1">
           <p>
             👨🏼‍💻&nbsp;

@@ -1,5 +1,5 @@
 .area {
-  background: oklch(var(--p));
+  background: var(--color-primary);
   width: 100%;
   height: 100vh;
 }
@@ -19,7 +19,7 @@
   list-style: none;
   width: 20px;
   height: 20px;
-  background: oklch(var(--a));
+  background: var(--color-accent);
   animation: animate 25s linear infinite;
   bottom: -150px;
 

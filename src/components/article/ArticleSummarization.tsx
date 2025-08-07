@@ -33,82 +33,84 @@ export const ArticleSummarization = ({ summaries }: Props) => {
   const selected = summaries[index];
 
   return (
-    <div className="p-4 my-4 bg-neutral rounded shadow">
-      <HeadingWithLink
-        element="h1"
-        anchorLinkClassName="text-neutral-content"
-        props={{
-          id: "summary",
-          className: "text-neutral-content mb-3",
-          children: (
-            <Localized key="summaryTitle" id="articlePage.summary.title" />
-          ),
-        }}
-      />
-      <div>
-        <div role="tablist" className="tabs-boxed">
-          {
-            summaries.map((x, i) => (
-              <a role="tab" className={classNames("tab", "no-underline", index === i ? "tab-active" : "", "")} key={i} onClick={() => { setIndex(i); }}>
-                {x.metadata.model ? modelNameMap[x.metadata.model] ?? x.metadata.model : x.metadata.summarizer}
-              </a>
-            ))
-          }
-          <div role="tabpanel" className="p-3">
-            <div className="prose max-h-80 overflow-auto max-w-full prose-p:m-0 prose-li:m-0 prose-ul:m-0 prose-ol:m-0">
-              {selected.children}
-            </div>
+    <div className="card card-l my-2 shadow">
+      <div className="card-body">
+        <HeadingWithLink
+          element="h1"
+          anchorLinkClassName="card-title"
+          props={{
+            id: "summary",
+            className: "mb-3",
+            children: (
+              <Localized key="summaryTitle" id="articlePage.summary.title" />
+            ),
+          }}
+        />
+        <div>
+          <div role="tablist" className="tabs-boxed">
+            {
+              summaries.map((x, i) => (
+                <a role="tab" className={classNames("tab", "no-underline", index === i ? "tab-active" : "", "")} key={i} onClick={() => { setIndex(i); }}>
+                  {x.metadata.model ? modelNameMap[x.metadata.model] ?? x.metadata.model : x.metadata.summarizer}
+                </a>
+              ))
+            }
+            <div role="tabpanel" className="p-3">
+              <div className="prose max-h-80 overflow-auto max-w-full prose-p:m-0 prose-li:m-0 prose-ul:m-0 prose-ol:m-0">
+                {selected.children}
+              </div>
 
-            <p className="text-sm justify-end flex m-2 italic">
-              {
-                selected.metadata.summarizer === "azure-ai"
-                  ? (
-                      <Localized
-                        id="articlePage.summary.poweredBy.azureAi"
-                        args={[
-                          <Link
-                            target="_blank"
-                            key="azureAiUrl"
-                            href={AZURE_AI_URL}
-                          >
-                            Azure AI
-                          </Link>,
-                          selected.metadata.model,
-                        ]}
-                      />
-                    )
-                  : selected.metadata.summarizer === "azure-language"
+              <p className="text-sm justify-end flex m-2 italic">
+                {
+                  selected.metadata.summarizer === "azure-ai"
                     ? (
                         <Localized
-                          id="articlePage.summary.poweredBy.azureLanguage"
+                          id="articlePage.summary.poweredBy.azureAi"
                           args={[
                             <Link
                               target="_blank"
-                              key="docUrl"
-                              href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
+                              key="azureAiUrl"
+                              href={AZURE_AI_URL}
                             >
-                              Azure AI Language Service
-                            </Link>,
-                          ]}
-                        />
-                      )
-                    : (
-                        <Localized
-                          id="articlePage.summary.poweredBy.ollama"
-                          args={[
-                            <Link
-                              target="_blank"
-                              key="ollamaUrl"
-                              href="https://ollama.com/"
-                            >
-                              Ollama
+                              Azure AI
                             </Link>,
                             selected.metadata.model,
                           ]}
                         />
                       )
-              }
-            </p>
+                    : selected.metadata.summarizer === "azure-language"
+                      ? (
+                          <Localized
+                            id="articlePage.summary.poweredBy.azureLanguage"
+                            args={[
+                              <Link
+                                target="_blank"
+                                key="docUrl"
+                                href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
+                              >
+                                Azure AI Language Service
+                              </Link>,
+                            ]}
+                          />
+                        )
+                      : (
+                          <Localized
+                            id="articlePage.summary.poweredBy.ollama"
+                            args={[
+                              <Link
+                                target="_blank"
+                                key="ollamaUrl"
+                                href="https://ollama.com/"
+                              >
+                                Ollama
+                              </Link>,
+                              selected.metadata.model,
+                            ]}
+                          />
+                        )
+                }
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -88,6 +88,7 @@ export const Header = ({ resumeLangs }: Props) => {
     <div
       ref={ref}
       className={classNames(
+        "flex",
         "items-center sticky z-50 w-full",
         "h-13",
         "transition",
@@ -95,7 +96,7 @@ export const Header = ({ resumeLangs }: Props) => {
         bgColor,
       )}
     >
-      <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
+      <div className="flex w-full justify-between items-center max-w-7xl mx-auto px-4">
         <Link className="flex items-center justify-center space-x-1" href="/">
           <Image src={logo as string} alt="logo" width={42} height={42} />
           <h1 className="text-sm font-bold">ddadaal.me</h1>

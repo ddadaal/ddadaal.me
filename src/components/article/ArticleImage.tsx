@@ -1,7 +1,9 @@
 "use client";
 
+import "photoswipe/dist/photoswipe.css";
+
 import Image from "next/image";
-import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
+import { DetailedHTMLProps, ImgHTMLAttributes, Ref } from "react";
 import { Item } from "react-photoswipe-gallery";
 
 export interface ArticleImageProps {
@@ -24,7 +26,7 @@ export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) 
         width={imageSize.width}
         height={imageSize.height}
       >
-        {({ ref, open }) => (
+        {({ ref, open }: { ref: Ref<HTMLImageElement>; open: () => void }) => (
           <Image
             ref={ref}
             loader={loader}

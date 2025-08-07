@@ -117,7 +117,7 @@ const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <input
       type="text"
-      className="input input-bordered w-full"
+      className="input input-bordered flex-1"
       autoComplete="off"
       {...props}
     />
@@ -156,7 +156,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
   return (
     <div className={classNames("form-control my-2", { [styles.search_bar]: showTags })}>
       <form
-        className="form-control flex-row"
+        className="flex form-control flex-row"
         action="/articles/search"
         method="GET"
         onSubmit={(e) => {
@@ -176,7 +176,7 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
       {
         showTags
           ? (
-              <div className={classNames("hidden p-4 border border-neutral", styles.search_bar_tags)}>
+              <div className={classNames("hidden p-4 shadow", styles.search_bar_tags)}>
                 <TagsPanel tagCounts={tagCounts} />
               </div>
             )

@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index 3625ef4c56cba61dd10fa04c415ea5d72faf734c..325eec01f59ac0df8be783465d1b2e851273419b 100644
+--- a/package.json
++++ b/package.json
+@@ -1,7 +1,6 @@
+ {
+   "name": "react-typed-i18n",
+   "version": "2.4.3",
+-  "type": "module",
+   "source": "src/index.ts",
+   "exports": {
+     "default": "./dist/index.modern.js",
