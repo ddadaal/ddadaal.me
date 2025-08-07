@@ -12,7 +12,7 @@
     "home": "主页",
     "articles": "文章",
     "resume": "简历",
-    "slides": "幻灯片",
+    "sparks": "想法",
     "articlePlans": "文章计划",
     "about": {
       "title": "关于",
@@ -76,6 +76,9 @@
   "languageSelector": {
     "select": "选择语言",
     "switchingTo": "正在切换至: {}"
+  },
+  "sparksPage": {
+    "title": "✨想法"
   },
   "articleFrontmatter": {
     "date": "发表时间",

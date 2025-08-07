@@ -123,6 +123,8 @@ export const readArticleFromDir = async (dir: string) => {
   return item;
 };
 
+const IGNORED_DIRS = ["sparks"];
+
 export const readArticles = async () => {
   const articleDirs = await readdir(CONTENT_DIR);
 
@@ -132,6 +134,10 @@ export const readArticles = async () => {
     const path = join(CONTENT_DIR, dir);
 
     if ((await stat(path)).isFile()) {
+      continue;
+    }
+
+    if (IGNORED_DIRS.includes(dir)) {
       continue;
     }
 

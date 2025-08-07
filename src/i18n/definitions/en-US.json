@@ -12,7 +12,7 @@
     "home": "Home",
     "articles": "Articles",
     "resume": "Resume",
-    "slides": "Slides",
+    "sparks": "Sparks",
     "articlePlans": "Article Plans",
     "about": {
       "title": "About",
@@ -111,6 +111,9 @@
         "copied": "Link copied!"
       }
     }
+  },
+  "sparksPage": {
+    "title": "✨Sparks"
   },
   "articleFrontmatter": {
     "date": "Publish Time",

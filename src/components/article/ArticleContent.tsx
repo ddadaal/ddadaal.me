@@ -57,7 +57,7 @@ export const ArticleImageServer = async ({ article, imageProps }: Props & {
   );
 };
 
-const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
+export const rehypeReactOptions = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 
 export const parseArticleContent = async (article: Article) => {
   /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -74,7 +74,7 @@ export const parseArticleContent = async (article: Article) => {
     })
     .use(rehypeRaw)
     .use(rehypeReact, {
-      ...production,
+      ...rehypeReactOptions,
       components: {
         img: ((props) => <ArticleImageServer article={article} imageProps={props} />) satisfies
           ComponentType<React.JSX.IntrinsicElements["img"]>,
@@ -97,7 +97,7 @@ async function parseSummarization(content: string) {
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeReact, {
-      ...production,
+      ...rehypeReactOptions,
     })
     .process(content);
 

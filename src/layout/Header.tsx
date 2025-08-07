@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { FaBookOpen, FaEllipsisH, FaFile, FaGlobe, FaHome, FaInfo, FaMale, FaSlideshare } from "react-icons/fa";
+import { FaAsterisk, FaBookOpen, FaEllipsisH, FaFile, FaGlobe, FaHome, FaInfo, FaMale } from "react-icons/fa";
 import { languages, Localized, TextId } from "src/i18n";
 import logo from "src/icons/logo.svg";
 import { LanguageSwitcher } from "src/layout/LanguageSwitcher";
@@ -28,6 +28,7 @@ export const Header = ({ resumeLangs }: Props) => {
   const links: NavLink[] = [
     { icon: <FaHome />, labelId: "headers.home", href: "/" },
     { icon: <FaBookOpen />, labelId: "headers.articles", href: "/articles" },
+    { icon: <FaAsterisk />, labelId: "headers.sparks", href: "/sparks" },
     { icon: <FaFile />, labelId: "headers.resume", href: "/resume",
       children: resumeLangs.map((x) => {
         const language = Object.values(languages).find((y) => y.simplified === x);
@@ -43,7 +44,6 @@ export const Header = ({ resumeLangs }: Props) => {
         };
       }),
     },
-    { icon: <FaSlideshare />, labelId: "headers.slides", href: "/slides" },
     { icon: <FaInfo />, labelId: "headers.about.title", href: "/about", children: [
       { icon: <FaBookOpen />, labelId: "headers.about.odyssey", href: "/about/odyssey" },
       { icon: <FaGlobe />, labelId: "headers.about.project", href: "/about/project" },
