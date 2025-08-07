@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { FaBookOpen, FaFile, FaMale, FaRss, FaSlideshare } from "react-icons/fa";
+import { FaAsterisk, FaBookOpen, FaFile, FaMale, FaRss, FaSlideshare } from "react-icons/fa";
 import { Background } from "src/app/Background";
 import { LocalizedArticleLink } from "src/components/article/LocalizedArticleLink";
 import { Contacts } from "src/components/Contacts";
@@ -36,14 +36,14 @@ export default async function Page() {
             <FaRss />
             <Localized id="homepage.links.rss" />
           </Link>
+          <Link className="btn btn-sm btn-accent" href="/slides">
+            <FaAsterisk />
+            <Localized id="homepage.links.sparks" />
+          </Link>
           <LocalizedArticleLink className="btn btn-sm btn-accent" basePath="/resume">
             <FaFile />
             <Localized id="homepage.links.resume" />
           </LocalizedArticleLink>
-          <Link className="btn btn-sm btn-accent" href="/slides">
-            <FaSlideshare />
-            <Localized id="homepage.links.slides" />
-          </Link>
           <Link className="btn btn-sm btn-accent" href="/about/me">
             <FaMale />
             <Localized id="homepage.links.aboutMe" />
