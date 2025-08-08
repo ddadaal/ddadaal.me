@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { FaAsterisk, FaBookOpen, FaFile, FaMale, FaRss, FaSlideshare } from "react-icons/fa";
+import { FaAsterisk, FaBookOpen, FaFile, FaMale, FaRss } from "react-icons/fa";
 import { Background } from "src/app/Background";
 import { LocalizedArticleLink } from "src/components/article/LocalizedArticleLink";
 import { Contacts } from "src/components/Contacts";
