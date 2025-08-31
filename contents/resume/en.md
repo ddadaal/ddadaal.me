@@ -39,7 +39,7 @@ Junda Chen
 ### A Startup by PKU Computing Center; Part-time Aug 2022-Jul 2025, Full-time since Jul 2025
 
 - Primary responsibilities: **Web full-stack development**, **Kubernetes/DevOps development**, **team management**
-- Independently completed major product functionalities; responsible for product architecture, feature design, full-stack development, and team management (10 members)
+- Independently completed major product functionalities; responsible for product architecture, feature design, full-stack development, and team management (20+ employees)
 - SCOW: Enterprise-level HPC/AI computing workflow platform https://pkuscow.com , https://github.com/PKUHPC/OpenSCOW
     - Portal: Web for HPC/AI job, cluster, user, and billing management; highly customizable, public APIs, authentication, and event interfaces
     - Cluster: slurm, Kubernetes cluster setup, operation, and maintenance
