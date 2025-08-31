@@ -34,7 +34,7 @@ Junda Chen
 
 # Work Experience
 
-## <span class="highlight">Changsha Jianshantatu Technology, Co-founder & CTO, Beijing/Changsha</span> <span class="right">July 2025-Present</span>
+## <span class="highlight">Changsha Jianshantatu Technology, Co-founder & CTO</span> <span class="right">Beijing/Changsha, July 2025-Present</span>
 
 ### A Startup by PKU Computing Center; Part-time Aug 2022-Jul 2025, Full-time since Jul 2025
 
@@ -49,7 +49,7 @@ Junda Chen
     - Supports the Ministry of Education's LLM Public Service Platform (https://aigc.emic.edu.cn), integrating SCOW platforms of 17 universities
     - Core technologies: **Node.js full stack, Kubernetes, mTLS**
 
-## <span class="highlight">Microsoft Asia Technology Limited, Software Engineer, Shanghai</span> <span class="right">August 2023-July 2025</span>
+## <span class="highlight">Microsoft Asia Technology Limited, Software Engineer</span> <span class="right">Shanghai, August 2023-July 2025</span>
 ### +AI Azure Edge+ Platform
 
 - Primary Responsibilities: **Kubernetes/DevOps development**, **web full-stack development**

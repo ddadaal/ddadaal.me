@@ -33,7 +33,7 @@ no_toc: true
 
 # 工作经历
 
-## <span class="highlight"> 长沙尖山塔图科技有限公司 联合创始人，CTO 北京/长沙</span> <span class="right">2025年7月-现在</span>
+## <span class="highlight"> 长沙尖山塔图科技有限公司 联合创始人，CTO</span> <span class="right">北京/长沙，2025年7月-现在</span>
 
 ### 北京大学计算中心孵化的创业公司，2022月8月至2025年7月兼职，之后全职
 
@@ -48,7 +48,7 @@ no_toc: true
   - 支持教育部教育大模型公共服务平台 ( https://aigc.emic.edu.cn )，已接入17个学校的SCOW平台
   - 主要技术：**Node.js全栈, Kubernetes, mTLS**
 
-## <span class="highlight">微软亚太科技有限公司 Software Engineer 上海 </span> <span class="right">2023年8月-2025年7月</span>
+## <span class="highlight">微软亚太科技有限公司 Software Engineer</span> <span class="right">上海，2023年8月-2025年7月</span>
 ### C+AI Azure Edge+ Platform
 
 - 主要工作：**Kubernetes和DevOps开发**，**Web全栈**
