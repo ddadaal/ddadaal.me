@@ -37,22 +37,22 @@ no_toc: true
 
 ### 北京大学计算中心孵化的创业公司，2022月8月至2025年7月兼职，之后全职
 
-- 主要工作：**Web全栈**, **Kubernetes和DevOps开发**，**团队管理**
-- 独立完成产品主要功能，负责算力平台产品的架构、功能设计、全栈开发和团队管理（20+全职员工）
+- 主要工作：**Web全栈**, **Kubernetes和DevOps开发**，**团队、流程管理**
+- 独立完成产品主要功能，确定10+全职员工团队的分工，定义并维护项目开发和管理流程，决定公司产品发展方向
 - SCOW: 企业级HPC/AI计算任务平台 https://pkuscow.com , https://github.com/PKUHPC/OpenSCOW
   - 平台：桌面、命令行、Web等形式的HPC/AI作业、集群、用户和计费管理功能；高度可定制，公开API、认证和事件接口
   - 集群：slurm, Kubernetes集群搭建、运营和维护
   - 截止至2024年12月，已在全国**16省市70个单位**中部署并投入生产，累计收入数百万元
-  - 主要技术：**Node.js全栈; Go; gRPC; WebSocket; HTTP代理; mTLS; Kubernetes**
-- XSCOW：超算云平台，使用同一账号使用不同SCOW平台提供的计算资源，并根据资源使用对用户和平台计费
-  - 支持教育部教育大模型公共服务平台 ( https://aigc.emic.edu.cn )，已接入17个学校的SCOW平台
+  - 主要技术：**Node.js全栈; Go; gRPC; WebSocket; HTTP代理; mTLS; RBAC; Kubernetes**
+- XSCOW：超算公有云平台，通过互联网连接不同地区的SCOW为用户提供统一算力使用入口
+  - 支持教育部教育大模型公共服务平台 (https://aigc.emic.edu.cn)，已接入17个学校的SCOW平台
   - 主要技术：**Node.js全栈, Kubernetes, mTLS**
 
-## <span class="highlight">微软亚太科技有限公司 Software Engineer</span> <span class="right">上海，2023年8月-2025年7月</span>
+## <span class="highlight">微软亚太科技有限公司 Software Engineer </span> <span class="right">上海，2023年8月-2025年7月</span>
 ### C+AI Azure Edge+ Platform
 
 - 主要工作：**Kubernetes和DevOps开发**，**Web全栈**
-- 开发了生产可用的**Kubernetes operator**, **CSI Driver**以及配套的Azure服务
+- 作为owner负责开发和维护了生产可用的**Kubernetes operator**, **CSI Driver**以及配套的Azure服务
 - 利用**大模型**开发工具和流程以提升团队工程效率
 
 # 实习经历
@@ -71,11 +71,10 @@ no_toc: true
 
 # 技能、项目经历 ( https://github.com/ddadaal )
 
-- 有能力独立或带领团队负责项目的需求、设计、开发、运维和项目管理等全流程工作
+- 有经验和能力独立或带领团队负责项目的需求、设计、开发、运维和项目管理等全流程工作
 - 熟悉云原生Web项目全栈开发（`React`, `Node.js`, `Go`, `.NET`），熟悉云平台的常见实践
-- 熟悉容器技术和DevOps，熟悉Kubernetes开发（特别是Operator以及存储），
+- 熟悉容器技术和DevOps，熟悉Kubernetes开发（特别是Operator和存储）
 - 熟悉`TypeScript/JavaScript`, `Go`, `C#`, `Python`等语言
 - 积极参与开源项目
   - [`muety/wakapi`](https://github.com/muety/wakapi)：有2.1K star的Go项目，一个自部署的WakaTime后端。在PR [#592](https://github.com/muety/wakapi/pull/592)中支持了SQL Server
-
 
