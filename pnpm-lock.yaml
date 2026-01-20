@@ -110,8 +110,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0(react@19.1.0)
       react-photoswipe-gallery:
-        specifier: 3.1.1
-        version: 3.1.1(photoswipe@5.4.4)(prop-types@15.8.1)(react@19.1.0)
+        specifier: 4.0.0
+        version: 4.0.0(photoswipe@5.4.4)(prop-types@15.8.1)(react@19.1.0)
       react-typed-i18n:
         specifier: 2.4.3
         version: 2.4.3(patch_hash=4e255050751572179e69c3d97c4fac67390b2233598f37b87ffacf2cf2677aac)(react@19.1.0)
@@ -2751,6 +2751,7 @@ packages:
   next@15.3.5:
     resolution: {integrity: sha512-RkazLBMMDJSJ4XZQ81kolSpwiCt907l0xcgcpF4xC2Vml6QVcPNXW0NQRwQ80FFtSn7UM52XN0anaw8TEJXaiw==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/CVE-2025-66478 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -3000,8 +3001,8 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-photoswipe-gallery@3.1.1:
-    resolution: {integrity: sha512-2hQkUkELwGDSnxdXeOGCySOLiK5vlUFZn9HhwmCXZz0jTqQwG6zy09M6M/JypYFa3md9zd/XW0aUD39dqltzsw==}
+  react-photoswipe-gallery@4.0.0:
+    resolution: {integrity: sha512-rpvGSBddLp1hZfTZgi3UFLJKlupHfDhW6e7w6jUUr5bagTWfrxJ7nB8yzNkx+BaoiMyy4FvJBwc4n/+QW2ft4g==}
     peerDependencies:
       photoswipe: '>= 5.2.2'
       prop-types: '>= 15.7.0'
@@ -3363,6 +3364,7 @@ packages:
   tar@7.4.3:
     resolution: {integrity: sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw==}
     engines: {node: '>=18'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   tinyglobby@0.2.14:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
@@ -6807,7 +6809,7 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-photoswipe-gallery@3.1.1(photoswipe@5.4.4)(prop-types@15.8.1)(react@19.1.0):
+  react-photoswipe-gallery@4.0.0(photoswipe@5.4.4)(prop-types@15.8.1)(react@19.1.0):
     dependencies:
       photoswipe: 5.4.4
       prop-types: 15.8.1
