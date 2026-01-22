@@ -4,15 +4,7 @@
 const nextConfig = {
   output: "export",
 
-  webpack: (config) => {
-    if (!config.externals) {
-      config.externals = [];
-    }
-    config.externals.push("@node-rs/jieba");
-    config.externals.push("@node-rs/jieba/dict");
-
-    return config;
-  },
+  serverExternalPackages: ["@node-rs/jieba", "@node-rs/jieba/dict"],
 };
 
 module.exports = nextConfig;
