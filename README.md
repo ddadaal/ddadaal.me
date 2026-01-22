@@ -22,7 +22,6 @@ Currently it is built with [Next.js](https://nextjs.org/) and statically exporte
 - Auto generated RSS Feed at [/rss.xml](https://ddadaal.me/rss.xml)
 - Support multiple languages (Chinese & English) and dynamically changing languages
 - Articles written on markdown; Source code and contents separated
-- Auto generated [slide directory](https://ddadaal.me/slides) using GitHub API on every build
 - AI Features
   - Article Summary Powered by [Azure AI Language Service](https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization)
 

@@ -16,7 +16,7 @@ no_toc: true
 Junda Chen
 </h1>
 
-<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | WeChat ddadaal | https://ddadaal.me
+<h3 class="contact">陈俊达 | ddadaal@outlook.com | QQ 540232834 | WeChat ddadaal | GitHub ddadaal | https://ddadaal.me
 
 </h3>
 
@@ -26,55 +26,59 @@ Junda Chen
 
 ### Computer Application Technology; Graduated July 2023; GPA 3.76/4.0
 
-- Participated in the construction and maintenance of the PKU Computing Center HPC platform
+- Helped build and maintain PKU Computing Center HPC platform
 
 ## <span class="highlight">Nanjing University, Software Institute, Bachelor</span> <span class="right">September 2016-July 2020</span>
 
 ### Software Engineering; Graduated 2020; GPA 4.62/5.0; Rank 1/220
 
+# Skills & Experience
+
+- **Leading Cloud Product and Infrastructure Development & Delivery**: Led **cloud/HPC/AI platform products** and **DevOps infrastructure and processes** from 0 to 1 through full cycle design, development and delivery
+- **Software Startup CTO**: As CTO of a software product startup, directly managed a 10-person dev and ops team, experienced in team management and building, good at holistic problem solving
+- **Kubernetes Development**: Familiar with Kubernetes development (Operator, CSI Driver) and cluster automated operations
+- **Full-Stack**: `TypeScript/JavaScript`, `Go`, `C#`, `Python`; `React`, `Node.js`, `.NET` cloud-native development
+- **Open Source Contributor**: Made substantial technical contributions to 4000+ star open source projects
+
 # Work Experience
 
-## <span class="highlight">Changsha Jianshantatu Technology, Co-founder & CTO</span> <span class="right">Beijing/Changsha, July 2025-Present</span>
+## <span class="highlight">Changsha Jianshan Tatu Tech, Co-founder & CTO</span> <span>https://csjstt.com</span> <span class="right">Beijing/Changsha, July 2025-</span>
 
-### A Startup by PKU Computing Center; Part-time Aug 2022-Jul 2025, Full-time since Jul 2025
+### Incubated by PKU Computing Center; Part-time Aug 2022, Full-time Jul 2025
 
-- Primary responsibilities: **Web full-stack development**, **Kubernetes/DevOps development**, **team management**
-- Independently completed major functionalities; Define the development and management processes for a team of 10+ full-time employees; Determine product roadmaps
-- SCOW: Enterprise-level HPC/AI computing workflow platform https://pkuscow.com , https://github.com/PKUHPC/OpenSCOW
-    - Portal: Web for HPC/AI job, cluster, user, and billing management; highly customizable, public APIs, authentication, and event interfaces
-    - Cluster: slurm, Kubernetes cluster setup, operation, and maintenance
-    - As of Dec 2024, deployed at 70 organizations in 16 cities in China with several million RMB revenue
-    - Core technologies: **Node.js full stack, Go, gRPC, WebSocket, HTTP proxy, mTLS, Kubernetes, RBAC, slurm**
-- XSCOW: A public cloud connecting SCOWs via Internet to provide a unified entrance for public HPC users
-    - Supports the Ministry of Education's LLM Public Platform (https://aigc.emic.edu.cn), integrating SCOW platforms of 17 universities
-    - Core technologies: **Node.js full stack, Kubernetes, mTLS**
+- **Core Contributions**
+  - **Product Development**: Built core platform features early on, now company's main revenue source
+  - **DevOps Process**: Built end-to-end DevOps pipeline using GitHub Actions, Terraform, PVE
+  - **Cluster Automation**: Built standardized full-lifecycle automated cluster deployment using Ansible, warewulf
+  - **Technical Leadership**: Managed 10-person team, led architecture, code standards, infrastructure, and product direction
+- **SCOW: Enterprise HPC/AI Platform** (https://pkuscow.com, https://github.com/PKUHPC/OpenSCOW)
+  - **Business**: Serving **70+ orgs across 16 provinces**, millions RMB annual revenue
+  - **Features**: Multi-cluster portal, HPC/AI job submission/management/visualization, user management, billing, monitoring
+  - **Tech Stack**: Node.js full-stack, Go microservices, gRPC, WebSocket, mTLS, RBAC, LDAP
+  - **Highlights**: Low-intrusion deployment on existing Slurm/Kubernetes clusters; open API/auth/event interfaces
+- **XSCOW: Public HPC Cloud** - Cross-region computing aggregation portal
+  - **Impact**: Powers Ministry of Education's LLM Platform (https://aigc.emic.edu.cn), integrating **17 universities**
+  - **Tech**: Node.js full-stack, Kubernetes, mTLS cross-network communication
 
-## <span class="highlight">Microsoft Asia Technology Limited, Software Engineer</span> <span class="right">Shanghai, August 2023-July 2025</span>
+## <span class="highlight">Microsoft Asia Technology Limited, Software Engineer </span> <span class="right">Shanghai, August 2023-July 2025</span>
 ### C+AI Azure Edge+ Platform
 
-- Primary Responsibilities: **Kubernetes/DevOps development**, **web full-stack development**
-- As the owner developed and maintained production-level **Kubernetes operators**, **CSI drivers** and corresponding **Azure services**
-- Developed tools and processes for **improved engineering efficiency** with **LLMs**
+- **Role**: Kubernetes/DevOps and web full-stack development; owned production infrastructure components
+- **Projects**: Built **Kubernetes Operator**, **CSI Driver** and Azure services for IAM, storage and security
+- **AI Productivity**: Led team AI tool adoption
 
 # Internship Experience
 
 ### **Microsoft Asia-Pacific R&D Group (Shanghai)** <span class="right">July-September 2022</span>
 
-- Developed a Kubernetes CSI driver supporting ReadWriteMany on any storage class
+- Built **Kubernetes CSI Driver** enabling ReadWriteMany on any Storage Class
 
 ### **Alluxio** Beijing <span class="right">December 2021-March 2022</span>
 
-- Enabled Alluxio FUSE to support libfuse3, released in version 2.8
+- Adapted Alluxio FUSE for libfuse3; merged and released in v2.8
 
 ### **Microsoft Asia-Pacific R&D Group (Suzhou)** <span class="right">July-October 2019</span>
 
-- Responsible for frontend and backend development of internal deployment monitoring website; implemented and launched new features, optimized performance and code design
+- Built internal deployment monitoring platform; added features and optimized performance
 
-# Skills & Project Experience ( https://github.com/ddadaal )
 
-- Capable of and experienced in working independently or leading teams on full project lifecycle including requirements, design, development, operations, and project management
-- Familiar with **cloud native web full stack development** (`React`, `Node.js`, `Go`, `.NET`) and cloud platform operations
-- Familiar with **container technologies, DevOps and Kubernetes** (especially operators and storage)
-- Proficient in `TypeScript/JavaScript`, `Go`, `C#`, `Python` and other languages
-- Active contributor to open source projects
-    - [`muety/wakapi`](https://github.com/muety/wakapi): A Go project with 2.1K stars, a self-deployable WakaTime backend. Added support for SQL Server in PR [#592](https://github.com/muety/wakapi/pull/592)

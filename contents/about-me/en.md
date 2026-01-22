@@ -30,11 +30,11 @@ hide_heading: false
 - Extreme passion to **computers** starting at the age of 4 and counting
 - Microsoft fan because Microsoft products bring me to the computer field
 - Huge fan of Battlefield, FPS and all games
-- **Badminton**, ([badmintoncn standard](https://bbs.badmintoncn.com/thread-428421-1-1.html))
-- Prefer **pure music** (symphony, classic, piano, epic/trailer music...). Interested in **choir** recently
+- **Badminton**
+- **Music fan** for any kinds of music, musicals, and even girl's band
 - Like **movies** and **musicals**
+  - Started playing **electronic piano** at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recently
   - The movies and musicals I have seen are on my [douban](https://www.douban.com/people/183064260/) profile.
-- Started playing **electronic piano** at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recently
 - Consider **solving problems and contributing to the world** as the core value of everything in the world, and respect and love whoever and whatever does it.
 - Hope my work can help others work and live better
 
@@ -66,11 +66,11 @@ hide_heading: false
 
 # Personal Devices
 
-| Device                                                  | Specifications                                                                                                                                                     | Since      |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
-| Custom Desktop PC                                       | R9 5900X/RTX 3070/64G//[4T J.ZAO KP](https://item.jd.com/100065604047.html) + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | Dec, 2020  |
-| [MSI MAG 274UPF](https://item.jd.com/100058317468.html) | 27'/3840*2160/144Hz/HDR400                                                                                                                                         | Sept, 2023 |
-| Xiaomi 14                                               | Snapdragon 8 Gen 3/16G/512G                                                                                                                                        | Nov, 2023  |
-| Xiaomi Band 9 Pro                                       | N/A                                                                                                                                                                | Nov, 2024  |
-| Lenovo Yoga Pro 13s Carbon                              | i5 1135G7/16G/512G PM9A1/2560*1600/966g                                                                                                                            | Nov, 2020  |
-| Bose QC Earbuds Ultra                                   | N/A                                                                                                                                                                | May, 2024  |
+| Device                                                  | Specifications                                                                                                                                                        | Since      |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| Custom Desktop PC after several upgrades                | R9 5900X/RTX 5070 Ti/64G//[4T J.ZAO KP](https://item.jd.com/100065604047.html) + 1T C2000Pro/<span class="r">R</span><span class="g">G</span><span class="b">B</span> | Dec, 2020  |
+| [MSI MAG 274UPF](https://item.jd.com/100058317468.html) | 27'/3840*2160/144Hz/HDR400                                                                                                                                            | Sept, 2023 |
+| Xiaomi 14                                               | Snapdragon 8 Gen 3/16G/512G                                                                                                                                           | Nov, 2023  |
+| Xiaomi Band 9 Pro                                       | N/A                                                                                                                                                                   | Nov, 2024  |
+| Lenovo Yoga Pro 13s Carbon                              | i5 1135G7/16G/512G PM9A1/2560*1600/966g                                                                                                                               | Nov, 2020  |
+| Bose QC Earbuds Ultra                                   | N/A                                                                                                                                                                   | May, 2024  |
