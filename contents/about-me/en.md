@@ -31,8 +31,7 @@ hide_heading: false
 - Microsoft fan because Microsoft products bring me to the computer field
 - Huge fan of Battlefield, FPS and all games
 - **Badminton**
-- **Music fan** for any kinds of music, musicals, and even girl's band
-- Like **movies** and **musicals**
+- music, musicals, and even girl's band
   - Started playing **electronic piano** at the age of 4 and passed level 10 exam for amateurs at 11. Picking it up again recently
   - The movies and musicals I have seen are on my [douban](https://www.douban.com/people/183064260/) profile.
 - Consider **solving problems and contributing to the world** as the core value of everything in the world, and respect and love whoever and whatever does it.
