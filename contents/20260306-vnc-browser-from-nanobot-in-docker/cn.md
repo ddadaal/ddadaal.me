@@ -36,7 +36,7 @@ services:
 
 启动后，给 nanobot 一条明确指令：
 
-> 之后都使用 `chromium-vnc-cdp:9222` 这个 CDP 端口操作浏览器。
+> 之后都使用 `chromium-vnc-cdp:19222` 这个 CDP 端口操作浏览器。
 
 ## 为什么是两个容器
 
