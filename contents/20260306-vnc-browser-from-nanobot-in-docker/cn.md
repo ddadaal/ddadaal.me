@@ -42,7 +42,7 @@ services:
 
 `chromium-vnc-cdp` 的职责是提供浏览器本体和 Web 访问界面（3000 端口），这样我们可以直接使用`localhost:3000`访问这个浏览器。
 
-`chromium-cdp-proxy` 的职责是把 Chromium 容器里只监听 `127.0.0.1:9222` 的 CDP 端口，转发成同网络命名空间下可访问的入口。
+`chromium-cdp-proxy` 的职责是把 Chromium 容器里只监听 `127.0.0.1:9222` 的 CDP 端口，转发成同网络命名空间下可访问的入口。实际上这两个容器在同一个网络中，所以需要换个端口监听，这里选择了`19222`，其他任何端口都可以。
 
 这里有一个关键限制：根据 pyppeteer 相关讨论中的实践结论，`--remote-debugging-address=0.0.0.0` 往往需要和 `--remote-debugging-port`、`--headless` 一起使用；但一旦使用 `--headless`，就无法达到“实时查看浏览器界面”的目标。
 
@@ -54,7 +54,7 @@ services:
 
 1. 浏览器容器保持默认安全策略，CDP 仍然只在本地监听。
 2. 通过 `socat` 单独做代理，不需要改 Chromium 镜像或启动脚本。
-3. nanobot 只需要记住一个固定地址（`chromium-vnc-cdp:9222`），配置简单且稳定。
+3. nanobot 只需要记住一个固定地址（`chromium-vnc-cdp:19222`），配置简单且稳定。
 
 ## 实际效果
 
