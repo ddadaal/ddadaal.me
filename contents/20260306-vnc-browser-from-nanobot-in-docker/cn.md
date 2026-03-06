@@ -1,18 +1,16 @@
 ---
-id: access-browser-from-nanobot-in-docker
+id: vnc-browser-from-nanobot-in-docker
 date: 2026-03-06 18:50
-title: 让docker中的nanobot可以访问浏览器
+title: 把nanobot关进Docker后，如何同时保留浏览器可视化与自动化
 lang: cn
 tags:
   - ai
   - nanobot
 ---
 
-实在不太放心把 nanobot 这类可以直接操作本地电脑的程序直接装在操作系统上，所以我选择把 nanobot 放在容器里运行。
+实在不太放心把 nanobot 这类可以直接操作本地电脑的程序直接装在操作系统上，所以我选择把 nanobot 放在容器里运行。但是nanobot很多有意义的工作又需要和宿主机上的环境（例如浏览器）交互，而浏览器上很多网站需要我们先去登录才可以正常使用，这就需要一个既可以由 nanobot操作、也可以由我们自己的操作的浏览器
 
-在这个前提下，我希望让运行在 Docker 里的 nanobot，稳定地操控一个可复用的浏览器实例，并通过 CDP（Chrome DevTools Protocol）连接。
-
-核心做法是在 `nanobot` 目录下新增 `docker-compose.override.yaml`，内容如下：
+经过一番查找，终于找一个不影响 nanobot 本身的方法，操作是在部署 nanobot的 `docker-compose.yaml` 目录下再创建一个 `docker-compose.override.yaml`，内容如下：
 
 ```yaml
 services:
@@ -42,7 +40,7 @@ services:
 
 ## 为什么是两个容器
 
-`chromium-vnc-cdp` 的职责是提供浏览器本体和 Web 访问界面（3000 端口）。
+`chromium-vnc-cdp` 的职责是提供浏览器本体和 Web 访问界面（3000 端口），这样我们可以直接使用`localhost:3000`访问这个浏览器。
 
 `chromium-cdp-proxy` 的职责是把 Chromium 容器里只监听 `127.0.0.1:9222` 的 CDP 端口，转发成同网络命名空间下可访问的入口。
 
