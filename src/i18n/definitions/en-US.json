@@ -113,7 +113,9 @@
     }
   },
   "sparksPage": {
-    "title": "✨Sparks"
+    "title": "✨Sparks",
+    "expand": "Show more",
+    "collapse": "Show less"
   },
   "articleFrontmatter": {
     "date": "Publish Time",

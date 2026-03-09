@@ -78,7 +78,9 @@
     "switchingTo": "正在切换至: {}"
   },
   "sparksPage": {
-    "title": "✨想法"
+    "title": "✨想法",
+    "expand": "查看全部",
+    "collapse": "收起"
   },
   "articleFrontmatter": {
     "date": "发表时间",

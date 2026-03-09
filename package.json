@@ -91,6 +91,11 @@
     "patchedDependencies": {
       "gitalk@1.8.0": "patches/gitalk@1.8.0.patch",
       "react-typed-i18n": "patches/react-typed-i18n.patch"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

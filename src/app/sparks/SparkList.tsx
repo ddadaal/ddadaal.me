@@ -1,5 +1,6 @@
 import { formatDateTime, fromArticleTime } from "src/utils/datetime";
 
+import { ExpandableSpark } from "./ExpandableSpark";
 import { loadSparks } from "./loader";
 import { MarkdownSpark } from "./MarkdownSpark";
 
@@ -15,8 +16,10 @@ export async function SparkList() {
                 {formatDateTime(fromArticleTime(spark.time))}
               </span>
             </div>
-            <div className="flex-1 text-base leading-relaxed">
-              <MarkdownSpark content={spark.content} />
+            <div className="flex-1 text-base leading-relaxed prose max-w-full">
+              <ExpandableSpark>
+                <MarkdownSpark content={spark.content} />
+              </ExpandableSpark>
             </div>
           </div>
         </div>
