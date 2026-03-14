@@ -37,6 +37,7 @@
     "hastscript": "9.0.1",
     "image-size": "2.0.2",
     "luxon": "3.7.2",
+    "mermaid": "^11.13.0",
     "mime-types": "3.0.2",
     "minisearch": "7.2.0",
     "next": "16.1.4",
@@ -67,7 +68,8 @@
     "simstate": "3.0.1",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3",
-    "unified": "11.0.5"
+    "unified": "11.0.5",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@azure-rest/ai-inference": "1.0.0-beta.6",

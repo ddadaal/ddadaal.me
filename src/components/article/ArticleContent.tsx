@@ -21,6 +21,8 @@ import { unified } from "unified";
 
 import { ArticleImage, ArticleImageProps } from "./ArticleImage";
 import { ArticleToc } from "./ArticleToc";
+import { MermaidDiagram } from "./MermaidDiagram";
+import { rehypeMermaidBlock } from "./rehypeMermaidBlock";
 
 interface Props {
   article: Article;
@@ -69,6 +71,7 @@ export const parseArticleContent = async (article: Article) => {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeExtractToc)
+    .use(rehypeMermaidBlock)
     .use(rehypePrettyCode, {
       theme: "one-dark-pro",
     })
@@ -84,6 +87,8 @@ export const parseArticleContent = async (article: Article) => {
           ComponentType<React.JSX.IntrinsicElements["h2"]>,
         h3: ((props) => <HeadingWithLink element="h3" props={props} />) satisfies
           ComponentType<React.JSX.IntrinsicElements["h3"]>,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        "mermaid-diagram": MermaidDiagram as any,
       },
     } as RehypeReactOptions)
     .process(article.content);
