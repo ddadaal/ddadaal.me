@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { FaBookOpen, FaMale, FaRss } from "react-icons/fa";
+import { FaAsterisk, FaBookOpen, FaMale, FaRss } from "react-icons/fa";
 import { Background } from "src/app/Background";
 import { Contacts } from "src/components/Contacts";
 import { readArticlesCached } from "src/data/articles";
@@ -34,6 +34,10 @@ export default async function Page() {
           <Link className="btn btn-sm btn-accent" href="/rss.xml" target="_blank">
             <FaRss />
             <Localized id="homepage.links.rss" />
+          </Link>
+          <Link className="btn btn-sm btn-accent" href="/sparks">
+            <FaAsterisk />
+            <Localized id="headers.sparks" />
           </Link>
           <Link className="btn btn-sm btn-accent" href="/about/me">
             <FaMale />
