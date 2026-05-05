@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { FaAsterisk, FaBookOpen, FaEllipsisH, FaFile, FaGlobe, FaHome, FaInfo, FaMale } from "react-icons/fa";
-import { languages, Localized, TextId } from "src/i18n";
+import { FaAsterisk, FaBookOpen, FaEllipsisH, FaGlobe, FaHome, FaInfo, FaMale } from "react-icons/fa";
+import { Localized, TextId } from "src/i18n";
 import logo from "src/icons/logo.svg";
 import { LanguageSwitcher } from "src/layout/LanguageSwitcher";
 import { NavDropdown, NavLinkElement } from "src/layout/NavLink";
@@ -18,32 +18,13 @@ export type NavLink = {
   children?: NavLink[];
 } & ({ labelId: TextId } | { label: string });
 
-interface Props {
-  resumeLangs: string[];
-}
-
-export const Header = ({ resumeLangs }: Props) => {
+export const Header = () => {
   const pathname = usePathname();
 
   const links: NavLink[] = [
     { icon: <FaHome />, labelId: "headers.home", href: "/" },
     { icon: <FaBookOpen />, labelId: "headers.articles", href: "/articles" },
     { icon: <FaAsterisk />, labelId: "headers.sparks", href: "/sparks" },
-    { icon: <FaFile />, labelId: "headers.resume", href: "/resume",
-      children: resumeLangs.map((x) => {
-        const language = Object.values(languages).find((y) => y.simplified === x);
-
-        if (!language) {
-          throw new Error(`Language ${x} not found`);
-        }
-
-        return {
-          icon: <language.icon />,
-          label: language.name,
-          href: `/resume/${x}`,
-        };
-      }),
-    },
     { icon: <FaInfo />, labelId: "headers.about.title", href: "/about", children: [
       { icon: <FaBookOpen />, labelId: "headers.about.odyssey", href: "/about/odyssey" },
       { icon: <FaGlobe />, labelId: "headers.about.project", href: "/about/project" },

@@ -1,8 +1,7 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { FaAsterisk, FaBookOpen, FaFile, FaMale, FaRss } from "react-icons/fa";
+import { FaAsterisk, FaBookOpen, FaMale, FaRss } from "react-icons/fa";
 import { Background } from "src/app/Background";
-import { LocalizedArticleLink } from "src/components/article/LocalizedArticleLink";
 import { Contacts } from "src/components/Contacts";
 import { readArticlesCached } from "src/data/articles";
 import { Localized } from "src/i18n";
@@ -40,10 +39,6 @@ export default async function Page() {
             <FaAsterisk />
             <Localized id="homepage.links.sparks" />
           </Link>
-          <LocalizedArticleLink className="btn btn-sm btn-accent" basePath="/resume">
-            <FaFile />
-            <Localized id="homepage.links.resume" />
-          </LocalizedArticleLink>
           <Link className="btn btn-sm btn-accent" href="/about/me">
             <FaMale />
             <Localized id="homepage.links.aboutMe" />
