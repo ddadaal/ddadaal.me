@@ -26,7 +26,6 @@ export const Header = () => {
     { icon: <FaBookOpen />, labelId: "headers.articles", href: "/articles" },
     { icon: <FaAsterisk />, labelId: "headers.sparks", href: "/sparks" },
     { icon: <FaInfo />, labelId: "headers.about.title", href: "/about", children: [
-      { icon: <FaBookOpen />, labelId: "headers.about.odyssey", href: "/about/odyssey" },
       { icon: <FaGlobe />, labelId: "headers.about.project", href: "/about/project" },
       { icon: <FaMale />, labelId: "headers.about.me", href: "/about/me" },
     ] },
