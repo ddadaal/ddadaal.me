@@ -67,7 +67,7 @@
     "shiki": "3.21.0",
     "simstate": "3.0.1",
     "tailwindcss": "4.1.18",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "unified": "11.0.5",
     "unist-util-visit": "^5.1.0"
   },
