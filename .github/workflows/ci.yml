@@ -98,6 +98,12 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Set up kubelogin
+        if: github.event_name != 'pull_request'
+        uses: azure/use-kubelogin@v1.3
+        with:
+          kubelogin-version: v0.2.19
+
       - name: Set AKS context
         if: github.event_name != 'pull_request'
         uses: azure/aks-set-context@v5
