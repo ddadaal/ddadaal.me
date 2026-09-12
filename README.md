@@ -93,7 +93,7 @@ Each article page opening (including refreshes and client navigation) records a 
 
 View counts appear alongside the date and reading time in article list items, search results, and article headers. Lists and search results fetch totals with GET; only opening an article records a view.
 
-`POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve SQL `bigint` precision. Unknown IDs return 404. Responses are never cached. If SQL is unconfigured or unavailable, these endpoints return 503 and the article remains readable with its counter hidden.
+`POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve SQL `bigint` precision. Unknown IDs return 404. The GET database lookup uses a Next.js server cache for 60 seconds and is tagged per article; every successful POST immediately expires that article's tag. HTTP responses still use `no-store`, so browsers do not cache the response. If SQL is unconfigured or unavailable, these endpoints return 503 and the article remains readable with its counter hidden.
 
 ## Local SQL Server for development and tests
 

@@ -2,6 +2,7 @@ import "server-only";
 
 import { randomUUID } from "crypto";
 import { eq, sql } from "drizzle-orm";
+import { unstable_cache } from "next/cache";
 import { articleViews, visitEvents } from "src/db/schema";
 import { getDb } from "src/server/sql";
 
@@ -21,14 +22,25 @@ export interface VisitEventInput {
   responseMs: number;
 }
 
+const ARTICLE_VIEWS_CACHE_REVALIDATE_SECONDS = 60;
+
+export const articleViewsCacheTag = (articleId: string) => `article-views:${articleId}`;
+
 // Return BIGINT as a decimal string so counts cannot lose precision in JSON.
-export async function getArticleViews(articleId: string): Promise<string> {
+async function queryArticleViews(articleId: string): Promise<string> {
   const db = await getDb();
   const result = await db
     .select({ views: articleViews.viewCount })
     .from(articleViews)
     .where(eq(articleViews.articleId, articleId));
   return result.length ? result[0].views : "0";
+}
+
+export async function getArticleViews(articleId: string): Promise<string> {
+  return unstable_cache(() => queryArticleViews(articleId), ["article-views", articleId], {
+    revalidate: ARTICLE_VIEWS_CACHE_REVALIDATE_SECONDS,
+    tags: [articleViewsCacheTag(articleId)],
+  })();
 }
 
 export async function recordArticleView(articleId: string): Promise<string> {

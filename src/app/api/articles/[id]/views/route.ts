@@ -1,7 +1,13 @@
 import { createHash, randomUUID } from "crypto";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { readAllArticlesCached } from "src/data/articles";
-import { getArticleViews, recordVisitEvent, VisitEventInput } from "src/server/articleViews";
+import {
+  articleViewsCacheTag,
+  getArticleViews,
+  recordVisitEvent,
+  VisitEventInput,
+} from "src/server/articleViews";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -91,6 +97,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
       responseMs: Date.now() - started,
     };
     const views = await recordVisitEvent(id, event);
+    revalidateTag(articleViewsCacheTag(id), { expire: 0 });
     const response = NextResponse.json({ articleId: id, views }, { headers });
     response.cookies.set("visit_session", sessionId, {
       httpOnly: true,
