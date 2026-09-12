@@ -10,7 +10,7 @@ import { GET, POST } from "../src/app/api/articles/[id]/views/route.js";
 import { GET as getAsset } from "../src/app/articles/asset/[...path]/route.js";
 import { getDb, getSqlPool } from "../src/db/client.js";
 import { sqlConfig } from "../src/db/config.js";
-import { articleViews } from "../src/db/schema.js";
+import { articleViews, visitEvents } from "../src/db/schema.js";
 import { getArticleViews, recordArticleView } from "../src/server/articleViews.js";
 
 const testIds = [randomUUID(), randomUUID(), randomUUID()];
@@ -30,6 +30,7 @@ after(async () => {
   }
   const db = await getDb();
   await db.delete(articleViews).where(inArray(articleViews.articleId, testIds));
+  await db.delete(visitEvents).where(inArray(visitEvents.articleId, testIds));
   await (await getSqlPool()).close();
 });
 

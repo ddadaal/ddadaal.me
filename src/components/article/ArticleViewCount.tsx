@@ -32,6 +32,18 @@ export const ArticleViewCount = ({ articleId, recordView = false, hidden = false
         method: recordView ? "POST" : "GET",
         cache: "no-store",
         headers: recordView ? { "Content-Type": "application/json" } : undefined,
+        body: recordView
+          ? JSON.stringify((() => {
+              const query = new URLSearchParams(window.location.search);
+              return {
+                path: window.location.pathname,
+                referrer: document.referrer || undefined,
+                utmSource: query.get("utm_source") ?? undefined,
+                utmMedium: query.get("utm_medium") ?? undefined,
+                utmCampaign: query.get("utm_campaign") ?? undefined,
+              };
+            })())
+          : undefined,
       }).then(async (response) => {
         if (!response.ok) {
           throw new Error("View count unavailable");

@@ -86,9 +86,11 @@ GRANT SELECT, INSERT, UPDATE ON OBJECT::dbo.ArticleViews TO [blog_app];
 
 For integration tests, point the `AZURE_SQL_*` environment variables at a dedicated SQL Server database whose name ends in `_test`, then run `pnpm test:db`. These tests apply migrations and verify concurrent increments, large counts, read-only queries, request validation, and attachment access boundaries. They remove only the randomly generated article counters they create. For a local SQL Server with a self-signed certificate, set `AZURE_SQL_TRUST_SERVER_CERTIFICATE=true`.
 
-Each article page opening (including refreshes and client navigation) records a page view after the browser mounts the page. Translations and the default URL share the same article ID and total. About pages are also counted. Lists, search, prerendering, link prefetches, and requests without browser JavaScript do not increment counts. This measures page views, not unique visitors, and stores no visitor identifiers. A public counter is not intended as fraud-resistant analytics.
+Each article page opening (including refreshes and client navigation) records a page view after the browser mounts the page. Translations and the default URL share the same article ID and total. About pages are also counted. Lists, search, prerendering, link prefetches, and requests without browser JavaScript do not increment counts. This measures page views and pseudonymous sessions, not authenticated users or guaranteed unique visitors. A public counter is not intended as fraud-resistant analytics.
 
 View counts appear alongside the date and reading time in article list items, search results, and article headers. Lists and search results fetch totals with GET; only opening an article records a view.
+
+Each recorded article visit also writes a row to `dbo.VisitEvents` with UTC time, path, 30-day random session cookie, referrer, UTM campaign fields, parsed browser/OS/device, bot flag, HTTP status, and database write duration. If `ANALYTICS_IP_HASH_SALT` is set, the first forwarded IP is stored as a SHA-256 hash; the raw IP and complete User-Agent are discarded. Use a private random salt and rotate it with your retention policy. The client sends page metadata only after mounting an article, so link prefetches do not create events.
 
 `POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve SQL `bigint` precision. Unknown IDs return 404. Responses are never cached. If SQL is unconfigured or unavailable, these endpoints return 503 and the article remains readable with its counter hidden. Build and server startup do not require a database connection.
 
@@ -149,7 +151,22 @@ docker run -d --name ddadaal-me --restart unless-stopped \
 
 The container runs as a non-root user and listens on `0.0.0.0:3000`. Put your HTTPS reverse proxy in front of this port. SQL credentials are supplied only at runtime; environment files are excluded from the Docker build context. Counts persist in Azure SQL across image rebuilds and container replacements. The image includes the article files, attachments, Next.js static assets, RSS, sitemap, and robots.txt; rebuild it when publishing content. Only the blog container is needed on the deployment server.
 
-GitHub Actions validates the Docker build instead of deploying the static `out` directory to GitHub Pages. Publishing the image to a registry and restarting your deployment can be configured for your chosen server later.
+GitHub Actions builds the Docker image on pull requests. On pushes to `master` and manual workflow runs, it publishes both `ddadaal-me/ddadaal-me:<commit-sha>` and `ddadaal-me/ddadaal-me:latest` to Azure Container Registry using Azure OIDC.
+
+## Azure Container Registry publishing
+
+Configure these GitHub repository settings before enabling a push to `master`:
+
+| Setting | Type | Value |
+| --- | --- | --- |
+| `AZURE_CLIENT_ID` | Actions secret | Application (client) ID of an Azure app registration with a GitHub federated credential for this repository and the `master` branch (and the `environment`/manual subject if you use one). |
+| `AZURE_TENANT_ID` | Actions secret | Microsoft Entra tenant (directory) ID. |
+| `AZURE_SUBSCRIPTION_ID` | Actions secret | Azure subscription ID containing the registry. |
+| `ACR_NAME` | Actions variable | Registry resource name, for example `ddadaalregistry`; do not use `https://` and do not use the login server here. |
+
+The app registration must have the **AcrPush** role on that registry. The workflow resolves the login server automatically (normally `ddadaalregistry.azurecr.io`), so the login server itself does not need to be supplied. The registry must allow the GitHub-hosted runner to reach its login endpoint. OIDC is short-lived; no ACR admin username or password is stored in GitHub.
+
+To create the Azure identity, an administrator needs the repository owner/name, the Azure tenant ID, subscription ID, and ACR resource name. The federated credential subject must match the workflow trigger. For this file's `master` push, use `repo:<owner>/<repository>:ref:refs/heads/master`; add a separate credential for `workflow_dispatch` if manual runs use a different subject or environment. Then assign `AcrPush` to the app's service principal on the registry.
 
 ## License
 
