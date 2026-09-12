@@ -14,9 +14,7 @@ const getTarget = (id: string) => {
 export const generateMetadata = async (props: Props) => {
   const params = await props.params;
 
-  const {
-    id,
-  } = params;
+  const { id } = params;
 
   const target = getTarget(id);
 
@@ -32,16 +30,13 @@ export const generateMetadata = async (props: Props) => {
 export default async function RedirectPage(props: Props) {
   const params = await props.params;
 
-  const {
-    id,
-  } = params;
+  const { id } = params;
 
   const target = getTarget(id);
 
   if (target) {
     redirect(target.to);
-  }
-  else {
+  } else {
     notFound();
   }
 }

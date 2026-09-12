@@ -47,8 +47,7 @@ export const createOllamaSummarizer = (): Summarizer => {
             endTime,
             startTime,
           });
-        }
-        else {
+        } else {
           throw new Error("Unexpected response: " + response.message.content);
         }
       }

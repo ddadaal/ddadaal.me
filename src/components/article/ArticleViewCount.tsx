@@ -33,34 +33,38 @@ export const ArticleViewCount = ({ articleId, recordView = false, hidden = false
         cache: "no-store",
         headers: recordView ? { "Content-Type": "application/json" } : undefined,
         body: recordView
-          ? JSON.stringify((() => {
-              const query = new URLSearchParams(window.location.search);
-              return {
-                path: window.location.pathname,
-                referrer: document.referrer || undefined,
-                utmSource: query.get("utm_source") ?? undefined,
-                utmMedium: query.get("utm_medium") ?? undefined,
-                utmCampaign: query.get("utm_campaign") ?? undefined,
-              };
-            })())
+          ? JSON.stringify(
+              (() => {
+                const query = new URLSearchParams(window.location.search);
+                return {
+                  path: window.location.pathname,
+                  referrer: document.referrer || undefined,
+                  utmSource: query.get("utm_source") ?? undefined,
+                  utmMedium: query.get("utm_medium") ?? undefined,
+                  utmCampaign: query.get("utm_campaign") ?? undefined,
+                };
+              })(),
+            )
           : undefined,
       }).then(async (response) => {
         if (!response.ok) {
           throw new Error("View count unavailable");
         }
-        return await response.json() as ViewCount;
+        return (await response.json()) as ViewCount;
       });
       visit.current = { key: visitKey, request };
     }
 
-    void visit.current.request.then(({ views }) => {
-      if (active && typeof views === "string" && /^\d+$/.test(views)) {
-        setResult({ key: visitKey, views });
-      }
-    }).catch(() => {
-      // Analytics must not prevent reading an article. Do not retry writes:
-      // the server may have committed a view before the response was lost.
-    });
+    void visit.current.request
+      .then(({ views }) => {
+        if (active && typeof views === "string" && /^\d+$/.test(views)) {
+          setResult({ key: visitKey, views });
+        }
+      })
+      .catch(() => {
+        // Analytics must not prevent reading an article. Do not retry writes:
+        // the server may have committed a view before the response was lost.
+      });
 
     return () => {
       active = false;

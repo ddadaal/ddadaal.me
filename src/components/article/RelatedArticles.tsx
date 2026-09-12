@@ -38,22 +38,18 @@ export const RelatedArticles = ({ relatedArticles }: Props) => {
       </h2>
       <div className="flex flex-wrap gap-2">
         {relatedArticles.map((x) => {
-          const langVersion = x.langVersions.find((y) =>
-            y.lang === getLanguage(i18n.currentLanguage.id).simplified) ?? x.langVersions[0];
+          const langVersion =
+            x.langVersions.find(
+              (y) => y.lang === getLanguage(i18n.currentLanguage.id).simplified,
+            ) ?? x.langVersions[0];
           return (
             <div key={x.id} className="card w-96 bg-base-100 shadow-lg hover:shadow-xl transition">
               <div className="card-body">
-                <span className="text-sm">
-                  {langVersion.time}
-                </span>
+                <span className="text-sm">{langVersion.time}</span>
                 <LocalizedArticleLink basePath={getArticleBasePath(x)}>
-                  <h2 className="card-title">
-                    {langVersion.title}
-                  </h2>
+                  <h2 className="card-title">{langVersion.title}</h2>
                 </LocalizedArticleLink>
-                <p>
-                  {langVersion.excerpt}
-                </p>
+                <p>{langVersion.excerpt}</p>
               </div>
             </div>
           );

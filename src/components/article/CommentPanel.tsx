@@ -41,32 +41,27 @@ const CommentPanel: React.FC<Props> = (props) => {
     <div>
       <h2 className="text-2xl font-bold mb-2 flex items-center">
         <FaComments />
-        <span
-          className="mx-2"
-        >
+        <span className="mx-2">
           <Localized id="comments.title" />
         </span>
       </h2>
-      {
-        mount
-          ? (
-              <GitalkComponent options={{
-                clientID: "5640259688bc3d72b807",
-                clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
-                repo: "ddadaal.me.github.io",
-                owner: "ddadaal",
-                admin: ["ddadaal"],
-                language: props.language,
-                title: `[COMMENT] ${props.articleTitle}`,
-                id: props.articleId.substring(0, 50),
-                distractionFreeMode: false,
+      {mount ? (
+        <GitalkComponent
+          options={{
+            clientID: "5640259688bc3d72b807",
+            clientSecret: "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff",
+            repo: "ddadaal.me.github.io",
+            owner: "ddadaal",
+            admin: ["ddadaal"],
+            language: props.language,
+            title: `[COMMENT] ${props.articleTitle}`,
+            id: props.articleId.substring(0, 50),
+            distractionFreeMode: false,
 
-              // proxy: "https://ddadaal-me-cors.ddadaal.workers.dev/https://github.com/login/oauth/access_token",
-              }}
-              />
-            )
-          : undefined
-      }
+            // proxy: "https://ddadaal-me-cors.ddadaal.workers.dev/https://github.com/login/oauth/access_token",
+          }}
+        />
+      ) : undefined}
     </div>
   );
 };
@@ -76,10 +71,5 @@ export const CommentPanelWithCurrentLanguage: React.FC<Omit<Props, "language">> 
 
   const language = getLanguage(i18n.currentLanguage.id);
 
-  return (
-    <CommentPanel
-      {...props}
-      language={language.gitalkLangId}
-    />
-  );
+  return <CommentPanel {...props} language={language.gitalkLangId} />;
 };

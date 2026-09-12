@@ -1,15 +1,17 @@
 ---
 id: migrate-to-azure
 date: 2026-09-12 19:02
-title: 将博客迁移至Azure并添加访问指标采集
+title: 博客的发展3：将博客迁移至Azure并添加访问指标采集
 lang: cn
 tags:
   - blog
+related:
+  - blog-updates-2
 ---
 
-# 将博客迁移至Azure
+# 时隔三年的又一次博客更新
 
-自从上一次18年将博客重写为一个静态网站后，网站已经在github pages上运行8年了。
+自从[上一次将博客重写为一个静态网站](/articles/blog-updates-2)后已经运行3年了。
 
 这套架构非常简单：所有网站代码以及文章源码全部都在仓库里。要更新网站，直接改代码或者写文章，推送到github上，CI构建网站，把构建好的静态文件推到另一个发布为github pages的仓库[ddadaal/ddadaal.me.github.io](https://github.com/ddadaal/ddadaal.me.github.io)里，更新后的网站就可以访问了。
 
@@ -70,7 +72,7 @@ aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%
 
 IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头也就是Node pool的虚拟机，通过计算器估算一个月70/80刀，150刀勉强够用。
 
-这样一套下来，我完全没有任何运维压力。数据库、AKS、扩缩容全部不需要我管，平时的运维也直接用标准的Kubernetes工具链即可，不太需要熟悉其他技术。
+这样一套下来，我完全没有任何运维压力。数据库、AKS、扩缩容、TLS证书全部不需要手动管，平时的运维也直接用标准的Kubernetes工具链即可，不太需要熟悉其他技术。
 
 ## CI/CD
 
@@ -87,13 +89,13 @@ IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头
 
 - GitHub Actions通过OIDC联邦身份认证关联到一个Azure identity，可以直接以这个identity的身份登录Azure
   - 这个Identity可以Push到ACR（AcrPush role），可以获取AKS的kubeconfig（Azure Kubernetes Service Cluster User Role）
-  - 所以整个CI/CD过程只需要标准的`az cli`命令就可以全部完成。
+  - 所以整个CI/CD过程只需要标准的`az` CLI命令就可以全部完成。
 - AKS和ACR通过Managed Identity认证，直接可以从ACR拉取镜像
 
 # 后续
 
 后续还打算将我用App Service和VM部署的一些服务全部搬迁到AKS上，减少额外开销的同时进一步统一运维流程。
 
-另外，将博客项目用Next.js写，确实比较简单，但是构建的镜像太大了（300M），推送还挺耗时间的。有了AI后，后续可考虑把博客逻辑改成go写，前端改成vite+react纯前端，最后构建一个十几M的纯go二进制。
+另外，现在博客项目使用Next.js实现的，做起来确实比较简单，但是构建的镜像太大了（300M），推送还挺耗时间的。有了AI后，后续可考虑把博客逻辑改成go写，前端改成vite+react纯前端，最后构建一个十几M的纯go二进制。
 
-在做这个过程中的时候，我又遇到了前两年工作的时候几乎天天接触的Azure的各种概念。这些概念纯学起来非常抽象，真正用起来才直到用处在哪儿。最近工作也接触了一些国产云，感觉国产云在这些管理和开发者友好的功能上还是有一段路要走。
+在做这个过程中的时候，我又遇到了前两年工作的时候几乎天天接触的Azure的各种概念。这些概念纯学起来非常抽象，真正用起来才直到用处在哪儿。最近工作也接触了一些国产云，感觉国产云在这些管理和开发者友好的功能上还是有一定差距的。

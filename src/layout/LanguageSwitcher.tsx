@@ -18,26 +18,25 @@ export const LanguageSwitcher = ({ btnClassName }: Props) => {
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className={classNames("btn", btnClassName)}>
         <language.icon />
-        <span className="hidden sm:block">
-          {language.name}
-        </span>
+        <span className="hidden sm:block">{language.name}</span>
       </label>
-      <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-box min-w-max text-base-content">
-        {
-          Object.entries(languages).map(([id, info]) => (
-            <li key={id}>
-              <a
-                className="justify-between"
-                onClick={() => {
-                  i18n.setLanguageById(id as Locale);
-                }}
-              >
-                <info.icon />
-                {info.name}
-              </a>
-            </li>
-          ))
-        }
+      <ul
+        tabIndex={0}
+        className="dropdown-content menu p-2 shadow bg-base-200 rounded-box min-w-max text-base-content"
+      >
+        {Object.entries(languages).map(([id, info]) => (
+          <li key={id}>
+            <a
+              className="justify-between"
+              onClick={() => {
+                i18n.setLanguageById(id as Locale);
+              }}
+            >
+              <info.icon />
+              {info.name}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

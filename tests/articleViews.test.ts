@@ -17,7 +17,11 @@ const testIds = [randomUUID(), randomUUID(), randomUUID()];
 let connected = false;
 
 before(async () => {
-  assert.match(sqlConfig().database, /_test$/, "Use a dedicated SQL Server database ending in _test");
+  assert.match(
+    sqlConfig().database,
+    /_test$/,
+    "Use a dedicated SQL Server database ending in _test",
+  );
   const db = await getDb();
   connected = true;
   await migrate(db, { migrationsFolder: "./drizzle" });
@@ -41,14 +45,19 @@ void test("concurrent first visits and subsequent visits retain every increment"
   }
 
   const visits = 40;
-  const results = await Promise.all(Array.from({ length: visits * ids.length }, async (_, index) => {
-    const id = ids[index % ids.length];
-    return { id, views: await recordArticleView(id) };
-  }));
+  const results = await Promise.all(
+    Array.from({ length: visits * ids.length }, async (_, index) => {
+      const id = ids[index % ids.length];
+      return { id, views: await recordArticleView(id) };
+    }),
+  );
 
   for (const id of ids) {
     assert.deepEqual(
-      results.filter((result) => result.id === id).map((result) => Number(result.views)).sort((a, b) => a - b),
+      results
+        .filter((result) => result.id === id)
+        .map((result) => Number(result.views))
+        .sort((a, b) => a - b),
       Array.from({ length: visits }, (_, index) => index + 1),
     );
     assert.equal(await getArticleViews(id), String(visits));
@@ -80,10 +89,13 @@ void test("GET is read-only and unknown article IDs cannot be counted", async ()
   assert.equal(await getArticleViews(id), beforeViews);
 
   const unknown = "'; DROP TABLE ArticleViews; --";
-  const rejected = await POST(new NextRequest("http://localhost/api/articles/unknown/views", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  }), { params: Promise.resolve({ id: unknown }) });
+  const rejected = await POST(
+    new NextRequest("http://localhost/api/articles/unknown/views", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    }),
+    { params: Promise.resolve({ id: unknown }) },
+  );
   assert.equal(rejected.status, 404);
   assert.equal(await getArticleViews(unknown), "0");
 });
@@ -94,10 +106,13 @@ void test("cross-site requests and form submissions cannot increment views", asy
     { "Content-Type": "application/json", "Sec-Fetch-Site": "cross-site" },
   ];
   for (const headers of requestHeaders) {
-    const response = await POST(new NextRequest("http://localhost/api/articles/about-project/views", {
-      method: "POST",
-      headers,
-    }), { params: Promise.resolve({ id: "about-project" }) });
+    const response = await POST(
+      new NextRequest("http://localhost/api/articles/about-project/views", {
+        method: "POST",
+        headers,
+      }),
+      { params: Promise.resolve({ id: "about-project" }) },
+    );
     assert.equal(response.status, 403);
   }
 });

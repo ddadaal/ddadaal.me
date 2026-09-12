@@ -27,9 +27,7 @@ const getSearchPageData = cache(async () => {
 
   // index articles
 
-  const allArticles = articles
-    .map((x) => x.langVersions)
-    .flat();
+  const allArticles = articles.map((x) => x.langVersions).flat();
 
   const miniSearch = new MiniSearch<IndexedArticleInfo>({
     fields: ["title", "content", "tags"],

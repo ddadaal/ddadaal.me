@@ -1,0 +1,15 @@
+{
+  "ignorePatterns": [
+    ".next/**",
+    ".github",
+    ".github/**",
+    ".claude/**",
+    ".devcontainer/**",
+    ".vscode/**",
+    "contents/**",
+    "drafts/**",
+    "drizzle/**",
+    "out/**",
+    "public/**"
+  ]
+}

@@ -17,7 +17,8 @@ interface Props {
   summaries: Summary[];
 }
 
-const AZURE_AI_LANGUAGE_SERVICE_DOC_URL = "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
+const AZURE_AI_LANGUAGE_SERVICE_DOC_URL =
+  "https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/overview?tabs=document-summarization";
 const AZURE_AI_URL = "https://ai.azure.com";
 
 const modelNameMap: Record<string, string> = {
@@ -41,74 +42,61 @@ export const ArticleSummarization = ({ summaries }: Props) => {
           props={{
             id: "summary",
             className: "mb-3",
-            children: (
-              <Localized key="summaryTitle" id="articlePage.summary.title" />
-            ),
+            children: <Localized key="summaryTitle" id="articlePage.summary.title" />,
           }}
         />
         <div>
           <div role="tablist" className="tabs-boxed">
-            {
-              summaries.map((x, i) => (
-                <a role="tab" className={classNames("tab", "no-underline", index === i ? "tab-active" : "", "")} key={i} onClick={() => { setIndex(i); }}>
-                  {x.metadata.model ? modelNameMap[x.metadata.model] ?? x.metadata.model : x.metadata.summarizer}
-                </a>
-              ))
-            }
+            {summaries.map((x, i) => (
+              <a
+                role="tab"
+                className={classNames("tab", "no-underline", index === i ? "tab-active" : "", "")}
+                key={i}
+                onClick={() => {
+                  setIndex(i);
+                }}
+              >
+                {x.metadata.model
+                  ? (modelNameMap[x.metadata.model] ?? x.metadata.model)
+                  : x.metadata.summarizer}
+              </a>
+            ))}
             <div role="tabpanel" className="p-3">
               <div className="prose max-h-80 overflow-auto max-w-full prose-p:m-0 prose-li:m-0 prose-ul:m-0 prose-ol:m-0">
                 {selected.children}
               </div>
 
               <p className="text-sm justify-end flex m-2 italic">
-                {
-                  selected.metadata.summarizer === "azure-ai"
-                    ? (
-                        <Localized
-                          id="articlePage.summary.poweredBy.azureAi"
-                          args={[
-                            <Link
-                              target="_blank"
-                              key="azureAiUrl"
-                              href={AZURE_AI_URL}
-                            >
-                              Azure AI
-                            </Link>,
-                            selected.metadata.model,
-                          ]}
-                        />
-                      )
-                    : selected.metadata.summarizer === "azure-language"
-                      ? (
-                          <Localized
-                            id="articlePage.summary.poweredBy.azureLanguage"
-                            args={[
-                              <Link
-                                target="_blank"
-                                key="docUrl"
-                                href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}
-                              >
-                                Azure AI Language Service
-                              </Link>,
-                            ]}
-                          />
-                        )
-                      : (
-                          <Localized
-                            id="articlePage.summary.poweredBy.ollama"
-                            args={[
-                              <Link
-                                target="_blank"
-                                key="ollamaUrl"
-                                href="https://ollama.com/"
-                              >
-                                Ollama
-                              </Link>,
-                              selected.metadata.model,
-                            ]}
-                          />
-                        )
-                }
+                {selected.metadata.summarizer === "azure-ai" ? (
+                  <Localized
+                    id="articlePage.summary.poweredBy.azureAi"
+                    args={[
+                      <Link target="_blank" key="azureAiUrl" href={AZURE_AI_URL}>
+                        Azure AI
+                      </Link>,
+                      selected.metadata.model,
+                    ]}
+                  />
+                ) : selected.metadata.summarizer === "azure-language" ? (
+                  <Localized
+                    id="articlePage.summary.poweredBy.azureLanguage"
+                    args={[
+                      <Link target="_blank" key="docUrl" href={AZURE_AI_LANGUAGE_SERVICE_DOC_URL}>
+                        Azure AI Language Service
+                      </Link>,
+                    ]}
+                  />
+                ) : (
+                  <Localized
+                    id="articlePage.summary.poweredBy.ollama"
+                    args={[
+                      <Link target="_blank" key="ollamaUrl" href="https://ollama.com/">
+                        Ollama
+                      </Link>,
+                      selected.metadata.model,
+                    ]}
+                  />
+                )}
               </p>
             </div>
           </div>

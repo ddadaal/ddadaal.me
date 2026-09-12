@@ -1,8 +1,6 @@
 import { ArticleItem } from "src/data/articles";
 
-export const countTags = (
-  articles: ArticleItem[],
-) => {
+export const countTags = (articles: ArticleItem[]) => {
   const tags = {} as Record<string, number>;
 
   for (const article of articles) {

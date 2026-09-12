@@ -19,10 +19,7 @@ export const createAzureAiSummarizer = (): Summarizer => {
     AZURE_AI_KEY: str({ desc: "Azure AI service key" }),
   });
 
-  const client = createModelClient(
-    env.AZURE_AI_ENDPOINT,
-    new AzureKeyCredential(env.AZURE_AI_KEY),
-  );
+  const client = createModelClient(env.AZURE_AI_ENDPOINT, new AzureKeyCredential(env.AZURE_AI_KEY));
 
   return {
     name: "azure-ai",
@@ -48,15 +45,18 @@ export const createAzureAiSummarizer = (): Summarizer => {
 
       if (responseOk(response)) {
         const endTime = new Date().toISOString();
-        return [{
-          summaries: response.body.choices.map((x) => removeThinkTags(x.message.content)),
-          metadata: { summarizer: "azure-ai", model: response.body.model },
-          endTime,
-          startTime,
-        }];
-      }
-      else {
-        throw new Error(`Unexpected response: ${response.status}. message: ${JSON.stringify(response.body)}`);
+        return [
+          {
+            summaries: response.body.choices.map((x) => removeThinkTags(x.message.content)),
+            metadata: { summarizer: "azure-ai", model: response.body.model },
+            endTime,
+            startTime,
+          },
+        ];
+      } else {
+        throw new Error(
+          `Unexpected response: ${response.status}. message: ${JSON.stringify(response.body)}`,
+        );
       }
     },
   };

@@ -57,8 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const langVersion = article.langVersions.find((x) => x.lang === result.lang)
-    ?? article.langVersions[0];
+  const langVersion =
+    article.langVersions.find((x) => x.lang === result.lang) ?? article.langVersions[0];
 
   return {
     title: generateTitle(langVersion.title),
@@ -73,10 +73,7 @@ export default async function ArticlePage({ params }: Props) {
   if (paramsResult.type === "list") {
     const { pageNumber } = paramsResult;
 
-    const articlesOfPage = articles.slice(
-      (pageNumber - 1) * PAGE_SIZE,
-      pageNumber * PAGE_SIZE,
-    );
+    const articlesOfPage = articles.slice((pageNumber - 1) * PAGE_SIZE, pageNumber * PAGE_SIZE);
 
     // count tags
     const tagCounts = countTags(articles);

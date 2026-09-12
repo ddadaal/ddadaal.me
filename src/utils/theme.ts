@@ -19,8 +19,7 @@ export const ThemeStore = () => {
     const themeInStorage = localStorage.getItem(THEME_COOKIE_KEY) as Theme;
     if (!themes.includes(themeInStorage)) {
       setThemeInner("dark");
-    }
-    else {
+    } else {
       setThemeInner(themeInStorage);
     }
   }, []);

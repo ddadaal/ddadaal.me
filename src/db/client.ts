@@ -6,7 +6,9 @@ import sql from "mssql";
 import { sqlConfig } from "./config";
 import * as schema from "./schema";
 
-const globalSql = globalThis as typeof globalThis & { articleViewsPool?: Promise<sql.ConnectionPool> };
+const globalSql = globalThis as typeof globalThis & {
+  articleViewsPool?: Promise<sql.ConnectionPool>;
+};
 
 export function getSqlPool(): Promise<sql.ConnectionPool> {
   if (!globalSql.articleViewsPool) {

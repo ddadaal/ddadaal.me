@@ -18,9 +18,7 @@ const RootLayoutInner = ({ children }: { children: React.ReactNode }) => {
       data-theme={themeStore.theme === "auto" ? undefined : themeStore.theme}
       className="scroll-smooth"
     >
-      <body className="w-full">
-        {children}
-      </body>
+      <body className="w-full">{children}</body>
     </html>
   );
 };
@@ -30,15 +28,14 @@ export const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const [i18nStore] = useState(() => createStore(I18nStore));
 
   return (
-    <Provider initialLanguage={{
-      id: defaultLocale,
-      definitions: zhCN,
-    }}
+    <Provider
+      initialLanguage={{
+        id: defaultLocale,
+        definitions: zhCN,
+      }}
     >
       <StoreProvider stores={[themeStore, i18nStore]}>
-        <RootLayoutInner>
-          {children}
-        </RootLayoutInner>
+        <RootLayoutInner>{children}</RootLayoutInner>
       </StoreProvider>
     </Provider>
   );

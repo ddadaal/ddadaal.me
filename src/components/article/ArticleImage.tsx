@@ -19,7 +19,6 @@ const loader = ({ src, width }: { src: string; width: number }) => {
 export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) => {
   return (
     <figure>
-
       <Item
         alt={imageProps.alt ?? ""}
         original={src}
@@ -39,15 +38,7 @@ export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) 
           />
         )}
       </Item>
-      {
-        imageProps.alt
-          ? (
-              <figcaption className="text-center">
-                {imageProps.alt}
-              </figcaption>
-            )
-          : null
-      }
+      {imageProps.alt ? <figcaption className="text-center">{imageProps.alt}</figcaption> : null}
     </figure>
   );
 };

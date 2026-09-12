@@ -15,8 +15,13 @@ export default async function Page() {
     <main className="min-h-screen relative">
       <Background />
       <div
-        className={classNames("absolute", "text-primary-content",
-          "h-full w-full", "flex flex-col items-center justify-center", "space-y-4", "animate-slide-up",
+        className={classNames(
+          "absolute",
+          "text-primary-content",
+          "h-full w-full",
+          "flex flex-col items-center justify-center",
+          "space-y-4",
+          "animate-slide-up",
           "-translate-y-12",
         )}
       >

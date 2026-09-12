@@ -15,16 +15,41 @@ const headers = { "Cache-Control": "no-store" };
 function parseUserAgent(userAgent: string | null) {
   const value = userAgent ?? "";
   const isBot = /bot|crawler|spider|slurp|headless|monitor|curl|wget/i.test(value);
-  const browser = value.includes("Edg/") ? "Edge" : value.includes("Chrome/") ? "Chrome" : value.includes("Firefox/") ? "Firefox" : value.includes("Safari/") ? "Safari" : /\b(?:bot|crawler)\b/i.test(value) ? "Bot" : "Other";
-  const operatingSystem = value.includes("Windows") ? "Windows" : value.includes("Android") ? "Android" : /iPhone|iPad|iPod/.test(value) ? "iOS" : value.includes("Mac OS X") ? "macOS" : value.includes("Linux") ? "Linux" : "Other";
-  const deviceType = /iPad|Android|Mobile|iPhone|iPod/.test(value) ? (value.includes("iPad") ? "tablet" : "mobile") : "desktop";
+  const browser = value.includes("Edg/")
+    ? "Edge"
+    : value.includes("Chrome/")
+      ? "Chrome"
+      : value.includes("Firefox/")
+        ? "Firefox"
+        : value.includes("Safari/")
+          ? "Safari"
+          : /\b(?:bot|crawler)\b/i.test(value)
+            ? "Bot"
+            : "Other";
+  const operatingSystem = value.includes("Windows")
+    ? "Windows"
+    : value.includes("Android")
+      ? "Android"
+      : /iPhone|iPad|iPod/.test(value)
+        ? "iOS"
+        : value.includes("Mac OS X")
+          ? "macOS"
+          : value.includes("Linux")
+            ? "Linux"
+            : "Other";
+  const deviceType = /iPad|Android|Mobile|iPhone|iPod/.test(value)
+    ? value.includes("iPad")
+      ? "tablet"
+      : "mobile"
+    : "desktop";
   return { browser, operatingSystem, deviceType, isBot };
 }
 
 function hashIp(request: NextRequest) {
   const salt = process.env.ANALYTICS_IP_HASH_SALT;
-  const address = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
-    ?? request.headers.get("x-real-ip");
+  const address =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip");
   if (!salt || !address) return undefined;
   return createHash("sha256").update(`${salt}:${address}`).digest("hex");
 }
@@ -44,12 +69,12 @@ async function handleViews(request: NextRequest, context: Context, record: boole
 
     let body: Record<string, unknown> = {};
     try {
-      body = await request.json() as Record<string, unknown>;
-    }
-    catch {
+      body = (await request.json()) as Record<string, unknown>;
+    } catch {
       // An empty body is accepted for older clients; request metadata remains useful.
     }
-    const stringField = (name: string, max: number) => typeof body[name] === "string" ? body[name].slice(0, max) : undefined;
+    const stringField = (name: string, max: number) =>
+      typeof body[name] === "string" ? body[name].slice(0, max) : undefined;
     const sessionId = request.cookies.get("visit_session")?.value ?? randomUUID();
     const userAgent = parseUserAgent(request.headers.get("user-agent"));
     const started = Date.now();
@@ -75,8 +100,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
       path: "/",
     });
     return response;
-  }
-  catch (error: unknown) {
+  } catch (error: unknown) {
     // Keep details out of the response, but include the driver message in
     // server logs so a missing migration, bad host, or firewall rule can be
     // diagnosed without ever logging the SQL password.
@@ -93,9 +117,14 @@ export async function GET(request: NextRequest, context: Context) {
 export async function POST(request: NextRequest, context: Context) {
   // Require JSON to reject cross-origin form submissions. Cross-origin fetches
   // need a CORS preflight, and this endpoint does not grant CORS access.
-  if (request.headers.get("sec-fetch-site") === "cross-site"
-    || request.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !== "application/json") {
-    return NextResponse.json({ error: "JSON requests from this site are required" }, { status: 403, headers });
+  if (
+    request.headers.get("sec-fetch-site") === "cross-site" ||
+    request.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !== "application/json"
+  ) {
+    return NextResponse.json(
+      { error: "JSON requests from this site are required" },
+      { status: 403, headers },
+    );
   }
   return handleViews(request, context, true);
 }

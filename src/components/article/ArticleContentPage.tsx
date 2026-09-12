@@ -20,38 +20,39 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
   const relatedArticleItems = articles.filter((x) => article.related?.includes(x.id));
 
   // create related articles
-  const relatedArticles = relatedArticleItems.map((x) => ({
-    id: x.id,
-    langVersions: x.langVersions.map((x) => ({
-      excerpt: x.content.substring(0, 100),
-      lang: x.lang,
-      time: formatDateTime(fromArticleTime(x.date)),
-      title: x.title,
-      last_updated: x.last_updated ? formatDateTime(fromArticleTime(x.last_updated)) : undefined,
-      absolute_path: x.absolute_path,
-    })),
-  }) satisfies RelatedArticle);
+  const relatedArticles = relatedArticleItems.map(
+    (x) =>
+      ({
+        id: x.id,
+        langVersions: x.langVersions.map((x) => ({
+          excerpt: x.content.substring(0, 100),
+          lang: x.lang,
+          time: formatDateTime(fromArticleTime(x.date)),
+          title: x.title,
+          last_updated: x.last_updated
+            ? formatDateTime(fromArticleTime(x.last_updated))
+            : undefined,
+          absolute_path: x.absolute_path,
+        })),
+      }) satisfies RelatedArticle,
+  );
 
   return (
     <article>
-      {
-        article.hide_heading
-          ? <ArticleViewCount articleId={article.id} recordView hidden />
-          : (
-              <Heading>
-                <h1 className="text-4xl my-2">
-                  {article.title}
-                </h1>
-                <ArticleFrontmatter
-                  className="justify-center"
-                  articleId={article.id}
-                  info={article}
-                  langVersions={langs}
-                  recordView
-                />
-              </Heading>
-            )
-      }
+      {article.hide_heading ? (
+        <ArticleViewCount articleId={article.id} recordView hidden />
+      ) : (
+        <Heading>
+          <h1 className="text-4xl my-2">{article.title}</h1>
+          <ArticleFrontmatter
+            className="justify-center"
+            articleId={article.id}
+            info={article}
+            langVersions={langs}
+            recordView
+          />
+        </Heading>
+      )}
 
       <div className="animate-slide-up">
         <div className="max-w-7xl mx-auto p-4">

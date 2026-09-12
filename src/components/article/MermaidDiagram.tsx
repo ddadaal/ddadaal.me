@@ -27,9 +27,12 @@ export function MermaidDiagram({ children }: Props) {
 
   const render = useCallback(() => {
     mermaid.initialize({ startOnLoad: false, theme: getMermaidTheme() });
-    mermaid.render(idRef.current, code).then(({ svg: rendered }) => {
-      setSvg(rendered);
-    }).catch(console.error);
+    mermaid
+      .render(idRef.current, code)
+      .then(({ svg: rendered }) => {
+        setSvg(rendered);
+      })
+      .catch(console.error);
   }, [code]);
 
   useEffect(() => {

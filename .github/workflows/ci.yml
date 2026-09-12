@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22.x
           cache: pnpm
@@ -26,14 +26,20 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - uses: docker/setup-buildx-action@v3
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - uses: docker/setup-buildx-action@v4
 
       - name: Validate AKS deployment settings
         if: github.event_name != 'pull_request'
         env:
-          AKS_RESOURCE_GROUP: ${{ vars.AKS_RESOURCE_GROUP }}
-          AKS_CLUSTER_NAME: ${{ vars.AKS_CLUSTER_NAME }}
-          AKS_NAMESPACE: ${{ vars.AKS_NAMESPACE }}
+          AKS_RESOURCE_GROUP: ${{ secrets.AKS_RESOURCE_GROUP }}
+          AKS_CLUSTER_NAME: ${{ secrets.AKS_CLUSTER_NAME }}
+          AKS_NAMESPACE: ${{ secrets.AKS_NAMESPACE }}
         run: |
           set -euo pipefail
           test -n "$AKS_RESOURCE_GROUP"
@@ -42,7 +48,7 @@ jobs:
 
       - name: Sign in to Azure
         if: github.event_name != 'pull_request'
-        uses: azure/login@v2
+        uses: azure/login@v3
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -52,7 +58,7 @@ jobs:
         if: github.event_name != 'pull_request'
         id: acr
         env:
-          ACR_NAME: ${{ vars.ACR_NAME }}
+          ACR_NAME: ${{ secrets.ACR_NAME }}
         run: |
           set -euo pipefail
           test -n "$ACR_NAME"
@@ -62,7 +68,7 @@ jobs:
 
       - name: Build Docker image (pull request)
         if: github.event_name == 'pull_request'
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: false
@@ -72,7 +78,7 @@ jobs:
 
       - name: Build and push Docker image
         if: github.event_name != 'pull_request'
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: true
@@ -84,17 +90,17 @@ jobs:
 
       - name: Set AKS context
         if: github.event_name != 'pull_request'
-        uses: azure/aks-set-context@v4
+        uses: azure/aks-set-context@v5
         with:
-          resource-group: ${{ vars.AKS_RESOURCE_GROUP }}
-          cluster-name: ${{ vars.AKS_CLUSTER_NAME }}
-          use-kubelogin: 'true'
+          resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
+          cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
+          use-kubelogin: "true"
 
       - name: Deploy image to AKS
         if: github.event_name != 'pull_request'
         env:
           IMAGE: ${{ steps.acr.outputs.login_server }}/ddadaal-me/ddadaal-me:${{ github.sha }}
-          AKS_NAMESPACE: ${{ vars.AKS_NAMESPACE }}
+          AKS_NAMESPACE: ${{ secrets.AKS_NAMESPACE }}
         run: |
           set -euo pipefail
           test -n "$AKS_NAMESPACE"

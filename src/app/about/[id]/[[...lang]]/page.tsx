@@ -29,12 +29,9 @@ const getArticleItem = async (type: ArticleType) => {
 
 interface Props {
   params: Promise<{ id: string; lang?: string[] }>;
-
 }
 
-const getLangVersion = async ({ id, lang }: {
-  id: string; lang?: string[];
-}) => {
+const getLangVersion = async ({ id, lang }: { id: string; lang?: string[] }) => {
   if (!(id in dataSources)) {
     return undefined;
   }
@@ -47,7 +44,8 @@ const getLangVersion = async ({ id, lang }: {
 
   const lang1 = lang?.[0];
 
-  const langVersion = articleItem.langVersions.find((x) => x.lang === lang1) ?? articleItem.langVersions[0];
+  const langVersion =
+    articleItem.langVersions.find((x) => x.lang === lang1) ?? articleItem.langVersions[0];
 
   return { langVersion, articleItem };
 };
@@ -60,7 +58,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     notFound();
   }
 
-  return generateArticleMetadata(data.langVersion, data.articleItem.langVersions.map((x) => x.lang));
+  return generateArticleMetadata(
+    data.langVersion,
+    data.articleItem.langVersions.map((x) => x.lang),
+  );
 }
 
 export default async function AboutPage(props: Props) {
@@ -77,7 +78,7 @@ export default async function AboutPage(props: Props) {
       langs={data.articleItem.langVersions.map((x) => x.lang)}
     />
   );
-};
+}
 
 export async function generateStaticParams() {
   const params: { id: string; lang?: string[] }[] = [];

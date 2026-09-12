@@ -12,7 +12,8 @@ export interface ArticleListItemProps {
 export const ArticleListItem = ({ article }: ArticleListItemProps) => {
   const i18n = useI18n();
 
-  const articleOfLang = article.langVersions.find((x) => x.lang === i18n.currentLanguage.id) ?? article.langVersions[0];
+  const articleOfLang =
+    article.langVersions.find((x) => x.lang === i18n.currentLanguage.id) ?? article.langVersions[0];
 
   return (
     <div>
@@ -27,9 +28,7 @@ export const ArticleListItem = ({ article }: ArticleListItemProps) => {
         info={articleOfLang}
         langVersions={article.langVersions.map((x) => x.lang)}
       />
-      <div className="break-words">
-        {articleOfLang.excerpt}
-      </div>
+      <div className="break-words">{articleOfLang.excerpt}</div>
     </div>
   );
 };

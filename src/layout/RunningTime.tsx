@@ -9,8 +9,11 @@ import { formatDateTime } from "src/utils/datetime";
 const blogStartTime = DateTime.utc(2018, 11, 17, 6, 51).toLocal();
 
 function getDiff(now: DateTime) {
-  return blogStartTime.diff(now).negate()
-    .shiftTo("years", "months", "days", "hours", "minutes", "seconds").normalize();
+  return blogStartTime
+    .diff(now)
+    .negate()
+    .shiftTo("years", "months", "days", "hours", "minutes", "seconds")
+    .normalize();
 }
 
 interface Props {
@@ -31,20 +34,24 @@ export const RunningTime = ({ serverStartTime }: Props) => {
     };
   }, []);
 
-  const args = [diff.years, diff.months, diff.days, diff.hours, diff.minutes, Math.floor(diff.seconds)]
-    .map((data, i) => (
-      <span key={i} className="countdown">
-        {/* @ts-expect-error --value is needed for daisyui */}
-        <span style={{ "--value": data }} />
-      </span>
-    ));
+  const args = [
+    diff.years,
+    diff.months,
+    diff.days,
+    diff.hours,
+    diff.minutes,
+    Math.floor(diff.seconds),
+  ].map((data, i) => (
+    <span key={i} className="countdown">
+      {/* @ts-expect-error --value is needed for daisyui */}
+      <span style={{ "--value": data }} />
+    </span>
+  ));
 
   return (
     <div className="tooltip" data-tip={formatDateTime(blogStartTime)}>
       <p>
-        📅
-        {" "}
-        <Localized id="footer.runningTime" args={args} />
+        📅 <Localized id="footer.runningTime" args={args} />
       </p>
     </div>
   );

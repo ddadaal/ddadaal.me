@@ -5,7 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import { FaAsterisk, FaBookOpen, FaEllipsisH, FaGlobe, FaHome, FaInfo, FaMale } from "react-icons/fa";
+import {
+  FaAsterisk,
+  FaBookOpen,
+  FaEllipsisH,
+  FaGlobe,
+  FaHome,
+  FaInfo,
+  FaMale,
+} from "react-icons/fa";
 import { Localized, TextId } from "src/i18n";
 import logo from "src/icons/logo.svg";
 import { LanguageSwitcher } from "src/layout/LanguageSwitcher";
@@ -25,27 +33,31 @@ export const Header = () => {
     { icon: <FaHome />, labelId: "headers.home", href: "/" },
     { icon: <FaBookOpen />, labelId: "headers.articles", href: "/articles" },
     { icon: <FaAsterisk />, labelId: "headers.sparks", href: "/sparks" },
-    { icon: <FaInfo />, labelId: "headers.about.title", href: "/about", children: [
-      { icon: <FaGlobe />, labelId: "headers.about.project", href: "/about/project" },
-      { icon: <FaMale />, labelId: "headers.about.me", href: "/about/me" },
-    ] },
+    {
+      icon: <FaInfo />,
+      labelId: "headers.about.title",
+      href: "/about",
+      children: [
+        { icon: <FaGlobe />, labelId: "headers.about.project", href: "/about/project" },
+        { icon: <FaMale />, labelId: "headers.about.me", href: "/about/me" },
+      ],
+    },
   ];
 
   const neverBlendIn = pathname !== "/";
 
   const [blendIn, setBlendIn] = useState(true);
 
-  const bgColor = (blendIn && !neverBlendIn) ? "bg-primary text-primary-content" : "bg-base-200 text-base-content";
-  const btnClassName = (blendIn && !neverBlendIn) ? "btn-primary" : undefined;
+  const bgColor =
+    blendIn && !neverBlendIn ? "bg-primary text-primary-content" : "bg-base-200 text-base-content";
+  const btnClassName = blendIn && !neverBlendIn ? "btn-primary" : undefined;
 
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (ref.current && !neverBlendIn) {
       // judge for the first time
-      setBlendIn(
-        ref.current.getBoundingClientRect().top === 0,
-      );
+      setBlendIn(ref.current.getBoundingClientRect().top === 0);
 
       const observer = new IntersectionObserver(
         ([e]) => {
@@ -84,7 +96,9 @@ export const Header = () => {
         <div className="flex items-center gap-1">
           <div className="hidden lg:flex">
             <ul className="menu menu-horizontal">
-              {links.map((link, i) => <NavDropdown key={i} link={link} />)}
+              {links.map((link, i) => (
+                <NavDropdown key={i} link={link} />
+              ))}
             </ul>
           </div>
           <ThemeChanger btnClassName={btnClassName} />
@@ -95,31 +109,30 @@ export const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className={classNames("menu menu-compact dropdown-content",
-                "min-w-max mt-3 p-2 shadow rounded-box bg-base-200 text-base-content")}
+              className={classNames(
+                "menu menu-compact dropdown-content",
+                "min-w-max mt-3 p-2 shadow rounded-box bg-base-200 text-base-content",
+              )}
             >
-              {
-                links.map((link, i) => {
-                  if (link.children) {
-                    return (
-                      <li key={i}>
-                        <a>
-                          {link.icon}
-                          {"label" in link ? link.label : <Localized id={link.labelId} />}
-                        </a>
-                        <ul>
-                          {link.children.map((x, i) => <NavLinkElement key={i} link={x} />)}
-                        </ul>
-                      </li>
-                    );
-                  }
-                  else {
-                    return (
-                      <NavLinkElement key={i} link={link} />
-                    );
-                  }
-                })
-              }
+              {links.map((link, i) => {
+                if (link.children) {
+                  return (
+                    <li key={i}>
+                      <a>
+                        {link.icon}
+                        {"label" in link ? link.label : <Localized id={link.labelId} />}
+                      </a>
+                      <ul>
+                        {link.children.map((x, i) => (
+                          <NavLinkElement key={i} link={x} />
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                } else {
+                  return <NavLinkElement key={i} link={link} />;
+                }
+              })}
             </ul>
           </div>
         </div>

@@ -14,9 +14,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const monitorHost = process.env.NODE_ENV === "development"
-    ? "http://localhost:5000"
-    : "https://services.ddadaal.me";
+  const monitorHost =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:5000"
+      : "https://services.ddadaal.me";
 
   return (
     <RootLayout>
@@ -29,9 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         defer
       />
       <Header />
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
       <Footer />
       <ToTop />
     </RootLayout>

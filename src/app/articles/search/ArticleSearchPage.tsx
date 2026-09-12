@@ -39,7 +39,8 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
   const [miniSearch] = useState(() =>
     MiniSearch.loadJSON<IndexedArticleInfo>(index, {
       fields: ["title", "content", "tags"],
-    }));
+    }),
+  );
 
   const search = Object.fromEntries(useSearchParams().entries());
   const pathname = usePathname();
@@ -63,13 +64,16 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
       if (!info) {
         throw new Error(`Article not found: ${s.id as string}`);
       }
-      return info.langVersions.find((x) => x.lang === i18n.currentLanguage.id) ?? info.langVersions[0];
+      return (
+        info.langVersions.find((x) => x.lang === i18n.currentLanguage.id) ?? info.langVersions[0]
+      );
     };
 
     const aInfo = findArticle(a);
     const bInfo = findArticle(b);
 
-    const aToBDiff = fromArticleTime(aInfo.date).toMillis() - fromArticleTime(bInfo.date).toMillis();
+    const aToBDiff =
+      fromArticleTime(aInfo.date).toMillis() - fromArticleTime(bInfo.date).toMillis();
 
     return order === "time" ? aToBDiff : -aToBDiff;
   });
@@ -86,59 +90,52 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
           <Localized
             id="search.title"
             args={[
-              <span className="pr-2 font-bold" key="query">{query}</span>,
+              <span className="pr-2 font-bold" key="query">
+                {query}
+              </span>,
             ]}
           />
-          (
-          {searchResult.length}
-          )
+          ({searchResult.length})
         </h1>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn m-1">
             <FaSort />
             <Localized id={orderPrefix(order)} />
           </label>
-          <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-            {
-              ORDERS.map((x) => (
-                <li key={x}>
-                  <Link href={{ pathname, query: { ...search, order: x } }}>
-                    <Localized id={orderPrefix(x)} />
-                  </Link>
-                </li>
-              ))
-            }
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            {ORDERS.map((x) => (
+              <li key={x}>
+                <Link href={{ pathname, query: { ...search, order: x } }}>
+                  <Localized id={orderPrefix(x)} />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="space-y-6">
-        {
-          searchResult
-            .slice(PAGE_SIZE * (page - 1), PAGE_SIZE * page)
-            .map((r) => {
-              const info = articleListInfos.find((x) => x.id === r.id);
+        {searchResult.slice(PAGE_SIZE * (page - 1), PAGE_SIZE * page).map((r) => {
+          const info = articleListInfos.find((x) => x.id === r.id);
 
-              if (!info) {
-                throw new Error(`Article not found: ${r.id as string}`);
-              }
+          if (!info) {
+            throw new Error(`Article not found: ${r.id as string}`);
+          }
 
-              return (
-                <ArticleListItem key={info.id} article={info} />
-              );
-            })
-        }
+          return <ArticleListItem key={info.id} article={info} />;
+        })}
       </div>
       <div className="flex justify-center w-full my-2">
         <div className="join flex-wrap">
-          {
-            Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
-              <Link key={x} href={{ pathname, query: { ...search, page: x } }}>
-                <button className={classNames("join-item", "btn", { "btn-active": x === page })}>
-                  {x}
-                </button>
-              </Link>
-            ))
-          }
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
+            <Link key={x} href={{ pathname, query: { ...search, page: x } }}>
+              <button className={classNames("join-item", "btn", { "btn-active": x === page })}>
+                {x}
+              </button>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

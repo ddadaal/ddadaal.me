@@ -3,7 +3,7 @@ import { Article, generateExcerpt } from "src/data/articles";
 import { WEBSITE_BASE_URL } from "src/utils/constants";
 import { fromArticleTime } from "src/utils/datetime";
 
-export const generateTitle = (title: string) => title ? `${title} - ddadaal.me` : "ddadaal.me";
+export const generateTitle = (title: string) => (title ? `${title} - ddadaal.me` : "ddadaal.me");
 
 export const generateArticleMetadata = (article: Article, langs: string[]): Metadata => {
   return {

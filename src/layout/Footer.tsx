@@ -30,7 +30,9 @@ const friends = [
 }));
 
 const FooterLink = ({ name, link }: { name: string; link: string }) => (
-  <a className="link link-hover" target="_blank" href={link} rel="noreferrer">{name}</a>
+  <a className="link link-hover" target="_blank" href={link} rel="noreferrer">
+    {name}
+  </a>
 );
 
 export const Footer = () => {
@@ -42,15 +44,15 @@ export const Footer = () => {
             👨🏼‍💻&nbsp;
             <Localized
               id="footer.codeBy"
-              args={[(
+              args={[
                 <LocalizedArticleLink
                   className="link link-hover"
                   key="about/me"
                   basePath="/about/me"
                 >
                   ddadaal
-                </LocalizedArticleLink>
-              )]}
+                </LocalizedArticleLink>,
+              ]}
             />
           </p>
           <p>
@@ -74,45 +76,37 @@ export const Footer = () => {
           <LastUpdateTime time={serverTime.toISO()} />
           <div>
             <p>
-              📲
-              {" "}
-              <Localized id="footer.contacts" />
+              📲 <Localized id="footer.contacts" />
             </p>
             <Contacts size={1.6} />
           </div>
           <p className="text-center">
-            ©
-            {" "}
-            {new Date().getFullYear()}
-            {" "}
-            |
-            {" "}
-            <Localized id="footer.madeWithLove" />
+            © {new Date().getFullYear()} | <Localized id="footer.madeWithLove" />
           </p>
         </div>
         <div>
           <span className="footer-title">
-            🚀
-            {" "}
-            <Localized id="footer.poweredBy" />
+            🚀 <Localized id="footer.poweredBy" />
           </span>
-          {powerBys.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />)}
+          {powerBys.map((x) => (
+            <FooterLink key={x.name} link={x.link} name={x.name} />
+          ))}
         </div>
         <div>
           <span className="footer-title">
-            🎨
-            {" "}
-            <Localized id="footer.themedWith" />
+            🎨 <Localized id="footer.themedWith" />
           </span>
-          { themedWiths.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />) }
+          {themedWiths.map((x) => (
+            <FooterLink key={x.name} link={x.link} name={x.name} />
+          ))}
         </div>
         <div>
           <span className="footer-title">
-            🎓
-            {" "}
-            <Localized id="footer.contacts" />
+            🎓 <Localized id="footer.contacts" />
           </span>
-          {friends.map((x) => <FooterLink key={x.name} link={x.link} name={x.name} />)}
+          {friends.map((x) => (
+            <FooterLink key={x.name} link={x.link} name={x.name} />
+          ))}
         </div>
       </div>
     </footer>

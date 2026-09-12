@@ -10,8 +10,7 @@ export const ToTop = () => {
       if (btnRef.current) {
         if (window.scrollY > 10) {
           btnRef.current.classList.remove("hidden");
-        }
-        else {
+        } else {
           btnRef.current.classList.add("hidden");
         }
       }
@@ -30,7 +29,9 @@ export const ToTop = () => {
       ref={btnRef}
       className="fixed animate-slide-up bottom-8 right-8 z-50 p-3 rounded-full bg-base-300 text-base-content shadow"
       title="To top"
-      onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); }}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
     >
       <FaArrowUp className="w-6 h-6" />
     </button>

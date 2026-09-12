@@ -27,21 +27,18 @@ export const ThemeChanger = ({ btnClassName }: Props) => {
         tabIndex={0}
         className="dropdown-content menu p-2 bg-base-200 text-base-content shadow rounded-box min-w-max"
       >
-        {
-          themes.map((id) => (
-            <li key={id}>
-              <a
-                className="justify-between"
-                onClick={() => {
-                  themeStore.setTheme(id);
-                }}
-              >
-                <Localized id={root(id)} />
-              </a>
-            </li>
-
-          ))
-        }
+        {themes.map((id) => (
+          <li key={id}>
+            <a
+              className="justify-between"
+              onClick={() => {
+                themeStore.setTheme(id);
+              }}
+            >
+              <Localized id={root(id)} />
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

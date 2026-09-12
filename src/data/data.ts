@@ -13,10 +13,10 @@ export const createDataSource = <TData>(config: DbConfig<TData>) => {
 
   const reload = async (now: number) => {
     console.log("[%s] Load data", config.watchPath);
-    return loaded = {
+    return (loaded = {
       data: await config.loader(),
       time: now,
-    };
+    });
   };
 
   return async () => {
@@ -25,8 +25,7 @@ export const createDataSource = <TData>(config: DbConfig<TData>) => {
     if (!loaded) {
       console.log("[%s] No data loaded. Load data", config.watchPath);
       loaded = await reload(now);
-    }
-    else {
+    } else {
       if (changemarkData[config.watchPath] && changemarkData[config.watchPath] > now) {
         console.log("[%s] Change detected. Reload data", config.watchPath);
         loaded = await reload(now);

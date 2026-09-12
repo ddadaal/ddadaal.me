@@ -27,46 +27,44 @@ interface Props {
   recordView?: boolean;
 }
 
-export const ArticleFrontmatter = ({ articleId, info, className, langVersions, recordView = false }: Props) => {
+export const ArticleFrontmatter = ({
+  articleId,
+  info,
+  className,
+  langVersions,
+  recordView = false,
+}: Props) => {
   const i18n = useI18n();
 
   return (
-
     <div className={classNames("flex flex-wrap gap-3 my-2 text-sm", className)}>
-      {
-        info.tags
-          ? (
-              <div
-                className="flex flex-wrap gap-1 items-center"
-              >
-                <FaTag />
-                {info.tags.map((x) => (
-                  <Link
-                    href={{ pathname: "/articles/search", query: { query: x } }}
-                    key={x}
-                    className="badge badge-accent mx-0.5 text-accent-content"
-                  >
-                    {getLocaleTag(i18n.currentLanguage.id, x)}
-                  </Link>
-                ))}
-              </div>
-            )
-          : undefined
-      }
+      {info.tags ? (
+        <div className="flex flex-wrap gap-1 items-center">
+          <FaTag />
+          {info.tags.map((x) => (
+            <Link
+              href={{ pathname: "/articles/search", query: { query: x } }}
+              key={x}
+              className="badge badge-accent mx-0.5 text-accent-content"
+            >
+              {getLocaleTag(i18n.currentLanguage.id, x)}
+            </Link>
+          ))}
+        </div>
+      ) : undefined}
       <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.date")}>
         <FaCalendar />
         <span className="mx-0.5">{formatDateTime(fromArticleTime(info.date))}</span>
       </div>
-      {
-        info.last_updated
-          ? (
-              <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.lastUpdated")}>
-                <FaCalendarPlus />
-                <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
-              </div>
-            )
-          : undefined
-      }
+      {info.last_updated ? (
+        <div
+          className="flex items-center"
+          title={i18n.translateToString("articleFrontmatter.lastUpdated")}
+        >
+          <FaCalendarPlus />
+          <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
+        </div>
+      ) : undefined}
       <div className="flex items-center">
         <FaFileWord />
         <span className="mx-0.5">
@@ -86,7 +84,10 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions, r
             <Link
               key={x}
               className="link link-hover"
-              href={join(getArticleBasePath({ id: articleId, absolute_path: info.absolute_path }), x)}
+              href={join(
+                getArticleBasePath({ id: articleId, absolute_path: info.absolute_path }),
+                x,
+              )}
             >
               {Object.values(languages).find((y) => y.simplified === x)?.name ?? x}
             </Link>
@@ -95,6 +96,5 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions, r
       </div>
       <ArticleViewCount articleId={articleId} recordView={recordView} />
     </div>
-
   );
 };

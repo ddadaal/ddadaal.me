@@ -22,23 +22,18 @@ export const ArticleList = ({ articles, pageNum, totalPages, tagCounts, articleC
       </div>
       <div className="space-y-8">
         {articles.map((article) => (
-          <ArticleListItem
-            key={article.id}
-            article={article}
-          />
+          <ArticleListItem key={article.id} article={article} />
         ))}
       </div>
       <div className="flex justify-center w-full my-4">
         <div className="join flex-wrap">
-          {
-            Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
-              <Link key={x} href={`/articles/${x.toString()}`}>
-                <button className={classNames("join-item", "btn", { "btn-active": x === pageNum })}>
-                  {x}
-                </button>
-              </Link>
-            ))
-          }
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((x) => (
+            <Link key={x} href={`/articles/${x.toString()}`}>
+              <button className={classNames("join-item", "btn", { "btn-active": x === pageNum })}>
+                {x}
+              </button>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

@@ -12,7 +12,10 @@ if (!existsSync(CHANGEMARK_JSON_FILE)) {
 }
 
 const updateChangemark = (watchDir: string) => {
-  const currentChangemark = JSON.parse(readFileSync(CHANGEMARK_JSON_FILE, "utf-8")) as Record<string, number>;
+  const currentChangemark = JSON.parse(readFileSync(CHANGEMARK_JSON_FILE, "utf-8")) as Record<
+    string,
+    number
+  >;
 
   currentChangemark[watchDir] = Date.now();
 
@@ -20,10 +23,7 @@ const updateChangemark = (watchDir: string) => {
 };
 
 export const defineDataSource = (watchDir: string) => {
-
   if (arg === "watch") {
-
-
     console.log("[%s] Watching for changes", watchDir);
     updateChangemark(watchDir);
 

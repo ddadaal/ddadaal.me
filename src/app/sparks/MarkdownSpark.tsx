@@ -6,10 +6,6 @@ import remarkRehype from "remark-rehype";
 import { rehypeReactOptions } from "src/components/article/ArticleContent";
 import { unified } from "unified";
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 export async function MarkdownSpark({ content }: { content: string }) {
   const file = await unified()
     .use(remarkParse)

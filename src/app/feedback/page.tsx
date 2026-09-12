@@ -22,10 +22,7 @@ export default function Feedback() {
         </p>
         <Contacts size={2} className="justify-center" />
       </div>
-      <CommentPanelWithCurrentLanguage
-        articleId="feedback"
-        articleTitle="反馈"
-      />
+      <CommentPanelWithCurrentLanguage articleId="feedback" articleTitle="反馈" />
     </div>
   );
 }

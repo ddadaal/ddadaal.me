@@ -17,14 +17,17 @@ dotenv.config({ path: ".env" });
 const summarierMap: Record<string, (() => Summarizer) | undefined> = {
   "azure-language": createAzureLanguageSummarier,
   "azure-ai": createAzureAiSummarizer,
-  "ollama": createOllamaSummarizer,
+  ollama: createOllamaSummarizer,
 };
 
 const summarizerOrder = ["azure-ai", "ollama", "azure-language"];
 
 const env = cleanEnv(process.env, {
   ENABLED_SUMMARIZERS: str({
-    desc: "The summarizers to use, separated by ,. Available values: " + Object.keys(summarierMap).join(",") }),
+    desc:
+      "The summarizers to use, separated by ,. Available values: " +
+      Object.keys(summarierMap).join(","),
+  }),
 });
 
 const summarizers = env.ENABLED_SUMMARIZERS.split(",")
@@ -33,7 +36,9 @@ const summarizers = env.ENABLED_SUMMARIZERS.split(",")
     const constructor: (() => Summarizer) | undefined = summarierMap[x];
 
     if (!constructor) {
-      throw new Error(`Unknown summarizer: ${x}. Available values: ${Object.keys(summarierMap).join(",")}`);
+      throw new Error(
+        `Unknown summarizer: ${x}. Available values: ${Object.keys(summarierMap).join(",")}`,
+      );
     }
 
     return constructor();
@@ -63,9 +68,15 @@ export interface Summarizer {
   summarize(text: string, languageCode: string): Promise<SummaryResult[]>;
 }
 
-const { positionals, values: { force } } = parseArgs({ allowPositionals: true, options: {
-  force: { type: "boolean", alias: "f", description: "Force to summarize", default: false },
-} });
+const {
+  positionals,
+  values: { force },
+} = parseArgs({
+  allowPositionals: true,
+  options: {
+    force: { type: "boolean", alias: "f", description: "Force to summarize", default: false },
+  },
+});
 
 function hashContent(content: string): string {
   return createHash("sha256").update(content).digest("hex");
@@ -100,13 +111,16 @@ async function summarizeArticle(articleDir: string) {
       summaryFile = JSON.parse(existingFileContent) as ArticleSummary;
 
       if (!force && contentHash === summaryFile.hash) {
-        log("log", "Article content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization.",
-          frontMatter.id, frontMatter.lang);
+        log(
+          "log",
+          "Article content is not changed after last summarization, --force is not set, and summary of %s of lang %s using %s is already done. Skip summarization.",
+          frontMatter.id,
+          frontMatter.lang,
+        );
 
         continue;
       }
-    }
-    else {
+    } else {
       summaryFile = {
         articleId: frontMatter.id as string,
         lang: frontMatter.lang as string,
@@ -117,9 +131,17 @@ async function summarizeArticle(articleDir: string) {
 
     for (const summarizer of summarizers) {
       summaryFile.hash = contentHash;
-      summaryFile.summaries = summaryFile.summaries.filter((x) => x.metadata.summarizer !== summarizer.name);
+      summaryFile.summaries = summaryFile.summaries.filter(
+        (x) => x.metadata.summarizer !== summarizer.name,
+      );
 
-      log("log", "Summarize %s of lang %s using %s", frontMatter.id, frontMatter.lang, summarizer.name);
+      log(
+        "log",
+        "Summarize %s of lang %s using %s",
+        frontMatter.id,
+        frontMatter.lang,
+        summarizer.name,
+      );
 
       // summarize content
       try {
@@ -127,10 +149,22 @@ async function summarizeArticle(articleDir: string) {
 
         summaryFile.summaries.push(...data);
 
-        log("log", "Summary of %s of lang %s using %s complete", frontMatter.id, frontMatter.lang, summarizer.name);
-      }
-      catch (e) {
-        log("error", "Failed to summarize %s of lang %s using %s. %s", frontMatter.id, frontMatter.lang, summarizer.name, e);
+        log(
+          "log",
+          "Summary of %s of lang %s using %s complete",
+          frontMatter.id,
+          frontMatter.lang,
+          summarizer.name,
+        );
+      } catch (e) {
+        log(
+          "error",
+          "Failed to summarize %s of lang %s using %s. %s",
+          frontMatter.id,
+          frontMatter.lang,
+          summarizer.name,
+          e,
+        );
         continue;
       }
 
@@ -140,9 +174,10 @@ async function summarizeArticle(articleDir: string) {
 
     // order by summarizer name
     // get indexes of summarizers
-    summaryFile.summaries.sort((a, b) =>
-      summarizerOrder.findIndex((x) => x === a.metadata.summarizer)
-      - summarizerOrder.findIndex((x) => x === b.metadata.summarizer),
+    summaryFile.summaries.sort(
+      (a, b) =>
+        summarizerOrder.findIndex((x) => x === a.metadata.summarizer) -
+        summarizerOrder.findIndex((x) => x === b.metadata.summarizer),
     );
   }
 }
@@ -160,7 +195,7 @@ async function main() {
   }
 
   for (const dir of dirs) {
-    if (!(/^([0-9]{8})-/.test(dir))) {
+    if (!/^([0-9]{8})-/.test(dir)) {
       continue;
     }
 

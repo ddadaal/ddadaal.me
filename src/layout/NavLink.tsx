@@ -7,9 +7,11 @@ import { AnchorHTMLAttributes, createElement, PropsWithChildren } from "react";
 import { Localized } from "src/i18n";
 import { NavLink } from "src/layout/Header";
 
-const LinkOrA = (props: PropsWithChildren<
-  AnchorHTMLAttributes<HTMLAnchorElement> & Omit<LinkProps, "href"> & { href: string | undefined }
->) => {
+const LinkOrA = (
+  props: PropsWithChildren<
+    AnchorHTMLAttributes<HTMLAnchorElement> & Omit<LinkProps, "href"> & { href: string | undefined }
+  >,
+) => {
   // @ts-expect-error type is not correct
   return createElement(props.href ? Link : "a", props, props.children);
 };
@@ -26,7 +28,10 @@ export const NavLinkElement = ({ link }: { link: NavLink }) => {
 
   return (
     <li>
-      <LinkOrA href={link.href} className={classNames({ active: link.href ? isActive(link.href, pathname) : false })}>
+      <LinkOrA
+        href={link.href}
+        className={classNames({ active: link.href ? isActive(link.href, pathname) : false })}
+      >
         {link.icon}
         {"label" in link ? link.label : <Localized id={link.labelId} />}
       </LinkOrA>
@@ -41,7 +46,9 @@ export const NavDropdown = ({ link }: { link: NavLink }) => {
     return (
       <li>
         <details>
-          <summary className={classNames({ active: link.href ? isActive(link.href, pathname) : false })}>
+          <summary
+            className={classNames({ active: link.href ? isActive(link.href, pathname) : false })}
+          >
             {link.icon}
             {"label" in link ? link.label : <Localized id={link.labelId} />}
           </summary>
@@ -53,10 +60,7 @@ export const NavDropdown = ({ link }: { link: NavLink }) => {
         </details>
       </li>
     );
-  }
-  else {
-    return (
-      <NavLinkElement link={link} />
-    );
+  } else {
+    return <NavLinkElement link={link} />;
   }
 };

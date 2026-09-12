@@ -13,13 +13,9 @@ lang: cn
 
 [![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fddadaal%2Fddadaal.me%2Fbadge&style=flat-square)](https://actions-badge.atrox.dev/ddadaal/ddadaal.me/goto)
 
-ddadaal.me是一个基于Gatsby开发的网站，并未使用现成网站/博客框架（例如WordPress, Typecho、Hexo等），欢迎讨论和贡献本项目。
+ddadaal.me是一个基于Next.js，并未使用现成网站/博客框架（例如WordPress, Typecho、Hexo等），欢迎讨论和贡献本项目。
 
 项目地址：https://github.com/ddadaal/ddadaal.me
-
-# 一个个人博客的史诗
-
-ddadaal.me经历了很多，才变成你现在看到这个网站。想知道ddadaal.me、其前身VicBlog和我在这个从2010年开始的史诗中的经历，请看[一个个人博客的史诗](/about/odyssey/cn).
 
 # 历史实现
 

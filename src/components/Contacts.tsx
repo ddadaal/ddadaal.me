@@ -2,10 +2,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import React from "react";
 import { IconType } from "react-icons";
-import {
-  FaGithub, FaLinkedin,
-  FaMailBulk, FaQq, FaSteam, FaZhihu,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaMailBulk, FaQq, FaSteam, FaZhihu } from "react-icons/fa";
 import { SiDouban } from "react-icons/si";
 
 interface Props {
@@ -20,13 +17,22 @@ const contacts = [
   [FaMailBulk, "mailto://ddadaal.me@outlook.com", "E-mail: ddadaal@outlook.com"],
   [FaLinkedin, "https://www.linkedin.com/in/chenjunda/", "LinkedIn: 陈俊达"],
   [FaGithub, "https://github.com/ddadaal", "GitHub: ddadaal"],
-  [FaSteam, "https://steamcommunity.com/profiles/76561198104889782",
-    "Steam: Victor Crubs"],
+  [FaSteam, "https://steamcommunity.com/profiles/76561198104889782", "Steam: Victor Crubs"],
   [FaZhihu, "https://zhihu.com/people/VicCrubs", "知乎：陈俊达"],
   [SiDouban, "https://www.douban.com/people/183064260/", "豆瓣: ddadaal"],
 ] as const;
 
-const Icon = ({ Src, link, text, size }: { Src: IconSrc; link: string; text: string; size: number }) => {
+const Icon = ({
+  Src,
+  link,
+  text,
+  size,
+}: {
+  Src: IconSrc;
+  link: string;
+  text: string;
+  size: number;
+}) => {
   const sizeInPx = size * 14;
 
   return (
@@ -37,9 +43,11 @@ const Icon = ({ Src, link, text, size }: { Src: IconSrc; link: string; text: str
       className="block transition hover:scale-125"
       rel="noreferrer"
     >
-      {typeof Src === "object"
-        ? <Image src={Src} alt={text} height={sizeInPx} width={sizeInPx} />
-        : <Src size={sizeInPx} />}
+      {typeof Src === "object" ? (
+        <Image src={Src} alt={text} height={sizeInPx} width={sizeInPx} />
+      ) : (
+        <Src size={sizeInPx} />
+      )}
     </a>
   );
 };

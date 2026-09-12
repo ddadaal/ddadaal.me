@@ -76,7 +76,9 @@ export const readArticleFromDir = async (dir: string) => {
     if (!item) {
       item = {
         id: typedData.id,
-        folderDate: folderDate ? { year: +folderDate[1], month: +folderDate[2], day: +folderDate[3] } : undefined,
+        folderDate: folderDate
+          ? { year: +folderDate[1], month: +folderDate[2], day: +folderDate[3] }
+          : undefined,
         langVersions: [],
       };
     }
@@ -88,7 +90,9 @@ export const readArticleFromDir = async (dir: string) => {
     const summariesFilePath = join(dir, `${typedData.lang}.summary.json`);
 
     if (existsSync(summariesFilePath)) {
-      const articleSummary = JSON.parse(await readFile(summariesFilePath, "utf-8")) as ArticleSummary;
+      const articleSummary = JSON.parse(
+        await readFile(summariesFilePath, "utf-8"),
+      ) as ArticleSummary;
 
       summary = articleSummary;
     }
@@ -143,7 +147,10 @@ export const readArticles = async (includeUnlisted = false) => {
 
     const item = await readArticleFromDir(path);
 
-    if (item && (includeUnlisted || (item.folderDate && item.langVersions.every((x) => !x.ignored_in_list)))) {
+    if (
+      item &&
+      (includeUnlisted || (item.folderDate && item.langVersions.every((x) => !x.ignored_in_list)))
+    ) {
       articles.push(item);
     }
   }
@@ -154,8 +161,10 @@ export const readArticles = async (includeUnlisted = false) => {
       return 0;
     }
 
-    return new Date(b.folderDate.year, b.folderDate.month - 1, b.folderDate.day).getTime()
-      - new Date(a.folderDate.year, a.folderDate.month - 1, a.folderDate.day).getTime();
+    return (
+      new Date(b.folderDate.year, b.folderDate.month - 1, b.folderDate.day).getTime() -
+      new Date(a.folderDate.year, a.folderDate.month - 1, a.folderDate.day).getTime()
+    );
   });
 
   return articles;

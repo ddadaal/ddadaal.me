@@ -28,7 +28,10 @@ interface Props {
   article: Article;
 }
 
-export const ArticleImageServer = async ({ article, imageProps }: Props & {
+export const ArticleImageServer = async ({
+  article,
+  imageProps,
+}: Props & {
   imageProps: ArticleImageProps["imageProps"];
 }) => {
   const src = imageProps.src;
@@ -62,9 +65,6 @@ export const ArticleImageServer = async ({ article, imageProps }: Props & {
 export const rehypeReactOptions = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
 
 export const parseArticleContent = async (article: Article) => {
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-  /* eslint-disable @typescript-eslint/no-unsafe-call */
-  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -79,15 +79,18 @@ export const parseArticleContent = async (article: Article) => {
     .use(rehypeReact, {
       ...rehypeReactOptions,
       components: {
-        img: ((props) => <ArticleImageServer article={article} imageProps={props} />) satisfies
-          ComponentType<React.JSX.IntrinsicElements["img"]>,
-        h1: ((props) => <HeadingWithLink element="h1" props={props} />) satisfies
-          ComponentType<React.JSX.IntrinsicElements["h1"]>,
-        h2: ((props) => <HeadingWithLink element="h2" props={props} />) satisfies
-          ComponentType<React.JSX.IntrinsicElements["h2"]>,
-        h3: ((props) => <HeadingWithLink element="h3" props={props} />) satisfies
-          ComponentType<React.JSX.IntrinsicElements["h3"]>,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        img: ((props) => (
+          <ArticleImageServer article={article} imageProps={props} />
+        )) satisfies ComponentType<React.JSX.IntrinsicElements["img"]>,
+        h1: ((props) => <HeadingWithLink element="h1" props={props} />) satisfies ComponentType<
+          React.JSX.IntrinsicElements["h1"]
+        >,
+        h2: ((props) => <HeadingWithLink element="h2" props={props} />) satisfies ComponentType<
+          React.JSX.IntrinsicElements["h2"]
+        >,
+        h3: ((props) => <HeadingWithLink element="h3" props={props} />) satisfies ComponentType<
+          React.JSX.IntrinsicElements["h3"]
+        >,
         "mermaid-diagram": MermaidDiagram as any,
       },
     } as RehypeReactOptions)
@@ -110,17 +113,18 @@ async function parseSummarization(content: string) {
 }
 
 export const ArticleContent = async ({ article }: Props) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const file: any = await parseArticleContent(article);
 
   const summaries = article.summary
-    ? await Promise.all(article.summary.summaries.map(async (x) => {
-      const children = await parseSummarization(x.summaries.join("\n\n"));
-      return {
-        metadata: x.metadata,
-        children,
-      };
-    }))
+    ? await Promise.all(
+        article.summary.summaries.map(async (x) => {
+          const children = await parseSummarization(x.summaries.join("\n\n"));
+          return {
+            metadata: x.metadata,
+            children,
+          };
+        }),
+      )
     : undefined;
 
   const showToc = !article.no_toc && file.data.toc && file.data.toc.length > 0;
@@ -128,26 +132,16 @@ export const ArticleContent = async ({ article }: Props) => {
   return (
     <div className="flex flex-row space-x-4">
       <div className={classNames("prose", "max-w-full", { "lg:w-[75%]": showToc })}>
-        {
-          summaries
-            ? (
-                <ArticleSummarization summaries={summaries} />
-              )
-            : undefined
-        }
+        {summaries ? <ArticleSummarization summaries={summaries} /> : undefined}
         <Gallery withCaption id={article.id}>
           {file.result}
         </Gallery>
       </div>
-      {
-        showToc && file.data.toc
-          ? (
-              <div className="hidden lg:block lg:w-[25%]">
-                <ArticleToc toc={file.data.toc} hasSummary={!!article.summary} />
-              </div>
-            )
-          : undefined
-      }
+      {showToc && file.data.toc ? (
+        <div className="hidden lg:block lg:w-[25%]">
+          <ArticleToc toc={file.data.toc} hasSummary={!!article.summary} />
+        </div>
+      ) : undefined}
     </div>
   );
 };

@@ -23,13 +23,13 @@ const TocMenuEntry = ({ entry: { depth, value, children, id } }: { entry: TocEnt
       >
         {value}
       </a>
-      {(depth <= MAX_DEPTH && children && children.length > 0)
-        ? (
-            <ul className="pl-2 border-l border-neutral">
-              {children.map((x) => <TocMenuEntry key={x.id} entry={x} />)}
-            </ul>
-          )
-        : undefined}
+      {depth <= MAX_DEPTH && children && children.length > 0 ? (
+        <ul className="pl-2 border-l border-neutral">
+          {children.map((x) => (
+            <TocMenuEntry key={x.id} entry={x} />
+          ))}
+        </ul>
+      ) : undefined}
     </li>
   );
 };
@@ -83,11 +83,15 @@ export const ArticleToc = ({ toc, hasSummary }: Props) => {
 
   if (hasSummary) {
     toc = [
-      { depth: 0, value: (
-        <span className="font-bold">
-          <Localized id="articlePage.toc.summary" />
-        </span>
-      ), id: "summary" },
+      {
+        depth: 0,
+        value: (
+          <span className="font-bold">
+            <Localized id="articlePage.toc.summary" />
+          </span>
+        ),
+        id: "summary",
+      },
       ...toc,
     ];
   }
@@ -102,9 +106,9 @@ export const ArticleToc = ({ toc, hasSummary }: Props) => {
         </span>
       </div>
       <ul className="pl-2 border-l border-neutral">
-        {
-          toc.map((x) => <TocMenuEntry key={x.id} entry={x} />)
-        }
+        {toc.map((x) => (
+          <TocMenuEntry key={x.id} entry={x} />
+        ))}
       </ul>
     </div>
   );

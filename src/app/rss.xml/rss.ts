@@ -18,9 +18,6 @@ import { unified } from "unified";
 const renderContent = async (content: string, articleFilePath: string): Promise<string> => {
   const articleDirPath = dirname(articleFilePath);
 
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-  /* eslint-disable @typescript-eslint/no-unsafe-call */
-  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)

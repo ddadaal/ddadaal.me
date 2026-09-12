@@ -21,9 +21,13 @@ export async function GET(_request: NextRequest, props: { params: Promise<{ path
     const root = await realpath(resolve("contents"));
     const fullPath = await realpath(resolve(...path));
     const relativePath = relative(root, fullPath);
-    if (!relativePath || relativePath === ".." || relativePath.startsWith(`..${sep}`)
-      || [".md", ".mdx"].includes(extname(fullPath).toLowerCase())
-      || fullPath.endsWith(".summary.json")) {
+    if (
+      !relativePath ||
+      relativePath === ".." ||
+      relativePath.startsWith(`..${sep}`) ||
+      [".md", ".mdx"].includes(extname(fullPath).toLowerCase()) ||
+      fullPath.endsWith(".summary.json")
+    ) {
       return notFound();
     }
 
@@ -32,16 +36,18 @@ export async function GET(_request: NextRequest, props: { params: Promise<{ path
       return notFound();
     }
 
-    return new NextResponse(Readable.toWeb(createReadStream(fullPath)) as ReadableStream<Uint8Array>, {
-      headers: {
-        "Content-Type": lookup(fullPath) || "application/octet-stream",
-        "Content-Length": String(fileStat.size),
-        "Cache-Control": "public, max-age=3600",
-        "X-Content-Type-Options": "nosniff",
+    return new NextResponse(
+      Readable.toWeb(createReadStream(fullPath)) as ReadableStream<Uint8Array>,
+      {
+        headers: {
+          "Content-Type": lookup(fullPath) || "application/octet-stream",
+          "Content-Length": String(fileStat.size),
+          "Cache-Control": "public, max-age=3600",
+          "X-Content-Type-Options": "nosniff",
+        },
       },
-    });
-  }
-  catch (error) {
+    );
+  } catch (error) {
     if (["ENOENT", "ENOTDIR", "EACCES"].includes((error as NodeJS.ErrnoException).code ?? "")) {
       return notFound();
     }

@@ -3,21 +3,29 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { HTMLAttributeAnchorTarget, InputHTMLAttributes, Suspense, useEffect, useState } from "react";
+import {
+  HTMLAttributeAnchorTarget,
+  InputHTMLAttributes,
+  Suspense,
+  useEffect,
+  useState,
+} from "react";
 import { FaCode, FaGlobe, FaRegCommentDots, FaRss, FaSearch, FaTags } from "react-icons/fa";
 import { getLocaleTag } from "src/data/tags";
 import { Localized, useI18n } from "src/i18n";
 
 import styles from "./search.module.css";
 
-const IconLink = ({ href, children, target }: {
-  href: string; children: React.ReactNode; target?: HTMLAttributeAnchorTarget;
+const IconLink = ({
+  href,
+  children,
+  target,
+}: {
+  href: string;
+  children: React.ReactNode;
+  target?: HTMLAttributeAnchorTarget;
 }) => (
-  <Link
-    className="link link-hover flex items-center my-1 space-x-1"
-    href={href}
-    target={target}
-  >
+  <Link className="link link-hover flex items-center my-1 space-x-1" href={href} target={target}>
     {children}
   </Link>
 );
@@ -27,27 +35,20 @@ export const WebsiteCard = () => {
     <div className="card card-bordered bg-base-100 shadow-xl">
       <div className="card-body">
         <h2 className="card-title">
-          <FaGlobe />
-          {" "}
-          ddadaal.me |
-          {" "}
-          <Localized id="blogIntro.subtitle" />
+          <FaGlobe /> ddadaal.me | <Localized id="blogIntro.subtitle" />
         </h2>
         <p>
           <Localized id="blogIntro.description2" />
         </p>
         <div>
-          <IconLink
-            href="https://github.com/ddadaal/ddadaal.me"
-            target="_blank"
-          >
+          <IconLink href="https://github.com/ddadaal/ddadaal.me" target="_blank">
             <FaCode />
-            <span><Localized id="blogIntro.sourceCode" /></span>
+            <span>
+              <Localized id="blogIntro.sourceCode" />
+            </span>
           </IconLink>
           <IconLink href="/rss.xml" target="_blank">
-            <FaRss />
-            {" "}
-            <span>RSS</span>
+            <FaRss /> <span>RSS</span>
           </IconLink>
           <IconLink href="/feedback">
             <FaRegCommentDots />
@@ -115,16 +116,17 @@ interface SearchCardProps {
 
 const SearchBarInput = (props: InputHTMLAttributes<HTMLInputElement>) => {
   return (
-    <input
-      type="text"
-      className="input input-bordered flex-1"
-      autoComplete="off"
-      {...props}
-    />
+    <input type="text" className="input input-bordered flex-1" autoComplete="off" {...props} />
   );
 };
 
-const QuerySyncedSearchBarInput = ({ placeholder, name }: { placeholder: string; name: string }) => {
+const QuerySyncedSearchBarInput = ({
+  placeholder,
+  name,
+}: {
+  placeholder: string;
+  name: string;
+}) => {
   const searchParams = useSearchParams();
 
   const query = searchParams.get("query") ?? undefined;
@@ -151,7 +153,9 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
 
   const router = useRouter();
 
-  const inputPlaceholder = i18n.translateToString("search.inputPlaceholder", [articleCount.toString()]);
+  const inputPlaceholder = i18n.translateToString("search.inputPlaceholder", [
+    articleCount.toString(),
+  ]);
 
   return (
     <div className={classNames("form-control my-2", { [styles.search_bar]: showTags })}>
@@ -173,15 +177,11 @@ export const SearchBar = ({ articleCount, showTags, tagCounts }: SearchCardProps
           <FaSearch />
         </button>
       </form>
-      {
-        showTags
-          ? (
-              <div className={classNames("hidden p-4 shadow", styles.search_bar_tags)}>
-                <TagsPanel tagCounts={tagCounts} />
-              </div>
-            )
-          : undefined
-      }
+      {showTags ? (
+        <div className={classNames("hidden p-4 shadow", styles.search_bar_tags)}>
+          <TagsPanel tagCounts={tagCounts} />
+        </div>
+      ) : undefined}
     </div>
   );
 };

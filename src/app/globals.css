@@ -29,5 +29,17 @@
 @plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
-  themes: light --default, dark --preferdark, cupcake, bumblebee, corporate, business, luxury, lemonade, emerald, retro, valentine, cyberpunk;
+  themes:
+    light --default,
+    dark --preferdark,
+    cupcake,
+    bumblebee,
+    corporate,
+    business,
+    luxury,
+    lemonade,
+    emerald,
+    retro,
+    valentine,
+    cyberpunk;
 }

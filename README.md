@@ -34,7 +34,7 @@ Currently it is built with [Next.js](https://nextjs.org/) and deployed as a stan
 - [react-typed-i18n](https://github.com/ddadaal/react-typed-i18n): a self-made dynamic and strongly-typed i18n library utilizing [Template Literal Types](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icons
-- [ESLint](https://eslint.org/): Linting
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter/) and [Oxfmt](https://oxc.rs/docs/guide/usage/formatter/): Linting and formatting
 - [editorconfig](https://editorconfig.org/): Editor configuration
 - [Docker](https://www.docker.com/): standalone server deployment
 - [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
@@ -43,7 +43,7 @@ Currently it is built with [Next.js](https://nextjs.org/) and deployed as a stan
 
 We are using [pnpm](https://pnpm.io) for package management.
 
-``` bash
+```bash
 # install dependencies
 pnpm install
 
@@ -55,6 +55,13 @@ pnpm build
 
 # **After build**, serve the production build locally
 pnpm start
+
+# check lint rules and formatting
+pnpm lint
+pnpm format:check
+
+# format supported source files
+pnpm format
 ```
 
 Generate or update article data with:
