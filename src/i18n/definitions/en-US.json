@@ -105,6 +105,7 @@
     "lastUpdated": "Last Updated Time",
     "wordCount": "{} words",
     "timeToRead": "{} mins read",
+    "views": "{} views",
     "tagLinkTitle": "Search articles tagged with {}"
   },
   "articleItem": {

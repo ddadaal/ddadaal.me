@@ -1,7 +1,8 @@
-name: build and deploy
+name: build
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - master
@@ -21,13 +22,13 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: build
-        run: pnpm build
+      - uses: docker/setup-buildx-action@v3
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
         with:
-          repository-name: ddadaal/ddadaal.me.github.io
-          folder: out
-          token: ${{ secrets.ACTIONS_TOKEN }}
-          branch: master
+          context: .
+          push: false
+          tags: ddadaal-me:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

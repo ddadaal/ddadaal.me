@@ -125,7 +125,7 @@ export const readArticleFromDir = async (dir: string) => {
 
 const IGNORED_DIRS = ["sparks"];
 
-export const readArticles = async () => {
+export const readArticles = async (includeUnlisted = false) => {
   const articleDirs = await readdir(CONTENT_DIR);
 
   const articles: ArticleItem[] = [];
@@ -143,7 +143,7 @@ export const readArticles = async () => {
 
     const item = await readArticleFromDir(path);
 
-    if (item?.folderDate && item.langVersions.every((x) => !x.ignored_in_list)) {
+    if (item && (includeUnlisted || (item.folderDate && item.langVersions.every((x) => !x.ignored_in_list)))) {
       articles.push(item);
     }
   }
@@ -164,6 +164,12 @@ export const readArticles = async () => {
 export const readArticlesCached = createDataSource({
   watchPath: CONTENT_DIR,
   loader: readArticles,
+});
+
+// Includes article pages outside the blog list, such as /about/me.
+export const readAllArticlesCached = createDataSource({
+  watchPath: CONTENT_DIR,
+  loader: () => readArticles(true),
 });
 
 export interface ArticleListInfo {
