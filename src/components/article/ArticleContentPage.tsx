@@ -6,6 +6,7 @@ import { formatDateTime, fromArticleTime } from "src/utils/datetime";
 
 import { ArticleContent } from "./ArticleContent";
 import { ArticleFrontmatter } from "./ArticleFrontmatter";
+import { ArticleViewCount } from "./ArticleViewCount";
 
 interface Props {
   article: Article;
@@ -35,7 +36,7 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
     <article>
       {
         article.hide_heading
-          ? undefined
+          ? <ArticleViewCount articleId={article.id} recordView hidden />
           : (
               <Heading>
                 <h1 className="text-4xl my-2">
@@ -46,6 +47,7 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
                   articleId={article.id}
                   info={article}
                   langVersions={langs}
+                  recordView
                 />
               </Heading>
             )

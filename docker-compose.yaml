@@ -1,0 +1,47 @@
+name: ddadaal-me-test
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: "${AZURE_SQL_PASSWORD:-LocalSqlServer!2026}"
+    ports:
+      - "127.0.0.1:${AZURE_SQL_PORT:-1433}:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          SQLCMDPASSWORD="$$MSSQL_SA_PASSWORD"
+          /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b
+          -Q "SELECT 1" -o /dev/null
+      interval: 5s
+      timeout: 5s
+      start_period: 20s
+      retries: 20
+
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      SQLCMDPASSWORD: "${AZURE_SQL_PASSWORD:-LocalSqlServer!2026}"
+    entrypoint: /opt/mssql-tools18/bin/sqlcmd
+    command:
+      - -S
+      - sqlserver
+      - -U
+      - sa
+      - -C
+      - -b
+      - -Q
+      - "IF DB_ID(N'blog_views_test') IS NULL CREATE DATABASE [blog_views_test];"
+
+volumes:
+  sqlserver-data:

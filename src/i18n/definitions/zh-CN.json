@@ -70,6 +70,7 @@
     "lastUpdated": "最后更新时间",
     "wordCount": "{} 字",
     "timeToRead": "{} 分钟阅读",
+    "views": "{} 次访问",
     "tagLinkTitle": "搜索带有{}标签的文章"
   },
   "comments": {

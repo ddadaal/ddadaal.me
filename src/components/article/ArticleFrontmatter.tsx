@@ -4,6 +4,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { join } from "path";
 import { FaCalendar, FaCalendarPlus, FaClock, FaFileWord, FaGlobe, FaTag } from "react-icons/fa";
+import { ArticleViewCount } from "src/components/article/ArticleViewCount";
 import { getArticleBasePath } from "src/data/articleBasePath";
 import { getLocaleTag } from "src/data/tags";
 import { languages, Localized, useI18n } from "src/i18n";
@@ -23,9 +24,10 @@ interface Props {
   info: ArticleFrontmatterInfo;
   langVersions: string[];
   className?: string;
+  recordView?: boolean;
 }
 
-export const ArticleFrontmatter = ({ articleId, info, className, langVersions }: Props) => {
+export const ArticleFrontmatter = ({ articleId, info, className, langVersions, recordView = false }: Props) => {
   const i18n = useI18n();
 
   return (
@@ -91,6 +93,7 @@ export const ArticleFrontmatter = ({ articleId, info, className, langVersions }:
           ))}
         </span>
       </div>
+      <ArticleViewCount articleId={articleId} recordView={recordView} />
     </div>
 
   );

@@ -4,5 +4,6 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || "https://ddadaal.me",
   generateRobotsTxt: true,
-  outDir: "./out",
+  outDir: "./public",
+  exclude: ["/api/*", "/articles/asset/*"],
 };

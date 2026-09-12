@@ -7,13 +7,13 @@
 
 ddadaal.me (previously VicBlog) is the personal website of [ddadaal](https://ddadaal.me).
 
-Currently it is built with [Next.js](https://nextjs.org/) and statically exported.
+Currently it is built with [Next.js](https://nextjs.org/) and deployed as a standalone Node.js server in Docker.
 
 [Check it out now!](https://ddadaal.me)
 
 ## Features
 
-- Static website with modern web technologies
+- Next.js server with prerendered articles and live page view counts stored in Azure SQL
 - Styled using plain HTML and CSS to style with **12** themes to choose
 - Layout and data logic built from scratch
 - Synchronous & Native **Search** using [minisearch](https://lucaong.github.io/minisearch/)
@@ -30,34 +30,95 @@ Currently it is built with [Next.js](https://nextjs.org/) and statically exporte
 - [Next.js](https://nextjs.org/): The React framework
 - [TypeScript](https://www.typescriptlang.org/): the new go-to for any JavaScript projects
 - [Tailwind](https://tailwindcss.com/): Build beautiful website using just HTML
-- [daisyui](https://daisyui.com/): Simple Tailwind based UI component library without any JS
-- [react-typed-i18n](https://github.com/ddadaal/react-typed-i18n): a self-made dynamic and strongly-typed i18n library utilizing TypeScript's [Template Literal Types](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
+- [daisyui](https://daisyui.com/): Simple Tailwind based UI to style with **12** themes to choose
+- [react-typed-i18n](https://github.com/ddadaal/react-typed-i18n): a self-made dynamic and strongly-typed i18n library utilizing [Template Literal Types](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
 - [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
-- [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icon library for React
-- [ESLint](https://eslint.org/): Linter
-- [editorconfig](https://editorconfig.org/): unify code editor preferences
-- [GitHub Pages](https://pages.github.com): free and popular static website host
+- [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icons
+- [ESLint](https://eslint.org/): Linting
+- [editorconfig](https://editorconfig.org/): Editor configuration
+- [Docker](https://www.docker.com/): standalone server deployment
 - [GitHub Actions](https://github.com/features/actions): CI/CD built directly into the repo!
 
 ## Development
 
 We are using [pnpm](https://pnpm.io) for package management.
 
-Notice: If an environment variable is named `GITHUB_TOKEN`, it will be used to authenticate GitHub requests to fetch slides (to get higher rate limit for CI). If it does not exist, an anonymous request is used, which is adequate for local development.
-
 ``` bash
 # install dependencies
 pnpm install
 
-# serve with hot reload at localhost:8000
+# serve with hot reload at localhost:3000
 pnpm dev
 
 # run production build
 pnpm build
 
 # **After build**, serve the production build locally
-pnpm serve
+pnpm start
 ```
+
+Generate or update article data with:
+
+```bash
+pnpm build:data
+```
+
+After editing `src/db/schema.ts`, generate and review the next Drizzle migration:
+
+```bash
+pnpm db:generate
+```
+
+## Article view counts and SQL Server
+
+The database layer uses Drizzle ORM's native `node-mssql` adapter. SQL Server support currently requires the release candidate, so `drizzle-orm` and `drizzle-kit` are pinned to `1.0.0-rc.4`. The table is defined in [src/db/schema.ts](src/db/schema.ts), and versioned SQL migrations are committed in `drizzle/`.
+
+For local development, copy `.env.test.example` to `.env.local` and use the SQL Server container described below. The application runs pending Drizzle migrations at startup after the target database has been provisioned. It does not create databases automatically.
+
+```bash
+# Reads .env.local, then .env; existing process environment takes precedence.
+pnpm db:migrate
+```
+
+Drizzle tracks applied migrations, so running `pnpm db:migrate` again preserves existing counts. Migrations never run during image build or a visitor request. For integration tests, point the `AZURE_SQL_*` environment variables at a dedicated SQL Server database whose name ends in `_test`, then run `pnpm test:db`.
+
+Each article page opening (including refreshes and client navigation) records a page view after the browser mounts the page. Translations and the default URL share the same article ID and total. About pages are also counted. Lists, search, prerendering, link prefetches, and requests without browser JavaScript do not increment counts.
+
+View counts appear alongside the date and reading time in article list items, search results, and article headers. Lists and search results fetch totals with GET; only opening an article records a view.
+
+`POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve SQL `bigint` precision. Unknown IDs return 404. Responses are never cached. If SQL is unconfigured or unavailable, these endpoints return 503 and the article remains readable with its counter hidden.
+
+## Local SQL Server for development and tests
+
+[docker-compose.yaml](docker-compose.yaml) runs SQL Server 2022 Developer on `localhost:1433`, with a health check and a named volume for its data. The `sqlserver-init` service creates `blog_views_test` if it does not already exist. Its name is compatible with the database integration tests.
+
+```bash
+cp .env.test.example .env.local
+docker compose --env-file .env.local up -d --wait sqlserver
+docker compose --env-file .env.local run --rm sqlserver-init
+
+# Apply Drizzle migrations to the local test database.
+pnpm db:migrate
+
+# Generate content metadata, then run the database integration tests.
+pnpm build:data
+pnpm test:db
+
+# Run the blog locally with the same database.
+pnpm dev
+```
+
+If you already have a `.env.local`, merge the values from `.env.test.example` into it. Next.js, Drizzle Kit, and the database tests all read `.env.local`; existing process environment variables take precedence. You can change `AZURE_SQL_PORT` in this file if port 1433 is occupied. The example password is only for local testing; changing it after the data volume has been initialized also requires changing the existing SQL Server login password.
+
+```bash
+# Stop the database and keep its data.
+docker compose --env-file .env.local down
+
+# Reset the local database by removing its data volume.
+docker compose --env-file .env.local down -v
+```
+
+Deployment instructions, including Azure SQL, Docker, ACR, GitHub Actions, and AKS, are in [deploy/README.md](deploy/README.md).
 
 ## License
 

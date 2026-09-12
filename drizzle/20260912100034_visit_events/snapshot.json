@@ -1,0 +1,319 @@
+{
+  "version": "2",
+  "dialect": "mssql",
+  "id": "d6ff276b-a900-4a91-8012-b10dae000542",
+  "prevIds": [
+    "7b99193e-55da-4ace-9aa3-200be8e617f2"
+  ],
+  "ddl": [
+    {
+      "name": "ArticleViews",
+      "entityType": "tables",
+      "schema": "dbo"
+    },
+    {
+      "name": "VisitEvents",
+      "entityType": "tables",
+      "schema": "dbo"
+    },
+    {
+      "type": "nvarchar(256)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ArticleId",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "ArticleViews"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ViewCount",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "ArticleViews"
+    },
+    {
+      "type": "datetime2(3)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "LastViewedAt",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "ArticleViews"
+    },
+    {
+      "type": "nvarchar(36)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "Id",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "datetime2(3)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "OccurredAt",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(64)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "SessionId",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(256)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ArticleId",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(2048)",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "Path",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(2048)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "Referrer",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(256)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "UtmSource",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(256)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "UtmMedium",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(256)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "UtmCampaign",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(64)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "IpHash",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(64)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "Browser",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(64)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "OperatingSystem",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "nvarchar(16)",
+      "notNull": false,
+      "generated": null,
+      "identity": null,
+      "name": "DeviceType",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "IsBot",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "StatusCode",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "generated": null,
+      "identity": null,
+      "name": "ResponseMs",
+      "schema": "dbo",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "columns": [
+        {
+          "value": "ArticleId",
+          "isExpression": false
+        },
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "name": "VisitEvents_Article_Occurred",
+      "entityType": "indexes",
+      "table": "VisitEvents",
+      "schema": "dbo"
+    },
+    {
+      "columns": [
+        {
+          "value": "SessionId",
+          "isExpression": false
+        },
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "name": "VisitEvents_Session_Occurred",
+      "entityType": "indexes",
+      "table": "VisitEvents",
+      "schema": "dbo"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "ArticleId"
+      ],
+      "name": "ArticleViews_pkey",
+      "table": "ArticleViews",
+      "schema": "dbo",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "Id"
+      ],
+      "name": "VisitEvents_pkey",
+      "table": "VisitEvents",
+      "schema": "dbo",
+      "entityType": "pks"
+    },
+    {
+      "column": "ViewCount",
+      "nameExplicit": false,
+      "default": "((0))",
+      "name": "ArticleViews_ViewCount_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "ArticleViews"
+    },
+    {
+      "column": "LastViewedAt",
+      "nameExplicit": false,
+      "default": "(SYSUTCDATETIME())",
+      "name": "ArticleViews_LastViewedAt_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "ArticleViews"
+    },
+    {
+      "column": "OccurredAt",
+      "nameExplicit": false,
+      "default": "(SYSUTCDATETIME())",
+      "name": "VisitEvents_OccurredAt_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "VisitEvents"
+    },
+    {
+      "column": "IsBot",
+      "nameExplicit": false,
+      "default": "((0))",
+      "name": "VisitEvents_IsBot_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "VisitEvents"
+    },
+    {
+      "column": "StatusCode",
+      "nameExplicit": false,
+      "default": "((200))",
+      "name": "VisitEvents_StatusCode_default",
+      "entityType": "defaults",
+      "schema": "dbo",
+      "table": "VisitEvents"
+    },
+    {
+      "value": "[ArticleViews].[ViewCount] >= 0",
+      "name": "ArticleViews_ViewCount_nonnegative",
+      "entityType": "checks",
+      "table": "ArticleViews",
+      "schema": "dbo"
+    }
+  ],
+  "renames": []
+}

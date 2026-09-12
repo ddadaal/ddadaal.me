@@ -1,53 +1,50 @@
 import { createReadStream } from "fs";
-import { readdir, stat } from "fs/promises";
+import { realpath, stat } from "fs/promises";
 import { lookup } from "mime-types";
 import { NextRequest, NextResponse } from "next/server";
+import { extname, relative, resolve, sep } from "path";
 import { Readable } from "stream";
 
-export async function GET(request: NextRequest, props: { params: Promise<{ path: string[] }> }) {
-  const params = await props.params;
-  const fullPath = params.path.join("/");
+export const runtime = "nodejs";
 
-  const fileStat = await stat(decodeURIComponent(fullPath));
+export async function GET(_request: NextRequest, props: { params: Promise<{ path: string[] }> }) {
+  const { path } = await props.params;
+  const notFound = () => new NextResponse(null, { status: 404 });
 
-  const stream = createReadStream(fullPath);
-
-  // @ts-expect-error type is not correct
-  return new NextResponse(Readable.toWeb(stream), {
-    headers: {
-      "Content-Type": lookup(fullPath) || "application/octet-stream",
-      "Content-Length": fileStat.size,
-    },
-  });
-}
-
-export async function generateStaticParams() {
-  // visit all files in contents directory
-  // and return an array of paths
-  // that will be used as static paths
-  // for the prerendering
-
-  const paths: { path: string[] }[] = [];
-
-  async function rec(dir: string[]) {
-    const dirents = await readdir(dir.join("/"), { withFileTypes: true });
-
-    for (const dirent of dirents) {
-      if (dirent.isDirectory()) {
-        await rec(dir.concat(dirent.name));
-        continue;
-      }
-
-      // ignore md and summary json files
-      if (dirent.name.endsWith(".md") || dirent.name.endsWith(".summary.json")) {
-        continue;
-      }
-
-      paths.push({ path: dir.concat(dirent.name) });
-    }
+  if (path[0] !== "contents") {
+    return notFound();
   }
 
-  await rec(["contents"]);
+  try {
+    // Resolve symlinks as well as .. segments before checking the boundary.
+    // Next.js already decodes route parameters; decoding again is unsafe.
+    const root = await realpath(resolve("contents"));
+    const fullPath = await realpath(resolve(...path));
+    const relativePath = relative(root, fullPath);
+    if (!relativePath || relativePath === ".." || relativePath.startsWith(`..${sep}`)
+      || [".md", ".mdx"].includes(extname(fullPath).toLowerCase())
+      || fullPath.endsWith(".summary.json")) {
+      return notFound();
+    }
 
-  return paths;
+    const fileStat = await stat(fullPath);
+    if (!fileStat.isFile()) {
+      return notFound();
+    }
+
+    return new NextResponse(Readable.toWeb(createReadStream(fullPath)) as ReadableStream<Uint8Array>, {
+      headers: {
+        "Content-Type": lookup(fullPath) || "application/octet-stream",
+        "Content-Length": String(fileStat.size),
+        "Cache-Control": "public, max-age=3600",
+        "X-Content-Type-Options": "nosniff",
+      },
+    });
+  }
+  catch (error) {
+    if (["ENOENT", "ENOTDIR", "EACCES"].includes((error as NodeJS.ErrnoException).code ?? "")) {
+      return notFound();
+    }
+    throw error;
+  }
 }

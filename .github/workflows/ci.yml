@@ -1,10 +1,15 @@
-name: build and deploy
+name: build
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - master
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   build:
@@ -21,13 +26,78 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: build
-        run: pnpm build
+      - uses: docker/setup-buildx-action@v3
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Validate AKS deployment settings
+        if: github.event_name != 'pull_request'
+        env:
+          AKS_RESOURCE_GROUP: ${{ vars.AKS_RESOURCE_GROUP }}
+          AKS_CLUSTER_NAME: ${{ vars.AKS_CLUSTER_NAME }}
+          AKS_NAMESPACE: ${{ vars.AKS_NAMESPACE }}
+        run: |
+          set -euo pipefail
+          test -n "$AKS_RESOURCE_GROUP"
+          test -n "$AKS_CLUSTER_NAME"
+          test -n "$AKS_NAMESPACE"
+
+      - name: Sign in to Azure
+        if: github.event_name != 'pull_request'
+        uses: azure/login@v2
         with:
-          repository-name: ddadaal/ddadaal.me.github.io
-          folder: out
-          token: ${{ secrets.ACTIONS_TOKEN }}
-          branch: master
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Sign in to Azure Container Registry
+        if: github.event_name != 'pull_request'
+        id: acr
+        env:
+          ACR_NAME: ${{ vars.ACR_NAME }}
+        run: |
+          set -euo pipefail
+          test -n "$ACR_NAME"
+          az acr login --name "$ACR_NAME"
+          login_server="$(az acr show --name "$ACR_NAME" --query loginServer --output tsv)"
+          echo "login_server=$login_server" >> "$GITHUB_OUTPUT"
+
+      - name: Build Docker image (pull request)
+        if: github.event_name == 'pull_request'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          tags: ddadaal-me/ddadaal-me:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Docker image
+        if: github.event_name != 'pull_request'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ steps.acr.outputs.login_server }}/ddadaal-me/ddadaal-me:${{ github.sha }}
+            ${{ steps.acr.outputs.login_server }}/ddadaal-me/ddadaal-me:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Set AKS context
+        if: github.event_name != 'pull_request'
+        uses: azure/aks-set-context@v4
+        with:
+          resource-group: ${{ vars.AKS_RESOURCE_GROUP }}
+          cluster-name: ${{ vars.AKS_CLUSTER_NAME }}
+          use-kubelogin: 'true'
+
+      - name: Deploy image to AKS
+        if: github.event_name != 'pull_request'
+        env:
+          IMAGE: ${{ steps.acr.outputs.login_server }}/ddadaal-me/ddadaal-me:${{ github.sha }}
+          AKS_NAMESPACE: ${{ vars.AKS_NAMESPACE }}
+        run: |
+          set -euo pipefail
+          test -n "$AKS_NAMESPACE"
+          kubectl -n "$AKS_NAMESPACE" set image deployment/ddadaal-me \
+            ddadaal-me="$IMAGE"
+          kubectl -n "$AKS_NAMESPACE" rollout status deployment/ddadaal-me --timeout=300s
