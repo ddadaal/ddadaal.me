@@ -72,4 +72,28 @@ IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头
 
 这样一套下来，我完全没有任何运维压力。数据库、AKS、扩缩容全部不需要我管，平时的运维也直接用标准的Kubernetes工具链即可，不太需要熟悉其他技术。
 
+## CI/CD
+
+之前的CI/CD很简单：推送代码 -> 构建静态HTML/JS/CSS -> 推送到github pages仓库 -> github pages部署。
+
+现在由于变成了一个完整的网站项目，所以CI/CD也需要较大的改动。推送代码后，GitHub Actions需要：
+
+1. 构建镜像
+2. 推送到ACR
+3. 登录AKS
+4. 触发deployment更新
+
+整个过程中完全没有密码参与：
+
+- GitHub Actions通过OIDC联邦身份认证关联到一个Azure identity，可以直接以这个identity的身份登录Azure
+  - 这个Identity可以Push到ACR（AcrPush role），可以获取AKS的kubeconfig（Azure Kubernetes Service Cluster User Role）
+  - 所以整个CI/CD过程只需要标准的`az cli`命令就可以全部完成。
+- AKS和ACR通过Managed Identity认证，直接可以从ACR拉取镜像
+
+# 后续
+
 后续还打算将我用App Service和VM部署的一些服务全部搬迁到AKS上，减少额外开销的同时进一步统一运维流程。
+
+另外，将博客项目用Next.js写，确实比较简单，但是构建的镜像太大了（300M），推送还挺耗时间的。有了AI后，后续可考虑把博客逻辑改成go写，前端改成vite+react纯前端，最后构建一个十几M的纯go二进制。
+
+在做这个过程中的时候，我又遇到了前两年工作的时候几乎天天接触的Azure的各种概念。这些概念纯学起来非常抽象，真正用起来才直到用处在哪儿。最近工作也接触了一些国产云，感觉国产云在这些管理和开发者友好的功能上还是有一段路要走。
