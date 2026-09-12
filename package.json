@@ -34,7 +34,7 @@
     "classnames": "2.5.1",
     "daisyui": "5.5.14",
     "drizzle-orm": "1.0.0-rc.4",
-    "eslint": "9.39.2",
+    "eslint": "10.10.0",
     "eslint-config-next": "16.1.4",
     "gitalk": "1.8.0",
     "gray-matter": "4.0.3",
