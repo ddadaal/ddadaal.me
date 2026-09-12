@@ -72,8 +72,6 @@ aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%
 
 IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头也就是Node pool的虚拟机，通过计算器估算一个月70/80刀，150刀勉强够用。
 
-这样一套下来，我完全没有任何运维压力。数据库、AKS、扩缩容、TLS证书全部不需要手动管，平时的运维也直接用标准的Kubernetes工具链即可，不太需要熟悉其他技术。
-
 ## CI/CD
 
 之前的CI/CD很简单：推送代码 -> 构建静态HTML/JS/CSS -> 推送到github pages仓库 -> github pages部署。
@@ -91,6 +89,10 @@ IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头
   - 这个Identity可以Push到ACR（AcrPush role），可以获取AKS的kubeconfig（Azure Kubernetes Service Cluster User Role）
   - 所以整个CI/CD过程只需要标准的`az` CLI命令就可以全部完成。
 - AKS和ACR通过Managed Identity认证，直接可以从ACR拉取镜像
+
+这样一套下来，我完全没有任何运维压力。数据库、AKS、扩缩容、TLS证书、部署全部不需要手动管，平时的运维也直接用标准的Kubernetes工具链即可，不太需要熟悉其他技术。
+
+不得不说，Kubernetes生态真的是好东西，不仅是统一了软件的管理，还尽量把不同云服务商之间提供的服务也给统一了，大多数时候只需要和kubernetes本身打交道。之前我有一些服务放在Azure App service上的，其部署、运维都是一套单独的API，要使用就得重新学一整套概念、一整套新的UI以及新的CI/CD。
 
 # 后续
 
