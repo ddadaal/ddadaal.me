@@ -1,0 +1,75 @@
+---
+id: migrate-to-azure
+date: 2026-09-12 19:02
+title: 将博客迁移至Azure并添加访问指标采集
+lang: cn
+tags:
+  - blog
+---
+
+# 将博客迁移至Azure
+
+自从上一次18年将博客重写为一个静态网站后，网站已经在github pages上运行8年了。
+
+这套架构非常简单：所有网站代码以及文章源码全部都在仓库里。要更新网站，直接改代码或者写文章，推送到github上，CI构建网站，把构建好的静态文件推到另一个发布为github pages的仓库[ddadaal/ddadaal.me.github.io](https://github.com/ddadaal/ddadaal.me.github.io)里，更新后的网站就可以访问了。
+
+为什么要折腾了？
+
+## 添加访问指标采集
+
+由于之前是纯静态网站，完全没有办法记录动态的信息。之前的博客的评论数据都是存放在[ddadaal/ddadaal.me.github.io](https://github.com/ddadaal/ddadaal.me.github.io)的Issues里的。
+
+在前AI时代，我也部署过一个简单的访问量采集服务，当时还写了个文章[增加自制博客点击量统计](/articles/added-blog-page-click-monitoring)。这篇文章单独写了一个Node.js服务，本博客中加了一些JS钩子。现在看来，把逻辑分在两个项目里还是太麻烦了。
+
+而在现在AI时代，写一个完整的指标采集服务也是个非常简单的工作，于是一不做二不休，一口气把完整的指标采集都给实现了。
+
+由于访问指标采集会涉及到隐私相关的信息，这里列出目前会采集的信息，并且，由于博客代码纯开源，后续有任何改动，都可以在代码中看出来：
+
+- 文章ID、访问总数、最后访问数据
+- 每次访问的事件 ID、时间、文章路径
+- 访客标识
+- 来源页面
+- 推广来源
+- IP 哈希
+- 浏览器、操作系统、设备类型
+- 是否机器人、状态码和耗时字段
+
+以GDPR的标准来说，其中有的数据已经涉及到个人信息，如可以关联多次访问的IP哈希。但以后有问题再说吧。
+
+## 利用Azure资源
+
+微软一直在给微软员工发150刀每年的Azure订阅。我从2019年第一次在微软实习开始就开始领，并且竟然直到现在这个订阅还生效（感谢微软爸爸），我一直没有充分利用好这些资源。
+
+这次趁着想要添加指标采集的功夫，就直接把整个网站+数据库全部搬迁到Azure。
+
+当前Azure架构
+
+```
+访问 -> [AKS] -> [Azure SQL Server]
+```
+
+整个网站代码本身放在AKS上：
+
+- AKS本身使用最低级的托管等级，免费
+- Node pool使用最便宜的Standard_D2as_v5虚拟机（2C8G），并打开Auto scale，允许1-5个节点自动伸缩。正常运行情况下用量其实挺小的：
+
+```
+❯ kubectl top nodes
+NAME                                CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%  
+```
+
+- 使用Gateway API暴露网站服务到公网
+- 使用cert-manager自动签发TLS证书
+
+数据存放在Azure SQL Server中：
+
+- Azure SQL Server提供免费额度（[官方文档](https://learn.microsoft.com/en-us/azure/azure-sql/database/free-offer?view=azuresql)），10W核心计算时间+32G的数据，对于一个只记录访问数据的服务来说完全够用了
+- Azure SQL Server本身是个SQL Server，用标准的SQL Server库就可以连接
+- [之前给wakapi做SQL Server适配](/articles/support-sqlserver-in-wakapi)的时候也熟悉了一些SQL Server，所以运维托管SQL Server也挺简单的
+
+IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头也就是Node pool的虚拟机，通过计算器估算一个月70/80刀，150刀勉强够用。
+
+这样一套下来，我完全没有任何运维压力。数据库、AKS、扩缩容全部不需要我管，平时的运维也直接用标准的Kubernetes工具链即可，不太需要熟悉其他技术。
+
+后续还打算将我用App Service和VM部署的一些服务全部搬迁到AKS上，减少额外开销的同时进一步统一运维流程。
