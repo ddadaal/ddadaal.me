@@ -43,6 +43,8 @@ Currently it is built with [Next.js](https://nextjs.org/) and deployed as a stan
 
 We are using [pnpm](https://pnpm.io) for package management.
 
+Development and production builds use Node.js 24.x and pnpm 12.4.1.
+
 ```bash
 # install dependencies
 pnpm install

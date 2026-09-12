@@ -1,3 +1,3 @@
-FROM mcr.microsoft.com/devcontainers/typescript-node:18
+FROM mcr.microsoft.com/devcontainers/typescript-node:24-bookworm
 
 RUN corepack enable

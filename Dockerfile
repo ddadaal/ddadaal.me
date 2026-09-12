@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1
-FROM node:22-bookworm-slim AS base
+FROM node:24-bookworm-slim AS base
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 
 FROM base AS dependencies
-RUN npm install --global pnpm@10.4.0
-COPY package.json pnpm-lock.yaml ./
+RUN npm install --global pnpm@12.4.1
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY patches ./patches
 RUN pnpm install --frozen-lockfile
 
