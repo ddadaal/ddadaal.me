@@ -59,11 +59,21 @@ jobs:
         id: acr
         env:
           ACR_NAME: ${{ secrets.ACR_NAME }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         run: |
           set -euo pipefail
           test -n "$ACR_NAME"
-          az acr login --name "$ACR_NAME"
-          login_server="$(az acr show --name "$ACR_NAME" --query loginServer --output tsv)"
+
+          az acr login \
+            --name "$ACR_NAME" \
+            --subscription "$AZURE_SUBSCRIPTION_ID"
+
+          login_server="$(az acr show \
+            --name "$ACR_NAME" \
+            --subscription "$AZURE_SUBSCRIPTION_ID" \
+            --query loginServer \
+            --output tsv)"
+
           echo "login_server=$login_server" >> "$GITHUB_OUTPUT"
 
       - name: Build Docker image (pull request)
