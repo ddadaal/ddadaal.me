@@ -74,7 +74,16 @@
     "tagLinkTitle": "搜索带有{}标签的文章"
   },
   "comments": {
-    "title": " 评论"
+    "title": " 评论",
+    "loading": "正在加载评论……",
+    "error": "评论加载失败。",
+    "empty": "还没有评论。",
+    "login": "使用 GitHub 登录后评论",
+    "placeholder": "写下评论（支持 Markdown）",
+    "submit": "发表评论",
+    "submitting": "正在发表……",
+    "openIssue": "在 GitHub 中打开",
+    "initialize": "发起讨论"
   },
   "articlePage": {
     "title": "文章",

@@ -112,7 +112,16 @@
     "availableLanguages": "Available in "
   },
   "comments": {
-    "title": " Comments"
+    "title": " Comments",
+    "loading": "Loading comments...",
+    "error": "Unable to load comments.",
+    "empty": "No comments yet.",
+    "login": "Sign in with GitHub to comment",
+    "placeholder": "Write a comment (Markdown supported)",
+    "submit": "Comment",
+    "submitting": "Posting...",
+    "openIssue": "Open on GitHub",
+    "initialize": "Start the discussion"
   },
   "selfIntro": {
     "author": "Author",

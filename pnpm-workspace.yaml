@@ -1,5 +1,4 @@
 patchedDependencies:
-  gitalk@1.8.0: patches/gitalk@1.8.0.patch
   react-typed-i18n@2.6.1: patches/react-typed-i18n.patch
 
 allowBuilds:

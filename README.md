@@ -32,7 +32,7 @@ Currently it is built with [Next.js](https://nextjs.org/) and deployed as a stan
 - [Tailwind](https://tailwindcss.com/): Build beautiful website using just HTML
 - [daisyui](https://daisyui.com/): Simple Tailwind based UI to style with **12** themes to choose
 - [react-typed-i18n](https://github.com/ddadaal/react-typed-i18n): a self-made dynamic and strongly-typed i18n library utilizing [Template Literal Types](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html)
-- [gitalk](https://github.com/gitalk/gitalk): a comment system that works out of box
+- Client-only GitHub Issues comment system, compatible with existing Gitalk issues
 - [react-icons](https://github.com/react-icons/react-icons): extremely abundant but easy-to-use icons
 - [Oxlint](https://oxc.rs/docs/guide/usage/linter/) and [Oxfmt](https://oxc.rs/docs/guide/usage/formatter/): Linting and formatting
 - [editorconfig](https://editorconfig.org/): Editor configuration
@@ -94,6 +94,8 @@ Drizzle tracks applied migrations, so running `pnpm db:migrate` again preserves 
 Each article page opening (including refreshes and client navigation) records a page view after the browser mounts the page. Translations and the default URL share the same article ID and total. About pages are also counted. Lists, search, prerendering, link prefetches, and requests without browser JavaScript do not increment counts.
 
 View counts appear alongside the date and reading time in article list items, search results, and article headers. Lists and search results fetch totals with GET; only opening an article records a view.
+
+Comments are rendered by the client-only GitHub Issues integration in `src/components/article/CommentPanel.tsx`. It keeps the legacy Gitalk mapping: the repository is `ddadaal.me.github.io`, and an article uses the `Gitalk` label plus its first 50 ID characters, so existing issues and comments remain visible. GitHub OAuth tokens are stored in the browser's local storage, as in Gitalk. The repository and OAuth settings are defined directly in the component, and the OAuth application callback URL must allow the exact article URL (GitHub returns to the current page).
 
 `POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve SQL `bigint` precision. Unknown IDs return 404. Next.js Cache Components is enabled for the server. Parsed article content, about pages, sparks, metadata, and the search index use a one-week revalidation window and a one-year expiry, matching the immutable content shipped in each image. View totals are read with one cached SQL query for all articles (five-minute client staleness, one-hour server revalidation, one-day expiry), so list pages do not issue one database query per article. Successful POST requests return the exact committed value but do not invalidate the shared snapshot; lists can therefore lag by up to one hour. The GET response is also cacheable by browsers and ingress (`max-age=300, stale-while-revalidate=3600`). If SQL is unconfigured or unavailable, these endpoints return 503 and the article remains readable with its counter hidden.
 
