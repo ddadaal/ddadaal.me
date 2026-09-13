@@ -23,7 +23,7 @@ export const generateMetadata = () => {
 
 const getSearchPageData = async () => {
   "use cache";
-  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheLife("articles");
   cacheTag("articles", "search-index");
   const articles = await readArticlesCached();
 

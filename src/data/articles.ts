@@ -1,9 +1,8 @@
-import { existsSync } from "fs";
-import { readdir, readFile, stat } from "fs/promises";
 import matter from "gray-matter";
-import { basename, extname, join } from "path";
+import { basename, dirname, extname, join } from "path";
 import readingTime from "reading-time";
 import { cacheLife, cacheTag } from "next/cache";
+import { contentPaths, readContentFile } from "src/data/contentFiles";
 
 import { ArticleSummary } from "../../tools/summarize/index.js";
 
@@ -57,14 +56,12 @@ const acceptedFileTypes = [".md", ".mdx"];
 export const readArticleFromDir = async (dir: string) => {
   let item: ArticleItem | undefined = undefined;
 
-  for (const file of await readdir(dir)) {
-    if (!acceptedFileTypes.includes(extname(file))) {
+  for (const filePath of contentPaths) {
+    if (dirname(filePath) !== dir || !acceptedFileTypes.includes(extname(filePath))) {
       continue;
     }
 
-    const filePath = join(dir, file);
-
-    const fileContent = await readFile(filePath, "utf-8");
+    const fileContent = readContentFile(filePath);
     const { content, data } = matter(fileContent);
 
     const typedData = data as ArticleFrontmatterData;
@@ -87,10 +84,8 @@ export const readArticleFromDir = async (dir: string) => {
 
     const summariesFilePath = join(dir, `${typedData.lang}.summary.json`);
 
-    if (existsSync(summariesFilePath)) {
-      const articleSummary = JSON.parse(
-        await readFile(summariesFilePath, "utf-8"),
-      ) as ArticleSummary;
+    if (contentPaths.includes(summariesFilePath)) {
+      const articleSummary = JSON.parse(readContentFile(summariesFilePath)) as ArticleSummary;
 
       summary = articleSummary;
     }
@@ -128,16 +123,12 @@ export const readArticleFromDir = async (dir: string) => {
 const IGNORED_DIRS = ["sparks"];
 
 export const readArticles = async (includeUnlisted = false) => {
-  const articleDirs = await readdir(CONTENT_DIR);
+  const articleDirs = [...new Set(contentPaths.map((path) => path.split("/")[1]))];
 
   const articles: ArticleItem[] = [];
 
   for (const dir of articleDirs) {
     const path = join(CONTENT_DIR, dir);
-
-    if ((await stat(path)).isFile()) {
-      continue;
-    }
 
     if (IGNORED_DIRS.includes(dir)) {
       continue;
@@ -170,12 +161,12 @@ export const readArticles = async (includeUnlisted = false) => {
 
 /**
  * Article markdown is part of the image and only changes when a deployment
- * happens. Cache the complete parsed collection in Next's persistent cache so
- * requests do not rescan the contents directory or parse frontmatter.
+ * happens. Cache parsed modules so requests do not repeat frontmatter parsing.
+ * Turbopack invalidates these modules during development when content changes.
  */
 export async function readArticlesCached() {
   "use cache";
-  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheLife("articles");
   cacheTag("articles");
   return readArticles();
 }
@@ -183,7 +174,7 @@ export async function readArticlesCached() {
 // Includes article pages outside the blog list, such as /about/me.
 export async function readAllArticlesCached() {
   "use cache";
-  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheLife("articles");
   cacheTag("articles");
   return readArticles(true);
 }

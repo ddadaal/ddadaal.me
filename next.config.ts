@@ -1,6 +1,14 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   output: "standalone",
+  turbopack: {
+    rules: {
+      "*.md": { loaders: ["./tools/raw-content-loader.cjs"], as: "*.js" },
+      "*.mdx": { loaders: ["./tools/raw-content-loader.cjs"], as: "*.js" },
+      "*.summary.json": { loaders: ["./tools/raw-content-loader.cjs"], as: "*.js" },
+    },
+  },
   // Enable Next.js 16 Cache Components. Static article content can be served
   // from the persistent cache while the small view-count API remains dynamic.
   cacheComponents: true,
@@ -27,4 +35,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

@@ -1,4 +1,23 @@
 .prose {
+  /* Match Typography's figure styling with markup that is valid inside <p>. */
+  .article-image {
+    display: block;
+    margin-block: 2em;
+
+    img {
+      margin-block: 0;
+    }
+  }
+
+  .article-image-caption {
+    display: block;
+    margin-top: calc(12em / 14);
+    color: var(--tw-prose-captions);
+    font-size: 0.875em;
+    line-height: calc(20 / 14);
+    text-align: center;
+  }
+
   [id]::before {
     content: "";
     display: block;

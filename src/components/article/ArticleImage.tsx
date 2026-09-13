@@ -18,7 +18,10 @@ const loader = ({ src, width }: { src: string; width: number }) => {
 
 export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) => {
   return (
-    <figure>
+    // Markdown images can appear inside paragraphs, links, or table cells.
+    // Keep the markup phrasing content so the HTML parser never closes a <p>
+    // around a block-level <figure> before React hydrates it.
+    <span className="article-image" role="figure" aria-label={imageProps.alt || undefined}>
       <Item
         alt={imageProps.alt ?? ""}
         original={src}
@@ -38,7 +41,7 @@ export const ArticleImage = ({ src, imageSize, imageProps }: ArticleImageProps) 
           />
         )}
       </Item>
-      {imageProps.alt ? <figcaption className="text-center">{imageProps.alt}</figcaption> : null}
-    </figure>
+      {imageProps.alt ? <span className="article-image-caption">{imageProps.alt}</span> : null}
+    </span>
   );
 };

@@ -4,7 +4,7 @@ import classNames from "classnames";
 import MiniSearch, { SearchResult } from "minisearch";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useMemo } from "react";
 import { FaSort } from "react-icons/fa";
 import { SearchBar, TagCounts } from "src/app/articles/cards";
 import { IndexedArticleInfo } from "src/app/articles/search/page";
@@ -36,10 +36,12 @@ const orderPrefix = prefix("search.order.");
 export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCounts }: Props) => {
   const i18n = useI18n();
 
-  const [miniSearch] = useState(() =>
-    MiniSearch.loadJSON<IndexedArticleInfo>(index, {
-      fields: ["title", "content", "tags"],
-    }),
+  const miniSearch = useMemo(
+    () =>
+      MiniSearch.loadJSON<IndexedArticleInfo>(index, {
+        fields: ["title", "content", "tags"],
+      }),
+    [index],
   );
 
   const search = Object.fromEntries(useSearchParams().entries());

@@ -11,7 +11,7 @@ export const generateArticleMetadata = async (
   langs: string[],
 ): Promise<Metadata> => {
   "use cache";
-  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheLife("articles");
   return {
     metadataBase: new URL(WEBSITE_BASE_URL),
     title: generateTitle(article.title),

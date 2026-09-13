@@ -66,11 +66,7 @@ pnpm format:check
 pnpm format
 ```
 
-Generate or update article data with:
-
-```bash
-pnpm build:data
-```
+Article Markdown and summary JSON files are server-side modules, discovered by `require.context` in `src/data/contentFiles.ts` and imported as text using `tools/raw-content-loader.cjs`. During `pnpm dev`, Turbopack tracks edits, additions and deletions and refreshes the open page automatically. Article pages, lists, metadata, about pages, sparks and the search index share these dependencies. No generated changemark file or separate watcher process is needed. Content caches use the `articles` profile in `next.config.ts`; short cache lifetimes are not a substitute for Fast Refresh and may require a Suspense boundary with Cache Components. Production content is bundled at build time and updated by building a new image.
 
 After editing `src/db/schema.ts`, generate and review the next Drizzle migration:
 
@@ -111,8 +107,7 @@ docker compose --env-file .env.local run --rm sqlserver-init
 # Apply Drizzle migrations to the local test database.
 pnpm db:migrate
 
-# Generate content metadata, then run the database integration tests.
-pnpm build:data
+# Run the database integration tests.
 pnpm test:db
 
 # Run the blog locally with the same database.

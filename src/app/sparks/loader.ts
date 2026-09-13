@@ -1,7 +1,6 @@
-import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
 import { cacheLife, cacheTag } from "next/cache";
-import { join } from "path";
+import { contentPaths, readContentFile } from "src/data/contentFiles";
 
 export interface Spark {
   time: string; // ISO string
@@ -10,13 +9,12 @@ export interface Spark {
 
 export async function loadSparks(): Promise<Spark[]> {
   "use cache";
-  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheLife("articles");
   cacheTag("sparks");
-  const dir = join(process.cwd(), "contents/sparks");
-  const files = (await readdir(dir)).filter((f) => f.endsWith(".md"));
+  const files = contentPaths.filter((path) => /^contents\/sparks\/[^/]+\.md$/.test(path));
   const sparks: Spark[] = [];
   for (const file of files) {
-    const raw = await readFile(join(dir, file), "utf-8");
+    const raw = readContentFile(file);
     const { data, content } = matter(raw);
     if (typeof data.time === "string") {
       sparks.push({ time: data.time, content });

@@ -8,7 +8,7 @@ import { generateArticleMetadata } from "src/utils/metadata";
 function articleData(dir: string) {
   return async function readCachedArticle() {
     "use cache";
-    cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+    cacheLife("articles");
     cacheTag("articles", `article:${dir}`);
     return readArticleFromDir(dir);
   };

@@ -16,7 +16,7 @@ interface Props {
 
 export const ArticleContentPage = async ({ article, langs }: Props) => {
   "use cache";
-  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheLife("articles");
   const articles = await readArticlesCached();
 
   // find related article items from article
