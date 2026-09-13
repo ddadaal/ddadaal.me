@@ -53,7 +53,12 @@ related:
 整个网站代码本身放在AKS上：
 
 - AKS本身使用最低级的托管等级，免费
-- Node pool使用最便宜的Standard_D2as_v5虚拟机（2C8G），并打开Auto scale，允许1-5个节点自动伸缩。正常运行情况下用量其实挺小的：
+- Node pool使用最便宜的Standard_D2as_v5虚拟机（2C8G），并打开Auto scale，允许1-5个节点自动伸缩
+- 使用Gateway API暴露网站服务到公网
+- 使用cert-manager自动签发TLS证书
+
+
+AKS正常运行情况下用量其实挺小的：
 
 ```
 ❯ kubectl top nodes
@@ -61,8 +66,11 @@ NAME                                CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY
 aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%  
 ```
 
-- 使用Gateway API暴露网站服务到公网
-- 使用cert-manager自动签发TLS证书
+但是呢，AKS会默认装一些用处不大的功能在集群里，这些功能的Pod会占用集群的配置资源。在什么应用都部署的情况下，AKS自己装的pod就占用了`1300m`的CPU，然而2C的集群总共只有`1900m`的CPU可以分配，也就是留给应用程序的只有`600m`。所以针对我们这些穷逼用户，最好还是关闭Azure的一些没那么常用的功能，包括
+
+- Managed Prometheus（关闭后，不能直接从Azure Portal看到各个应用的CPU、内存实际使用情况）
+- Image Cleaner（关闭后，AKS的未使用的镜像不会自动从机器中被清楚）
+- Cilium（可以用原生的网络方案）
 
 数据存放在Azure SQL Server中：
 
@@ -71,6 +79,7 @@ aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%
 - [之前给wakapi做SQL Server适配](/articles/support-sqlserver-in-wakapi)的时候也熟悉了一些SQL Server，所以运维托管SQL Server也挺简单的
 
 IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头也就是Node pool的虚拟机，通过计算器估算一个月70/80刀，150刀勉强够用。
+
 
 ## CI/CD
 
