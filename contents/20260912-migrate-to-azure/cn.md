@@ -66,10 +66,10 @@ NAME                                CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY
 aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%  
 ```
 
-但是呢，AKS会默认装一些用处不大的功能在集群里，这些功能的Pod会占用集群的配置资源。在什么应用都部署的情况下，AKS自己装的pod就占用了`1300m`的CPU，然而2C的集群总共只有`1900m`的CPU可以分配，也就是留给应用程序的只有`600m`。所以针对我们这些穷逼用户，最好还是关闭Azure的一些没那么常用的功能，包括
+但是呢，AKS会默认装一些用处不大的功能在集群里，这些功能的Pod会占用集群的配置资源。AKS集群创建后，自己装的pod就占用了`1300m`的CPU，然而2C的集群总共只有`1900m`的CPU可以分配，也就是留给应用程序的只有`600m`。如果自己的应用设置了`requests`，那么很容易出现资源不够、触发scale up，花费更多钱。所以针对我们这些穷逼用户，最好还是关闭Azure的一些没那么常用的功能，包括
 
 - Managed Prometheus（关闭后，不能直接从Azure Portal看到各个应用的CPU、内存实际使用情况）
-- Image Cleaner（关闭后，AKS的未使用的镜像不会自动从机器中被清楚）
+- Image Cleaner（关闭后，AKS的未使用的镜像不会自动从机器中被清除）
 - Cilium（可以用原生的网络方案）
 
 数据存放在Azure SQL Server中：
