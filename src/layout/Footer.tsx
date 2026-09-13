@@ -81,7 +81,7 @@ export const Footer = () => {
             <Contacts size={1.6} />
           </div>
           <p className="text-center">
-            © {new Date().getFullYear()} | <Localized id="footer.madeWithLove" />
+            © {serverTime.year} | <Localized id="footer.madeWithLove" />
           </p>
         </div>
         <div>

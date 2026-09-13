@@ -1,5 +1,6 @@
 import { readdir, readFile } from "fs/promises";
 import matter from "gray-matter";
+import { cacheLife, cacheTag } from "next/cache";
 import { join } from "path";
 
 export interface Spark {
@@ -8,6 +9,9 @@ export interface Spark {
 }
 
 export async function loadSparks(): Promise<Spark[]> {
+  "use cache";
+  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheTag("sparks");
   const dir = join(process.cwd(), "contents/sparks");
   const files = (await readdir(dir)).filter((f) => f.endsWith(".md"));
   const sparks: Spark[] = [];

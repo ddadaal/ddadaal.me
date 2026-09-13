@@ -1,7 +1,8 @@
 import { Jieba } from "@node-rs/jieba";
 import { dict } from "@node-rs/jieba/dict";
 import MiniSearch from "minisearch";
-import { cache, Suspense } from "react";
+import { cacheLife, cacheTag } from "next/cache";
+import { Suspense } from "react";
 import { ArticleListPageLayout } from "src/app/articles/ArticleListPageLayout";
 import { ArticleSearchPage } from "src/app/articles/search/ArticleSearchPage";
 import { countTags } from "src/app/articles/tags";
@@ -20,7 +21,10 @@ export const generateMetadata = () => {
   };
 };
 
-const getSearchPageData = cache(async () => {
+const getSearchPageData = async () => {
+  "use cache";
+  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheTag("articles", "search-index");
   const articles = await readArticlesCached();
 
   const tagCounts = countTags(articles);
@@ -47,7 +51,7 @@ const getSearchPageData = cache(async () => {
     index,
     articleListInfos,
   };
-});
+};
 
 export default async function SearchPage() {
   const { articleCount, index, tagCounts, articleListInfos } = await getSearchPageData();

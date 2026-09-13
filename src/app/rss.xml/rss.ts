@@ -11,7 +11,7 @@ import { getArticleBasePath } from "src/data/articleBasePath";
 import { readArticlesCached } from "src/data/articles";
 import { tags } from "src/data/tags";
 import { WEBSITE_BASE_URL } from "src/utils/constants";
-import { fromArticleTime } from "src/utils/datetime";
+import { articleTimeToMillis } from "src/utils/datetime";
 import { serverTime } from "src/utils/serverTime";
 import { unified } from "unified";
 
@@ -69,7 +69,7 @@ export const generateRss = async () => {
   for (const articleItem of articles) {
     for (const article of articleItem.langVersions) {
       feed.item({
-        date: fromArticleTime(article.date).toJSDate(),
+        date: new Date(articleTimeToMillis(article.date)),
         description: await renderContent(article.content, article.filePath),
         title: article.title,
         url: WEBSITE_BASE_URL + join(getArticleBasePath(article), article.lang),

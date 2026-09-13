@@ -1,11 +1,17 @@
 import { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { Article, generateExcerpt } from "src/data/articles";
 import { WEBSITE_BASE_URL } from "src/utils/constants";
-import { fromArticleTime } from "src/utils/datetime";
+import { articleTimeToMillis } from "src/utils/datetime";
 
 export const generateTitle = (title: string) => (title ? `${title} - ddadaal.me` : "ddadaal.me");
 
-export const generateArticleMetadata = (article: Article, langs: string[]): Metadata => {
+export const generateArticleMetadata = async (
+  article: Article,
+  langs: string[],
+): Promise<Metadata> => {
+  "use cache";
+  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
   return {
     metadataBase: new URL(WEBSITE_BASE_URL),
     title: generateTitle(article.title),
@@ -14,7 +20,7 @@ export const generateArticleMetadata = (article: Article, langs: string[]): Meta
     category: "blog",
     openGraph: {
       title: article.title,
-      publishedTime: fromArticleTime(article.date).toISO() ?? undefined,
+      publishedTime: new Date(articleTimeToMillis(article.date)).toISOString(),
       alternateLocale: langs,
       locale: article.lang,
     },

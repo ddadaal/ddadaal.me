@@ -1,17 +1,17 @@
 import { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { ArticleContentPage } from "src/components/article/ArticleContentPage";
 import { readArticleFromDir } from "src/data/articles";
-import { createDataSource } from "src/data/data";
 import { generateArticleMetadata } from "src/utils/metadata";
 
 function articleData(dir: string) {
-  return createDataSource({
-    watchPath: dir,
-    loader: async () => {
-      return await readArticleFromDir(dir);
-    },
-  });
+  return async function readCachedArticle() {
+    "use cache";
+    cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+    cacheTag("articles", `article:${dir}`);
+    return readArticleFromDir(dir);
+  };
 }
 
 const dataSources = {
@@ -58,7 +58,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     notFound();
   }
 
-  return generateArticleMetadata(
+  return await generateArticleMetadata(
     data.langVersion,
     data.articleItem.langVersions.map((x) => x.lang),
   );

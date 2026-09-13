@@ -1,8 +1,9 @@
 import { CommentPanelWithCurrentLanguage } from "src/components/article/CommentPanel";
 import { RelatedArticle, RelatedArticles } from "src/components/article/RelatedArticles";
 import { Heading } from "src/components/Heading";
+import { cacheLife } from "next/cache";
 import { Article, readArticlesCached } from "src/data/articles";
-import { formatDateTime, fromArticleTime } from "src/utils/datetime";
+import { formatArticleTime } from "src/utils/datetime";
 
 import { ArticleContent } from "./ArticleContent";
 import { ArticleFrontmatter } from "./ArticleFrontmatter";
@@ -14,6 +15,8 @@ interface Props {
 }
 
 export const ArticleContentPage = async ({ article, langs }: Props) => {
+  "use cache";
+  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
   const articles = await readArticlesCached();
 
   // find related article items from article
@@ -27,11 +30,9 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
         langVersions: x.langVersions.map((x) => ({
           excerpt: x.content.substring(0, 100),
           lang: x.lang,
-          time: formatDateTime(fromArticleTime(x.date)),
+          time: formatArticleTime(x.date),
           title: x.title,
-          last_updated: x.last_updated
-            ? formatDateTime(fromArticleTime(x.last_updated))
-            : undefined,
+          last_updated: x.last_updated ? formatArticleTime(x.last_updated) : undefined,
           absolute_path: x.absolute_path,
         })),
       }) satisfies RelatedArticle,

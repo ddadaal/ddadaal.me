@@ -11,7 +11,7 @@ import { IndexedArticleInfo } from "src/app/articles/search/page";
 import { ArticleListItem } from "src/components/article/ArticleListItem";
 import { ArticleListInfo } from "src/data/articles";
 import { Localized, prefix, useI18n } from "src/i18n";
-import { fromArticleTime } from "src/utils/datetime";
+import { articleTimeToMillis } from "src/utils/datetime";
 
 interface Props {
   index: string;
@@ -72,8 +72,7 @@ export const ArticleSearchPage = ({ index, articleListInfos, articleCount, tagCo
     const aInfo = findArticle(a);
     const bInfo = findArticle(b);
 
-    const aToBDiff =
-      fromArticleTime(aInfo.date).toMillis() - fromArticleTime(bInfo.date).toMillis();
+    const aToBDiff = articleTimeToMillis(aInfo.date) - articleTimeToMillis(bInfo.date);
 
     return order === "time" ? aToBDiff : -aToBDiff;
   });

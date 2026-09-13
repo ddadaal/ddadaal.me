@@ -1,22 +1,18 @@
 import { createHash, randomUUID } from "crypto";
-import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { readAllArticlesCached } from "src/data/articles";
-import {
-  articleViewsCacheTag,
-  getArticleViews,
-  recordVisitEvent,
-  VisitEventInput,
-} from "src/server/articleViews";
-
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+import { getArticleViews, recordVisitEvent, VisitEventInput } from "src/server/articleViews";
 
 interface Context {
   params: Promise<{ id: string }>;
 }
 
-const headers = { "Cache-Control": "no-store" };
+const noStoreHeaders = { "Cache-Control": "no-store" };
+const readHeaders = {
+  // View totals are eventually consistent by design. This lets a browser or
+  // an ingress cache reuse the same snapshot without querying SQL repeatedly.
+  "Cache-Control": "public, max-age=300, stale-while-revalidate=3600",
+};
 
 function parseUserAgent(userAgent: string | null) {
   const value = userAgent ?? "";
@@ -64,13 +60,16 @@ async function handleViews(request: NextRequest, context: Context, record: boole
   const { id } = await context.params;
   const articles = await readAllArticlesCached();
   if (id.length > 256 || !articles.some((article) => article.id === id)) {
-    return NextResponse.json({ error: "Article not found" }, { status: 404, headers });
+    return NextResponse.json(
+      { error: "Article not found" },
+      { status: 404, headers: noStoreHeaders },
+    );
   }
 
   try {
     if (!record) {
       const views = await getArticleViews(id);
-      return NextResponse.json({ articleId: id, views }, { headers });
+      return NextResponse.json({ articleId: id, views }, { headers: readHeaders });
     }
 
     let body: Record<string, unknown> = {};
@@ -97,8 +96,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
       responseMs: Date.now() - started,
     };
     const views = await recordVisitEvent(id, event);
-    revalidateTag(articleViewsCacheTag(id), { expire: 0 });
-    const response = NextResponse.json({ articleId: id, views }, { headers });
+    const response = NextResponse.json({ articleId: id, views }, { headers: noStoreHeaders });
     response.cookies.set("visit_session", sessionId, {
       httpOnly: true,
       sameSite: "lax",
@@ -113,7 +111,10 @@ async function handleViews(request: NextRequest, context: Context, record: boole
     // diagnosed without ever logging the SQL password.
     const message = error instanceof Error ? error.message : String(error);
     console.error("Article view storage unavailable:", message);
-    return NextResponse.json({ error: "View count unavailable" }, { status: 503, headers });
+    return NextResponse.json(
+      { error: "View count unavailable" },
+      { status: 503, headers: noStoreHeaders },
+    );
   }
 }
 
@@ -130,7 +131,7 @@ export async function POST(request: NextRequest, context: Context) {
   ) {
     return NextResponse.json(
       { error: "JSON requests from this site are required" },
-      { status: 403, headers },
+      { status: 403, headers: noStoreHeaders },
     );
   }
   return handleViews(request, context, true);

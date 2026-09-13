@@ -84,7 +84,10 @@ void test("GET is read-only and unknown article IDs cannot be counted", async ()
     params: Promise.resolve({ id }),
   });
   assert.equal(response.status, 200);
-  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(
+    response.headers.get("cache-control"),
+    "public, max-age=300, stale-while-revalidate=3600",
+  );
   assert.deepEqual(await response.json(), { articleId: id, views: beforeViews });
   assert.equal(await getArticleViews(id), beforeViews);
 

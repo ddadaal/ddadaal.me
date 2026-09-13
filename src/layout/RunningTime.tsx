@@ -21,11 +21,13 @@ interface Props {
 }
 
 export const RunningTime = ({ serverStartTime }: Props) => {
-  const [diff, setDiff] = useState(() => {
-    return getDiff(DateTime.fromISO(serverStartTime));
-  });
+  const [diff, setDiff] = useState<ReturnType<typeof getDiff>>();
 
   useEffect(() => {
+    // Luxon's parsing and clock access stay on the client. This keeps the
+    // server-rendered shell deterministic when Cache Components prerenders it.
+    const startTime = DateTime.fromISO(serverStartTime);
+    setDiff(getDiff(startTime));
     const timer = setInterval(() => {
       setDiff(getDiff(DateTime.now()));
     }, 1000);
@@ -33,6 +35,10 @@ export const RunningTime = ({ serverStartTime }: Props) => {
       clearInterval(timer);
     };
   }, []);
+
+  if (!diff) {
+    return null;
+  }
 
   const args = [
     diff.years,

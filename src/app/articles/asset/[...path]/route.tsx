@@ -5,8 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { extname, relative, resolve, sep } from "path";
 import { Readable } from "stream";
 
-export const runtime = "nodejs";
-
 export async function GET(_request: NextRequest, props: { params: Promise<{ path: string[] }> }) {
   const { path } = await props.params;
   const notFound = () => new NextResponse(null, { status: 404 });

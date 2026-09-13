@@ -1,4 +1,4 @@
-import { formatDateTime, fromArticleTime } from "src/utils/datetime";
+import { formatArticleTime } from "src/utils/datetime";
 
 import { ExpandableSpark } from "./ExpandableSpark";
 import { loadSparks } from "./loader";
@@ -13,7 +13,7 @@ export async function SparkList() {
           <div className="card-body p-4">
             <div className="flex-shrink-0">
               <span className="text-sm text-base-content/60 font-medium">
-                {formatDateTime(fromArticleTime(spark.time))}
+                {formatArticleTime(spark.time)}
               </span>
             </div>
             <div className="flex-1 text-base leading-relaxed prose max-w-full">

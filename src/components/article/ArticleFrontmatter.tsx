@@ -8,7 +8,7 @@ import { ArticleViewCount } from "src/components/article/ArticleViewCount";
 import { getArticleBasePath } from "src/data/articleBasePath";
 import { getLocaleTag } from "src/data/tags";
 import { languages, Localized, useI18n } from "src/i18n";
-import { formatDateTime, fromArticleTime } from "src/utils/datetime";
+import { formatArticleTime } from "src/utils/datetime";
 
 export interface ArticleFrontmatterInfo {
   tags?: string[];
@@ -54,7 +54,7 @@ export const ArticleFrontmatter = ({
       ) : undefined}
       <div className="flex items-center" title={i18n.translateToString("articleFrontmatter.date")}>
         <FaCalendar />
-        <span className="mx-0.5">{formatDateTime(fromArticleTime(info.date))}</span>
+        <span className="mx-0.5">{formatArticleTime(info.date)}</span>
       </div>
       {info.last_updated ? (
         <div
@@ -62,7 +62,7 @@ export const ArticleFrontmatter = ({
           title={i18n.translateToString("articleFrontmatter.lastUpdated")}
         >
           <FaCalendarPlus />
-          <span className="mx-0.5">{formatDateTime(fromArticleTime(info.last_updated))}</span>
+          <span className="mx-0.5">{formatArticleTime(info.last_updated)}</span>
         </div>
       ) : undefined}
       <div className="flex items-center">

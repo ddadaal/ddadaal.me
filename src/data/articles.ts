@@ -3,11 +3,9 @@ import { readdir, readFile, stat } from "fs/promises";
 import matter from "gray-matter";
 import { basename, extname, join } from "path";
 import readingTime from "reading-time";
-import { createDataSource } from "src/data/data";
+import { cacheLife, cacheTag } from "next/cache";
 
 import { ArticleSummary } from "../../tools/summarize/index.js";
-
-export const revalidate = false;
 
 const CONTENT_DIR = "contents";
 
@@ -170,16 +168,25 @@ export const readArticles = async (includeUnlisted = false) => {
   return articles;
 };
 
-export const readArticlesCached = createDataSource({
-  watchPath: CONTENT_DIR,
-  loader: readArticles,
-});
+/**
+ * Article markdown is part of the image and only changes when a deployment
+ * happens. Cache the complete parsed collection in Next's persistent cache so
+ * requests do not rescan the contents directory or parse frontmatter.
+ */
+export async function readArticlesCached() {
+  "use cache";
+  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheTag("articles");
+  return readArticles();
+}
 
 // Includes article pages outside the blog list, such as /about/me.
-export const readAllArticlesCached = createDataSource({
-  watchPath: CONTENT_DIR,
-  loader: () => readArticles(true),
-});
+export async function readAllArticlesCached() {
+  "use cache";
+  cacheLife({ stale: 86400, revalidate: 604800, expire: 31536000 });
+  cacheTag("articles");
+  return readArticles(true);
+}
 
 export interface ArticleListInfo {
   id: string;

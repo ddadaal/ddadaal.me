@@ -2,7 +2,7 @@ import "server-only";
 
 import { randomUUID } from "crypto";
 import { eq, sql } from "drizzle-orm";
-import { unstable_cache } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import { articleViews, visitEvents } from "src/db/schema";
 import { getDb } from "src/server/sql";
 
@@ -22,25 +22,30 @@ export interface VisitEventInput {
   responseMs: number;
 }
 
-const ARTICLE_VIEWS_CACHE_REVALIDATE_SECONDS = 60;
-
-export const articleViewsCacheTag = (articleId: string) => `article-views:${articleId}`;
-
 // Return BIGINT as a decimal string so counts cannot lose precision in JSON.
-async function queryArticleViews(articleId: string): Promise<string> {
+async function queryArticleViews(): Promise<Record<string, string>> {
   const db = await getDb();
   const result = await db
-    .select({ views: articleViews.viewCount })
-    .from(articleViews)
-    .where(eq(articleViews.articleId, articleId));
-  return result.length ? result[0].views : "0";
+    .select({ articleId: articleViews.articleId, views: articleViews.viewCount })
+    .from(articleViews);
+  return Object.fromEntries(result.map((row) => [row.articleId, row.views]));
+}
+
+/**
+ * Read all totals in one cached query. Article lists request one total per
+ * item, but they now share this snapshot and cause at most one SQL read per
+ * cache lifetime across the whole application instance/cache store.
+ */
+async function getCachedArticleViews(): Promise<Record<string, string>> {
+  "use cache";
+  cacheLife({ stale: 300, revalidate: 3600, expire: 86400 });
+  cacheTag("article-views");
+  return queryArticleViews();
 }
 
 export async function getArticleViews(articleId: string): Promise<string> {
-  return unstable_cache(() => queryArticleViews(articleId), ["article-views", articleId], {
-    revalidate: ARTICLE_VIEWS_CACHE_REVALIDATE_SECONDS,
-    tags: [articleViewsCacheTag(articleId)],
-  })();
+  const views = await getCachedArticleViews();
+  return views[articleId] ?? "0";
 }
 
 export async function recordArticleView(articleId: string): Promise<string> {

@@ -30,7 +30,9 @@ export const ArticleViewCount = ({ articleId, recordView = false, hidden = false
     if (visit.current?.key !== visitKey) {
       const request = fetch(`/api/articles/${encodeURIComponent(articleId)}/views`, {
         method: recordView ? "POST" : "GET",
-        cache: "no-store",
+        // GET totals are deliberately eventually consistent and can be reused
+        // by the browser while the server cache protects SQL as well.
+        cache: recordView ? "no-store" : "force-cache",
         headers: recordView ? { "Content-Type": "application/json" } : undefined,
         body: recordView
           ? JSON.stringify(
