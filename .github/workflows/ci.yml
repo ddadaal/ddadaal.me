@@ -122,4 +122,4 @@ jobs:
           test -n "$AKS_NAMESPACE"
           kubectl -n "$AKS_NAMESPACE" set image deployment/ddadaal-me \
             ddadaal-me="$IMAGE"
-          kubectl -n "$AKS_NAMESPACE" rollout status deployment/ddadaal-me --timeout=300s
+          kubectl -n "$AKS_NAMESPACE" rollout status deployment/ddadaal-me --timeout=600s
