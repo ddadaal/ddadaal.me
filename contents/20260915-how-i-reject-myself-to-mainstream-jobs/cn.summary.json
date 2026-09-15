@@ -1,0 +1,18 @@
+{
+  "articleId": "how-i-cannot-get-mainstream-job",
+  "lang": "cn",
+  "hash": "eaa64da591aa66dee33947ea61d5f472507c1d496864b7e1c5bfda8de77f417d",
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "openai",
+        "model": "gpt-6-astra"
+      },
+      "summaries": [
+        "作者反思离开大厂创业后求职受阻：忽视人工智能趋势，工作缺乏主线与深度，缺少真实场景历练，并因偏好摇摆错失机会。他建议紧跟市场需求，借助优质平台积累专业能力，审慎行动，优先选择能拓展未来机会的道路，持续调整职业方向。"
+      ],
+      "startTime": "2026-09-15T13:34:45.658Z",
+      "endTime": "2026-09-15T13:34:53.261Z"
+    }
+  ]
+}
