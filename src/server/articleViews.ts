@@ -2,7 +2,7 @@ import "server-only";
 
 import { randomUUID } from "crypto";
 import { eq, sql } from "drizzle-orm";
-import { cacheLife, cacheTag } from "next/cache";
+import { cacheLife, cacheTag, revalidateTag } from "next/cache";
 import { articleViews, visitEvents } from "src/db/schema";
 import { getDb } from "src/server/sql";
 
@@ -22,35 +22,36 @@ export interface VisitEventInput {
   responseMs: number;
 }
 
+const articleViewsTag = (articleId: string) => `article-views:${articleId}`;
+
 // Return BIGINT as a decimal string so counts cannot lose precision in JSON.
-async function queryArticleViews(): Promise<Record<string, string>> {
+async function queryArticleView(articleId: string): Promise<string> {
   const db = await getDb();
-  const result = await db
-    .select({ articleId: articleViews.articleId, views: articleViews.viewCount })
-    .from(articleViews);
-  return Object.fromEntries(result.map((row) => [row.articleId, row.views]));
+  const [result] = await db
+    .select({ views: articleViews.viewCount })
+    .from(articleViews)
+    .where(eq(articleViews.articleId, articleId));
+  return result?.views ?? "0";
 }
 
 /**
- * Read all totals in one cached query. Article lists request one total per
- * item, but they now share this snapshot and cause at most one SQL read per
- * cache lifetime across the whole application instance/cache store.
+ * Cache each article's total independently so a new visit only invalidates
+ * the article that was viewed.
  */
-async function getCachedArticleViews(): Promise<Record<string, string>> {
+async function getCachedArticleView(articleId: string): Promise<string> {
   "use cache";
   cacheLife({ stale: 300, revalidate: 3600, expire: 86400 });
-  cacheTag("article-views");
-  return queryArticleViews();
+  cacheTag(articleViewsTag(articleId));
+  return queryArticleView(articleId);
 }
 
 export async function getArticleViews(articleId: string): Promise<string> {
-  const views = await getCachedArticleViews();
-  return views[articleId] ?? "0";
+  return getCachedArticleView(articleId);
 }
 
 export async function recordArticleView(articleId: string): Promise<string> {
   const db = await getDb();
-  return db.transaction(
+  const views = await db.transaction(
     async (tx) => {
       // UPDATE first takes an update/range lock under SERIALIZABLE, including
       // when no row exists yet. The insert and increment share one transaction.
@@ -69,11 +70,13 @@ export async function recordArticleView(articleId: string): Promise<string> {
     },
     { isolationLevel: "serializable" },
   );
+  revalidateTag(articleViewsTag(articleId), { expire: 0 });
+  return views;
 }
 
 export async function recordVisitEvent(articleId: string, event: VisitEventInput): Promise<string> {
   const db = await getDb();
-  return db.transaction(
+  const views = await db.transaction(
     async (tx) => {
       const updated = await tx
         .update(articleViews)
@@ -97,4 +100,6 @@ export async function recordVisitEvent(articleId: string, event: VisitEventInput
     },
     { isolationLevel: "serializable" },
   );
+  revalidateTag(articleViewsTag(articleId), { expire: 0 });
+  return views;
 }
