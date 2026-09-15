@@ -1,5 +1,5 @@
 ---
-id: how-i-reject-myself-to-mainstream-jobs
+id: how-i-close-my-door-to-mainstream-jobs
 date: 2026-09-15 21:39
 title: 我是如何将自己逐出主流就业圈的
 lang: cn
