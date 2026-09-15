@@ -11,16 +11,19 @@ import matter from "gray-matter";
 import { createAzureAiSummarizer } from "./azureAi.js";
 import { createAzureLanguageSummarier } from "./azureLanguage.js";
 import { createOllamaSummarizer } from "./ollama.js";
+import { createOpenAiSummarizer } from "./openai.js";
 
 dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env.local" });
 
 const summarierMap: Record<string, (() => Summarizer) | undefined> = {
   "azure-language": createAzureLanguageSummarier,
   "azure-ai": createAzureAiSummarizer,
   ollama: createOllamaSummarizer,
+  openai: createOpenAiSummarizer,
 };
 
-const summarizerOrder = ["azure-ai", "ollama", "azure-language"];
+const summarizerOrder = ["openai", "azure-ai", "ollama", "azure-language"];
 
 const env = cleanEnv(process.env, {
   ENABLED_SUMMARIZERS: str({
@@ -59,7 +62,7 @@ export interface SummaryResult {
 }
 
 export interface SummarizerMetadata {
-  summarizer: "azure-ai" | "azure-language" | "ollama";
+  summarizer: "azure-ai" | "azure-language" | "ollama" | "openai";
   model?: string;
 }
 
@@ -74,7 +77,7 @@ const {
 } = parseArgs({
   allowPositionals: true,
   options: {
-    force: { type: "boolean", alias: "f", description: "Force to summarize", default: false },
+    force: { type: "boolean", short: "f", default: false },
   },
 });
 
@@ -168,17 +171,15 @@ async function summarizeArticle(articleDir: string) {
         continue;
       }
 
+      summaryFile.summaries.sort(
+        (a, b) =>
+          summarizerOrder.indexOf(a.metadata.summarizer) -
+          summarizerOrder.indexOf(b.metadata.summarizer),
+      );
+
       log("log", "Write summary json to %s", summaryJsonFilePath);
       await writeFile(summaryJsonFilePath, JSON.stringify(summaryFile, null, 2));
     }
-
-    // order by summarizer name
-    // get indexes of summarizers
-    summaryFile.summaries.sort(
-      (a, b) =>
-        summarizerOrder.findIndex((x) => x === a.metadata.summarizer) -
-        summarizerOrder.findIndex((x) => x === b.metadata.summarizer),
-    );
   }
 }
 

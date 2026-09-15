@@ -80,7 +80,8 @@
       "poweredBy": {
         "azureAi": "Inferred by {} model {}",
         "azureLanguage": "Extractively Summarized by {}",
-        "ollama": "Inferred by local {} model {}"
+        "ollama": "Inferred by local {} model {}",
+        "openai": "Summarized by model {}"
       }
     },
     "actions": {

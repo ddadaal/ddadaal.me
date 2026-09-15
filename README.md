@@ -68,6 +68,8 @@ pnpm format
 
 Article Markdown and summary JSON files are server-side modules, discovered by `require.context` in `src/data/contentFiles.ts` and imported as text using `tools/raw-content-loader.cjs`. During `pnpm dev`, Turbopack tracks edits, additions and deletions and refreshes the open page automatically. Article pages, lists, metadata, about pages, sparks and the search index share these dependencies. No generated changemark file or separate watcher process is needed. Content caches use the `articles` profile in `next.config.ts`; short cache lifetimes are not a substitute for Fast Refresh and may require a Suspense boundary with Cache Components. Production content is bundled at build time and updated by building a new image.
 
+Generate article summaries with `pnpm summarize`. See [the summarizer guide](tools/summarize/README.md) for OpenAI-compatible Chat Completions and Responses configuration, other providers, and commands for individual articles.
+
 After editing `src/db/schema.ts`, generate and review the next Drizzle migration:
 
 ```bash

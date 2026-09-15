@@ -1,0 +1,18 @@
+{
+  "articleId": "migrate-to-azure",
+  "lang": "cn",
+  "hash": "9bd326886b56e387fa1078c2b7c5bd08c099c5905590e030b18223d6c357c7df",
+  "summaries": [
+    {
+      "metadata": {
+        "summarizer": "openai",
+        "model": "gpt-6-astra"
+      },
+      "summaries": [
+        "博客时隔三年升级，新增访问指标采集，并迁至Azure，使用AKS和SQL数据库。部署采用无密码认证，实现自动构建与更新，统一运维并控制成本。未来计划迁移其他服务，改用Go精简镜像，同时关注数据隐私问题。"
+      ],
+      "startTime": "2026-09-13T15:39:35.532Z",
+      "endTime": "2026-09-13T15:39:40.872Z"
+    }
+  ]
+}

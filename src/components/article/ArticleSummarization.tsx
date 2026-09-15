@@ -6,7 +6,7 @@ import { JSX, useState } from "react";
 import { HeadingWithLink } from "src/components/article/Components";
 import { Localized } from "src/i18n";
 
-import { SummarizerMetadata } from "../../../tools/summarize/index.js";
+import type { SummarizerMetadata } from "../../../tools/summarize/index.js";
 
 interface Summary {
   metadata: SummarizerMetadata;
@@ -85,6 +85,11 @@ export const ArticleSummarization = ({ summaries }: Props) => {
                         Azure AI Language Service
                       </Link>,
                     ]}
+                  />
+                ) : selected.metadata.summarizer === "openai" ? (
+                  <Localized
+                    id="articlePage.summary.poweredBy.openai"
+                    args={[selected.metadata.model]}
                   />
                 ) : (
                   <Localized
