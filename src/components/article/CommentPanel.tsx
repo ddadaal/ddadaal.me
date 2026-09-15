@@ -66,9 +66,12 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [creating, setCreating] = useState(false);
   const i18n = useI18n();
   const dateLocale = language === "zh-CN" ? "zh-CN" : "en-US";
-  const labels = useMemo(() => `Gitalk,${legacyId(articleId)}`, [articleId]);
+  const labelNames = useMemo(() => ["Gitalk", legacyId(articleId)], [articleId]);
+  const labels = useMemo(() => labelNames.join(","), [labelNames]);
+  const initializeKey = useMemo(() => `gitalk_initialize:${articleId}`, [articleId]);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -103,6 +106,44 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
       void load();
   }, [load, token]);
 
+  const createIssue = useCallback(
+    async (accessToken: string) => {
+      setCreating(true);
+      setError(false);
+      try {
+        const slug = labelNames[1];
+        try {
+          await github(`/labels/${encodeURIComponent(slug)}`, undefined, accessToken);
+        } catch (error) {
+          if (!(error instanceof Error) || !error.message.endsWith("404")) throw error;
+          await github(
+            "/labels",
+            {
+              method: "POST",
+              body: JSON.stringify({ name: slug, color: "ededed" }),
+            },
+            accessToken,
+          );
+        }
+        const created = await github<GithubIssue>(
+          "/issues",
+          {
+            method: "POST",
+            body: JSON.stringify({ title: `[COMMENT] ${articleTitle}`, labels: labelNames }),
+          },
+          accessToken,
+        );
+        setIssue(created);
+        setComments([]);
+      } catch {
+        setError(true);
+      } finally {
+        setCreating(false);
+      }
+    },
+    [articleTitle, labelNames],
+  );
+
   const login = () => {
     const url = new URL("https://github.com/login/oauth/authorize");
     url.search = new URLSearchParams({
@@ -132,6 +173,21 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
       })
       .catch(() => setError(true));
   }, []);
+
+  useEffect(() => {
+    if (!token || window.localStorage.getItem(initializeKey) !== "1") return;
+    window.localStorage.removeItem(initializeKey);
+    void createIssue(token);
+  }, [createIssue, initializeKey, token]);
+
+  const initialize = () => {
+    if (!token) {
+      window.localStorage.setItem(initializeKey, "1");
+      login();
+      return;
+    }
+    void createIssue(token);
+  };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -239,14 +295,9 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
         </>
       ) : undefined}
       {!loading && !issue ? (
-        <a
-          className="btn btn-ghost"
-          href={`${api}/issues/new?title=${encodeURIComponent(`[COMMENT] ${articleTitle}`)}&labels=${encodeURIComponent(labels)}`}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <button type="button" className="btn btn-ghost" onClick={initialize} disabled={creating}>
           {i18n.translateToString("comments.initialize")}
-        </a>
+        </button>
       ) : undefined}
     </div>
   );
