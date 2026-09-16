@@ -7,13 +7,6 @@ interface Context {
   params: Promise<{ id: string }>;
 }
 
-const noStoreHeaders = { "Cache-Control": "no-store" };
-const readHeaders = {
-  // View totals are eventually consistent by design. This lets a browser or
-  // an ingress cache reuse the same snapshot without querying SQL repeatedly.
-  "Cache-Control": "public, max-age=300, stale-while-revalidate=3600",
-};
-
 function parseUserAgent(userAgent: string | null) {
   const value = userAgent ?? "";
   const isBot = /bot|crawler|spider|slurp|headless|monitor|curl|wget/i.test(value);
@@ -60,16 +53,13 @@ async function handleViews(request: NextRequest, context: Context, record: boole
   const { id } = await context.params;
   const articles = await readAllArticlesCached();
   if (id.length > 256 || !articles.some((article) => article.id === id)) {
-    return NextResponse.json(
-      { error: "Article not found" },
-      { status: 404, headers: noStoreHeaders },
-    );
+    return NextResponse.json({ error: "Article not found" }, { status: 404 });
   }
 
   try {
     if (!record) {
       const views = await getArticleViews(id);
-      return NextResponse.json({ articleId: id, views }, { headers: readHeaders });
+      return NextResponse.json({ articleId: id, views });
     }
 
     let body: Record<string, unknown> = {};
@@ -96,7 +86,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
       responseMs: Date.now() - started,
     };
     const views = await recordVisitEvent(id, event);
-    const response = NextResponse.json({ articleId: id, views }, { headers: noStoreHeaders });
+    const response = NextResponse.json({ articleId: id, views });
     response.cookies.set("visit_session", sessionId, {
       httpOnly: true,
       sameSite: "lax",
@@ -113,7 +103,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
     console.error("Article view storage unavailable:", message);
     return NextResponse.json(
       { error: "View count unavailable" },
-      { status: 503, headers: noStoreHeaders },
+      { status: 503 },
     );
   }
 }
@@ -131,7 +121,7 @@ export async function POST(request: NextRequest, context: Context) {
   ) {
     return NextResponse.json(
       { error: "JSON requests from this site are required" },
-      { status: 403, headers: noStoreHeaders },
+      { status: 403 },
     );
   }
   return handleViews(request, context, true);
