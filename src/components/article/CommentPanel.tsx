@@ -2,39 +2,21 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { FaComments, FaGithub } from "react-icons/fa";
+import {
+  clientId,
+  clientSecret,
+  GithubComment,
+  GithubIssue,
+  github,
+  legacyId,
+  oauthProxy,
+} from "src/components/article/github";
 import { Localized, useI18n } from "src/i18n";
 
 interface Props {
   articleId: string;
   articleTitle: string;
   language: string;
-}
-
-interface GithubComment {
-  id: number;
-  body: string;
-  body_html?: string;
-  created_at: string;
-  user: { login: string; avatar_url: string; html_url: string } | null;
-}
-
-interface GithubIssue {
-  number: number;
-  html_url: string;
-  comments: number;
-}
-
-const owner = "ddadaal";
-const repo = "ddadaal.me.github.io";
-const clientId = "5640259688bc3d72b807";
-const clientSecret = "bbe26de2fca2ea86e49a98e883caf9ff3102c4ff";
-const oauthProxy =
-  "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token";
-
-const api = `https://api.github.com/repos/${owner}/${repo}`;
-
-function legacyId(id: string) {
-  return id.substring(0, 50);
 }
 
 function safeBodyHtml(comment: GithubComment) {
@@ -44,19 +26,6 @@ function safeBodyHtml(comment: GithubComment) {
   );
 }
 
-async function github<T>(path: string, init?: RequestInit, token?: string): Promise<T> {
-  const response = await fetch(`${api}${path}`, {
-    ...init,
-    headers: {
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...init?.headers,
-    },
-  });
-  if (!response.ok) throw new Error(`GitHub API ${response.status}`);
-  return (await response.json()) as T;
-}
 
 const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
   const [issue, setIssue] = useState<GithubIssue | null>();

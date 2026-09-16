@@ -85,6 +85,16 @@
     "openIssue": "在 GitHub 中打开",
     "initialize": "发起讨论"
   },
+  "likes": {
+    "like": "点赞",
+    "liked": "已点赞",
+    "loading": "加载中……",
+    "submitting": "点赞中……",
+    "error": "点赞失败。",
+    "loginTooltip": "使用 GitHub 登录后点赞",
+    "noIssue": "讨论尚未发起，无法点赞",
+    "unlikeTooltip": "再次点击取消点赞"
+  },
   "articlePage": {
     "title": "文章",
     "backToHome": "回到主页",

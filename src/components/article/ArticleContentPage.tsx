@@ -1,4 +1,5 @@
 import { CommentPanelWithCurrentLanguage } from "src/components/article/CommentPanel";
+import { LikeButton } from "src/components/article/LikeButton";
 import { RelatedArticle, RelatedArticles } from "src/components/article/RelatedArticles";
 import { Heading } from "src/components/Heading";
 import { cacheLife } from "next/cache";
@@ -61,6 +62,9 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
         </div>
         <div className="max-w-7xl mx-auto p-4">
           <RelatedArticles relatedArticles={relatedArticles} />
+        </div>
+        <div className="max-w-7xl mx-auto p-4">
+          <LikeButton articleId={article.id} />
         </div>
         <div className="max-w-7xl mx-auto p-4">
           <CommentPanelWithCurrentLanguage articleId={article.id} articleTitle={article.title} />

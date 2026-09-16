@@ -124,6 +124,16 @@
     "openIssue": "Open on GitHub",
     "initialize": "Start the discussion"
   },
+  "likes": {
+    "like": "Like",
+    "liked": "Liked",
+    "loading": "Loading...",
+    "submitting": "Liking...",
+    "error": "Unable to like.",
+    "loginTooltip": "Sign in with GitHub to like",
+    "noIssue": "The discussion has not been started yet",
+    "unlikeTooltip": "Click to unlike"
+  },
   "selfIntro": {
     "author": "Author",
     "university": "Undergraduate in Nanjing University Software Engineering since 2016",
