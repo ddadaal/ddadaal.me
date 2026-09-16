@@ -101,10 +101,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
     // diagnosed without ever logging the SQL password.
     const message = error instanceof Error ? error.message : String(error);
     console.error("Article view storage unavailable:", message);
-    return NextResponse.json(
-      { error: "View count unavailable" },
-      { status: 503 },
-    );
+    return NextResponse.json({ error: "View count unavailable" }, { status: 503 });
   }
 }
 
