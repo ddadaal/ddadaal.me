@@ -11,7 +11,13 @@ import { GET as getAsset } from "../src/app/articles/asset/[...path]/route.js";
 import { getDb, getSqlPool } from "../src/db/client.js";
 import { sqlConfig } from "../src/db/config.js";
 import { articleViews, visitEvents } from "../src/db/schema.js";
-import { getArticleViews, recordArticleView } from "../src/server/articleViews.js";
+import {
+  flushArticleViews,
+  getArticleViews,
+  recordArticleView,
+  reseedArticleView,
+  stopArticleViews,
+} from "../src/server/articleViews.js";
 
 const testIds = [randomUUID(), randomUUID(), randomUUID()];
 let connected = false;
@@ -29,6 +35,7 @@ before(async () => {
 });
 
 after(async () => {
+  stopArticleViews();
   if (!connected) {
     return;
   }
@@ -69,11 +76,18 @@ void test("concurrent first visits and subsequent visits retain every increment"
 void test("BIGINT values above JavaScript's safe integer limit remain exact", async () => {
   const db = await getDb();
   const id = testIds[2];
+  // Seed a large counter the way a fresh process warmup would see it.
   await db.insert(articleViews).values({ articleId: id, viewCount: "9007199254740992" });
+  reseedArticleView(id, "9007199254740992");
+
+  // One local increment must be exact even beyond the safe integer limit.
   assert.equal(await recordArticleView(id), "9007199254740993");
   assert.equal(await getArticleViews(id), "9007199254740993");
 
+  // The flush persists the increment on top of the seeded value.
+  await flushArticleViews();
   const [row] = await db.select().from(articleViews).where(eq(articleViews.articleId, id));
+  assert.equal(row.viewCount, "9007199254740993");
   assert.ok(Math.abs(Date.now() - row.lastViewedAt.getTime()) < 60000);
 });
 

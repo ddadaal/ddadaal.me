@@ -41,7 +41,7 @@ services:
       - -C
       - -b
       - -Q
-      - "IF DB_ID(N'blog_views_test') IS NULL CREATE DATABASE [blog_views_test];"
+      - "IF DB_ID(N'blog_views_test') IS NULL CREATE DATABASE [blog_views_test]; IF DB_ID(N'blog_views') IS NULL CREATE DATABASE [blog_views];"
 
 volumes:
   sqlserver-data:

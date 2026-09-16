@@ -4,5 +4,7 @@ export async function register() {
   if (process.env.NEXT_RUNTIME === "nodejs") {
     const { initializeDatabaseAtStartup } = await import("./db/startup.js");
     await initializeDatabaseAtStartup();
+    const { initializeArticleViews } = await import("./server/articleViews.js");
+    await initializeArticleViews();
   }
 }

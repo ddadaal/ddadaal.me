@@ -60,11 +60,15 @@ export const ArticleContentPage = async ({ article, langs }: Props) => {
         <div className="max-w-7xl mx-auto p-4">
           <ArticleContent article={article} />
         </div>
-        <div className="max-w-7xl mx-auto p-4">
-          <RelatedArticles relatedArticles={relatedArticles} />
+        <div className="max-w-7xl mx-auto p-4 flex">
+          {/* Match the text column width (75% on large screens when a TOC is
+              shown) so the button centers on the text, not the whole row. */}
+          <div className={`flex justify-center ${article.no_toc ? "w-full" : "lg:w-[75%] w-full"}`}>
+            <LikeButton articleId={article.id} />
+          </div>
         </div>
         <div className="max-w-7xl mx-auto p-4">
-          <LikeButton articleId={article.id} />
+          <RelatedArticles relatedArticles={relatedArticles} />
         </div>
         <div className="max-w-7xl mx-auto p-4">
           <CommentPanelWithCurrentLanguage articleId={article.id} articleTitle={article.title} />
