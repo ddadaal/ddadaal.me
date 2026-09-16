@@ -113,25 +113,28 @@ export const LikeButton = ({ articleId }: Props) => {
     }
   }, []);
 
-  const unlike = useCallback(async (accessToken: string, target: GithubIssue) => {
-    if (myReactionId === undefined) return;
-    setSubmitting(true);
-    setError(false);
-    try {
-      await github(
-        `/issues/${target.number}/reactions/${myReactionId}`,
-        { method: "DELETE" },
-        accessToken,
-      );
-      setLiked(false);
-      setMyReactionId(undefined);
-      setCount((c) => Math.max(0, c - 1));
-    } catch {
-      setError(true);
-    } finally {
-      setSubmitting(false);
-    }
-  }, [myReactionId]);
+  const unlike = useCallback(
+    async (accessToken: string, target: GithubIssue) => {
+      if (myReactionId === undefined) return;
+      setSubmitting(true);
+      setError(false);
+      try {
+        await github(
+          `/issues/${target.number}/reactions/${myReactionId}`,
+          { method: "DELETE" },
+          accessToken,
+        );
+        setLiked(false);
+        setMyReactionId(undefined);
+        setCount((c) => Math.max(0, c - 1));
+      } catch {
+        setError(true);
+      } finally {
+        setSubmitting(false);
+      }
+    },
+    [myReactionId],
+  );
 
   const login = () => {
     // Remember intent so the like can complete after the OAuth round-trip.
@@ -163,7 +166,10 @@ export const LikeButton = ({ articleId }: Props) => {
         className={`btn ${liked ? "btn-secondary" : "btn-outline"}`}
         onClick={onClick}
         disabled={
-          loading || submitting || (token !== undefined && !issue) || (liked && myReactionId === undefined)
+          loading ||
+          submitting ||
+          (token !== undefined && !issue) ||
+          (liked && myReactionId === undefined)
         }
         title={
           !token

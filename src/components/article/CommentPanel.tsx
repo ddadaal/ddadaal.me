@@ -26,7 +26,6 @@ function safeBodyHtml(comment: GithubComment) {
   );
 }
 
-
 const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
   const [issue, setIssue] = useState<GithubIssue | null>();
   const [comments, setComments] = useState<GithubComment[]>([]);
