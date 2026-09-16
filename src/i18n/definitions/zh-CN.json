@@ -85,15 +85,24 @@
     "openIssue": "在 GitHub 中打开",
     "initialize": "发起讨论"
   },
-  "likes": {
-    "like": "点赞",
-    "liked": "已点赞",
-    "loading": "加载中……",
-    "submitting": "点赞中……",
-    "error": "点赞失败。",
-    "loginTooltip": "使用 GitHub 登录后点赞",
-    "noIssue": "讨论尚未发起，无法点赞",
-    "unlikeTooltip": "再次点击取消点赞"
+  "reactions": {
+    "loading": "正在加载回应……",
+    "error": "回应更新失败。",
+    "loginTooltip": "使用 GitHub 登录后添加回应",
+    "githubLogin": "使用 GitHub 登录",
+    "noIssue": "讨论尚未发起，无法回应",
+    "add": "添加 {} 回应",
+    "remove": "移除 {} 回应",
+    "names": {
+      "+1": "赞",
+      "-1": "踩",
+      "laugh": "大笑",
+      "hooray": "欢呼",
+      "confused": "困惑",
+      "heart": "爱心",
+      "rocket": "火箭",
+      "eyes": "关注"
+    }
   },
   "articlePage": {
     "title": "文章",

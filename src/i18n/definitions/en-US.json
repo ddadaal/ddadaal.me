@@ -124,15 +124,24 @@
     "openIssue": "Open on GitHub",
     "initialize": "Start the discussion"
   },
-  "likes": {
-    "like": "Like",
-    "liked": "Liked",
-    "loading": "Loading...",
-    "submitting": "Liking...",
-    "error": "Unable to like.",
-    "loginTooltip": "Sign in with GitHub to like",
+  "reactions": {
+    "loading": "Loading reactions...",
+    "error": "Unable to update reaction.",
+    "loginTooltip": "Sign in with GitHub to react",
+    "githubLogin": "Sign in with GitHub",
     "noIssue": "The discussion has not been started yet",
-    "unlikeTooltip": "Click to unlike"
+    "add": "React with {}",
+    "remove": "Remove {} reaction",
+    "names": {
+      "+1": "thumbs up",
+      "-1": "thumbs down",
+      "laugh": "laugh",
+      "hooray": "hooray",
+      "confused": "confused",
+      "heart": "heart",
+      "rocket": "rocket",
+      "eyes": "eyes"
+    }
   },
   "selfIntro": {
     "author": "Author",
