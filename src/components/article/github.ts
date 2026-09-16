@@ -40,6 +40,8 @@ export async function github<T>(path: string, init?: RequestInit, token?: string
     },
   });
   if (!response.ok) throw new Error(`GitHub API ${response.status}`);
+  // Some endpoints (e.g. DELETE reactions) return 204 with an empty body.
+  if (response.status === 204) return undefined as T;
   return (await response.json()) as T;
 }
 
