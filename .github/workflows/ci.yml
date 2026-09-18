@@ -34,18 +34,6 @@ jobs:
 
       - uses: docker/setup-buildx-action@v4
 
-      - name: Validate AKS deployment settings
-        if: github.event_name != 'pull_request'
-        env:
-          AKS_RESOURCE_GROUP: ${{ secrets.AKS_RESOURCE_GROUP }}
-          AKS_CLUSTER_NAME: ${{ secrets.AKS_CLUSTER_NAME }}
-          AKS_NAMESPACE: ${{ secrets.AKS_NAMESPACE }}
-        run: |
-          set -euo pipefail
-          test -n "$AKS_RESOURCE_GROUP"
-          test -n "$AKS_CLUSTER_NAME"
-          test -n "$AKS_NAMESPACE"
-
       - name: Sign in to Azure
         if: github.event_name != 'pull_request'
         uses: azure/login@v3
@@ -98,28 +86,33 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Set up kubelogin
+      - name: Set up kubectl
         if: github.event_name != 'pull_request'
-        uses: azure/use-kubelogin@v1.3
+        uses: azure/setup-kubectl@v4
         with:
-          kubelogin-version: v0.2.19
+          version: v1.36.4
 
-      - name: Set AKS context
+      - name: Configure K3s access
         if: github.event_name != 'pull_request'
-        uses: azure/aks-set-context@v5
-        with:
-          resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
-          cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
-          use-kubelogin: "true"
+        env:
+          KUBECONFIG_CONTENT: ${{ secrets.KUBECONFIG }}
+        run: |
+          set -euo pipefail
+          test -n "$KUBECONFIG_CONTENT"
+          install -d -m 700 "$RUNNER_TEMP/kube"
+          printf '%s' "$KUBECONFIG_CONTENT" > "$RUNNER_TEMP/kube/config"
+          chmod 600 "$RUNNER_TEMP/kube/config"
+          echo "KUBECONFIG=$RUNNER_TEMP/kube/config" >> "$GITHUB_ENV"
 
-      - name: Deploy image to AKS
+          kubectl --kubeconfig "$RUNNER_TEMP/kube/config" auth can-i \
+            patch deployment/ddadaal-me -n ddadaalme --quiet
+
+      - name: Deploy image to K3s
         if: github.event_name != 'pull_request'
         env:
           IMAGE: ${{ steps.acr.outputs.login_server }}/ddadaal-me/ddadaal-me:${{ github.sha }}
-          AKS_NAMESPACE: ${{ secrets.AKS_NAMESPACE }}
         run: |
           set -euo pipefail
-          test -n "$AKS_NAMESPACE"
-          kubectl -n "$AKS_NAMESPACE" set image deployment/ddadaal-me \
+          kubectl -n ddadaalme set image deployment/ddadaal-me \
             ddadaal-me="$IMAGE"
-          kubectl -n "$AKS_NAMESPACE" rollout status deployment/ddadaal-me --timeout=600s
+          kubectl -n ddadaalme rollout status deployment/ddadaal-me --timeout=600s

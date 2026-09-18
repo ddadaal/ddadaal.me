@@ -1,1 +1,1 @@
-export { getDb, getSqlPool } from "src/db/client";
+export { getDb } from "src/db/client";

@@ -5,7 +5,6 @@
   "scripts": {
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "test:db": "node --env-file-if-exists=.env.local --conditions=react-server --import tsx --test tests/articleViews.test.ts",
     "test:summarize": "node --import tsx --test tests/summarize.test.ts",
     "summarize": "tsx tools/summarize/index.ts",
     "dev:next": "next dev",
@@ -40,7 +39,6 @@
     "mermaid": "^12.0.0",
     "mime-types": "3.0.2",
     "minisearch": "7.2.0",
-    "mssql": "12.7.2",
     "next": "16.3.5",
     "next-sitemap": "4.2.3",
     "photoswipe": "5.4.4",
@@ -75,7 +73,6 @@
     "@azure-rest/ai-inference": "1.0.0-beta.6",
     "@azure/ai-language-text": "1.1.0",
     "@types/mime-types": "3.0.1",
-    "@types/mssql": "12.3.0",
     "@types/rss": "0.0.32",
     "dotenv": "17.4.2",
     "drizzle-kit": "1.0.0-rc.4",

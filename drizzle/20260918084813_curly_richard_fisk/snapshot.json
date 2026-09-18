@@ -1,210 +1,226 @@
 {
-  "version": "2",
-  "dialect": "mssql",
-  "id": "d6ff276b-a900-4a91-8012-b10dae000542",
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "ea04f570-2432-4f16-b105-30a81250517f",
   "prevIds": [
-    "7b99193e-55da-4ace-9aa3-200be8e617f2"
+    "00000000-0000-0000-0000-000000000000"
   ],
   "ddl": [
     {
       "name": "ArticleViews",
-      "entityType": "tables",
-      "schema": "dbo"
+      "entityType": "tables"
     },
     {
       "name": "VisitEvents",
-      "entityType": "tables",
-      "schema": "dbo"
+      "entityType": "tables"
     },
     {
-      "type": "nvarchar(256)",
-      "notNull": true,
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "ArticleId",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "ArticleViews"
     },
     {
-      "type": "bigint",
+      "type": "text",
       "notNull": true,
+      "autoincrement": false,
+      "default": "'0'",
       "generated": null,
-      "identity": null,
       "name": "ViewCount",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "ArticleViews"
     },
     {
-      "type": "datetime2(3)",
+      "type": "integer",
       "notNull": true,
+      "autoincrement": false,
+      "default": "(cast((julianday('now') - 2440587.5)*86400000 as integer))",
       "generated": null,
-      "identity": null,
       "name": "LastViewedAt",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "ArticleViews"
     },
     {
-      "type": "nvarchar(36)",
-      "notNull": true,
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "Id",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "datetime2(3)",
+      "type": "integer",
       "notNull": true,
+      "autoincrement": false,
+      "default": "(cast((julianday('now') - 2440587.5)*86400000 as integer))",
       "generated": null,
-      "identity": null,
       "name": "OccurredAt",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(64)",
+      "type": "text",
       "notNull": true,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "SessionId",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(256)",
+      "type": "text",
       "notNull": true,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "ArticleId",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(2048)",
+      "type": "text",
       "notNull": true,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "Path",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(2048)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "Referrer",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(256)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "UtmSource",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(256)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "UtmMedium",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(256)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "UtmCampaign",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(64)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "IpHash",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(64)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "Browser",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(64)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "OperatingSystem",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "nvarchar(16)",
+      "type": "text",
       "notNull": false,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "DeviceType",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "int",
+      "type": "integer",
       "notNull": true,
+      "autoincrement": false,
+      "default": "false",
       "generated": null,
-      "identity": null,
       "name": "IsBot",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "int",
+      "type": "integer",
       "notNull": true,
+      "autoincrement": false,
+      "default": "200",
       "generated": null,
-      "identity": null,
       "name": "StatusCode",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
     },
     {
-      "type": "int",
+      "type": "integer",
       "notNull": true,
+      "autoincrement": false,
+      "default": null,
       "generated": null,
-      "identity": null,
       "name": "ResponseMs",
-      "schema": "dbo",
       "entityType": "columns",
       "table": "VisitEvents"
+    },
+    {
+      "columns": [
+        "ArticleId"
+      ],
+      "nameExplicit": false,
+      "name": "ArticleViews_pk",
+      "table": "ArticleViews",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "Id"
+      ],
+      "nameExplicit": false,
+      "name": "VisitEvents_pk",
+      "table": "VisitEvents",
+      "entityType": "pks"
     },
     {
       "columns": [
@@ -219,10 +235,10 @@
       ],
       "isUnique": false,
       "where": null,
+      "origin": "manual",
       "name": "VisitEvents_Article_Occurred",
       "entityType": "indexes",
-      "table": "VisitEvents",
-      "schema": "dbo"
+      "table": "VisitEvents"
     },
     {
       "columns": [
@@ -237,82 +253,16 @@
       ],
       "isUnique": false,
       "where": null,
+      "origin": "manual",
       "name": "VisitEvents_Session_Occurred",
       "entityType": "indexes",
-      "table": "VisitEvents",
-      "schema": "dbo"
-    },
-    {
-      "nameExplicit": false,
-      "columns": [
-        "ArticleId"
-      ],
-      "name": "ArticleViews_pkey",
-      "table": "ArticleViews",
-      "schema": "dbo",
-      "entityType": "pks"
-    },
-    {
-      "nameExplicit": false,
-      "columns": [
-        "Id"
-      ],
-      "name": "VisitEvents_pkey",
-      "table": "VisitEvents",
-      "schema": "dbo",
-      "entityType": "pks"
-    },
-    {
-      "column": "ViewCount",
-      "nameExplicit": false,
-      "default": "((0))",
-      "name": "ArticleViews_ViewCount_default",
-      "entityType": "defaults",
-      "schema": "dbo",
-      "table": "ArticleViews"
-    },
-    {
-      "column": "LastViewedAt",
-      "nameExplicit": false,
-      "default": "(SYSUTCDATETIME())",
-      "name": "ArticleViews_LastViewedAt_default",
-      "entityType": "defaults",
-      "schema": "dbo",
-      "table": "ArticleViews"
-    },
-    {
-      "column": "OccurredAt",
-      "nameExplicit": false,
-      "default": "(SYSUTCDATETIME())",
-      "name": "VisitEvents_OccurredAt_default",
-      "entityType": "defaults",
-      "schema": "dbo",
       "table": "VisitEvents"
     },
     {
-      "column": "IsBot",
-      "nameExplicit": false,
-      "default": "((0))",
-      "name": "VisitEvents_IsBot_default",
-      "entityType": "defaults",
-      "schema": "dbo",
-      "table": "VisitEvents"
-    },
-    {
-      "column": "StatusCode",
-      "nameExplicit": false,
-      "default": "((200))",
-      "name": "VisitEvents_StatusCode_default",
-      "entityType": "defaults",
-      "schema": "dbo",
-      "table": "VisitEvents"
-    },
-    {
-      "value": "[ArticleViews].[ViewCount] >= 0",
+      "value": "CAST(\"ViewCount\" AS INTEGER) >= 0",
       "name": "ArticleViews_ViewCount_nonnegative",
       "entityType": "checks",
-      "table": "ArticleViews",
-      "schema": "dbo"
+      "table": "ArticleViews"
     }
   ],
   "renames": []

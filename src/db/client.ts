@@ -1,30 +1,26 @@
 import "server-only";
 
-import { drizzle } from "drizzle-orm/node-mssql";
-import sql from "mssql";
+import { drizzle, NodeSQLiteDatabase } from "drizzle-orm/node-sqlite";
+import { mkdirSync } from "fs";
+import { DatabaseSync } from "node:sqlite";
+import { dirname } from "path";
 
-import { sqlConfig } from "./config";
-import * as schema from "./schema";
+import { sqliteDbPath } from "./config";
 
-const globalSql = globalThis as typeof globalThis & {
-  articleViewsPool?: Promise<sql.ConnectionPool>;
+const globalSqlite = globalThis as typeof globalThis & {
+  articleViewsDb?: NodeSQLiteDatabase & { $client: DatabaseSync };
 };
 
-export function getSqlPool(): Promise<sql.ConnectionPool> {
-  if (!globalSql.articleViewsPool) {
-    const pool = new sql.ConnectionPool(sqlConfig());
-    pool.on("error", () => {
-      console.error("Article views SQL connection pool error");
-    });
-    globalSql.articleViewsPool = pool.connect().catch(async (error: unknown) => {
-      globalSql.articleViewsPool = undefined;
-      await pool.close().catch(() => undefined);
-      throw error;
-    });
+export function getDb() {
+  if (!globalSqlite.articleViewsDb) {
+    const path = sqliteDbPath();
+    mkdirSync(dirname(path), { recursive: true });
+    const client = new DatabaseSync(path);
+    // WAL lets readers proceed during the periodic flush; a busy timeout
+    // absorbs lock contention instead of failing a request.
+    client.exec("PRAGMA journal_mode = WAL");
+    client.exec("PRAGMA busy_timeout = 5000");
+    globalSqlite.articleViewsDb = drizzle({ client });
   }
-  return globalSql.articleViewsPool;
-}
-
-export async function getDb() {
-  return drizzle({ client: await getSqlPool(), schema });
+  return globalSqlite.articleViewsDb;
 }

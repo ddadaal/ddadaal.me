@@ -76,18 +76,18 @@ After editing `src/db/schema.ts`, generate and review the next Drizzle migration
 pnpm db:generate
 ```
 
-## Article view counts and SQL Server
+## Article view counts and SQLite
 
-The database layer uses Drizzle ORM's native `node-mssql` adapter. SQL Server support currently requires the release candidate, so `drizzle-orm` and `drizzle-kit` are pinned to `1.0.0-rc.4`. The table is defined in [src/db/schema.ts](src/db/schema.ts), and versioned SQL migrations are committed in `drizzle/`.
+The database layer uses Drizzle ORM's `node-sqlite` adapter on Node's built-in `node:sqlite` module, so no database server or native driver is required. The tables are defined in [src/db/schema.ts](src/db/schema.ts), and versioned SQL migrations are committed in `drizzle/`.
 
-For local development, copy `.env.test.example` to `.env.local` and use the SQL Server container described below. The application runs pending Drizzle migrations at startup after the target database has been provisioned. It does not create databases automatically.
+The database is a single file, `data/views.db` by default; set `SQLITE_DB_PATH` to change it. The file and its parent directory are created automatically, and the application runs pending Drizzle migrations at startup.
 
 ```bash
 # Reads .env.local, then .env; existing process environment takes precedence.
 pnpm db:migrate
 ```
 
-Drizzle tracks applied migrations, so running `pnpm db:migrate` again preserves existing counts. Migrations never run during image build or a visitor request. For integration tests, point the `AZURE_SQL_*` environment variables at a dedicated SQL Server database whose name ends in `_test`, then run `pnpm test:db`.
+Drizzle tracks applied migrations, so running `pnpm db:migrate` again preserves existing counts. Migrations never run during image build or a visitor request.
 
 Each article page opening (including refreshes and client navigation) records a page view after the browser mounts the page. Translations and the default URL share the same article ID and total. About pages are also counted. Lists, search, prerendering, link prefetches, and requests without browser JavaScript do not increment counts.
 
@@ -95,38 +95,9 @@ View counts appear alongside the date and reading time in article list items, se
 
 Comments are rendered by the client-only GitHub Issues integration in `src/components/article/CommentPanel.tsx`. It keeps the legacy Gitalk mapping: the repository is `ddadaal.me.github.io`, and an article uses the `Gitalk` label plus its first 50 ID characters, so existing issues and comments remain visible. GitHub OAuth tokens are stored in the browser's local storage, as in Gitalk. The repository and OAuth settings are defined directly in the component, and the OAuth application callback URL must allow the exact article URL (GitHub returns to the current page).
 
-`POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve SQL `bigint` precision. Unknown IDs return 404. Next.js Cache Components is enabled for the server. Parsed article content, about pages, sparks, metadata, and the search index use a one-week revalidation window and a one-year expiry, matching the immutable content shipped in each image. View totals are read with one cached SQL query for all articles (five-minute client staleness, one-hour server revalidation, one-day expiry), so list pages do not issue one database query per article. Successful POST requests return the exact committed value but do not invalidate the shared snapshot; lists can therefore lag by up to one hour. The GET response is also cacheable by browsers and ingress (`max-age=300, stale-while-revalidate=3600`). If SQL is unconfigured or unavailable, these endpoints return 503 and the article remains readable with its counter hidden.
+`POST /api/articles/:id/views` with `Content-Type: application/json` increments and returns `{ "articleId": "…", "views": "1" }`; `GET` reads the total without incrementing it. Counts are decimal strings to preserve precision beyond JavaScript's safe integer limit. Unknown IDs return 404. Next.js Cache Components is enabled for the server. Parsed article content, about pages, sparks, metadata, and the search index use a one-week revalidation window and a one-year expiry, matching the immutable content shipped in each image. Successful POST requests return the exact committed value. If the database file is unwritable or unavailable, these endpoints return 503 and the article remains readable with its counter hidden.
 
-## Local SQL Server for development and tests
-
-[docker-compose.yaml](docker-compose.yaml) runs SQL Server 2022 Developer on `localhost:1433`, with a health check and a named volume for its data. The `sqlserver-init` service creates `blog_views_test` if it does not already exist. Its name is compatible with the database integration tests.
-
-```bash
-cp .env.test.example .env.local
-docker compose --env-file .env.local up -d --wait sqlserver
-docker compose --env-file .env.local run --rm sqlserver-init
-
-# Apply Drizzle migrations to the local test database.
-pnpm db:migrate
-
-# Run the database integration tests.
-pnpm test:db
-
-# Run the blog locally with the same database.
-pnpm dev
-```
-
-If you already have a `.env.local`, merge the values from `.env.test.example` into it. Next.js, Drizzle Kit, and the database tests all read `.env.local`; existing process environment variables take precedence. You can change `AZURE_SQL_PORT` in this file if port 1433 is occupied. The example password is only for local testing; changing it after the data volume has been initialized also requires changing the existing SQL Server login password.
-
-```bash
-# Stop the database and keep its data.
-docker compose --env-file .env.local down
-
-# Reset the local database by removing its data volume.
-docker compose --env-file .env.local down -v
-```
-
-Deployment instructions, including Azure SQL, Docker, ACR, GitHub Actions, and AKS, are in [deploy/README.md](deploy/README.md).
+Deployment instructions, including Docker, ACR, GitHub Actions, and AKS, are in [deploy/README.md](deploy/README.md). Mount a volume at `/app/data` in production so the database survives container replacement.
 
 ## License
 

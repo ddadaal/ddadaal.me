@@ -20,16 +20,9 @@ const nextConfig: NextConfig = {
       revalidate: 604800,
       expire: 31536000,
     },
-    // View totals are intentionally eventually consistent. The POST response
-    // contains the exact new total; list pages can use a cached snapshot.
-    views: {
-      stale: 300,
-      revalidate: 3600,
-      expire: 86400,
-    },
   },
 
-  serverExternalPackages: ["@node-rs/jieba", "@node-rs/jieba/dict", "mssql"],
+  serverExternalPackages: ["@node-rs/jieba", "@node-rs/jieba/dict"],
   outputFileTracingIncludes: {
     "/*": ["./contents/**/*"],
   },

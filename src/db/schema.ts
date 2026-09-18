@@ -1,39 +1,41 @@
 import { sql } from "drizzle-orm";
-import { bigint, check, datetime2, index, int, mssqlTable, nvarchar } from "drizzle-orm/mssql-core";
+import { check, index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
-export const articleViews = mssqlTable(
+// View counts are decimal strings, not SQLite integers: node:sqlite throws
+// when reading an INTEGER beyond 2^53 unless every statement reads bigints,
+// and a decimal string is exact at any magnitude. Arithmetic goes through
+// CAST(... AS INTEGER), which is exact within SQLite's 64-bit range.
+export const articleViews = sqliteTable(
   "ArticleViews",
   {
-    articleId: nvarchar("ArticleId", { length: 256 }).primaryKey(),
-    viewCount: bigint("ViewCount", { mode: "string" }).notNull().default("0"),
-    lastViewedAt: datetime2("LastViewedAt", { precision: 3 })
-      .notNull()
-      .default(sql`SYSUTCDATETIME()`),
+    articleId: text("ArticleId").primaryKey(),
+    viewCount: text("ViewCount").notNull().default("0"),
+    lastViewedAt: integer("LastViewedAt", { mode: "timestamp_ms" }).notNull().defaultNow(),
   },
-  (table) => [check("ArticleViews_ViewCount_nonnegative", sql`${table.viewCount} >= 0`)],
+  (table) => [
+    check("ArticleViews_ViewCount_nonnegative", sql`CAST(${table.viewCount} AS INTEGER) >= 0`),
+  ],
 );
 
-export const visitEvents = mssqlTable(
+export const visitEvents = sqliteTable(
   "VisitEvents",
   {
-    id: nvarchar("Id", { length: 36 }).primaryKey(),
-    occurredAt: datetime2("OccurredAt", { precision: 3 })
-      .notNull()
-      .default(sql`SYSUTCDATETIME()`),
-    sessionId: nvarchar("SessionId", { length: 64 }).notNull(),
-    articleId: nvarchar("ArticleId", { length: 256 }).notNull(),
-    path: nvarchar("Path", { length: 2048 }).notNull(),
-    referrer: nvarchar("Referrer", { length: 2048 }),
-    utmSource: nvarchar("UtmSource", { length: 256 }),
-    utmMedium: nvarchar("UtmMedium", { length: 256 }),
-    utmCampaign: nvarchar("UtmCampaign", { length: 256 }),
-    ipHash: nvarchar("IpHash", { length: 64 }),
-    browser: nvarchar("Browser", { length: 64 }),
-    operatingSystem: nvarchar("OperatingSystem", { length: 64 }),
-    deviceType: nvarchar("DeviceType", { length: 16 }),
-    isBot: int("IsBot").notNull().default(0),
-    statusCode: int("StatusCode").notNull().default(200),
-    responseMs: int("ResponseMs").notNull(),
+    id: text("Id").primaryKey(),
+    occurredAt: integer("OccurredAt", { mode: "timestamp_ms" }).notNull().defaultNow(),
+    sessionId: text("SessionId").notNull(),
+    articleId: text("ArticleId").notNull(),
+    path: text("Path").notNull(),
+    referrer: text("Referrer"),
+    utmSource: text("UtmSource"),
+    utmMedium: text("UtmMedium"),
+    utmCampaign: text("UtmCampaign"),
+    ipHash: text("IpHash"),
+    browser: text("Browser"),
+    operatingSystem: text("OperatingSystem"),
+    deviceType: text("DeviceType"),
+    isBot: integer("IsBot", { mode: "boolean" }).notNull().default(false),
+    statusCode: integer("StatusCode").notNull().default(200),
+    responseMs: integer("ResponseMs").notNull(),
   },
   (table) => [
     index("VisitEvents_Article_Occurred").on(table.articleId, table.occurredAt),
