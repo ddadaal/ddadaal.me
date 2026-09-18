@@ -90,7 +90,7 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: azure/setup-kubectl@v4
         with:
-          version: v1.36.4
+          version: v1.37.0
 
       - name: Configure K3s access
         if: github.event_name != 'pull_request'
