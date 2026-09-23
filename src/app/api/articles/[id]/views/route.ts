@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { readAllArticlesCached } from "src/data/articles";
+import { sparkIds } from "src/app/sparks/loader";
+import { articleIds } from "src/data/articles";
 import { getArticleViews, recordVisitEvent, VisitEventInput } from "src/server/articleViews";
 
 interface Context {
@@ -51,9 +52,10 @@ function hashIp(request: NextRequest) {
 
 async function handleViews(request: NextRequest, context: Context, record: boolean) {
   const { id } = await context.params;
-  const articles = await readAllArticlesCached();
-  if (id.length > 256 || !articles.some((article) => article.id === id)) {
-    return NextResponse.json({ error: "Article not found" }, { status: 404 });
+  const isArticle = articleIds.has(id);
+  const isSpark = !isArticle && sparkIds.has(id);
+  if (id.length > 256 || (!isArticle && !isSpark)) {
+    return NextResponse.json({ error: "Content not found" }, { status: 404 });
   }
 
   try {
@@ -75,7 +77,7 @@ async function handleViews(request: NextRequest, context: Context, record: boole
     const started = Date.now();
     const event: VisitEventInput = {
       sessionId,
-      path: stringField("path", 2048) ?? `/articles/${id}`,
+      path: stringField("path", 2048) ?? (isSpark ? `/sparks/${id}` : `/articles/${id}`),
       referrer: stringField("referrer", 2048),
       utmSource: stringField("utmSource", 256),
       utmMedium: stringField("utmMedium", 256),

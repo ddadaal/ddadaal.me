@@ -8,13 +8,22 @@ export interface Spark {
   content: string;
 }
 
+const sparkFiles = contentPaths.filter((path) => /^contents\/sparks\/[^/]+\.md$/.test(path));
+
+// Spark ids are fixed once the site is built. Compute the set at module load
+// so the views API can validate ids without re-reading content per request.
+export const sparkIds: ReadonlySet<string> = new Set(
+  sparkFiles
+    .map((file) => matter(readContentFile(file)).data.id)
+    .filter((id): id is string => typeof id === "string"),
+);
+
 export async function loadSparks(): Promise<Spark[]> {
   "use cache";
   cacheLife("articles");
   cacheTag("sparks");
-  const files = contentPaths.filter((path) => /^contents\/sparks\/[^/]+\.md$/.test(path));
   const sparks: Spark[] = [];
-  for (const file of files) {
+  for (const file of sparkFiles) {
     const raw = readContentFile(file);
     const { data, content } = matter(raw);
     if (typeof data.id === "string" && typeof data.time === "string") {

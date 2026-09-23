@@ -179,6 +179,32 @@ export async function readAllArticlesCached() {
   return readArticles(true);
 }
 
+function readArticleIds(): Set<string> {
+  const dirs = [...new Set(contentPaths.map((path) => path.split("/")[1]))];
+  const ids = new Set<string>();
+  for (const dir of dirs) {
+    if (IGNORED_DIRS.includes(dir)) {
+      continue;
+    }
+    const dirPath = join(CONTENT_DIR, dir);
+    const filePath = contentPaths.find(
+      (path) => dirname(path) === dirPath && acceptedFileTypes.includes(extname(path)),
+    );
+    if (!filePath) {
+      continue;
+    }
+    const { data } = matter(readContentFile(filePath));
+    if (typeof data.id === "string") {
+      ids.add(data.id);
+    }
+  }
+  return ids;
+}
+
+// Article ids are fixed once the site is built. Compute the set at module load
+// so the views API can validate ids without re-reading content per request.
+export const articleIds: ReadonlySet<string> = readArticleIds();
+
 export interface ArticleListInfo {
   id: string;
 

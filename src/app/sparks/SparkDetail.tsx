@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArticleViewCount } from "src/components/article/ArticleViewCount";
 import { CommentPanelWithCurrentLanguage } from "src/components/article/CommentPanel";
 import { LikeButton } from "src/components/article/LikeButton";
 import { Localized } from "src/i18n";
@@ -15,7 +16,12 @@ export async function SparkDetail({ spark }: { spark: Spark }) {
       <Link href="/sparks" className="text-sm text-primary hover:underline">
         ← <Localized id="sparksPage.backToList" />
       </Link>
-      <h1 className="text-xl font-bold mt-4 mb-6">{time}</h1>
+      <div className="mt-4 mb-6 flex items-center justify-between">
+        <h1 className="text-xl font-bold">{time}</h1>
+        <span className="text-sm text-base-content/60">
+          <ArticleViewCount articleId={spark.id} recordView />
+        </span>
+      </div>
       <div className="prose max-w-full text-base leading-relaxed mb-8">
         <MarkdownSpark content={spark.content} />
       </div>
