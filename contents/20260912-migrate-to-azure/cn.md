@@ -1,6 +1,7 @@
 ---
 id: migrate-to-azure
 date: 2026-09-12 19:02
+last_updated: 2026-09-23 20:15
 title: 博客的发展3：将博客迁移至Azure并添加访问指标采集
 lang: cn
 tags:
@@ -44,7 +45,9 @@ related:
 
 这次趁着想要添加指标采集的功夫，就直接把整个网站+数据库全部搬迁到Azure。
 
-当前Azure架构
+### 第一次：AKS
+
+第一次先选择了经典的全托管AKS+Azure SQL Server方案：
 
 ```
 访问 -> [AKS] -> [Azure SQL Server]
@@ -74,14 +77,13 @@ aks-agentpool-27587481-vmss000000   229m         12%      3669Mi          63%
 
 数据存放在Azure SQL Server中：
 
-- Azure SQL Server提供免费额度（[官方文档](https://learn.microsoft.com/en-us/azure/azure-sql/database/free-offer?view=azuresql)），10W核心计算时间+32G的数据，对于一个只记录访问数据的服务来说完全够用了
+- Azure SQL Server提供免费额度（[官方文档](https://learn.microsoft.com/en-us/azure/azure-sql/database/free-offer?view=azuresql)），10W核心计算时间+32G的数据
 - Azure SQL Server本身是个SQL Server，用标准的SQL Server库就可以连接
 - [之前给wakapi做SQL Server适配](/articles/support-sqlserver-in-wakapi)的时候也熟悉了一些SQL Server，所以运维托管SQL Server也挺简单的
 
 IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头也就是Node pool的虚拟机，通过计算器估算一个月70/80刀，150刀勉强够用。
 
-
-## CI/CD
+### CI/CD
 
 之前的CI/CD很简单：推送代码 -> 构建静态HTML/JS/CSS -> 推送到github pages仓库 -> github pages部署。
 
@@ -103,10 +105,38 @@ IP和流量对于国外的云来说几乎免费。这样下来，花钱的大头
 
 不得不说，Kubernetes生态真的是好东西，不仅是统一了软件的管理，还尽量把不同云服务商之间提供的服务也给统一了，大多数时候只需要和kubernetes本身打交道。之前我有一些服务放在Azure App service上的，其部署、运维都是一套单独的API，要使用就得重新学一整套概念、一整套新的UI以及新的CI/CD。
 
+### AKS太贵了，换VM
+
+本以为这样就大功告成了，没想到隔了两天后再进Azure Portal发现余额少了20刀，并且发现博客的加载量没有增加，重启服务后发现时候就莫名其妙访问不了了。
+
+经过一番研究后才发现，我之前博客的访问数据只是做了个读缓存，一旦有访问或者缓存失效就会写数据库，这样10万小时的CPU时间完全不够，用了2天就用完了。
+
+于是为了恢复访问，我紧急打开了SQL付费，并优化了一下数据库访问设计，直接做了个内存缓存，所有读只从内存读。
+
+这样解决了数据库vGPU的问题，但是带来了另一个问题：当长时间没有访问（也就没有数据库写入），数据库会自动暂停。然而数据库从暂停到启动的时间又大于30s，超过了我配置的数据库超时时间，于是读写数据库就又失败了。但如果不打开自动暂停的话，数据库一直运行就一直收CPU的费用。
+
+再加上AKS本身的费用也比预想中的多很多，于是我下决定，还是放弃花里胡哨的全托管，回归了最经典的虚拟机+单节点kubernetes的形式。代码也改成了直接读写本地SQLite数据库，部署起来方便。
+
+开好VM，直接让AI给装了个k3s，把所有yaml直接迁移过去，改了改CI，费用果然就下来了。也没有更多的付费内容，2C8G一个月80刀左右，再加上公网IP的费用，150刀这下才真正够用。
+
+![最近费用折线图，换成VM后斜率明显减小](./billing.png)
+
+而且用VM还有个好处：没有那么多花里胡哨的AKS专属的功能pod，可用的资源也变多了。现在我把所有服务（例如内网穿透、梯子）全部迁移到这里，也完全够用。
+
+```
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                500m (25%)  2 (100%)
+  memory             780Mi (9%)  1706Mi (21%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+```
+
 # 后续
 
-后续还打算将我用App Service和VM部署的一些服务全部搬迁到AKS上，减少额外开销的同时进一步统一运维流程。
-
-另外，现在博客项目使用Next.js实现的，做起来确实比较简单，但是构建的镜像太大了（300M），推送还挺耗时间的。有了AI后，后续可考虑把博客逻辑改成go写，前端改成vite+react纯前端，最后构建一个十几M的纯go二进制。
+现在博客项目使用Next.js实现的，做起来确实比较简单，但是构建的镜像太大了（300M），推送还挺耗时间的。有了AI后，后续可考虑把博客逻辑改成go写，前端改成vite+react纯前端，最后构建一个十几M的纯go二进制。
 
 在做这个过程中的时候，我又遇到了前两年工作的时候几乎天天接触的Azure的各种概念。这些概念纯学起来非常抽象，真正用起来才直到用处在哪儿。最近工作也接触了一些国产云，感觉国产云在这些管理和开发者友好的功能上还是有一定差距的。

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import {
+  CommentableKind,
   completeOAuthRedirect,
   fetchCurrentUser,
   findIssue,
@@ -15,6 +16,7 @@ import { useI18n } from "src/i18n";
 
 interface Props {
   articleId: string;
+  kind?: CommentableKind;
 }
 
 type ReactionContent = "+1" | "-1" | "laugh" | "hooray" | "confused" | "heart" | "rocket" | "eyes";
@@ -53,7 +55,7 @@ type MyReactionIds = Partial<Record<ReactionContent, number>>;
 const emptyReactionCounts = (): ReactionCounts =>
   Object.fromEntries(reactionContents.map((content) => [content, 0])) as ReactionCounts;
 
-export const LikeButton = ({ articleId }: Props) => {
+export const LikeButton = ({ articleId, kind = "article" }: Props) => {
   const [token, setToken] = useState<string>();
   const [issue, setIssue] = useState<GithubIssue | null>();
   const [counts, setCounts] = useState<ReactionCounts>(emptyReactionCounts);
@@ -68,7 +70,7 @@ export const LikeButton = ({ articleId }: Props) => {
       setLoading(true);
       setError(false);
       try {
-        const found = await findIssue(articleId, accessToken);
+        const found = await findIssue(articleId, accessToken, kind);
         setIssue(found);
         setCounts(
           Object.fromEntries(
@@ -100,7 +102,7 @@ export const LikeButton = ({ articleId }: Props) => {
         setLoading(false);
       }
     },
-    [articleId],
+    [articleId, kind],
   );
 
   useEffect(() => {
@@ -162,19 +164,19 @@ export const LikeButton = ({ articleId }: Props) => {
   );
 
   const login = (content: ReactionContent) => {
-    window.localStorage.setItem(`reaction_intent:${articleId}`, content);
+    window.localStorage.setItem(`reaction_intent:${kind}:${articleId}`, content);
     loginWithGitHub();
   };
 
   useEffect(() => {
     if (!token || !issue || loading) return;
     const content = window.localStorage.getItem(
-      `reaction_intent:${articleId}`,
+      `reaction_intent:${kind}:${articleId}`,
     ) as ReactionContent | null;
     if (!content || !reactionContents.includes(content)) return;
-    window.localStorage.removeItem(`reaction_intent:${articleId}`);
+    window.localStorage.removeItem(`reaction_intent:${kind}:${articleId}`);
     void toggleReaction(content, token, issue);
-  }, [token, issue, loading, articleId, toggleReaction]);
+  }, [token, issue, loading, articleId, kind, toggleReaction]);
 
   const onClick = (content: ReactionContent) => {
     if (!token) {

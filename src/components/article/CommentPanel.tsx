@@ -5,10 +5,11 @@ import { FaComments, FaGithub } from "react-icons/fa";
 import {
   clientId,
   clientSecret,
+  CommentableKind,
   GithubComment,
   GithubIssue,
   github,
-  legacyId,
+  issueLabels,
   oauthProxy,
 } from "src/components/article/github";
 import { Localized, useI18n } from "src/i18n";
@@ -17,6 +18,7 @@ interface Props {
   articleId: string;
   articleTitle: string;
   language: string;
+  kind?: CommentableKind;
 }
 
 function safeBodyHtml(comment: GithubComment) {
@@ -26,7 +28,7 @@ function safeBodyHtml(comment: GithubComment) {
   );
 }
 
-const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
+const CommentPanel = ({ articleId, articleTitle, language, kind = "article" }: Props) => {
   const [issue, setIssue] = useState<GithubIssue | null>();
   const [comments, setComments] = useState<GithubComment[]>([]);
   const [body, setBody] = useState("");
@@ -37,9 +39,9 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
   const [creating, setCreating] = useState(false);
   const i18n = useI18n();
   const dateLocale = language === "zh-CN" ? "zh-CN" : "en-US";
-  const labelNames = useMemo(() => ["Gitalk", legacyId(articleId)], [articleId]);
+  const labelNames = useMemo(() => issueLabels(articleId, kind), [articleId, kind]);
   const labels = useMemo(() => labelNames.join(","), [labelNames]);
-  const initializeKey = useMemo(() => `gitalk_initialize:${articleId}`, [articleId]);
+  const initializeKey = useMemo(() => `gitalk_initialize:${kind}:${articleId}`, [articleId, kind]);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -97,7 +99,10 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
           "/issues",
           {
             method: "POST",
-            body: JSON.stringify({ title: `[COMMENT] ${articleTitle}`, labels: labelNames }),
+            body: JSON.stringify({
+              title: `${kind === "spark" ? "[SPARK]" : "[COMMENT]"} ${articleTitle}`,
+              labels: labelNames,
+            }),
           },
           accessToken,
         );
@@ -109,7 +114,7 @@ const CommentPanel = ({ articleId, articleTitle, language }: Props) => {
         setCreating(false);
       }
     },
-    [articleTitle, labelNames],
+    [articleTitle, kind, labelNames],
   );
 
   const login = () => {

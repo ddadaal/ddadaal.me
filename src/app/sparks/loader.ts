@@ -3,6 +3,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { contentPaths, readContentFile } from "src/data/contentFiles";
 
 export interface Spark {
+  id: string;
   time: string; // ISO string
   content: string;
 }
@@ -16,8 +17,8 @@ export async function loadSparks(): Promise<Spark[]> {
   for (const file of files) {
     const raw = readContentFile(file);
     const { data, content } = matter(raw);
-    if (typeof data.time === "string") {
-      sparks.push({ time: data.time, content });
+    if (typeof data.id === "string" && typeof data.time === "string") {
+      sparks.push({ id: data.id, time: data.time, content });
     }
   }
   // sort by time desc

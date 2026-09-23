@@ -99,7 +99,8 @@
   "sparksPage": {
     "title": "✨Sparks",
     "expand": "Show more",
-    "collapse": "Show less"
+    "collapse": "Show less",
+    "backToList": "Back to Sparks"
   },
   "articleFrontmatter": {
     "date": "Publish Time",

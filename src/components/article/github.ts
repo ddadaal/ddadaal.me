@@ -36,6 +36,17 @@ export function legacyId(id: string) {
   return id.substring(0, 50);
 }
 
+export type CommentableKind = "article" | "spark";
+
+/**
+ * Labels used to find/create the GitHub issue backing a commentable target.
+ * Spark ids get a `spark/` prefix so spark issues are distinguishable from
+ * article issues on GitHub.
+ */
+export function issueLabels(id: string, kind: CommentableKind = "article") {
+  return ["Gitalk", kind === "spark" ? `spark/${legacyId(id)}` : legacyId(id)];
+}
+
 export async function github<T>(path: string, init?: RequestInit, token?: string): Promise<T> {
   const response = await fetch(path.startsWith("/") ? `${api}${path}` : path, {
     ...init,
@@ -110,10 +121,14 @@ export async function fetchCurrentUser(token: string): Promise<GithubUser> {
   return (await response.json()) as GithubUser;
 }
 
-/** Find the Gitalk issue for an article via the label search. */
-export async function findIssue(articleId: string, token?: string) {
+/** Find the Gitalk issue for a commentable target via the label search. */
+export async function findIssue(
+  articleId: string,
+  token?: string,
+  kind: CommentableKind = "article",
+) {
   const params = new URLSearchParams({
-    labels: ["Gitalk", legacyId(articleId)].join(","),
+    labels: issueLabels(articleId, kind).join(","),
     state: "all",
     per_page: "1",
   });

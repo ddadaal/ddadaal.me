@@ -30,7 +30,11 @@ export function ExpandableSpark({ children }: { children: ReactNode }) {
         <div className="relative -mt-12 pt-12 bg-gradient-to-t from-base-100 to-transparent">
           <button
             className="text-sm text-primary hover:underline cursor-pointer"
-            onClick={() => setExpanded(true)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setExpanded(true);
+            }}
           >
             <Localized id="sparksPage.expand" />
           </button>
@@ -39,7 +43,11 @@ export function ExpandableSpark({ children }: { children: ReactNode }) {
       {overflows && expanded && (
         <button
           className="text-sm text-primary hover:underline cursor-pointer mt-2"
-          onClick={() => setExpanded(false)}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setExpanded(false);
+          }}
         >
           <Localized id="sparksPage.collapse" />
         </button>
