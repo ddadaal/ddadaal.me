@@ -74,7 +74,7 @@
     "@azure/ai-language-text": "1.1.0",
     "@types/mime-types": "3.0.1",
     "@types/rss": "0.0.32",
-    "dotenv": "17.4.2",
+    "dotenv": "18.0.5",
     "drizzle-kit": "1.0.0-rc.4",
     "envalid": "8.2.0",
     "ollama": "0.6.3",
