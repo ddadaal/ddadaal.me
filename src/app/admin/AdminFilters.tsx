@@ -14,6 +14,7 @@ interface Props {
   from: string;
   to: string;
   metric: "views" | "uniques";
+  granularity: "day" | "hour";
   bots: boolean;
   /** Current detail selection, preserved across filter changes. */
   item?: string;
@@ -23,7 +24,7 @@ interface Props {
 // Filter state lives entirely in the URL; the server re-queries on navigation.
 // Current values arrive as props instead of useSearchParams, so this component
 // needs no Suspense boundary of its own.
-export function AdminFilters({ from, to, metric, bots, item, presets }: Props) {
+export function AdminFilters({ from, to, metric, granularity, bots, item, presets }: Props) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
@@ -34,7 +35,7 @@ export function AdminFilters({ from, to, metric, bots, item, presets }: Props) {
           {/* key: remount when the server-provided range changes (e.g. a preset
               click) so the uncontrolled date inputs show the new values. */}
           <form
-            key={`${from}:${to}`}
+            key={`${from}:${to}:${granularity}`}
             className="flex flex-wrap items-end gap-3"
             onSubmit={(event) => {
               event.preventDefault();
@@ -44,6 +45,7 @@ export function AdminFilters({ from, to, metric, bots, item, presets }: Props) {
                 to: String(data.get("to") ?? to),
               });
               if (data.get("metric") === "uniques") query.set("metric", "uniques");
+              if (data.get("gran") === "hour") query.set("gran", "hour");
               if (data.get("bots") === "on") query.set("bots", "1");
               if (item) query.set("item", item);
               startTransition(() => router.push(`/admin?${query.toString()}`));
@@ -76,6 +78,17 @@ export function AdminFilters({ from, to, metric, bots, item, presets }: Props) {
               >
                 <option value="views">浏览量</option>
                 <option value="uniques">独立访客</option>
+              </select>
+            </label>
+            <label className="form-control">
+              <span className="label-text text-xs mb-1">粒度</span>
+              <select
+                name="gran"
+                defaultValue={granularity}
+                className="select select-bordered select-sm"
+              >
+                <option value="day">按天</option>
+                <option value="hour">按小时</option>
               </select>
             </label>
             <label className="label cursor-pointer gap-2 pb-1">

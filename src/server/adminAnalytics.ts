@@ -127,8 +127,15 @@ export interface AnalyticsOverview {
   humanViews: number;
 }
 
-export interface DailyPoint {
-  day: string;
+export type Granularity = "day" | "hour";
+
+export function parseGranularity(raw: string | undefined): Granularity {
+  return raw === "hour" ? "hour" : "day";
+}
+
+export interface SeriesPoint {
+  /** `yyyy-MM-dd` (day) or `yyyy-MM-dd HH:00` (hour) label in the admin timezone. */
+  bucket: string;
   views: number;
   visitors: number;
 }
@@ -186,37 +193,44 @@ export function getItemTotals(
   return { views: row?.views ?? 0, visitors: row?.visitors ?? 0 };
 }
 
-function dayBucket(range: AdminRange): SQL<string> {
+function bucketExpression(range: AdminRange, granularity: Granularity): SQL<string> {
   // OccurredAt / 1000 is integer division on positive values, i.e. an exact
-  // floor from milliseconds to seconds.
-  return sql<string>`strftime('%Y-%m-%d', ${visitEvents.occurredAt} / 1000, 'unixepoch', ${range.offsetModifier})`;
+  // floor from milliseconds to seconds. Minutes and seconds are dropped, so
+  // hour buckets label the start of the hour.
+  const format = granularity === "hour" ? "%Y-%m-%d %H:00" : "%Y-%m-%d";
+  return sql<string>`strftime(${format}, ${visitEvents.occurredAt} / 1000, 'unixepoch', ${range.offsetModifier})`;
 }
 
-export function getDailySeries(
+export function getTimeSeries(
   range: AdminRange,
+  granularity: Granularity,
   includeBots: boolean,
   itemId?: string,
-): DailyPoint[] {
-  const bucket = dayBucket(range);
+): SeriesPoint[] {
+  const bucket = bucketExpression(range, granularity);
   const rows = getDb()
-    .select({ day: bucket, views: count(), visitors: countDistinct(visitEvents.sessionId) })
+    .select({ bucket, views: count(), visitors: countDistinct(visitEvents.sessionId) })
     .from(visitEvents)
     .where(rangeWhere(range, includeBots, itemId))
     .groupBy(bucket)
     .all();
 
-  // Zero-fill so the chart has one point per day in the range.
-  const byDay = new Map(rows.map((row) => [row.day, row]));
-  const points: DailyPoint[] = [];
+  // Zero-fill so the chart has one point per bucket in the range.
+  const byBucket = new Map(rows.map((row) => [row.bucket, row]));
+  const points: SeriesPoint[] = [];
   const end = DateTime.fromMillis(range.endMs, { zone: range.zone });
   for (
     let cursor = DateTime.fromMillis(range.startMs, { zone: range.zone });
     cursor <= end;
-    cursor = cursor.plus({ days: 1 })
+    cursor = cursor.plus(granularity === "hour" ? { hours: 1 } : { days: 1 })
   ) {
-    const day = cursor.toFormat("yyyy-MM-dd");
-    const row = byDay.get(day);
-    points.push({ day, views: row?.views ?? 0, visitors: row?.visitors ?? 0 });
+    const label =
+      granularity === "hour"
+        ? // Minute/second are literal here; HH alone stays unambiguous.
+          `${cursor.toFormat("yyyy-MM-dd HH")}:00`
+        : cursor.toFormat("yyyy-MM-dd");
+    const row = byBucket.get(label);
+    points.push({ bucket: label, views: row?.views ?? 0, visitors: row?.visitors ?? 0 });
   }
   return points;
 }

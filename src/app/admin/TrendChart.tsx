@@ -12,8 +12,9 @@ import {
 
 interface Props {
   title: string;
-  data: { day: string; views: number; visitors: number }[];
+  data: { bucket: string; views: number; visitors: number }[];
   metric: "views" | "uniques";
+  granularity: "day" | "hour";
 }
 
 const METRIC_LABEL = { views: "浏览量", uniques: "独立访客" } as const;
@@ -21,11 +22,17 @@ const METRIC_LABEL = { views: "浏览量", uniques: "独立访客" } as const;
 // Single series, so no legend: the card title names the metric. Colors come
 // from daisyUI theme variables, so every theme (including dark) follows
 // without JS.
-export function TrendChart({ title, data, metric }: Props) {
+export function TrendChart({ title, data, metric, granularity }: Props) {
   const points = data.map((point) => ({
-    day: point.day,
+    bucket: point.bucket,
     value: metric === "views" ? point.views : point.visitors,
   }));
+
+  // Hourly labels carry the date; drop it when the whole range is one day.
+  const singleDay =
+    granularity === "hour" && new Set(data.map((point) => point.bucket.slice(0, 10))).size === 1;
+  const formatTick = (label: string) =>
+    granularity === "hour" ? (singleDay ? label.slice(11) : label.slice(5)) : label.slice(5);
 
   return (
     <div className="card bg-base-100 shadow-sm">
@@ -36,12 +43,12 @@ export function TrendChart({ title, data, metric }: Props) {
             <AreaChart data={points} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
               <CartesianGrid vertical={false} stroke="var(--color-base-300)" />
               <XAxis
-                dataKey="day"
+                dataKey="bucket"
                 tickLine={false}
                 axisLine={false}
                 minTickGap={24}
                 tick={{ fill: "var(--color-base-content)", fontSize: 12, opacity: 0.65 }}
-                tickFormatter={(day: string) => day.slice(5)}
+                tickFormatter={formatTick}
               />
               <YAxis
                 width={44}

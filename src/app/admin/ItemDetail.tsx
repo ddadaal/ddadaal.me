@@ -3,8 +3,9 @@ import Link from "next/link";
 import {
   AdminRange,
   getBreakdown,
-  getDailySeries,
   getItemTotals,
+  getTimeSeries,
+  Granularity,
   ItemRef,
   RankedContent,
 } from "src/server/adminAnalytics";
@@ -18,14 +19,23 @@ interface Props {
   range: AdminRange;
   includeBots: boolean;
   metric: "views" | "uniques";
+  granularity: Granularity;
   closeHref: string;
 }
 
 const KIND_LABEL = { article: "文章", about: "关于页", spark: "想法", retired: "已下架" } as const;
 
-export async function ItemDetail({ item, entry, range, includeBots, metric, closeHref }: Props) {
+export async function ItemDetail({
+  item,
+  entry,
+  range,
+  includeBots,
+  metric,
+  granularity,
+  closeHref,
+}: Props) {
   const totals = getItemTotals(range, includeBots, item.id);
-  const series = getDailySeries(range, includeBots, item.id);
+  const series = getTimeSeries(range, granularity, includeBots, item.id);
   const referrers = getBreakdown(range, "referrer", includeBots, item.id);
   const devices = getBreakdown(range, "deviceType", includeBots, item.id);
 
@@ -70,7 +80,12 @@ export async function ItemDetail({ item, entry, range, includeBots, metric, clos
           </b>
         </span>
       </div>
-      <TrendChart title={`按天趋势 - ${entry.title}`} data={series} metric={metric} />
+      <TrendChart
+        title={`${granularity === "hour" ? "按小时" : "按天"}趋势 - ${entry.title}`}
+        data={series}
+        metric={metric}
+        granularity={granularity}
+      />
       <div className="grid gap-4 md:grid-cols-2">
         <BreakdownChart title="来源（Referrer）" entries={referrers} />
         <BreakdownChart title="设备类型" entries={devices} />

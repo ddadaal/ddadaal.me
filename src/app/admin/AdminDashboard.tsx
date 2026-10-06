@@ -1,8 +1,9 @@
 import {
   getBreakdown,
   getContentRankings,
-  getDailySeries,
   getOverview,
+  getTimeSeries,
+  parseGranularity,
   parseItemParam,
   parseRange,
   presetRange,
@@ -39,10 +40,11 @@ export async function AdminDashboard({ searchParams }: Props) {
   const range = parseRange(first("from"), first("to"));
   const includeBots = first("bots") === "1";
   const metric = first("metric") === "uniques" ? ("uniques" as const) : ("views" as const);
+  const granularity = parseGranularity(first("gran"));
   const item = parseItemParam(first("item"));
 
   const overview = getOverview(range, includeBots);
-  const series = getDailySeries(range, includeBots);
+  const series = getTimeSeries(range, granularity, includeBots);
   const rankings = await getContentRankings(range, includeBots);
   const referrers = getBreakdown(range, "referrer", includeBots);
   const browsers = getBreakdown(range, "browser", includeBots);
@@ -51,6 +53,7 @@ export async function AdminDashboard({ searchParams }: Props) {
 
   const baseQuery = new URLSearchParams({ from: range.from, to: range.to });
   if (metric === "uniques") baseQuery.set("metric", "uniques");
+  if (granularity === "hour") baseQuery.set("gran", "hour");
   if (includeBots) baseQuery.set("bots", "1");
   const plainHref = `/admin?${baseQuery.toString()}`;
   const itemHref = (kind: "article" | "spark", id: string) => {
@@ -98,6 +101,7 @@ export async function AdminDashboard({ searchParams }: Props) {
         from={range.from}
         to={range.to}
         metric={metric}
+        granularity={granularity}
         bots={includeBots}
         item={item ? `${item.kind}:${item.id}` : undefined}
         presets={presets}
@@ -106,9 +110,10 @@ export async function AdminDashboard({ searchParams }: Props) {
       <StatCards overview={overview} includeBots={includeBots} />
 
       <TrendChart
-        title={`按天趋势（${metric === "views" ? "浏览量" : "独立访客"}）`}
+        title={`${granularity === "hour" ? "按小时" : "按天"}趋势（${metric === "views" ? "浏览量" : "独立访客"}）`}
         data={series}
         metric={metric}
+        granularity={granularity}
       />
 
       {item && selected && (
@@ -118,6 +123,7 @@ export async function AdminDashboard({ searchParams }: Props) {
           range={range}
           includeBots={includeBots}
           metric={metric}
+          granularity={granularity}
           closeHref={plainHref}
         />
       )}
