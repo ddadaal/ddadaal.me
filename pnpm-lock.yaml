@@ -215,8 +215,8 @@ importers:
         specifier: 9.0.1
         version: 9.0.1
       image-size:
-        specifier: 2.0.2
-        version: 2.0.2
+        specifier: 2.0.3
+        version: 2.0.3
       luxon:
         specifier: 3.7.2
         version: 3.7.2
@@ -2421,9 +2421,9 @@ packages:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
 
-  image-size@2.0.2:
-    resolution: {integrity: sha512-IRqXKlaXwgSMAMtpNzZa1ZAe8m+Sa1770Dhk8VkSsP9LS+iHD62Zd8FQKs8fbPiagBE7BzoFX23cxFnwshpV6w==}
-    engines: {node: '>=16.x'}
+  image-size@2.0.3:
+    resolution: {integrity: sha512-9BJAtVCBth+76NwqnEfWr3PiRnYhbquk6K/USuQ1GQajz5NgLzO7tNsnoNjHfO7LuftgkBf+CCH6j28hjMbIYQ==}
+    engines: {node: '>=18'}
     hasBin: true
 
   import-meta-resolve@4.2.0:
@@ -4974,7 +4974,7 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  image-size@2.0.2: {}
+  image-size@2.0.3: {}
 
   import-meta-resolve@4.2.0: {}
 
