@@ -37,7 +37,7 @@ export function LoginForm({ error, retryAfterSeconds }: Props) {
   const lockEnded = error === "locked" && remaining === 0;
 
   return (
-    <div className="card bg-base-100 shadow-md max-w-md mx-auto mt-10">
+    <div className="card bg-base-100 shadow-md border border-base-content/10 max-w-md mx-auto mt-10">
       <form action={loginAction} className="card-body gap-4">
         <h1 className="card-title">管理后台</h1>
         <p className="text-sm opacity-70">请输入管理密钥以查看访问数据。</p>

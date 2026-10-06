@@ -10,7 +10,7 @@ export function StatCards({ overview, includeBots }: Props) {
   const botShare = total > 0 ? Math.round((overview.botViews / total) * 100) : 0;
 
   return (
-    <div className="stats stats-vertical sm:stats-horizontal bg-base-100 shadow-sm w-full">
+    <div className="stats stats-vertical sm:stats-horizontal bg-base-100 shadow-sm border border-base-content/10 w-full">
       <div className="stat">
         <div className="stat-title">总浏览量</div>
         <div className="stat-value text-3xl tabular-nums">{overview.views}</div>

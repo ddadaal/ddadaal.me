@@ -14,7 +14,7 @@ export function RankingTable({ title, items, zone, itemHref }: Props) {
   const maxViews = Math.max(1, ...items.map((item) => item.views));
 
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <div className="card bg-base-100 shadow-sm border border-base-content/10">
       <div className="card-body gap-3">
         <h2 className="card-title text-base">
           {title}

@@ -20,7 +20,7 @@ export function BreakdownChart({ title, entries }: Props) {
   const height = Math.max(180, entries.length * 32 + 32);
 
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <div className="card bg-base-100 shadow-sm border border-base-content/10">
       <div className="card-body gap-2">
         <h2 className="card-title text-base">{title}</h2>
         {entries.length === 0 ? (

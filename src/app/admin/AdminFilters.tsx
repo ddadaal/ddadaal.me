@@ -29,7 +29,7 @@ export function AdminFilters({ from, to, metric, granularity, bots, item, preset
   const [pending, startTransition] = useTransition();
 
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <div className="card bg-base-100 shadow-sm border border-base-content/10">
       <div className="card-body py-4">
         <div className="flex flex-wrap items-end gap-3">
           {/* key: remount when the server-provided range changes (e.g. a preset

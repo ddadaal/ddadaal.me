@@ -43,3 +43,18 @@
     valentine,
     cyberpunk;
 }
+
+/*
+ * Deepen the dark theme's lower surfaces. The built-in steps (base-100 25.3%,
+ * base-200 23.3%, base-300 21.2%) are under 2.2 points apart, so a page surface
+ * and the cards on it read as one flat slab — dark shadows are invisible and
+ * cannot compensate. Listing only these tokens merges them into the built-in
+ * theme (daisyUI's theme plugin spreads the built-in values first), and
+ * prefersdark keeps the "auto" (no data-theme) path on the same values.
+ */
+@plugin "daisyui/theme" {
+  name: "dark";
+  prefersdark: true;
+  --color-base-200: oklch(17.5% 0.014 253.1);
+  --color-base-300: oklch(14.5% 0.012 254.09);
+}

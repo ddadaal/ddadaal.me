@@ -35,7 +35,7 @@ export function TrendChart({ title, data, metric, granularity }: Props) {
     granularity === "hour" ? (singleDay ? label.slice(11) : label.slice(5)) : label.slice(5);
 
   return (
-    <div className="card bg-base-100 shadow-sm">
+    <div className="card bg-base-100 shadow-sm border border-base-content/10">
       <div className="card-body gap-2">
         <h2 className="card-title text-base">{title}</h2>
         <div className="w-full h-64">
