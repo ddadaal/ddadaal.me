@@ -1,0 +1,368 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "7ffe25f2-701d-496a-af4a-7a76563ea08e",
+  "prevIds": [
+    "ea04f570-2432-4f16-b105-30a81250517f"
+  ],
+  "ddl": [
+    {
+      "name": "AdminLoginAttempts",
+      "entityType": "tables"
+    },
+    {
+      "name": "ArticleViews",
+      "entityType": "tables"
+    },
+    {
+      "name": "VisitEvents",
+      "entityType": "tables"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "Id",
+      "entityType": "columns",
+      "table": "AdminLoginAttempts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(cast((julianday('now') - 2440587.5)*86400000 as integer))",
+      "generated": null,
+      "name": "OccurredAt",
+      "entityType": "columns",
+      "table": "AdminLoginAttempts"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "IpHash",
+      "entityType": "columns",
+      "table": "AdminLoginAttempts"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "Success",
+      "entityType": "columns",
+      "table": "AdminLoginAttempts"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "ArticleId",
+      "entityType": "columns",
+      "table": "ArticleViews"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'0'",
+      "generated": null,
+      "name": "ViewCount",
+      "entityType": "columns",
+      "table": "ArticleViews"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(cast((julianday('now') - 2440587.5)*86400000 as integer))",
+      "generated": null,
+      "name": "LastViewedAt",
+      "entityType": "columns",
+      "table": "ArticleViews"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "Id",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(cast((julianday('now') - 2440587.5)*86400000 as integer))",
+      "generated": null,
+      "name": "OccurredAt",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "SessionId",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "ArticleId",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "Path",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "Referrer",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "UtmSource",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "UtmMedium",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "UtmCampaign",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "IpHash",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "Browser",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "OperatingSystem",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "DeviceType",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "IsBot",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "200",
+      "generated": null,
+      "name": "StatusCode",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "ResponseMs",
+      "entityType": "columns",
+      "table": "VisitEvents"
+    },
+    {
+      "columns": [
+        "Id"
+      ],
+      "nameExplicit": false,
+      "name": "AdminLoginAttempts_pk",
+      "table": "AdminLoginAttempts",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ArticleId"
+      ],
+      "nameExplicit": false,
+      "name": "ArticleViews_pk",
+      "table": "ArticleViews",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "Id"
+      ],
+      "nameExplicit": false,
+      "name": "VisitEvents_pk",
+      "table": "VisitEvents",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        {
+          "value": "IpHash",
+          "isExpression": false
+        },
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AdminLoginAttempts_Ip_Occurred",
+      "entityType": "indexes",
+      "table": "AdminLoginAttempts"
+    },
+    {
+      "columns": [
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AdminLoginAttempts_Occurred",
+      "entityType": "indexes",
+      "table": "AdminLoginAttempts"
+    },
+    {
+      "columns": [
+        {
+          "value": "ArticleId",
+          "isExpression": false
+        },
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "VisitEvents_Article_Occurred",
+      "entityType": "indexes",
+      "table": "VisitEvents"
+    },
+    {
+      "columns": [
+        {
+          "value": "SessionId",
+          "isExpression": false
+        },
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "VisitEvents_Session_Occurred",
+      "entityType": "indexes",
+      "table": "VisitEvents"
+    },
+    {
+      "columns": [
+        {
+          "value": "OccurredAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "VisitEvents_Occurred",
+      "entityType": "indexes",
+      "table": "VisitEvents"
+    },
+    {
+      "value": "CAST(\"ViewCount\" AS INTEGER) >= 0",
+      "name": "ArticleViews_ViewCount_nonnegative",
+      "entityType": "checks",
+      "table": "ArticleViews"
+    }
+  ],
+  "renames": []
+}

@@ -3,5 +3,14 @@ module.exports = {
   siteUrl: process.env.SITE_URL || "https://ddadaal.me",
   generateRobotsTxt: true,
   outDir: "./public",
-  exclude: ["/api/*", "/articles/asset/*"],
+  exclude: ["/api/*", "/articles/asset/*", "/admin", "/admin/*"],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/admin", "/api"],
+      },
+    ],
+  },
 };

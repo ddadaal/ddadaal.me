@@ -99,6 +99,16 @@ Comments are rendered by the client-only GitHub Issues integration in `src/compo
 
 Deployment instructions, including Docker, ACR, GitHub Actions, and AKS, are in [deploy/README.md](deploy/README.md). Mount a volume at `/app/data` in production so the database survives container replacement.
 
+## Admin area
+
+`/admin` is a private analytics dashboard over the same SQLite data. It is disabled until `ADMIN_KEY` is set (see `.env.example`); the key is entered on the page and exchanged for an HMAC-signed, `HttpOnly`, `Path=/admin` session cookie valid for 7 days. Rotating `ADMIN_KEY` invalidates existing sessions. The page renders no analytics data for unauthenticated requests, is marked `noindex`, and is excluded from the sitemap and robots.txt. Admin UI text is hardcoded Chinese; the area is internal and not localized.
+
+Login is protected against brute force: every attempt (success or failure) is recorded in the `AdminLoginAttempts` table with a one-way IP hash, and sliding-window limits lock login for 15 minutes after 5 failures from one IP or 50 failures globally within 15 minutes (constants in `src/server/adminLoginAttempts.ts`). Locked responses show a countdown in the UI and are refused server-side. Failed attempts add a fixed 750 ms delay, and the key comparison is constant-time. A successful login clears that IP's failure count. When `x-forwarded-for`/`x-real-ip` are absent (no reverse proxy), all clients share one conservative bucket. Attempt rows older than 30 days are pruned opportunistically.
+
+The dashboard aggregates the already-recorded `VisitEvents`/`ArticleViews` data — site totals, per-day trends, article/spark/about-page rankings (including zero-view items), per-item detail, and referrer/browser/OS/device breakdowns. Date ranges and filters live in the URL; day bucketing uses `ADMIN_TZ` (default `Asia/Shanghai`), shown on the page. Bot traffic is excluded by default and can be included with a toggle. "Unique visitors" approximates via `COUNT(DISTINCT SessionId)`. Charts use `recharts`, which is bundled only into the `/admin` route. There is deliberately no admin API route; dashboard data is queried inside the authenticated server render.
+
+Set `ADMIN_KEY` (and optionally `ADMIN_TZ`) outside the repository as well: `deploy/` is gitignored, so the value belongs in the cluster secret applied to the pod.
+
 ## License
 
 MIT

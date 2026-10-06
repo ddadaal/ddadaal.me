@@ -40,5 +40,27 @@ export const visitEvents = sqliteTable(
   (table) => [
     index("VisitEvents_Article_Occurred").on(table.articleId, table.occurredAt),
     index("VisitEvents_Session_Occurred").on(table.sessionId, table.occurredAt),
+    // The admin dashboard's queries all filter by time range, and neither of
+    // the indexes above leads with OccurredAt.
+    index("VisitEvents_Occurred").on(table.occurredAt),
+  ],
+);
+
+// The admin login brute-force ledger: one row per attempt. Sliding-window
+// counts are derived from OccurredAt, so rows are append-only and pruned by age.
+export const adminLoginAttempts = sqliteTable(
+  "AdminLoginAttempts",
+  {
+    id: text("Id").primaryKey(),
+    occurredAt: integer("OccurredAt", { mode: "timestamp_ms" }).notNull().defaultNow(),
+    // HMAC-SHA256 of the client IP, never the address itself. "unknown" when
+    // the proxy sends no forwarded headers, which merges those clients into
+    // one conservative bucket instead of exempting them.
+    ipHash: text("IpHash").notNull(),
+    success: integer("Success", { mode: "boolean" }).notNull().default(false),
+  },
+  (table) => [
+    index("AdminLoginAttempts_Ip_Occurred").on(table.ipHash, table.occurredAt),
+    index("AdminLoginAttempts_Occurred").on(table.occurredAt),
   ],
 );
