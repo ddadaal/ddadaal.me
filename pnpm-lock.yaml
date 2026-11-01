@@ -339,8 +339,8 @@ importers:
         specifier: 1.0.0-rc.4
         version: 1.0.0-rc.4
       envalid:
-        specifier: 8.2.0
-        version: 8.2.0
+        specifier: 9.0.0
+        version: 9.0.0
       ollama:
         specifier: 0.6.3
         version: 0.6.3
@@ -2311,9 +2311,9 @@ packages:
     resolution: {integrity: sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==}
     engines: {node: '>=0.12'}
 
-  envalid@8.2.0:
-    resolution: {integrity: sha512-CkPvea95dwMYE1wnKX5mQXkOpiMs9O+ncv8NqZy+gW7FuzpUp06KTdUHb18xFG8CqQHmfmRqGLF5DuGaBWNrSw==}
-    engines: {node: '>=18'}
+  envalid@9.0.0:
+    resolution: {integrity: sha512-yGeeseY35RhYaDpBsNgL/fEaBqCsnCsRGCOmWHGLR+gaLE22Yk8fYbwkarIQxV2i4rj0F86EIFd32Yi0fqIZWQ==}
+    engines: {node: '>=22'}
 
   es-toolkit@1.52.0:
     resolution: {integrity: sha512-XTNEJQh1tY1ZJVcf6ayP/2n4ZPyaHlW2FWs7xvw5ddPuhUVjLD3olQVQS7kf58JbAB48iL0uL/jerTrjtV3lDA==}
@@ -4801,9 +4801,7 @@ snapshots:
 
   entities@6.0.1: {}
 
-  envalid@8.2.0:
-    dependencies:
-      tslib: 2.8.1
+  envalid@9.0.0: {}
 
   es-toolkit@1.52.0: {}
 
